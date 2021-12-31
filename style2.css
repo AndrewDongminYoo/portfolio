@@ -443,11 +443,6 @@ input[type=checkbox]:not([disabled]):focus,input[type=checkbox]:not([disabled]):
     background-color:transparent;
     background-size:.875rem .75rem
 }
-input[type=checkbox]:checked {
-    border-color:#263747;
-    background:#263747 url(https://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.iohttps://andrewdongminyoo.github.io/assets/img-check-sm-light-c6c81f31aa06c36b958455d046792770241fe33b1e41998e22485fd6e41f13a2.png) no-repeat center center! important;
-    background-size:.625rem .5rem !important;
-}
 
 }
 .circle {
