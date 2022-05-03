@@ -2117,7 +2117,7 @@ div[class^=icon-add-]:hover *, div[class^=icon-remove-]:hover * {
 }
 
 .skill-check-assignments.skill-check-assignments-index .container-skill-checks-assignment .container .skill-check-assignment-contents .skill-check-assignment-list .list-assignments .list-assignment-item .item-content .body .markdown p {
-    font-size: .75rem;
+    font-size: .9rem;
     color: #98a8b9
 }
 
