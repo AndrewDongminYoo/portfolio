@@ -2487,5 +2487,5 @@ div[class^=icon-add-]:hover *, div[class^=icon-remove-]:hover * {
 
 .personal-information__photo img {
     border-radius: 50%;
-    width: 100%;
+    width: 50%;
 }
