@@ -3,6 +3,7 @@
     "defaultlocale",
     "JDBC",
     "Monogo",
-    "pydantic"
+    "pydantic",
+    "pymongo"
   ]
 }
