@@ -1,18 +1,85 @@
 html,
 body {
-  padding: 0;
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
+  word-break: keep-all;
+  word-wrap: break-word;
+  color: #263747;
+  overflow-x: hidden;
+  font-family: Inter, "Noto Sans KR", "Helvetica Neue", Helvetica, Arial,
+    "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
+    "Noto Color Emoji";
+  font-size: 16px;
+  background-color: #fff;
+  line-height: 1.4;
 }
 
 * {
   box-sizing: border-box;
+}
+
+a {
+  transition-delay: initial;
+  transition-duration: 80ms;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  color: #0078ff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:focus {
+  outline: 0;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  margin: 0.01em;
+  max-width: 100%;
+  display: block;
+  vertical-align: middle;
+  border-style: none;
+}
+
+ul {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  letter-spacing: -0.009em;
+  line-height: 1.6;
+}
+
+svg {
+  transition-delay: initial;
+  transition-duration: 80ms;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+  vertical-align: top;
+}
+
+p {
+  font-family: Inter, "Noto Sans KR", "Helvetica Neue", Helvetica, Arial,
+    "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
+    "Noto Color Emoji";
+  margin-bottom: 8px;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+  line-height: 1.6;
+}
+
+section {
+  word-break: break-word;
 }
 
 @media (prefers-color-scheme: dark) {
