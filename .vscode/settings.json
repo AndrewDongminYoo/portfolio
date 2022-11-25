@@ -5,5 +5,6 @@
     "Monogo",
     "pydantic",
     "pymongo"
-  ]
+  ],
+  "git.ignoreLimitWarning": true
 }
