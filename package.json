@@ -1,22 +1,29 @@
 {
-  "name": "github-profile",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
-    "eslint": "8.28.0",
-    "eslint-config-next": "13.0.5",
-    "next": "13.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.3"
-  }
+    "name": "github-profile",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "date-fns": "^2.29.3",
+        "gray-matter": "^4.0.3",
+        "next": "13.0.5",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "remark": "^14.0.2",
+        "remark-html": "^15.0.1",
+        "sharp": "^0.31.2"
+    },
+    "devDependencies": {
+        "@types/node": "18.11.9",
+        "@types/react": "18.0.25",
+        "eslint": "8.28.0",
+        "@types/react-dom": "18.0.9",
+        "eslint-config-next": "13.0.5",
+        "typescript": "4.9.3"
+    }
 }
