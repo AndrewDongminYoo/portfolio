@@ -1,0 +1,180 @@
+[
+    {
+        "id": 232159,
+        "name": "오이마켓 - 지역 기반 커뮤니티 웹 애플리케이션",
+        "description": "당근 마켓 주요 기능 클론 코딩을 목적으로, 나와 가까운 위치에 있는 사람들과 소통하고, 실시간 대화를 할 수 있는 커뮤니티 개발",
+        "teamDescription": "팀장 및 github organization admin 맡음. BE +2명",
+        "roleDescription": "* Java Spring boot, Spring Framework 구조 이해 및 학습 목적. \n* DB: MySQL (AWS RDS)\n* Spring data JPA + JDBC 학습.\n* 카카오톡 로그인 기능 구현과 JWT 토큰 기반 시큐리티 구현.\n* 두번째 팀 프로젝트로써, Github Issue, Projects, Issue Template, Action 적극 활용.\n* 실시간 채팅 기능 및 알림 기능 위해 Spring websocket + SockJS, StompJS, Redis 사용\n* RESTful API, ERD 설계의 중요성을 학습.\n* Amazon ElasticBeanstalk, CloudFront 이용해 Back, Front 각각 배포.\n* 코드 리뷰를 습관화하고, 태스크를 쪼개고 작업 시간을 예측하고 TDD를 습관화.",
+        "startAt": "2021-11-01",
+        "repository": "https://github.com/JARYOGOOJO/52market.shop",
+        "productUrl": {
+            "index": null,
+            "website_url": "https://52market.shop",
+            "android_url": "",
+            "ios_url": ""
+        },
+        "tags": [
+            {
+                "index": 0,
+                "id": 1182,
+                "name": "Java"
+            },
+            {
+                "index": 1,
+                "id": 1250,
+                "name": "Spring Boot"
+            },
+            {
+                "index": 2,
+                "id": 1587,
+                "name": "Spring Security"
+            },
+            {
+                "index": 3,
+                "id": 1546,
+                "name": "Spring Data JPA"
+            },
+            {
+                "index": 4,
+                "id": 712,
+                "name": "Swagger"
+            },
+            {
+                "index": 5,
+                "id": 1552,
+                "name": "WebSocket"
+            },
+            {
+                "index": 6,
+                "id": 1214,
+                "name": "MySQL"
+            },
+            {
+                "index": 7,
+                "id": 1097,
+                "name": "AWS RDS"
+            },
+            {
+                "index": 8,
+                "id": 1161,
+                "name": "GitHub"
+            },
+            {
+                "index": 9,
+                "id": 1472,
+                "name": "AWS Elastic Beanstalk"
+            },
+            {
+                "index": 10,
+                "id": 1093,
+                "name": "AWS CloudFront"
+            },
+            {
+                "index": 11,
+                "id": 1266,
+                "name": "Webpack"
+            }
+        ]
+    },
+    {
+        "id": 232160,
+        "name": "오늘뭐먹지?",
+        "description": "1인 가구를 위한 지역 배달 식당 정보 제공 웹 어플리케이션",
+        "teamDescription": "팀장 및 github maintainer 맡음. BE +3명",
+        "roleDescription": "* 스파르타코딩클럽 부트캠프를 통해 만난 팀원들과의 첫 학습 목적 프로젝트.\n* 웹에서 얻을 수 있는 배달 식당에 대한 정보가 모바일에 비해 상당 부분 부족하다고 생각.\n* 사용자 경험을 우선으로 하여 개발. 배달 플랫폼 \"요기요\"의 API를 허락 하에 사용함.\n* micro-framework Python Flask 통해 개발.\n* NoSQL MongoDB 기반으로 사용하면서 놓치기 쉬운 정규화 등의 요소를 학습.\n* Amazon ElasticBeanstalk, CloudFront 이용해 Back, Front 각각 배포 (CI/CD 담당).\n* RESTful한 API 개발 경험.",
+        "startAt": "2021-09-01",
+        "repository": "https://github.com/AndrewDongminYoo/my-small-meal",
+        "productUrl": {
+            "index": null,
+            "website_url": "",
+            "android_url": "",
+            "ios_url": ""
+        },
+        "tags": [
+            {
+                "index": 0,
+                "id": 1211,
+                "name": "MongoDB"
+            },
+            {
+                "index": 1,
+                "id": 1159,
+                "name": "Flask"
+            },
+            {
+                "index": 2,
+                "id": 1230,
+                "name": "Python"
+            },
+            {
+                "index": 3,
+                "id": 1093,
+                "name": "AWS CloudFront"
+            },
+            {
+                "index": 4,
+                "id": 1503,
+                "name": "AWS ElasticBeanstalk"
+            },
+            {
+                "index": 5,
+                "id": 1161,
+                "name": "GitHub"
+            }
+        ],
+        "analyzedLink": "/git_repository/AndrewDongminYoo/my-small-meal/sidebar?authorable_id=456218&authorable_type=Resume"
+    },
+    {
+        "id": 232161,
+        "name": "고양이사료맛집데이터베이스(사맛디)",
+        "description": "수입산 반려묘 사료 분석 정보 공유 애플리케이션 개발",
+        "teamDescription": "person",
+        "roleDescription": "* 프로그래밍에 처음 입문한 후 첫번째로 관심을 가지고 시작하게 된 프로젝트. \n* 정보 왜곡이 심한 반려묘 사료 시장에 대해 문제 의식을 가지고 운영해 오던 블로그를 모바일 애플리케이션으로 만들어보고자 RN 하이브리드 앱에 대해 공부하게 됨.\n* 기존의 블로그 작성 중 얻게 된 정보들에 더하여 국내에 수입되고 있는 모든 제품의 해외 제조사 홈페이지를 selenium을 통해 스크랩하여 mongoDB를 이용해 저장.\n* 앱 개발 종합반 강의를 들으며 firebase와 연동한 React Native (EXPO) Application 개발.",
+        "startAt": "2021-07-01",
+        "repository": "https://github.com/AndrewDongminYoo/catfoodadvisor-kor",
+        "productUrl": {
+            "index": null,
+            "website_url": "",
+            "android_url": "",
+            "ios_url": ""
+        },
+        "tags": [
+            {
+                "index": 0,
+                "id": 1233,
+                "name": "React Native"
+            },
+            {
+                "index": 1,
+                "id": 729,
+                "name": "styled-components"
+            },
+            {
+                "index": 2,
+                "id": 2581,
+                "name": "Expo"
+            },
+            {
+                "index": 3,
+                "id": 1158,
+                "name": "Firebase"
+            },
+            {
+                "index": 4,
+                "id": 1230,
+                "name": "Python"
+            },
+            {
+                "index": 5,
+                "id": 1246,
+                "name": "Selenium"
+            },
+            {
+                "index": 6,
+                "id": 1211,
+                "name": "MongoDB"
+            }
+        ],
+        "analyzedLink": "/git_repository/AndrewDongminYoo/catfoodadvisor-kor/sidebar?authorable_id=456218&authorable_type=Resume"
+    }
+]
