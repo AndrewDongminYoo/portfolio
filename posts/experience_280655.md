@@ -1,7 +1,7 @@
 ---
 index:  280655
 title: "주식회사비사이드코리아 백엔드/모바일개발자"
-name: "주식회사비사이드코리아"
+name: "비사이드코리아 개발자"
 role: "백엔드/모바일 개발자"
 startAt: "2022-05-15"
 endAt: "2022-11-15"
@@ -26,14 +26,14 @@ projects:
     startAt: "2022-10-15"
     endAt: "2022-11-15"
     repository: "https://github.com/AndrewDongminYoo/Serverless-Framework-Crawlers"
-    website_url: ""
+    website_url: "https://www.notion.so/donminzzi/ffbbc8f0c92841b885a939a65681a177"
     description:
       - "Serverless Framework를 활용해 AWS Lambda 파이썬 정기(cron) 크롤러들을 개발했습니다."
       - "S3버킷에서 타겟이 적혀있는 파일을 불러와 읽고 API fetching을 시도하고, 실패 시 크로미움 스크래핑을 시도하며, 완료된 데이터를 EFS 또는 S3에 파일을 저장하는 루틴으로 동작합니다."
   - title: "비사이드코리아 웹페이지 개발"
     startAt: "2022-09-15"
     endAt: "2022-10-15"
-    repository: ""
+    repository: "https://github.com/orgs/bsidekr/repositories"
     website_url: "https://bside.ai/"
     description:
       - "아직 국내 사용이 흔하지 않은 자바스크립트 풀스택프레임워크인 RedWoodJS를 이용해 Apollo-Prisma-GraphQL-React-Storybook-Jest로 프론트/백엔드 구분 없이 사이클 전체적으로 개발했습니다."
@@ -41,7 +41,7 @@ projects:
   - title: "국내주식시장 의결권 위임(전자서명) 크로스플랫폼 앱 개발"
     startAt: "2022-05-15"
     endAt: "2022-08-15"
-    repository: ""
+    repository: "https://github.com/AndrewDongminYoo/flutter-proxy-voting-app"
     website_url: "https://bside.page.link/download"
     description:
       - "구글에서 개발한 하이브리드 애플리케이션 개발 툴인 플러터를 사용해 국내 주식 보유자 분들에게 캠페인 진행 중인 특정 주식의 의결권을 전자서명으로 위임받아, 개인 주주들의 의견을 자산운용사를 통해 주주총회까지 전달하는 서비스를 하였습니다."

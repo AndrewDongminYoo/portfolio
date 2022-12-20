@@ -26,7 +26,7 @@ export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
             </Head>
             <StackList />
             <div className={utilStyles.resume_detail}>
-                <GridTimeline />
+                <GridTimeline timeline={allPostsData} />
                 <ResumeSection type="experiences">
                     {experience.map((data, key) => {
                         return <ExperienceElement experience={data} key={key} />;

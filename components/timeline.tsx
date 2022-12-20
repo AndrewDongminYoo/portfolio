@@ -1,7 +1,15 @@
-import { format } from 'date-fns';
+import { differenceInDays, format, parse, parseISO } from 'date-fns';
+import { Period } from './utils';
+import { Resume } from '../types/profile.types';
+import { renderToString } from 'react-dom/server';
 import styles from '../styles/timeline.module.css';
 
-export default function GridTimeline() {
+export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
+    const monthsLabel = getMonths(11);
+    const latest = new Date()
+    const oldest = parse(monthsLabel[0], 'yy.MM', latest);
+    const pixel = 100 / differenceInDays(latest, oldest)
+
     return (
         <section className={styles.timeline}>
             <div className={styles.header}>
@@ -14,52 +22,38 @@ export default function GridTimeline() {
                 <div className={styles.card_item}>
                     <div className={styles.timeline_wrap}>
                         <div className={styles.timeline_labels}>
-                            {getMonths(11).map((month, i) => (
+                            {monthsLabel.map((month, i) => (
                                 <time key={i} className={styles.year}>
                                     {month}
                                 </time>
                             ))}
                         </div>
                         <div className={styles.grid_timeline}>
-                            <div
-                                data-original-title="세종사이버대학교 소프트웨어공학과"
-                                data-html="true"
-                                data-toggle="popover"
-                                data-placement="top"
-                                className={styles.event_item}
-                                style={{
-                                    gridColumn: '49 / 76',
-                                    backgroundColor: '#7890a0',
-                                }}
-                            >
-                                세종사이버대학교 소프트웨어공학과
-                            </div>
-                            <div
-                                data-original-title="주식회사아이브코리아 백엔드 개발자"
-                                data-html="true"
-                                data-toggle="popover"
-                                data-placement="top"
-                                className={styles.event_item}
-                                style={{
-                                    gridColumn: '49 / 67',
-                                    backgroundColor: '#44576c',
-                                }}
-                            >
-                                주식회사아이브코리아 백엔드 개발자
-                            </div>
-                            <div
-                                data-original-title="주식회사비사이드코리아 백엔드/모바일 개발자"
-                                data-html="true"
-                                data-toggle="popover"
-                                data-placement="top"
-                                className={styles.event_item}
-                                style={{
-                                    gridColumn: '67 / 88',
-                                    backgroundColor: '#44576c',
-                                }}
-                            >
-                                주식회사비사이드코리아 백엔드/모바일 개발자
-                            </div>
+                            {timeline.map((action: Resume) => {
+                                const { type, index, name, startAt, endAt } = action;
+                                const start = parseISO(startAt)
+                                const end = endAt ? parseISO(endAt) : new Date()
+                                const sPoint = Math.round(differenceInDays(start, oldest) * pixel)
+                                const ePoint = Math.round(differenceInDays(end, oldest) * pixel)
+                                if (sPoint <= 0 || ePoint <= 0) return null;
+                                const dataContent = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} className={styles.text_mute} />
+                                return (
+                                    <div
+                                        key={index}
+                                        title={name}
+                                        data-original-title={name}
+                                        data-html="true"
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-content={renderToString(dataContent)}
+                                        className={styles.event_item}
+                                        style={{
+                                            gridColumn: `${sPoint} / ${ePoint}`,
+                                            backgroundColor: colors[type],
+                                        }}
+                                    >{name}</div>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
@@ -77,3 +71,10 @@ const getMonths = (length: number) => {
     }
     return monthArray;
 };
+
+const colors: Record<string, string> = {
+    "experience": "#34495e",
+    "project": "#5d6d7e",
+    "education": "#aeb6bf",
+    "activity": "#85929e",
+}

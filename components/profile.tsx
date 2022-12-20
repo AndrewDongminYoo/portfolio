@@ -72,17 +72,13 @@ export default function ProfileBio() {
                 })}
             </ul>
             <div className={styles.description}>
-                <div>
-                    <div>
-                        <p>
-                            좋은 개발자가 되기 위해 계속해서 성장하고자 하는
-                            집요함을 가지고 있습니다. 일상적으로 만나는 모든
-                            문제들에 더 효율적이고 효과적인 답을 찾기 위해
-                            끊임없이 고민하고 사유합니다. 함께 성장하는 좋은
-                            동료가 되기 위해 노력하겠습니다.
-                        </p>
-                    </div>
-                </div>
+                <p>
+                    좋은 개발자가 되기 위해 계속해서 성장하고자 하는
+                    집요함을 가지고 있습니다. 일상적으로 만나는 모든
+                    문제들에 더 효율적이고 효과적인 답을 찾기 위해
+                    끊임없이 고민하고 사유합니다. 함께 성장하는 좋은
+                    동료가 되기 위해 노력하겠습니다.
+                </p>
             </div>
         </section>
     );
@@ -92,15 +88,13 @@ const ContactBadge = ({ contact }: { contact: Contact }) => {
     const { type, link, width, height, label, value, color, icon, } = contact;
     const { href, hostname, pathname, search } = new URL(link)
     const src = `https://img.shields.io/badge/${label}-${value}-${color}?logo=${icon}&style=for-the-badge`
+    const alt = `${type}:${hostname}${pathname}${search}`;
+    const unoptimized = true
     return (
         <li className={type}>
             <Link href={href} target="_blank" rel="noopener">
                 <Image
-                    unoptimized={true}
-                    width={width}
-                    height={height}
-                    alt={`${type}:${hostname}${pathname}${search}`}
-                    src={src}
+                    {...{ width, height, alt, src, unoptimized }}
                 />
             </Link>
         </li>

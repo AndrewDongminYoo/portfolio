@@ -1,6 +1,4 @@
-import ActivityElement from './activity'
-import EducationElement from './education'
-import ExperienceElement from './experience'
-import ProjectElement from './project'
-
-export { ActivityElement, EducationElement, ExperienceElement, ProjectElement }
+export { default as ActivityElement } from './activity';
+export { default as EducationElement } from './education';
+export { default as ExperienceElement } from './experience';
+export { default as ProjectElement } from './project';

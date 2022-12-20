@@ -1,6 +1,7 @@
 ---
 index:  113172
 title: "스파르타코딩클럽 국비지원 부트캠프"
+name: "스파르타코딩클럽 내일배움캠프"
 startAt: "2021-09-15"
 endAt: "2022-01-07"
 link: "https://spartacodingclub.kr/"

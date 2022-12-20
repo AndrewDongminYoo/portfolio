@@ -1,7 +1,7 @@
 ---
 index:  232161
 title: "[개인] 고양이사료데이터베이스 리액트네이티브앱"
-name: "고양이사료맛집데이터베이스(사맛디)"
+name: "리액트네이티브 사료정보앱"
 startAt: "2021-07-07"
 endAt: "2021-09-25"
 repository: "https://github.com/AndrewDongminYoo/catfoodadvisor-kor"
