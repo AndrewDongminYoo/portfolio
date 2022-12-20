@@ -7,6 +7,7 @@ import { ReactNode } from 'react'
 import { Resume } from '../../types/profile.types'
 import styles from '../../styles/resume.module.css'
 
+type SectionType = "experiences" | "projects" | "educations" | "activities" | "contributions" | "timeline";
 
 export default function Post({
     postData,
@@ -51,21 +52,14 @@ export default function Post({
 export const ResumeSection = (
     { children, type }: {
         children: ReactNode[] | ReactNode;
-        type: "experiences" | "projects" | "educations" | "activities"
+        type: SectionType;
     }) => {
-    let title: string;
-    switch (type) {
-        case 'educations': title = '학력/전공'; break;
-        case 'experiences': title = '업무 프로젝트'; break;
-        case 'projects': title = '개인/팀 프로젝트'; break;
-        case 'activities': title = '활동/교육'; break;
-    }
     return (
         <section className={styles.resume_card}>
             <div className={styles.resume_card_header}>
                 <div className={styles.resume_card_left}>
                     <h4 className={styles.resume_card_header_title}>
-                        {title}
+                        {getSectionTitle(type)}
                     </h4>
                 </div>
                 <div className={styles.resume_card_right}>
@@ -78,6 +72,17 @@ export const ResumeSection = (
             </div>
         </section>
     )
+}
+
+const getSectionTitle = (type: SectionType) => {
+    switch (type) {
+        case 'educations': return '학력/전공';
+        case 'experiences': return '업무 프로젝트';
+        case 'projects': return '개인/팀 프로젝트';
+        case 'activities': return '활동/교육';
+        case 'contributions': return '깃헙 컨트리뷰션';
+        case 'timeline': return "타임라인";
+    }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

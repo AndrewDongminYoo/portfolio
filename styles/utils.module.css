@@ -50,12 +50,3 @@
 .lightText {
   color: #666;
 }
-
-.resume_detail {
-  position: relative;
-  overflow-x: hidden;
-  padding: 1rem;
-  display: block;
-  vertical-align: top;
-  font-size: 1rem;
-}
