@@ -11,54 +11,46 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
     const pixel = 100 / differenceInDays(latest, oldest)
 
     return (
-        <section className={styles.timeline}>
-            <div className={styles.header}>
-                <div className={styles.left}>
-                    <h4 className={styles.header_title}>타임라인</h4>
-                </div>
-                <div className={styles.right}></div>
-            </div>
-            <div className={styles.body}>
-                <div className={styles.card_item}>
-                    <div className={styles.timeline_wrap}>
-                        <div className={styles.timeline_labels}>
-                            {monthsLabel.map((month, i) => (
-                                <time key={i} className={styles.year}>
-                                    {month}
-                                </time>
-                            ))}
-                        </div>
-                        <div className={styles.grid_timeline}>
-                            {timeline.map((action: Resume) => {
-                                const { type, index, name, startAt, endAt } = action;
-                                const start = parseISO(startAt)
-                                const end = endAt ? parseISO(endAt) : new Date()
-                                const sPoint = Math.round(differenceInDays(start, oldest) * pixel)
-                                const ePoint = Math.round(differenceInDays(end, oldest) * pixel)
-                                if (sPoint <= 0 || ePoint <= 0) return null;
-                                const dataContent = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} className={styles.text_mute} />
-                                return (
-                                    <div
-                                        key={index}
-                                        title={name}
-                                        data-original-title={name}
-                                        data-html="true"
-                                        data-toggle="popover"
-                                        data-placement="top"
-                                        data-content={renderToString(dataContent)}
-                                        className={styles.event_item}
-                                        style={{
-                                            gridColumn: `${sPoint} / ${ePoint}`,
-                                            backgroundColor: colors[type],
-                                        }}
-                                    >{name}</div>
-                                )
-                            })}
-                        </div>
+        <div className={styles.body}>
+            <div className={styles.card_item}>
+                <div className={styles.timeline_wrap}>
+                    <div className={styles.timeline_labels}>
+                        {monthsLabel.map((month, i) => (
+                            <time key={i} className={styles.year} dateTime={month}>
+                                {month}
+                            </time>
+                        ))}
+                    </div>
+                    <div className={styles.grid_timeline}>
+                        {timeline.map((action: Resume) => {
+                            const { type, index, name, startAt, endAt } = action;
+                            const start = parseISO(startAt)
+                            const end = endAt ? parseISO(endAt) : new Date()
+                            const sPoint = Math.round(differenceInDays(start, oldest) * pixel)
+                            const ePoint = Math.round(differenceInDays(end, oldest) * pixel)
+                            if (sPoint <= 0 || ePoint <= 0) return null;
+                            const dataContent = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} className={styles.text_mute} />
+                            return (
+                                <div
+                                    key={index}
+                                    title={name}
+                                    data-original-title={name}
+                                    data-html="true"
+                                    data-toggle="popover"
+                                    data-placement="top"
+                                    data-content={renderToString(dataContent)}
+                                    className={styles.event_item}
+                                    style={{
+                                        gridColumn: `${sPoint} / ${ePoint}`,
+                                        backgroundColor: colors[type],
+                                    }}
+                                >{name}</div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 

@@ -8,7 +8,7 @@
         "adjacent-overload-signatures": true,
         "array-type": {
             "options": [
-                "array"
+                "array-simple"
             ]
         },
         "ban-types": {
@@ -46,7 +46,10 @@
                 "check-space"
             ]
         },
-        "cyclomatic-complexity": false,
+        "cyclomatic-complexity": [
+            true,
+            10
+        ],
         "forin": true,
         "jsdoc-format": true,
         "label-position": true,
@@ -55,7 +58,12 @@
         },
         "new-parens": true,
         "no-angle-bracket-type-assertion": true,
-        "no-any": false,
+        "no-any": [
+            true,
+            {
+                "ignore-rest-args": true
+            }
+        ],
         "no-arg": true,
         "no-bitwise": true,
         "no-conditional-assignment": true,
@@ -76,7 +84,7 @@
         "no-shadowed-variable": true,
         "no-string-literal": true,
         "no-string-throw": true,
-        "no-switch-case-fall-through": false,
+        "no-switch-case-fall-through": true,
         "no-trailing-whitespace": true,
         "no-unnecessary-initializer": true,
         "no-unsafe-finally": true,

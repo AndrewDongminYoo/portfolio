@@ -252,3 +252,16 @@ blockquote small:before {
   padding-right: 0.5rem;
   content: "―";
 }
+
+#github-container .float-left {
+  display: none;
+}
+
+#github-container {
+  width: 100%;
+}
+
+#github-container .float-right {
+  font-size: 14px;
+  color: darkgray;
+}

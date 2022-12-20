@@ -17,7 +17,7 @@ type Contact = {
     icon: Icon;
 }
 
-const contacts: Array<Contact> = [
+const contacts: Contact[] = [
     {
         "type": "phone",
         "link": "tel:01035661857",
