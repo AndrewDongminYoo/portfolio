@@ -1,7 +1,7 @@
 import styles from '../../styles/resume.module.css'
 import Link from 'next/link'
 import { Experience, Project } from '../../types/profile.types'
-import Description from '../utils'
+import Description, { Date } from '../utils'
 
 export default function ExperienceElement(
     { experience }: { experience: Experience }
@@ -10,12 +10,12 @@ export default function ExperienceElement(
     const endAt = experience.endAt ?? "재직 중"
     const icon = experience.icon ? `"${experience.icon} "` : 'square'
     return (
-        <div className="resume_card_item experience">
+        <div className={`${styles.resume_card_item} ${styles.experience}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    {startAt} ~ {endAt}
+                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
                     <span className={styles.period}>
-                        ({experience.duration})
+                        ({experience.duration}개월)
                     </span>
                 </h5>
             </div>
@@ -29,7 +29,7 @@ export default function ExperienceElement(
                 <ul className={styles.tag_list}>
                     {experience.tags.map((tag, i) => <li key={i}>{tag}</li>)}
                 </ul>
-                <div className="markdown github markdown-viewer">
+                <div className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}>
                     <Description resume={experience} />
                 </div>
                 <ul className={styles.list_contributions}>
@@ -42,6 +42,8 @@ export default function ExperienceElement(
 
 const Contribution = ({ project }: { project: Project }) => {
     const website_url = project.website_url ?? 'https://github.com/andrewdongminyoo'
+    const startAt = project.startAt ?? '개발 예정'
+    const endAt = project.startAt ? (project.endAt ?? "진행중") : ""
     return (
         <li className={styles.list_contribution_item}>
             <h5 className={styles.part_title}>
@@ -53,10 +55,9 @@ const Contribution = ({ project }: { project: Project }) => {
                 </Link>
             </h5>
             <h6 className={styles.part_period}>
-                {project.startAt}
-                ~ {project.endAt ?? '진행 중'} | {website_url}
+                <Date dateTime={startAt} /> ~ <Date dateTime={endAt} /> | {website_url}
             </h6>
-            <div className="markdown github markdown-viewer part-description">
+            <div className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer} ${styles.part_description}`}>
                 <Description resume={project} />
             </div>
         </li>

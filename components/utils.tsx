@@ -1,11 +1,11 @@
 import { parseISO, format } from 'date-fns'
 
-export function Date({ dateString }: { dateString: string }) {
+export function Date({ dateTime, fmt }: { dateTime: string, fmt?: string }) {
     try {
-        const date = parseISO(dateString)
-        return <time dateTime={dateString}>{format(date, 'yy-MM-dd')}</time>
+        const date = parseISO(dateTime)
+        return <time dateTime={dateTime} >{format(date, fmt ?? 'yy-MM')}</time>
     } catch (e) {
-        return <p>{dateString}</p>
+        return <span>{dateTime}</span>
     }
 }
 
@@ -28,7 +28,7 @@ export default function Description({ resume }: { resume: { icon?: string; descr
                         {resume.description.split(/\n+/).map((info: string, i: number) => {
                             return <li key={i}>{info}</li>
                         })}
-                    </ul> : <p>{resume.icon} {resume.description}</p>
+                    </ul> : <p>{resume.description}</p>
             }
         </div>
     )

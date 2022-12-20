@@ -1,15 +1,17 @@
 import styles from '../../styles/resume.module.css'
 import Link from 'next/link'
 import { Education } from '../../types/profile.types'
+import { Date } from '../utils'
+
 
 export default function EducationElement({ education }: { education: Education }) {
     const startAt = education.startAt ?? '입학 예정'
     const endAt = education.startAt ? (education.endAt ?? "재학 중") : ""
     return (
-        <div className="resume_card_item education">
+        <div className={`${styles.resume_card_item} ${styles.education}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    {startAt} ~ {endAt}
+                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>

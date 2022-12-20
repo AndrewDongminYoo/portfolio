@@ -1,75 +1,179 @@
-html,
-body {
-  width: 100%;
-  margin: 0;
-  word-break: keep-all;
-  word-wrap: break-word;
-  color: #263747;
-  overflow-x: hidden;
-  font-family: Inter, "Noto Sans KR", "Helvetica Neue", Helvetica, Arial,
-    "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
-    "Noto Color Emoji";
-  font-size: 16px;
-  background-color: #fff;
-  line-height: 1.4;
-}
-
 * {
   box-sizing: border-box;
 }
 
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+body {
+  font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
+    "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
+    "Noto Color Emoji";
+  font-size: 16px;
+  background-color: white;
+  color: #263747;
+  line-height: 1.4;
+}
+
 a {
   transition-delay: initial;
-  transition-duration: 80ms;
+  transition-duration: 0.08s;
   transition-property: all;
   transition-timing-function: ease-in-out;
-  color: #0078ff;
+  color: inherit;
   cursor: pointer;
   text-decoration: none;
 }
 
-a:focus {
+a:hover {
+  text-decoration: none;
+}
+
+a:hover:not(.btn),
+a:focus:not(.btn) {
   outline: 0;
 }
 
-a:hover {
-  text-decoration: underline;
+hr {
+  border: 0;
+  border-top: 1px solid #d7e2eb;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
-img {
-  margin: 0.01em;
-  max-width: 100%;
-  display: block;
-  vertical-align: middle;
-  border-style: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
+    "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
+    "Noto Color Emoji";
+  margin-top: 0;
+  margin-bottom: 0;
+  color: inherit;
 }
 
-ul {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
+h1,
+h2,
+h3 {
+  font-weight: 700;
 }
 
-li {
-  display: list-item;
-  text-align: -webkit-match-parent;
+h4 {
+  -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+}
+
+h5,
+h6 {
+  font-weight: 400;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  h5,
+  h6 {
+    font-family: "roboto", "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+      malgun gothic, "돋움", Dotum, sans-serif;
+  }
+}
+
+h1 {
+  font-size: 40px;
+  letter-spacing: -0.009em;
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 575px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+h2 {
+  font-size: 32px;
+  letter-spacing: -0.009em;
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  h2 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 575px) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
+h3 {
+  font-size: 26px;
+  letter-spacing: -0.009em;
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  h3 {
+    font-size: 22px;
+  }
+}
+
+h4 {
+  font-size: 20px;
   letter-spacing: -0.009em;
   line-height: 1.6;
 }
 
-svg {
-  transition-delay: initial;
-  transition-duration: 80ms;
-  transition-property: all;
-  transition-timing-function: ease-in-out;
-  vertical-align: top;
+@media (max-width: 767px) {
+  h4 {
+    font-size: 18px;
+  }
+}
+
+li,
+h5 {
+  font-size: 16px;
+  letter-spacing: -0.009em;
+  line-height: 1.6;
+}
+
+@media (max-width: 767px) {
+  li,
+  h5 {
+    font-size: 15px;
+  }
+}
+
+h6 {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  h6 {
+    font-size: 13px;
+  }
 }
 
 p {
-  font-family: Inter, "Noto Sans KR", "Helvetica Neue", Helvetica, Arial,
+  font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
     "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
     "Noto Color Emoji";
   margin-bottom: 8px;
@@ -78,16 +182,73 @@ p {
   line-height: 1.6;
 }
 
-section {
-  word-break: break-word;
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  p {
+    font-family: "roboto", "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
+      malgun gothic, "돋움", Dotum, sans-serif;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+small {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: Hack, Menlo, Monaco, Consolas, "Courier New", monospace,
+    "맑은 고딕", malgun gothic, "돋움", Dotum, Sans-Serif;
+}
+
+code {
+  padding: 2px 6px;
+  border: 1px solid #d7e2eb;
+  margin: 0 2px 0 0;
+  background-color: #f4f4f8;
+  border-radius: 0.25rem;
+  color: #37485d;
+}
+
+pre {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d7e2eb;
+  margin: 0;
+  background-color: #f4f4f8;
+  border-radius: 0.25rem;
+  color: #263747;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+pre code {
+  padding: 0;
+  border: none;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+blockquote {
+  padding: 1rem;
+  border-left: 0.1875rem solid #d7e2eb;
+}
+
+blockquote small {
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media (max-width: 767px) {
+  blockquote small {
+    font-size: 13px;
   }
-  body {
-    color: white;
-    background: black;
-  }
+}
+
+blockquote small:before {
+  padding-right: 0.5rem;
+  content: "―";
 }

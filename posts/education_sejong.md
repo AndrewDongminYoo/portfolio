@@ -6,4 +6,4 @@ major: "소프트웨어공학과"
 degree: "학사"
 description: ""
 startAt: "2022-02-15"
-endAt: ""
+endAt: null

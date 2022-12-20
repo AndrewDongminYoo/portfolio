@@ -1,17 +1,18 @@
 import styles from '../../styles/resume.module.css'
 import Link from 'next/link'
 import { Project } from '../../types/profile.types'
-import Description from '../utils'
+import Description, { Date } from '../utils'
 
 export default function ProjectElement({ project }: { project: Project }) {
     const website_url = project.website_url ?? 'https://github.com/andrewdongminyoo'
     const repository = project.repository ?? 'https://github.com/andrewdongminyoo'
-
+    const startAt = project.startAt ?? '진행 예정'
+    const endAt = project.startAt ? (project.endAt ?? "진행중") : ""
     return (
-        <div className="resume_card_item project">
+        <div className={`${styles.resume_card_item} ${styles.project}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    {project.startAt} ~ {project.endAt ?? '진행중'}
+                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
@@ -21,7 +22,7 @@ export default function ProjectElement({ project }: { project: Project }) {
                 <ul className={styles.tag_list}>
                     {project.tags.map((tag, i) => <li key={i}>{tag}</li>)}
                 </ul>
-                <div className="markdown github markdown-viewer">
+                <div className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}>
                     <Description resume={project} />
                 </div>
                 <ul className={styles.list_contributions}>

@@ -21,9 +21,11 @@ export default function Home({
             <StackList />
             <div className={utilStyles.resume_detail}>
                 <GridTimeline />
-                {allPostsData.map((data: Resume, i: number) => (
-                    <Post postData={data} home={true} key={i} />
-                ))}
+                {allPostsData.map((data: Resume, i: number) => {
+                    return (
+                        <Post postData={data} home={true} key={i} />
+                    )
+                })}
             </div>
         </Layout>
     )

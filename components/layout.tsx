@@ -55,13 +55,15 @@ export default function Layout({
                     </Link>
                     <ProfileBio />
                 </section>
+            </header>
+            <div className={styles.resume__detail}>
                 <main className={styles.body}>{children}</main>
                 {!home && (
                     <div className={styles.backToHome}>
                         <Link href="/">← Back to home</Link>
                     </div>
                 )}
-            </header>
+            </div>
         </div>
     )
 }
