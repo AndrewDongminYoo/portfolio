@@ -66,4 +66,35 @@ type URLLike = string;
 type DateString = string;
 type Description = string | string[];
 type Emoji = string;
-type Tag = "Swagger" | "styled-components" | "Prisma" | "AWS CloudFront" | "AWS RDS" | "AWS Lambda" | "Django" | "Firebase" | "Flask" | "GitHub" | "GraphQL" | "Java" | "MongoDB" | "MySQL" | "Python" | "React Native" | "ReactJS" | "Selenium" | "Spring Boot" | "TypeScript" | "Webpack" | "flutter" | "AWS Elastic Beanstalk" | "AWS ElasticBeanstalk" | "Spring Data JPA" | "WebSocket" | "Spring Security" | "Chart.js" | "Storybook" | "BeautifulSoup" | "Expo";
+type Tag =
+    | 'Swagger'
+    | 'styled-components'
+    | 'Prisma'
+    | 'AWS CloudFront'
+    | 'AWS RDS'
+    | 'AWS Lambda'
+    | 'Django'
+    | 'Firebase'
+    | 'Flask'
+    | 'GitHub'
+    | 'GraphQL'
+    | 'Java'
+    | 'MongoDB'
+    | 'MySQL'
+    | 'Python'
+    | 'React Native'
+    | 'ReactJS'
+    | 'Selenium'
+    | 'Spring Boot'
+    | 'TypeScript'
+    | 'Webpack'
+    | 'flutter'
+    | 'AWS Elastic Beanstalk'
+    | 'AWS ElasticBeanstalk'
+    | 'Spring Data JPA'
+    | 'WebSocket'
+    | 'Spring Security'
+    | 'Chart.js'
+    | 'Storybook'
+    | 'BeautifulSoup'
+    | 'Expo';

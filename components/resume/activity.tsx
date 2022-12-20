@@ -1,12 +1,11 @@
-import styles from '../../styles/resume.module.css'
-import Link from 'next/link'
-import { Activity } from '../../types/profile.types'
-import Description, { Date } from '../utils'
-
+import styles from "../../styles/resume.module.css";
+import Link from "next/link";
+import { Activity } from "../../types/profile.types";
+import Description, { Date } from "../utils";
 
 export default function ActivityElement({ activity }: { activity: Activity }) {
-    const startAt = activity.startAt ?? '개발 예정'
-    const endAt = activity.startAt ? (activity.endAt ?? "진행중") : ""
+    const startAt = activity.startAt ?? "개발 예정";
+    const endAt = activity.startAt ? activity.endAt ?? "진행중" : "";
     return (
         <div className={`${styles.resume_card_item} ${styles.activity}`}>
             <div className={styles.resume_card_left}>
@@ -15,7 +14,10 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
-                <Link className={styles.resume_card_item_label} href={`/posts/${activity.id}`}>
+                <Link
+                    className={styles.resume_card_item_label}
+                    href={`/posts/${activity.id}`}
+                >
                     {activity.title}
                 </Link>
                 <h5 className={styles.resume_card_item_text}>
@@ -23,10 +25,12 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
                         {activity.link}
                     </Link>
                 </h5>
-                <div className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}>
+                <div
+                    className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}
+                >
                     <Description resume={activity} />
                 </div>
             </div>
         </div>
-    )
+    );
 }

@@ -48,7 +48,7 @@
 }
 
 .resume_card_item_period .period {
-  margin-left: 0.15em;
+  margin-left: 0.15rem;
   font-size: smaller;
 }
 
@@ -160,9 +160,17 @@
   margin-right: 0.0625rem;
 }
 
+.list_contribution_item .url__link {
+  max-width: 12.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: top;
+  height: 1.31rem;
+}
+
 .list_contributions .list_contribution_item .part_title,
 .list_contributions .list_contribution_item .part_period {
-  display: inline-block;
   vertical-align: top;
 }
 
