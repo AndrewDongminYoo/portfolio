@@ -1,5 +1,3 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/profile.module.css'
 import Link from 'next/link'
 
@@ -12,7 +10,7 @@ export default function ProfileBio() {
             <ul className={styles.contacts}>
                 <li className="phone">
                     <Link href="tel:01035661857">
-                        <Image
+                        <img
                             height={28}
                             alt="tel:01035661857"
                             src="https://img.shields.io/badge/call-01035661857-blue?style=for-the-badge&logo=apple" />
@@ -20,7 +18,7 @@ export default function ProfileBio() {
                 </li>
                 <li className="email">
                     <Link href="mailto:ydm2790@gmail.com">
-                        <Image
+                        <img
                             height={28}
                             alt="email:ydm2790@gmail.com"
                             src="https://img.shields.io/badge/mail-ydm2790@gmail.com-black?style=for-the-badge&logo=gmail" />
@@ -28,7 +26,7 @@ export default function ProfileBio() {
                 </li>
                 <li className="repo">
                     <Link href="https://github.com/AndrewDongminYoo" target="_blank" rel="noopener">
-                        <Image
+                        <img
                             height={28}
                             alt="repo:https://github.com/AndrewDongminYoo"
                             src="https://img.shields.io/badge/'git'-AndrewDongminYoo-lightgreen?style=for-the-badge&logo=github" />
@@ -36,7 +34,7 @@ export default function ProfileBio() {
                 </li>
                 <li className="youtube">
                     <Link href="https://www.youtube.com/watch?v=vOh90eJ7VdY" target="_blank" rel="noopener">
-                        <Image
+                        <img
                             height={28}
                             alt="youtube:https://www.youtube.com/watch?v=vOh90eJ7VdY"
                             src="https://img.shields.io/badge/'ytb'-vOh90eJ7VdY-red?style=for-the-badge&logo=youtube" />

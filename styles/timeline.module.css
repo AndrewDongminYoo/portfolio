@@ -122,3 +122,11 @@
   cursor: text;
   color: #fff;
 }
+
+.education {
+  background-color: #7890a0;
+}
+
+.experience {
+  background-color: #44576c;
+}

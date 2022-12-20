@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
+import { Experience, Project, Activity, Education, Resume } from '../types/profile.types'
+import { parseISO } from 'date-fns'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
@@ -20,19 +20,23 @@ export function getSortedPostsData() {
         // Use gray-matter to parse the post metadata section
         const matterResult = matter(fileContents)
 
-        // Combine the data with the id
-        return {
-            id,
-            ...(matterResult.data as { date: string; title: string })
-        }
+        return categorizing(id, matterResult);
     })
     // Sort posts by date
     return allPostsData.sort((a, b) => {
-        if (a.date < b.date) {
+        const index = [
+            'experience',
+            'project',
+            'activity',
+            'education',
+        ]
+        if (index.indexOf(a.type) > index.indexOf(b.type)) {
             return 1
-        } else {
+        } else if (index.indexOf(a.type) < index.indexOf(b.type)) {
             return -1
-        }
+        } else if (parseISO(a.startAt) < parseISO(b.startAt)) {
+            return 1
+        } else return -1
     })
 }
 
@@ -54,16 +58,18 @@ export async function getPostData(id: string) {
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents)
 
-    // Use remark to convert markdown into HTML string
-    const processedContent = await remark()
-        .use(html)
-        .process(matterResult.content)
-    const contentHtml = processedContent.toString()
+    return categorizing(id, matterResult)
+}
 
-    // Combine the data with the id and contentHtml
-    return {
-        id,
-        contentHtml,
-        ...(matterResult.data as { date: string; title: string })
+const categorizing = (id: string, matterResult: matter.GrayMatterFile<string>): Resume => {
+    // Combine the data with the id
+    const type = id.split("_").shift()
+    if (type === 'education') {
+        return { id, ...(matterResult.data as Education), type }
+    } else if (type === 'experience') {
+        return { id, ...(matterResult.data as Experience), type }
+    } else if (type === 'project') {
+        return { id, ...(matterResult.data as Project), type }
     }
+    return { id, ...(matterResult.data as Activity), type: 'activity' }
 }

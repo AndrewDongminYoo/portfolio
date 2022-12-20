@@ -1,7 +1,5 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/timeline.module.css'
-import Link from 'next/link'
+import { format } from 'date-fns'
 
 export default function GridTimeline() {
     return (
@@ -19,22 +17,10 @@ export default function GridTimeline() {
                 <div className={styles.card_item}>
                     <div className={styles.timeline_wrap}>
                         <div className={styles.timeline_labels}>
-                            <div className={styles.year}>21.03</div>
-                            <div className={styles.year}>21.05</div>
-                            <div className={styles.year}>21.07</div>
-                            <div className={styles.year}>21.09</div>
-                            <div className={styles.year}>21.11</div>
-                            <div className={styles.year}>22.01</div>
-                            <div className={styles.year}>22.03</div>
-                            <div className={styles.year}>22.05</div>
-                            <div className={styles.year}>22.07</div>
-                            <div className={styles.year}>22.09</div>
-                            <div className={styles.year}>22.11</div>
+                            {getMonths(11).map((month, i) => <time key={i} className={styles.year}>{month}</time>)}
                         </div>
                         <div className={styles.grid_timeline}>
-                            <div data-original-title="세종사이버대학교 소프트웨어공학과" data-content="
-                                        6개월
-                                        <h6 class=&quot;text-mute&quot;>2022-02 ~ 08</h6>"
+                            <div data-original-title="세종사이버대학교 소프트웨어공학과"
                                 data-html="true"
                                 data-toggle="popover"
                                 data-placement="top"
@@ -49,9 +35,6 @@ export default function GridTimeline() {
                             </div>
                             <div
                                 data-original-title="주식회사아이브코리아 백엔드 개발자"
-                                data-content="
-                                        5개월
-                                        <h6 class=&quot;text-mute&quot;>2022-01 ~ 2022-05</h6>"
                                 data-html="true"
                                 data-toggle="popover"
                                 data-placement="top"
@@ -66,9 +49,6 @@ export default function GridTimeline() {
                             </div>
                             <div
                                 data-original-title="주식회사비사이드코리아 백엔드/모바일 개발자"
-                                data-content="
-                                        7개월
-                                        <h6 class=&quot;text-mute&quot;>2022-05 ~ 현재</h6>"
                                 data-html="true"
                                 data-toggle="popover"
                                 data-placement="top"
@@ -87,4 +67,14 @@ export default function GridTimeline() {
             </div>
         </section>
     )
+}
+
+const getMonths = (length: number) => {
+    const now = new Date()
+    const monthArray: string[] = [];
+    while (monthArray.length < length) {
+        monthArray.unshift(format(now, 'yy.MM'))
+        now.setMonth(now.getMonth() - 2)
+    }
+    return monthArray
 }

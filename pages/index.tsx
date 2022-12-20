@@ -1,21 +1,17 @@
 import Head from 'next/head'
+import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
-import Link from 'next/link'
 import { GetStaticProps } from 'next'
-import Date from '../components/date'
-import Layout, { siteTitle } from '../components/layout'
 import GridTimeline from '../components/timeline'
 import StackList from '../components/stacks'
+import { Resume } from '../types/profile.types'
+import Post from './posts/[id]'
 
 export default function Home({
     allPostsData
 }: {
-    allPostsData: {
-        date: string
-        title: string
-        id: string
-    }[]
+    allPostsData: Resume[]
 }) {
     return (
         <Layout home>
@@ -25,14 +21,8 @@ export default function Home({
             <StackList />
             <div className={utilStyles.resume_detail}>
                 <GridTimeline />
-                {allPostsData.map(({ id, date, title }) => (
-                    <li className={utilStyles.listItem} key={id}>
-                        <Link href={`/posts/${id}`}>{title}</Link>
-                        <br />
-                        <small className={utilStyles.lightText}>
-                            <Date dateString={date} />
-                        </small>
-                    </li>
+                {allPostsData.map((data: Resume, i: number) => (
+                    <Post postData={data} home={true} key={i} />
                 ))}
             </div>
         </Layout>

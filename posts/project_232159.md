@@ -1,8 +1,8 @@
 ---
-id: 232159
+index:  232159
 title: "[팀]오이마켓 - 지역 기반 커뮤니티 웹 애플리케이션"
 name: "오이마켓 - 지역 기반 커뮤니티 웹 애플리케이션"
-date: "2021-11-01"
+startAt: "2021-11-01"
 endAt: "2021-12-29"
 repository: "https://github.com/JARYOGOOJO/52market.shop"
 website_url: "https://52market.shop"
@@ -23,7 +23,7 @@ analyzedLink: "/git_repository/JARYOGOOJO/52market.shop/sidebar?authorable_id=45
 teamDescription: "팀장 및 github organization admin 맡음. BE +2명"
 description: "당근 마켓 주요 기능 클론 코딩을 목적으로, 나와 가까운 위치에 있는 사람들과 소통하고, 실시간 대화를 할 수 있는 커뮤니티 개발"
 icon: "🥒"
-roleDescriptions:
+roleDescription:
   - "Java Spring boot, Spring Framework 구조 이해 및 학습 목적."
   - "DB: MySQL (AWS RDS)"
   - "Spring data JPA + JDBC 학습."
