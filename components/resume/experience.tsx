@@ -21,7 +21,7 @@ const ExperienceElement = ({
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${experience?.id as string}`}
+                    href={`/posts/${experience.id}`}
                 >
                     {experience.title}
                 </Link>

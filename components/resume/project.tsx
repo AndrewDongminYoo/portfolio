@@ -20,7 +20,7 @@ const ProjectElement = ({ project }: { project: Project }) => {
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${project?.id as string}`}
+                    href={`/posts/${project.id}`}
                 >
                     {project.title}
                 </Link>

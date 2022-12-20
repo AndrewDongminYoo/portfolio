@@ -1,10 +1,9 @@
 import { Activity, Education, Experience, Project, Resume } from '../types/profile.types';
-import { ActivityElement, EducationElement, ExperienceElement, ProjectElement } from '../components/resume'
+import Post, { ResumeSection } from './posts/[id]';
 import { GetStaticProps } from 'next';
 import GridTimeline from '../components/timeline';
 import Head from 'next/head';
 import Layout from '../components/layout';
-import { ResumeSection } from './posts/[id]';
 import _ from 'lodash';
 import dynamic from 'next/dynamic';
 import { getSortedPostsData } from '../lib/posts';
@@ -23,9 +22,9 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     const project = groupedPosts.project as Project[];
     const activity = groupedPosts.activity as Activity[];
     const education = groupedPosts.education as Education[];
-
+    const sub = false;
     return (
-        <Layout home>
+        <Layout sub={sub} >
             <Head>
                 <meta name="keywords" content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인' />
             </Head>
@@ -40,22 +39,22 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
             </ResumeSection>
             <ResumeSection type="experiences">
                 {experience.map((data, key) => {
-                    return <ExperienceElement experience={data} key={key} />;
+                    return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
             <ResumeSection type="projects">
                 {project.map((data, key) => {
-                    return <ProjectElement project={data} key={key} />;
+                    return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
             <ResumeSection type="activities">
                 {activity.map((data, key) => {
-                    return <ActivityElement activity={data} key={key} />;
+                    return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
             <ResumeSection type="educations">
                 {education.map((data, key) => {
-                    return <EducationElement education={data} key={key} />;
+                    return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
         </Layout>

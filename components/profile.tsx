@@ -1,8 +1,9 @@
-import { contacts, description, siteTitle } from '../data/constants';
+import { description, siteTitle } from '../data/constants';
 import Color from 'color-name'
 import Icon from '../types/slug-icon.types';
 import Image from 'next/image';
 import Link from 'next/link';
+import contacts from '../data/contacts.json';
 import styles from '../styles/profile.module.css';
 
 type NamedColor = keyof typeof Color;
@@ -21,19 +22,17 @@ type Contact = {
 const ProfileBio = () => {
     return (
         <section className={styles.information}>
-            <div className={styles.name}>
-                <h1>{siteTitle}</h1>
-            </div>
+            <h1 className={styles.name}>
+                {siteTitle}
+            </h1>
             <ul className={styles.contacts}>
                 {contacts.map((contact, i) => {
                     return <ContactBadge contact={contact as Contact} key={i} />
                 })}
             </ul>
-            <div className={styles.description}>
-                <p>
-                    {description}
-                </p>
-            </div>
+            <p className={styles.description}>
+                {description}
+            </p>
         </section>
     );
 }

@@ -45,6 +45,10 @@
   color: #b2c0cc;
 }
 
+.year:last-child {
+  border-right: 0.625rem solid #0a4208;
+}
+
 .year:after {
   content: "";
   position: absolute;

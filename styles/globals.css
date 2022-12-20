@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  -webkit-print-color-adjust: exact !important; /* Chrome, Safari 6 – 15.3, Edge */
+  color-adjust: exact !important; /* Firefox 48 – 96 */
+  print-color-adjust: exact !important; /* Firefox 97+, Safari 15.4+ */
 }
 
 select {
@@ -259,4 +262,74 @@ blockquote small:before {
 #github-container .float-right {
   font-size: 14px;
   color: darkgray;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: auto;
+  }
+
+  *,
+  ::after,
+  ::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    min-width: 992px !important;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+
+  #__next > div > summary > section > a > img {
+    display: none;
+  }
+
+  h2,
+  h3,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  h2,
+  h3,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .container {
+    min-width: 992px !important;
+  }
+
+  .badge {
+    border: 1px solid #000;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  .table {
+    border-collapse: collapse !important;
+  }
+
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
 }

@@ -16,13 +16,13 @@ const ActivityElement = ({ activity }: { activity: Activity }) => {
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${activity?.id as string}`}
+                    href={`/posts/${activity.id}`}
                 >
                     {activity.title}
                 </Link>
                 <h5 className={styles.resume_card_item_text}>
-                    <Link href={activity.link ?? ""} target="_blank" rel="noopener">
-                        {activity.link}
+                    <Link href={activity.website_url ?? ""} target="_blank" rel="noopener">
+                        {activity.website_url}
                     </Link>
                 </h5>
                 <div

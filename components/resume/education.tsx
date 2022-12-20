@@ -20,7 +20,7 @@ const EducationElement = ({
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${education?.id as string}`}
+                    href={`/posts/${education.id}`}
                 >
                     {education.title}
                 </Link>

@@ -5,6 +5,7 @@ name: "리액트네이티브 사료정보앱"
 startAt: "2021-07-07"
 endAt: "2021-09-25"
 repository: "https://github.com/AndrewDongminYoo/catfoodadvisor-kor"
+website_url: null
 tags: 
   - "React Native" 
   - "styled-components"

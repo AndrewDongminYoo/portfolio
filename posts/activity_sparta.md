@@ -2,9 +2,9 @@
 index:  113172
 title: "스파르타코딩클럽 국비지원 부트캠프"
 name: "스파르타코딩클럽 내일배움캠프"
+website_url: "https://spartacodingclub.kr/"
 startAt: "2021-09-15"
 endAt: "2022-01-07"
-link: "https://spartacodingclub.kr/"
 icon: "🚀"
 description:
   - "스파르타 코딩클럽의 국비지원 \"내일배움캠프\"에서 113일간, 매일 09시부터 21시까지, 줌, 게더타운, 슬랙 등을 활용하여 코딩만 생각하는 밀도 높은 몰입의 기간을 보냈습니다."

@@ -1,8 +1,8 @@
 export type Resume = Experience | Project | Education | Activity;
 
 type ResumeBase = {
+    id: string;
     type: string;
-    id?: string;
     index: number;
     title: string;
     name: string;
@@ -43,7 +43,7 @@ export type Education = ResumeBase & {
 
 export type Activity = ResumeBase & {
     type: 'activity';
-    link: URLLike;
+    website_url: URLLike;
 }
 
 type URLLike = string;

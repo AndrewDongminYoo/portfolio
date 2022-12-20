@@ -10,12 +10,12 @@ import styles from '../../styles/resume.module.css'
 type SectionType = "experiences" | "projects" | "educations" | "activities" | "contributions" | "timeline";
 
 const Post = ({
-    postData,
-    home,
+    data: data,
+    sub = true,
     key,
 }: {
-    postData: Resume;
-    home: boolean;
+    data: Resume;
+    sub?: boolean;
     key: number;
 }) => {
     const getElement = (resume: Resume) => {
@@ -28,24 +28,26 @@ const Post = ({
                 return <ProjectElement project={resume} key={key} />
             } case 'activity': {
                 return <ActivityElement activity={resume} key={key} />
+            } default: {
+                return resume
             }
         }
     }
-    const children: ReactNode = getElement(postData)
+    const children: ReactNode = getElement(data)
 
-    if (home) {
-        return children
-    } else {
+    if (sub) {
         return (
-            <Layout>
+            <Layout sub>
                 <Head>
-                    <title>{postData.title}</title>
+                    <title>{data.title}</title>
                 </Head>
-                <article>
+                <>
                     {children}
-                </article>
+                </>
             </Layout>
         )
+    } else {
+        return children
     }
 }
 
@@ -59,7 +61,7 @@ export const ResumeSection = (
             <div className={styles.resume_card_header}>
                 <div className={styles.resume_card_left}>
                     <h4 className={styles.resume_card_header_title}>
-                        {getSectionTitle(type)}
+                        {getSubtitle(type)}
                     </h4>
                 </div>
                 <div className={styles.resume_card_right}>
@@ -74,13 +76,13 @@ export const ResumeSection = (
     )
 }
 
-const getSectionTitle = (type: SectionType) => {
+const getSubtitle = (type: SectionType) => {
     switch (type) {
         case 'educations': return '학력/전공';
         case 'experiences': return '업무 프로젝트';
         case 'projects': return '개인/팀 프로젝트';
         case 'activities': return '활동/교육';
-        case 'contributions': return '깃헙 컨트리뷰션';
+        case 'contributions': return '퍼블릭 컨트리뷰션';
         case 'timeline': return "타임라인";
     }
 }
@@ -94,10 +96,10 @@ export const getStaticPaths: GetStaticPaths = () => {
 }
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
-    const postData = getPostData(params?.id as string)
+    const data = getPostData(params?.id as string)
     return {
         props: {
-            postData
+            data
         }
     }
 }

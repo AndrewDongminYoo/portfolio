@@ -44,7 +44,7 @@ const Description = ({
     resume: { icon?: string; description: string | string[] };
 }) => {
     return (
-        <div>
+        <>
             {typeof resume.description !== 'string' ? (
                 <ul style={getIcon(resume)}>
                     {resume.description.map((info: string, i: number) => {
@@ -62,7 +62,7 @@ const Description = ({
             ) : (
                 <p>{resume.description}</p>
             )}
-        </div>
+        </>
     );
 }
 

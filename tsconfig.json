@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
         "target": "ES2015",
-        "module": "esnext",
+        "module": "ESNext",
         "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
+            "DOM",
+            "DOM.Iterable",
+            "ESNext"
         ],
         "allowJs": false,
         "skipLibCheck": true,
@@ -13,7 +13,8 @@
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "esModuleInterop": true,
-        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "Node",
         "resolveJsonModule": true,
         "jsx": "preserve",
         "incremental": true,

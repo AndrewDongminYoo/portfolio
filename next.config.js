@@ -5,6 +5,9 @@ const nextConfig = {
     images: {
         loader: "imgix",
         path: 'https://andrewdongminyoo.imgix.net',
+    },
+    experimental: {
+        forceSwcTransforms: true,
     }
 }
 

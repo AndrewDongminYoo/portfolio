@@ -1,4 +1,4 @@
-import stacks from '../data/stacks.module.json';
+import stacks from '../data/stacks.json';
 import styles from '../styles/stacks.module.css';
 
 const StackList = () => {

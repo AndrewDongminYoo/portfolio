@@ -10,5 +10,6 @@
         "unoptimized"
     ],
     "explorer.incrementalNaming": "disabled",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "javascript.suggestionActions.enabled": false,
 }

@@ -5,7 +5,7 @@ name: "아이브코리아 개발자"
 role: "백엔드 개발자"
 startAt: "2022-01-15"
 endAt: "2022-05-15"
-link: "https://cat-minzzi.tistory.com/87"
+website_url: "https://cat-minzzi.tistory.com/87"
 icon: "url(https://www.ivekorea.com/asset/logo.svg)"
 duration: 5
 tags:
@@ -20,6 +20,8 @@ projects:
   - title: "장고서버 + 모바일인덱스 애플리케이션랭킹 크롤러 개발"
     startAt: "2022-02-15"
     endAt: "2022-05-15"
+    repository: "https://github.com/AndrewDongminYoo/mobile-index-ranking-reporter"
+    website_url: null
     icon: "📱"
     description:
       - "Python 3.10, Django 4.0, MySQL 8(AWS RDS) , Django-ninja, BeautifulSoup4 4.10 사용."
