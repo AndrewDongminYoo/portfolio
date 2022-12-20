@@ -1,7 +1,7 @@
-import styles from "../../styles/resume.module.css";
+import Description, { Period, SlugIcon } from "../utils";
 import Link from "next/link";
 import { Project } from "../../types/profile.types";
-import Description, { Date } from "../utils";
+import styles from "../../styles/resume.module.css";
 
 export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl =
@@ -14,7 +14,7 @@ export default function ProjectElement({ project }: { project: Project }) {
         <div className={`${styles.resume_card_item} ${styles.project}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
+                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
@@ -36,16 +36,18 @@ export default function ProjectElement({ project }: { project: Project }) {
                 </div>
                 <ul className={styles.list_contributions}>
                     <li className={styles.list_contribution_item}>
+                        <SlugIcon icon={"discord"} size={14} color={"gray"} className={styles.slug__icon} />
                         {project.teamDescription}
                     </li>
                     <li className={styles.list_contribution_item}>
-                        <i className="fab fa-github" aria-hidden="true"></i>
+                        <SlugIcon icon={"github"} size={14} color={"gray"} className={styles.slug__icon} />
                         <Link href={repository} target="_blank" rel="noopener">
                             {repository}
                         </Link>
                     </li>
                     <li className={styles.list_contribution_item}>
-                        <i className="fab fa-youtube" aria-hidden="true"></i>
+
+                        <SlugIcon icon={"bloglovin"} size={14} color={"gray"} className={styles.slug__icon} />
                         <Link href={websiteUrl} target="_blank" rel="noopener">
                             {websiteUrl}
                         </Link>

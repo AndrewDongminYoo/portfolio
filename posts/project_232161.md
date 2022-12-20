@@ -1,6 +1,6 @@
 ---
 index:  232161
-title: "[개인]고양이사료데이터베이스 리액트네이티브앱"
+title: "[개인] 고양이사료데이터베이스 리액트네이티브앱"
 name: "고양이사료맛집데이터베이스(사맛디)"
 startAt: "2021-07-07"
 endAt: "2021-09-25"
@@ -14,7 +14,7 @@ tags:
   - "Selenium" 
   - "MongoDB"
 analyzedLink: "/git_repository/AndrewDongminYoo/catfoodadvisor-kor/sidebar?authorable_id=456218&authorable_type=Resume"
-teamDescription: "크로스플랫폼 앱개발 독학 프로젝트"
+teamDescription: "크로스플랫폼 앱개발 1인 프로젝트"
 description: "수입산 반려묘 사료 분석 정보 공유 애플리케이션 개발"
 icon: "🐈"
 roleDescription:

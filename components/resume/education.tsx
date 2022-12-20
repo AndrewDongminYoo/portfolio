@@ -1,7 +1,7 @@
-import styles from "../../styles/resume.module.css";
-import Link from "next/link";
 import { Education } from "../../types/profile.types";
-import { Date } from "../utils";
+import Link from "next/link";
+import { Period } from "../utils";
+import styles from "../../styles/resume.module.css";
 
 export default function EducationElement({
     education,
@@ -14,7 +14,7 @@ export default function EducationElement({
         <div className={`${styles.resume_card_item} ${styles.education}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
+                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>

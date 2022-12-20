@@ -1,10 +1,14 @@
 {
-  "cSpell.words": [
-    "defaultlocale",
-    "JDBC",
-    "Monogo",
-    "pydantic",
-    "pymongo"
-  ],
-  "git.ignoreLimitWarning": true
+    "cSpell.words": [
+        "defaultlocale",
+        "Dongmin",
+        "JDBC",
+        "Monogo",
+        "pydantic",
+        "pymongo",
+        "Tracklists",
+        "unoptimized"
+    ],
+    "explorer.incrementalNaming": "disabled",
+    "git.ignoreLimitWarning": true
 }

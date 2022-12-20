@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from '../styles/layout.module.css';
-import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import ProfileBio from './profile';
+import styles from '../styles/layout.module.css';
+import utilStyles from '../styles/utils.module.css';
 
 const name = 'Andrew Dong-min, Yoo';
 export const siteTitle = '집요하게 더 나은 답을 찾아내는 개발자 유동민입니다.';

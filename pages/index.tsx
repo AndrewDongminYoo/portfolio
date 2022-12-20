@@ -1,23 +1,14 @@
-import Head from 'next/head';
+import { Activity, Education, Experience, Project, Resume } from '../types/profile.types';
+import { ActivityElement, EducationElement, ExperienceElement, ProjectElement } from '../components/resume'
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
 import { GetStaticProps } from 'next';
 import GridTimeline from '../components/timeline';
-import StackList from '../components/stacks';
-import {
-    Activity,
-    Education,
-    Experience,
-    Project,
-    Resume,
-} from '../types/profile.types';
-import _ from 'lodash';
-import ActivityElement from '../components/resume/activity';
-import EducationElement from '../components/resume/education';
-import ExperienceElement from '../components/resume/experience';
-import ProjectElement from '../components/resume/project';
+import Head from 'next/head';
 import { ResumeSection } from './posts/[id]';
+import StackList from '../components/stacks';
+import _ from 'lodash';
+import { getSortedPostsData } from '../lib/posts';
+import utilStyles from '../styles/utils.module.css';
 
 export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
     const groupedPosts = _.groupBy(

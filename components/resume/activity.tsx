@@ -1,7 +1,7 @@
-import styles from "../../styles/resume.module.css";
-import Link from "next/link";
+import Description, { Period } from "../utils";
 import { Activity } from "../../types/profile.types";
-import Description, { Date } from "../utils";
+import Link from "next/link";
+import styles from "../../styles/resume.module.css";
 
 export default function ActivityElement({ activity }: { activity: Activity }) {
     const startAt = activity.startAt ?? "개발 예정";
@@ -10,7 +10,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
         <div className={`${styles.resume_card_item} ${styles.activity}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
+                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>

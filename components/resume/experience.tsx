@@ -1,7 +1,8 @@
-import styles from "../../styles/resume.module.css";
-import Link from "next/link";
+import Description, { Period, SlugIcon } from "../utils";
 import { Experience, Project } from "../../types/profile.types";
-import Description, { Date } from "../utils";
+import Link from "next/link";
+import styles from "../../styles/resume.module.css";
+
 
 export default function ExperienceElement({
     experience,
@@ -14,8 +15,7 @@ export default function ExperienceElement({
         <div className={`${styles.resume_card_item} ${styles.experience}`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
-                    <span className={styles.period}>({experience.duration}개월)</span>
+                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
@@ -36,6 +36,7 @@ export default function ExperienceElement({
                 >
                     <Description resume={experience} />
                 </div>
+                <label className={styles.contributions_label}>상세 업무 및 성과</label>
                 <ul className={styles.list_contributions}>
                     {experience.projects.map((pro, i) => (
                         <Contribution project={pro} key={i} />
@@ -60,13 +61,16 @@ const Contribution = ({ project }: { project: Project }) => {
                 </Link>
             </h5>
             <h6 className={styles.part_period}>
-                <Date dateTime={startAt} /> ~ <Date dateTime={endAt} />
+                <div className={styles.datetime}>
+                    <SlugIcon icon={"googlecalendar"} size={14} color={"gray"} className={styles.slug__icon} />
+                    <Period startAt={startAt} endAt={endAt} />
+                </div>
                 <Link className={styles.url__link} href={websiteUrl}>
-                    <i className="fas fa-blog" aria-hidden="true" />
+                    <SlugIcon icon={"blogger"} size={14} color={"gray"} className={styles.slug__icon} />
                     {websiteUrl}
                 </Link>
                 <Link className={styles.url__link} href={repository}>
-                    <i className="fab fa-github-square" aria-hidden="true" />
+                    <SlugIcon icon={"github"} size={14} color={"gray"} className={styles.slug__icon} />
                     {repository}
                 </Link>
             </h6>

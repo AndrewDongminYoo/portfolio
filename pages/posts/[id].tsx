@@ -1,13 +1,10 @@
-import Layout from '../../components/layout'
+import { ActivityElement, EducationElement, ExperienceElement, ProjectElement } from '../../components/resume'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
-import { GetStaticPaths, GetStaticProps } from 'next'
-import { Resume } from '../../types/profile.types'
-import ActivityElement from '../../components/resume/activity'
-import ExperienceElement from '../../components/resume/experience'
-import EducationElement from '../../components/resume/education'
-import ProjectElement from '../../components/resume/project'
+import Layout from '../../components/layout'
 import { ReactNode } from 'react'
+import { Resume } from '../../types/profile.types'
 import styles from '../../styles/resume.module.css'
 
 
@@ -58,7 +55,7 @@ export const ResumeSection = (
     }) => {
     let title: string;
     switch (type) {
-        case 'educations': title = '활동/교육'; break;
+        case 'educations': title = '학력/전공'; break;
         case 'experiences': title = '업무 프로젝트'; break;
         case 'projects': title = '개인/팀 프로젝트'; break;
         case 'activities': title = '활동/교육'; break;

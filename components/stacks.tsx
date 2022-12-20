@@ -1,5 +1,5 @@
-import styles from '../styles/stacks.module.css';
 import stacks from '../data/stacks.module.json';
+import styles from '../styles/stacks.module.css';
 
 export default function StackList() {
     return (

@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import {
     Activity,
     Education,
@@ -8,7 +5,10 @@ import {
     Project,
     Resume,
 } from '../types/profile.types';
+import fs from 'fs';
+import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
+import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 

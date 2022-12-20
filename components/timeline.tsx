@@ -1,5 +1,5 @@
-import styles from '../styles/timeline.module.css';
 import { format } from 'date-fns';
+import styles from '../styles/timeline.module.css';
 
 export default function GridTimeline() {
     return (
