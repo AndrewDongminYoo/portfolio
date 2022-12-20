@@ -9,7 +9,7 @@ import styles from '../../styles/resume.module.css'
 
 type SectionType = "experiences" | "projects" | "educations" | "activities" | "contributions" | "timeline";
 
-export default function Post({
+const Post = ({
     postData,
     home,
     key,
@@ -17,7 +17,7 @@ export default function Post({
     postData: Resume;
     home: boolean;
     key: number;
-}) {
+}) => {
     const getElement = (resume: Resume) => {
         switch (resume.type) {
             case 'education': {
@@ -31,7 +31,7 @@ export default function Post({
             }
         }
     }
-    const children: JSX.Element = getElement(postData)
+    const children: ReactNode = getElement(postData)
 
     if (home) {
         return children
@@ -85,7 +85,7 @@ const getSectionTitle = (type: SectionType) => {
     }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = () => {
     const paths = getAllPostIds()
     return {
         paths,
@@ -93,11 +93,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const postData = await getPostData(params?.id as string)
+export const getStaticProps: GetStaticProps = ({ params }) => {
+    const postData = getPostData(params?.id as string)
     return {
         props: {
             postData
         }
     }
 }
+
+export default Post;

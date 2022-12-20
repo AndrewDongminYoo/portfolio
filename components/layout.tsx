@@ -3,17 +3,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import ProfileBio from './profile';
+import React from 'react';
 import StackList from '../components/stacks';
 import styles from '../styles/layout.module.css';
 import utilStyles from '../styles/utils.module.css';
 
-export default function Layout({
+const Layout = ({
     children,
     home,
 }: {
     children: React.ReactNode;
     home?: boolean;
-}) {
+}) => {
     return (
         <div className={styles.resume__content}>
             <Head>
@@ -63,3 +64,5 @@ export default function Layout({
         </div>
     );
 }
+
+export default Layout;

@@ -4,11 +4,11 @@ import Link from "next/link";
 import styles from "../../styles/resume.module.css";
 
 
-export default function ExperienceElement({
+const ExperienceElement = ({
     experience,
 }: {
     experience: Experience;
-}) {
+}) => {
     const startAt = experience.startAt;
     const endAt = experience.endAt ?? "재직 중";
     return (
@@ -21,7 +21,7 @@ export default function ExperienceElement({
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${experience.id}`}
+                    href={`/posts/${experience?.id as string}`}
                 >
                     {experience.title}
                 </Link>
@@ -82,3 +82,5 @@ const Contribution = ({ project }: { project: Project }) => {
         </li>
     );
 };
+
+export default ExperienceElement;

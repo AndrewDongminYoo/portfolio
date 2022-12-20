@@ -12,7 +12,7 @@ import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
-export function getSortedPostsData() {
+export const getSortedPostsData = () => {
     // Get file names under /posts
     const fileNames = fs.readdirSync(postsDirectory);
     const allPostsData = fileNames.map((fileName) => {
@@ -36,7 +36,7 @@ export function getSortedPostsData() {
     });
 }
 
-export function getAllPostIds() {
+export const getAllPostIds = () => {
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => {
         return {
@@ -47,7 +47,7 @@ export function getAllPostIds() {
     });
 }
 
-export async function getPostData(id: string) {
+export const getPostData = (id: string) => {
     const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section

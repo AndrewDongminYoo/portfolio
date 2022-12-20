@@ -18,7 +18,7 @@ type Contact = {
     icon: Icon;
 }
 
-export default function ProfileBio() {
+const ProfileBio = () => {
     return (
         <section className={styles.information}>
             <div className={styles.name}>
@@ -54,3 +54,5 @@ const ContactBadge = ({ contact }: { contact: Contact }) => {
         </li>
     )
 }
+
+export default ProfileBio;

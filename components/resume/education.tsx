@@ -3,11 +3,11 @@ import Link from "next/link";
 import { Period } from "../utils";
 import styles from "../../styles/resume.module.css";
 
-export default function EducationElement({
+const EducationElement = ({
     education,
 }: {
     education: Education;
-}) {
+}) => {
     const startAt = education.startAt ?? "입학 예정";
     const endAt = education.startAt ? education.endAt ?? "재학 중" : "";
     return (
@@ -20,7 +20,7 @@ export default function EducationElement({
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${education.id}`}
+                    href={`/posts/${education?.id as string}`}
                 >
                     {education.title}
                 </Link>
@@ -32,3 +32,5 @@ export default function EducationElement({
         </div>
     );
 }
+
+export default EducationElement;

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Project } from "../../types/profile.types";
 import styles from "../../styles/resume.module.css";
 
-export default function ProjectElement({ project }: { project: Project }) {
+const ProjectElement = ({ project }: { project: Project }) => {
     const websiteUrl =
         project.website_url ?? "https://github.com/andrewdongminyoo";
     const repository =
@@ -20,7 +20,7 @@ export default function ProjectElement({ project }: { project: Project }) {
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${project.id}`}
+                    href={`/posts/${project?.id as string}`}
                 >
                     {project.title}
                 </Link>
@@ -57,3 +57,5 @@ export default function ProjectElement({ project }: { project: Project }) {
         </div>
     );
 }
+
+export default ProjectElement;

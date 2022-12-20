@@ -4,7 +4,7 @@ import { Resume } from '../types/profile.types';
 import { renderToString } from 'react-dom/server';
 import styles from '../styles/timeline.module.css';
 
-export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
+const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
     const monthsLabel = getMonths(11);
     const latest = new Date()
     const oldest = parse(monthsLabel[0], 'yy.MM', latest);
@@ -70,3 +70,5 @@ const colors: Record<string, string> = {
     "education": "#aeb6bf",
     "activity": "#85929e",
 }
+
+export default GridTimeline;

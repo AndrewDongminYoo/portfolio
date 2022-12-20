@@ -14,7 +14,7 @@ const ReactGitHubCalendar = dynamic(
     { ssr: false }
 );
 
-export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
+const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type
@@ -62,7 +62,7 @@ export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
     );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = () => {
     const allPostsData = getSortedPostsData();
     return {
         props: {
@@ -70,3 +70,5 @@ export const getStaticProps: GetStaticProps = async () => {
         },
     };
 };
+
+export default Home;

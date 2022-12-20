@@ -4,7 +4,7 @@ import Icon from '../types/slug-icon.types';
 import { IconType } from '@icons-pack/react-simple-icons';
 import { iconMap } from '../types/icon-map.types';
 
-function DateTime({ dateTime, fmt }: { dateTime: string; fmt?: string }) {
+const DateTime = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
     const date = parseISO(dateTime);
     if (isValid(date)) {
         return <time dateTime={dateTime}>{format(date, fmt ?? 'yy-MM')}</time>;
@@ -13,7 +13,7 @@ function DateTime({ dateTime, fmt }: { dateTime: string; fmt?: string }) {
     }
 }
 
-export function Period({ startAt, endAt, className }: { startAt: string, endAt: string, className?: string }) {
+export const Period = ({ startAt, endAt, className }: { startAt: string, endAt: string, className?: string }) => {
     const start = parseISO(startAt)
     const end = isValid(parseISO(endAt)) ? parseISO(endAt) : new Date()
     const diff = differenceInDays(end, start)
@@ -38,11 +38,11 @@ const getIcon = (resume: { icon?: string }) => {
     return { listStyleType };
 };
 
-export default function Description({
+const Description = ({
     resume,
 }: {
     resume: { icon?: string; description: string | string[] };
-}) {
+}) => {
     return (
         <div>
             {typeof resume.description !== 'string' ? (
@@ -67,7 +67,7 @@ export default function Description({
 }
 
 
-export const SlugIcon = (props: IconProps): JSX.Element => {
+export const SlugIcon = (props: IconProps) => {
     const iconOf: { slug: IconType } = { slug: iconMap[props.icon] }
     return <iconOf.slug {...props}></iconOf.slug>
 }
@@ -78,3 +78,5 @@ type IconProps = SVGAttributes<SVGElement> & {
     size?: string | number;
     className?: string;
 };
+
+export default Description;

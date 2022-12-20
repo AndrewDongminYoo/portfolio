@@ -3,7 +3,7 @@ import { Activity } from "../../types/profile.types";
 import Link from "next/link";
 import styles from "../../styles/resume.module.css";
 
-export default function ActivityElement({ activity }: { activity: Activity }) {
+const ActivityElement = ({ activity }: { activity: Activity }) => {
     const startAt = activity.startAt ?? "개발 예정";
     const endAt = activity.startAt ? activity.endAt ?? "진행중" : "";
     return (
@@ -16,7 +16,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
             <div className={styles.resume_card_right}>
                 <Link
                     className={styles.resume_card_item_label}
-                    href={`/posts/${activity.id}`}
+                    href={`/posts/${activity?.id as string}`}
                 >
                     {activity.title}
                 </Link>
@@ -34,3 +34,5 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
         </div>
     );
 }
+
+export default ActivityElement;
