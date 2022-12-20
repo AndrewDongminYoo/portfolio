@@ -5,9 +5,8 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "prestart": "next build",
         "start": "next start",
-        "lint": "next lint --no-cache --fix",
+        "lint": "next lint",
         "test": "jest",
         "watch": "tsc -w",
         "type-check": "tsc --noEmit",

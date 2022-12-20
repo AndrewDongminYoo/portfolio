@@ -4,7 +4,7 @@ const nextConfig = {
     swcMinify: true,
     images: {
         loader: "imgix",
-        path: 'andrewdongminyoo.imgix.net'
+        path: 'https://andrewdongminyoo.imgix.net',
     }
 }
 
