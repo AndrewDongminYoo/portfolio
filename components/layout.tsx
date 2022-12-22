@@ -2,6 +2,7 @@ import { description, myName, siteTitle, url } from '../data/constants';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import Portrait from '../public/images/profile.jpg';
 import ProfileBio from './profile';
 import React from 'react';
 import StackList from '../components/stacks';
@@ -43,7 +44,7 @@ const Layout = ({
                     <Link href="/">
                         <Image
                             priority
-                            src="/images/profile.jpg"
+                            src={Portrait}
                             className={styles.profile_image}
                             height={156}
                             width={156}

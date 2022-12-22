@@ -12,28 +12,25 @@ type SectionType = "experiences" | "projects" | "educations" | "activities" | "c
 const Post = ({
     data: data,
     sub = true,
-    key,
 }: {
     data: Resume;
     sub?: boolean;
-    key: number;
 }) => {
-    const getElement = (resume: Resume) => {
+    const children = ((resume: Resume) => {
         switch (resume.type) {
             case 'education': {
-                return <EducationElement education={resume} key={key} />
+                return <EducationElement education={resume} />
             } case 'experience': {
-                return <ExperienceElement experience={resume} key={key} />
+                return <ExperienceElement experience={resume} />
             } case 'project': {
-                return <ProjectElement project={resume} key={key} />
+                return <ProjectElement project={resume} />
             } case 'activity': {
-                return <ActivityElement activity={resume} key={key} />
+                return <ActivityElement activity={resume} />
             } default: {
                 return resume
             }
         }
-    }
-    const children: ReactNode = getElement(data)
+    })(data)
 
     if (sub) {
         return (

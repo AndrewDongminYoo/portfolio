@@ -264,6 +264,23 @@ blockquote small:before {
   color: darkgray;
 }
 
+#github-container
+  .position-relative
+  .graph-before-activity-overview
+  .js-calendar-graph {
+  --color-calendar-graph-day-L1-bg: #b6e3ff;
+  --color-calendar-graph-day-L2-bg: #54aeff;
+  --color-calendar-graph-day-L3-bg: #0969da;
+  --color-calendar-graph-day-L4-bg: #0a3069;
+  --color-calendar-graph-day-bg: #ebedf0;
+  margin: 0.5rem;
+}
+
+.js-calendar-graph > div {
+  margin-bottom: 0.8rem;
+  margin-top: -0.3rem;
+}
+
 @media print {
   @page {
     size: A4 portrait;

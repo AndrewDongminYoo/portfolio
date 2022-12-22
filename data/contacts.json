@@ -12,7 +12,7 @@
     {
         "type": "email",
         "link": "mailto:ydm2790@gmail.com",
-        "width": 245.25,
+        "width": 245,
         "height": 28,
         "label": "mail",
         "value": "ydm2790@gmail.com",
@@ -22,7 +22,7 @@
     {
         "type": "github",
         "link": "https://github.com/AndrewDongminYoo",
-        "width": 245.25,
+        "width": 245,
         "height": 28,
         "label": "'git'",
         "value": "AndrewDongminYoo",

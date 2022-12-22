@@ -27,6 +27,7 @@
         "declarationMap": true,
         "inlineSources": true,
         "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
         "noUncheckedIndexedAccess": false,
@@ -40,6 +41,7 @@
     "include": [
         "next-env.d.ts",
         "**/*.ts",
-        "**/*.tsx"
+        "**/*.tsx",
+        "lib/github.ts"
     ]
 }

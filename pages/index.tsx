@@ -28,31 +28,31 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
             <Head>
                 <meta name="keywords" content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인' />
             </Head>
-            <ResumeSection type="timeline">
+            <ResumeSection key={0} type="timeline">
                 <GridTimeline timeline={allPostsData} />
             </ResumeSection>
-            <ResumeSection type="contributions">
+            <ResumeSection key={1} type="contributions">
                 <ReactGitHubCalendar
                     userName="AndrewDongminYoo"
                     responsive
                 />
             </ResumeSection>
-            <ResumeSection type="experiences">
+            <ResumeSection key={2} type="experiences">
                 {experience.map((data, key) => {
                     return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
-            <ResumeSection type="projects">
+            <ResumeSection key={3} type="projects">
                 {project.map((data, key) => {
                     return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
-            <ResumeSection type="activities">
+            <ResumeSection key={4} type="activities">
                 {activity.map((data, key) => {
                     return <Post data={data} sub={sub} key={key} />;
                 })}
             </ResumeSection>
-            <ResumeSection type="educations">
+            <ResumeSection key={5} type="educations">
                 {education.map((data, key) => {
                     return <Post data={data} sub={sub} key={key} />;
                 })}

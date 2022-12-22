@@ -37,11 +37,13 @@ Happy linting! 💖
     ],
     "root": true,
     "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
         "array-bracket-newline": "off",
         "array-bracket-spacing": "off",
         "array-element-newline": "off",
         "arrow-parens": "off",
         "arrow-spacing": "off",
+        "ban-ts-comment": "off",
         "block-spacing": "off",
         "brace-style": "off",
         "comma-dangle": "off",
@@ -212,7 +214,7 @@ Happy linting! 💖
         "semi-spacing": "off",
         "semi-style": "off",
         "sort-imports": [
-            "error",
+            "warn",
             {
                 "ignoreCase": false,
                 "ignoreDeclarationSort": false,
