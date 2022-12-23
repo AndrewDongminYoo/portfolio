@@ -12,7 +12,7 @@ const ExperienceElement = ({
     const startAt = experience.startAt;
     const endAt = experience.endAt ?? "재직 중";
     return (
-        <div className={`${styles.resume_card_item} ${styles.experience}`}>
+        <div className={`${styles.resume_card_item} experience`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
                     <Period startAt={startAt} endAt={endAt} className={styles.period} />
@@ -32,7 +32,7 @@ const ExperienceElement = ({
                     ))}
                 </ul>
                 <div
-                    className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}
+                    className={`${styles.markdown} ${styles.markdown_viewer}`}
                 >
                     <Description resume={experience} />
                 </div>
@@ -75,7 +75,7 @@ const Contribution = ({ project }: { project: Project }) => {
                 </Link>
             </h6>
             <div
-                className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer} ${styles.part_description}`}
+                className={`${styles.markdown} ${styles.markdown_viewer} ${styles.part_description}`}
             >
                 <Description resume={project} />
             </div>

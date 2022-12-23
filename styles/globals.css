@@ -251,12 +251,12 @@ blockquote small:before {
   content: "―";
 }
 
-#github-container .float-left {
-  display: none;
-}
-
 #github-container {
   width: 100%;
+}
+
+#github-container .float-left {
+  display: none;
 }
 
 #github-container .float-right {
@@ -279,6 +279,11 @@ blockquote small:before {
 .js-calendar-graph > div {
   margin-bottom: 0.8rem;
   margin-top: -0.3rem;
+}
+
+svg.js-calendar-graph-svg {
+  float: right;
+  min-width: 733px;
 }
 
 @media print {

@@ -41,12 +41,8 @@
   line-height: 1.5;
   position: relative;
   padding-left: 0.25rem;
-  border-left: 0.0625rem solid #d7e2eb;
+  border-right: 0.0625rem solid #d7e2eb;
   color: #b2c0cc;
-}
-
-.year:last-child {
-  border-right: 0.625rem solid #0a4208;
 }
 
 .year:after {

@@ -11,7 +11,7 @@ const EducationElement = ({
     const startAt = education.startAt ?? "입학 예정";
     const endAt = education.startAt ? education.endAt ?? "재학 중" : "";
     return (
-        <div className={`${styles.resume_card_item} ${styles.education}`}>
+        <div className={`${styles.resume_card_item} education`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
                     <Period startAt={startAt} endAt={endAt} className={styles.period} />

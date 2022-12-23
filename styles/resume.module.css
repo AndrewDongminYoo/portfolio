@@ -28,6 +28,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
+  overflow: hidden;
 }
 
 .resume_card_header .resume_card_left {

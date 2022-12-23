@@ -11,7 +11,7 @@ const ProjectElement = ({ project }: { project: Project }) => {
     const startAt = project.startAt ?? "진행 예정";
     const endAt = project.startAt ? project.endAt ?? "진행중" : "";
     return (
-        <div className={`${styles.resume_card_item} ${styles.project}`}>
+        <div className={`${styles.resume_card_item} project`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
                     <Period startAt={startAt} endAt={endAt} className={styles.period} />
@@ -30,7 +30,7 @@ const ProjectElement = ({ project }: { project: Project }) => {
                     ))}
                 </ul>
                 <div
-                    className={`${styles.markdown} ${styles.github} ${styles.markdown_viewer}`}
+                    className={`${styles.markdown} ${styles.markdown_viewer}`}
                 >
                     <Description resume={project} />
                 </div>
