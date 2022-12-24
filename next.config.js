@@ -4,6 +4,13 @@ const nextConfig = {
     swcMinify: true,
     experimental: {
         forceSwcTransforms: true,
+        urlImports: ['https://connect.facebook.net/']
+    },
+    images: {
+        domains: [
+            "external-ssn1-1.xx.fbcdn.net",
+            "opengraph.githubassets.com"
+        ]
     }
 }
 
