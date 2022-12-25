@@ -52,6 +52,8 @@ jobs:
         with:
           node-version: "16.18.1"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Set Production Specified Environment
+        run: echo GITHUB_TOKEN=${{ secrets.GH_SECRET_KEY }} > .env
       - name: Setup Pages
         uses: actions/configure-pages@v2
         with:

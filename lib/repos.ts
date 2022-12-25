@@ -1,4 +1,3 @@
-import '@next/env';
 import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
 import { Repository } from '@typings/repos';

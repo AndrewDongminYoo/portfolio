@@ -2,15 +2,15 @@
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
-    experimental: {
-        forceSwcTransforms: true
-    },
     images: {
+        unoptimized: true,
         domains: [
-            "githubassets.com",
-            "githubusercontent.com"
-        ]
-    }
+            "*.githubassets.com",
+            "opengraph.githubassets.com",
+            "*.githubusercontent.com",
+            "repository-images.githubusercontent.com",
+        ],
+    },
 }
 
 module.exports = nextConfig

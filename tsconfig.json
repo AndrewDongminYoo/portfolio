@@ -51,4 +51,8 @@
         "**/*.ts",
         "**/*.tsx"
     ],
+    "typeRoots": [
+        "./types",
+        "env.d.ts"
+    ]
 }
