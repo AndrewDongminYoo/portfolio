@@ -6,6 +6,8 @@ import { Repository } from '@typings/repos';
 import { ResumeSection } from '@pages/posts/[id]';
 import dynamic from 'next/dynamic';
 import { getTagsFromRepository } from '@lib/repos';
+import { isDevelopment } from '@lib/metatag';
+import openGraph from '@data/open_graph.json';
 
 const ReactGitHubCalendar = dynamic(
     () => import('react-ts-github-calendar'),
@@ -31,13 +33,14 @@ const Portfolio = ({ repositoryData }: { repositoryData: Repository[]; }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const repository = await getTagsFromRepository()
-    const repositoryData = repository.filter((repo) => repo.visibility === 'public' && repo.folk !== true)
-    return {
-        props: {
-            repositoryData
-        },
-    };
+    if (isDevelopment) {
+        const repository = await getTagsFromRepository()
+        const repositoryData = repository.filter((repo) => repo.visibility === 'public' && repo.folk !== true)
+        return { props: { repositoryData } };
+    } else {
+        const repositoryData = openGraph
+        return { props: { repositoryData } };
+    }
 };
 
 export default Portfolio;

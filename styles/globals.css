@@ -18,6 +18,7 @@ body {
   background-color: white;
   color: #263747;
   line-height: 1.4;
+  -webkit-text-size-adjust: none;
 }
 
 a {
