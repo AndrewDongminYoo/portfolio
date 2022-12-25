@@ -27,7 +27,7 @@ const StackList = () => {
             </div>
         </section>
     );
-}
+};
 
 const StackElement = ({ stack }: { stack: string }) => {
     return (

@@ -1,20 +1,24 @@
-import Description, { Period, SlugIcon } from "@components/utils";
-import Link from "next/link";
-import { Project } from "@typings/profile";
-import styles from "@styles/resume.module.css";
+import Description, { Period, SlugIcon } from '@components/utils';
+import Link from 'next/link';
+import { Project } from '@typings/profile';
+import styles from '@styles/resume.module.css';
 
 const ProjectElement = ({ project }: { project: Project }) => {
     const websiteUrl =
-        project.website_url ?? "https://github.com/andrewdongminyoo";
+        project.website_url ?? 'https://github.com/andrewdongminyoo';
     const repository =
-        project.repository ?? "https://github.com/andrewdongminyoo";
-    const startAt = project.startAt ?? "진행 예정";
-    const endAt = project.startAt ? project.endAt ?? "진행중" : "";
+        project.repository ?? 'https://github.com/andrewdongminyoo';
+    const startAt = project.startAt ?? '진행 예정';
+    const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
         <div className={`${styles.resume_card_item} project`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
+                    <Period
+                        startAt={startAt}
+                        endAt={endAt}
+                        className={styles.period}
+                    />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
@@ -29,25 +33,37 @@ const ProjectElement = ({ project }: { project: Project }) => {
                         <li key={i}>{tag}</li>
                     ))}
                 </ul>
-                <div
-                    className={`${styles.markdown} ${styles.markdown_viewer}`}
-                >
+                <div className={`${styles.markdown} ${styles.markdown_viewer}`}>
                     <Description resume={project} />
                 </div>
                 <ul className={styles.list_contributions}>
                     <li className={styles.list_contribution_item}>
-                        <SlugIcon icon={"discord"} size={14} color={"gray"} className={styles.slug__icon} />
+                        <SlugIcon
+                            icon={'discord'}
+                            size={14}
+                            color={'gray'}
+                            className={styles.slug__icon}
+                        />
                         {project.teamDescription}
                     </li>
                     <li className={styles.list_contribution_item}>
-                        <SlugIcon icon={"github"} size={14} color={"gray"} className={styles.slug__icon} />
+                        <SlugIcon
+                            icon={'github'}
+                            size={14}
+                            color={'gray'}
+                            className={styles.slug__icon}
+                        />
                         <Link href={repository} target="_blank" rel="noopener">
                             {repository}
                         </Link>
                     </li>
                     <li className={styles.list_contribution_item}>
-
-                        <SlugIcon icon={"bloglovin"} size={14} color={"gray"} className={styles.slug__icon} />
+                        <SlugIcon
+                            icon={'bloglovin'}
+                            size={14}
+                            color={'gray'}
+                            className={styles.slug__icon}
+                        />
                         <Link href={websiteUrl} target="_blank" rel="noopener">
                             {websiteUrl}
                         </Link>
@@ -56,6 +72,6 @@ const ProjectElement = ({ project }: { project: Project }) => {
             </div>
         </div>
     );
-}
+};
 
 export default ProjectElement;

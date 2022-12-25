@@ -1,16 +1,20 @@
-import Description, { Period } from "@components/utils";
-import { Activity } from "@typings/profile";
-import Link from "next/link";
-import styles from "@styles/resume.module.css";
+import Description, { Period } from '@components/utils';
+import { Activity } from '@typings/profile';
+import Link from 'next/link';
+import styles from '@styles/resume.module.css';
 
 const ActivityElement = ({ activity }: { activity: Activity }) => {
-    const startAt = activity.startAt ?? "개발 예정";
-    const endAt = activity.startAt ? activity.endAt ?? "진행중" : "";
+    const startAt = activity.startAt ?? '개발 예정';
+    const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
         <div className={`${styles.resume_card_item} activity`}>
             <div className={styles.resume_card_left}>
                 <h5 className={styles.resume_card_item_period}>
-                    <Period startAt={startAt} endAt={endAt} className={styles.period} />
+                    <Period
+                        startAt={startAt}
+                        endAt={endAt}
+                        className={styles.period}
+                    />
                 </h5>
             </div>
             <div className={styles.resume_card_right}>
@@ -21,18 +25,20 @@ const ActivityElement = ({ activity }: { activity: Activity }) => {
                     {activity.title}
                 </Link>
                 <h5 className={styles.resume_card_item_text}>
-                    <Link href={activity.website_url ?? ""} target="_blank" rel="noopener">
+                    <Link
+                        href={activity.website_url ?? ''}
+                        target="_blank"
+                        rel="noopener"
+                    >
                         {activity.website_url}
                     </Link>
                 </h5>
-                <div
-                    className={`${styles.markdown} ${styles.markdown_viewer}`}
-                >
+                <div className={`${styles.markdown} ${styles.markdown_viewer}`}>
                     <Description resume={activity} />
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default ActivityElement;

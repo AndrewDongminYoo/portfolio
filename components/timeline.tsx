@@ -6,9 +6,9 @@ import styles from '@styles/timeline.module.css';
 
 const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
     const monthsLabel = getMonths(11);
-    const latest = new Date()
+    const latest = new Date();
     const oldest = parse(monthsLabel[0], 'yy.MM', latest);
-    const pixel = 100 / differenceInDays(latest, oldest)
+    const pixel = 100 / differenceInDays(latest, oldest);
 
     return (
         <div className={styles.body}>
@@ -16,7 +16,11 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                 <div className={styles.timeline_wrap}>
                     <div className={styles.timeline_labels}>
                         {monthsLabel.map((month, i) => (
-                            <time key={i} className={styles.year} dateTime={month}>
+                            <time
+                                key={i}
+                                className={styles.year}
+                                dateTime={month}
+                            >
                                 {month}
                             </time>
                         ))}
@@ -24,12 +28,22 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                     <div className={styles.grid_timeline}>
                         {timeline.map((action: Resume) => {
                             const { type, index, name, startAt, endAt } = action;
-                            const start = parseISO(startAt)
-                            const end = endAt ? parseISO(endAt) : new Date()
-                            const sPoint = Math.round(differenceInDays(start, oldest) * pixel)
-                            const ePoint = Math.round(differenceInDays(end, oldest) * pixel)
+                            const start = parseISO(startAt);
+                            const end = endAt ? parseISO(endAt) : new Date();
+                            const sPoint = Math.round(
+                                differenceInDays(start, oldest) * pixel
+                            );
+                            const ePoint = Math.round(
+                                differenceInDays(end, oldest) * pixel
+                            );
                             if (sPoint <= 0 || ePoint <= 0) return null;
-                            const dataContent = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} className={styles.text_mute} />
+                            const dataContent = (
+                                <Period
+                                    startAt={startAt}
+                                    endAt={format(end, 'yyyy-MM-dd')}
+                                    className={styles.text_mute}
+                                />
+                            );
                             return (
                                 <div
                                     key={index}
@@ -44,15 +58,17 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                                         gridColumn: `${sPoint} / ${ePoint}`,
                                         backgroundColor: colors[type],
                                     }}
-                                >{name}</div>
-                            )
+                                >
+                                    {name}
+                                </div>
+                            );
                         })}
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 const getMonths = (length: number) => {
     const now = new Date();
@@ -65,10 +81,10 @@ const getMonths = (length: number) => {
 };
 
 const colors: Record<string, string> = {
-    "experience": "#34495e",
-    "project": "#5d6d7e",
-    "education": "#aeb6bf",
-    "activity": "#85929e",
-}
+    experience: '#34495e',
+    project: '#5d6d7e',
+    education: '#aeb6bf',
+    activity: '#85929e',
+};
 
 export default GridTimeline;

@@ -7,7 +7,8 @@ const nextConfig = {
     },
     images: {
         domains: [
-            "opengraph.githubassets.com"
+            "githubassets.com",
+            "githubusercontent.com"
         ]
     }
 }

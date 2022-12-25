@@ -5,7 +5,7 @@ import Repo from '@pages/repos/[id]';
 import { Repository } from '@typings/repos';
 import { ResumeSection } from '@pages/posts/[id]';
 import dynamic from 'next/dynamic';
-import { getReposLanguages } from '@lib/repos';
+import { getTagsFromRepository } from '@lib/repos';
 
 const ReactGitHubCalendar = dynamic(
     () => import('react-ts-github-calendar'),
@@ -31,10 +31,11 @@ const Portfolio = ({ repositoryData }: { repositoryData: Repository[]; }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-    const repositoryData = await getReposLanguages()
+    const repository = await getTagsFromRepository()
+    const repositoryData = repository.filter((repo) => repo.visibility === 'public' && repo.folk !== true)
     return {
         props: {
-            repositoryData,
+            repositoryData
         },
     };
 };

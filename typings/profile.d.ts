@@ -10,7 +10,7 @@ type ResumeBase = {
     endAt: DateString | null;
     icon?: Emoji;
     description: Description;
-}
+};
 
 export type Experience = ResumeBase & {
     type: 'experience';
@@ -21,7 +21,7 @@ export type Experience = ResumeBase & {
     tags: Tag[];
     projects: Project[];
     link?: URLLike;
-}
+};
 
 export type Project = ResumeBase & {
     type: 'project';
@@ -32,19 +32,19 @@ export type Project = ResumeBase & {
     analyzedLink: URLLike;
     teamDescription: Description;
     roleDescriptions: Description;
-}
+};
 
 export type Education = ResumeBase & {
     type: 'education';
     name: string;
     major: string;
     degree: string;
-}
+};
 
 export type Activity = ResumeBase & {
     type: 'activity';
     website_url: URLLike;
-}
+};
 
 type URLLike = string;
 type DateString = string;
