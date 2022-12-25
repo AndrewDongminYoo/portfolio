@@ -1,5 +1,5 @@
 import * as si from '@icons-pack/react-simple-icons'
-import Icon from './slug-icon.types'
+import Icon from '@typings/slug-icon'
 
 export const iconMap: Record<Icon, si.IconType> = {
     "42": si.FortyTwo,

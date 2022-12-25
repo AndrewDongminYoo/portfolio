@@ -1,14 +1,14 @@
-import { description, myName, siteTitle, url } from '../data/constants';
+import { description, myName, siteTitle, url } from '@data/constants';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Portrait from '../public/images/profile.jpg';
-import ProfileBio from './profile';
+import Portrait from '@public/images/profile.jpg';
+import ProfileBio from '@components/profile';
 import React from 'react';
-import StackList from '../components/stacks';
-import laundry from '../public/images/laundry.jpg';
-import styles from '../styles/layout.module.css';
-import utilStyles from '../styles/utils.module.css';
+import StackList from '@components/stacks';
+import laundry from '@public/images/laundry.jpg';
+import styles from '@styles/layout.module.css';
+import utilStyles from '@styles/utils.module.css';
 
 const Layout = ({
     children,

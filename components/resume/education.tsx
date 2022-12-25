@@ -1,7 +1,7 @@
-import { Education } from "../../types/profile.types";
+import { Education } from "@typings/profile";
 import Link from "next/link";
-import { Period } from "../utils";
-import styles from "../../styles/resume.module.css";
+import { Period } from "@components/utils";
+import styles from "@styles/resume.module.css";
 
 const EducationElement = ({
     education,

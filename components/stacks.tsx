@@ -1,5 +1,5 @@
-import stacks from '../data/stacks.json';
-import styles from '../styles/stacks.module.css';
+import stacks from '@data/stacks.json';
+import styles from '@styles/stacks.module.css';
 
 const StackList = () => {
     return (

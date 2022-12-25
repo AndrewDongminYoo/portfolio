@@ -1,7 +1,7 @@
-import Description, { Period } from "../utils";
-import { Activity } from "../../types/profile.types";
+import Description, { Period } from "@components/utils";
+import { Activity } from "@typings/profile";
 import Link from "next/link";
-import styles from "../../styles/resume.module.css";
+import styles from "@styles/resume.module.css";
 
 const ActivityElement = ({ activity }: { activity: Activity }) => {
     const startAt = activity.startAt ?? "개발 예정";

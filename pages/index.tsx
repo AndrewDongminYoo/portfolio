@@ -1,12 +1,12 @@
-import { Activity, Education, Experience, Project, Resume } from '../types/profile.types';
-import Post, { ResumeSection } from './posts/[id]';
+import { Activity, Education, Experience, Project, Resume } from '@typings/profile';
+import Post, { ResumeSection } from '@pages/posts/[id]';
 import { GetStaticProps } from 'next';
-import GridTimeline from '../components/timeline';
+import GridTimeline from '@components/timeline';
 import Head from 'next/head';
-import Layout from '../components/layout';
+import Layout from '@components/layout';
 import _ from 'lodash';
 import dynamic from 'next/dynamic';
-import { getSortedPostsData } from '../lib/posts';
+import { getSortedPostsData } from '@lib/posts';
 
 const ReactGitHubCalendar = dynamic(
     () => import('react-ts-github-calendar'),

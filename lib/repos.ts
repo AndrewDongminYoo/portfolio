@@ -1,7 +1,7 @@
 import '@next/env';
 import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
-import { Repository } from '../types/repos.types';
+import { Repository } from '@typings/repos';
 
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN

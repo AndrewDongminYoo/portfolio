@@ -69,7 +69,8 @@
   width: calc(100% - 9rem);
 }
 
-.resume_card_right > :last-child {
+.resume_card_right > ul:last-child,
+.resume_card_right > div:last-child {
   margin-left: -4rem;
 }
 
@@ -269,7 +270,8 @@
     width: 100%;
   }
 
-  .resume_card_right > :last-child {
+  .resume_card_right > ul:last-child,
+  .resume_card_right > div:last-child {
     margin-left: unset;
   }
 

@@ -1,8 +1,7 @@
-import Description, { Period, SlugIcon } from "../utils";
-import { Experience, Project } from "../../types/profile.types";
+import Description, { Period, SlugIcon } from "@components/utils";
+import { Experience, Project } from "@typings/profile";
 import Link from "next/link";
-import styles from "../../styles/resume.module.css";
-
+import styles from "@styles/resume.module.css";
 
 const ExperienceElement = ({
     experience,

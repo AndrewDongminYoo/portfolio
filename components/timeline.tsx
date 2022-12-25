@@ -1,8 +1,8 @@
 import { differenceInDays, format, parse, parseISO } from 'date-fns';
-import { Period } from './utils';
-import { Resume } from '../types/profile.types';
+import { Period } from '@components/utils';
+import { Resume } from '@typings/profile';
 import { renderToString } from 'react-dom/server';
-import styles from '../styles/timeline.module.css';
+import styles from '@styles/timeline.module.css';
 
 const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
     const monthsLabel = getMonths(11);

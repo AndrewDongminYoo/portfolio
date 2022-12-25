@@ -1,8 +1,8 @@
 import React, { SVGAttributes } from 'react';
 import { differenceInDays, differenceInMonths, differenceInWeeks, differenceInYears, format, isValid, parseISO } from 'date-fns';
-import Icon from '../types/slug-icon.types';
+import Icon from '@typings/slug-icon';
 import { IconType } from '@icons-pack/react-simple-icons';
-import { iconMap } from '../types/icon-map.types';
+import { iconMap } from '@typings/icon-map';
 
 export const DTElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
     const date = parseISO(dateTime);
@@ -21,7 +21,6 @@ export const Period = ({ startAt, endAt, className }: { startAt: string, endAt: 
     const diff2 = differenceInMonths(end, start) + 1
     const diff3 = differenceInYears(end, start) + 1
     let periodString = ''
-
     if (diff > 2) { periodString = `(${diff}일)` }
     if (diff1 > 2) { periodString = `(${diff1}주)` }
     if (diff2 > 2) { periodString = `(${diff2}개월)` }
@@ -65,7 +64,6 @@ const Description = ({
         </>
     );
 }
-
 
 export const SlugIcon = (props: IconProps) => {
     const iconOf: { slug: IconType } = { slug: iconMap[props.icon] }

@@ -23,6 +23,9 @@
         "sourceMap": true,
         "outDir": ".build",
         "rootDir": "./",
+        "typeRoots": [
+            "./typings"
+        ],
         "declaration": true,
         "declarationMap": true,
         "inlineSources": true,
@@ -33,7 +36,12 @@
         "noUncheckedIndexedAccess": false,
         "noPropertyAccessFromIndexSignature": false,
         "noImplicitAny": true,
-        "isolatedModules": true
+        "isolatedModules": true,
+        "paths": {
+            "@*": [
+                "./*"
+            ]
+        }
     },
     "exclude": [
         "node_modules"
@@ -41,7 +49,6 @@
     "include": [
         "next-env.d.ts",
         "**/*.ts",
-        "**/*.tsx",
-        "lib/github.ts"
-    ]
+        "**/*.tsx"
+    ],
 }

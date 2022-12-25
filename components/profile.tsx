@@ -1,10 +1,10 @@
-import { description, siteTitle } from '../data/constants';
+import { description, siteTitle } from '@data/constants';
 import Color from 'color-name'
-import Icon from '../types/slug-icon.types';
+import Icon from '@typings/slug-icon';
 import Image from 'next/image';
 import Link from 'next/link';
-import contacts from '../data/contacts.json';
-import styles from '../styles/profile.module.css';
+import contacts from '@data/contacts.json';
+import styles from '@styles/profile.module.css';
 
 type NamedColor = keyof typeof Color;
 

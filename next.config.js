@@ -3,12 +3,10 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     experimental: {
-        forceSwcTransforms: true,
-        urlImports: ['https://connect.facebook.net/']
+        forceSwcTransforms: true
     },
     images: {
         domains: [
-            "external-ssn1-1.xx.fbcdn.net",
             "opengraph.githubassets.com"
         ]
     }

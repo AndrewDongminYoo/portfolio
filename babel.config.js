@@ -1,14 +1,31 @@
 module.exports = {
     presets: [
-        ["next/babel",
-            {
-                "preset-env": {},
-                "transform-runtime": {},
-                "styled-jsx": {},
-                "class-properties": {}
-            }]
+        ["next/babel"]
     ],
     plugins: [
-        "@babel/plugin-proposal-do-expressions"
+        [
+            "module-resolver",
+            {
+                root: ["$PWD"],
+                extensions: [
+                    ".ts",
+                    ".tsx",
+                    ".jsx",
+                    ".js",
+                    ".json",
+                    ".md",
+                ],
+                alias: {
+                    "@components": "./components",
+                    "@data": "./data",
+                    "@lib": "./lib",
+                    "@pages": "./pages",
+                    "@posts": "./posts",
+                    "@public": "./public",
+                    "@styles": "./styles",
+                    "@typings": "./typings",
+                },
+            },
+        ],
     ]
 }

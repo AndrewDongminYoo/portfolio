@@ -1,7 +1,7 @@
-import Description, { Period, SlugIcon } from "../utils";
+import Description, { Period, SlugIcon } from "@components/utils";
 import Link from "next/link";
-import { Project } from "../../types/profile.types";
-import styles from "../../styles/resume.module.css";
+import { Project } from "@typings/profile";
+import styles from "@styles/resume.module.css";
 
 const ProjectElement = ({ project }: { project: Project }) => {
     const websiteUrl =
