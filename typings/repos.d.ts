@@ -2,13 +2,11 @@
  * A repository on GitHub.
  */
 export interface Repository {
-    languages?:             Languages;
     allow_forking?:         boolean;
     topics?:                string[];
     visibility?:            string;
     permissions?:           Permissions;
     archive_url:            string;
-    meta_tags?:             OpenGraph;
     parent?:                Repository;
     folk?:                  boolean;
     /**

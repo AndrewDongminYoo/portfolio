@@ -32,7 +32,7 @@ const StackList = () => {
 const StackElement = ({ stack }: { stack: string }) => {
     return (
         <li className={styles.col_item}>
-            <button className={styles.stack_item}>{stack}</button>
+            <div className={styles.stack_item}>{stack}</div>
         </li>
     );
 };

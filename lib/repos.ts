@@ -1,7 +1,6 @@
 import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
 import { Repository } from '@typings/repos';
-import { getTagsFromWebsite } from './metatag';
 
 const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
@@ -10,9 +9,8 @@ const octokit = new Octokit({
 type route = keyof Endpoints;
 
 const repos: route = 'GET /user/repos';
-const langs: route = 'GET /repos/{owner}/{repo}/languages';
 
-const getRepositories = async () => {
+export const getRepositories = async () => {
     return await octokit
         .request(repos, {
             type: 'all',
@@ -20,7 +18,8 @@ const getRepositories = async () => {
             direction: 'desc',
             sort: 'created',
         })
-        .then((value) => value.data.map((repo) => reclusiveFilter(repo)));
+        .then((value) => value.data
+            .map((repo) => reclusiveFilter(repo))) as Repository[];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,55 +47,6 @@ const reclusiveFilter = (repo: { [x: string]: any }) => {
     });
     return copy;
 };
-
-const getLangs = async ({
-    owner: user,
-    name,
-}: {
-    name: string;
-    owner: { login: string };
-}) => {
-    const repo = name;
-    const owner = user.login;
-    return await octokit
-        .request(langs, { owner, repo })
-        .then((value) => value.data);
-};
-
-export const getTagsFromRepository = async (): Promise<Repository[]> => {
-    const result: Record<string, Repository> = {};
-    return await getRepositories()
-        .then((repositories) => {
-            return Object.values(repositories).map((repo, i) => {
-                result[String(i)] = repo as Repository;
-                return getTagsFromWebsite(repo.html_url);
-            });
-        })
-        .then((promises) => Promise.all(promises))
-        .then((openGraph) => {
-            return openGraph.map((meta_tags, i) => {
-                return { ...result[String(i)], meta_tags };
-            });
-        });
-};
-
-export const getReposLanguages = async (): Promise<Repository[]> => {
-    const result: Record<string, Repository> = {};
-    return await getRepositories()
-        .then((repositories) => {
-            return Object.values(repositories).map((repo, i) => {
-                result[String(i)] = repo as Repository;
-                return getLangs(repo as Repository);
-            });
-        })
-        .then((promises) => Promise.all(promises))
-        .then((langs) => {
-            return langs.map((languages, i) => {
-                return { ...result[String(i)], languages };
-            });
-        });
-};
-
 export const getReposIds = async () => {
     const repositories = await getRepositories();
     return repositories.map((repo) => {
