@@ -4,24 +4,24 @@ import { GetStaticProps } from 'next';
 import GridTimeline from '@components/timeline';
 import Head from 'next/head';
 import Layout from '@components/layout';
+import { Theme } from 'react-activity-calendar';
 import _ from 'lodash';
 import dynamic from 'next/dynamic';
 import { getSortedPostsData } from '@lib/posts';
-import useSwr from 'swr';
 
 const ReactGitHubCalendar = dynamic(
-    () => import('react-ts-github-calendar'),
+    () => import('react-github-calendar'),
     { ssr: false }
 );
 
 const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
-    const fetcher = (url: string) => fetch(url).then((res) => res.json())
-    const { data, error, isValidating, isLoading } = useSwr('/api/hello', fetcher)
-    if (isLoading || isValidating) {
-        return null;
+    const theme: Theme = {
+        level4: '#0a3069',
+        level3: '#0969da',
+        level2: '#54aeff',
+        level1: '#b6e3ff',
+        level0: '#ebedf0',
     }
-    data && console.log("data:", data)
-    error && console.log("error:", error)
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type
@@ -41,8 +41,9 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
             </ResumeSection>
             <ResumeSection key={1} type="contributions">
                 <ReactGitHubCalendar
-                    userName="AndrewDongminYoo"
-                    responsive
+                    theme={theme}
+                    username="AndrewDongminYoo"
+                    transformTotalCount={true}
                 />
             </ResumeSection>
             <ResumeSection key={2} type="experiences">

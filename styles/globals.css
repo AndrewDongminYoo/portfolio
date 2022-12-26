@@ -252,39 +252,33 @@ blockquote small:before {
   content: "―";
 }
 
-#github-container {
-  width: 100%;
+.react-activity-calendar {
+  max-width: 844px;
+  float: right;
+  margin: 0.8rem;
 }
 
-#github-container .float-left {
-  display: none;
+.react-activity-calendar__count {
+  /* display: none; */
 }
 
-#github-container .float-right {
+.react-activity-calendar__legend-colors {
   font-size: 14px;
   color: darkgray;
 }
 
-#github-container
-  .position-relative
-  .graph-before-activity-overview
-  .js-calendar-graph {
-  --color-calendar-graph-day-L1-bg: #b6e3ff;
-  --color-calendar-graph-day-L2-bg: #54aeff;
-  --color-calendar-graph-day-L3-bg: #0969da;
-  --color-calendar-graph-day-L4-bg: #0a3069;
-  --color-calendar-graph-day-bg: #ebedf0;
-  margin: 0.5rem;
-}
-
-.js-calendar-graph > div {
-  margin-bottom: 0.8rem;
-  margin-top: -0.3rem;
-}
-
-svg.js-calendar-graph-svg {
-  float: right;
+.react-activity-calendar__calendar {
+  height: auto;
   min-width: 733px;
+  max-width: 100%;
+  overflow: visible;
+  display: block;
+}
+
+.react-activity-calendar__footer {
+  margin-top: 8px;
+  font-size: 14px;
+  display: flex;
 }
 
 @media print {

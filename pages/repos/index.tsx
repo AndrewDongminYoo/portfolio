@@ -9,7 +9,7 @@ import { getRepositories } from '@lib/repos';
 import { getTagsFromWebsite } from '@lib/metatag';
 
 const ReactGitHubCalendar = dynamic(
-    () => import('react-ts-github-calendar'),
+    () => import('react-github-calendar'),
     { ssr: false }
 );
 
@@ -30,8 +30,7 @@ const Portfolio = ({ repositoryData, metaTagsData }: { repositoryData: Repositor
                 })}
             <ResumeSection type="contributions">
                 <ReactGitHubCalendar
-                    userName="AndrewDongminYoo"
-                    responsive
+                    username="AndrewDongminYoo"
                 />
             </ResumeSection>
         </Layout>
