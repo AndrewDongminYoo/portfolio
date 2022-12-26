@@ -7,6 +7,7 @@ import Layout from '@components/layout';
 import _ from 'lodash';
 import dynamic from 'next/dynamic';
 import { getSortedPostsData } from '@lib/posts';
+import useSwr from 'swr';
 
 const ReactGitHubCalendar = dynamic(
     () => import('react-ts-github-calendar'),
@@ -14,6 +15,13 @@ const ReactGitHubCalendar = dynamic(
 );
 
 const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
+    const fetcher = (url: string) => fetch(url).then((res) => res.json())
+    const { data, error, isValidating, isLoading } = useSwr('/api/hello', fetcher)
+    if (isLoading || isValidating) {
+        return null;
+    }
+    data && console.log("data:", data)
+    error && console.log("error:", error)
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type

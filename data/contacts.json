@@ -2,8 +2,6 @@
     {
         "type": "phone",
         "link": "tel:01035661857",
-        "width": 185.5,
-        "height": 28,
         "label": "call",
         "value": "01035661857",
         "color": "blue",
@@ -12,8 +10,6 @@
     {
         "type": "email",
         "link": "mailto:ydm2790@gmail.com",
-        "width": 245.25,
-        "height": 28,
         "label": "mail",
         "value": "ydm2790@gmail.com",
         "color": "black",
@@ -22,8 +18,6 @@
     {
         "type": "github",
         "link": "https://github.com/AndrewDongminYoo",
-        "width": 245.25,
-        "height": 28,
         "label": "'git'",
         "value": "AndrewDongminYoo",
         "color": "lightgreen",
@@ -32,8 +26,6 @@
     {
         "type": "youtube",
         "link": "https://www.youtube.com/watch?v=vOh90eJ7VdY",
-        "width": 208.5,
-        "height": 28,
         "label": "'ytb'",
         "value": "v=vOh90eJ7VdY",
         "color": "red",
