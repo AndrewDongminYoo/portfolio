@@ -5,7 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getTagsFromWebsite } from '@lib/metatag';
 
-const Repo = ({ repository, metaTags }: { repository: Repository, metaTags: OpenGraph }) => {
+const Repo = ({
+    repository,
+    metaTags,
+}: {
+    repository: Repository;
+    metaTags: OpenGraph;
+}) => {
     return (
         <div>
             <Link
@@ -38,8 +44,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const data = await getRepositories();
-    const repository = data.find((repo) => repo.id === Number(params?.id)) as Repository
-    const metaTags = await getTagsFromWebsite(repository.html_url)
+    const repository = data.find(
+        (repo) => repo.id === Number(params?.id)
+    ) as Repository;
+    const metaTags = await getTagsFromWebsite(repository.html_url);
     return {
         props: {
             repository,

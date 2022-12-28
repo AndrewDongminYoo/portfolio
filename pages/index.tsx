@@ -1,18 +1,14 @@
 import { Activity, Education, Experience, Project, Resume } from '@typings/profile';
 import Post, { ResumeSection } from '@pages/posts/[id]';
-import ReactGitHubCalendar, { Contributions } from '@components/calendar';
 import { GetStaticProps } from 'next';
 import GridTimeline from '@components/timeline';
 import Head from 'next/head';
 import Layout from '@components/layout';
+import ReactGitHubCalendar from '@components/calendar';
 import _ from 'lodash';
-import { fetchCalendar } from '@lib/activity';
 import { getSortedPostsData } from '@lib/posts';
-import { username } from '@data/constants';
 
-
-
-const Home = ({ allPostsData, contributions }: { allPostsData: Resume[]; contributions: Contributions }) => {
+const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type
@@ -23,17 +19,15 @@ const Home = ({ allPostsData, contributions }: { allPostsData: Resume[]; contrib
     const education = groupedPosts.education as Education[];
     const sub = false;
     return (
-        <Layout sub={sub} >
+        <Layout sub={sub}>
             <Head>
-                <meta name="keywords" content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인' />
+                <meta name="keywords" content="서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인" />
             </Head>
             <ResumeSection key={0} type="timeline">
                 <GridTimeline timeline={allPostsData} />
             </ResumeSection>
             <ResumeSection key={1} type="contributions">
-                <ReactGitHubCalendar
-                    contributions={contributions}
-                />
+                <ReactGitHubCalendar />
             </ResumeSection>
             <ResumeSection key={2} type="experiences">
                 {experience.map((data, key) => {
@@ -57,15 +51,13 @@ const Home = ({ allPostsData, contributions }: { allPostsData: Resume[]; contrib
             </ResumeSection>
         </Layout>
     );
-}
+};
 
 export const getStaticProps: GetStaticProps = async () => {
     const allPostsData = getSortedPostsData();
-    const contributions = await fetchCalendar(username);
     return {
         props: {
             allPostsData,
-            contributions,
         },
     };
 };

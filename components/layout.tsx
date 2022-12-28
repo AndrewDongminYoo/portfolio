@@ -21,8 +21,18 @@ const Layout = ({
     return (
         <div className={styles.resume__content}>
             <Head>
-                <meta name="og:image" property="og:image" itemProp="image primaryImageOfPage" content={laundry.src} />
-                <meta name="twitter:image" property="og:image" itemProp="image primaryImageOfPage" content={laundry.src} />
+                <meta
+                    name="og:image"
+                    property="og:image"
+                    itemProp="image primaryImageOfPage"
+                    content={laundry.src}
+                />
+                <meta
+                    name="twitter:image"
+                    property="og:image"
+                    itemProp="image primaryImageOfPage"
+                    content={laundry.src}
+                />
                 <link rel="apple-touch-icon" href={favicon.src}></link>
             </Head>
             <summary className={styles.resume__summary}>

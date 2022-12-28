@@ -27,7 +27,7 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                     </div>
                     <div className={styles.grid_timeline}>
                         {timeline.map((action: Resume) => {
-                            const { type, index, name, startAt, endAt } = action;
+                            const { type, id, name, startAt, endAt } = action;
                             const start = parseISO(startAt);
                             const end = endAt ? parseISO(endAt) : new Date();
                             const sPoint = Math.round(
@@ -46,7 +46,7 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                             );
                             return (
                                 <div
-                                    key={index}
+                                    key={id}
                                     title={name}
                                     data-original-title={name}
                                     data-html="true"

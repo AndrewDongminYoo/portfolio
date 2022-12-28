@@ -33,7 +33,7 @@ const Post = ({ data, sub = true }: { data: Resume; sub?: boolean }) => {
                 return <ActivityElement activity={resume} />;
             default:
                 return resume;
-        };
+        }
     })(data);
 
     if (sub) {
@@ -68,7 +68,6 @@ export const ResumeSection = ({
                 <div className={styles.resume_card_right}></div>
             </div>
             <div className={styles.resume_card_body}>{children}</div>
-            <div className={styles.resume_card_footer}></div>
         </section>
     );
 };

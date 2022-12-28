@@ -1,59 +1,50 @@
-import { GlobalStat } from '@lib/activity';
-import React from 'react'
-import { Theme } from 'react-activity-calendar';
-import dynamic from 'next/dynamic';
-import styles from '@styles/calendar.module.css';
+import 'github-calendar/dist/github-calendar-responsive.css';
+import React from 'react';
+import Script from 'next/script';
 import { username } from '@data/constants';
 
-const GitHubCalendar = dynamic(
-    () => import('react-github-calendar'),
-    { ssr: false }
-);
-
-export interface Contributions {
-    firstCol: GlobalStat;
-    secondCol: GlobalStat;
-    thirdCol: GlobalStat;
-}
-
-const ReactGithubCalendar = ({ contributions }: { contributions: Contributions }) => {
-    const theme: Theme = {
-        level4: '#0a3069',
-        level3: '#0969da',
-        level2: '#54aeff',
-        level1: '#b6e3ff',
-        level0: '#ebedf0',
+const onLoad = () => {
+    if (
+        'GitHubCalendar' in window &&
+        typeof window.GitHubCalendar === 'function'
+    ) {
+        window.GitHubCalendar('.calendar', username, {
+            responsive: true,
+            global_stats: true,
+            tooltips: true,
+        });
     }
-    const { firstCol, secondCol, thirdCol } = contributions;
-    return (
-        <div className="calendar">
-            <GitHubCalendar
-                theme={theme}
-                username={username}
-                transformTotalCount={true}
-                hideTotalCount
-            />
-            <Contrib key={1} contrib={firstCol} isFirst={true} />
-            <Contrib key={2} contrib={secondCol} />
-            <Contrib key={3} contrib={thirdCol} />
-        </div>
-    );
 };
 
-const Contrib = ({ contrib: { contribTitle, contribNumber, contribPeriod }, isFirst = false }: { contrib: GlobalStat, isFirst?: boolean }) => {
-    const columnFirst = isFirst === true ? styles.contrib_column_first : ''
+const inlineStyle = `
+:root {
+    --color-calendar-graph-day-L1-bg: #b6e3ff;
+    --color-calendar-graph-day-L2-bg: #54aeff;
+    --color-calendar-graph-day-L3-bg: #0969da;
+    --color-calendar-graph-day-L4-bg: #0a3069;
+    --color-calendar-graph-day-bg: #ebedf0;
+}
+
+.calendar {
+    border: none !important;
+}
+
+.calendar .float-right {
+    font-weight: 100;
+    font-size: smaller;
+}`;
+
+const ReactGithubCalendar = () => {
     return (
-        <div className={`${styles.contrib_column} ${styles.table_column} ${columnFirst}`}>
-            <span className="text-muted">
-                {contribTitle}
-            </span>
-            <span className={styles.contrib_number}>
-                {contribNumber}
-            </span>
-            <span className="text-muted">
-                {contribPeriod}
-            </span>
-        </div>
+        <>
+            <style>{inlineStyle}</style>
+            <div className="calendar">
+                <Script
+                    src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"
+                    onReady={onLoad}
+                />
+            </div>
+        </>
     );
 };
 

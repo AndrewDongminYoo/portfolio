@@ -11,15 +11,16 @@ type route = keyof Endpoints;
 const repos: route = 'GET /user/repos';
 
 export const getRepositories = async () => {
-    return await octokit
+    return (await octokit
         .request(repos, {
             type: 'all',
             per_page: 100,
             direction: 'desc',
             sort: 'created',
         })
-        .then((value) => value.data
-            .map((repo) => reclusiveFilter(repo))) as Repository[];
+        .then((value) =>
+            value.data.map((repo) => reclusiveFilter(repo))
+        )) as Repository[];
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

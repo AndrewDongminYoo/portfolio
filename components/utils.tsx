@@ -43,10 +43,10 @@ export const Period = ({
     const diff2 = differenceInMonths(end, start) + 1;
     const diff3 = differenceInYears(end, start) + 1;
     let periodString = '';
-    if (diff > 2) { periodString = `(${diff}일)` };
-    if (diff1 > 2) { periodString = `(${diff1}주)` };
-    if (diff2 > 2) { periodString = `(${diff2}개월)` };
-    if (diff2 > 20) { periodString = `(${diff3}년)` };
+    if (diff > 2) periodString = `(${diff}일)`;
+    if (diff1 > 2) periodString = `(${diff1}주)`;
+    if (diff2 > 2) periodString = `(${diff2}개월)`;
+    if (diff2 > 20) periodString = `(${diff3}년)`;
     return (
         <span className={className}>
             기간: <DTElement dateTime={startAt} /> ~ <DTElement dateTime={endAt} /> {periodString}

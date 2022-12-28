@@ -252,35 +252,6 @@ blockquote small:before {
   content: "―";
 }
 
-.react-activity-calendar {
-  max-width: 844px;
-  float: right;
-  margin: 0.8rem;
-}
-
-.react-activity-calendar__count {
-  /* display: none; */
-}
-
-.react-activity-calendar__legend-colors {
-  font-size: 14px;
-  color: darkgray;
-}
-
-.react-activity-calendar__calendar {
-  height: auto;
-  min-width: 733px;
-  max-width: 100%;
-  overflow: visible;
-  display: block;
-}
-
-.react-activity-calendar__footer {
-  margin-top: 8px;
-  font-size: 14px;
-  display: flex;
-}
-
 @media print {
   @page {
     size: A4 portrait;
@@ -300,10 +271,6 @@ blockquote small:before {
 
   img {
     page-break-inside: avoid;
-  }
-
-  #__next > div > summary > section > a > img {
-    display: none;
   }
 
   h2,
@@ -349,4 +316,41 @@ blockquote small:before {
   tr {
     page-break-inside: avoid;
   }
+}
+
+.flex-column {
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+}
+
+.d-flex {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.pb-1,
+.py-1 {
+  padding-bottom: 0.25rem !important;
+}
+
+.pt-1,
+.py-1 {
+  padding-top: 0.25rem !important;
+}
+
+.pl-0,
+.px-0 {
+  padding-left: 0 !important;
+}
+
+.pr-0,
+.px-0 {
+  padding-right: 0 !important;
 }

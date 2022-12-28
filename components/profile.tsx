@@ -36,14 +36,21 @@ const ProfileBio = () => {
 const ContactBadge = ({ contact }: { contact: Contact }) => {
     const { type, link, label, value, color, icon } = contact;
     const { href, hostname, pathname, search } = new URL(link);
-    const src = `https://img.shields.io/badge/${label}-${value}-${color}?logo=${icon}&style=for-the-badge`;
-    const alt = `${type}:${hostname}${pathname}${search}`;
-    const unoptimized = true;
-    const style = { aspectRatio: 'auto', width: 'auto', height: 'auto' };
     return (
         <li className={type}>
             <Link href={href} target="_blank" rel="noopener">
-                <Image {...{ style, alt, src, unoptimized, width: '0', height: '0' }} />
+                <Image
+                    alt={`${type}:${hostname}${pathname}${search}`}
+                    src={`https://img.shields.io/badge/${label}-${value}-${color}?logo=${icon}&style=for-the-badge`}
+                    width="0"
+                    height="0"
+                    unoptimized={true}
+                    style={{
+                        aspectRatio: 'auto',
+                        width: 'auto',
+                        height: 'auto',
+                    }}
+                />
             </Link>
         </li>
     );

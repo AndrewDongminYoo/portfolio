@@ -39,7 +39,6 @@
 .year {
   font-size: 12px;
   line-height: 1.5;
-  position: relative;
   padding-left: 0.25rem;
   border-right: 0.0625rem solid #d7e2eb;
   color: #b2c0cc;
@@ -47,7 +46,6 @@
 
 .year:after {
   content: "";
-  position: absolute;
   left: -0.0625rem;
   top: calc(100% + 0.0625rem);
   width: 0.0625rem;
@@ -66,7 +64,6 @@
 .event_item {
   font-size: 12px;
   line-height: 1.5;
-  position: relative;
   z-index: 2;
   padding: 0.25rem 0.5rem;
   white-space: nowrap;
