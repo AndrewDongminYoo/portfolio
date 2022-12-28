@@ -1,27 +1,18 @@
 import { Activity, Education, Experience, Project, Resume } from '@typings/profile';
 import Post, { ResumeSection } from '@pages/posts/[id]';
+import ReactGitHubCalendar, { Contributions } from '@components/calendar';
 import { GetStaticProps } from 'next';
 import GridTimeline from '@components/timeline';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import { Theme } from 'react-activity-calendar';
 import _ from 'lodash';
-import dynamic from 'next/dynamic';
+import { fetchCalendar } from '@lib/activity';
 import { getSortedPostsData } from '@lib/posts';
+import { username } from '@data/constants';
 
-const ReactGitHubCalendar = dynamic(
-    () => import('react-github-calendar'),
-    { ssr: false }
-);
 
-const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
-    const theme: Theme = {
-        level4: '#0a3069',
-        level3: '#0969da',
-        level2: '#54aeff',
-        level1: '#b6e3ff',
-        level0: '#ebedf0',
-    }
+
+const Home = ({ allPostsData, contributions }: { allPostsData: Resume[]; contributions: Contributions }) => {
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type
@@ -41,9 +32,7 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
             </ResumeSection>
             <ResumeSection key={1} type="contributions">
                 <ReactGitHubCalendar
-                    theme={theme}
-                    username="AndrewDongminYoo"
-                    transformTotalCount={true}
+                    contributions={contributions}
                 />
             </ResumeSection>
             <ResumeSection key={2} type="experiences">
@@ -70,11 +59,13 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     );
 }
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
     const allPostsData = getSortedPostsData();
+    const contributions = await fetchCalendar(username);
     return {
         props: {
             allPostsData,
+            contributions,
         },
     };
 };

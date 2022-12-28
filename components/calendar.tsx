@@ -1,15 +1,22 @@
-import { GetStaticProps } from 'next';
+import { GlobalStat } from '@lib/activity';
 import React from 'react'
 import { Theme } from 'react-activity-calendar';
 import dynamic from 'next/dynamic';
-import { getSortedPostsData } from '@lib/posts';
+import styles from '@styles/calendar.module.css';
+import { username } from '@data/constants';
 
 const GitHubCalendar = dynamic(
     () => import('react-github-calendar'),
     { ssr: false }
 );
 
-const ReactGithubCalendar = () => {
+export interface Contributions {
+    firstCol: GlobalStat;
+    secondCol: GlobalStat;
+    thirdCol: GlobalStat;
+}
+
+const ReactGithubCalendar = ({ contributions }: { contributions: Contributions }) => {
     const theme: Theme = {
         level4: '#0a3069',
         level3: '#0969da',
@@ -17,59 +24,37 @@ const ReactGithubCalendar = () => {
         level1: '#b6e3ff',
         level0: '#ebedf0',
     }
+    const { firstCol, secondCol, thirdCol } = contributions;
     return (
-        <section>
+        <div className="calendar">
             <GitHubCalendar
                 theme={theme}
-                username="AndrewDongminYoo"
+                username={username}
                 transformTotalCount={true}
+                hideTotalCount
             />
-            <div className="contrib-column contrib-column-first table-column">
-                <span className="text-muted">
-                    Contributions in the last year
-                </span>
-                <span className="contrib-number">
-                    2149 total
-                </span>
-                <span className="text-muted">
-                    Dec 28, 2021 – Dec 27, 2022
-                </span>
-            </div>
-            <div className="contrib-column table-column">
-                <span className="text-muted">
-                    Longest streak
-                </span>
-                <span className="contrib-number">
-                    34 days
-                </span>
-                <span className="text-muted">
-                    June 19 – July 22
-                </span>
-            </div>
-            <div className="contrib-column table-column">
-                <span className="text-muted">
-                    Current streak
-                </span>
-                <span className="contrib-number">
-                    2 days
-                </span>
-                <span className="text-muted">
-                    December 25 – December 26
-                </span>
-            </div>
-        </section>
-    )
-}
+            <Contrib key={1} contrib={firstCol} isFirst={true} />
+            <Contrib key={2} contrib={secondCol} />
+            <Contrib key={3} contrib={thirdCol} />
+        </div>
+    );
+};
 
-
-
-export const getStaticProps: GetStaticProps = () => {
-    const allPostsData = getSortedPostsData();
-    return {
-        props: {
-            allPostsData,
-        },
-    };
+const Contrib = ({ contrib: { contribTitle, contribNumber, contribPeriod }, isFirst = false }: { contrib: GlobalStat, isFirst?: boolean }) => {
+    const columnFirst = isFirst === true ? styles.contrib_column_first : ''
+    return (
+        <div className={`${styles.contrib_column} ${styles.table_column} ${columnFirst}`}>
+            <span className="text-muted">
+                {contribTitle}
+            </span>
+            <span className={styles.contrib_number}>
+                {contribNumber}
+            </span>
+            <span className="text-muted">
+                {contribPeriod}
+            </span>
+        </div>
+    );
 };
 
 export default ReactGithubCalendar;

@@ -1,19 +1,16 @@
 import { OpenGraph, Repository } from '@typings/repos';
+import ReactGitHubCalendar, { Contributions } from '@components/calendar';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import Repo from '@pages/repos/[id]';
 import { ResumeSection } from '@pages/posts/[id]';
-import dynamic from 'next/dynamic';
+import { fetchCalendar } from '@lib/activity';
 import { getRepositories } from '@lib/repos';
 import { getTagsFromWebsite } from '@lib/metatag';
+import { username } from '@data/constants';
 
-const ReactGitHubCalendar = dynamic(
-    () => import('react-github-calendar'),
-    { ssr: false }
-);
-
-const Portfolio = ({ repositoryData, metaTagsData }: { repositoryData: Repository[]; metaTagsData: OpenGraph[] }) => {
+const Portfolio = ({ repositoryData, metaTagsData, contributions }: { repositoryData: Repository[]; metaTagsData: OpenGraph[]; contributions: Contributions; }) => {
     const sub = false;
     return (
         <Layout sub={sub} >
@@ -30,7 +27,7 @@ const Portfolio = ({ repositoryData, metaTagsData }: { repositoryData: Repositor
                 })}
             <ResumeSection type="contributions">
                 <ReactGitHubCalendar
-                    username="AndrewDongminYoo"
+                    contributions={contributions}
                 />
             </ResumeSection>
         </Layout>
@@ -38,13 +35,15 @@ const Portfolio = ({ repositoryData, metaTagsData }: { repositoryData: Repositor
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+    const contributions = await fetchCalendar(username)
     const repository = await getRepositories()
     const repositoryData = repository.filter((repo) => repo.visibility === 'public' && repo.folk !== true)
     const metaTagsData = await Promise.all(repository.map(async (repo) => await getTagsFromWebsite(repo.html_url)))
     return {
         props: {
             repositoryData,
-            metaTagsData
+            metaTagsData,
+            contributions
         },
     };
 };
