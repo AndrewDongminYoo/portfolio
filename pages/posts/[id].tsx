@@ -1,24 +1,11 @@
-import {
-    ActivityElement,
-    EducationElement,
-    ExperienceElement,
-    ProjectElement,
-} from '@components/resume';
+import { ActivityElement, EducationElement, ExperienceElement, ProjectElement } from '@components/resume';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { Resume, SectionType } from '@typings/profile';
 import { getAllPostIds, getPostData } from '@lib/posts';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import { ReactNode } from 'react';
-import { Resume } from '@typings/profile';
 import styles from '@styles/resume.module.css';
-
-type SectionType =
-    | 'experiences'
-    | 'projects'
-    | 'educations'
-    | 'activities'
-    | 'contributions'
-    | 'timeline';
 
 const Post = ({ data, sub = true }: { data: Resume; sub?: boolean }) => {
     const children = ((resume: Resume) => {

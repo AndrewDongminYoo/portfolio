@@ -23,7 +23,7 @@ const getContent = (rootElement: Pick<Document, 'querySelector'>, t: string) =>
         ?.getAttribute('content') ?? null;
 
 export async function getTagsFromWebsite(url: string): Promise<OpenGraph> {
-    if (!isDevelopment) {
+    if (isDevelopment) {
         const html = await fetch(url, { headers }).then((res) => res.text());
         const doc = parse(html);
         return ogTags.reduce((pre, tag) => {

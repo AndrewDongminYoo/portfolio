@@ -5,29 +5,15 @@ import {
     Project,
     Resume,
 } from '@typings/profile';
+import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
-import matter from 'gray-matter';
 import { parseISO } from 'date-fns';
 import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'posts');
 
 export const getSortedPostsData = () => {
-    // Get file names under /posts
-    const fileNames = fs.readdirSync(postsDirectory);
-    const allPostsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const id = fileName.replace(/\.md$/, '');
-
-        // Read markdown file as string
-        const fullPath = path.join(postsDirectory, fileName);
-        const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-        // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents);
-
-        return categorizing(id, matterResult);
-    });
+    const allPostsData = getAllIds().map((id) => getPostData(id));
     // Sort posts by date
     return allPostsData.sort((a, b) => {
         if (parseISO(a.startAt) < parseISO(b.startAt)) {
@@ -36,18 +22,17 @@ export const getSortedPostsData = () => {
     });
 };
 
-export const getAllPostIds = () => {
+const getAllIds = () => {
+    // Get file names under /posts
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => {
-        return {
-            params: {
-                id: fileName.replace(/\.md$/, ''),
-            },
-        };
+        // Remove '.md' from file name to get id
+        return fileName.replace(/\.md$/, '');
     });
-};
+}
 
 export const getPostData = (id: string) => {
+    // Read markdown file as string
     const fullPath = path.join(postsDirectory, `${id}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section
@@ -57,18 +42,20 @@ export const getPostData = (id: string) => {
 
 const categorizing = (
     id: string,
-    matterResult: matter.GrayMatterFile<string>
+    mattered: GrayMatterFile<string>
 ): Resume => {
     // Combine the data with the id
     const type = id.split('_').shift() as Resume['type'];
     switch (type) {
         case 'education':
-            return { ...(matterResult.data as Education), id, type };
+            return { ...(mattered.data as Education), id, type };
         case 'activity':
-            return { ...(matterResult.data as Activity), id, type };
+            return { ...(mattered.data as Activity), id, type };
         case 'experience':
-            return { ...(matterResult.data as Experience), id, type };
+            return { ...(mattered.data as Experience), id, type };
         case 'project':
-            return { ...(matterResult.data as Project), id, type };
+            return { ...(mattered.data as Project), id, type };
     }
 };
+
+export const getAllPostIds = () =>  getAllIds().map((id) => { return { params: { id } }; });

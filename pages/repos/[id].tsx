@@ -28,6 +28,10 @@ const Repo = ({
                     priority={true}
                     className={`scaledImageFitWidth img`}
                 />
+                <span className="ml-0">
+                    <span className="repo-language-color"></span>
+                    <span itemProp="programmingLanguage">Java</span>
+                </span>
                 {metaTags?.title}
             </Link>
         </div>
@@ -43,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const data = await getRepositories();
+    const data = getRepositories();
     const repository = data.find(
         (repo) => repo.id === Number(params?.id)
     ) as Repository;

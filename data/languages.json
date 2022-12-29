@@ -1,0 +1,270 @@
+[
+    {
+        "color": "rgb(0, 173, 216)",
+        "name": "Go"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    },
+    {
+        "color": "rgb(49, 120, 198)",
+        "name": "TypeScript"
+    },
+    {
+        "color": "rgb(222, 165, 132)",
+        "name": "Rust"
+    },
+    {
+        "color": "rgb(169, 123, 255)",
+        "name": "Kotlin"
+    },
+    {
+        "color": "rgb(53, 114, 165)",
+        "name": "Python"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(162, 112, 186)",
+        "name": "Julia"
+    },
+    {
+        "color": "rgb(112, 21, 22)",
+        "name": "Ruby"
+    },
+    {
+        "color": "rgb(36, 71, 118)",
+        "name": "CoffeeScript"
+    },
+    {
+        "color": "rgb(110, 74, 126)",
+        "name": "Elixir"
+    },
+    {
+        "color": "rgb(0, 1, 0)",
+        "name": "Crystal"
+    },
+    {
+        "color": "rgb(23, 134, 0)",
+        "name": "C#"
+    },
+    {
+        "color": "rgb(194, 45, 64)",
+        "name": "Scala"
+    },
+    {
+        "color": "rgb(23, 134, 0)",
+        "name": "C#"
+    },
+    {
+        "color": "rgb(176, 114, 25)",
+        "name": "Java"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(184, 57, 152)",
+        "name": "Erlang"
+    },
+    {
+        "color": "rgb(255, 194, 0)",
+        "name": "Nim"
+    },
+    {
+        "color": "rgb(4, 19, 59)",
+        "name": "WebAssembly"
+    },
+    {
+        "color": "rgb(94, 80, 134)",
+        "name": "Haskell"
+    },
+    {
+        "color": "rgb(94, 80, 134)",
+        "name": "Haskell"
+    },
+    {
+        "color": "rgb(23, 134, 0)",
+        "name": "C#"
+    },
+    {
+        "color": "rgb(245, 0, 0)",
+        "name": "Red"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(0, 202, 254)",
+        "name": "Frege"
+    },
+    {
+        "color": "rgb(0, 173, 216)",
+        "name": "Go"
+    },
+    {
+        "color": "rgb(30, 74, 236)",
+        "name": "Scheme"
+    },
+    {
+        "color": "rgb(94, 80, 134)",
+        "name": "Haskell"
+    },
+    {
+        "color": "rgb(59, 225, 51)",
+        "name": "OCaml"
+    },
+    {
+        "color": "rgb(94, 80, 134)",
+        "name": "Haskell"
+    },
+    {
+        "color": "rgb(67, 142, 255)",
+        "name": "Objective-C"
+    },
+    {
+        "color": "rgb(73, 152, 134)",
+        "name": "LiveScript"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(186, 89, 94)",
+        "name": "D"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    },
+    {
+        "color": "rgb(184, 69, 252)",
+        "name": "F#"
+    },
+    {
+        "color": "rgb(241, 224, 90)",
+        "name": "JavaScript"
+    },
+    {
+        "color": "rgb(0, 0, 251)",
+        "name": "Raku"
+    },
+    {
+        "color": "rgb(141, 198, 63)",
+        "name": "Chapel"
+    },
+    {
+        "color": "rgb(176, 114, 25)",
+        "name": "Java"
+    },
+    {
+        "color": "rgb(176, 114, 25)",
+        "name": "Java"
+    },
+    {
+        "color": "rgb(130, 147, 127)",
+        "name": "Gosu"
+    },
+    {
+        "color": "rgb(236, 145, 92)",
+        "name": "Zig"
+    },
+    {
+        "color": "rgb(223, 121, 0)",
+        "name": "Haxe"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    },
+    {
+        "color": "rgb(59, 225, 51)",
+        "name": "OCaml"
+    },
+    {
+        "color": "rgb(79, 135, 196)",
+        "name": "V"
+    },
+    {
+        "color": "rgb(0, 180, 171)",
+        "name": "Dart"
+    },
+    {
+        "color": "rgb(89, 103, 6)",
+        "name": "Smalltalk"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(176, 114, 25)",
+        "name": "Java"
+    },
+    {
+        "color": "rgb(241, 224, 90)",
+        "name": "JavaScript"
+    },
+    {
+        "color": "rgb(53, 114, 165)",
+        "name": "Python"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    },
+    {
+        "color": "rgb(0, 173, 216)",
+        "name": "Go"
+    },
+    {
+        "color": "rgb(176, 114, 25)",
+        "name": "Java"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(53, 114, 165)",
+        "name": "Python"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(222, 165, 132)",
+        "name": "Rust"
+    },
+    {
+        "color": "rgb(85, 85, 85)",
+        "name": "C"
+    },
+    {
+        "color": "rgb(79, 135, 196)",
+        "name": "V"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    },
+    {
+        "color": "rgb(241, 224, 90)",
+        "name": "JavaScript"
+    },
+    {
+        "color": "rgb(243, 75, 125)",
+        "name": "C++"
+    }
+]

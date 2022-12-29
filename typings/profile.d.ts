@@ -1,49 +1,53 @@
 export type Resume = Experience | Project | Education | Activity;
 
-type ResumeBase = {
-    id: string;
-    type: string;
-    index: number;
-    title: string;
-    name: string;
-    startAt: DateString;
-    endAt: DateString | null;
-    icon?: Emoji;
-    description: Description;
+export type SectionType =
+    | 'experiences'
+    | 'projects'
+    | 'educations'
+    | 'activities'
+    | 'contributions'
+    | 'timeline';
+
+type ResumeBase<type extends string> = {
+    id:                          string;
+    type:                        type;
+    index:                       number;
+    title:                       string;
+    name:                        string;
+    startAt:                     DateString;
+    endAt:                       DateString | null;
+    icon?:                       Emoji;
+    description:                 Description;
 };
 
-export type Experience = ResumeBase & {
-    type: 'experience';
-    name: string;
-    role: string;
-    website_url?: URLLike;
-    duration: number;
-    tags: Tag[];
-    projects: Project[];
-    link?: URLLike;
+export type Experience = ResumeBase<'experience'> & {
+    name:                        string;
+    role:                        string;
+    website_url?:                URLLike;
+    duration:                    number;
+    tags:                        Tag[];
+    projects:                    Project[];
+    link?:                       URLLike;
 };
 
-export type Project = ResumeBase & {
-    type: 'project';
-    repository?: URLLike;
-    website_url?: URLLike;
-    name: string;
-    tags: Tag[];
-    analyzedLink: URLLike;
-    teamDescription: Description;
-    roleDescriptions: Description;
+export type Project = ResumeBase<'project'> & {
+    repository?:                 URLLike;
+    website_url?:                URLLike;
+    name:                        string;
+    tags:                        Tag[];
+    analyzedLink:                URLLike;
+    teamDescription:             Description;
+    roleDescriptions:            Description;
 };
 
-export type Education = ResumeBase & {
-    type: 'education';
-    name: string;
-    major: string;
-    degree: string;
+export type Education = ResumeBase<'education'> & {
+    name:                        string;
+    major:                       string;
+    degree:                      string;
 };
 
-export type Activity = ResumeBase & {
-    type: 'activity';
-    website_url: URLLike;
+export type Activity = ResumeBase<'activity'> & {
+    website_url:                 URLLike;
 };
 
 type URLLike = string;

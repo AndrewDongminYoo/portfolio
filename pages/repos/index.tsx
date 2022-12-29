@@ -38,12 +38,9 @@ const Portfolio = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-    const repository = await getRepositories();
-    const repositoryData = repository.filter(
-        (repo) => repo.visibility === 'public' && repo.folk !== true
-    );
+    const repositoryData = getRepositories();
     const metaTagsData = await Promise.all(
-        repository.map(async (repo) => await getTagsFromWebsite(repo.html_url))
+        repositoryData.map(async (repo) => await getTagsFromWebsite(repo.html_url))
     );
     return {
         props: {

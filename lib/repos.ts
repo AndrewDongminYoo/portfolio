@@ -1,60 +1,36 @@
-import { Endpoints } from '@octokit/types';
-import { Octokit } from '@octokit/core';
 import { Repository } from '@typings/repos';
+import fs from 'fs';
+import { parseISO } from 'date-fns';
+import path from 'path';
 
-const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
-});
+const reposDirectory = path.join(process.cwd(), 'repos');
 
-type route = keyof Endpoints;
-
-const repos: route = 'GET /user/repos';
-
-export const getRepositories = async () => {
-    return (await octokit
-        .request(repos, {
-            type: 'all',
-            per_page: 100,
-            direction: 'desc',
-            sort: 'created',
-        })
-        .then((value) =>
-            value.data.map((repo) => reclusiveFilter(repo))
-        )) as Repository[];
+export const getRepositories = () => {
+    const allReposData = getAllIds().map((id) => getRepoData(id));
+    // Sort repos by date
+    return allReposData.sort((a, b) => {
+        if (parseISO(a.updated_at) < parseISO(b.updated_at)) {
+            return 1;
+        } else return -1;
+    });
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reclusiveFilter = (repo: { [x: string]: any }) => {
-    const copy = { ...repo };
-    Object.entries(copy).map(([key, value]) => {
-        const V = typeof value;
-        if (V === 'string') {
-            if (value.includes('{')) {
-                return delete copy[key];
-            } else if (value.endsWith('.git')) {
-                return delete copy[key];
-            } else {
-                return [key, value];
-            }
-        } else if (V === 'boolean' || V === 'number') {
-            return [key, value];
-        } else if (V === 'undefined' || value === null) {
-            return delete copy[key];
-        } else if (V === 'object') {
-            return [key, reclusiveFilter(value)];
-        } else {
-            return delete copy[key];
-        }
+const getAllIds = () => {
+    // Get file names under /repos
+    const fileNames = fs.readdirSync(reposDirectory);
+    return fileNames.map((fileName) => {
+        // Remove '.md' from file name to get id
+        return fileName.replace(/\.json$/, '');
     });
-    return copy;
+}
+
+export const getRepoData = (id: string) => {
+    // Read markdown file as string
+    const fullPath = path.join(reposDirectory, `${id}.json`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    return JSON.parse(fileContents) as Repository;
 };
-export const getReposIds = async () => {
-    const repositories = await getRepositories();
-    return repositories.map((repo) => {
-        return {
-            params: {
-                id: String(repo.id),
-            },
-        };
-    });
+
+export const getReposIds = () => {
+    return getRepositories().map((repo) => { return { params: { id: String(repo.id) } }; });
 };

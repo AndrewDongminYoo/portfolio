@@ -93,10 +93,10 @@ export const SlugIcon = (props: IconProps) => {
 };
 
 type IconProps = SVGAttributes<SVGElement> & {
-    icon: Icon;
-    color?: string;
-    size?: string | number;
-    className?: string;
+    icon:                        Icon;
+    color?:                      string;
+    size?:                       string | number;
+    className?:                  string;
 };
 
 export default Description;
