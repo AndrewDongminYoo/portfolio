@@ -80,6 +80,14 @@ export interface Repository {
     watchers:                    number;
     network_count:               number;
     subscribers_count:           number;
+    /**
+     * 메타태그 스크랩값
+     */
+    meta_tags?:                  OpenGraph;
+    /**
+     * 프로그래밍 언어
+     */
+    languages:                   Record<string, number>;
 }
 
 /**

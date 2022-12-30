@@ -34,5 +34,10 @@
     "Haxe": "rgb(223, 121, 0)",
     "V": "rgb(79, 135, 196)",
     "Dart": "rgb(0, 180, 171)",
-    "Smalltalk": "rgb(89, 103, 6)"
+    "Smalltalk": "rgb(89, 103, 6)",
+    "CSS": "#563d7c",
+    "HTML": "#e34c26",
+    "Jupyter Notebook": "#DA5B0B",
+    "Swift": "#F05138",
+    "Shell": "#89e051"
 }

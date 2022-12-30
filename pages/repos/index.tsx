@@ -1,19 +1,16 @@
-import { OpenGraph, Repository } from '@typings/repos';
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '@components/layout';
+import React from 'react';
 import ReactGitHubCalendar from '@components/calendar';
-import Repo from '@pages/repos/[id]';
+import Repo from '@components/resume/repository';
+import { Repository } from '@typings/repos';
 import { ResumeSection } from '@pages/posts/[id]';
-import { getRepositories } from '@lib/repos';
-import { getTagsFromWebsite } from '@lib/metatag';
+import { selfAPIAxios } from '@pages/fetcher';
 
 const Portfolio = ({
     repositoryData,
-    metaTagsData,
 }: {
     repositoryData: Repository[];
-    metaTagsData: OpenGraph[];
 }) => {
     const sub = false;
     return (
@@ -25,10 +22,7 @@ const Portfolio = ({
                 />
             </Head>
             {repositoryData.map((repo, id) => {
-                const meta = metaTagsData.find(
-                    (og) => og.url === repo.html_url
-                ) as OpenGraph;
-                return <Repo repository={repo} metaTags={meta} key={id} />;
+                return <Repo repository={repo} key={id} />;
             })}
             <ResumeSection type="contributions">
                 <ReactGitHubCalendar />
@@ -37,17 +31,21 @@ const Portfolio = ({
     );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-    const repositoryData = getRepositories();
-    const metaTagsData = await Promise.all(
-        repositoryData.map(async (repo) => await getTagsFromWebsite(repo.html_url))
-    );
-    return {
-        props: {
-            repositoryData,
-            metaTagsData,
-        },
-    };
-};
+Portfolio.getInitialProps = async () => {
+    const repositories = (
+        await selfAPIAxios
+            .get('/api/repos')
+            .then((res) => res.data)
+    ).repositories as Repository[];
+    const repositoryData = await Promise.all(
+        repositories.map(async (repo) => {
+            const { meta_tags, languages } = await selfAPIAxios
+                .get(`/api/langs?full_name=${repo.full_name}`)
+                .then((res) => res.data);
+            return { ...repo, meta_tags, languages }
+        })
+    )
+    return { repositoryData };
+}
 
 export default Portfolio;

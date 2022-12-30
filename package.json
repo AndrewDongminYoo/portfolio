@@ -18,6 +18,7 @@
     "dependencies": {
         "@icons-pack/react-simple-icons": "^6.2.0",
         "@octokit/core": "^4.1.0",
+        "axios": "^1.2.2",
         "date-fns": "^2.29.3",
         "gray-matter": "^4.0.3",
         "lodash": "^4.17.21",

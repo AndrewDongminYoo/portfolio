@@ -4,10 +4,11 @@ import { Octokit } from '@octokit/core';
 import fs from 'fs';
 import path from 'path';
 
-const repos = async (_: NextApiRequest, res: NextApiResponse) => {
+const repos = async (req: NextApiRequest, res: NextApiResponse) => {
+    const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+    const repos: keyof Endpoints = 'GET /user/repos';
+    const info: keyof Endpoints = 'GET /repos/{owner}/{repo}';
     const fetchRepositories = async () => {
-        const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-        const repos: keyof Endpoints = 'GET /user/repos';
         return (
             await octokit
                 .request(repos, {
@@ -15,11 +16,18 @@ const repos = async (_: NextApiRequest, res: NextApiResponse) => {
                     per_page: 100,
                     direction: 'desc',
                     sort: 'created',
-                })
-                .then((value) => value.data)
+                }).then((value) => value.data)
         ).filter((repo) => !repo.fork && repo.size > 5000 && repo.topics?.length !== 0)
             .map((repo) => reclusiveFilter(repo));
     };
+
+    const fetchRepository = async (owner: string, repo: string) => {
+        return await octokit
+            .request(info, { owner, repo })
+            .then(value => value.data)
+            .then(repo => reclusiveFilter(repo))
+    };
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const reclusiveFilter = (repo: { [x: string]: any }) => {
         Object.entries(repo).forEach(([key, value]) => {
@@ -59,12 +67,19 @@ const repos = async (_: NextApiRequest, res: NextApiResponse) => {
         return repositoryData.length
     }
 
-    if (_.method === 'GET') {
-        const repositories = await fetchRepositories();
-        res.status(200).json({ repositories });
-    } else if (_.method === 'POST') {
+    const { query, method } = req;
+    if (method === 'GET') {
+        if (typeof query.full_name === 'string') {
+            const [owner, repo] = query.full_name.split('/');
+            const repository = await fetchRepository(owner, repo);
+            res.status(200).json({ repository });
+        } else {
+            const repositories = await fetchRepositories();
+            res.status(200).json({ repositories });
+        }
+    } else if (method === 'POST') {
         await downloadJSON().then((length) => {
-            res.status(200).json({ length });
+            res.status(200).send({ length });
         })
     }
 };

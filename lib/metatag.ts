@@ -10,11 +10,13 @@ const ogTags = [
     'site_name',
     'image:alt',
 ];
+
 const headers = {
     Accept: 'application/vnd.github+json',
     Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
     'X-GitHub-Api-Version': '2022-11-28',
 };
+
 const getContent = (rootElement: Pick<Document, 'querySelector'>, t: string) =>
     rootElement
         .querySelector(`meta[property="og:${t}"]`)
