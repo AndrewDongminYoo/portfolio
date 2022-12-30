@@ -17,7 +17,7 @@ const repos = async (_: NextApiRequest, res: NextApiResponse) => {
                     sort: 'created',
                 })
                 .then((value) => value.data)
-        ).filter((repo) => !repo.fork && repo.size > 5000 && repo.topics?.length > 0)
+        ).filter((repo) => !repo.fork && repo.size > 5000 && repo.topics?.length !== 0)
             .map((repo) => reclusiveFilter(repo));
     };
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

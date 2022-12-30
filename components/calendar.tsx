@@ -1,4 +1,3 @@
-import 'github-calendar/dist/github-calendar-responsive.css';
 import React from 'react';
 import Script from 'next/script';
 import { username } from '@data/constants';
@@ -17,7 +16,7 @@ const onLoad = () => {
 };
 
 const inlineStyle = `
-:root {
+.calendar  {
     --color-calendar-graph-day-L1-bg: #b6e3ff;
     --color-calendar-graph-day-L2-bg: #54aeff;
     --color-calendar-graph-day-L3-bg: #0969da;
@@ -26,7 +25,7 @@ const inlineStyle = `
 }
 
 .calendar {
-    border: none !important;
+    border: none;
 }
 
 .calendar .float-right {
@@ -37,6 +36,7 @@ const inlineStyle = `
 const ReactGithubCalendar = () => {
     return (
         <>
+        <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"></link>
             <style>{inlineStyle}</style>
             <div className="calendar">
                 <Script

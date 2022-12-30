@@ -41,7 +41,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  color: #98a8b9;
+  color: #545482;
   line-height: 1.5rem;
 }
 
@@ -174,7 +174,7 @@
   font-size: 14px;
   line-height: 1.5;
   vertical-align: text-top;
-  color: #98a8b9;
+  color: #545482;
   margin-right: 0.0625rem;
 }
 

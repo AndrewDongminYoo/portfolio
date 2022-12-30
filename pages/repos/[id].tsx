@@ -16,7 +16,7 @@ const Repo = ({
         <div>
             <Link
                 aria-label={metaTags?.title ?? repository.name}
-                className={`uiScaledImageContainer _6m5 fbStoryAttachmentImage`}
+                className="uiScaledImageContainer _6m5 fbStoryAttachmentImage"
                 href={repository.html_url}
             >
                 <Image
@@ -26,7 +26,7 @@ const Repo = ({
                     height={270}
                     style={{ aspectRatio: 'auto 997 / 498', display: 'block' }}
                     priority={true}
-                    className={`scaledImageFitWidth img`}
+                    className="scaledImageFitWidth img"
                 />
                 <span className="ml-0">
                     <span className="repo-language-color"></span>

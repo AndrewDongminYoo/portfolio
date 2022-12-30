@@ -48,9 +48,9 @@ export const ResumeSection = ({
         <section className={styles.resume_card}>
             <div className={styles.resume_card_header}>
                 <div className={styles.resume_card_left}>
-                    <h4 className={styles.resume_card_header_title}>
+                    <h3 className={styles.resume_card_header_title}>
                         {getSubtitle(type)}
-                    </h4>
+                    </h3>
                 </div>
                 <div className={styles.resume_card_right}></div>
             </div>

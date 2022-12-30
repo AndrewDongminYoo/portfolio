@@ -1,30 +1,16 @@
-import { description, siteTitle } from '@data/constants';
-import Color from 'color-name';
-import Icon from '@typings/slug-icon';
+import { contacts, description, siteTitle } from '@data/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import contacts from '@data/contacts.json';
 import styles from '@styles/profile.module.css';
-
-type NamedColor = keyof typeof Color;
-
-type Contact = {
-    type: 'phone' | 'email' | 'github' | 'youtube';
-    link: string;
-    label: string;
-    value: string;
-    color: NamedColor;
-    icon: Icon;
-};
 
 const ProfileBio = () => {
     return (
         <section className={styles.information}>
-            <h1 className={styles.name}>{siteTitle}</h1>
+            <h2 className={styles.name}>{siteTitle}</h2>
             <ul className={styles.contacts}>
                 {contacts.map((contact, i) => {
                     return (
-                        <ContactBadge contact={contact as Contact} key={i} />
+                        <ContactBadge contact={contact} key={i} />
                     );
                 })}
             </ul>
@@ -33,18 +19,18 @@ const ProfileBio = () => {
     );
 };
 
-const ContactBadge = ({ contact }: { contact: Contact }) => {
-    const { type, link, label, value, color, icon } = contact;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: any; } }) => {
+    const { type, link, image } = contact
     const { href, hostname, pathname, search } = new URL(link);
     return (
         <li className={type}>
             <Link href={href} target="_blank" rel="noopener">
                 <Image
                     alt={`${type}:${hostname}${pathname}${search}`}
-                    src={`https://img.shields.io/badge/${label}-${value}-${color}?logo=${icon}&style=for-the-badge`}
+                    src={image}
                     width="0"
                     height="0"
-                    unoptimized={true}
                     style={{
                         aspectRatio: 'auto',
                         width: 'auto',

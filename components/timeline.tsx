@@ -56,7 +56,8 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                                     className={styles.event_item}
                                     style={{
                                         gridColumn: `${sPoint} / ${ePoint}`,
-                                        backgroundColor: colors[type],
+                                        backgroundColor: colors[type][0],
+                                        color: colors[type][1],
                                     }}
                                 >
                                     {name}
@@ -80,11 +81,11 @@ const getMonths = (length: number) => {
     return monthArray;
 };
 
-const colors: Record<string, string> = {
-    experience: '#34495e',
-    project: '#5d6d7e',
-    education: '#aeb6bf',
-    activity: '#85929e',
+const colors: Record<string, [string, string]> = {
+    experience: ['#34495e', '#A4B9CB'],
+    project: ['#5d6d7e', '#F2F2F2'],
+    education: ['#aeb6bf', '#474747'],
+    activity: ['#85929e', '#292929'],
 };
 
 export default GridTimeline;

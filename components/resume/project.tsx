@@ -1,6 +1,7 @@
 import Description, { Period, SlugIcon } from '@components/utils';
 import Link from 'next/link';
 import { Project } from '@typings/profile';
+import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
 const ProjectElement = ({ project }: { project: Project }) => {
@@ -11,15 +12,15 @@ const ProjectElement = ({ project }: { project: Project }) => {
     const startAt = project.startAt ?? '진행 예정';
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
-        <div className={`${styles.resume_card_item} project`}>
+        <div className={names(styles.resume_card_item, 'project')}>
             <div className={styles.resume_card_left}>
-                <h5 className={styles.resume_card_item_period}>
+                <h4 className={styles.resume_card_item_period}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
                         className={styles.period}
                     />
-                </h5>
+                </h4>
             </div>
             <div className={styles.resume_card_right}>
                 <Link
@@ -33,7 +34,7 @@ const ProjectElement = ({ project }: { project: Project }) => {
                         <li key={i}>{tag}</li>
                     ))}
                 </ul>
-                <div className={`${styles.markdown} ${styles.markdown_viewer}`}>
+                <div className={names(styles.markdown, styles.markdown_viewer)}>
                     <Description resume={project} />
                 </div>
                 <ul className={styles.list_contributions}>

@@ -14,7 +14,6 @@ body {
   font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
     "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
     "Noto Color Emoji";
-  font-size: 16px;
   background-color: white;
   color: #263747;
   line-height: 1.4;
@@ -64,7 +63,7 @@ h3 {
 
 h4 {
   -webkit-font-smoothing: antialiased;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 h5,
@@ -81,94 +80,33 @@ h6 {
 }
 
 h1 {
-  font-size: 40px;
   letter-spacing: -0.009em;
   line-height: 1.4;
-}
-
-@media (max-width: 767px) {
-  h1 {
-    font-size: 36px;
-  }
-}
-
-@media (max-width: 575px) {
-  h1 {
-    font-size: 32px;
-  }
 }
 
 h2 {
-  font-size: 32px;
   letter-spacing: -0.009em;
   line-height: 1.4;
-}
-
-@media (max-width: 767px) {
-  h2 {
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 575px) {
-  h2 {
-    font-size: 24px;
-  }
 }
 
 h3 {
-  font-size: 26px;
   letter-spacing: -0.009em;
   line-height: 1.4;
 }
 
-@media (max-width: 767px) {
-  h3 {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 575px) {
-  h3 {
-    font-size: 22px;
-  }
-}
-
 h4 {
-  font-size: 20px;
   letter-spacing: -0.009em;
   line-height: 1.6;
-}
-
-@media (max-width: 767px) {
-  h4 {
-    font-size: 18px;
-  }
 }
 
 li,
 h5 {
-  font-size: 16px;
   letter-spacing: -0.009em;
   line-height: 1.6;
 }
 
-@media (max-width: 767px) {
-  li,
-  h5 {
-    font-size: 15px;
-  }
-}
-
 h6 {
-  font-size: 14px;
   line-height: 1.5;
-}
-
-@media (max-width: 767px) {
-  h6 {
-    font-size: 13px;
-  }
 }
 
 p {
@@ -189,7 +127,6 @@ p {
 }
 
 small {
-  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -235,16 +172,9 @@ blockquote {
 }
 
 blockquote small {
-  font-size: 14px;
   line-height: 1.5;
   font-style: italic;
   font-weight: 400;
-}
-
-@media (max-width: 767px) {
-  blockquote small {
-    font-size: 13px;
-  }
 }
 
 blockquote small:before {

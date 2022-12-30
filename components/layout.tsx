@@ -36,11 +36,11 @@ const Layout = ({
                 <link rel="apple-touch-icon" href={favicon.src}></link>
             </Head>
             <summary className={styles.resume__summary}>
-                <h2 className={utilStyles.headingLg}>
+                <h1 className={utilStyles.headingLg}>
                     <Link href="/" className={utilStyles.colorInherit}>
                         {myName}
                     </Link>
-                </h2>
+                </h1>
                 <section className={styles.information}>
                     <Link href="/">
                         <Image

@@ -1,21 +1,22 @@
 import { Education } from '@typings/profile';
 import Link from 'next/link';
 import { Period } from '@components/utils';
+import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
 const EducationElement = ({ education }: { education: Education }) => {
     const startAt = education.startAt ?? '입학 예정';
     const endAt = education.startAt ? education.endAt ?? '재학 중' : '';
     return (
-        <div className={`${styles.resume_card_item} education`}>
+        <div className={names(styles.resume_card_item, 'education')}>
             <div className={styles.resume_card_left}>
-                <h5 className={styles.resume_card_item_period}>
+                <h4 className={styles.resume_card_item_period}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
                         className={styles.period}
                     />
-                </h5>
+                </h4>
             </div>
             <div className={styles.resume_card_right}>
                 <Link
@@ -24,10 +25,10 @@ const EducationElement = ({ education }: { education: Education }) => {
                 >
                     {education.title}
                 </Link>
-                <h5 className={styles.resume_card_item_text}>
+                <p className={styles.resume_card_item_text}>
                     <span>{education.major} 전공</span>
                     <span> • {education.degree}</span>
-                </h5>
+                </p>
             </div>
         </div>
     );

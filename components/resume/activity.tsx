@@ -1,21 +1,22 @@
 import Description, { Period } from '@components/utils';
 import { Activity } from '@typings/profile';
 import Link from 'next/link';
+import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
 const ActivityElement = ({ activity }: { activity: Activity }) => {
     const startAt = activity.startAt ?? '개발 예정';
     const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
-        <div className={`${styles.resume_card_item} activity`}>
+        <div className={names(styles.resume_card_item, 'activity')}>
             <div className={styles.resume_card_left}>
-                <h5 className={styles.resume_card_item_period}>
+                <h4 className={styles.resume_card_item_period}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
                         className={styles.period}
                     />
-                </h5>
+                </h4>
             </div>
             <div className={styles.resume_card_right}>
                 <Link
@@ -24,7 +25,7 @@ const ActivityElement = ({ activity }: { activity: Activity }) => {
                 >
                     {activity.title}
                 </Link>
-                <h5 className={styles.resume_card_item_text}>
+                <p className={styles.resume_card_item_text}>
                     <Link
                         href={activity.website_url ?? ''}
                         target="_blank"
@@ -32,8 +33,8 @@ const ActivityElement = ({ activity }: { activity: Activity }) => {
                     >
                         {activity.website_url}
                     </Link>
-                </h5>
-                <div className={`${styles.markdown} ${styles.markdown_viewer}`}>
+                </p>
+                <div className={names(styles.markdown, styles.markdown_viewer)}>
                     <Description resume={activity} />
                 </div>
             </div>
