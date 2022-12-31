@@ -55,5 +55,20 @@
         "push": true,
         "triage": true,
         "pull": true
+    },
+    "meta_tags": {
+        "url": "https://github.com/AndrewDongminYoo/TIL-of-BootCamp-Spring",
+        "type": "object",
+        "title": "GitHub - AndrewDongminYoo/TIL-of-BootCamp-Spring: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spring Converted Version",
+        "image": "https://opengraph.githubassets.com/6e3fc2fce79cc758bfbd6f12a3c7e7b8d475ed78388b778a71d64135b5dbd3ab/AndrewDongminYoo/TIL-of-BootCamp-Spring",
+        "description": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spring Converted Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Spring: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spri...",
+        "site_name": "GitHub",
+        "image:alt": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spring Converted Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Spring: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spri..."
+    },
+    "languages": {
+        "CSS": 128499,
+        "Java": 34265,
+        "HTML": 6926,
+        "JavaScript": 5285
     }
 }

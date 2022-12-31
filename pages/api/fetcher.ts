@@ -11,7 +11,7 @@ export const githubAxios = new Axios({
 });
 
 export const selfAPIAxios = new Axios({
-    baseURL: 'http://localhost:3000/',
+    baseURL: process.cwd(),
     method: 'GET',
     responseType: 'json',
     headers: {

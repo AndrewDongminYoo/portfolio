@@ -31,31 +31,31 @@ function getAllIds() {
     });
 };
 
-export const getPostData = (id: string) => {
+export const getPostData = (post: string) => {
     // Read markdown file as string
-    const fullPath = path.join(postsDirectory, `${id}.md`);
+    const fullPath = path.join(postsDirectory, `${post}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
-    return categorizing(id, matterResult);
+    return categorizing(post, matterResult);
 };
 
-const categorizing = (id: string, mattered: GrayMatterFile<string>): Resume => {
+const categorizing = (post: string, mattered: GrayMatterFile<string>): Resume => {
     // Combine the data with the id
-    const type = id.split('_').shift() as Resume['type'];
+    const type = post.split('_').shift() as Resume['type'];
     switch (type) {
         case 'education':
-            return { ...(mattered.data as Education), id, type };
+            return { ...(mattered.data as Education), id: post, type };
         case 'activity':
-            return { ...(mattered.data as Activity), id, type };
+            return { ...(mattered.data as Activity), id: post, type };
         case 'experience':
-            return { ...(mattered.data as Experience), id, type };
+            return { ...(mattered.data as Experience), id: post, type };
         case 'project':
-            return { ...(mattered.data as Project), id, type };
+            return { ...(mattered.data as Project), id: post, type };
     }
 };
 
 export const getAllPostIds = () =>
-    getAllIds().map((id) => {
-        return { params: { id } };
+    getAllIds().map((post) => {
+        return { params: { post } };
     });

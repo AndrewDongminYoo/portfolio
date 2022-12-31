@@ -1,11 +1,12 @@
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import React from 'react';
 import ReactGitHubCalendar from '@components/calendar';
-import Repo from '@components/resume/repository';
+import Repo from '@pages/repos/[repo]';
 import { Repository } from '@typings/repos';
-import { ResumeSection } from '@pages/posts/[id]';
-import { selfAPIAxios } from '@pages/fetcher';
+import ResumeSection from '@components/resume/resume';
+import { readRepositories } from '@lib/repos';
 
 export default function Portfolio({
     repositoryData,
@@ -29,19 +30,13 @@ export default function Portfolio({
             </ResumeSection>
         </Layout>
     );
-}
+};
 
-Portfolio.getInitialProps = async () => {
-    const repositories = (
-        await selfAPIAxios.get('/api/repos').then((res) => res.data)
-    ).repositories as Repository[];
-    const repositoryData = await Promise.all(
-        repositories.map(async (repo) => {
-            const { meta_tags, languages } = await selfAPIAxios
-                .get(`/api/langs?full_name=${repo.full_name}`)
-                .then((res) => res.data);
-            return { ...repo, meta_tags, languages };
-        })
-    );
-    return { repositoryData };
+export const getStaticProps: GetStaticProps = () => {
+    const repositoryData = readRepositories();
+    return {
+        props: {
+            repositoryData,
+        },
+    };
 };

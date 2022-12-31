@@ -1,4 +1,7 @@
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { readData, readReposIds } from '@lib/repos';
 import Image from 'next/image';
+import LanguageButton from '@components/resume/language';
 import Link from 'next/link';
 import { Repository } from '@typings/repos';
 import colorMap from '@data/lang_colors.module.json';
@@ -11,6 +14,8 @@ export default function Repo({ repository }: { repository: Repository }) {
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <div>
+            <Link href={`/repos/${repository.name}`}
+                >hellohello</Link>
             <Link aria-label={meta_tags?.title ?? name} href={html_url}>
                 <Image
                     alt={meta_tags?.['image:alt'] || name}
@@ -40,52 +45,21 @@ export default function Repo({ repository }: { repository: Repository }) {
             </ul>
         </div>
     );
-}
+};
 
-const LanguageButton = ({
-    language,
-    percent,
-    index,
-}: {
-    language: T;
-    percent: number;
-    index: number;
-}) => {
-    const backgroundColor = colorMap[language] as string;
-    const myRepoLanguage = `https://github.com/AndrewDongminYoo?tab=repositories&language=${language}`;
-    const trendingOfLang = `https://github.com/topics/${language}`;
+export const getStaticPaths: GetStaticPaths = () => {
+    const paths = readReposIds();
+    return {
+        paths,
+        fallback: false,
+    };
+};
 
-    return (
-        <li
-            style={{
-                display: 'inline-flex !important',
-                alignItems: 'center',
-                marginRight: '4px',
-            }}
-        >
-            <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
-                <span
-                    style={{
-                        backgroundColor,
-                        display: 'inline-block',
-                        width: '13px',
-                        height: '13px',
-                        borderRadius: '50%',
-                        marginRight: '4px',
-                    }}
-                    aria-hidden="true"
-                />
-                <span
-                    style={{
-                        fontWeight: '600',
-                        marginRight: '4px',
-                        color: '#24292f',
-                    }}
-                >
-                    {language}
-                </span>
-                <span>{percent.toFixed(1) + '%'}</span>
-            </Link>
-        </li>
-    );
+export const getStaticProps: GetStaticProps = ({ params }) => {
+    const repository = readData(params?.repo as string);
+    return {
+        props: {
+            repository,
+        },
+    };
 };

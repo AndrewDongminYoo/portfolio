@@ -57,5 +57,17 @@
         "push": true,
         "triage": true,
         "pull": true
+    },
+    "meta_tags": {
+        "url": "https://github.com/AndrewDongminYoo/my-first-react-native-chatting-app",
+        "type": "object",
+        "title": "GitHub - AndrewDongminYoo/my-first-react-native-chatting-app: 리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용.",
+        "image": "https://opengraph.githubassets.com/073db98ea74b2bbc981e43eaec3bf415017b35268fd12bd7d5dce8581f331b65/AndrewDongminYoo/my-first-react-native-chatting-app",
+        "description": "리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용. - GitHub - AndrewDongminYoo/my-first-react-native-chatting-app: 리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용.",
+        "site_name": "GitHub",
+        "image:alt": "리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용. - GitHub - AndrewDongminYoo/my-first-react-native-chatting-app: 리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용."
+    },
+    "languages": {
+        "JavaScript": 47189
     }
 }
