@@ -3,24 +3,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@styles/profile.module.css';
 
-const ProfileBio = () => {
+export default function ProfileBio() {
     return (
         <section className={styles.information}>
             <h2 className={styles.name}>{siteTitle}</h2>
             <ul className={styles.contacts}>
                 {contacts.map((contact, i) => {
-                    return (
-                        <ContactBadge contact={contact} key={i} />
-                    );
+                    return <ContactBadge contact={contact} key={i} />;
                 })}
             </ul>
             <p className={styles.description}>{description}</p>
         </section>
     );
-};
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: any; } }) => {
+const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: any; }; }) => {
     const { type, link, image } = contact
     const { href, hostname, pathname, search } = new URL(link);
     return (
@@ -41,5 +39,3 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
         </li>
     );
 };
-
-export default ProfileBio;

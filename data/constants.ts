@@ -1,7 +1,7 @@
-import email from "@public/images/contact_email.svg";
-import github from "@public/images/contact_github.svg";
-import phone from "@public/images/contact_phone.svg";
-import youtube from "@public/images/contact_youtube.svg";
+import email from '@public/images/contact_email.svg';
+import github from '@public/images/contact_github.svg';
+import phone from '@public/images/contact_phone.svg';
+import youtube from '@public/images/contact_youtube.svg';
 
 const username = 'AndrewDongminYoo';
 const myName = 'Andrew Dong-min, Yoo';
@@ -11,26 +11,25 @@ const description =
 const url = 'https://andrewdongminyoo.github.io/';
 const contacts = [
     {
-        type: "phone",
-        link: "tel:01035661857",
-        image: phone
+        type: 'phone',
+        link: 'tel:01035661857',
+        image: phone,
     },
     {
-        type: "email",
-        link: "mailto:ydm2790@gmail.com",
-        image: email
+        type: 'email',
+        link: 'mailto:ydm2790@gmail.com',
+        image: email,
     },
     {
-        type: "github",
-        link: "https://github.com/AndrewDongminYoo",
-        image: github
+        type: 'github',
+        link: 'https://github.com/AndrewDongminYoo',
+        image: github,
     },
     {
-        type: "youtube",
-        link: "https://www.youtube.com/watch?v=vOh90eJ7VdY",
-        image: youtube
-    }
-]
-
+        type: 'youtube',
+        link: 'https://www.youtube.com/watch?v=vOh90eJ7VdY',
+        image: youtube,
+    },
+];
 
 export { username, myName, siteTitle, description, url, contacts };

@@ -3,65 +3,89 @@ import Link from 'next/link';
 import { Repository } from '@typings/repos';
 import colorMap from '@data/lang_colors.module.json';
 
-type language = keyof typeof colorMap;
+type T = keyof typeof colorMap;
 
-const Repo = ({ repository }: { repository: Repository; }) => {
-    const languages = Object.entries(repository?.languages)
-    const totalCount = Object
-        .values(repository?.languages)
-        .reduce((pre, cur) => pre + cur, 0)
+export default function Repo({ repository }: { repository: Repository }) {
+    const { meta_tags, name, html_url, languages } = repository;
+    const languageIter = Object.entries(languages);
+    const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <div>
-            <Link
-                aria-label={repository.meta_tags?.title ?? repository.name}
-                href={repository.html_url}
-            >
+            <Link aria-label={meta_tags?.title ?? name} href={html_url}>
                 <Image
-                    alt={repository.meta_tags?.['image:alt'] || repository.name}
-                    src={repository.meta_tags?.image as string}
+                    alt={meta_tags?.['image:alt'] || name}
+                    src={meta_tags?.image as string}
                     width={540}
                     height={270}
                     style={{ aspectRatio: 'auto 997 / 498', display: 'block' }}
                     priority={true}
                 />
-                <ul style={{
-                    listStyle: 'none',
-                    padding: "0 0 0 0",
-                }}>
-                    {languages.map(([lang, count], i) => {
-                        return <LanguageButton lang={lang as language} per={(count / totalCount) * 100} key={i} />;
-                    })}
-                </ul>
             </Link>
+            <ul
+                style={{
+                    listStyle: 'none',
+                    padding: '0 0 0 0',
+                }}
+            >
+                {languageIter.map(([lang, count], id) => {
+                    return (
+                        <LanguageButton
+                            language={lang as T}
+                            percent={(count / totalCount) * 100}
+                            key={id}
+                            index={id}
+                        />
+                    );
+                })}
+            </ul>
         </div>
-    );
-};
-
-const LanguageButton = ({ lang, per }: { lang: string; per: number; }) => {
-    const backgroundColor = Object.keys(colorMap).includes(lang) ? colorMap[lang as language] : undefined;
-    // if (!backgroundColor) return null;
-    return (
-        <li style={{
-            display: 'inline-flex !important',
-            alignItems: 'center',
-            marginRight: '4px'
-        }}>
-            <span style={{
-                backgroundColor,
-                display: 'inline-block',
-                width: '13px',
-                height: '13px',
-                borderRadius: '50%',
-                marginRight: '4px'
-            }} aria-hidden="true" />
-            <span style={{
-                fontWeight: '600',
-                marginRight: '4px',
-                color: '#24292f',
-            }}>{lang}</span>
-            <span>{per.toFixed(1) + "%"}</span>
-        </li>
     );
 }
 
-export default Repo;
+const LanguageButton = ({
+    language,
+    percent,
+    index,
+}: {
+    language: T;
+    percent: number;
+    index: number;
+}) => {
+    const backgroundColor = colorMap[language] as string;
+    const myRepoLanguage = `https://github.com/AndrewDongminYoo?tab=repositories&language=${language}`;
+    const trendingOfLang = `https://github.com/topics/${language}`;
+
+    return (
+        <li
+            style={{
+                display: 'inline-flex !important',
+                alignItems: 'center',
+                marginRight: '4px',
+            }}
+        >
+            <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
+                <span
+                    style={{
+                        backgroundColor,
+                        display: 'inline-block',
+                        width: '13px',
+                        height: '13px',
+                        borderRadius: '50%',
+                        marginRight: '4px',
+                    }}
+                    aria-hidden="true"
+                />
+                <span
+                    style={{
+                        fontWeight: '600',
+                        marginRight: '4px',
+                        color: '#24292f',
+                    }}
+                >
+                    {language}
+                </span>
+                <span>{percent.toFixed(1) + '%'}</span>
+            </Link>
+        </li>
+    );
+};

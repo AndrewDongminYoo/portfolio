@@ -2,7 +2,7 @@ import React from 'react';
 import Script from 'next/script';
 import { username } from '@data/constants';
 
-const onLoad = () => {
+function onLoad() {
     if (
         'GitHubCalendar' in window &&
         typeof window.GitHubCalendar === 'function'
@@ -33,10 +33,13 @@ const inlineStyle = `
     font-size: smaller;
 }`;
 
-const ReactGithubCalendar = () => {
+export default function ReactGithubCalendar() {
     return (
         <>
-        <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"></link>
+            <link
+                rel="stylesheet"
+                href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+            ></link>
             <style>{inlineStyle}</style>
             <div className="calendar">
                 <Script
@@ -46,6 +49,4 @@ const ReactGithubCalendar = () => {
             </div>
         </>
     );
-};
-
-export default ReactGithubCalendar;
+}

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
-const ActivityElement = ({ activity }: { activity: Activity }) => {
+export default function ActivityElement({ activity }: { activity: Activity }) {
     const startAt = activity.startAt ?? '개발 예정';
     const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
@@ -40,6 +40,4 @@ const ActivityElement = ({ activity }: { activity: Activity }) => {
             </div>
         </div>
     );
-};
-
-export default ActivityElement;
+}

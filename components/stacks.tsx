@@ -1,7 +1,7 @@
 import stacks from '@data/stacks.json';
 import styles from '@styles/stacks.module.css';
 
-const StackList = () => {
+export default function StackList() {
     return (
         <section className={styles.stacks}>
             <div className={styles.stacks__primary}>
@@ -27,7 +27,7 @@ const StackList = () => {
             </div>
         </section>
     );
-};
+}
 
 const StackElement = ({ stack }: { stack: string }) => {
     return (
@@ -36,5 +36,3 @@ const StackElement = ({ stack }: { stack: string }) => {
         </li>
     );
 };
-
-export default StackList;

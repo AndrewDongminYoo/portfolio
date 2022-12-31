@@ -7,11 +7,11 @@ import { Repository } from '@typings/repos';
 import { ResumeSection } from '@pages/posts/[id]';
 import { selfAPIAxios } from '@pages/fetcher';
 
-const Portfolio = ({
+export default function Portfolio({
     repositoryData,
 }: {
     repositoryData: Repository[];
-}) => {
+}) {
     const sub = false;
     return (
         <Layout sub={sub}>
@@ -29,23 +29,19 @@ const Portfolio = ({
             </ResumeSection>
         </Layout>
     );
-};
+}
 
 Portfolio.getInitialProps = async () => {
     const repositories = (
-        await selfAPIAxios
-            .get('/api/repos')
-            .then((res) => res.data)
+        await selfAPIAxios.get('/api/repos').then((res) => res.data)
     ).repositories as Repository[];
     const repositoryData = await Promise.all(
         repositories.map(async (repo) => {
             const { meta_tags, languages } = await selfAPIAxios
                 .get(`/api/langs?full_name=${repo.full_name}`)
                 .then((res) => res.data);
-            return { ...repo, meta_tags, languages }
+            return { ...repo, meta_tags, languages };
         })
-    )
+    );
     return { repositoryData };
-}
-
-export default Portfolio;
+};

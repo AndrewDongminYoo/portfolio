@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSortedPostsData } from '@lib/posts';
 
-const hello = (_: NextApiRequest, res: NextApiResponse) => {
+export default function hello(_: NextApiRequest, res: NextApiResponse) {
     const postData = getSortedPostsData();
     res.status(200).json({ postData });
 };
-
-export default hello;

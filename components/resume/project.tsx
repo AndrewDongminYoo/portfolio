@@ -4,7 +4,7 @@ import { Project } from '@typings/profile';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
-const ProjectElement = ({ project }: { project: Project }) => {
+export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl =
         project.website_url ?? 'https://github.com/andrewdongminyoo';
     const repository =
@@ -73,6 +73,4 @@ const ProjectElement = ({ project }: { project: Project }) => {
             </div>
         </div>
     );
-};
-
-export default ProjectElement;
+}

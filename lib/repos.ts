@@ -15,14 +15,14 @@ export const getRepositories = () => {
     });
 };
 
-const getAllIds = () => {
+function getAllIds() {
     // Get file names under /repos
     const fileNames = fs.readdirSync(reposDirectory);
     return fileNames.map((fileName) => {
         // Remove '.md' from file name to get id
         return fileName.replace(/\.json$/, '');
     });
-}
+};
 
 export const getRepoData = (id: string) => {
     // Read markdown file as string
@@ -32,5 +32,7 @@ export const getRepoData = (id: string) => {
 };
 
 export const getReposIds = () => {
-    return getRepositories().map((repo) => { return { params: { id: String(repo.id) } }; });
+    return getRepositories().map((repo) => {
+        return { params: { id: String(repo.id) } };
+    });
 };

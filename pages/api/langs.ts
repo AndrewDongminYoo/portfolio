@@ -18,7 +18,7 @@ export default async function langs(req: NextApiRequest, res: NextApiResponse) {
     const { method, query } = req;
     const html_url = `https://github.com/${query.full_name}`;
     const languages_url = `https://api.github.com/repos/${query.full_name}/languages`;
-    const languages = (await octokit.request({ method, url: languages_url })).data;
+    const languages = await octokit.request({ method, url: languages_url }).then((res) => res.data);
     const meta_tags = await getTagsFromWebsite(html_url);
     res.status(200).json({ languages, meta_tags });
 }

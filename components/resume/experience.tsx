@@ -4,7 +4,11 @@ import Link from 'next/link';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
-const ExperienceElement = ({ experience }: { experience: Experience }) => {
+export default function ExperienceElement({
+    experience,
+}: {
+    experience: Experience;
+}) {
     const startAt = experience.startAt;
     const endAt = experience.endAt ?? '재직 중';
     return (
@@ -47,7 +51,7 @@ const ExperienceElement = ({ experience }: { experience: Experience }) => {
             </div>
         </div>
     );
-};
+}
 
 const Contribution = ({ project }: { project: Project }) => {
     const websiteUrl = project.website_url ?? 'https://cat-minzzi.tistory.com/';
@@ -92,12 +96,14 @@ const Contribution = ({ project }: { project: Project }) => {
                 </div>
             </h4>
             <div
-                className={names(styles.markdown, styles.markdown_viewer, styles.part_description)}
+                className={names(
+                    styles.markdown,
+                    styles.markdown_viewer,
+                    styles.part_description
+                )}
             >
                 <Description resume={project} />
             </div>
         </li>
     );
 };
-
-export default ExperienceElement;

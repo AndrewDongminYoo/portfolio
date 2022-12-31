@@ -49,7 +49,8 @@ export const Period = ({
     if (diff2 > 20) periodString = `(${diff3}년)`;
     return (
         <span className={className}>
-            기간: <DTElement dateTime={startAt} /> ~ <DTElement dateTime={endAt} /> {periodString}
+            {'기간: '}<DTElement dateTime={startAt} />{' ~ '}
+            <DTElement dateTime={endAt} /> {periodString}
         </span>
     );
 };

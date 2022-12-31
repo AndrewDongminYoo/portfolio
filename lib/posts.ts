@@ -22,14 +22,14 @@ export const getSortedPostsData = () => {
     });
 };
 
-const getAllIds = () => {
+function getAllIds() {
     // Get file names under /posts
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => {
         // Remove '.md' from file name to get id
         return fileName.replace(/\.md$/, '');
     });
-}
+};
 
 export const getPostData = (id: string) => {
     // Read markdown file as string
@@ -40,10 +40,7 @@ export const getPostData = (id: string) => {
     return categorizing(id, matterResult);
 };
 
-const categorizing = (
-    id: string,
-    mattered: GrayMatterFile<string>
-): Resume => {
+const categorizing = (id: string, mattered: GrayMatterFile<string>): Resume => {
     // Combine the data with the id
     const type = id.split('_').shift() as Resume['type'];
     switch (type) {
@@ -58,4 +55,7 @@ const categorizing = (
     }
 };
 
-export const getAllPostIds = () =>  getAllIds().map((id) => { return { params: { id } }; });
+export const getAllPostIds = () =>
+    getAllIds().map((id) => {
+        return { params: { id } };
+    });

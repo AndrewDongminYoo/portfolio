@@ -4,7 +4,11 @@ import { Period } from '@components/utils';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 
-const EducationElement = ({ education }: { education: Education }) => {
+export default function EducationElement({
+    education,
+}: {
+    education: Education;
+}) {
     const startAt = education.startAt ?? '입학 예정';
     const endAt = education.startAt ? education.endAt ?? '재학 중' : '';
     return (
@@ -32,6 +36,4 @@ const EducationElement = ({ education }: { education: Education }) => {
             </div>
         </div>
     );
-};
-
-export default EducationElement;
+}
