@@ -39,6 +39,7 @@ export default function ReactGithubCalendar() {
             <link
                 rel="stylesheet"
                 href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css"
+                referrerPolicy="strict-origin-when-cross-origin"
             ></link>
             <style>{inlineStyle}</style>
             <div className="calendar">

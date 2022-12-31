@@ -3,9 +3,6 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
 import { siteTitle } from '@data/constants';
 
-export function reportWebVitals(metric: NextWebVitalsMetric) {
-    console.debug(metric);
-}
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
@@ -22,6 +19,10 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Component {...pageProps} />
         </>
     );
+};
+
+App.reportWebVitals = (metric: NextWebVitalsMetric) => {
+    console.debug(metric);
 };
 
 export default App;

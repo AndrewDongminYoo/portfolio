@@ -6,7 +6,7 @@ import styles from '@styles/resume.module.css';
 
 export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl =
-        project.website_url ?? 'https://github.com/andrewdongminyoo';
+        project.website_url ?? 'https://andrewdongminyoo.github.io/';
     const repository =
         project.repository ?? 'https://github.com/andrewdongminyoo';
     const startAt = project.startAt ?? '진행 예정';

@@ -12,7 +12,7 @@ import Icon from '@typings/slug-icon';
 import { IconType } from '@icons-pack/react-simple-icons';
 import { iconMap } from '@typings/icon-map';
 
-export const DTElement = ({
+const DTElement = ({
     dateTime,
     fmt,
 }: {
