@@ -1,0 +1,71 @@
+@page {
+    size: A4 portrait;
+    margin: auto;
+}
+
+* {
+    box-sizing: border-box;
+    /* Chrome, Safari 6 – 15.3, Edge */
+    -webkit-print-color-adjust: exact !important;
+    /* Firefox 97+, Safari 15.4+ */
+    print-color-adjust: exact !important;
+}
+
+*,
+::after,
+::before {
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    min-width: 992px !important;
+}
+
+img {
+    page-break-inside: avoid;
+}
+
+h2,
+h3,
+p {
+    orphans: 3;
+    widows: 3;
+}
+
+h2,
+h3 {
+    page-break-after: avoid;
+}
+
+h2,
+h3,
+p {
+    orphans: 3;
+    widows: 3;
+}
+
+.container {
+    min-width: 992px !important;
+}
+
+.badge {
+    border: 1px solid #000;
+}
+
+thead {
+    display: table-header-group;
+}
+
+.table {
+    border-collapse: collapse !important;
+}
+
+.table td,
+.table th {
+    background-color: #fff !important;
+}
+
+tr {
+    page-break-inside: avoid;
+}

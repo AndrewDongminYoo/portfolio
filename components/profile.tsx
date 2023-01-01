@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { contacts, description, siteTitle } from '@data/constants';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,9 +18,12 @@ export default function ProfileBio() {
     );
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: any; }; }) => {
-    const { type, link, image } = contact
+const ContactBadge = ({
+    contact,
+}: {
+    contact: { type: string; link: string; image: any };
+}) => {
+    const { type, link, image } = contact;
     const { href, hostname, pathname, search } = new URL(link);
     return (
         <li className={type}>

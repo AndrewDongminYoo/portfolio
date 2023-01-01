@@ -45,10 +45,10 @@ const Layout = ({
                     <Link href="/">
                         <Image
                             src={Portrait}
-                            className={styles.profile_image}
-                            height={156}
-                            width={156}
                             alt={myName}
+                            width={156}
+                            height={156}
+                            className={styles.profile_image}
                         />
                     </Link>
                     <ProfileBio />
@@ -59,7 +59,7 @@ const Layout = ({
                 <section className={styles.body}>{children}</section>
                 {sub && (
                     <div className={styles.backToHome}>
-                        <Link href="/">← Back to home</Link>
+                        <Link href="/">🔙 홈으로가기</Link>
                     </div>
                 )}
             </main>

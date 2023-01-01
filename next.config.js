@@ -31,14 +31,26 @@ const nextConfig = {
     async headers() {
         return [
             {
-                source: '/',
+                source: '/:path*',
                 headers: [
                     {
                         key: 'Cache-Control',
                         value: 'public, s-maxage=10, stale-while-revalidate=59', // Matched parameters can be used in the value
                     },
-                ],
-            },
+                    {
+                        key: 'Referrer-Policy',
+                        value: 'origin-when-cross-origin'
+                    },
+                    {
+                        key: 'sec-fetch-mode',
+                        value: 'no-cors',
+                    },
+                    {
+                        key: 'sec-fetch-site',
+                        value: 'cross-site',
+                    }
+                ]
+            }
         ]
     },
 }

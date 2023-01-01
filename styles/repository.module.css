@@ -1,6 +1,17 @@
-.gh__thumbnail { 
+.gh__thumbnail {
     aspect-ratio: auto 997 / 498;
     display: block;
+}
+
+.gh__link {
+    box-sizing: border-box;
+    color: #c9d1d9;
+    color-scheme: dark;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 85%;
+    font-weight: 600;
+    line-height: 1.25;
+    word-wrap: break-word;
 }
 
 .language_array {

@@ -32,6 +32,8 @@ export default function Document() {
                     itemProp="title name"
                     content={siteTitle}
                 />
+                {/* eslint-disable-next-line @next/next/no-css-tags */}
+                <link rel="stylesheet" href="print.css" media="print" />
             </Head>
             <body>
                 <Main />

@@ -54,16 +54,16 @@ const reclusiveFilter = (repo: { [x: string]: any }) => {
 const fetchRepositories = async () => {
     const EP_REPOS: keyof Endpoints = 'GET /user/repos';
     const repositories = await octokit
-    .request(EP_REPOS, {
-        type: 'public',
-        per_page: 100,
-        direction: 'desc',
-        sort: 'created',
-    })
-    .then((value) => value.data);
+        .request(EP_REPOS, {
+            type: 'public',
+            per_page: 100,
+            direction: 'desc',
+            sort: 'created',
+        })
+        .then((value) => value.data);
     return repositories
-    .filter((_) => !_.fork && _.size > 5000 && _.topics?.length !== 0)
-    .map((repo) => reclusiveFilter(repo));
+        .filter((_) => !_.fork && _.size > 5000 && _.topics?.length !== 0)
+        .map((repo) => reclusiveFilter(repo));
 };
 
 /** 깃허브 API 통해 리포지토리 데이터 가져오기 */
@@ -81,16 +81,15 @@ const downloadJSON = async () => {
     const repositoryData = await Promise.all(
         repositories.map(async (repo) => {
             const { html_url, languages_url } = repo;
-            const languages = await octokit.request({ url: languages_url }).then((res) => res.data);
+            const languages = await octokit
+                .request({ url: languages_url })
+                .then((res) => res.data);
             const meta_tags = await getTagsFromWebsite(html_url);
             return { ...repo, meta_tags, languages };
         })
     );
     repositoryData.forEach((json) => {
-        const targetJsonPath = path.join(
-            reposDirectory,
-            `${json.name}.json`
-        );
+        const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
         fs.writeFile(
             targetJsonPath,
             JSON.stringify(json, null, 4),
@@ -111,7 +110,7 @@ function readReposIds() {
         const repo = fileName.replace(/\.json$/, '');
         return { params: { repo } };
     });
-};
+}
 
 /** 로컬 리포지토리 데이터 ID로 읽어오기 */
 const readData = (repo: string) => {
@@ -123,7 +122,9 @@ const readData = (repo: string) => {
 
 /** 로컬 리포지토리 리스트 데이터 읽어오기 */
 const readRepositories = () => {
-    const allReposData = readReposIds().map(({params: {repo}}) => readData(repo));
+    const allReposData = readReposIds().map(({ params: { repo } }) =>
+        readData(repo)
+    );
     // Sort repos by date
     return allReposData.sort((a, b) => {
         if (parseISO(a.updated_at) < parseISO(b.updated_at)) {
@@ -155,4 +156,11 @@ async function getTagsFromWebsite(url: string): Promise<OpenGraph> {
     }, {}) as unknown as OpenGraph;
 }
 
-export { downloadJSON, fetchRepositories, fetchRepository, readData, readReposIds,readRepositories };
+export {
+    downloadJSON,
+    fetchRepositories,
+    fetchRepository,
+    readData,
+    readReposIds,
+    readRepositories,
+};

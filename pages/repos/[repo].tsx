@@ -15,8 +15,9 @@ export default function Repo({ repository }: { repository: Repository }) {
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <div>
-            <Link href={`/repos/${repository.name}`}
-                >hellohello</Link>
+            <Link href={`/repos/${repository.name}`} className={styles.gh__link}>
+                링크를 클릭하면 리포지토리로 이동합니다.
+            </Link>
             <Link aria-label={meta_tags?.title ?? name} href={html_url}>
                 <Image
                     alt={meta_tags?.['image:alt'] || name}
@@ -41,7 +42,7 @@ export default function Repo({ repository }: { repository: Repository }) {
             </ul>
         </div>
     );
-};
+}
 
 export const getStaticPaths: GetStaticPaths = () => {
     const paths = readReposIds();

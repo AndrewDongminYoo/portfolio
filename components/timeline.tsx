@@ -1,8 +1,8 @@
 import { differenceInDays as diff, format, parse, parseISO } from 'date-fns';
 import { Period } from '@components/utils';
 import { Resume } from '@typings/profile';
-import { renderToString } from 'react-dom/server';
 import styles from '@styles/timeline.module.css';
+import { renderToString as toHtml } from 'react-dom/server';
 
 const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
     const monthsLabel = getMonths(11);
@@ -16,20 +16,30 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                 <div className={styles.timeline_wrap}>
                     <div className={styles.timeline_labels}>
                         {monthsLabel.map((month, i) => (
-                            <time key={i} className={styles.year} dateTime={month}>{month}</time>
+                            <time
+                                key={i}
+                                className={styles.year}
+                                dateTime={month}
+                            >
+                                {month}
+                            </time>
                         ))}
                     </div>
                     <div className={styles.grid_timeline}>
                         {timeline.map((action: Resume) => {
                             const { type, id, name, startAt, endAt } = action;
-                            const end = endAt ? parseISO(endAt) : new Date();
-                            const sPoint = Math.round(diff(parseISO(startAt), oldest) * pixel);
-                            const ePoint = Math.round(diff(end, oldest) * pixel);
+                            const end = endAt ? parseISO(endAt) : latest;
+                            const sPoint = Math.round(
+                                diff(parseISO(startAt), oldest) * pixel
+                            );
+                            const ePoint = Math.round(
+                                diff(end, oldest) * pixel
+                            );
                             if (sPoint <= 0 || ePoint <= 0) {
                                 return null;
                             } else {
                                 const gridColumn = `${sPoint} / ${ePoint}`;
-                                const dataContent = (
+                                const popOverHtml = (
                                     <Period
                                         startAt={startAt}
                                         endAt={format(end, 'yyyy-MM-dd')}
@@ -37,7 +47,11 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                                     />
                                 );
                                 const [backgroundColor, color] = colors[type];
-                                const style = { gridColumn, backgroundColor, color };
+                                const style = {
+                                    gridColumn,
+                                    backgroundColor,
+                                    color,
+                                };
                                 return (
                                     <div
                                         key={id}
@@ -46,7 +60,7 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                                         data-html={true}
                                         data-toggle="popover"
                                         data-placement="top"
-                                        data-content={renderToString(dataContent)}
+                                        data-content={toHtml(popOverHtml)}
                                         className={styles.event_item}
                                         style={style}
                                     >
