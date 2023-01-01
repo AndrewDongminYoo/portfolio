@@ -1,4 +1,4 @@
-import { differenceInDays, format, parse, parseISO } from 'date-fns';
+import { differenceInDays as diff, format, parse, parseISO } from 'date-fns';
 import { Period } from '@components/utils';
 import { Resume } from '@typings/profile';
 import { renderToString } from 'react-dom/server';
@@ -8,7 +8,7 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
     const monthsLabel = getMonths(11);
     const latest = new Date();
     const oldest = parse(monthsLabel[0], 'yy.MM', latest);
-    const pixel = 100 / differenceInDays(latest, oldest);
+    const pixel = 100 / diff(latest, oldest);
 
     return (
         <div className={styles.body}>
@@ -16,53 +16,44 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
                 <div className={styles.timeline_wrap}>
                     <div className={styles.timeline_labels}>
                         {monthsLabel.map((month, i) => (
-                            <time
-                                key={i}
-                                className={styles.year}
-                                dateTime={month}
-                            >
-                                {month}
-                            </time>
+                            <time key={i} className={styles.year} dateTime={month}>{month}</time>
                         ))}
                     </div>
                     <div className={styles.grid_timeline}>
                         {timeline.map((action: Resume) => {
                             const { type, id, name, startAt, endAt } = action;
-                            const start = parseISO(startAt);
                             const end = endAt ? parseISO(endAt) : new Date();
-                            const sPoint = Math.round(
-                                differenceInDays(start, oldest) * pixel
-                            );
-                            const ePoint = Math.round(
-                                differenceInDays(end, oldest) * pixel
-                            );
-                            if (sPoint <= 0 || ePoint <= 0) return null;
-                            const dataContent = (
-                                <Period
-                                    startAt={startAt}
-                                    endAt={format(end, 'yyyy-MM-dd')}
-                                    className={styles.text_mute}
-                                />
-                            );
-                            return (
-                                <div
-                                    key={id}
-                                    title={name}
-                                    data-original-title={name}
-                                    data-html="true"
-                                    data-toggle="popover"
-                                    data-placement="top"
-                                    data-content={renderToString(dataContent)}
-                                    className={styles.event_item}
-                                    style={{
-                                        gridColumn: `${sPoint} / ${ePoint}`,
-                                        backgroundColor: colors[type][0],
-                                        color: colors[type][1],
-                                    }}
-                                >
-                                    {name}
-                                </div>
-                            );
+                            const sPoint = Math.round(diff(parseISO(startAt), oldest) * pixel);
+                            const ePoint = Math.round(diff(end, oldest) * pixel);
+                            if (sPoint <= 0 || ePoint <= 0) {
+                                return null;
+                            } else {
+                                const gridColumn = `${sPoint} / ${ePoint}`;
+                                const dataContent = (
+                                    <Period
+                                        startAt={startAt}
+                                        endAt={format(end, 'yyyy-MM-dd')}
+                                        className={styles.text_mute}
+                                    />
+                                );
+                                const [backgroundColor, color] = colors[type];
+                                const style = { gridColumn, backgroundColor, color };
+                                return (
+                                    <div
+                                        key={id}
+                                        title={name}
+                                        data-original-title={name}
+                                        data-html={true}
+                                        data-toggle="popover"
+                                        data-placement="top"
+                                        data-content={renderToString(dataContent)}
+                                        className={styles.event_item}
+                                        style={style}
+                                    >
+                                        {name}
+                                    </div>
+                                );
+                            }
                         })}
                     </div>
                 </div>

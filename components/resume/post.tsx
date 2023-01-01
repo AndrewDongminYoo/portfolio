@@ -1,7 +1,7 @@
 import { ActivityElement, EducationElement, ExperienceElement, ProjectElement } from '@components/resume';
 import { ParsedUrlQuery } from 'node:querystring';
 import { Resume } from '@typings/profile';
-import { selfAPIAxios } from '@pages/api/fetcher';
+import { selfAPIAxios } from '@lib/fetcher';
 
 export default function Post({ data }: { data: Resume }) {
     switch (data.type) {

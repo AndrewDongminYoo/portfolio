@@ -1,0 +1,29 @@
+.gh__thumbnail { 
+    aspect-ratio: auto 997 / 498;
+    display: block;
+}
+
+.language_array {
+    list-style: none;
+    padding: 0 0 0 0;
+}
+
+.language__component {
+    display: inline-flex !important;
+    align-items: center;
+    margin-right: 4px;
+}
+
+.language_button {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    margin-right: 4px;
+}
+
+.language_name {
+    font-weight: 600;
+    margin-right: 4px;
+    color: #24292f;
+}

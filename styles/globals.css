@@ -284,3 +284,9 @@ blockquote small:before {
 .px-0 {
   padding-right: 0 !important;
 }
+
+img[src*='contact'] {
+    aspect-ratio: auto !important;
+    width: auto !important;
+    height: auto !important;
+}

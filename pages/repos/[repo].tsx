@@ -5,6 +5,7 @@ import LanguageButton from '@components/resume/language';
 import Link from 'next/link';
 import { Repository } from '@typings/repos';
 import colorMap from '@data/lang_colors.module.json';
+import styles from '@styles/repository.module.css';
 
 type T = keyof typeof colorMap;
 
@@ -20,18 +21,13 @@ export default function Repo({ repository }: { repository: Repository }) {
                 <Image
                     alt={meta_tags?.['image:alt'] || name}
                     src={meta_tags?.image as string}
+                    className={styles.gh__thumbnail}
                     width={540}
                     height={270}
-                    style={{ aspectRatio: 'auto 997 / 498', display: 'block' }}
                     priority={true}
                 />
             </Link>
-            <ul
-                style={{
-                    listStyle: 'none',
-                    padding: '0 0 0 0',
-                }}
-            >
+            <ul className={styles.language_array}>
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton

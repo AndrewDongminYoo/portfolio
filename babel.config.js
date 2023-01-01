@@ -24,6 +24,7 @@ module.exports = {
                     "@public": "./public",
                     "@styles": "./styles",
                     "@typings": "./typings",
+                    "@env": "./env.d.ts",
                 },
             },
         ],

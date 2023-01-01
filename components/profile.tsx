@@ -29,11 +29,6 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
                     src={image}
                     width="0"
                     height="0"
-                    style={{
-                        aspectRatio: 'auto',
-                        width: 'auto',
-                        height: 'auto',
-                    }}
                 />
             </Link>
         </li>

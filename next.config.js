@@ -28,6 +28,19 @@ const nextConfig = {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         unoptimized: true,
     },
+    async headers() {
+        return [
+            {
+                source: '/',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'public, s-maxage=10, stale-while-revalidate=59', // Matched parameters can be used in the value
+                    },
+                ],
+            },
+        ]
+    },
 }
 
 module.exports = nextConfig
