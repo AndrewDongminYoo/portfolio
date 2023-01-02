@@ -2,7 +2,7 @@ import '@styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
 
-const App = ({ Component, pageProps }: AppProps) => {
+export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
@@ -16,10 +16,8 @@ const App = ({ Component, pageProps }: AppProps) => {
             <Component {...pageProps} />
         </>
     );
-};
+}
 
 App.reportWebVitals = (metric: NextWebVitalsMetric) => {
     console.debug(metric);
 };
-
-export default App;

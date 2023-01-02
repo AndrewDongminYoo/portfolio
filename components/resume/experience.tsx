@@ -1,6 +1,8 @@
-import Description, { Period, SlugIcon } from '@components/utils';
 import { Experience, Project } from '@typings/profile';
+import Description from '@components/common/description';
 import Link from 'next/link';
+import Period from '@components/common/period';
+import SlugIcon from '@components/slug_icon';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 

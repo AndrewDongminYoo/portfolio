@@ -1,6 +1,7 @@
-import Description, { Period } from '@components/utils';
 import { Activity } from '@typings/profile';
+import Description from '@components/common/description';
 import Link from 'next/link';
+import Period from '@components/common/period';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 

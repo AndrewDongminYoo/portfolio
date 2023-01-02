@@ -8,7 +8,7 @@ import { parseISO } from 'date-fns';
 import path from 'path';
 
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-const reposDirectory = path.join(process.cwd(), 'repos');
+const reposDirectory = path.join(process.cwd(), 'data/repos');
 
 /** 깃허브에서 가져온 데이터 필터링 함수 */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -103,7 +103,7 @@ const downloadJSON = async () => {
 };
 /** 로컬 리포지토리 데이터 ID 리스트 읽기 */
 function readReposIds() {
-    // Get file names under /repos
+    // Get file names under /data/repos
     const fileNames = fs.readdirSync(reposDirectory);
     return fileNames.map((fileName) => {
         // Remove '.md' from file name to get id

@@ -13,7 +13,7 @@ function onLoad() {
             tooltips: true,
         });
     }
-};
+}
 
 const inlineStyle = `
 .calendar  {

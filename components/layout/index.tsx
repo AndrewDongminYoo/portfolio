@@ -3,17 +3,17 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Portrait from '@public/images/profile.jpg';
-import PrintButton from '@components/print';
-import ProfileBio from '@components/profile';
+import PrintButton from './print';
+import ProfileBio from './profile';
 import React from 'react';
-import StackList from '@components/stacks';
+import StackList from './stacks';
 import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
 import styles from '@styles/layout.module.css';
 import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
     const isHome = router.pathname === '/';
     return (
@@ -67,6 +67,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
             </main>
         </div>
     );
-};
-
-export default Layout;
+}

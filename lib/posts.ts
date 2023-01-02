@@ -10,7 +10,7 @@ import fs from 'fs';
 import { parseISO } from 'date-fns';
 import path from 'path';
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), 'data/posts');
 
 export const getSortedPostsData = () => {
     const allPostsData = getAllIds().map((id) => getPostData(id));
@@ -23,13 +23,13 @@ export const getSortedPostsData = () => {
 };
 
 function getAllIds() {
-    // Get file names under /posts
+    // Get file names under /data/posts
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => {
         // Remove '.md' from file name to get id
         return fileName.replace(/\.md$/, '');
     });
-};
+}
 
 export const getPostData = (post: string) => {
     // Read markdown file as string
@@ -40,7 +40,10 @@ export const getPostData = (post: string) => {
     return categorizing(post, matterResult);
 };
 
-const categorizing = (post: string, mattered: GrayMatterFile<string>): Resume => {
+const categorizing = (
+    post: string,
+    mattered: GrayMatterFile<string>
+): Resume => {
     // Combine the data with the id
     const type = post.split('_').shift() as Resume['type'];
     switch (type) {

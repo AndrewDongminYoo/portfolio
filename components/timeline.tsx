@@ -1,10 +1,10 @@
 import { differenceInDays as diff, format, parse, parseISO } from 'date-fns';
-import { Period } from '@components/utils';
+import Period from '@components/common/period';
 import { Resume } from '@typings/profile';
 import styles from '@styles/timeline.module.css';
 import { renderToString as toHtml } from 'react-dom/server';
 
-const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
+export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
     const monthsLabel = getMonths(11);
     const latest = new Date();
     const oldest = parse(monthsLabel[0], 'yy.MM', latest);
@@ -74,7 +74,7 @@ const GridTimeline = ({ timeline }: { timeline: Resume[] }) => {
             </div>
         </div>
     );
-};
+}
 
 const getMonths = (length: number) => {
     const now = new Date();
@@ -92,5 +92,3 @@ const colors: Record<string, [string, string]> = {
     education: ['#aeb6bf', '#474747'],
     activity: ['#85929e', '#292929'],
 };
-
-export default GridTimeline;

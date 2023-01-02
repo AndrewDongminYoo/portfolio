@@ -1,6 +1,6 @@
 import { Education } from '@typings/profile';
 import Link from 'next/link';
-import { Period } from '@components/utils';
+import Period from '@components/common/period';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';
 

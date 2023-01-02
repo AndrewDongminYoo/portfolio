@@ -1,10 +1,8 @@
-import {
-    ActivityElement,
-    EducationElement,
-    ExperienceElement,
-    ProjectElement,
-} from '@components/resume';
+import ActivityElement from './activity';
+import EducationElement from './education';
+import ExperienceElement from './experience';
 import { ParsedUrlQuery } from 'node:querystring';
+import ProjectElement from './project';
 import { Resume } from '@typings/profile';
 import { selfAPIAxios } from '@lib/fetcher';
 
@@ -31,9 +29,5 @@ export const getStaticProps = async ({
             .get(`/api/posts?id=${params.id}`)
             .then((res) => res.data)
     ).data as Resume[];
-    return {
-        props: {
-            data,
-        },
-    };
+    return { props: { data } };
 };

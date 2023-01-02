@@ -5,7 +5,7 @@ import React from 'react';
 import ReactGitHubCalendar from '@components/calendar';
 import Repo from '@pages/repos/[repo]';
 import { Repository } from '@typings/repos';
-import ResumeSection from '@components/resume/resume';
+import ResumeSection from '@components/section';
 import { readRepositories } from '@lib/repos';
 import { secondaryTitle } from '@data/constants';
 
@@ -35,9 +35,5 @@ export default function Portfolio({
 
 export const getStaticProps: GetStaticProps = () => {
     const repositoryData = readRepositories();
-    return {
-        props: {
-            repositoryData,
-        },
-    };
+    return { props: { repositoryData } };
 };

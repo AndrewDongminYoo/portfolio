@@ -11,7 +11,11 @@ export default function StackList() {
                 </div>
                 <ul className={styles.list_stack}>
                     {stacks.primaryTags.map((stack, i) => {
-                        return <StackElement stack={stack} key={i} />;
+                        return (
+                            <li className={styles.col_item} key={i}>
+                                <div className={styles.stack_item}>{stack}</div>
+                            </li>
+                        );
                     })}
                 </ul>
             </div>
@@ -21,18 +25,14 @@ export default function StackList() {
                 </div>
                 <ul className={styles.list_stack}>
                     {stacks.technicalTags.map((stack, i) => {
-                        return <StackElement stack={stack} key={i} />;
+                        return (
+                            <li className={styles.col_item} key={i}>
+                                <div className={styles.stack_item}>{stack}</div>
+                            </li>
+                        );
                     })}
                 </ul>
             </div>
         </section>
     );
 }
-
-const StackElement = ({ stack }: { stack: string }) => {
-    return (
-        <li className={styles.col_item}>
-            <div className={styles.stack_item}>{stack}</div>
-        </li>
-    );
-};

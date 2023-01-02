@@ -38,4 +38,4 @@ export default function ResumeSection({
             <div className={styles.resume_card_body}>{children}</div>
         </section>
     );
-};
+}

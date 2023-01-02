@@ -9,14 +9,14 @@ import { GetStaticProps } from 'next';
 import GridTimeline from '@components/timeline';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import Post from '@components/resume/post';
+import Post from '@components/resume';
 import ReactGitHubCalendar from '@components/calendar';
-import ResumeSection from '@components/resume/resume';
+import ResumeSection from '@components/section';
 import _ from 'lodash';
 import { getSortedPostsData } from '@lib/posts';
 import { primaryTitle } from '@data/constants';
 
-const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
+export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
     const groupedPosts = _.groupBy(
         allPostsData,
         (resume: Resume) => resume.type
@@ -62,15 +62,9 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
             </ResumeSection>
         </Layout>
     );
-};
+}
 
 export const getStaticProps: GetStaticProps = async () => {
     const allPostsData = getSortedPostsData();
-    return {
-        props: {
-            allPostsData,
-        },
-    };
+    return { props: { allPostsData } };
 };
-
-export default Home;

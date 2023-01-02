@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { readData, readReposIds } from '@lib/repos';
 import Image from 'next/image';
-import LanguageButton from '@components/resume/lang_btn';
-import LanguageStateBar from '@components/langs_bar';
+import LanguageButton from '@components/repository/lang_btn';
+import LanguageStateBar from '@components/repository/langs_bar';
 import Link from 'next/link';
 import { Repository } from '@typings/repos';
 import colorMap from '@data/lang_colors.module.json';
@@ -54,17 +54,10 @@ export default function Repo({ repository }: { repository: Repository }) {
 
 export const getStaticPaths: GetStaticPaths = () => {
     const paths = readReposIds();
-    return {
-        paths,
-        fallback: false,
-    };
+    return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = ({ params }) => {
     const repository = readData(params?.repo as string);
-    return {
-        props: {
-            repository,
-        },
-    };
+    return { props: { repository } };
 };

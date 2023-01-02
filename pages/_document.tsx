@@ -1,5 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { description, siteTitle, url } from '@data/constants';
+import { description, primaryTitle, url } from '@data/constants';
 
 export default function Document() {
     return (
@@ -17,7 +17,7 @@ export default function Document() {
                 />
                 <meta
                     name="og:title"
-                    content={siteTitle}
+                    content={primaryTitle}
                     itemProp="title name"
                 />
                 <meta
@@ -30,7 +30,7 @@ export default function Document() {
                     name="twitter:title"
                     property="og:title"
                     itemProp="title name"
-                    content={siteTitle}
+                    content={primaryTitle}
                 />
                 {/* eslint-disable-next-line @next/next/no-css-tags */}
                 <link rel="stylesheet" href="/styles/print.css" media="print" />
