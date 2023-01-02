@@ -5,16 +5,9 @@ import style from '@styles/layout.module.css';
 export default function PrintButton() {
     const { print } = style;
     return (
-        <div className={print} >
-            <button
-                className={print}
-                onClick={() => window.print()}
-            >
-                <Image
-                    className={print}
-                    alt={"print"}
-                    src={printButton}
-                />
+        <div className={print}>
+            <button className={print} onClick={() => window.print()}>
+                <Image className={print} alt={'print'} src={printButton} />
             </button>
         </div>
     );

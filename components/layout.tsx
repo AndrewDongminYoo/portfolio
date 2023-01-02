@@ -1,3 +1,4 @@
+import { ghProfile, myName } from '@data/constants';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,17 +9,13 @@ import React from 'react';
 import StackList from '@components/stacks';
 import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
-import { myName } from '@data/constants';
 import styles from '@styles/layout.module.css';
+import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
 
-const Layout = ({
-    children,
-    sub = false,
-}: {
-    children: React.ReactNode;
-    sub?: boolean;
-}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
+    const router = useRouter();
+    const isHome = router.pathname === '/';
     return (
         <div className={styles.resume__content}>
             <Head>
@@ -38,13 +35,16 @@ const Layout = ({
             </Head>
             <summary className={styles.resume__summary}>
                 <h1 className={utilStyles.headingLg}>
-                    <Link href="/" className={utilStyles.colorInherit}>
+                    <Link
+                        href={isHome ? ghProfile : '/'}
+                        className={utilStyles.colorInherit}
+                    >
                         {myName}
                     </Link>
                 </h1>
-                <PrintButton/>
+                <PrintButton />
                 <section className={styles.information}>
-                    <Link href="/">
+                    <Link href={isHome ? ghProfile : '/'}>
                         <Image
                             src={Portrait}
                             alt={myName}
@@ -59,7 +59,7 @@ const Layout = ({
             </summary>
             <main className={styles.resume__detail}>
                 <section className={styles.body}>{children}</section>
-                {sub && (
+                {!isHome && (
                     <div className={styles.backToHome}>
                         <Link href="/">🔙 홈으로가기</Link>
                     </div>

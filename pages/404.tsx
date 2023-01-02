@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ErrorPage() {
     return (
-        <Layout sub>
+        <Layout>
             <video
                 src="/medias/error.mp4"
                 preload="metadata"

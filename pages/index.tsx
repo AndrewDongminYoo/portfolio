@@ -1,4 +1,10 @@
-import { Activity, Education, Experience, Project, Resume } from '@typings/profile';
+import {
+    Activity,
+    Education,
+    Experience,
+    Project,
+    Resume,
+} from '@typings/profile';
 import { GetStaticProps } from 'next';
 import GridTimeline from '@components/timeline';
 import Head from 'next/head';
@@ -8,6 +14,7 @@ import ReactGitHubCalendar from '@components/calendar';
 import ResumeSection from '@components/resume/resume';
 import _ from 'lodash';
 import { getSortedPostsData } from '@lib/posts';
+import { primaryTitle } from '@data/constants';
 
 const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     const groupedPosts = _.groupBy(
@@ -21,7 +28,11 @@ const Home = ({ allPostsData }: { allPostsData: Resume[] }) => {
     return (
         <Layout>
             <Head>
-                <meta name="keywords" content="서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인" />
+                <meta
+                    name="keywords"
+                    content="서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인"
+                />
+                <title>{primaryTitle}</title>
             </Head>
             <ResumeSection key={0} type="timeline">
                 <GridTimeline timeline={allPostsData} />

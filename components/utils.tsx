@@ -12,13 +12,7 @@ import Icon from '@typings/slug-icon';
 import { IconType } from '@icons-pack/react-simple-icons';
 import { iconMap } from '@typings/icon-map';
 
-const DTElement = ({
-    dateTime,
-    fmt,
-}: {
-    dateTime: string;
-    fmt?: string;
-}) => {
+const DTElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
     const date = parseISO(dateTime);
     if (isValid(date)) {
         return <time dateTime={dateTime}>{format(date, fmt ?? 'yy-MM')}</time>;
@@ -49,7 +43,9 @@ export const Period = ({
     if (diff2 > 20) periodString = `(${diff3}년)`;
     return (
         <span className={className}>
-            {'기간: '}<DTElement dateTime={startAt} />{' ~ '}
+            {'기간: '}
+            <DTElement dateTime={startAt} />
+            {' ~ '}
             <DTElement dateTime={endAt} /> {periodString}
         </span>
     );

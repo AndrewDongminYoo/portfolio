@@ -7,20 +7,21 @@ import Repo from '@pages/repos/[repo]';
 import { Repository } from '@typings/repos';
 import ResumeSection from '@components/resume/resume';
 import { readRepositories } from '@lib/repos';
+import { secondaryTitle } from '@data/constants';
 
 export default function Portfolio({
     repositoryData,
 }: {
     repositoryData: Repository[];
 }) {
-    const sub = false;
     return (
-        <Layout sub={sub}>
+        <Layout>
             <Head>
                 <meta
                     name="keywords"
                     content="서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인"
                 />
+                <title>{secondaryTitle}</title>
             </Head>
             {repositoryData.map((repo, id) => {
                 return <Repo repository={repo} key={id} />;
@@ -30,7 +31,7 @@ export default function Portfolio({
             </ResumeSection>
         </Layout>
     );
-};
+}
 
 export const getStaticProps: GetStaticProps = () => {
     const repositoryData = readRepositories();

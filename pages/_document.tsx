@@ -33,7 +33,7 @@ export default function Document() {
                     content={siteTitle}
                 />
                 {/* eslint-disable-next-line @next/next/no-css-tags */}
-                <link rel="stylesheet" href="print.css" media="print" />
+                <link rel="stylesheet" href="/styles/print.css" media="print" />
             </Head>
             <body>
                 <Main />

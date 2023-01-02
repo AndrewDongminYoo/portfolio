@@ -1,8 +1,6 @@
 import '@styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
-import { siteTitle } from '@data/constants';
-
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
@@ -14,7 +12,6 @@ const App = ({ Component, pageProps }: AppProps) => {
                 />
                 <meta name="theme-color" content="#0969da" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-                <title>{siteTitle}</title>
             </Head>
             <Component {...pageProps} />
         </>

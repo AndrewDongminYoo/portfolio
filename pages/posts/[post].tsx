@@ -5,16 +5,16 @@ import Layout from '@components/layout';
 import Post from '@components/resume/post';
 import { Resume } from '@typings/profile';
 
-export default function PostPage({ data, sub = true }: { data: Resume; sub?: boolean }) {
+export default function PostPage({ data }: { data: Resume }) {
     return (
-            <Layout sub={sub}>
-                <Head>
-                    <title>{data.title}</title>
-                </Head>
-                <Post data={data} />
-            </Layout>
+        <Layout>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <Post data={data} />
+        </Layout>
     );
-};
+}
 
 export const getStaticPaths: GetStaticPaths = () => {
     const paths = getAllPostIds();

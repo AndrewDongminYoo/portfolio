@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { contacts, description, siteTitle } from '@data/constants';
+import { contacts, description, primaryTitle } from '@data/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '@styles/profile.module.css';
@@ -7,7 +7,7 @@ import styles from '@styles/profile.module.css';
 export default function ProfileBio() {
     return (
         <section className={styles.information}>
-            <h2 className={styles.name}>{siteTitle}</h2>
+            <h2 className={styles.name}>{primaryTitle}</h2>
             <ul className={styles.contacts}>
                 {contacts.map((contact, i) => {
                     return <ContactBadge contact={contact} key={i} />;
