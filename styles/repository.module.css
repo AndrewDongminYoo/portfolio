@@ -17,6 +17,7 @@
 .language_array {
     list-style: none;
     padding: 0 0 0 0;
+    margin-top: 0.5px;
 }
 
 .language__component {
@@ -37,4 +38,25 @@
     font-weight: 600;
     margin-right: 4px;
     color: #24292f;
+}
+
+.Progress {
+    background-color: var(--color-neutral-muted);
+    display: flex;
+    height: 11px;
+    outline: 1px solid #0000;
+    overflow: hidden;
+    border-collapse: collapse;
+    margin-top: 5.5px;
+    --Layout-gutter: 16px;
+}
+
+.Progress-item {
+    outline: 2px solid #0000;
+    border-collapse: collapse;
+    --Layout-gutter: 16px;
+}
+
+.Progress-item+.Progress-item {
+    margin-left: 2px;
 }

@@ -16,7 +16,7 @@ export default function LanguageButton({
     const backgroundColor = colorMap[language] as string;
     const myRepoLanguage = `https://github.com/AndrewDongminYoo?tab=repositories&language=${language}`;
     const trendingOfLang = `https://github.com/topics/${language}`;
-    const style = { backgroundColor }
+    const style = { backgroundColor };
     return (
         <li className={styles.language__component}>
             <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
@@ -25,11 +25,9 @@ export default function LanguageButton({
                     style={style}
                     aria-hidden={true}
                 />
-                <span className={styles.language_name}>
-                    {language}
-                </span>
+                <span className={styles.language_name}>{language}</span>
                 <span>{percent.toFixed(1) + '%'}</span>
             </Link>
         </li>
     );
-};
+}

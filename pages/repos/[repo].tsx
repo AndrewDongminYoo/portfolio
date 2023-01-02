@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { readData, readReposIds } from '@lib/repos';
 import Image from 'next/image';
-import LanguageButton from '@components/resume/language';
+import LanguageButton from '@components/resume/lang_btn';
+import LanguageStateBar from '@components/langs_bar';
 import Link from 'next/link';
 import { Repository } from '@typings/repos';
 import colorMap from '@data/lang_colors.module.json';
@@ -15,7 +16,10 @@ export default function Repo({ repository }: { repository: Repository }) {
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <div>
-            <Link href={`/repos/${repository.name}`} className={styles.gh__link}>
+            <Link
+                href={`/repos/${repository.name}`}
+                className={styles.gh__link}
+            >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
             <Link aria-label={meta_tags?.title ?? name} href={html_url}>
@@ -28,6 +32,10 @@ export default function Repo({ repository }: { repository: Repository }) {
                     priority={true}
                 />
             </Link>
+            <LanguageStateBar
+                languages={languageIter}
+                totalCount={totalCount}
+            />
             <ul className={styles.language_array}>
                 {languageIter.map(([lang, count], id) => {
                     return (

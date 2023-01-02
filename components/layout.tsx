@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Portrait from '@public/images/profile.jpg';
+import PrintButton from '@components/print';
 import ProfileBio from '@components/profile';
 import React from 'react';
 import StackList from '@components/stacks';
@@ -41,6 +42,7 @@ const Layout = ({
                         {myName}
                     </Link>
                 </h1>
+                <PrintButton/>
                 <section className={styles.information}>
                     <Link href="/">
                         <Image
