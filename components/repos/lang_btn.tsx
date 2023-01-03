@@ -1,15 +1,13 @@
+import colorMap, { Language } from './lang_colors';
 import Link from 'next/link';
-import colorMap from '@data/lang_colors.module.json';
 import styles from '@styles/repository.module.css';
-
-type T = keyof typeof colorMap;
 
 export default function LanguageButton({
     language,
     percent,
     index,
 }: {
-    language: T;
+    language: Language;
     percent: number;
     index: number;
 }) {

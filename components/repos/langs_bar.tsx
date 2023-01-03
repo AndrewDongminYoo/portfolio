@@ -1,4 +1,4 @@
-import colorMap from '@data/lang_colors.module.json';
+import colorMap, { Language } from './lang_colors';
 import names from 'classnames';
 import styles from '@styles/repository.module.css';
 
@@ -6,7 +6,7 @@ export default function LanguageStateBar({
     languages,
     totalCount,
 }: {
-    languages: [string, number][];
+    languages: [Language, number][];
     totalCount: number;
 }) {
     return (
@@ -24,11 +24,11 @@ export default function LanguageStateBar({
     );
 }
 
-export function LanguageBarPart({
+function LanguageBarPart({
     language,
     percent,
 }: {
-    language: string;
+    language: Language;
     percent: number;
 }) {
     const backgroundColor = colorMap[

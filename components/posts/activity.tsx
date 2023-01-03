@@ -1,4 +1,4 @@
-import { Activity } from '@typings/profile';
+import type { Activity } from '@typings/profile';
 import Description from '@components/common/description';
 import Link from 'next/link';
 import Period from '@components/common/period';

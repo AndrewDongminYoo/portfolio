@@ -1,8 +1,9 @@
 import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
-import { OpenGraph } from '@typings/repos';
-import { Repository } from '@typings/repos';
+import type { OpenGraph } from '@typings/repos';
+import type { Repository } from '@typings/repos';
 import fs from 'fs';
+import { githubAxios } from './fetcher';
 import { parse } from 'node-html-parser';
 import { parseISO } from 'date-fns';
 import path from 'path';
@@ -149,7 +150,7 @@ const getContent = (rootElement: Pick<Document, 'querySelector'>, t: string) =>
         ?.getAttribute('content') ?? null;
 
 async function getTagsFromWebsite(url: string): Promise<OpenGraph> {
-    const html = await fetch(url).then((res) => res.text());
+    const html = await githubAxios.get(url).then((res) => res.data);
     const doc = parse(html);
     return ogTags.reduce((pre, tag) => {
         return { ...pre, [tag]: getContent(doc, tag) };

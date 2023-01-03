@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { SectionType } from '@typings/profile';
+import type { SectionType } from '@typings/profile';
 import styles from '@styles/resume.module.css';
 
 export default function ResumeSection({

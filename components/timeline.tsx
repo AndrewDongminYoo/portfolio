@@ -1,6 +1,6 @@
 import { differenceInDays as diff, format, parse, parseISO } from 'date-fns';
 import Period from '@components/common/period';
-import { Resume } from '@typings/profile';
+import type { Resume } from '@typings/profile';
 import styles from '@styles/timeline.module.css';
 import { renderToString as toHtml } from 'react-dom/server';
 

@@ -1,5 +1,5 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { description, primaryTitle, url } from '@data/constants';
+import { description, primaryTitle, url } from '@constants';
 
 export default function Document() {
     return (

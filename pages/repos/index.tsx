@@ -1,13 +1,13 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import React from 'react';
 import ReactGitHubCalendar from '@components/calendar';
 import Repo from '@pages/repos/[repo]';
-import { Repository } from '@typings/repos';
+import type { Repository } from '@typings/repos';
 import ResumeSection from '@components/section';
 import { readRepositories } from '@lib/repos';
-import { secondaryTitle } from '@data/constants';
+import { secondaryTitle } from '@constants';
 
 export default function Portfolio({
     repositoryData,

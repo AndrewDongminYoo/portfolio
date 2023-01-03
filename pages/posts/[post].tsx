@@ -1,9 +1,9 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPostIds, getPostData } from '@lib/posts';
 import Head from 'next/head';
 import Layout from '@components/layout';
-import Post from '@components/resume';
-import { Resume } from '@typings/profile';
+import Post from '@components/posts';
+import type { Resume } from '@typings/profile';
 
 export default function PostPage({ data }: { data: Resume }) {
     return (

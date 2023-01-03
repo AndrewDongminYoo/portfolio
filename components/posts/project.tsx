@@ -1,7 +1,7 @@
 import Description from '@components/common/description';
 import Link from 'next/link';
 import Period from '@components/common/period';
-import { Project } from '@typings/profile';
+import type { Project } from '@typings/profile';
 import SlugIcon from '@components/slug_icon';
 import names from 'classnames';
 import styles from '@styles/resume.module.css';

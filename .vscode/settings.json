@@ -1,15 +1,22 @@
 {
     "cSpell.words": [
+        "authorable",
+        "bloglovin",
         "defaultlocale",
-        "Dongmin",
-        "elly",
-        "formatoid",
-        "JDBC",
-        "Monogo",
-        "pydantic",
-        "pymongo",
-        "Tracklists",
+        "googlecalendar",
+        "nextjs",
+        "signoff",
         "unoptimized"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "CStyleComment"
+    ],
+    "cSpell.files": [
+        "**/*",
+        "!data/repos/*.json",
+        "!data/posts/*.md",
+        "!typings/*icon*.ts",
+        "!components/repos/lang_colors.ts"
     ],
     "explorer.incrementalNaming": "disabled",
     "git.ignoreLimitWarning": true,

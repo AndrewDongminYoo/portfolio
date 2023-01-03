@@ -1,4 +1,4 @@
-import stacks from '@data/stacks.json';
+import { stacks } from '@constants';
 import styles from '@styles/stacks.module.css';
 
 export default function StackList() {

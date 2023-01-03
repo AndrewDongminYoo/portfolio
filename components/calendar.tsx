@@ -1,6 +1,6 @@
 import React from 'react';
 import Script from 'next/script';
-import { username } from '@data/constants';
+import { username } from '@constants';
 
 function onLoad() {
     if (

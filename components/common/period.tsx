@@ -9,7 +9,7 @@ import {
 } from 'date-fns';
 import React from 'react';
 
-const DTElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
+export const DatElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
     const date = parseISO(dateTime);
     if (isValid(date)) {
         return <time dateTime={dateTime}>{format(date, fmt ?? 'yy-MM')}</time>;
@@ -41,9 +41,9 @@ export default function Period({
     return (
         <span className={className}>
             {'기간: '}
-            <DTElement dateTime={startAt} />
+            <DatElement dateTime={startAt} />
             {' ~ '}
-            <DTElement dateTime={endAt} /> {periodString}
+            <DatElement dateTime={endAt} /> {periodString}
         </span>
     );
 }

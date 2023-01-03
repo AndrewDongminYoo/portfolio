@@ -1,14 +1,14 @@
-import { ghProfile, myName } from '@data/constants';
+import { ghProfile, myName } from '@constants';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Portrait from '@public/images/profile.jpg';
 import PrintButton from './print';
 import ProfileBio from './profile';
 import React from 'react';
 import StackList from './stacks';
 import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
+import portrait from '@public/images/profile.jpg';
 import styles from '@styles/layout.module.css';
 import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
@@ -46,7 +46,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <section className={styles.information}>
                     <Link href={isHome ? ghProfile : '/'}>
                         <Image
-                            src={Portrait}
+                            src={portrait}
                             alt={myName}
                             width={156}
                             height={156}

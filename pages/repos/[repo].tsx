@@ -1,18 +1,16 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { readData, readReposIds } from '@lib/repos';
 import Image from 'next/image';
-import LanguageButton from '@components/repository/lang_btn';
-import LanguageStateBar from '@components/repository/langs_bar';
+import type { Language } from '@components/repos/lang_colors';
+import LanguageButton from '@components/repos/lang_btn';
+import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
-import { Repository } from '@typings/repos';
-import colorMap from '@data/lang_colors.module.json';
+import type { Repository } from '@typings/repos';
 import styles from '@styles/repository.module.css';
-
-type T = keyof typeof colorMap;
 
 export default function Repo({ repository }: { repository: Repository }) {
     const { meta_tags, name, html_url, languages } = repository;
-    const languageIter = Object.entries(languages);
+    const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <div>
@@ -40,7 +38,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton
-                            language={lang as T}
+                            language={lang as Language}
                             percent={(count / totalCount) * 100}
                             key={id}
                             index={id}

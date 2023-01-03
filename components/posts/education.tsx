@@ -1,4 +1,4 @@
-import { Education } from '@typings/profile';
+import type { Education } from '@typings/profile';
 import Link from 'next/link';
 import Period from '@components/common/period';
 import names from 'classnames';

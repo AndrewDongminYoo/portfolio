@@ -20,7 +20,7 @@ module.exports = {
                     "@data": "./data",
                     "@lib": "./lib",
                     "@pages": "./pages",
-                    "@posts": "./posts",
+                    "constants": "./constants",
                     "@public": "./public",
                     "@styles": "./styles",
                     "@typings": "./typings",
