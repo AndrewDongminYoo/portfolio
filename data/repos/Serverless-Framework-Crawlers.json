@@ -70,13 +70,12 @@
         "pull": true
     },
     "meta_tags": {
-        "url": "https://github.com/AndrewDongminYoo/Serverless-Framework-Crawlers",
+        "image": "https://opengraph.githubassets.com/3d6708a821dea9231f315eac64b2545231b701a717099c7298f9ac5f0f8ed14f/AndrewDongminYoo/Serverless-Framework-Crawlers",
+        "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - AndrewDongminYoo/Serverless-Framework-Crawlers: Serverless Framework를 활용해 AWS Lambda Crawler 만들기",
-        "image": "https://opengraph.githubassets.com/3d6708a821dea9231f315eac64b2545231b701a717099c7298f9ac5f0f8ed14f/AndrewDongminYoo/Serverless-Framework-Crawlers",
-        "description": "Serverless Framework를 활용해 AWS Lambda Crawler 만들기. Contribute to AndrewDongminYoo/Serverless-Framework-Crawlers development by creating an account on GitHub.",
-        "site_name": "GitHub",
-        "image:alt": "Serverless Framework를 활용해 AWS Lambda Crawler 만들기. Contribute to AndrewDongminYoo/Serverless-Framework-Crawlers development by creating an account on GitHub."
+        "url": "https://github.com/AndrewDongminYoo/Serverless-Framework-Crawlers",
+        "description": "Serverless Framework를 활용해 AWS Lambda Crawler 만들기. Contribute to AndrewDongminYoo/Serverless-Framework-Crawlers development by creating an account on GitHub."
     },
     "languages": {
         "TypeScript": 115373,

@@ -73,13 +73,12 @@
         "pull": true
     },
     "meta_tags": {
-        "url": "https://github.com/JARYOGOOJO/52market.shop",
+        "image": "https://opengraph.githubassets.com/b3c111a298f07b76331c02d2a7f5b40181228515f7f8e6b80da1d4755854b489/JARYOGOOJO/52market.shop",
+        "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - JARYOGOOJO/52market.shop: 자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다.",
-        "image": "https://opengraph.githubassets.com/b3c111a298f07b76331c02d2a7f5b40181228515f7f8e6b80da1d4755854b489/JARYOGOOJO/52market.shop",
-        "description": "자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다. - GitHub - JARYOGOOJO/52market.shop: 자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다.",
-        "site_name": "GitHub",
-        "image:alt": "자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다. - GitHub - JARYOGOOJO/52market.shop: 자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다."
+        "url": "https://github.com/JARYOGOOJO/52market.shop",
+        "description": "자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다. - GitHub - JARYOGOOJO/52market.shop: 자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다."
     },
     "languages": {
         "Java": 149306

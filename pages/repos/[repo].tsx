@@ -22,7 +22,7 @@ export default function Repo({ repository }: { repository: Repository }) {
             </Link>
             <Link aria-label={meta_tags?.title ?? name} href={html_url}>
                 <Image
-                    alt={meta_tags?.['image:alt'] || name}
+                    alt={meta_tags?.title || name}
                     src={meta_tags?.image as string}
                     className={styles.gh__thumbnail}
                     width={540}

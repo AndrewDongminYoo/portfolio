@@ -1,3 +1,5 @@
+import { Meta } from 'html-metadata-parser';
+
 /**
  * A repository on GitHub.
  */
@@ -83,7 +85,7 @@ export interface Repository {
     /**
      * 메타태그 스크랩값
      */
-    meta_tags?:                  OpenGraph;
+    meta_tags?:                  Meta;
     /**
      * 프로그래밍 언어
      */
@@ -127,14 +129,4 @@ interface LicenseSimple {
     node_id:                     string;
     spdx_id:                     null | string;
     url:                         null | string;
-}
-
-export interface OpenGraph {
-    url:                         string | null;
-    type:                        string | null;
-    title:                       string | null;
-    image:                       string | null;
-    description:                 string | null;
-    site_name:                   string | null;
-    'image:alt':                 string | null;
 }

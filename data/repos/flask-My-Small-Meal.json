@@ -68,13 +68,12 @@
         "pull": true
     },
     "meta_tags": {
-        "url": "https://github.com/AndrewDongminYoo/flask-My-Small-Meal",
+        "image": "https://repository-images.githubusercontent.com/409405383/ad2269c0-52ec-438b-9083-357670981565",
+        "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - AndrewDongminYoo/flask-My-Small-Meal: 1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다.",
-        "image": "https://repository-images.githubusercontent.com/409405383/ad2269c0-52ec-438b-9083-357670981565",
-        "description": "1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다. - GitHub - AndrewDongminYoo/flask-My-Small-Meal: 1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다.",
-        "site_name": "GitHub",
-        "image:alt": "1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다. - GitHub - AndrewDongminYoo/flask-My-Small-Meal: 1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다."
+        "url": "https://github.com/AndrewDongminYoo/flask-My-Small-Meal",
+        "description": "1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다. - GitHub - AndrewDongminYoo/flask-My-Small-Meal: 1인 가구를 위한 배달 맛집을 소개하는 위치 맞춤형 페이지입니다!! 플라스크와 몽고디비를 이용했습니다."
     },
     "languages": {
         "JavaScript": 21778,

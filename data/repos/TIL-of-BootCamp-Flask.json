@@ -67,13 +67,12 @@
         "pull": true
     },
     "meta_tags": {
-        "url": "https://github.com/AndrewDongminYoo/TIL-of-BootCamp-Flask",
+        "image": "https://opengraph.githubassets.com/5a626cfd8e09f62b0b7bf1da7c37cfdddcb4391f76738861be642da88770a30d/AndrewDongminYoo/TIL-of-BootCamp-Flask",
+        "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - AndrewDongminYoo/TIL-of-BootCamp-Flask: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Original Flask Version",
-        "image": "https://opengraph.githubassets.com/5a626cfd8e09f62b0b7bf1da7c37cfdddcb4391f76738861be642da88770a30d/AndrewDongminYoo/TIL-of-BootCamp-Flask",
-        "description": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Original Flask Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Flask: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Origina...",
-        "site_name": "GitHub",
-        "image:alt": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Original Flask Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Flask: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Origina..."
+        "url": "https://github.com/AndrewDongminYoo/TIL-of-BootCamp-Flask",
+        "description": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Original Flask Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Flask: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Origina..."
     },
     "languages": {
         "CSS": 128499,
