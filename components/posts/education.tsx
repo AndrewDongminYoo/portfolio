@@ -12,7 +12,7 @@ export default function EducationElement({
     const startAt = education.startAt ?? '입학 예정';
     const endAt = education.startAt ? education.endAt ?? '재학 중' : '';
     return (
-        <div className={names(styles.resume_card_item, 'education')}>
+        <div className={names(styles.resume_card_item, education.type)}>
             <div className={styles.resume_card_left}>
                 <h4 className={styles.resume_card_item_period}>
                     <Period

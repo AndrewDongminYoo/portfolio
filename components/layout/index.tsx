@@ -10,11 +10,13 @@ import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
 import portrait from '@public/images/profile.jpg';
 import styles from '@styles/layout.module.css';
+import useMobileDetect from '@components/common/platform';
 import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const router = useRouter();
+    const [isMobile] = useMobileDetect();
     const isHome = router.pathname === '/';
     return (
         <div className={styles.resume__content}>
@@ -42,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         {myName}
                     </Link>
                 </h1>
-                <PrintButton />
+                <PrintButton visible={!isMobile} />
                 <section className={styles.information}>
                     <Link href={isHome ? ghProfile : '/'}>
                         <Image

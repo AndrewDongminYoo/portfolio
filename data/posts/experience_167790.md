@@ -21,7 +21,7 @@ projects:
     startAt: "2022-02-15"
     endAt: "2022-05-15"
     repository: "https://github.com/AndrewDongminYoo/mobile-index-ranking-reporter"
-    website_url: null
+    website_url: "https://cat-minzzi.tistory.com/87"
     icon: "📱"
     description:
       - "Python 3.10, Django 4.0, MySQL 8(AWS RDS) , Django-ninja, BeautifulSoup4 4.10 사용."

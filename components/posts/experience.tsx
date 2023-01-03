@@ -14,7 +14,7 @@ export default function ExperienceElement({
     const startAt = experience.startAt;
     const endAt = experience.endAt ?? '재직 중';
     return (
-        <div className={names(styles.resume_card_item, 'experience')}>
+        <div className={names(styles.resume_card_item, experience.type)}>
             <div className={styles.resume_card_left}>
                 <h4 className={styles.resume_card_item_period}>
                     <Period

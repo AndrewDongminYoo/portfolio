@@ -14,7 +14,7 @@ export default function ProjectElement({ project }: { project: Project }) {
     const startAt = project.startAt ?? '진행 예정';
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
-        <div className={names(styles.resume_card_item, 'project')}>
+        <div className={names(styles.resume_card_item, project.type)}>
             <div className={styles.resume_card_left}>
                 <h4 className={styles.resume_card_item_period}>
                     <Period

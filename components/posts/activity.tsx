@@ -9,7 +9,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
     const startAt = activity.startAt ?? '개발 예정';
     const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
-        <div className={names(styles.resume_card_item, 'activity')}>
+        <div className={names(styles.resume_card_item, activity.type)}>
             <div className={styles.resume_card_left}>
                 <h4 className={styles.resume_card_item_period}>
                     <Period
