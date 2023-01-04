@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import React from 'react';
 import printButton from '@public/images/print_button.svg';
 import style from '@styles/layout.module.css';
 

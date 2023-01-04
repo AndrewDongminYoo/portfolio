@@ -50,7 +50,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "18.2.0"
+          node-version: "18.12.1"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Set Production Specified Environment
         run: echo GITHUB_TOKEN=${{ secrets.GH_SECRET_KEY }} > .env

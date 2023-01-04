@@ -31,9 +31,7 @@ function LanguageBarPart({
     language: Language;
     percent: number;
 }) {
-    const backgroundColor = colorMap[
-        language as keyof typeof colorMap
-    ] as string;
+    const backgroundColor = colorMap[language] as string;
     const percentString = percent.toFixed(1) + '%';
     return (
         <span

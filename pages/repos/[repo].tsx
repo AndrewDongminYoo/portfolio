@@ -38,7 +38,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton
-                            language={lang as Language}
+                            language={lang}
                             percent={(count / totalCount) * 100}
                             key={id}
                             index={id}

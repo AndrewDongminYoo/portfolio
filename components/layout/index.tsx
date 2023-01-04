@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PrintButton from './print';
 import ProfileBio from './profile';
-import React from 'react';
+import { ReactNode } from 'react';
 import StackList from './stacks';
 import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
@@ -14,7 +14,7 @@ import useMobileDetect from '@components/common/platform';
 import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
     const router = useRouter();
     const [isMobile] = useMobileDetect();
     const isHome = router.pathname === '/';

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 const useMobileDetect = () => {
     const platform = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent
-    console.debug(platform);
     const [isMobile, setIsMobile] = useState(false);
     const checkItsMobile = (userAgent: NavigatorID['userAgent']) => {
         const isAndroid = Boolean(userAgent.match(/Android/i));

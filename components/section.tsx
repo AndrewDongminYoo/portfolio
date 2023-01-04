@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactElement } from 'react';
 import type { SectionType } from '@typings/profile';
 import styles from '@styles/resume.module.css';
 
@@ -6,7 +6,7 @@ export default function ResumeSection({
     children,
     type,
 }: {
-    children: ReactNode[] | ReactNode;
+    children: ReactElement[] | ReactElement;
     type: SectionType;
 }) {
     const subTitle = () => {

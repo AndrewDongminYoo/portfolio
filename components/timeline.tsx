@@ -1,6 +1,6 @@
 import { differenceInDays as diff, format, parseISO } from 'date-fns';
 import Period from '@components/common/period';
-import React from 'react';
+import { ReactElement } from 'react';
 import type { Resume } from '@typings/profile';
 import styles from '@styles/timeline.module.css';
 import { renderToString as toHtml } from 'react-dom/server';
@@ -25,7 +25,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
 
 const getMonthLabels = () => {
     const now = new Date();
-    const monthsLabels: React.ReactElement[] = [];
+    const monthsLabels: ReactElement[] = [];
     while (monthsLabels.length < 11) {
         const month = format(now, 'yy.MM')
         const label = <time key={month} className={styles.year} dateTime={month}>{month}</time>;
