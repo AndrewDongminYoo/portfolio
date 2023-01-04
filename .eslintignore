@@ -1,1 +1,7 @@
 *.config.js
+.build
+.github
+.next
+.vscode
+node_modules
+out

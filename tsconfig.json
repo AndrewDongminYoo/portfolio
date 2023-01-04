@@ -44,7 +44,13 @@
         }
     },
     "exclude": [
-        "node_modules"
+        "*.config.js",
+        ".build",
+        ".github",
+        ".next",
+        ".vscode",
+        "node_modules",
+        "out",
     ],
     "include": [
         "next-env.d.ts",
