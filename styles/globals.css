@@ -9,9 +9,6 @@ select {
 }
 
 body {
-    font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
-        "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
-        "Noto Color Emoji";
     background-color: white;
     color: #263747;
     line-height: 1.4;
@@ -45,9 +42,6 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
-        "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
-        "Noto Color Emoji";
     margin-top: 0;
     margin-bottom: 0;
     color: inherit;
@@ -67,16 +61,6 @@ h4 {
 h5,
 h6 {
     font-weight: 400;
-}
-
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-
-    h5,
-    h6 {
-        font-family: "roboto", "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
-            malgun gothic, "돋움", Dotum, sans-serif;
-    }
 }
 
 h1 {
@@ -110,33 +94,14 @@ h6 {
 }
 
 p {
-    font-family: "Inter", "NotoSansKR", "Helvetica Neue", Helvetica, Arial,
-        "맑은 고딕", malgun gothic, "돋움", Dotum, sans-serif, "Apple Color Emoji",
-        "Noto Color Emoji";
     margin-bottom: 8px;
     font-weight: 400;
     letter-spacing: -0.1px;
     line-height: 1.6;
 }
 
-@media screen and (-ms-high-contrast: active),
-(-ms-high-contrast: none) {
-    p {
-        font-family: "roboto", "Helvetica Neue", Helvetica, Arial, "맑은 고딕",
-            malgun gothic, "돋움", Dotum, sans-serif;
-    }
-}
-
 small {
     line-height: 1.5;
-}
-
-code,
-kbd,
-pre,
-samp {
-    font-family: Hack, Menlo, Monaco, Consolas, "Courier New", monospace,
-        "맑은 고딕", malgun gothic, "돋움", Dotum, Sans-Serif;
 }
 
 code {

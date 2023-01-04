@@ -6,6 +6,9 @@ const nextConfig = {
     productionBrowserSourceMaps: true,
     crossOrigin: "use-credentials",
     reactStrictMode: true,
+    compiler: {
+        removeConsole: true
+    },
     images: {
         remotePatterns: [
             {
