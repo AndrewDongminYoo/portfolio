@@ -1,9 +1,20 @@
 # *
 User-agent: *
+Allow: /repos
 Allow: /
+Disallow: /_next/static/chunks/pages/posts
+Disallow: /_next/static/chunks/pages/repos
+Disallow: /_next/static/chunks/pages
+Disallow: /_next/static/chunks
+Disallow: /_next/static/media
+Disallow: /_next/static/css
+Disallow: /_next/static/
+Disallow: /posts
+Disallow: /styles
 
 # Host
 Host: https://AndrewDongminYoo.github.io
 
 # Sitemaps
 Sitemap: https://AndrewDongminYoo.github.io/sitemap.xml
+Sitemap: https://AndrewDongminYoo.github.io/sitemap-0.xml
