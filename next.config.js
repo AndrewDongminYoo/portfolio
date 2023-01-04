@@ -5,9 +5,10 @@ const nextConfig = {
     },
     productionBrowserSourceMaps: true,
     crossOrigin: "use-credentials",
+    swcMinify: true,
     reactStrictMode: true,
     compiler: {
-        removeConsole: true
+        removeConsole: { exclude: ['error'] }
     },
     images: {
         remotePatterns: [

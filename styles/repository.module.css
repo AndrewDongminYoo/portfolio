@@ -8,7 +8,7 @@
     color: #c9d1d9;
     color-scheme: dark;
     font-size: 85%;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.25;
     word-wrap: break-word;
 }
@@ -34,7 +34,7 @@
 }
 
 .language_name {
-    font-weight: 600;
+    font-weight: 500;
     margin-right: 4px;
     color: #24292f;
 }

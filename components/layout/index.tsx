@@ -8,33 +8,18 @@ import { ReactNode } from 'react';
 import StackList from './stacks';
 import favicon from '@public/favicon.ico';
 import laundry from '@public/images/laundry.jpg';
-import localFont from '@next/font/local';
-import names from 'classnames';
 import portrait from '@public/images/profile.jpg';
 import styles from '@styles/layout.module.css';
-import useMobileDetect from '@components/common/platform';
+import useMobileDetect from '@hooks/usePlatform';
 import { useRouter } from 'next/router';
 import utilStyles from '@styles/utils.module.css';
-
-const noto = localFont({
-    preload: true,
-    display: 'swap',
-    src: [
-        { path: "../../public/fonts/NotoSansKR-Thin.otf", weight: '100', style: 'normal' },
-        { path: "../../public/fonts/NotoSansKR-Light.otf", weight: '300', style: 'normal' },
-        { path: "../../public/fonts/NotoSansKR-Regular.otf", weight: '400', style: 'normal' },
-        { path: "../../public/fonts/NotoSansKR-Medium.otf", weight: '500', style: 'normal' },
-        { path: "../../public/fonts/NotoSansKR-Bold.otf", weight: '700', style: 'normal' },
-        { path: "../../public/fonts/NotoSansKR-Black.otf", weight: '900', style: 'normal' },
-    ],
-});
 
 export default function Layout({ children }: { children: ReactNode; }) {
     const router = useRouter();
     const [isMobile] = useMobileDetect();
     const isHome = router.pathname === '/';
     return (
-        <div className={names(styles.resume__content, noto.className)}>
+        <div className={styles.resume__content}>
             <Head>
                 <meta
                     name="og:image"
@@ -85,12 +70,3 @@ export default function Layout({ children }: { children: ReactNode; }) {
         </div>
     );
 }
-
-Layout.getStaticProps = () => {
-    const { className } = noto;
-    return {
-        props: {
-            className
-        }
-    };
-};
