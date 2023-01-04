@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://AndrewDongminYoo.github.io
+
+# Sitemaps
+Sitemap: https://AndrewDongminYoo.github.io/sitemap.xml
