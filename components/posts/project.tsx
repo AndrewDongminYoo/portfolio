@@ -15,7 +15,7 @@ export default function ProjectElement({ project }: { project: Project }) {
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
         <div className={names(styles.resume_card_item, project.type)}>
-            <div className={names(styles.resume_card_left,)}>
+            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full",)}>
                 <h4 className={names(styles.resume_card_item_period,)}>
                     <Period
                         startAt={startAt}
@@ -24,7 +24,7 @@ export default function ProjectElement({ project }: { project: Project }) {
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right,)}>
+            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
                 <Link
                     className={names(styles.resume_card_item_label,)}
                     href={`/posts/${project.id}`}
@@ -39,7 +39,7 @@ export default function ProjectElement({ project }: { project: Project }) {
                 <div className={names(styles.markdown, styles.markdown_viewer)}>
                     <Description resume={project} />
                 </div>
-                <ul className={names(styles.list_contributions,)}>
+                <ul className={names(styles.list_contributions, "-ml-16 sm:ml-0")}>
                     <li className={names(styles.list_contribution_item,)}>
                         <SlugIcon
                             icon={'discord'}

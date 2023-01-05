@@ -1,67 +1,67 @@
 .stacks {
-  border-top: 0;
-  padding-top: 4mm;
-  margin-top: 8mm;
-  border-top: 0.1mm solid #000;
+    border-top: 0;
+    padding-top: 4mm;
+    margin-top: 8mm;
+    border-top: 0.1mm solid #000;
 }
 
 .stacks__primary .stack_item {
-  color: #fbfbfd;
-  background-color: #263747;
+    color: #fbfbfd;
+    background-color: #263747;
 }
 
 .resume_section_title {
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 500;
-  padding: 0;
-  margin: 0 0 0.125rem 0;
-  display: block;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+    padding: 0;
+    margin: 0 0 0.125rem 0;
+    display: block;
 }
 
 .count {
-  font-size: 12px;
-  line-height: 1.5;
-  margin-left: 0.25rem;
-  color: #545482;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-left: 0.25rem;
+    color: #545482;
 }
 
 .list_stack {
-  margin-bottom: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .stacks__primary .list_stack {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .list_stack:nth-child(n + 2) {
-  margin-top: 0.25rem;
+    margin-top: 0.25rem;
 }
 
 .col_item {
-  display: inline-block;
+    display: inline-block;
 }
 
 .stack_item {
-  transition-delay: initial;
-  transition-duration: 80ms;
-  transition-property: all;
-  transition-timing-function: ease-in-out;
-  color: #263747;
-  background-color: #e9ecf3;
-  max-width: 14rem;
-  line-height: 1rem;
-  font-size: 0.75rem;
-  font-weight: 400;
-  border: 0;
-  border-radius: 0.25rem;
-  white-space: nowrap;
-  padding: 0.125rem 0.375rem;
-  margin: 0 0.25rem 0 0;
-  text-overflow: ellipsis;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    transition-delay: initial;
+    transition-duration: 80ms;
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    color: #263747;
+    background-color: #e9ecf3;
+    max-width: 14rem;
+    line-height: 1rem;
+    font-size: 0.75rem;
+    font-weight: 400;
+    border: 0;
+    border-radius: 0.25rem;
+    white-space: nowrap;
+    padding: 0.125rem 0.375rem;
+    margin: 0 0.25rem 0 0;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }

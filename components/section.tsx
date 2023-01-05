@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import type { SectionType } from '@typings/profile';
 import names from 'classnames';
-import styles from '@styles/resume.module.css';
 
 export default function ResumeSection({
     children,
@@ -27,16 +26,16 @@ export default function ResumeSection({
         }
     };
     return (
-        <section className={names(styles.resume_card,)}>
-            <div className={names(styles.resume_card_header,)}>
-                <div className={names(styles.resume_card_left,)}>
-                    <h3 className={names(styles.resume_card_header_title,)}>
+        <section className={names("w-full rounded-lg border border-solid border-gray-300 p-6 my-6 mx-0")}>
+            <div className={names("w-full flex justify-between")}>
+                <div className={names("flex justify-start items-center w-32 max-sm:w-full max-h-8")}>
+                    <h3 className={names("font-medium text-base sm:text-sm leading-5 flex justify-start items-center")}>
                         {subTitle()}
                     </h3>
                 </div>
-                <div className={names(styles.resume_card_right,)}></div>
+                <div className={names("flex justify-end items-center w-[calc(100%-9rem)]")}></div>
             </div>
-            <div className={names(styles.resume_card_body,)}>{children}</div>
+            <div className={names("w-full")}>{children}</div>
         </section>
     );
 }

@@ -10,7 +10,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
     const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
         <div className={names(styles.resume_card_item, activity.type)}>
-            <div className={names(styles.resume_card_left,)}>
+            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full",)}>
                 <h4 className={names(styles.resume_card_item_period,)}>
                     <Period
                         startAt={startAt}
@@ -19,7 +19,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right,)}>
+            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
                 <Link
                     className={names(styles.resume_card_item_label,)}
                     href={`/posts/${activity.id}`}
@@ -35,7 +35,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
                         {activity.website_url}
                     </Link>
                 </p>
-                <div className={names(styles.markdown, styles.markdown_viewer)}>
+                <div className={names(styles.markdown, styles.markdown_viewer, "-ml-16 sm:ml-0")}>
                     <Description resume={activity} />
                 </div>
             </div>

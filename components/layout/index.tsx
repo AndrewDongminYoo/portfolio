@@ -11,13 +11,10 @@ import laundry from '@public/images/laundry.jpg';
 import names from 'classnames';
 import portrait from '@public/images/profile.jpg';
 import styles from '@styles/layout.module.css';
-import useMobileDetect from '@hooks/usePlatform';
 import { useRouter } from 'next/router';
-import utilStyles from '@styles/utils.module.css';
 
 export default function Layout({ children }: { children: ReactNode; }) {
     const router = useRouter();
-    const [isMobile] = useMobileDetect();
     const isHome = router.pathname === '/';
     return (
         <div className={names(styles.resume__content,)}>
@@ -36,31 +33,31 @@ export default function Layout({ children }: { children: ReactNode; }) {
                 />
                 <link rel="apple-touch-icon" href={favicon.src}></link>
             </Head>
-            <summary className={names(styles.resume__summary,)}>
-                <h1 className={names(utilStyles.headingLg,)}>
+            <summary className={names(styles.resume__summary, "text-gray-800 leading-snug overflow-x-hidden p-10 text-base block")}>
+                <h1 className={names("text-2xl leading-normal my-4 mx-0")}>
                     <Link
                         href={isHome ? ghProfile : '/'}
-                        className={names(utilStyles.colorInherit,)}
+                        className={names()}
                     >
                         {myName}
                     </Link>
                 </h1>
-                <PrintButton visible={!isMobile} />
-                <section className={names(styles.information,)}>
+                <PrintButton />
+                <section className={names("mt-0 p-0 text-base")}>
                     <Link href={isHome ? ghProfile : '/'}>
                         <Image
                             src={portrait}
                             alt={myName}
                             width={156}
                             height={156}
-                            className={names(styles.profile_image,)}
+                            className={names("rounded-full")}
                         />
                     </Link>
                     <ProfileBio />
                     <StackList />
                 </section>
             </summary>
-            <main className={names(styles.resume__detail,)}>
+            <main className={names(styles.resume__detail, "text-gray-800 leading-snug box-border border-0 border-solid border-gray-300 overflow-x-hidden p-10 text-base block pt-0")}>
                 <section className={names(styles.body,)}>{children}</section>
                 {!isHome && (
                     <div className={names(styles.backToHome,)}>

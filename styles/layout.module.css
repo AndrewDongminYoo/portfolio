@@ -9,40 +9,40 @@
 }
 
 .resume__summary {
-    overflow-x: hidden;
+    /* overflow-x: hidden;
     padding: 1rem;
     display: block;
-    font-size: 1rem;
+    font-size: 1rem; */
 }
 
 .resume__detail {
-    overflow-x: hidden;
+    /* overflow-x: hidden;
     padding: 1rem;
     display: block;
-    font-size: 1rem;
+    font-size: 1rem; */
 }
 
 .resume__content .resume__detail,
 .resume__content .resume__summary {
-    display: inline-block;
+    /* display: inline-block;
     padding: 2.5rem;
-    font-size: 1rem;
+    font-size: 1rem; */
 }
 
 @media (min-width: 1200px) {
 
     .resume__content .resume__detail,
     .resume__content .resume__summary {
-        min-height: 100vh;
+        /* min-height: 100vh;
         max-height: 100vh;
         overflow-y: auto;
         -ms-overflow-style: none;
-        scrollbar-width: none;
+        scrollbar-width: none; */
     }
 
     .resume__content .resume__detail::-webkit-scrollbar,
     .resume__content .resume__summary::-webkit-scrollbar {
-        display: none;
+        /* display: none; */
     }
 }
 
@@ -50,7 +50,7 @@
 
     .resume__content .resume__detail,
     .resume__content .resume__summary {
-        display: block;
+        /* display: block; */
     }
 }
 
@@ -58,7 +58,7 @@
 
     .resume__content .resume__detail,
     .resume__content .resume__summary {
-        padding: 1rem;
+        /* padding: 1rem; */
     }
 }
 
@@ -66,21 +66,21 @@
 
     .resume__content .resume__detail,
     .resume__content .resume__summary {
-        overflow-x: hidden;
+        /* overflow-x: hidden; */
     }
 }
 
 @media (min-width: 1200px) {
     .resume__content .resume__summary {
-        top: 0;
+        /* top: 0;
         width: 30rem;
-        padding-bottom: 4rem;
+        padding-bottom: 4rem; */
     }
 }
 
 @media (max-width: 1199px) {
     .resume__content .resume__summary footer {
-        display: none;
+        /* display: none; */
     }
 }
 
@@ -91,12 +91,12 @@
 }
 
 .resume__content .resume__detail {
-    padding-top: unset;
+    /* padding-top: unset; */
 }
 
 @media (min-width: 1200px) {
     .resume__content .resume__detail {
-        width: calc(100% - 30rem);
+        /* width: calc(100% - 30rem); */
     }
 }
 

@@ -13,7 +13,7 @@ export default function EducationElement({
     const endAt = education.startAt ? education.endAt ?? '재학 중' : '';
     return (
         <div className={names(styles.resume_card_item, education.type)}>
-            <div className={names(styles.resume_card_left,)}>
+            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full", "w-32 max-sm:w-full",)}>
                 <h4 className={names(styles.resume_card_item_period,)}>
                     <Period
                         startAt={startAt}
@@ -22,7 +22,7 @@ export default function EducationElement({
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right,)}>
+            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
                 <Link
                     className={names(styles.resume_card_item_label,)}
                     href={`/posts/${education.id}`}
