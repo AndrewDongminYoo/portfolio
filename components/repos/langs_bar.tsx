@@ -10,7 +10,7 @@ export default function LanguageStateBar({
     totalCount: number;
 }) {
     return (
-        <span data-view-component={true} className={styles.Progress}>
+        <span data-view-component={true} className={names(styles.Progress,)}>
             {languages.map(([language, count], id) => {
                 return (
                     <LanguageBarPart

@@ -56,6 +56,6 @@
     --Layout-gutter: 16px;
 }
 
-.Progress-item+.Progress-item {
+.Progress-item + .Progress-item {
     margin-left: 2px;
 }

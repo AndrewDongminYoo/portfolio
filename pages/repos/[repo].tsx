@@ -6,6 +6,7 @@ import LanguageButton from '@components/repos/lang_btn';
 import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
 import type { Repository } from '@typings/repos';
+import names from 'classnames';
 import styles from '@styles/repository.module.css';
 
 export default function Repo({ repository }: { repository: Repository }) {
@@ -16,7 +17,7 @@ export default function Repo({ repository }: { repository: Repository }) {
         <div>
             <Link
                 href={`/repos/${repository.name}`}
-                className={styles.gh__link}
+                className={names(styles.gh__link,)}
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
@@ -24,7 +25,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 <Image
                     alt={meta_tags?.title || name}
                     src={meta_tags?.image as string}
-                    className={styles.gh__thumbnail}
+                    className={names(styles.gh__thumbnail,)}
                     width={540}
                     height={270}
                     priority={true}
@@ -34,7 +35,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 languages={languageIter}
                 totalCount={totalCount}
             />
-            <ul className={styles.language_array}>
+            <ul className={names(styles.language_array,)}>
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton

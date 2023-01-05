@@ -60,8 +60,8 @@
     width: calc(100% - 9rem);
 }
 
-.resume_card_right>ul:last-child,
-.resume_card_right>div:last-child {
+.resume_card_right > ul:last-child,
+.resume_card_right > div:last-child {
     margin-left: -4rem;
 }
 
@@ -75,11 +75,11 @@
     align-items: center;
 }
 
-.resume_card_item_label+.resume_card_item_text {
+.resume_card_item_label + .resume_card_item_text {
     margin-top: 0.5rem;
 }
 
-.resume_card_item_text+.resume_card_item_text {
+.resume_card_item_text + .resume_card_item_text {
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -202,7 +202,7 @@
         margin-top: 0.25rem;
     }
 
-    .resume_card_item_text+.resume_card_item_text {
+    .resume_card_item_text + .resume_card_item_text {
         margin-top: 0;
         margin-bottom: 0;
     }
@@ -248,8 +248,8 @@
         width: 100%;
     }
 
-    .resume_card_right>ul:last-child,
-    .resume_card_right>div:last-child {
+    .resume_card_right > ul:last-child,
+    .resume_card_right > div:last-child {
         margin-left: unset;
     }
 
@@ -292,7 +292,7 @@
         align-items: flex-start;
     }
 
-    .resume_card.shrinked>div {
+    .resume_card.shrinked > div {
         width: 100% !important;
     }
 

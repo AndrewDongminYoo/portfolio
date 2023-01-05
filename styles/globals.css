@@ -1,11 +1,553 @@
-* {
-    box-sizing: border-box;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+    }
+
+    ::before,
+    ::after {
+        --tw-content: '';
+    }
+
+    /*
+    1. Use a consistent sensible line-height in all browsers.
+    2. Prevent adjustments of font size after orientation changes in iOS.
+    3. Use a more readable tab size.
+    4. Use the user's configured `sans` font-family by default.
+    5. Use the user's configured `sans` font-feature-settings by default.
+    */
+
+    html {
+        line-height: 1.5;
+        /* 1 */
+        -webkit-text-size-adjust: 100%;
+        /* 2 */
+        -moz-tab-size: 4;
+        /* 3 */
+        tab-size: 4;
+    }
+
+    /*
+    1. Remove the margin in all browsers.
+    2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+    */
+
+    body {
+        margin: 0;
+        /* 1 */
+        line-height: inherit;
+        /* 2 */
+    }
+
+    /*
+    1. Add the correct height in Firefox.
+    2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+    3. Ensure horizontal rules are visible by default.
+    */
+
+    hr {
+        height: 0;
+        /* 1 */
+        color: inherit;
+        /* 2 */
+        border-top-width: 1px;
+        /* 3 */
+    }
+
+    /*
+    Add the correct text decoration in Chrome, Edge, and Safari.
+    */
+
+    abbr:where([title]) {
+        text-decoration: underline dotted;
+    }
+
+    /*
+    Remove the default font size and weight for headings.
+    */
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: inherit;
+        font-weight: inherit;
+    }
+
+    /*
+    Reset links to optimize for opt-in styling instead of opt-out.
+    */
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
+    /*
+    Add the correct font weight in Edge and Safari.
+    */
+
+    b,
+    strong {
+        font-weight: bolder;
+    }
+
+    /*
+    Add the correct font size in all browsers.
+    */
+
+    small {
+        font-size: 80%;
+    }
+
+    /*
+    Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+    */
+
+    sub,
+    sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+    sub {
+        bottom: -0.25em;
+    }
+
+    sup {
+        top: -0.5em;
+    }
+
+    /*
+    1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+    2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+    3. Remove gaps between table borders by default.
+    */
+
+    table {
+        text-indent: 0;
+        /* 1 */
+        border-color: inherit;
+        /* 2 */
+        border-collapse: collapse;
+        /* 3 */
+    }
+
+    /*
+    1. Change the font styles in all browsers.
+    2. Remove the margin in Firefox and Safari.
+    3. Remove default padding in all browsers.
+    */
+
+    button,
+    input,
+    optgroup,
+    select,
+    textarea {
+        font-family: inherit;
+        /* 1 */
+        font-size: 100%;
+        /* 1 */
+        font-weight: inherit;
+        /* 1 */
+        line-height: inherit;
+        /* 1 */
+        color: inherit;
+        /* 1 */
+        margin: 0;
+        /* 2 */
+        padding: 0;
+        /* 3 */
+    }
+
+    /*
+    Remove the inheritance of text transform in Edge and Firefox.
+    */
+
+    button,
+    select {
+        text-transform: none;
+    }
+
+    /*
+    1. Correct the inability to style clickable types in iOS and Safari.
+    2. Remove default button styles.
+    */
+
+    button,
+    [type='button'],
+    [type='reset'],
+    [type='submit'] {
+        /* 1 */
+        background-color: transparent;
+        /* 2 */
+        background-image: none;
+        /* 2 */
+    }
+
+    /*
+    Use the modern Firefox focus style for all focusable elements.
+    */
+
+    :-moz-focusring {
+        outline: auto;
+    }
+
+    /*
+    Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+    */
+
+    :-moz-ui-invalid {
+        box-shadow: none;
+    }
+
+    /*
+    Add the correct vertical alignment in Chrome and Firefox.
+    */
+
+    progress {
+        vertical-align: baseline;
+    }
+
+    /*
+    Correct the cursor style of increment and decrement buttons in Safari.
+    */
+
+    ::-webkit-inner-spin-button,
+    ::-webkit-outer-spin-button {
+        height: auto;
+    }
+
+    /*
+    Remove the inner padding in Chrome and Safari on macOS.
+    */
+
+    ::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    /*
+    1. Correct the inability to style clickable types in iOS and Safari.
+    2. Change font properties to `inherit` in Safari.
+    */
+
+    ::-webkit-file-upload-button {
+        -webkit-appearance: button;
+        /* 1 */
+        font: inherit;
+        /* 2 */
+    }
+
+    /*
+    Add the correct display in Chrome and Safari.
+    */
+
+    summary {
+        display: list-item;
+    }
+
+    /*
+    Removes the default spacing and border for appropriate elements.
+    */
+
+    blockquote,
+    dl,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    figure,
+    p,
+    pre {
+        margin: 0;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+    }
+
+    legend {
+        padding: 0;
+    }
+
+    ol,
+    ul,
+    menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /*
+    Prevent resizing textareas horizontally by default.
+    */
+
+    textarea {
+        resize: vertical;
+    }
+
+    /*
+    1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+    2. Set the default placeholder color to the user's configured gray 400 color.
+    */
+
+    input::placeholder,
+    textarea::placeholder {
+        opacity: 1;
+        /* 1 */
+    }
+
+    /*
+    Set the default cursor for buttons.
+    */
+
+    button,
+    [role="button"] {
+        cursor: pointer;
+    }
+
+    /*
+    Make sure disabled buttons don't get the pointer cursor.
+    */
+    :disabled {
+        cursor: default;
+    }
+
+    /*
+    Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+    */
+
+    img,
+    video {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Make elements with the HTML hidden attribute stay hidden by default */
+    [hidden] {
+        display: none;
+    }
 }
 
-select {
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-appearance: none;
+@layer calendar {
+    :root {
+        --color-calendar-graph-day-L1-bg: #b6e3ff;
+        --color-calendar-graph-day-L2-bg: #54aeff;
+        --color-calendar-graph-day-L3-bg: #0969da;
+        --color-calendar-graph-day-L4-bg: #0a3069;
+        --color-calendar-graph-day-bg: #ebedf0;
+    }
+
+    rect.ContributionCalendar-day[data-level='0'] {
+        fill: var(--color-calendar-graph-day-bg);
+    }
+
+    rect.ContributionCalendar-day[data-level='1'] {
+        fill: var(--color-calendar-graph-day-L1-bg);
+    }
+
+    rect.ContributionCalendar-day[data-level='2'] {
+        fill: var(--color-calendar-graph-day-L2-bg);
+    }
+
+    rect.ContributionCalendar-day[data-level='3'] {
+        fill: var(--color-calendar-graph-day-L3-bg);
+    }
+
+    rect.ContributionCalendar-day[data-level='4'] {
+        fill: var(--color-calendar-graph-day-L4-bg);
+    }
+
+    .calendar .width-full > .float-left {
+        display: none;
+    }
+
+    .calendar {
+        border: none;
+        border-radius: 3px;
+        min-height: 243px;
+        /* text-align: center; */
+        margin: 0 auto;
+    }
+
+    .calendar-graph text.wday,
+    .calendar-graph text.month {
+        font-size: 10px;
+        fill: #aaa;
+    }
+
+    .contrib-legend {
+        text-align: right;
+        padding: 0 14px 10px 0;
+        display: inline-block;
+    }
+
+    .contrib-legend .legend {
+        display: inline-block;
+        list-style: none;
+        margin: 0 5px;
+        position: relative;
+        bottom: -1px;
+        padding: 0;
+    }
+
+    .contrib-legend .legend li {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+    }
+
+    .float-right {
+        float: right;
+        vertical-align: middle;
+    }
+
+    .text-small {
+        font-size: 12px;
+        color: #767676;
+    }
+
+    .calendar-graph {
+        padding: 5px 0 0;
+        text-align: center;
+    }
+
+    .contrib-column {
+        padding: 15px 0;
+        text-align: center;
+        border-left: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        font-size: 11px;
+    }
+
+    .contrib-column-first {
+        border-left: 0;
+    }
+
+    .table-column {
+        display: table-cell;
+        width: 1%;
+        padding-right: 10px;
+        padding-left: 10px;
+        vertical-align: top;
+    }
+
+    .contrib-number {
+        font-weight: 300;
+        line-height: 1.3em;
+        font-size: 24px;
+        display: block;
+        color: #333;
+    }
+
+    .calendar img.spinner {
+        width: 70px;
+        margin-top: 50px;
+        min-height: 70px;
+    }
+
+    .monospace {
+        text-align: center;
+        color: #000;
+        font-family: monospace;
+    }
+
+    .monospace a {
+        color: #1D75AB;
+        text-decoration: none;
+    }
+
+    .contrib-footer {
+        font-size: 11px;
+        padding: 0 10px 12px;
+        text-align: left;
+        width: 100%;
+        box-sizing: border-box;
+        height: 26px;
+    }
+
+    .left.text-muted {
+        float: left;
+        margin-left: 9px;
+        color: #767676;
+    }
+
+    .left.text-muted a {
+        color: #4078c0;
+        text-decoration: none;
+    }
+
+    .left.text-muted a:hover,
+    .monospace a:hover {
+        text-decoration: underline;
+    }
+
+    h2.f4.text-normal.mb-3 {
+        display: none;
+    }
+
+    .float-left.text-gray {
+        float: left;
+    }
+
+    #user-activity-overview {
+        display: none;
+    }
+
+    .day-tooltip {
+        white-space: nowrap;
+        position: absolute;
+        z-index: 99999;
+        padding: 10px;
+        font-size: 12px;
+        color: #959da5;
+        text-align: center;
+        background: rgba(0, 0, 0, .85);
+        border-radius: 3px;
+        display: none;
+        pointer-events: none;
+    }
+
+    .day-tooltip strong {
+        color: #dfe2e5;
+    }
+
+    .day-tooltip.is-visible {
+        display: block;
+    }
+
+    .day-tooltip:after {
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        box-sizing: border-box;
+        margin: 0 0 0 -5px;
+        content: " ";
+        border: 5px solid transparent;
+        border-top-color: rgba(0, 0, 0, .85)
+    }
+
+    text.ContributionCalendar-label {
+        fill: #ccc;
+        font-size: 11px;
+    }
 }
 
 body {

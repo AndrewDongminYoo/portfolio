@@ -13,23 +13,23 @@ export default function EducationElement({
     const endAt = education.startAt ? education.endAt ?? '재학 중' : '';
     return (
         <div className={names(styles.resume_card_item, education.type)}>
-            <div className={styles.resume_card_left}>
-                <h4 className={styles.resume_card_item_period}>
+            <div className={names(styles.resume_card_left,)}>
+                <h4 className={names(styles.resume_card_item_period,)}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
-                        className={styles.period}
+                        className={names(styles.period,)}
                     />
                 </h4>
             </div>
-            <div className={styles.resume_card_right}>
+            <div className={names(styles.resume_card_right,)}>
                 <Link
-                    className={styles.resume_card_item_label}
+                    className={names(styles.resume_card_item_label,)}
                     href={`/posts/${education.id}`}
                 >
                     {education.title}
                 </Link>
-                <p className={styles.resume_card_item_text}>
+                <p className={names(styles.resume_card_item_text,)}>
                     <span>{education.major} 전공</span>
                     <span> • {education.degree}</span>
                 </p>

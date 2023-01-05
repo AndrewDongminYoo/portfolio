@@ -8,6 +8,7 @@
         "nextjs",
         "Noto",
         "signoff",
+        "tailwindcss",
         "unoptimized"
     ],
     "cSpell.ignoreRegExpList": [
@@ -23,4 +24,13 @@
     "explorer.incrementalNaming": "disabled",
     "git.ignoreLimitWarning": true,
     "javascript.suggestionActions.enabled": false,
+    "css.lint.unknownAtRules": "ignore",
+    "tailwindCSS.validate": true,
+    "replacerules.rules": {
+        "class attribute": {
+            "find": "class=\"([\\w\\d\\-_]+)\"",
+            "languages": ["typescriptreact", "javascriptreact"],
+            "replace": "className={'$1'}"
+        }
+    }
 }

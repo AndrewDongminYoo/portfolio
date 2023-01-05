@@ -1,6 +1,7 @@
 import '@styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
+import names from 'classnames';
 import { notoSans } from '@hooks/useFont';
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -14,7 +15,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta name="theme-color" content="#0969da" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
             </Head>
-            <main className={notoSans.className}>
+            <main className={names(notoSans.className,)}>
                 <Component {...pageProps} />
             </main>
         </>

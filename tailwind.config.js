@@ -1,5 +1,4 @@
-// tailwind.config.js
-import { fontFamily } from 'tailwindcss/defaultTheme';
+const { fontFamily } = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} \*/
 module.exports = {
@@ -13,6 +12,19 @@ module.exports = {
                 sans: [...fontFamily.sans],
             },
         },
+        screens: {
+            'sm': '575px',
+            'md': '767px',
+            'lg': '1200px',
+            'xl': '1400px',
+        },
+        colors: {
+            hintOfGreen: "#e3ffe7",
+            solitude: "#d9e7ff",
+        }
+    },
+    corePlugins: {
+        preflight: false,
     },
     plugins: [],
 }
