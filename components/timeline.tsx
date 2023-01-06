@@ -2,20 +2,19 @@ import { differenceInDays as diff, format, parseISO } from 'date-fns';
 import Period from '@components/common/period';
 import { ReactElement } from 'react';
 import type { Resume } from '@typings/profile';
-import names from 'classnames';
 import styles from '@styles/timeline.module.css';
 import { renderToString as toHtml } from 'react-dom/server';
 
 export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
     const { monthsLabels, makeBlock } = getMonthLabels();
     return (
-        <div className={names(styles.body,)}>
-            <div className={names(styles.card_item,)}>
-                <div className={names(styles.timeline_wrap,)}>
-                    <div className={names(styles.timeline_labels,)}>
+        <div className={styles.body}>
+            <div className={styles.card_item}>
+                <div className={styles.timeline_wrap}>
+                    <div className={styles.timeline_labels}>
                         {monthsLabels}
                     </div>
-                    <div className={names(styles.grid_timeline,)}>
+                    <div className={styles.grid_timeline}>
                         {timeline.map((action) => makeBlock(action))}
                     </div>
                 </div>
@@ -29,7 +28,7 @@ const getMonthLabels = () => {
     const monthsLabels: ReactElement[] = [];
     while (monthsLabels.length < 11) {
         const month = format(now, 'yy.MM')
-        const label = <time key={month} className={names(styles.year,)} dateTime={month}>{month}</time>;
+        const label = <time key={month} className={styles.year} dateTime={month}>{month}</time>;
         monthsLabels.unshift(label);
         now.setMonth(now.getMonth() - 2);
     }
@@ -51,7 +50,7 @@ const getMonthLabels = () => {
             <Period
                 startAt={startAt}
                 endAt={format(end, 'yyyy-MM-dd')}
-                className={names(styles.text_mute,)}
+                className={styles.text_mute}
             />
         );
         return (
@@ -64,7 +63,7 @@ const getMonthLabels = () => {
                 data-toggle="popover"
                 data-placement="top"
                 data-content={toHtml(popOverHtml)}
-                className={names(styles.event_item,)}
+                className={styles.event_item}
                 style={{ gridColumn }}
             >
                 {name}

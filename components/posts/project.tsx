@@ -3,7 +3,6 @@ import Link from 'next/link';
 import Period from '@components/common/period';
 import type { Project } from '@typings/profile';
 import SlugIcon from '@components/slug_icon';
-import names from 'classnames';
 
 export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl =
@@ -13,58 +12,58 @@ export default function ProjectElement({ project }: { project: Project }) {
     const startAt = project.startAt ?? '진행 예정';
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
-        <div className={names('resume_card_item',)}>
-            <div className={names('resume_card_left',)}>
-                <h4 className={names('resume_card_item_period',)}>
+        <div className='resume_card_item'>
+            <div className='resume_card_left'>
+                <h4 className='resume_card_item_period'>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
-                        className={names('period',)}
+                        className='period'
                     />
                 </h4>
             </div>
-            <div className={names('resume_card_right',)}>
+            <div className='resume_card_right'>
                 <Link
-                    className={names('resume_card_item_label',)}
+                    className='resume_card_item_label'
                     href={`/posts/${project.id}`}
                 >
                     {project.title}
                 </Link>
-                <ul className={names('tag_list',)}>
+                <ul className='tag_list'>
                     {project.tags.map((tag, i) => (
                         <li key={i}>{tag}</li>
                     ))}
                 </ul>
-                <div className={names('markdown', 'markdown_viewer')}>
+                <div className='markdown markdown_viewer'>
                     <Description resume={project} />
                 </div>
-                <ul className={names('list_contributions',)}>
-                    <li className={names('list_contribution_item',)}>
+                <ul className='list_contributions'>
+                    <li className='list_contribution_item'>
                         <SlugIcon
-                            icon={'discord'}
+                            icon='discord'
                             size={14}
-                            color={'gray'}
-                            className={names('slug__icon',)}
+                            color='gray'
+                            className='slug__icon'
                         />
                         {project.teamDescription}
                     </li>
-                    <li className={names('list_contribution_item',)}>
+                    <li className='list_contribution_item'>
                         <SlugIcon
-                            icon={'github'}
+                            icon='github'
                             size={14}
-                            color={'gray'}
-                            className={names('slug__icon',)}
+                            color='gray'
+                            className='slug__icon'
                         />
                         <Link href={repository} target="_blank" rel="noopener">
                             {repository}
                         </Link>
                     </li>
-                    <li className={names('list_contribution_item',)}>
+                    <li className='list_contribution_item'>
                         <SlugIcon
-                            icon={'bloglovin'}
+                            icon='bloglovin'
                             size={14}
-                            color={'gray'}
-                            className={names('slug__icon',)}
+                            color='gray'
+                            className='slug__icon'
                         />
                         <Link href={websiteUrl} target="_blank" rel="noopener">
                             {websiteUrl}

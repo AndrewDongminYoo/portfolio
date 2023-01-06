@@ -6,7 +6,6 @@ import LanguageButton from '@components/repos/lang_btn';
 import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
 import type { Repository } from '@typings/repos';
-import names from 'classnames';
 
 export default function Repo({ repository }: { repository: Repository }) {
     const { meta_tags, name, html_url, languages } = repository;
@@ -16,7 +15,7 @@ export default function Repo({ repository }: { repository: Repository }) {
         <div>
             <Link
                 href={`/repos/${repository.name}`}
-                className={names("box-border font-medium leading-tight text-periwinkle text-sm break-words",)}
+                className="text-sm font-medium leading-tight break-words box-border text-periwinkle"
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
@@ -24,7 +23,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 <Image
                     alt={meta_tags?.title || name}
                     src={meta_tags?.image as string}
-                    className={names("block",)}
+                    className="block"
                     width={540}
                     height={270}
                     priority={true}
@@ -34,7 +33,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 languages={languageIter}
                 totalCount={totalCount}
             />
-            <ul className={names("mt-0 p-0 list-none",)}>
+            <ul className="p-0 mt-0 list-none">
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton

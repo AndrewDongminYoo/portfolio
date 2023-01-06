@@ -51,11 +51,11 @@ export default function Layout({ children }: { children: ReactNode; }) {
                     'xl:pb-16 xl:top-0'
                 )}
             >
-                <h1 className="text-2xl leading-normal my-4 mx-0">
+                <h1 className="mx-0 my-4 text-2xl leading-normal">
                     <Link href={isHome ? ghProfile : '/'}>{myName}</Link>
                 </h1>
                 <PrintButton />
-                <section className="border-t-0 text-base mt-0 p-0">
+                <section className="p-0 mt-0 text-base border-t-0">
                     <Link href={isHome ? ghProfile : '/'}>
                         <Image
                             src={portrait}

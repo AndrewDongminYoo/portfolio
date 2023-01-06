@@ -6,7 +6,7 @@ import names from 'classnames';
 
 export default function ProfileBio() {
     return (
-        <section className="mt-0 p-0 text-base border-t-0">
+        <section className="p-0 mt-0 text-base border-t-0">
             <h2
                 className={names(
                     'flex flex-row flex-no-wrap items-center justify-between',
@@ -15,12 +15,12 @@ export default function ProfileBio() {
             >
                 {primaryTitle}
             </h2>
-            <ul className="my-0 p-0 list-none">
+            <ul className="p-0 my-0 list-none">
                 {contacts.map((contact, i) => {
                     return <ContactBadge contact={contact} key={i} />;
                 })}
             </ul>
-            <p className="text-base leading-6 mt-4 text-slateBlack">
+            <p className="mt-4 text-base leading-6 text-slateBlack">
                 {description}
             </p>
         </section>

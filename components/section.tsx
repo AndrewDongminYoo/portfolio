@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import type { SectionType } from '@typings/profile';
-import names from 'classnames';
 
 export default function ResumeSection({
     children,
@@ -26,16 +25,16 @@ export default function ResumeSection({
         }
     };
     return (
-        <section className={names("w-full rounded-lg border border-solid border-gray-300 p-6 my-6 mx-0")}>
-            <div className={names("w-full flex justify-between")}>
-                <div className={names("flex justify-start items-center w-32 max-sm:w-full max-h-8")}>
-                    <h3 className={names("font-medium text-base sm:text-sm leading-5 flex justify-start items-center")}>
+        <section className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg">
+            <div className="flex justify-between w-full">
+                <div className="flex items-center justify-start w-32 max-sm:w-full max-h-8">
+                    <h3 className="flex items-center justify-start text-base font-medium leading-5 sm:text-sm">
                         {subTitle()}
                     </h3>
                 </div>
-                <div className={names("flex justify-end items-center w-[calc(100%-9rem)]")}></div>
+                <div className="flex justify-end items-center w-[calc(100%-9rem)]"></div>
             </div>
-            <div className={names("w-full")}>{children}</div>
+            <div className="w-full">{children}</div>
         </section>
     );
 }

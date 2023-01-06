@@ -25,11 +25,17 @@
     "git.ignoreLimitWarning": true,
     "javascript.suggestionActions.enabled": false,
     "css.lint.unknownAtRules": "ignore",
+    "[css]": {
+        "editor.formatOnSave": false,
+    },
     "tailwindCSS.validate": true,
     "replacerules.rules": {
         "class attribute": {
             "find": "class=\"([\\w\\d\\-_]+)\"",
-            "languages": ["typescriptreact", "javascriptreact"],
+            "languages": [
+                "typescriptreact",
+                "javascriptreact"
+            ],
             "replace": "className={'$1'}"
         }
     }

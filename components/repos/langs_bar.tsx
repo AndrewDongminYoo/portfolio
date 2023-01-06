@@ -10,7 +10,7 @@ export default function LanguageStateBar({
     return (
         <span
             data-view-component={true}
-            className="border-collapse flex h-3 mt-1 overflow-hidden bg-transparent"
+            className="flex h-3 mt-1 overflow-hidden bg-transparent border-collapse"
         >
             {languages.map(([language, count], id) => {
                 return (

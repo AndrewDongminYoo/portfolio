@@ -16,14 +16,14 @@
     }
 
     a {
-        @apply cursor-pointer no-underline transition-all hover:no-underline;
+        @apply no-underline transition-all cursor-pointer hover:no-underline;
         transition-delay: initial;
         transition-duration: 0.08s;
         transition-timing-function: ease-in-out;
     }
 
     hr {
-        @apply border-solid border-r-0 border-b-0 border-l-0 border-t my-4;
+        @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid;
         border-width: 0px;
         border-color: rgba(215, 226, 235, 1);
     }
@@ -79,7 +79,7 @@
     }
 
     p {
-        @apply font-normal mb-2 tracking-normal;
+        @apply mb-2 font-normal tracking-normal;
         line-height: 1.6;
     }
 
@@ -88,14 +88,14 @@
     }
 
     code {
-        @apply rounded border-solid border my-0 ml-0 mr-px px-1 py-px;
+        @apply px-1 py-px my-0 ml-0 mr-px border border-solid rounded;
         border-color: rgba(215, 226, 235, 1);
         background-color: rgba(244, 244, 248, 1);
         color: rgba(55, 72, 93, 1);
     }
 
     pre {
-        @apply rounded border-solid border m-0 py-3 px-4 break-all;
+        @apply px-4 py-3 m-0 break-all border border-solid rounded;
         border-color: rgba(215, 226, 235, 1);
         background-color: rgba(244, 244, 248, 1);
         color: rgba(38, 55, 71, 1);
@@ -103,16 +103,16 @@
     }
 
     pre code {
-        @apply bg-transparent rounded-none m-0 p-0;
+        @apply p-0 m-0 bg-transparent rounded-none;
     }
 
     blockquote {
-        @apply border-solid border-l-2 p-4;
+        @apply p-4 border-l-2 border-solid;
         border-color: rgba(215, 226, 235, 1);
     }
 
     blockquote small {
-        @apply font-normal leading-normal italic;
+        @apply italic font-normal leading-normal;
     }
 
     blockquote small:before {
@@ -129,7 +129,7 @@
     }
 
     video {
-        @apply mt-4 object-cover w-full;
+        @apply object-cover w-full mt-4;
     }
 
     img,
