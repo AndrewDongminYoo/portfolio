@@ -19,9 +19,11 @@ module.exports = {
         },
         extend: {
             colors: {
-                hintOfGreen: "#e3ffe7",
-                solitude: "#d9e7ff",
-                orangeRed: "rgba(255, 69, 0, 1)",
+                slateBlack: "#263747",
+                periwinkle: "#C9D1D9",
+                hintOfGreen: "#E3FFE7",
+                solitude: "#D9E7FF",
+                orangeRed: "#FF4500",
             },
             boxShadow: {
                 fab: "0 0.0625rem 0.1875rem rgb(20 20 94 / 12%), 0 0.1875rem 0.4375rem rgb(20 20 94 / 10%)"

@@ -3,18 +3,26 @@ import { contacts, description, primaryTitle } from '@constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import names from 'classnames';
-import styles from '@styles/profile.module.css';
 
 export default function ProfileBio() {
     return (
-        <section className={names("mt-0 p-0 text-base")}>
-            <h2 className={names("flex items-center justify-between -ml-1 mb-6 flex-row flex-no-wrap text-2xl min-h-[3rem]")}>{primaryTitle}</h2>
-            <ul className={names()}>
+        <section className="mt-0 p-0 text-base border-t-0">
+            <h2
+                className={names(
+                    'flex flex-row flex-no-wrap items-center justify-between',
+                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-[4rem]'
+                )}
+            >
+                {primaryTitle}
+            </h2>
+            <ul className="my-0 p-0 list-none">
                 {contacts.map((contact, i) => {
                     return <ContactBadge contact={contact} key={i} />;
                 })}
             </ul>
-            <p className={names(styles.description,)}>{description}</p>
+            <p className="text-base leading-6 mt-4 text-slateBlack">
+                {description}
+            </p>
         </section>
     );
 }
@@ -27,8 +35,21 @@ const ContactBadge = ({
     const { type, link, image } = contact;
     const { href, hostname, pathname, search } = new URL(link);
     return (
-        <li className="w-auto h-auto aspect-auto text-sm flex flex-row flex-no-wrap items-center justify-start font-normal">
-            <Link className="text-sm text-gray-800 font-normal whitespace-no-wrap inline overflow-hidden py-0.5" href={href} target="_blank" rel="noopener">
+        <li
+            className={names(
+                'flex flex-row flex-no-wrap items-center justify-start leading-relaxed',
+                'font-normal text-sm tracking-normal'
+            )}
+        >
+            <Link
+                className={names(
+                    'inline pb-1 tracking-normal leading-relaxed',
+                    'truncate text-slateBlack font-normal text-sm'
+                )}
+                href={href}
+                target="_blank"
+                rel="noopener"
+            >
                 <Image
                     alt={`${type}:${hostname}${pathname}${search}`}
                     src={image}

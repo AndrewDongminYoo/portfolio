@@ -17,7 +17,7 @@ export default function Repo({ repository }: { repository: Repository }) {
         <div>
             <Link
                 href={`/repos/${repository.name}`}
-                className={names(styles.gh__link,)}
+                className={names("box-border font-medium leading-tight text-periwinkle text-sm break-words",)}
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
@@ -25,7 +25,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 <Image
                     alt={meta_tags?.title || name}
                     src={meta_tags?.image as string}
-                    className={names(styles.gh__thumbnail,)}
+                    className={names("block",)}
                     width={540}
                     height={270}
                     priority={true}
@@ -35,7 +35,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                 languages={languageIter}
                 totalCount={totalCount}
             />
-            <ul className={names(styles.language_array,)}>
+            <ul className={names("mt-0 p-0 list-none",)}>
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton

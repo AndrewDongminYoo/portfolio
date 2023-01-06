@@ -1,6 +1,4 @@
 import colorMap, { Language } from './lang_colors';
-import names from 'classnames';
-import styles from '@styles/repository.module.css';
 
 export default function LanguageStateBar({
     languages,
@@ -10,7 +8,10 @@ export default function LanguageStateBar({
     totalCount: number;
 }) {
     return (
-        <span data-view-component={true} className={names(styles.Progress,)}>
+        <span
+            data-view-component={true}
+            className="border-collapse flex h-3 mt-1 overflow-hidden bg-transparent"
+        >
             {languages.map(([language, count], id) => {
                 return (
                     <LanguageBarPart
@@ -42,10 +43,7 @@ function LanguageBarPart({
             itemProp="keywords"
             aria-label={`${language} ${percentString}`}
             data-view-component={true}
-            className={names(
-                styles.ProgressItem,
-                styles.color_bg_success_emphasis
-            )}
+            className="border-collapse flex h-3 overflow-hidden bg-transparent ml-[2px] first:ml-0"
         />
     );
 }
