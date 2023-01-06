@@ -7,7 +7,6 @@ import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
 import type { Repository } from '@typings/repos';
 import names from 'classnames';
-import styles from '@styles/repository.module.css';
 
 export default function Repo({ repository }: { repository: Repository }) {
     const { meta_tags, name, html_url, languages } = repository;

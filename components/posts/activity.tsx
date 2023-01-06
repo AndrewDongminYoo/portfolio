@@ -3,30 +3,29 @@ import Description from '@components/common/description';
 import Link from 'next/link';
 import Period from '@components/common/period';
 import names from 'classnames';
-import styles from '@styles/resume.module.css';
 
 export default function ActivityElement({ activity }: { activity: Activity }) {
     const startAt = activity.startAt ?? '개발 예정';
     const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
     return (
-        <div className={names(styles.resume_card_item, activity.type)}>
-            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full",)}>
-                <h4 className={names(styles.resume_card_item_period,)}>
+        <div className={names('resume_card_item',)}>
+            <div className={names('resume_card_left',)}>
+                <h4 className={names('resume_card_item_period',)}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
-                        className={names(styles.period,)}
+                        className={names('period',)}
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
+            <div className={names('resume_card_right',)}>
                 <Link
-                    className={names(styles.resume_card_item_label,)}
+                    className={names('resume_card_item_label',)}
                     href={`/posts/${activity.id}`}
                 >
                     {activity.title}
                 </Link>
-                <p className={names(styles.resume_card_item_text,)}>
+                <p className={names('resume_card_item_text',)}>
                     <Link
                         href={activity.website_url ?? ''}
                         target="_blank"
@@ -35,7 +34,7 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
                         {activity.website_url}
                     </Link>
                 </p>
-                <div className={names(styles.markdown, styles.markdown_viewer, "-ml-16 sm:ml-0")}>
+                <div className={names('markdown', 'markdown_viewer',)}>
                     <Description resume={activity} />
                 </div>
             </div>

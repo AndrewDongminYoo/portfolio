@@ -1,9 +1,136 @@
 @import './calendar.css';
+@import './resume.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+    select {
+        @apply appearance-none;
+    }
+
+    body {
+        @apply bg-white;
+        color: rgba(38, 55, 71, 1);
+        line-height: 1.375;
+    }
+
+    a {
+        @apply cursor-pointer no-underline transition-all hover:no-underline;
+        transition-delay: initial;
+        transition-duration: 0.08s;
+        transition-timing-function: ease-in-out;
+    }
+
+    hr {
+        @apply border-solid border-r-0 border-b-0 border-l-0 border-t my-4;
+        border-width: 0px;
+        border-color: rgba(215, 226, 235, 1);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply my-0;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-bold;
+    }
+
+    h4 {
+        @apply tracking-normal;
+        line-height: 1.6;
+    }
+
+    h5,
+    h6 {
+        @apply font-normal;
+    }
+
+    h1 {
+        @apply tracking-normal;
+        line-height: 1.375;
+    }
+
+    h2 {
+        @apply tracking-normal;
+        line-height: 1.375;
+    }
+
+    h3 {
+        @apply tracking-normal;
+        line-height: 1.375;
+    }
+
+    li,
+    h5 {
+        @apply tracking-normal;
+        line-height: 1.6;
+    }
+
+    h6 {
+        @apply leading-normal;
+    }
+
+    p {
+        @apply font-normal mb-2 tracking-normal;
+        line-height: 1.6;
+    }
+
+    small {
+        @apply leading-normal;
+    }
+
+    code {
+        @apply rounded border-solid border my-0 ml-0 mr-px px-1 py-px;
+        border-color: rgba(215, 226, 235, 1);
+        background-color: rgba(244, 244, 248, 1);
+        color: rgba(55, 72, 93, 1);
+    }
+
+    pre {
+        @apply rounded border-solid border m-0 py-3 px-4 break-all;
+        border-color: rgba(215, 226, 235, 1);
+        background-color: rgba(244, 244, 248, 1);
+        color: rgba(38, 55, 71, 1);
+        word-wrap: break-word;
+    }
+
+    pre code {
+        @apply bg-transparent rounded-none m-0 p-0;
+    }
+
+    blockquote {
+        @apply border-solid border-l-2 p-4;
+        border-color: rgba(215, 226, 235, 1);
+    }
+
+    blockquote small {
+        @apply font-normal leading-normal italic;
+    }
+
+    blockquote small:before {
+        @apply pr-2;
+        content: "―";
+    }
+
+    .flex-column {
+        @apply flex-col;
+    }
+
+    .d-flex {
+        @apply flex;
+    }
+
+    video {
+        @apply mt-4 object-cover w-full;
+    }
 
     img,
     svg,
@@ -13,103 +140,12 @@
     iframe,
     embed,
     object {
-        display: inline-block;
-        vertical-align: middle;
+        @apply inline-block;
     }
-}
 
-body {
-    background-color: white;
-    color: #263747;
-    line-height: 1.4;
-    -webkit-text-size-adjust: none;
-}
-
-a {
-    transition-delay: initial;
-    transition-duration: 0.08s;
-    transition-property: all;
-    transition-timing-function: ease-in-out;
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #d7e2eb;
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: 0;
-    margin-bottom: 0;
-    color: inherit;
-}
-
-h1,
-h2,
-h3 {
-    font-weight: 700;
-}
-
-h4 {
-    -webkit-font-smoothing: antialiased;
-    font-weight: 500;
-}
-
-h5,
-h6 {
-    font-weight: 400;
-}
-
-h1 {
-    letter-spacing: -0.009em;
-    line-height: 1.4;
-}
-
-h2 {
-    letter-spacing: -0.009em;
-    line-height: 1.4;
-}
-
-h3 {
-    letter-spacing: -0.009em;
-    line-height: 1.4;
-}
-
-h4 {
-    letter-spacing: -0.009em;
-    line-height: 1.6;
-}
-
-li,
-h5 {
-    letter-spacing: -0.009em;
-    line-height: 1.6;
-}
-
-h6 {
-    line-height: 1.5;
-}
-
-p {
-    margin-bottom: 8px;
-    font-weight: 400;
-    letter-spacing: -0.1px;
-    line-height: 1.6;
-}
-
-small {
-    line-height: 1.5;
+    ul {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        padding-inline-start: 40px;
+    }
 }

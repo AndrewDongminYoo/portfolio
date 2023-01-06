@@ -4,7 +4,6 @@ import Period from '@components/common/period';
 import type { Project } from '@typings/profile';
 import SlugIcon from '@components/slug_icon';
 import names from 'classnames';
-import styles from '@styles/resume.module.css';
 
 export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl =
@@ -14,58 +13,58 @@ export default function ProjectElement({ project }: { project: Project }) {
     const startAt = project.startAt ?? '진행 예정';
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
-        <div className={names(styles.resume_card_item, project.type)}>
-            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full",)}>
-                <h4 className={names(styles.resume_card_item_period,)}>
+        <div className={names('resume_card_item',)}>
+            <div className={names('resume_card_left',)}>
+                <h4 className={names('resume_card_item_period',)}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
-                        className={names(styles.period,)}
+                        className={names('period',)}
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
+            <div className={names('resume_card_right',)}>
                 <Link
-                    className={names(styles.resume_card_item_label,)}
+                    className={names('resume_card_item_label',)}
                     href={`/posts/${project.id}`}
                 >
                     {project.title}
                 </Link>
-                <ul className={names(styles.tag_list,)}>
+                <ul className={names('tag_list',)}>
                     {project.tags.map((tag, i) => (
                         <li key={i}>{tag}</li>
                     ))}
                 </ul>
-                <div className={names(styles.markdown, styles.markdown_viewer)}>
+                <div className={names('markdown', 'markdown_viewer')}>
                     <Description resume={project} />
                 </div>
-                <ul className={names(styles.list_contributions, "-ml-16 sm:ml-0")}>
-                    <li className={names(styles.list_contribution_item,)}>
+                <ul className={names('list_contributions',)}>
+                    <li className={names('list_contribution_item',)}>
                         <SlugIcon
                             icon={'discord'}
                             size={14}
                             color={'gray'}
-                            className={names(styles.slug__icon,)}
+                            className={names('slug__icon',)}
                         />
                         {project.teamDescription}
                     </li>
-                    <li className={names(styles.list_contribution_item,)}>
+                    <li className={names('list_contribution_item',)}>
                         <SlugIcon
                             icon={'github'}
                             size={14}
                             color={'gray'}
-                            className={names(styles.slug__icon,)}
+                            className={names('slug__icon',)}
                         />
                         <Link href={repository} target="_blank" rel="noopener">
                             {repository}
                         </Link>
                     </li>
-                    <li className={names(styles.list_contribution_item,)}>
+                    <li className={names('list_contribution_item',)}>
                         <SlugIcon
                             icon={'bloglovin'}
                             size={14}
                             color={'gray'}
-                            className={names(styles.slug__icon,)}
+                            className={names('slug__icon',)}
                         />
                         <Link href={websiteUrl} target="_blank" rel="noopener">
                             {websiteUrl}

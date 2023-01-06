@@ -24,6 +24,10 @@ module.exports = {
                 hintOfGreen: "#E3FFE7",
                 solitude: "#D9E7FF",
                 orangeRed: "#FF4500",
+                azureWhite: "#D7E2EB",
+                brightGray: "#E9ECF3",
+                ghostWhite: "#FBFBFD",
+                pureNavy: "#545482",
             },
             boxShadow: {
                 fab: "0 0.0625rem 0.1875rem rgb(20 20 94 / 12%), 0 0.1875rem 0.4375rem rgb(20 20 94 / 10%)"

@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Period from '@components/common/period';
 import SlugIcon from '@components/slug_icon';
 import names from 'classnames';
-import styles from '@styles/resume.module.css';
 
 export default function ExperienceElement({
     experience,
@@ -14,38 +13,38 @@ export default function ExperienceElement({
     const startAt = experience.startAt;
     const endAt = experience.endAt ?? '재직 중';
     return (
-        <div className={names(styles.resume_card_item, experience.type)}>
-            <div className={names(styles.resume_card_left, "w-32 max-sm:w-full",)}>
-                <h4 className={names(styles.resume_card_item_period,)}>
+        <div className={names('resume_card_item',)}>
+            <div className={names('resume_card_left',)}>
+                <h4 className={names('resume_card_item_period',)}>
                     <Period
                         startAt={startAt}
                         endAt={endAt}
-                        className={names(styles.period,)}
+                        className={names('period',)}
                     />
                 </h4>
             </div>
-            <div className={names(styles.resume_card_right, "w-[calc(100%-9rem)]")}>
+            <div className={names('resume_card_right',)}>
                 <Link
-                    className={names(styles.resume_card_item_label,)}
+                    className={names('resume_card_item_label',)}
                     href={`/posts/${experience.id}`}
                 >
                     {experience.title}
                 </Link>
-                <p className={names(styles.resume_card_item_text,)}>
+                <p className={names('resume_card_item_text',)}>
                     {experience.role}
                 </p>
-                <ul className={names(styles.tag_list,)}>
+                <ul className={names('tag_list',)}>
                     {experience.tags.map((tag, i) => (
                         <li key={i}>{tag}</li>
                     ))}
                 </ul>
-                <div className={names(styles.markdown, styles.markdown_viewer)}>
+                <div className={names('markdown', 'markdown_viewer')}>
                     <Description resume={experience} />
                 </div>
-                <label className={names(styles.contributions_label,)}>
+                <label className={names('contributions_label',)}>
                     상세 업무 및 성과
                 </label>
-                <ul className={names(styles.list_contributions, "-ml-16 sm:ml-0")}>
+                <ul className={names('list_contributions',)}>
                     {experience.projects.map((pro, i) => (
                         <Contribution project={pro} key={i} />
                     ))}
@@ -62,46 +61,46 @@ const Contribution = ({ project }: { project: Project }) => {
     const startAt = project.startAt ?? '개발 예정';
     const endAt = project.startAt ? project.endAt ?? '진행중' : '';
     return (
-        <li className={names(styles.list_contribution_item,)}>
-            <h4 className={names(styles.part_title,)}>
+        <li className={names('list_contribution_item',)}>
+            <h4 className={names('part_title',)}>
                 <Link target="_blank" rel="noopener" href={websiteUrl}>
                     {project.title}
                 </Link>
             </h4>
-            <h4 className={names(styles.part_period,)}>
-                <div className={names(styles.datetime,)}>
+            <h4 className={names('part_period',)}>
+                <div className={names('datetime',)}>
                     <SlugIcon
                         icon={'googlecalendar'}
                         size={14}
                         color={'gray'}
-                        className={names(styles.slug__icon,)}
+                        className={names('slug__icon',)}
                     />
                     <Period startAt={startAt} endAt={endAt} />
                 </div>
-                <div className={names(styles.url__link,)}>
+                <div className={names('url__link',)}>
                     <SlugIcon
                         icon={'blogger'}
                         size={14}
                         color={'gray'}
-                        className={names(styles.slug__icon,)}
+                        className={names('slug__icon',)}
                     />
                     {websiteUrl}
                 </div>
-                <div className={names(styles.url__link,)}>
+                <div className={names('url__link',)}>
                     <SlugIcon
                         icon={'github'}
                         size={14}
                         color={'gray'}
-                        className={names(styles.slug__icon,)}
+                        className={names('slug__icon',)}
                     />
                     {repository}
                 </div>
             </h4>
             <div
                 className={names(
-                    styles.markdown,
-                    styles.markdown_viewer,
-                    styles.part_description
+                    'markdown',
+                    'markdown_viewer',
+                    'part_description'
                 )}
             >
                 <Description resume={project} />
