@@ -2,20 +2,20 @@ import { differenceInDays as diff, format, parseISO } from 'date-fns';
 import Period from '@components/common/period';
 import { ReactElement } from 'react';
 import type { Resume } from '@typings/profile';
-import styles from '@styles/timeline.module.css';
+import names from 'classnames';
 import { renderToString as toHtml } from 'react-dom/server';
 
-export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
+export default function GridTimeline({ timeline }: { timeline: Resume[]; }) {
     const { monthsLabels, makeBlock } = getMonthLabels();
     return (
-        <div className={styles.body}>
-            <div className={styles.card_item}>
-                <div className={styles.timeline_wrap}>
-                    <div className={styles.timeline_labels}>
+        <div className="flex flex-col items-end justify-start w-full">
+            <div className="flex flex-col items-start justify-start w-full px-0 py-6 mb-0 border-b-0 flex-nowrap max-h-max">
+                <div className="m-0 w-full text-base block min-h-[50px] break-all">
+                    <div className="grid mb-0.5 text-base leading-snug grid-cols-11">
                         {monthsLabels}
                     </div>
-                    <div className={styles.grid_timeline}>
-                        {timeline.map((action) => makeBlock(action))}
+                    <div className="grid pt-1 grid-cols-[repeat(100,1fr)] grid-flow-col-dense">
+                        {timeline.map(makeBlock)}
                     </div>
                 </div>
             </div>
@@ -27,8 +27,16 @@ const getMonthLabels = () => {
     const now = new Date();
     const monthsLabels: ReactElement[] = [];
     while (monthsLabels.length < 11) {
-        const month = format(now, 'yy.MM')
-        const label = <time key={month} className={styles.year} dateTime={month}>{month}</time>;
+        const month = format(now, 'yy.MM');
+        const label = (
+            <time
+                key={month}
+                className="pl-1 text-xs leading-normal border-r border-solid text-pureNavy border-r-azureWhite"
+                dateTime={month}
+            >
+                {month}
+            </time>
+        );
         monthsLabels.unshift(label);
         now.setMonth(now.getMonth() - 2);
     }
@@ -38,20 +46,12 @@ const getMonthLabels = () => {
     const makeBlock = (action: Resume) => {
         const { type, id, name, startAt, endAt } = action;
         const end = endAt ? parseISO(endAt) : latest;
-        const sPoint = Math.round(
-            diff(parseISO(startAt), oldest) * pixel
-        );
-        const ePoint = Math.round(
-            diff(end, oldest) * pixel
-        );
+        const sPoint = Math.round(diff(parseISO(startAt), oldest) * pixel);
+        const ePoint = Math.round(diff(end, oldest) * pixel);
         if (sPoint <= 0 || ePoint <= 0) return null;
         const gridColumn = `${sPoint} / ${ePoint}`;
         const popOverHtml = (
-            <Period
-                startAt={startAt}
-                endAt={format(end, 'yyyy-MM-dd')}
-                className={styles.text_mute}
-            />
+            <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} />
         );
         return (
             <span
@@ -63,13 +63,29 @@ const getMonthLabels = () => {
                 data-toggle="popover"
                 data-placement="top"
                 data-content={toHtml(popOverHtml)}
-                className={styles.event_item}
+                className={names(
+                    'font-black leading-normal text-center whitespace-nowrap rounded-sm cursor-text py-1 px-2 ml-[0.1rem] overflow-clip',
+                    ["activity", "project"].includes(type) ? "text-[10px] tracking-tight" : "text-[12px]",
+                    tailwindColor(type),
+                )}
                 style={{ gridColumn }}
             >
                 {name}
             </span>
         );
-
-    }
+    };
     return { monthsLabels, makeBlock };
-}
+};
+
+const tailwindColor = (type: string) => {
+    switch (type) {
+        case "activity":
+            return "bg-[#85929e] text-[#292929]";
+        case "project":
+            return "bg-[#5d6d7e] text-[#F2F2F2]";
+        case "education":
+            return "bg-[#aeb6bf] text-[#474747]";
+        default:
+            return "bg-[#34495e] text-[#A4B9CB]";
+    }
+};

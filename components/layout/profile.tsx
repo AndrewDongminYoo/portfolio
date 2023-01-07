@@ -9,7 +9,7 @@ export default function ProfileBio() {
         <section className="p-0 mt-0 text-base border-t-0">
             <h2
                 className={names(
-                    'flex flex-row flex-no-wrap items-center justify-between',
+                    'flex flex-row flex-nowrap items-center justify-between',
                     '-ml-px mb-4 break-keep leading-snug text-2xl min-h-[4rem]'
                 )}
             >
@@ -37,7 +37,7 @@ const ContactBadge = ({
     return (
         <li
             className={names(
-                'flex flex-row flex-no-wrap items-center justify-start leading-relaxed',
+                'flex flex-row flex-nowrap items-center justify-start leading-relaxed',
                 'font-normal text-sm tracking-normal'
             )}
         >

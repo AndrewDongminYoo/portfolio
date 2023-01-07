@@ -8,7 +8,7 @@
     }
 
     .resume_card {
-        @apply w-full p-6 mx-0 my-6 border border-solid rounded-xl;
+        @apply rounded-xl border-solid border mx-0 my-6 p-6 w-full;
         @apply border-azureWhite;
     }
 
@@ -17,7 +17,7 @@
     }
 
     .resume_card_header_title {
-        @apply flex items-center justify-start text-base font-medium leading-5 tracking-normal;
+        @apply flex items-center justify-start font-medium text-base leading-5 tracking-normal;
     }
 
     .resume_card_body {
@@ -34,7 +34,7 @@
     }
 
     .resume_card_item_period {
-        @apply flex justify-start leading-6 flex-nowrap;
+        @apply flex flex-nowrap justify-start leading-6;
         @apply text-pureNavy;
     }
 
@@ -57,7 +57,7 @@
     }
 
     .resume_card_item_label {
-        @apply flex items-center justify-start text-xl font-bold tracking-normal break-all;
+        @apply flex items-center justify-start font-bold text-xl tracking-normal break-all;
     }
 
     .resume_card_item_label + .resume_card_item_text {
@@ -73,7 +73,7 @@
     }
 
     .resume_card_item {
-        @apply flex flex-row items-start justify-between w-full px-0 py-6 border-b border-solid flex-nowrap;
+        @apply border-solid border-b flex flex-row flex-nowrap items-start justify-between px-0 py-6 w-full;
         @apply border-azureWhite;
     }
 
@@ -86,29 +86,29 @@
     }
 
     .tag_list {
-        @apply p-0 mx-0 my-2;
+        @apply mx-0 my-2 p-0;
         @apply list-none;
     }
 
     .tag_list li {
-        @apply inline-block px-1 py-px mt-0 mb-1 ml-0 mr-1 text-xs font-normal leading-normal border-0 rounded;
+        @apply rounded border-0 inline-block font-normal text-xs leading-normal mt-0 ml-0 mr-1 mb-1 px-1 py-px;
         @apply text-slateBlack;
         @apply bg-brightGray;
     }
 
     .contributions_label {
-        @apply inline-block mb-2 -ml-16 text-sm leading-normal;
+        @apply inline-block text-sm leading-normal mb-2 -ml-16;
     }
 
     .list_contributions {
-        @apply py-4 pl-2 pr-4 mx-px my-2 border-l-2 border-solid;
+        @apply border-solid border-l-2 my-2 mx-px py-4 pl-2 pr-4;
         @apply bg-ghostWhite;
         @apply border-azureWhite;
         @apply list-none;
     }
 
     .list_contribution_item {
-        @apply px-5 py-0 m-2 text-sm;
+        @apply text-sm m-2 py-0 px-5;
         @apply leading-relaxed;
         @apply break-words break-any;
     }
@@ -119,11 +119,11 @@
 
     .part_title,
     .part_title a {
-        @apply mr-2 text-base font-medium;
+        @apply text-base font-medium mr-2;
     }
 
     .part_period {
-        @apply mt-2 mr-px text-sm leading-normal;
+        @apply text-sm leading-normal mr-px mt-2;
     }
 
     .list_contribution_item .url__link {
@@ -135,7 +135,7 @@
     }
 
     .list_contributions .list_contribution_item .part_description {
-        @apply mx-0 mt-px mb-0 text-sm;
+        @apply text-sm mx-0 mb-0 mt-px;
         @apply leading-7;
     }
 
@@ -152,150 +152,150 @@
     }
 
     .resume_card_item_text {
-        @apply mt-1 lg:;
+        @apply lg:mt-1;
     }
 
     .resume_card_item_text + .resume_card_item_text {
-        @apply my-0 lg:;
+        @apply lg:my-0;
     }
 
     .resume_card_item_label {
-        @apply leading-6 lg:;
+        @apply lg:leading-6;
     }
 
     .resume_card .test_item .resume_card_item_text {
-        @apply mt-1 lg:;
+        @apply lg:mt-1;
     }
 
     .resume_card_right {
-        @apply lg: w-[calc(100%-11.5rem)];
+        @apply lg:w-[calc(100%-11.5rem)];
     }
 
     .resume_card_item .list_contribution {
-        @apply mt-1 sm:;
+        @apply sm:mt-1;
     }
 
     .resume_card .test_item_header {
-        @apply items-start sm:;
+        @apply sm:items-start;
     }
 
     .resume_card.shrinked .resume_card_body {
-        @apply sm: w-[calc(100%-11.5rem)];
+        @apply sm:w-[calc(100%-11.5rem)];
     }
 
     .resume_card {
-        @apply mb-4 xs: xs:p-4;
+        @apply xs:mb-4 xs:p-4;
     }
 
     .resume_card_left {
-        @apply w-full xs:;
+        @apply xs:w-full;
     }
 
     .resume_card_right {
-        @apply w-full xs:;
+        @apply xs:w-full;
     }
 
     .resume_card_right > ul:last-child,
     .resume_card_right > div:last-child {
-        @apply ml-0 xs:;
+        @apply xs:ml-0;
     }
 
     .contributions_label {
-        @apply ml-0 xs:;
+        @apply xs:ml-0;
     }
 
     .resume_card_header_title {
-        @apply text-sm xs: xs:leading-5;
+        @apply xs:text-sm xs:leading-5;
     }
 
     .resume_card_item {
-        @apply flex-col xs: xs:justify-start xs:px-0 xs:py-4;
+        @apply xs:flex-col xs:justify-start xs:px-0 xs:py-4;
     }
 
     .resume_card_item_label {
-        @apply leading-5 xs: xs:mx-0 xs:my-1;
+        @apply xs:leading-5 xs:mx-0 xs:my-1;
     }
 
     .resume_card_item_period {
-        @apply flex-row xs: xs:items-center;
+        @apply xs:flex-row xs:items-center;
     }
 
     .resume_card_item_period .period {
-        @apply ml-1 xs:;
+        @apply xs:ml-1;
     }
 
     .resume_card_text_example {
-        @apply hidden xs:;
+        @apply xs:hidden;
     }
 
     .resume_card.shrinked {
-        @apply flex-col xs: xs:items-start xs:justify-start;
+        @apply xs:flex-col xs:items-start xs:justify-start;
     }
 
     .resume_card.shrinked > div {
-        @apply w-full xs:;
+        @apply xs:w-full;
     }
 
     .resume_card.shrinked .resume_card_item:first-child {
-        @apply px-0 xs: xs:py-6;
+        @apply xs:px-0 xs:py-6;
     }
 
     .resume_card.shrinked .resume_card_item:last-child {
-        @apply pb-0 xs:;
+        @apply xs:pb-0;
     }
 
     .resume_card .test_box {
-        @apply mb-3 xs: xs:pb-3 xs:gap-4;
+        @apply xs:mb-3 xs:pb-3 xs:gap-4;
     }
 
     .resume_card .test_box:first-child,
     .resume_card .test_box:last-child {
-        @apply pt-3 xs:;
+        @apply xs:pt-3;
     }
 
     .resume_card .test_item {
-        @apply p-0 xs:;
+        @apply xs:p-0;
     }
 
     .resume_card .test_item .resume_card_item_text {
-        @apply mt-0 xs:;
+        @apply xs:mt-0;
     }
 
     .resume_card .test_item_table {
-        @apply border-solid xs: xs:border-b xs:flex xs:flex-row;
+        @apply xs:border-solid xs:border-b xs:flex xs:flex-row;
         @apply border-azureWhite;
     }
 
     .resume_card .test_item_table tbody {
-        @apply flex xs: xs:w-full;
+        @apply xs:flex xs:w-full;
     }
 
     .resume_card .test_item_table tr {
-        @apply flex-col xs:;
+        @apply xs:flex-col;
     }
 
     .resume_card .test_item_table tr:first-child {
-        @apply xs: w-[30%];
+        @apply xs:w-[30%];
     }
 
     .resume_card .test_item_table tr:last-child {
-        @apply xs: w-[70%];
+        @apply xs:w-[70%];
     }
 
     .resume_card .test_item_table :td {
-        @apply border-solid xs: xs:border-t xs:py-1 xs:px-2 xs:text-left;
-        @apply xs: min-h-[1.875rem];
-        @apply xs: border-azureWhite;
+        @apply xs:border-solid xs:border-t xs:py-1 xs:px-2 xs:text-left;
+        @apply xs:min-h-[1.875rem];
+        @apply xs:border-azureWhite;
     }
 
     .resume_card .test_item_table .tcol_1,
     .resume_card .test_item_table .tcol_2,
     .resume_card .test_item_table .tcol_3 {
-        @apply w-full xs:;
+        @apply xs:w-full;
     }
 
     .resume_card .test_item_btn a,
     .resume_card .test_item_btn a:visited {
-        @apply xs: hover:text-white;
+        @apply xs:hover:text-white;
     }
 }
