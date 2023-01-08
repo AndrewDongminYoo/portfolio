@@ -69,7 +69,7 @@
 
     .contrib-legend .legend {
         display: inline-block;
-        list-style: none;
+        list-style-type: none;
         margin: 0 5px;
         position: relative;
         bottom: -1px;

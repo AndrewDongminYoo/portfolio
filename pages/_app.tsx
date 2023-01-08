@@ -1,7 +1,15 @@
 import '@styles/globals.css';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
-import { notoSans } from '@hooks/useFont';
+import { Noto_Sans_KR } from '@next/font/google';
+
+const NS_KR = Noto_Sans_KR({
+    style: 'normal',
+    display: 'swap',
+    subsets: ["korean", "latin"],
+    weight: ['100', '300', '400', '500', '700', '900'],
+    variable: '--noto-sans-kr',
+})
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
@@ -14,7 +22,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta name="theme-color" content="#0969da" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
             </Head>
-            <main className={notoSans.className}>
+            <main className={NS_KR.variable}>
                 <Component {...pageProps} />
             </main>
         </>

@@ -3,8 +3,8 @@ const nextConfig = {
     env: {
         GITHUB_TOKEN: process.env.GITHUB_TOKEN ?? '',
     },
+    optimizeFonts: true,
     productionBrowserSourceMaps: true,
-    crossOrigin: "use-credentials",
     swcMinify: true,
     reactStrictMode: true,
     compiler: {
@@ -43,7 +43,7 @@ const nextConfig = {
                     },
                     {
                         key: 'Referrer-Policy',
-                        value: 'origin-when-cross-origin'
+                        value: 'strict-origin-when-cross-origin'
                     },
                     {
                         key: 'sec-fetch-mode',
@@ -51,7 +51,11 @@ const nextConfig = {
                     },
                     {
                         key: 'sec-fetch-site',
-                        value: 'cross-site',
+                        value: 'same-origin',
+                    },
+                    {
+                        key: 'Referer',
+                        value: 'https://AndrewDongminYoo.github.io'
                     }
                 ]
             }

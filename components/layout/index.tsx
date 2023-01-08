@@ -43,7 +43,7 @@ export default function Layout({ children }: { children: ReactNode; }) {
                 className={names(
                     'xl:scrollbar-hide xl:w-[30rem]',
                     'text-base overflow-x-hidden',
-                    'inline-block text-base p-10',
+                    'inline-block text-base p-10 pb-4',
                     'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
                     'lg:block',
                     'sm:p-4',

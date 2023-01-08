@@ -8,7 +8,7 @@ module.exports = {
     ],
     theme: {
         fontFamily: {
-            sans: [...fontFamily.sans],
+            sans: ['var(--noto-sans-kr)', ...fontFamily.sans],
         },
         screens: {
             xs: { max: '575px' },
