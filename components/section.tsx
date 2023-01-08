@@ -1,11 +1,10 @@
-import { ReactElement } from 'react';
+import { ComponentProps } from 'react';
 import type { SectionType } from '@typings/profile';
 
 export default function ResumeSection({
     children,
     type,
-}: {
-    children: ReactElement[] | ReactElement;
+}: ComponentProps<"section"> & {
     type: SectionType;
 }) {
     const subTitle = () => {
@@ -27,7 +26,7 @@ export default function ResumeSection({
     return (
         <section className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg">
             <div className="flex justify-between w-full">
-                <div className="flex items-center justify-start w-32 max-sm:w-full max-h-8">
+                <div className="flex items-center justify-start w-32 sm:w-full max-h-8">
                     <h3 className="flex items-center justify-start text-base font-medium sm:text-sm">
                         {subTitle()}
                     </h3>

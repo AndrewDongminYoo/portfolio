@@ -75,6 +75,7 @@ module.exports = {
         preflight: true,
     },
     plugins: [
-        require("tailwind-scrollbar-hide")
+        require("tailwind-scrollbar-hide"),
+        require("@headlessui/tailwindcss"),
     ],
 }

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Layout from '@components/layout';
@@ -13,6 +14,16 @@ export default function Portfolio({
 }: {
     repositoryData: Repository[];
 }) {
+    const sectionRef = useRef<HTMLElement>(null);
+    useEffect(() => {
+        if (sectionRef) {
+            // 홈스크린과 프로필 부분이 같으니까 스킵하기
+            sectionRef.current?.firstElementChild?.scrollIntoView({
+                behavior: "smooth", block: "start"
+            });
+        }
+    }, [sectionRef])
+
     return (
         <Layout>
             <Head>
@@ -22,9 +33,13 @@ export default function Portfolio({
                 />
                 <title>{secondaryTitle}</title>
             </Head>
-            {repositoryData.map((repo, id) => {
-                return <Repo repository={repo} key={id} />;
-            })}
+            <section
+                ref={sectionRef}
+                className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg">
+                {repositoryData.map((repo, id) => {
+                    return <Repo repository={repo} key={id} />;
+                })}
+            </section>
             <ResumeSection type="contributions">
                 <ReactGitHubCalendar />
             </ResumeSection>

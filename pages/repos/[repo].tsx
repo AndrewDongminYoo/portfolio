@@ -12,10 +12,10 @@ export default function Repo({ repository }: { repository: Repository }) {
     const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
-        <div>
+        <>
             <Link
                 href={`/repos/${repository.name}`}
-                className="text-sm font-medium leading-tight break-words box-border text-slate-300"
+                className="box-border text-sm font-medium leading-tight break-words text-slate-300"
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
@@ -45,7 +45,7 @@ export default function Repo({ repository }: { repository: Repository }) {
                     );
                 })}
             </ul>
-        </div>
+        </>
     );
 }
 
