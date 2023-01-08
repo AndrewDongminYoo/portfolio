@@ -10,7 +10,7 @@ export default function ProfileBio() {
             <h2
                 className={names(
                     'flex flex-row flex-nowrap items-center justify-between',
-                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-[4rem]'
+                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-5'
                 )}
             >
                 {primaryTitle}
@@ -20,7 +20,7 @@ export default function ProfileBio() {
                     return <ContactBadge contact={contact} key={i} />;
                 })}
             </ul>
-            <p className="mt-4 text-base leading-6 text-slateBlack">
+            <p className="mt-4 text-base leading-6 text-slate-800">
                 {description}
             </p>
         </section>
@@ -44,7 +44,7 @@ const ContactBadge = ({
             <Link
                 className={names(
                     'inline pb-1 tracking-normal leading-relaxed',
-                    'truncate text-slateBlack font-normal text-sm'
+                    'truncate text-slate-800 font-normal text-sm'
                 )}
                 href={href}
                 target="_blank"

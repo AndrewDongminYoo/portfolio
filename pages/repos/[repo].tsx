@@ -15,7 +15,7 @@ export default function Repo({ repository }: { repository: Repository }) {
         <div>
             <Link
                 href={`/repos/${repository.name}`}
-                className="text-sm font-medium leading-tight break-words box-border text-periwinkle"
+                className="text-sm font-medium leading-tight break-words box-border text-slate-300"
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>

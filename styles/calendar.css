@@ -51,7 +51,6 @@
 
     .calendar .width-full > .float-right {
         float: right;
-        vertical-align: middle;
         font-size: smaller;
     }
 

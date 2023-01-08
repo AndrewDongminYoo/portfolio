@@ -28,11 +28,11 @@ export default function ResumeSection({
         <section className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg">
             <div className="flex justify-between w-full">
                 <div className="flex items-center justify-start w-32 max-sm:w-full max-h-8">
-                    <h3 className="flex items-center justify-start text-base font-medium leading-5 sm:text-sm">
+                    <h3 className="flex items-center justify-start text-base font-medium sm:text-sm">
                         {subTitle()}
                     </h3>
                 </div>
-                <div className="flex justify-end items-center w-[calc(100%-9rem)]"></div>
+                <div className="flex items-center justify-end w-full-9"></div>
             </div>
             <div className="w-full">{children}</div>
         </section>

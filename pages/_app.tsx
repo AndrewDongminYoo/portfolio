@@ -7,7 +7,7 @@ const NS_KR = Noto_Sans_KR({
     style: 'normal',
     display: 'swap',
     subsets: ["korean", "latin"],
-    weight: ['100', '300', '400', '500', '700', '900'],
+    weight: ['300', '400', '500', '700', '900'],
     variable: '--noto-sans-kr',
 })
 

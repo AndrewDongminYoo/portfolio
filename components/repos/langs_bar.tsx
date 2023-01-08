@@ -43,7 +43,7 @@ function LanguageBarPart({
             itemProp="keywords"
             aria-label={`${language} ${percentString}`}
             data-view-component={true}
-            className="border-collapse flex h-3 overflow-hidden bg-transparent ml-[2px] first:ml-0"
+            className="flex h-3 overflow-hidden bg-transparent border-collapse ml-2px first:ml-0"
         />
     );
 }

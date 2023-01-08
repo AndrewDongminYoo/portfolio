@@ -8,7 +8,7 @@ export default function PrintButton() {
             <button
                 className={names(
                     'rounded-full h-12 w-12',
-                    'shadow-fab bg-gradient-to-b from-hintOfGreen to-solitude'
+                    'shadow-fab bg-gradient-to-b from-green-100 to-blue-100'
                 )}
                 onClick={() => window.print()}
             >

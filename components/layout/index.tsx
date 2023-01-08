@@ -18,10 +18,10 @@ export default function Layout({ children }: { children: ReactNode; }) {
     return (
         <div
             className={names(
-                'lg:max-w-[55rem]',
+                'lg:max-w-4xl',
                 'bg-white my-0 mx-auto',
                 'transition-all',
-                'max-w-[82.5rem]'
+                'max-w-7xl'
             )}
         >
             <Head>
@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: ReactNode; }) {
             </Head>
             <summary
                 className={names(
-                    'xl:scrollbar-hide xl:w-[30rem]',
+                    'xl:scrollbar-hide xl:w-120',
                     'text-base overflow-x-hidden',
                     'inline-block text-base p-10 pb-4',
                     'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
@@ -71,7 +71,7 @@ export default function Layout({ children }: { children: ReactNode; }) {
             </summary>
             <main
                 className={names(
-                    'xl:scrollbar-hide xl:w-[calc(100%-30rem)]',
+                    'xl:scrollbar-hide xl:w-full-30',
                     'text-base overflow-x-hidden',
                     'inline-block text-base p-10',
                     'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',

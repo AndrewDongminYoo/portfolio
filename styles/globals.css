@@ -140,7 +140,7 @@
     iframe,
     embed,
     object {
-        @apply inline-block;
+        @apply inline align-middle;
     }
 
     ul {

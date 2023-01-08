@@ -10,11 +10,11 @@ export default function GridTimeline({ timeline }: { timeline: Resume[]; }) {
     return (
         <div className="flex flex-col items-end justify-start w-full">
             <div className="flex flex-col items-start justify-start w-full px-0 py-6 mb-0 border-b-0 flex-nowrap max-h-max">
-                <div className="m-0 w-full text-base block min-h-[50px] break-all">
+                <div className="block w-full m-0 text-base break-all min-h-4">
                     <div className="grid mb-0.5 text-base leading-snug grid-cols-11">
                         {monthsLabels}
                     </div>
-                    <div className="grid pt-1 grid-cols-[repeat(100,1fr)] grid-flow-col-dense">
+                    <div className="grid grid-flow-col-dense pt-1 grid-cols-100">
                         {timeline.map(makeBlock)}
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const getMonthLabels = () => {
         const label = (
             <time
                 key={month}
-                className="pl-1 text-xs leading-normal border-r border-solid text-pureNavy border-r-azureWhite"
+                className="pl-1 text-xs leading-normal border-r border-solid text-slate-600 border-r-slate-200"
                 dateTime={month}
             >
                 {month}
@@ -64,8 +64,8 @@ const getMonthLabels = () => {
                 data-placement="top"
                 data-content={toHtml(popOverHtml)}
                 className={names(
-                    'font-black leading-normal text-center whitespace-nowrap rounded-sm cursor-text py-1 px-2 ml-[0.1rem] overflow-clip',
-                    ["activity", "project"].includes(type) ? "text-[10px] tracking-tight" : "text-[12px]",
+                    'font-black leading-normal text-center whitespace-nowrap rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
+                    ["activity", "project"].includes(type) ? "text-xxs tracking-tight" : "text-xs",
                     tailwindColor(type),
                 )}
                 style={{ gridColumn }}
@@ -80,12 +80,12 @@ const getMonthLabels = () => {
 const tailwindColor = (type: string) => {
     switch (type) {
         case "activity":
-            return "bg-[#85929e] text-[#292929]";
+            return "bg-gray-400 text-zinc-800";
         case "project":
-            return "bg-[#5d6d7e] text-[#F2F2F2]";
+            return "bg-gray-500 text-zinc-100";
         case "education":
-            return "bg-[#aeb6bf] text-[#474747]";
+            return "bg-gray-400 text-zinc-700";
         default:
-            return "bg-[#34495e] text-[#A4B9CB]";
+            return "bg-slate-700 text-slate-400";
     }
 };
