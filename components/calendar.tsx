@@ -10,7 +10,7 @@ function onLoad() {
             responsive: true,
             global_stats: true,
             tooltips: true,
-            cache: (24 * 60 * 60) * 1000,
+            cache: 24 * 60 * 60 * 1000,
         });
     }
 }

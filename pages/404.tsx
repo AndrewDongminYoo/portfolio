@@ -14,7 +14,9 @@ export default function ErrorPage() {
                 data-trim-start-us="0.0"
                 data-trim-end-us="5000000.0"
             />
-            <h2 className="text-xl tracking-normal text-orange-600">404 Error:: Not Found</h2>
+            <h2 className="text-xl tracking-normal text-orange-600">
+                404 Error:: Not Found
+            </h2>
             <h1 className="text-3xl">페이지가 존재하지 않아요!!</h1>
             <p className="text-base leading-5 tracking-normal">
                 찾으시는 주소가 정확한지 확인해주세요!!

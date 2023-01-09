@@ -17,10 +17,7 @@ import groupBy from 'lodash.groupby';
 import { primaryTitle } from '@constants';
 
 export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
-    const groupedPosts = groupBy(
-        allPostsData,
-        (resume: Resume) => resume.type
-    );
+    const groupedPosts = groupBy(allPostsData, (resume: Resume) => resume.type);
     const experience = groupedPosts.experience as Experience[];
     const project = groupedPosts.project as Project[];
     const activity = groupedPosts.activity as Activity[];

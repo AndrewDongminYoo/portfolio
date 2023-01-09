@@ -4,7 +4,7 @@ import type { SectionType } from '@typings/profile';
 export default function ResumeSection({
     children,
     type,
-}: ComponentProps<"section"> & {
+}: ComponentProps<'section'> & {
     type: SectionType;
 }) {
     const subTitle = () => {

@@ -126,7 +126,7 @@ const readRepositories = () => {
     );
     // Sort repos by date
     return allReposData.sort((a, b) => {
-        if (parseISO(a.updated_at) < parseISO(b.updated_at)) {
+        if (parseISO(a.pushed_at) < parseISO(b.pushed_at)) {
             return 1;
         } else return -1;
     });

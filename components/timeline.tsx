@@ -5,7 +5,7 @@ import type { Resume } from '@typings/profile';
 import names from 'classnames';
 import { renderToString as toHtml } from 'react-dom/server';
 
-export default function GridTimeline({ timeline }: { timeline: Resume[]; }) {
+export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
     const { monthsLabels, makeBlock } = getMonthLabels();
     return (
         <div className="flex flex-col items-end justify-start w-full">
@@ -65,8 +65,10 @@ const getMonthLabels = () => {
                 data-content={toHtml(popOverHtml)}
                 className={names(
                     'font-black leading-normal text-center whitespace-nowrap rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
-                    ["activity", "project"].includes(type) ? "text-xxs tracking-tight" : "text-xs",
-                    tailwindColor(type),
+                    ['activity', 'project'].includes(type)
+                        ? 'text-xxs tracking-tight'
+                        : 'text-xs',
+                    tailwindColor(type)
                 )}
                 style={{ gridColumn }}
             >
@@ -79,13 +81,13 @@ const getMonthLabels = () => {
 
 const tailwindColor = (type: string) => {
     switch (type) {
-        case "activity":
-            return "bg-gray-400 text-zinc-800";
-        case "project":
-            return "bg-gray-500 text-zinc-100";
-        case "education":
-            return "bg-gray-400 text-zinc-700";
+        case 'activity':
+            return 'bg-gray-400 text-zinc-800';
+        case 'project':
+            return 'bg-gray-500 text-zinc-100';
+        case 'education':
+            return 'bg-gray-400 text-zinc-700';
         default:
-            return "bg-slate-700 text-slate-400";
+            return 'bg-slate-700 text-slate-400';
     }
 };

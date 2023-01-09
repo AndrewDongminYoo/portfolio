@@ -143,10 +143,6 @@
         @apply block;
     }
 
-    .slug__icon {
-        @apply my-0 ml-0 mr-2;
-    }
-
     .list_contributions .list_contribution_item .part_description {
         @apply mx-0 mt-px mb-0 text-sm;
         @apply leading-7;

@@ -12,7 +12,7 @@ import names from 'classnames';
 import portrait from '@public/images/profile.jpg';
 import { useRouter } from 'next/router';
 
-export default function Layout({ children }: { children: ReactNode; }) {
+export default function Layout({ children }: { children: ReactNode }) {
     const router = useRouter();
     const isHome = router.pathname === '/';
     return (

@@ -1,15 +1,21 @@
 import '@styles/globals.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import * as customPack from '@components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import { config, library } from '@fortawesome/fontawesome-svg-core';
 import Head from 'next/head';
 import { Noto_Sans_KR } from '@next/font/google';
+
+config.autoAddCss = false;
+library.add(customPack);
 
 const NS_KR = Noto_Sans_KR({
     style: 'normal',
     display: 'swap',
-    subsets: ["korean", "latin"],
+    subsets: ['korean', 'latin'],
     weight: ['300', '400', '500', '700', '900'],
     variable: '--noto-sans-kr',
-})
+});
 
 const App = ({ Component, pageProps }: AppProps) => {
     return (
