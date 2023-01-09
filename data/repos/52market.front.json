@@ -19,7 +19,7 @@
     "fork": false,
     "languages_url": "https://api.github.com/repos/JARYOGOOJO/52market.front/languages",
     "created_at": "2021-12-13T03:16:26Z",
-    "updated_at": "2022-12-31T16:28:16Z",
+    "updated_at": "2023-01-07T18:04:51Z",
     "pushed_at": "2021-12-31T07:58:48Z",
     "svn_url": "https://github.com/JARYOGOOJO/52market.front",
     "homepage": "",
@@ -34,7 +34,7 @@
     "has_pages": false,
     "has_discussions": false,
     "forks_count": 2,
-    "archived": false,
+    "archived": true,
     "disabled": false,
     "open_issues_count": 0,
     "license": {
@@ -66,7 +66,7 @@
         "pull": true
     },
     "meta_tags": {
-        "image": "https://opengraph.githubassets.com/706f9a9ba14c631268bca647361a43d0457b6922412ebd80cf8a1465d6999af3/JARYOGOOJO/52market.front",
+        "image": "https://opengraph.githubassets.com/cbf3427d5fc8694931fa5da3c0a553a8c44119f16c1aea871768480aef43ffc2/JARYOGOOJO/52market.front",
         "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - JARYOGOOJO/52market.front: 무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들(1km 이내) 글만 보기. 업로드 시 다른 사용자에게 알람 기능. 댓글의 버튼을 통해 웹소켓 실시간 채팅 기능, 웹소켓 댓글 추가 및 삭제 시 즉시 반영",

@@ -33,17 +33,17 @@ function LanguageBarPart({
     percent: number;
 }) {
     const backgroundColor = colorMap[language] as string;
-    const percentString = percent.toFixed(1) + '%';
+    const width = percent.toFixed(1) + '%';
     return (
         <span
-            style={{
-                backgroundColor: `${backgroundColor} !important`,
-                width: percentString,
-            }}
             itemProp="keywords"
-            aria-label={`${language} ${percentString}`}
+            aria-label={`${language} ${percent.toFixed(3)}`}
             data-view-component={true}
-            className="flex h-3 overflow-hidden border-collapse ml-2px first:ml-0"
+            className="flex h-3 overflow-hidden border-collapse ml-0.5 first:ml-0"
+            style={{
+                backgroundColor,
+                width,
+            }}
         />
     );
 }

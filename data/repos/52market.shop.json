@@ -19,7 +19,7 @@
     "fork": false,
     "languages_url": "https://api.github.com/repos/JARYOGOOJO/52market.shop/languages",
     "created_at": "2021-11-22T03:17:11Z",
-    "updated_at": "2022-08-25T11:38:49Z",
+    "updated_at": "2023-01-07T18:05:12Z",
     "pushed_at": "2022-01-04T15:49:51Z",
     "svn_url": "https://github.com/JARYOGOOJO/52market.shop",
     "homepage": "",
@@ -34,7 +34,7 @@
     "has_pages": true,
     "has_discussions": true,
     "forks_count": 2,
-    "archived": false,
+    "archived": true,
     "disabled": false,
     "open_issues_count": 0,
     "license": {
@@ -73,7 +73,7 @@
         "pull": true
     },
     "meta_tags": {
-        "image": "https://opengraph.githubassets.com/b3c111a298f07b76331c02d2a7f5b40181228515f7f8e6b80da1d4755854b489/JARYOGOOJO/52market.shop",
+        "image": "https://opengraph.githubassets.com/daa136b4c73a4ba7d85cc325d30f98c63365218c27e9b7c3ba7270eb32ac9f88/JARYOGOOJO/52market.shop",
         "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - JARYOGOOJO/52market.shop: 자바 스프링 웹개발 학습용 프로젝트입니다. 레디스-웹소켓, 시큐리티, 카카오톡 로그인 기능 등을 구현했습니다.",

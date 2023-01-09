@@ -10,7 +10,7 @@ export default function ProfileBio() {
             <h2
                 className={names(
                     'flex flex-row flex-nowrap items-center justify-between',
-                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-5'
+                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-16'
                 )}
             >
                 {primaryTitle}

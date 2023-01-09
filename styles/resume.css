@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 @layer components {
+
+    .flex-column {
+        @apply flex-col;
+    }
+
+    .d-flex {
+        @apply flex;
+    }
+
+    .break-word {
+        word-break: break-word;
+    }
+
     .break-any {
         line-break: anywhere;
     }
@@ -145,12 +158,6 @@
         @apply h-max;
     }
 
-    .markdown,
-    .tui_editor .tui_editor_contents {
-        @apply bg-transparent;
-        @apply break-words;
-    }
-
     .resume_card_item_text {
         @apply lg:mt-1;
     }
@@ -163,24 +170,12 @@
         @apply lg:leading-6;
     }
 
-    .resume_card .test_item .resume_card_item_text {
-        @apply lg:mt-1;
-    }
-
     .resume_card_right {
-        @apply lg:w-full-11;
+        @apply lg:w-full-11.5;
     }
 
     .resume_card_item .list_contribution {
         @apply sm:mt-1;
-    }
-
-    .resume_card .test_item_header {
-        @apply sm:items-start;
-    }
-
-    .resume_card.shrinked .resume_card_body {
-        @apply sm:w-full-11;
     }
 
     .resume_card {
@@ -222,47 +217,5 @@
 
     .resume_card_item_period .period {
         @apply xs:ml-1;
-    }
-
-    .resume_card_text_example {
-        @apply xs:hidden;
-    }
-
-    .resume_card.shrinked {
-        @apply xs:flex-col xs:items-start xs:justify-start;
-    }
-
-    .resume_card.shrinked > div {
-        @apply xs:w-full;
-    }
-
-    .resume_card.shrinked .resume_card_item:first-child {
-        @apply xs:px-0 xs:py-6;
-    }
-
-    .resume_card.shrinked .resume_card_item:last-child {
-        @apply xs:pb-0;
-    }
-
-    .resume_card .test_box {
-        @apply xs:mb-3 xs:pb-3 xs:gap-4;
-    }
-
-    .resume_card .test_box:first-child,
-    .resume_card .test_box:last-child {
-        @apply xs:pt-3;
-    }
-
-    .resume_card .test_item {
-        @apply xs:p-0;
-    }
-
-    .resume_card .test_item .resume_card_item_text {
-        @apply xs:mt-0;
-    }
-
-    .resume_card .test_item_btn a,
-    .resume_card .test_item_btn a:visited {
-        @apply xs:hover:text-white;
     }
 }

@@ -26,7 +26,7 @@
     "size": 12751,
     "stargazers_count": 0,
     "watchers_count": 0,
-    "language": "CSS",
+    "language": "Python",
     "has_issues": true,
     "has_projects": true,
     "has_downloads": true,
@@ -75,8 +75,8 @@
         "description": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Original Flask Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Flask: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Origina..."
     },
     "languages": {
-        "CSS": 128499,
-        "Python": 14880,
+        "Python": 128499,
+        "CSS": 14880,
         "HTML": 7285,
         "JavaScript": 5340
     }

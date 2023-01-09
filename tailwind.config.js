@@ -46,28 +46,42 @@ module.exports = {
                 normal: '1.5',
                 relaxed: '1.6',
             },
+            listStyleType: {
+                square: 'square',
+            },
             maxHeight: {
                 sm: '2.125rem',
             },
-            maxWidth: {
-                xxs: '14rem',
+            maxWidth: ({ theme }) => ({
+                ...theme('spacing'),
+                'xxs': '14rem',
                 '4xl': '55rem',
                 '7xl': '82.5rem',
-            },
-            minHeight: {
-                3: '30px',
-                4: '50px',
-                5: '64px',
-            },
+            }),
+            minHeight: ({ theme }) => ({
+                ...theme('spacing'),
+            }),
+            minWidth: ({ theme }) => ({
+                ...theme('spacing'),
+            }),
             spacing: {
                 0.4: '0.1rem',
-                '2px': '2px',
+                12.5: '3.125rem',
+                16: '4rem',
+                19: '4.75rem', /* 76px */
+                20: '5rem', /* 80px */
+                40: '10rem', /* 160px */
+                48: '12rem',
+                52.5: '13.125rem',
+                68: '17rem',
+                82.5: '20.625rem',
                 120: '30rem'
             },
             width: {
                 'full-9': 'calc(100% - 9rem)',
-                'full-11': 'calc(100% - 11.5rem)',
+                'full-11.5': 'calc(100% - 11.5rem)',
                 'full-30': 'calc(100% - 30rem)',
+                'full-35': 'calc(100% - 35rem)'
             },
         },
     },

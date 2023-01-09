@@ -10,9 +10,7 @@
     }
 
     body {
-        @apply bg-white;
-        color: rgba(38, 55, 71, 1);
-        line-height: 1.375;
+        @apply leading-snug bg-white text-slate-800;
     }
 
     a {
@@ -23,9 +21,7 @@
     }
 
     hr {
-        @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid;
-        border-width: 0px;
-        border-color: rgba(215, 226, 235, 1);
+        @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid border-slate-200;
     }
 
     h1,
@@ -44,8 +40,7 @@
     }
 
     h4 {
-        @apply tracking-normal;
-        line-height: 1.6;
+        @apply leading-relaxed tracking-normal;
     }
 
     h5,
@@ -54,24 +49,20 @@
     }
 
     h1 {
-        @apply tracking-normal;
-        line-height: 1.375;
+        @apply leading-snug tracking-normal;
     }
 
     h2 {
-        @apply tracking-normal;
-        line-height: 1.375;
+        @apply leading-snug tracking-normal;
     }
 
     h3 {
-        @apply tracking-normal;
-        line-height: 1.375;
+        @apply leading-snug tracking-normal;
     }
 
     li,
     h5 {
-        @apply tracking-normal;
-        line-height: 1.6;
+        @apply leading-relaxed tracking-normal;
     }
 
     h6 {
@@ -79,8 +70,7 @@
     }
 
     p {
-        @apply mb-2 font-normal tracking-normal;
-        line-height: 1.6;
+        @apply mb-2 font-normal leading-relaxed tracking-normal;
     }
 
     small {
@@ -88,18 +78,11 @@
     }
 
     code {
-        @apply px-1 py-px my-0 ml-0 mr-px border border-solid rounded;
-        border-color: rgba(215, 226, 235, 1);
-        background-color: rgba(244, 244, 248, 1);
-        color: rgba(55, 72, 93, 1);
+        @apply px-1 py-px my-0 ml-0 mr-px bg-gray-100 border border-solid rounded border-slate-200 text-slate-700;
     }
 
     pre {
-        @apply px-4 py-3 m-0 break-all border border-solid rounded;
-        border-color: rgba(215, 226, 235, 1);
-        background-color: rgba(244, 244, 248, 1);
-        color: rgba(38, 55, 71, 1);
-        word-wrap: break-word;
+        @apply px-4 py-3 m-0 break-all bg-gray-100 border border-solid rounded break-word border-slate-200 text-slate-800;
     }
 
     pre code {
@@ -107,8 +90,7 @@
     }
 
     blockquote {
-        @apply p-4 border-l-2 border-solid;
-        border-color: rgba(215, 226, 235, 1);
+        @apply p-4 border-l-2 border-solid border-slate-200;
     }
 
     blockquote small {
@@ -118,14 +100,6 @@
     blockquote small:before {
         @apply pr-2;
         content: "―";
-    }
-
-    .flex-column {
-        @apply flex-col;
-    }
-
-    .d-flex {
-        @apply flex;
     }
 
     video {
@@ -144,8 +118,6 @@
     }
 
     ul {
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        padding-inline-start: 40px;
+        @apply pl-10 my-4 mb-4;
     }
 }

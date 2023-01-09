@@ -8,7 +8,7 @@ const nextConfig = {
     swcMinify: true,
     reactStrictMode: true,
     compiler: {
-        removeConsole: { exclude: ['error'] }
+        removeConsole: { exclude: ['error', 'debug'] }
     },
     images: {
         remotePatterns: [

@@ -46,7 +46,7 @@ export default function MenuButton() {
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                         >
                                             <PrinterIcon
-                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-400"
+                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-slate-400"
                                                 aria-hidden="true"
                                             />
                                             <Link href="#" onClick={() => window.print()}>프린트하기</Link>
@@ -60,7 +60,7 @@ export default function MenuButton() {
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                         >
                                             <CommandLineIcon
-                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-400"
+                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-slate-400"
                                                 aria-hidden="true"
                                             />
                                             <Link href="/repos">포트폴리오</Link>
@@ -74,7 +74,7 @@ export default function MenuButton() {
                                                 } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                                         >
                                             <IdentificationIcon
-                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-400"
+                                                className="w-5 h-5 mr-2 stroke-2 ui-active:fill-slate-500 fill-slate-100 ui-active:stroke-slate-300 stroke-slate-400"
                                                 aria-hidden="true"
                                             />
                                             <Link href="https://github.com/AndrewDongminYoo">프로필</Link>

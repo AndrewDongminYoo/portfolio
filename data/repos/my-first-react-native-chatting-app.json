@@ -19,7 +19,7 @@
     "fork": false,
     "languages_url": "https://api.github.com/repos/AndrewDongminYoo/my-first-react-native-chatting-app/languages",
     "created_at": "2021-06-17T18:25:29Z",
-    "updated_at": "2022-11-03T11:21:53Z",
+    "updated_at": "2023-01-07T18:04:21Z",
     "pushed_at": "2022-11-03T11:29:47Z",
     "svn_url": "https://github.com/AndrewDongminYoo/my-first-react-native-chatting-app",
     "homepage": "",
@@ -34,7 +34,7 @@
     "has_pages": false,
     "has_discussions": false,
     "forks_count": 0,
-    "archived": false,
+    "archived": true,
     "disabled": false,
     "open_issues_count": 0,
     "allow_forking": true,
@@ -59,7 +59,7 @@
         "pull": true
     },
     "meta_tags": {
-        "image": "https://opengraph.githubassets.com/073db98ea74b2bbc981e43eaec3bf415017b35268fd12bd7d5dce8581f331b65/AndrewDongminYoo/my-first-react-native-chatting-app",
+        "image": "https://opengraph.githubassets.com/c4921a0ade390370524404b46c28709ddc0a05a17b5322c4b8bc6d1af05925f6/AndrewDongminYoo/my-first-react-native-chatting-app",
         "site_name": "GitHub",
         "type": "object",
         "title": "GitHub - AndrewDongminYoo/my-first-react-native-chatting-app: 리액트네이티브 프로젝트입니다. 파이어베이스 채팅 기능 구현했습니다. 스택/탭 네비게이션, 스타일드컴포넌트 사용.",

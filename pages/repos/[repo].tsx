@@ -1,14 +1,14 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { readData, readReposIds } from '@lib/repos';
-import Image from 'next/image';
 import type { Language } from '@components/repos/lang_colors';
 import LanguageButton from '@components/repos/lang_btn';
 import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
+import RepoCard from '@components/repos/card';
 import type { Repository } from '@typings/repos';
 
 export default function Repo({ repository }: { repository: Repository }) {
-    const { meta_tags, name, html_url, languages } = repository;
+    const { meta_tags, full_name, html_url, languages } = repository;
     const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
@@ -19,15 +19,8 @@ export default function Repo({ repository }: { repository: Repository }) {
             >
                 링크를 클릭하면 리포지토리로 이동합니다.
             </Link>
-            <Link aria-label={meta_tags?.title ?? name} href={html_url}>
-                <Image
-                    alt={meta_tags?.title || name}
-                    src={meta_tags?.image as string}
-                    className="block"
-                    width={540}
-                    height={270}
-                    priority={true}
-                />
+            <Link aria-label={meta_tags?.title ?? full_name} href={html_url}>
+                <RepoCard repository={repository} />
             </Link>
             <LanguageStateBar
                 languages={languageIter}

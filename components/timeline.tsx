@@ -10,7 +10,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[]; }) {
     return (
         <div className="flex flex-col items-end justify-start w-full">
             <div className="flex flex-col items-start justify-start w-full px-0 py-6 mb-0 border-b-0 flex-nowrap max-h-max">
-                <div className="block w-full m-0 text-base break-all min-h-4">
+                <div className="block w-full m-0 text-base break-all min-h-12.5">
                     <div className="grid mb-0.5 text-base leading-snug grid-cols-11">
                         {monthsLabels}
                     </div>

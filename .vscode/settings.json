@@ -5,6 +5,7 @@
         "commitlint",
         "defaultlocale",
         "googlecalendar",
+        "headlessui",
         "heroicons",
         "nextjs",
         "Noto",

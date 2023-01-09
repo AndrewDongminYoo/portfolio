@@ -26,7 +26,7 @@
     "size": 12645,
     "stargazers_count": 0,
     "watchers_count": 0,
-    "language": "CSS",
+    "language": "Java",
     "has_issues": true,
     "has_projects": true,
     "has_downloads": true,
@@ -65,8 +65,8 @@
         "description": "스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spring Converted Version - GitHub - AndrewDongminYoo/TIL-of-BootCamp-Spring: 스파르타코딩클럽 내일배움캠프 1기 동기들은 어떻게 TIL을 쓰고 있을까? (블로그 스크래핑 사이트) - Spri..."
     },
     "languages": {
-        "CSS": 128499,
-        "Java": 34265,
+        "Java": 128499,
+        "CSS": 34265,
         "HTML": 6926,
         "JavaScript": 5285
     }

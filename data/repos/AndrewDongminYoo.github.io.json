@@ -15,15 +15,15 @@
         "site_admin": false
     },
     "html_url": "https://github.com/AndrewDongminYoo/AndrewDongminYoo.github.io",
-    "description": "깃허브 메인 프로필(+이력서)입니다.",
+    "description": "깃허브 메인 프로필(+이력서)입니다. NextJS",
     "fork": false,
     "languages_url": "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.github.io/languages",
     "created_at": "2022-01-13T02:03:50Z",
-    "updated_at": "2022-12-20T13:38:55Z",
-    "pushed_at": "2023-01-03T09:41:07Z",
+    "updated_at": "2023-01-07T18:02:17Z",
+    "pushed_at": "2023-01-08T15:32:28Z",
     "svn_url": "https://github.com/AndrewDongminYoo/AndrewDongminYoo.github.io",
     "homepage": "https://andrewdongminyoo.github.io",
-    "size": 8506,
+    "size": 33330,
     "stargazers_count": 2,
     "watchers_count": 2,
     "language": "TypeScript",
@@ -43,7 +43,9 @@
     "topics": [
         "nextjs",
         "profile",
-        "resume"
+        "react",
+        "resume",
+        "tailwindcss"
     ],
     "visibility": "public",
     "forks": 0,
@@ -58,16 +60,16 @@
         "pull": true
     },
     "meta_tags": {
-        "image": "https://opengraph.githubassets.com/8f069ed03abc1cea1921f811ce4613785150dcdeee944c4e5eb974cdb29c0840/AndrewDongminYoo/AndrewDongminYoo.github.io",
+        "image": "https://opengraph.githubassets.com/5149edd27c917f4ec0c64bc4214d8bf3e886c335a3bb9c5459bce655fdd36787/AndrewDongminYoo/AndrewDongminYoo.github.io",
         "site_name": "GitHub",
         "type": "object",
-        "title": "GitHub - AndrewDongminYoo/AndrewDongminYoo.github.io: 깃허브 메인 프로필(+이력서)입니다.",
+        "title": "GitHub - AndrewDongminYoo/AndrewDongminYoo.github.io: 깃허브 메인 프로필(+이력서)입니다. NextJS",
         "url": "https://github.com/AndrewDongminYoo/AndrewDongminYoo.github.io",
-        "description": "깃허브 메인 프로필(+이력서)입니다. Contribute to AndrewDongminYoo/AndrewDongminYoo.github.io development by creating an account on GitHub."
+        "description": "깃허브 메인 프로필(+이력서)입니다. NextJS. Contribute to AndrewDongminYoo/AndrewDongminYoo.github.io development by creating an account on GitHub."
     },
     "languages": {
-        "TypeScript": 195507,
-        "CSS": 20116,
-        "JavaScript": 4427
+        "TypeScript": 200020,
+        "CSS": 13428,
+        "JavaScript": 7200
     }
 }
