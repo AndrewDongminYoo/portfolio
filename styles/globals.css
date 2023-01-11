@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .break-word {
+        word-break: break-word;
+    }
+
+    .break-any {
+        line-break: anywhere;
+    }
+}
+
 @layer base {
     select {
         @apply appearance-none;
@@ -118,6 +128,6 @@
     }
 
     ul {
-        @apply pl-10 my-4 mb-4;
+        @apply pl-10 my-4;
     }
 }

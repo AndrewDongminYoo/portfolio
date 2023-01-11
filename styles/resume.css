@@ -12,14 +12,6 @@
         @apply flex;
     }
 
-    .break-word {
-        word-break: break-word;
-    }
-
-    .break-any {
-        line-break: anywhere;
-    }
-
     .resume_card {
         @apply w-full p-6 mx-0 my-6 border border-solid rounded-xl;
         @apply border-slate-200;

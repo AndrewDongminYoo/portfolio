@@ -6,7 +6,7 @@ import names from 'classnames';
 
 export default function ProfileBio() {
     return (
-        <section className="p-0 mt-0 text-base border-t-0">
+        <section className="p-0 mt-0 text-base border-t-0 text-slate-800">
             <h2
                 className={names(
                     'flex flex-row flex-nowrap items-center justify-between',
@@ -20,7 +20,7 @@ export default function ProfileBio() {
                     return <ContactBadge contact={contact} key={i} />;
                 })}
             </ul>
-            <p className="mt-4 text-base leading-6 text-slate-800">
+            <p className="mt-4 text-base leading-6">
                 {description}
             </p>
         </section>
@@ -44,7 +44,7 @@ const ContactBadge = ({
             <Link
                 className={names(
                     'inline pb-1 tracking-normal leading-relaxed',
-                    'truncate text-slate-800 font-normal text-sm'
+                    'truncate font-normal text-sm'
                 )}
                 href={href}
                 target="_blank"

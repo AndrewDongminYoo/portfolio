@@ -45,20 +45,19 @@ export default function MenuButton() {
                             {/* Mark this component as `static` */}
                             <Menu.Items
                                 static
-                                className="rounded-md shadow-md bg-slate-50"
+                                className="text-gray-900 rounded-md shadow-md bg-slate-50"
                             >
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button
-                                            className={`${active
-                                                ? 'bg-slate-500 text-white'
-                                                : 'text-gray-900'
-                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                            className="flex items-center w-full p-2 text-sm text-gray-900 rounded-md ui-active:bg-slate-500 ui-active:text-white group"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faPrint}
                                                 color="slateGray"
                                                 className="w-5 h-5 mr-2"
+                                                width={20}
+                                                height={20}
                                                 aria-hidden="true"
                                                 inverse={active}
                                             />
@@ -74,15 +73,14 @@ export default function MenuButton() {
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button
-                                            className={`${active
-                                                ? 'bg-slate-500 text-white'
-                                                : 'text-gray-900'
-                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                            className="flex items-center w-full p-2 text-sm text-gray-900 rounded-md ui-active:bg-slate-500 ui-active:text-white group"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faCodepen}
                                                 color="slateGray"
                                                 className="w-5 h-5 mr-2 animate-ping motion-reduce:animate-none"
+                                                width={20}
+                                                height={20}
                                                 aria-hidden="true"
                                                 inverse={active}
                                             />
@@ -95,15 +93,14 @@ export default function MenuButton() {
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button
-                                            className={`${active
-                                                ? 'bg-slate-500 text-white'
-                                                : 'text-gray-900'
-                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                                            className="flex items-center w-full p-2 text-sm text-gray-900 rounded-md ui-active:bg-slate-500 ui-active:text-white group"
                                         >
                                             <FontAwesomeIcon
                                                 icon={faIdCard}
                                                 color="slateGray"
                                                 className="w-5 h-5 mr-2"
+                                                width={20}
+                                                height={20}
                                                 aria-hidden="true"
                                                 inverse={active}
                                             />

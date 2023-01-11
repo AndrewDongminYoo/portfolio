@@ -13,7 +13,7 @@ export default function StackList() {
                 {stacks.primaryTags.map((stack, i) => {
                     return (
                         <li className="inline-block" key={i}>
-                            <div className="duration-75 ease-in-out pl-1 pr-1 mt-0 mb-0 ml-0 mr-1 overflow-hidden text-xs font-normal whitespace-nowrap transition-all border-0 rounded py-0.5 max-w-xxs text-ellipsis text-gray-50 bg-slate-800">
+                            <div className="duration-75 ease-in-out px-1 my-0 ml-0 mr-1 overflow-hidden text-xs font-normal whitespace-nowrap transition-all border-0 rounded py-0.5 max-w-xxs text-ellipsis text-gray-50 bg-slate-800">
                                 {stack}
                             </div>
                         </li>
@@ -27,7 +27,7 @@ export default function StackList() {
                 {stacks.technicalTags.map((stack, i) => {
                     return (
                         <li className="inline-block" key={i}>
-                            <div className="duration-75 ease-in-out pl-1 pr-1 mt-0 mb-0 ml-0 mr-1 overflow-hidden text-xs font-normal text-slate-800 whitespace-nowrap transition-all bg-slate-200 border-0 rounded py-0.5 max-w-xxs text-ellipsis">
+                            <div className="duration-75 ease-in-out px-1 my-0 ml-0 mr-1 overflow-hidden text-xs font-normal text-slate-800 whitespace-nowrap transition-all bg-slate-200 border-0 rounded py-0.5 max-w-xxs text-ellipsis">
                                 {stack}
                             </div>
                         </li>
