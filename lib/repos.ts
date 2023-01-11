@@ -17,9 +17,7 @@ const reclusiveFilter = (repo: { [x: string]: any }) => {
             case 'string': {
                 if (value.endsWith('.git')) {
                     delete repo[key];
-                } else if (key === 'languages_url') {
-                    repo[key] = value;
-                } else if (value.startsWith('https://api.github.com/')) {
+                } else if (value.includes('{')) {
                     delete repo[key];
                 } else {
                     repo[key] = value;
@@ -57,11 +55,11 @@ const fetchRepositories = async () => {
             type: 'public',
             per_page: 100,
             direction: 'desc',
-            sort: 'created',
+            sort: 'pushed',
         })
         .then((value) => value.data);
     return repositories
-        .filter((_) => !_.fork && _.size > 5000 && _.topics?.length !== 0)
+        .filter((R) => !R.fork && R.size > 4000 && R.topics?.length !== 0)
         .map((repo) => reclusiveFilter(repo));
 };
 

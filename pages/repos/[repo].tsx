@@ -7,21 +7,19 @@ import Link from 'next/link';
 import RepoCard from '@components/repos/card';
 import type { Repository } from '@typings/repos';
 
-export default function Repo({ repository }: { repository: Repository }) {
+export default function Repo({ repository }: { repository: Repository; }) {
     const { meta_tags, full_name, html_url, languages } = repository;
     const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <>
-            <Link
-                href={`/repos/${repository.name}`}
+
+            <Link href={html_url}
                 className="box-border text-sm font-medium leading-tight break-words text-slate-300"
             >
-                링크를 클릭하면 리포지토리로 이동합니다.
+                {meta_tags?.title ?? full_name}
             </Link>
-            <Link aria-label={meta_tags?.title ?? full_name} href={html_url}>
-                <RepoCard repository={repository} />
-            </Link>
+            <RepoCard repository={repository} />
             <LanguageStateBar
                 languages={languageIter}
                 totalCount={totalCount}
