@@ -1,0 +1,1313 @@
+{
+    "unformattedFiles": [
+        {
+            "file": "components/common/description.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "typings/repos.d.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/do-it-react-native-clone.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/_app.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "package.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "postcss.config.js",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/Serverless-Framework-Crawlers.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "lib/repos.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/_document.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "styles/resume.css",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "public/styles/print.css",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/layout/index.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/project_232161.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/TIL-of-BootCamp-Spring.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/posts/experience.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/project_232160.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "next-sitemap.config.js",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/flutter-proxy-voting-app.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/repos/langs_bar.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/repos/card.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/posts/[post].tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "styles/calendar.css",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/api/repos.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "env.d.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/52market.front.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "styles/globals.css",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "lib/posts.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/AndrewDongminYoo.github.io.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "tsconfig.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/experience_167790.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/flask-My-Small-Meal.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/my-first-react-native-chatting-app.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/timeline.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/repos/lang_btn.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/common/period.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "next.config.js",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/layout/menu.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "lib/fetcher.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/education_sejong.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "tailwind.config.js",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/repos/lang_icons.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": ".vscode/settings.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "commitlint.config.js",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/repos/lang_colors.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/posts/project.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/index.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/education_gbds.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": ".eslintrc.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/experience_280655.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "constants/index.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/layout/stacks.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/calendar.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/posts/activity.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/section.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/project_232159.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/posts/index.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/52market.shop.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/repos/[repo].tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/api/posts.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/404.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/layout/profile.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/common/icons.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "components/posts/education.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "pages/repos/index.tsx",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/posts/activity_sparta.md",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "data/repos/TIL-of-BootCamp-Flask.json",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        },
+        {
+            "file": "typings/profile.d.ts",
+            "line": "1",
+            "column": "1",
+            "message": "Incorrect formatting, autoformat by running 'trunk fmt'",
+            "level": "LEVEL_HIGH",
+            "issueClass": "ISSUE_CLASS_UNFORMATTED",
+            "linter": "prettier"
+        }
+    ],
+    "lintActions": [
+        {
+            "paths": [
+                ".eslintrc.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                ".vscode/settings.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/52market.front.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/52market.shop.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/AndrewDongminYoo.github.io.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/Serverless-Framework-Crawlers.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/TIL-of-BootCamp-Flask.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/TIL-of-BootCamp-Spring.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/do-it-react-native-clone.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/flask-My-Small-Meal.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/flutter-proxy-voting-app.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "data/repos/my-first-react-native-chatting-app.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "package.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "prettier-result.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                "tsconfig.json"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "json",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "410"
+        },
+        {
+            "paths": [
+                ".github/workflows/nextjs.yml"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "yaml",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "291"
+        },
+        {
+            "paths": [
+                "README.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/activity_sparta.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/education_gbds.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/education_sejong.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/experience_167790.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/experience_280655.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/project_232159.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/project_232160.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "data/posts/project_232161.md"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "markdown",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "415"
+        },
+        {
+            "paths": [
+                "commitlint.config.js"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "javascript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "354"
+        },
+        {
+            "paths": [
+                "next-sitemap.config.js"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "javascript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "354"
+        },
+        {
+            "paths": [
+                "next.config.js"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "javascript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "354"
+        },
+        {
+            "paths": [
+                "postcss.config.js"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "javascript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "354"
+        },
+        {
+            "paths": [
+                "tailwind.config.js"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "javascript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "354"
+        },
+        {
+            "paths": [
+                "components/calendar.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/common/description.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/common/icons.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/common/period.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/layout/index.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/layout/menu.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/layout/profile.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/layout/stacks.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/posts/activity.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/posts/education.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/posts/experience.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/posts/index.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/posts/project.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/repos/card.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/repos/lang_btn.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/repos/lang_colors.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/repos/lang_icons.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/repos/langs_bar.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/section.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "components/timeline.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "constants/index.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "env.d.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "lib/fetcher.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "lib/posts.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "lib/repos.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/404.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/_app.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/_document.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/api/posts.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/api/repos.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/index.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/posts/[post].tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/repos/[repo].tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "pages/repos/index.tsx"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "typings/profile.d.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "typings/repos.d.ts"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "typescript",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "495"
+        },
+        {
+            "paths": [
+                "public/styles/print.css"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "css",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "178"
+        },
+        {
+            "paths": [
+                "styles/calendar.css"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "css",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "178"
+        },
+        {
+            "paths": [
+                "styles/globals.css"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "css",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "178"
+        },
+        {
+            "paths": [
+                "styles/resume.css"
+            ],
+            "linter": "prettier",
+            "fileGroupName": "css",
+            "command": "format",
+            "verb": "TRUNK_VERB_FMT",
+            "actionDurationMs": "178"
+        }
+    ],
+    "changeStats": {},
+    "checkStats": {
+        "fileCount": "99"
+    }
+}
