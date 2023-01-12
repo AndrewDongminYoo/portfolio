@@ -3,11 +3,14 @@ default: true
 blank_lines: false
 bullet: false
 html: false
-indentation: false
+indentation: true
 line_length: false
 spaces: false
 url: false
 whitespace: false
 first-line-heading: false
-header-increment: false
 heading-increment: false
+no-trailing-spaces:
+  br_spaces: 2
+  list_item_empty_lines: false
+  strict: false

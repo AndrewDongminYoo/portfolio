@@ -1,0 +1,17 @@
+printWidth: 100
+proseWrap: always
+tabWidth: 4
+useTabs: false
+insertPragma: false
+requirePragma: false
+overrides:
+  - files:
+      - '**/*.ts*'
+      - '**/*.js*'
+    options:
+      bracketSameLine: true
+      bracketSpacing: true
+      editorconfig: false
+      jsxSingleQuote: true
+      singleQuote: true
+      semi: true

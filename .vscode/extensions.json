@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "trunk.io",
+        "dbaeumer.vscode-eslint",
+        "streetsidesoftware.code-spell-checker",
+        "heybourn.headwind",
+        "wix.vscode-import-cost",
+        "davidanson.vscode-markdownlint",
+        "quicktype.quicktype",
+        "csstools.postcss",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "seatonjiang.gitmoji-vscode"
+    ]
+}

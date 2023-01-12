@@ -16,6 +16,31 @@ lint:
     - eslint@8.31.0
     - prettier@2.8.2
     - markdownlint@0.33.0
+  ignore:
+    - linters: [ALL]
+      paths:
+        # Next.JS Generated files
+        - .build/**
+        - out/**
+        - .next/**
+        # Configue files
+        - '*.config.js'
+        - .github/**
+        - .husky/**
+        - .vscode/**
+        # Resume Base data
+        - data/**/*.md
+        - data/**/*.json
+    - linters: [prettier]
+      paths:
+        - '**/styles/*.css'
+  definitions:
+    - name: prettier
+      files:
+        - typescript
+        - javascript
+        - json
+        - css
 runtimes:
   enabled:
     - go@1.18.3
