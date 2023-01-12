@@ -8,6 +8,7 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
+    - svgo@3.0.2
     - oxipng@8.0.0
     - actionlint@1.6.22
     - git-diff-check
@@ -15,18 +16,13 @@ lint:
     - eslint@8.31.0
     - prettier@2.8.2
     - markdownlint@0.33.0
-  ignore:
-    - paths:
-      - "*.d.ts"
-      - "*.css"
 runtimes:
   enabled:
     - go@1.18.3
     - node@18.12.1
 actions:
-  disabled:
+  enabled:
     - trunk-announce
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
-  enabled:
     - trunk-upgrade-available
