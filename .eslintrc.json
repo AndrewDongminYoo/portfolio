@@ -29,11 +29,7 @@ Happy linting! 💖
         "sourceType": "module",
         "tsconfigRootDir": "./"
     },
-    "plugins": [
-        "eslint-plugin-jsdoc",
-        "eslint-plugin-prefer-arrow",
-        "@typescript-eslint"
-    ],
+    "plugins": ["eslint-plugin-jsdoc", "eslint-plugin-prefer-arrow", "@typescript-eslint"],
     "root": true,
     "rules": {
         "@typescript-eslint/ban-ts-comment": "off",
@@ -44,10 +40,7 @@ Happy linting! 💖
                 "max": 10
             }
         ],
-        "eqeqeq": [
-            "error",
-            "smart"
-        ],
+        "eqeqeq": ["error", "smart"],
         "id-denylist": [
             "error",
             "any",
@@ -60,33 +53,21 @@ Happy linting! 💖
             "Undefined",
             "undefined"
         ],
-        "max-classes-per-file": [
-            "error",
-            1
-        ],
+        "max-classes-per-file": ["error", 1],
         "new-parens": "warn",
         "no-case-declarations": "warn",
         "no-console": [
             "warn",
             {
-                "allow": [
-                    "debug",
-                    "error"
-                ]
+                "allow": ["debug", "error"]
             }
         ],
         "no-dupe-args": "warn",
         "no-dupe-class-members": "warn",
-        "no-mixed-spaces-and-tabs": [
-            "error",
-            "smart-tabs"
-        ],
+        "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
         "no-var": "warn",
         "no-with": "warn",
-        "one-var": [
-            "error",
-            "never"
-        ],
+        "one-var": ["error", "never"],
         "prefer-const": "warn",
         "sort-imports": [
             "warn",
@@ -95,21 +76,14 @@ Happy linting! 💖
                 "ignoreCase": false,
                 "ignoreDeclarationSort": false,
                 "ignoreMemberSort": false,
-                "memberSyntaxSortOrder": [
-                    "none",
-                    "all",
-                    "multiple",
-                    "single"
-                ]
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
             }
         ],
         "spaced-comment": [
             "error",
             "always",
             {
-                "markers": [
-                    "/"
-                ]
+                "markers": ["/"]
             }
         ],
         "use-isnan": "warn"

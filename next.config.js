@@ -11,19 +11,19 @@ const nextConfig = {
     compiler: {
         removeConsole: !isDevelopment
     },
+    output: 'standalone',
+    outputFileTracing: true,
+    cleanDistDir: true,
     images: {
         domains: [
             "https://avatars.githubusercontent.com",
             "https://opengraph.githubassets.com",
-            "https://andrewdongminyoo.imgix.net",
         ],
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         dangerouslyAllowSVG: true,
         formats: ["image/webp", "image/avif"],
         minimumCacheTTL: 60,
         disableStaticImages: false,
-        path: "https://andrewdongminyoo.imgix.net",
-        loader: "imgix",
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         unoptimized: true,

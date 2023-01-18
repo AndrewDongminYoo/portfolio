@@ -26,7 +26,7 @@ module.exports = {
                 '/_next/static/css',
                 '/_next/static/',
                 '/posts',
-                '/styles',
+                '/repos',
             ],
         }]
     },
