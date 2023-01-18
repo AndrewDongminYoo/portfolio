@@ -6,6 +6,7 @@ import LanguageStateBar from '@components/repos/langs_bar';
 import Link from 'next/link';
 import RepoCard from '@components/repos/card';
 import type { Repository } from '@typings/repos';
+import names from 'classnames';
 
 export default function Repo({ repository }: { repository: Repository }) {
     const { full_name, html_url, languages } = repository;
@@ -15,7 +16,10 @@ export default function Repo({ repository }: { repository: Repository }) {
         <>
             <Link
                 href={html_url}
-                className='box-border text-sm font-medium leading-tight break-words text-slate-300'>
+                className={names(
+                    'box-border leading-tight break-words',
+                    'text-sm font-medium text-slate-300'
+                )}>
                 {full_name}
             </Link>
             <RepoCard repository={repository} />
