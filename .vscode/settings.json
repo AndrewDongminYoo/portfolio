@@ -14,9 +14,7 @@
         "tailwindcss",
         "unoptimized"
     ],
-    "cSpell.ignoreRegExpList": [
-        "CStyleComment"
-    ],
+    "cSpell.ignoreRegExpList": ["CStyleComment"],
     "cSpell.files": [
         "**/*",
         "!data/repos/*.json",
@@ -29,16 +27,21 @@
     "javascript.suggestionActions.enabled": false,
     "css.lint.unknownAtRules": "ignore",
     "[css]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.wordWrap": "on",
+        "cSpell.fixSpellingWithRenameProvider": true,
+        "cSpell.advanced.feature.useReferenceProviderWithRename": true,
+        "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/"
     },
     "tailwindCSS.validate": true,
     "replacerules.rules": {
         "class attribute": {
             "find": "class=\"([\\w\\d\\-_]+)\"",
-            "languages": [
-                "typescriptreact",
-                "javascriptreact"
-            ],
+            "languages": ["typescriptreact", "javascriptreact"],
             "replace": "className={'$1'}"
         }
     }

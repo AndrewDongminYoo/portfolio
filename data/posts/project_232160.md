@@ -6,12 +6,12 @@ startAt: "2021-10-01"
 endAt: "2021-11-15"
 repository: "https://github.com/AndrewDongminYoo/my-small-meal"
 website_url: null
-tags: 
-  - "MongoDB" 
-  - "Flask" 
-  - "Python" 
-  - "AWS CloudFront" 
-  - "AWS ElasticBeanstalk" 
+tags:
+  - "MongoDB"
+  - "Flask"
+  - "Python"
+  - "AWS CloudFront"
+  - "AWS ElasticBeanstalk"
   - "GitHub"
 analyzedLink: "/git_repository/AndrewDongminYoo/my-small-meal/sidebar?authorable_id=456218&authorable_type=Resume"
 teamDescription: "팀장 및 github maintainer 맡음. BE +3명"

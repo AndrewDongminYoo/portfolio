@@ -13,8 +13,8 @@ lint:
     - actionlint@1.6.22
     - git-diff-check
     - gitleaks@8.15.2
-    - eslint@8.31.0
-    - prettier@2.8.2
+    - eslint@8.32.0
+    - prettier@2.8.3
     - markdownlint@0.33.0
   ignore:
     - linters: [ALL]
