@@ -1,35 +1,35 @@
 ---
 index:  232159
-title: "[팀] 오이마켓 - 지역 기반 커뮤니티 웹 애플리케이션"
-name: "오이마켓 (Java Spring)"
-startAt: "2021-11-01"
-endAt: "2021-12-29"
-repository: "https://github.com/JARYOGOOJO/52market.shop"
-website_url: "https://52market.shop"
+title: '[팀] 오이마켓 - 지역 기반 커뮤니티 웹 애플리케이션'
+name: '오이마켓 (Java Spring)'
+startAt: '2021-11-01'
+endAt: '2021-12-29'
+repository: 'https://github.com/JARYOGOOJO/52market.shop'
+website_url: 'https://52market.shop'
 tags:
-  - "Java"
-  - "Spring Boot"
-  - "Spring Security"
-  - "Spring Data JP"
-  - "Swagger"
-  - "WebSocket"
-  - "MySQL"
-  - "AWS RDS"
-  - "GitHub"
-  - "AWS Elastic Beanstalk"
-  - "AWS CloudFront"
-  - "Webpack"
-analyzedLink: "/git_repository/JARYOGOOJO/52market.shop/sidebar?authorable_id=456218&authorable_type=Resume"
-teamDescription: "팀장 및 github organization admin 맡음. BE +2명"
-description: "당근 마켓 주요 기능 클론 코딩을 목적으로, 나와 가까운 위치에 있는 사람들과 소통하고, 실시간 대화를 할 수 있는 커뮤니티 개발"
-icon: "🥒"
+  - 'Java'
+  - 'Spring Boot'
+  - 'Spring Security'
+  - 'Spring Data JP'
+  - 'Swagger'
+  - 'WebSocket'
+  - 'MySQL'
+  - 'AWS RDS'
+  - 'GitHub'
+  - 'AWS Elastic Beanstalk'
+  - 'AWS CloudFront'
+  - 'Webpack'
+analyzedLink: '/git_repository/JARYOGOOJO/52market.shop/sidebar?authorable_id=456218&authorable_type=Resume'
+teamDescription: '팀장 및 github organization admin 맡음. BE +2명'
+description: '당근 마켓 주요 기능 클론 코딩을 목적으로, 나와 가까운 위치에 있는 사람들과 소통하고, 실시간 대화를 할 수 있는 커뮤니티 개발'
+icon: '🥒'
 roleDescription:
-  - "Java Spring boot, Spring Framework 구조 이해 및 학습 목적."
-  - "DB: MySQL (AWS RDS)"
-  - "Spring data JPA + JDBC 학습."
-  - "카카오톡 로그인 기능 구현과 JWT 토큰 기반 시큐리티 구현."
-  - "두번째 팀 프로젝트로써, Github Issue, Projects, Issue Template, Action 적극 활용."
-  - "실시간 채팅 기능 및 알림 기능 위해 Spring websocket + SockJS, StompJS, Redis 사용"
-  - "RESTful API, ERD 설계의 중요성을 학습."
-  - "Amazon ElasticBeanstalk, CloudFront 이용해 Back, Front 각각 배포."
-  - "코드 리뷰를 습관화하고, 태스크를 쪼개고 작업 시간을 예측하고 TDD를 습관화."
+  - 'Java Spring boot, Spring Framework 구조 이해 및 학습 목적.'
+  - 'DB: MySQL (AWS RDS)'
+  - 'Spring data JPA + JDBC 학습.'
+  - '카카오톡 로그인 기능 구현과 JWT 토큰 기반 시큐리티 구현.'
+  - '두번째 팀 프로젝트로써, Github Issue, Projects, Issue Template, Action 적극 활용.'
+  - '실시간 채팅 기능 및 알림 기능 위해 Spring websocket + SockJS, StompJS, Redis 사용'
+  - 'RESTful API, ERD 설계의 중요성을 학습.'
+  - 'Amazon ElasticBeanstalk, CloudFront 이용해 Back, Front 각각 배포.'
+  - '코드 리뷰를 습관화하고, 태스크를 쪼개고 작업 시간을 예측하고 TDD를 습관화.'

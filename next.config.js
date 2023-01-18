@@ -16,8 +16,9 @@ const nextConfig = {
     cleanDistDir: true,
     images: {
         domains: [
-            "https://avatars.githubusercontent.com",
-            "https://opengraph.githubassets.com",
+            "avatars.githubusercontent.com",
+            "opengraph.githubassets.com",
+            "AndrewDongminYoo.vercel.app",
         ],
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         dangerouslyAllowSVG: true,
@@ -26,7 +27,7 @@ const nextConfig = {
         disableStaticImages: false,
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-        unoptimized: true,
+        unoptimized: false,
     },
     async headers() {
         return [
@@ -40,10 +41,6 @@ const nextConfig = {
                     {
                         key: 'Referrer-Policy',
                         value: 'strict-origin-when-cross-origin'
-                    },
-                    {
-                        key: 'sec-fetch-mode',
-                        value: 'no-cors',
                     },
                     {
                         key: 'sec-fetch-site',

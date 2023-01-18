@@ -3,7 +3,7 @@ export default function Description({
 }: {
     resume: { icon?: string; description: string | string[] };
 }) {
-    const listStyleType = resume.icon ? `"${resume.icon} "` : 'square';
+    const listStyleType = resume.icon ? `'${resume.icon} '` : 'square';
     const style = { listStyleType };
     return (
         <>
