@@ -2,7 +2,6 @@ import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
 import type { Repository } from '@typings/repos';
 import fs from 'fs';
-import { parse } from 'html-metadata-parser';
 import { parseISO } from 'date-fns';
 import path from 'path';
 
@@ -77,24 +76,16 @@ const downloadJSON = async () => {
     const repositories = await fetchRepositories();
     const repositoryData = await Promise.all(
         repositories.map(async (repo) => {
-            const { html_url, languages_url } = repo;
-            const languages = await octokit
-                .request({ url: languages_url })
-                .then((res) => res.data);
-            const meta_tags = await getTagsFromWebsite(html_url);
-            return { ...repo, meta_tags, languages };
+            const { languages_url } = repo;
+            const languages = await octokit.request({ url: languages_url }).then((res) => res.data);
+            return { ...repo, languages };
         })
     );
     repositoryData.forEach((json) => {
         const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
-        fs.writeFile(
-            targetJsonPath,
-            JSON.stringify(json, null, 4),
-            { flag: 'w' },
-            (err) => {
-                if (err) console.error(err);
-            }
-        );
+        fs.writeFile(targetJsonPath, JSON.stringify(json, null, 4), { flag: 'w' }, (err) => {
+            if (err) console.error(err);
+        });
     });
     return repositoryData.length;
 };
@@ -119,9 +110,7 @@ const readData = (repo: string) => {
 
 /** 로컬 리포지토리 리스트 데이터 읽어오기 */
 const readRepositories = () => {
-    const allReposData = readReposIds().map(({ params: { repo } }) =>
-        readData(repo)
-    );
+    const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
     // Sort repos by date
     return allReposData.sort((a, b) => {
         if (parseISO(a.pushed_at) < parseISO(b.pushed_at)) {
@@ -129,10 +118,6 @@ const readRepositories = () => {
         } else return -1;
     });
 };
-
-async function getTagsFromWebsite(url: string) {
-    return await parse(url).then((metaData) => metaData.og);
-}
 
 export {
     downloadJSON,

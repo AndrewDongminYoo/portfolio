@@ -51,7 +51,7 @@ const nextConfig = {
                     },
                     {
                         key: 'Referer',
-                        value: 'https://AndrewDongminYoo.github.io'
+                        value: 'https://AndrewDongminYoo.vercel.app'
                     }
                 ]
             }

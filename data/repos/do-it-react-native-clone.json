@@ -75,14 +75,6 @@
         "triage": true,
         "pull": true
     },
-    "meta_tags": {
-        "image": "https://opengraph.githubassets.com/4c2d79e0d946f3325e7e0632efd1111e0e5bd01a6f6cb196faac7e9162d5ca0f/AndrewDongminYoo/do-it-react-native-clone",
-        "site_name": "GitHub",
-        "type": "object",
-        "title": "GitHub - AndrewDongminYoo/do-it-react-native-clone: Do it! 리액트 네이티브 앱 프로그래밍 - 학습 리포지토리",
-        "url": "https://github.com/AndrewDongminYoo/do-it-react-native-clone",
-        "description": "Do it! 리액트 네이티브 앱 프로그래밍 - 학습 리포지토리. Contribute to AndrewDongminYoo/do-it-react-native-clone development by creating an account on GitHub."
-    },
     "languages": {
         "TypeScript": 71345,
         "JavaScript": 216

@@ -33,7 +33,10 @@ lint:
         - data/**/*.json
     - linters: [prettier]
       paths:
+        # Style Sheet File
         - '**/styles/*.css'
+        # Type Definition File
+        - '*.d.ts'
   definitions:
     - name: prettier
       files:

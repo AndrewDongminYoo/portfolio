@@ -76,14 +76,6 @@
         "triage": true,
         "pull": true
     },
-    "meta_tags": {
-        "image": "https://opengraph.githubassets.com/a4afaecc42275e81269ebc7d22497f06e6d1cc6309d79715f1c510173293656e/AndrewDongminYoo/flutter-proxy-voting-app",
-        "site_name": "GitHub",
-        "type": "object",
-        "title": "GitHub - AndrewDongminYoo/flutter-proxy-voting-app: 인증된 소액주주들이 전문투자기관들과 함께 기업에 대해 심도 깊은 의견을 나누고 유용한 정보를 공유 하고 행동할 수 있는 앱",
-        "url": "https://github.com/AndrewDongminYoo/flutter-proxy-voting-app",
-        "description": "인증된 소액주주들이 전문투자기관들과 함께 기업에 대해 심도 깊은 의견을 나누고 유용한 정보를 공유 하고 행동할 수 있는 앱 - GitHub - AndrewDongminYoo/flutter-proxy-voting-app: 인증된 소액주주들이 전문투자기관들과 함께 기업에 대해 심도 깊은 의견을 나누고 유용한 정보를 공유 하고 행동할 수 있는 앱"
-    },
     "languages": {
         "Dart": 945281,
         "Kotlin": 6480,

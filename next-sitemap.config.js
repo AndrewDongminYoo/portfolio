@@ -6,7 +6,7 @@
  * @property {import('next-sitemap').IRobotPolicy} robotsTxtOptions
  */
 module.exports = {
-    siteUrl: 'https://AndrewDongminYoo.github.io',
+    siteUrl: 'https://AndrewDongminYoo.vercel.app',
     sitemapSize: 5000,
     generateRobotsTxt: true,
     robotsTxtOptions: {

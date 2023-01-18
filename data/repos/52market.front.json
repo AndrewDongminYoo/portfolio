@@ -85,14 +85,6 @@
         "triage": true,
         "pull": true
     },
-    "meta_tags": {
-        "image": "https://opengraph.githubassets.com/cbf3427d5fc8694931fa5da3c0a553a8c44119f16c1aea871768480aef43ffc2/JARYOGOOJO/52market.front",
-        "site_name": "GitHub",
-        "type": "object",
-        "title": "GitHub - JARYOGOOJO/52market.front: 무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들(1km 이내) 글만 보기. 업로드 시 다른 사용자에게 알람 기능. 댓글의 버튼을 통해 웹소켓 실시간 채팅 기능, 웹소켓 댓글 추가 및 삭제 시 즉시 반영",
-        "url": "https://github.com/JARYOGOOJO/52market.front",
-        "description": "무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들(1km 이내) 글만 보기. 업로드 시 다른 사용자에게 알람 기능. 댓글의 버튼을 통해 웹소켓 실시간 채팅 기능, 웹소켓 댓글 추가 및 삭제 시 즉시 반영 - GitHub - JARYOGOOJO/52market.front: 무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들(1km 이내) 글만 ..."
-    },
     "languages": {
         "JavaScript": 271782,
         "CSS": 12273,

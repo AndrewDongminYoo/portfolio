@@ -13,7 +13,7 @@ import webpack from '@public/images/stacks/webpack.svg';
 export const frameworks: Record<string, any> = {
     '52market.front': webpack,
     '52market.shop': swagger,
-    'AndrewDongminYoo.github.io': nextjs,
+    'AndrewDongminYoo.vercel': nextjs,
     'do-it-react-native-clone': typescript,
     'flask-My-Small-Meal': flask,
     'flutter-proxy-voting-app': flutter,

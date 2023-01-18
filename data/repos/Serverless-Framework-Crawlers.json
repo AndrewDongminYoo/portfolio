@@ -52,7 +52,7 @@
     "has_wiki": true,
     "has_pages": true,
     "has_discussions": false,
-    "forks_count": 0,
+    "forks_count": 1,
     "archived": false,
     "disabled": false,
     "open_issues_count": 0,
@@ -77,7 +77,7 @@
         "typescript"
     ],
     "visibility": "public",
-    "forks": 0,
+    "forks": 1,
     "open_issues": 0,
     "watchers": 0,
     "default_branch": "main",
@@ -87,14 +87,6 @@
         "push": true,
         "triage": true,
         "pull": true
-    },
-    "meta_tags": {
-        "image": "https://opengraph.githubassets.com/3d6708a821dea9231f315eac64b2545231b701a717099c7298f9ac5f0f8ed14f/AndrewDongminYoo/Serverless-Framework-Crawlers",
-        "site_name": "GitHub",
-        "type": "object",
-        "title": "GitHub - AndrewDongminYoo/Serverless-Framework-Crawlers: Serverless Framework를 활용해 AWS Lambda Crawler 만들기",
-        "url": "https://github.com/AndrewDongminYoo/Serverless-Framework-Crawlers",
-        "description": "Serverless Framework를 활용해 AWS Lambda Crawler 만들기. Contribute to AndrewDongminYoo/Serverless-Framework-Crawlers development by creating an account on GitHub."
     },
     "languages": {
         "TypeScript": 120019,

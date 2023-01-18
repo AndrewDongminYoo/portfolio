@@ -13,8 +13,8 @@ Disallow: /posts
 Disallow: /styles
 
 # Host
-Host: https://AndrewDongminYoo.github.io
+Host: https://AndrewDongminYoo.vercel.app
 
 # Sitemaps
-Sitemap: https://AndrewDongminYoo.github.io/sitemap.xml
-Sitemap: https://AndrewDongminYoo.github.io/sitemap-0.xml
+Sitemap: https://AndrewDongminYoo.vercel.app/sitemap.xml
+Sitemap: https://AndrewDongminYoo.vercel.app/sitemap-0.xml

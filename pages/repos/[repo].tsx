@@ -7,24 +7,20 @@ import Link from 'next/link';
 import RepoCard from '@components/repos/card';
 import type { Repository } from '@typings/repos';
 
-export default function Repo({ repository }: { repository: Repository; }) {
-    const { meta_tags, full_name, html_url, languages } = repository;
+export default function Repo({ repository }: { repository: Repository }) {
+    const { full_name, html_url, languages } = repository;
     const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
         <>
-
-            <Link href={html_url}
-                className="box-border text-sm font-medium leading-tight break-words text-slate-300"
-            >
-                {meta_tags?.title ?? full_name}
+            <Link
+                href={html_url}
+                className='box-border text-sm font-medium leading-tight break-words text-slate-300'>
+                {full_name}
             </Link>
             <RepoCard repository={repository} />
-            <LanguageStateBar
-                languages={languageIter}
-                totalCount={totalCount}
-            />
-            <ul className="p-0 mt-0 list-none">
+            <LanguageStateBar languages={languageIter} totalCount={totalCount} />
+            <ul className='p-0 mt-0 list-none'>
                 {languageIter.map(([lang, count], id) => {
                     return (
                         <LanguageButton
