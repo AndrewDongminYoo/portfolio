@@ -15,12 +15,20 @@ const nextConfig = {
     outputFileTracing: true,
     cleanDistDir: true,
     images: {
-        domains: [
-            "avatars.githubusercontent.com",
-            "opengraph.githubassets.com",
-            "AndrewDongminYoo.vercel.app",
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: "avatars.githubusercontent.com",
+                pathname: "/u/**",
+            },
+            {
+                protocol: 'https',
+                hostname: "*.githubassets.com",
+            }, {
+                protocol: 'https',
+                hostname: "AndrewDongminYoo.vercel.app",
+            }
         ],
-        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         dangerouslyAllowSVG: true,
         formats: ["image/webp", "image/avif"],
         minimumCacheTTL: 60,

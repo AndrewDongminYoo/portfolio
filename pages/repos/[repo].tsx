@@ -13,7 +13,7 @@ export default function Repo({ repository }: { repository: Repository }) {
     const languageIter = Object.entries(languages) as [Language, number][];
     const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
     return (
-        <article aria-label="repositories">
+        <article aria-label='repositories'>
             <Link
                 href={html_url}
                 className={names(

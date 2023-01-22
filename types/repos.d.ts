@@ -78,8 +78,6 @@ export interface Repository {
     forks:                       number;
     open_issues:                 number;
     watchers:                    number;
-    network_count:               number;
-    subscribers_count:           number;
     /**
      * 프로그래밍 언어
      */

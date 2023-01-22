@@ -9,11 +9,7 @@ import ResumeSection from '@/components/section';
 import { readRepositories } from '@/lib/repos';
 import { secondaryTitle } from '@/constants/';
 
-export default function Portfolio({
-    repositoryData,
-}: {
-    repositoryData: Repository[];
-}) {
+export default function Portfolio({ repositoryData }: { repositoryData: Repository[] }) {
     const sectionRef = useRef<HTMLElement>(null);
     useEffect(() => {
         if (sectionRef.current) {
@@ -29,21 +25,20 @@ export default function Portfolio({
         <Layout>
             <Head>
                 <meta
-                    name="keywords"
-                    content="서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인"
+                    name='keywords'
+                    content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인'
                 />
                 <title>{secondaryTitle}</title>
             </Head>
             <section
                 aria-label='repositories'
                 ref={sectionRef}
-                className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
-            >
+                className='w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'>
                 {repositoryData.map((repo, id) => {
                     return <Repo repository={repo} key={id} />;
                 })}
             </section>
-            <ResumeSection type="contributions">
+            <ResumeSection type='contributions'>
                 <ReactGitHubCalendar />
             </ResumeSection>
         </Layout>

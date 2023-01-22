@@ -22,22 +22,21 @@ export default function Layout({ children }: { children: ReactNode }) {
                 'bg-white my-0 mx-auto',
                 'transition-all',
                 'max-w-7xl'
-            )}
-        >
+            )}>
             <Head>
                 <meta
-                    name="og:image"
-                    property="og:image"
-                    itemProp="image primaryImageOfPage"
+                    name='og:image'
+                    property='og:image'
+                    itemProp='image primaryImageOfPage'
                     content={laundry.src}
                 />
                 <meta
-                    name="twitter:image"
-                    property="og:image"
-                    itemProp="image primaryImageOfPage"
+                    name='twitter:image'
+                    property='og:image'
+                    itemProp='image primaryImageOfPage'
                     content={laundry.src}
                 />
-                <link rel="apple-touch-icon" href={favicon.src} />
+                <link rel='apple-touch-icon' href={favicon.src} />
             </Head>
             <summary
                 className={names(
@@ -49,20 +48,19 @@ export default function Layout({ children }: { children: ReactNode }) {
                     'sm:p-4',
                     'xs:overflow-x-hidden',
                     'xl:pb-16 xl:top-0'
-                )}
-            >
+                )}>
                 <MenuButton />
-                <h1 className="mx-0 my-4 text-2xl leading-normal">
+                <h1 className='mx-0 my-4 text-2xl leading-normal'>
                     <Link href={isHome ? ghProfile : '/'}>{myName}</Link>
                 </h1>
-                <section className="p-0 mt-0 text-base border-t-0">
+                <section className='p-0 mt-0 text-base border-t-0'>
                     <Link href={isHome ? ghProfile : '/'}>
                         <Image
                             src={portrait}
                             alt={myName}
                             width={156}
                             height={156}
-                            className="rounded-full print:hidden"
+                            className='rounded-full print:hidden'
                         />
                     </Link>
                     <ProfileBio />
@@ -78,12 +76,11 @@ export default function Layout({ children }: { children: ReactNode }) {
                     'lg:block',
                     'sm:p-4',
                     'pt-0'
-                )}
-            >
+                )}>
                 <section>{children}</section>
                 {!isHome && (
-                    <div className="leading-8 font-bolder">
-                        <Link href="/">🔙 홈으로가기</Link>
+                    <div className='leading-8 font-bolder'>
+                        <Link href='/'>🔙 홈으로가기</Link>
                     </div>
                 )}
             </main>

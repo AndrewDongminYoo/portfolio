@@ -19,9 +19,6 @@
         "sourceMap": true,
         "outDir": ".build",
         "rootDir": "./",
-        "typeRoots": [
-            "./types"
-        ],
         "declaration": true,
         "declarationMap": true,
         "inlineSources": true,
@@ -34,12 +31,17 @@
         "noImplicitAny": true,
         "isolatedModules": true,
         "paths": {
-            "@/*": [
-                "./*"
-            ]
+            "@/*": ["./*"]
         }
     },
-    "exclude": ["*.config.js", ".build", ".github", ".next", ".vscode", "node_modules", "out"],
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-    "typeRoots": ["./types", "env.d.ts"]
+    "exclude": ["node_modules"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.(spec|test).[jt]s?(x)",
+        "./jest.setup.ts",
+        "./jest.config.ts"
+    ],
+    "typeRoots": ["./types"]
 }

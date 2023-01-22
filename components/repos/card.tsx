@@ -22,11 +22,14 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             <Link href={repository.html_url}>
                 <Image
                     src={frameworks[repository.name]}
+                    alt='What Framework/Library used by this repository'
+                    priority={true}
+                    height={256}
+                    width={256}
                     className={names(
                         'flex h-full rounded-t rounded-l opacity-25 max-w-40',
                         'sm:overflow-x-hidden'
                     )}
-                    alt='What Framework/Library used by this repository'
                 />
             </Link>
             <div
