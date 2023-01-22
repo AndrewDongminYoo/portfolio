@@ -1,4 +1,4 @@
-import { ghProfile, myName } from '@/constants';
+import { ghProfile, myName } from '@/constants/';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';

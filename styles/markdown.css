@@ -1,6 +1,6 @@
 .markdown ol {
     counter-reset: item;
-    list-style-type: square;
+    list-style-type: decimal;
 }
 
 .markdown ul li {

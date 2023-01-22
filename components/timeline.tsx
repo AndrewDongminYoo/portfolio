@@ -71,7 +71,7 @@ const getMonthLabels = () => {
                     'font-black leading-normal text-center whitespace-nowrap',
                     'rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
                     ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
-                    tailwindColor(type)
+                    tailwindColor[type]
                 )}
                 style={{ gridColumn }}>
                 {name}
@@ -81,15 +81,9 @@ const getMonthLabels = () => {
     return { monthsLabels, makeBlock };
 };
 
-const tailwindColor = (type: string) => {
-    switch (type) {
-        case 'activity':
-            return 'bg-gray-400 text-zinc-800';
-        case 'project':
-            return 'bg-gray-500 text-zinc-100';
-        case 'education':
-            return 'bg-gray-400 text-zinc-700';
-        default:
-            return 'bg-slate-700 text-slate-400';
-    }
+const tailwindColor = {
+    activity: 'bg-gray-400 text-zinc-800',
+    project: 'bg-gray-500 text-zinc-100',
+    education: 'bg-gray-400 text-zinc-700',
+    experience: 'bg-slate-700 text-slate-400',
 };

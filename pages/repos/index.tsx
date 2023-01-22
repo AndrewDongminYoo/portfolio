@@ -7,7 +7,7 @@ import Repo from '@/pages/repos/[repo]';
 import type { Repository } from '@/types/repos';
 import ResumeSection from '@/components/section';
 import { readRepositories } from '@/lib/repos';
-import { secondaryTitle } from '@/constants';
+import { secondaryTitle } from '@/constants/';
 
 export default function Portfolio({
     repositoryData,
@@ -16,7 +16,7 @@ export default function Portfolio({
 }) {
     const sectionRef = useRef<HTMLElement>(null);
     useEffect(() => {
-        if (sectionRef) {
+        if (sectionRef.current) {
             // 홈스크린과 프로필 부분이 같으니까 스킵하기
             sectionRef.current?.firstElementChild?.scrollIntoView({
                 behavior: 'smooth',
@@ -35,6 +35,7 @@ export default function Portfolio({
                 <title>{secondaryTitle}</title>
             </Head>
             <section
+                aria-label='repositories'
                 ref={sectionRef}
                 className="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
             >
