@@ -1,7 +1,7 @@
-import email from '@public/images/contacts/email.svg';
-import github from '@public/images/contacts/github.svg';
-import phone from '@public/images/contacts/phone.svg';
-import youtube from '@public/images/contacts/youtube.svg';
+import email from '@/public/images/contacts/email.svg';
+import github from '@/public/images/contacts/github.svg';
+import phone from '@/public/images/contacts/phone.svg';
+import youtube from '@/public/images/contacts/youtube.svg';
 
 const username = 'AndrewDongminYoo';
 const myName = 'Andrew Dong-min, Yoo';

@@ -1,5 +1,5 @@
 import { ComponentProps } from 'react';
-import type { SectionType } from '@typings/profile';
+import type { SectionType } from '@/types/profile';
 
 export default function ResumeSection({
     children,

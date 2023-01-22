@@ -1,11 +1,11 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import { readData, readReposIds } from '@lib/repos';
-import type { Language } from '@components/repos/lang_colors';
-import LanguageButton from '@components/repos/lang_btn';
-import LanguageStateBar from '@components/repos/langs_bar';
+import { readData, readReposIds } from '@/lib/repos';
+import type { Language } from '@/components/repos/lang_colors';
+import LanguageButton from '@/components/repos/lang_btn';
+import LanguageStateBar from '@/components/repos/langs_bar';
 import Link from 'next/link';
-import RepoCard from '@components/repos/card';
-import type { Repository } from '@typings/repos';
+import RepoCard from '@/components/repos/card';
+import type { Repository } from '@/types/repos';
 import names from 'classnames';
 
 export default function Repo({ repository }: { repository: Repository }) {

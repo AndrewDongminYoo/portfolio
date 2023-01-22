@@ -1,5 +1,5 @@
 import names from 'classnames';
-import { stacks } from '@constants';
+import { stacks } from '@/constants';
 
 export default function StackList() {
     return (

@@ -3,13 +3,18 @@
         "authorable",
         "bloglovin",
         "Codepen",
+        "cssnano",
         "defaultlocale",
         "fontawesome",
         "fortawesome",
+        "githubassets",
         "googlecalendar",
+        "groupby",
         "headlessui",
+        "maxage",
         "nextjs",
         "Noto",
+        "opengraph",
         "signoff",
         "tailwindcss",
         "unoptimized"
@@ -19,7 +24,6 @@
         "**/*",
         "!data/repos/*.json",
         "!data/posts/*.md",
-        "!typings/*icon*.ts",
         "!components/repos/lang_colors.ts"
     ],
     "explorer.incrementalNaming": "disabled",
@@ -40,7 +44,7 @@
     "tailwindCSS.validate": true,
     "replacerules.rules": {
         "class attribute": {
-            "find": "class=\"([\\w\\d\\-_]+)\"",
+            "find": "class=\"([\\w\\-_]+)\"",
             "languages": ["typescriptreact", "javascriptreact"],
             "replace": "className={'$1'}"
         }

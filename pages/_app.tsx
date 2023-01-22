@@ -1,7 +1,6 @@
-import '@styles/globals.css';
-import '@styles/markdown.css';
+import '@/styles/globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import * as customPack from '@components/common/icons';
+import * as customPack from '@/components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import Head from 'next/head';
@@ -13,7 +12,7 @@ library.add(customPack);
 const NS_KR = Noto_Sans_KR({
     style: 'normal',
     display: 'swap',
-    subsets: ['korean', 'latin'],
+    subsets: ['latin'],
     weight: ['300', '400', '500', '700', '900'],
     variable: '--noto-sans-kr',
 });
@@ -29,7 +28,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta name="theme-color" content="#0969da" />
                 <meta httpEquiv="x-ua-compatible" content="ie=edge" />
             </Head>
-            <main className={NS_KR.variable}>
+            <main className={NS_KR.className}>
                 <Component {...pageProps} />
             </main>
         </>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { contacts, description, primaryTitle } from '@constants';
+import { contacts, description, primaryTitle } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import names from 'classnames';

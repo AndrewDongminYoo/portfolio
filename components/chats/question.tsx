@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ReactNode } from 'react';
-import profile from '@public/images/profile.jpg';
+import profile from '@/public/images/profile.jpg';
 
 export default function Question ({ children }: { children: ReactNode; }) {
     return (

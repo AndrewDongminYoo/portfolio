@@ -4,17 +4,17 @@ import type {
     Experience,
     Project,
     Resume,
-} from '@typings/profile';
+} from '@/types/profile';
 import type { GetStaticProps } from 'next';
-import GridTimeline from '@components/timeline';
+import GridTimeline from '@/components/timeline';
 import Head from 'next/head';
-import Layout from '@components/layout';
-import Post from '@components/posts';
-import ReactGitHubCalendar from '@components/calendar';
-import ResumeSection from '@components/section';
-import { getSortedPostsData } from '@lib/posts';
+import Layout from '@/components/layout';
+import Post from '@/components/posts';
+import ReactGitHubCalendar from '@/components/calendar';
+import ResumeSection from '@/components/section';
+import { getSortedPostsData } from '@/lib/posts';
 import groupBy from 'lodash.groupby';
-import { primaryTitle } from '@constants';
+import { primaryTitle } from '@/constants';
 
 export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
     const groupedPosts = groupBy(allPostsData, (resume: Resume) => resume.type);

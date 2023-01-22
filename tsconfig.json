@@ -19,7 +19,9 @@
         "sourceMap": true,
         "outDir": ".build",
         "rootDir": "./",
-        "typeRoots": ["./typings"],
+        "typeRoots": [
+            "./types"
+        ],
         "declaration": true,
         "declarationMap": true,
         "inlineSources": true,
@@ -32,7 +34,9 @@
         "noImplicitAny": true,
         "isolatedModules": true,
         "paths": {
-            "@*": ["./*"]
+            "@/*": [
+                "./*"
+            ]
         }
     },
     "exclude": ["*.config.js", ".build", ".github", ".next", ".vscode", "node_modules", "out"],

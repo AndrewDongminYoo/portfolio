@@ -1,5 +1,5 @@
 import Script from 'next/script';
-import { username } from '@constants';
+import { username } from '@/constants';
 
 function onLoad() {
     if (

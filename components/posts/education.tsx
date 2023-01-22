@@ -1,6 +1,6 @@
-import type { Education } from '@typings/profile';
+import type { Education } from '@/types/profile';
 import Link from 'next/link';
-import Period from '@components/common/period';
+import Period from '@/components/common/period';
 
 export default function EducationElement({
     education,

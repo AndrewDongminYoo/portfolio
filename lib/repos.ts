@@ -1,6 +1,6 @@
 import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
-import type { Repository } from '@typings/repos';
+import type { Repository } from '@/types/repos';
 import fs from 'fs';
 import { parseISO } from 'date-fns';
 import path from 'path';

@@ -1,11 +1,11 @@
 import { Menu, Transition } from '@headlessui/react';
-import { faCodepen, faIdCard, faPrint } from '@components/common/icons';
+import { faCodepen, faIdCard, faPrint } from '@/components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import backgroundImage from '@public/images/bg_space.webp';
-import cat from '@public/images/kkori_the_cutest.png';
+import backgroundImage from '@/public/images/bg_space.webp';
+import cat from '@/public/images/kkori_the_cutest.png';
 import names from 'classnames';
 
 export default function MenuButton() {

@@ -1,4 +1,4 @@
-import { ghProfile, myName } from '@constants';
+import { ghProfile, myName } from '@/constants';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,10 +6,10 @@ import MenuButton from './menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
-import favicon from '@public/favicon.ico';
-import laundry from '@public/images/laundry.jpg';
+import favicon from '@/public/favicon.ico';
+import laundry from '@/public/images/laundry.jpg';
 import names from 'classnames';
-import portrait from '@public/images/profile.jpg';
+import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
 
 export default function Layout({ children }: { children: ReactNode }) {

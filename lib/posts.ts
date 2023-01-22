@@ -4,7 +4,7 @@ import type {
     Experience,
     Project,
     Resume,
-} from '@typings/profile';
+} from '@/types/profile';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
 import { parseISO } from 'date-fns';

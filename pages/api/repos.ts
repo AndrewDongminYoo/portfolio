@@ -5,7 +5,7 @@ import {
     fetchRepository,
     readData,
     readRepositories,
-} from '@lib/repos';
+} from '@/lib/repos';
 
 export default async function repos(req: NextApiRequest, res: NextApiResponse) {
     const isDevelopment = process.env.NODE_ENV !== 'production';

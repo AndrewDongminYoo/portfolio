@@ -1,7 +1,7 @@
 import { differenceInDays as diff, format, parseISO } from 'date-fns';
-import Period from '@components/common/period';
+import Period from '@/components/common/period';
 import { ReactElement } from 'react';
-import type { Resume } from '@typings/profile';
+import type { Resume } from '@/types/profile';
 import names from 'classnames';
 import { renderToString as toHtml } from 'react-dom/server';
 
