@@ -1,11 +1,14 @@
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 import Portfolio from '@/pages/repos/index';
 jest.mock('@/lib/repos');
 import { readRepositories } from '@/lib/repos';
 
 describe('Portfolio component', () => {
+    afterEach(cleanup);
+
     it('should render correctly', () => {
-        render(<Portfolio repositoryData={[]} />);
+        const { baseElement } = render(<Portfolio repositoryData={[]} />);
+        expect(baseElement).toMatchSnapshot();
         expect(screen.getByRole('main')).toBeInTheDocument();
     });
 

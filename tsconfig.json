@@ -39,9 +39,9 @@
         "next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        "**/*.(spec|test).[jt]s?(x)",
-        "./jest.setup.ts",
-        "./jest.config.ts"
+        "**/*.(spec|test).[jt]sx?",
+        "./jest.*.ts",
+        "*.test.snapshot"
     ],
     "typeRoots": ["./types"]
 }

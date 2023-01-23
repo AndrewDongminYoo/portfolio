@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReactGithubCalendar calls the GitHubCalendar function 1`] = `
+<body>
+    <div>
+        <div
+            class="calendar"
+            title="github-calendar"
+        />
+    </div>
+</body>
+`;
+
+exports[`ReactGithubCalendar renders the calendar 1`] = `
+<body>
+    <div>
+        <div
+            class="calendar"
+            title="github-calendar"
+        />
+    </div>
+</body>
+`;

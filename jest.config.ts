@@ -18,7 +18,9 @@ const customJestConfig: Config = {
     testRegex: '__tests__/.*/index\\.test\\.tsx?$',
     collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-
+    snapshotFormat: {
+        indent: 4,
+    },
     modulePaths: ['<rootDir>/__mocks__'],
     moduleNameMapper: {
         // Handle module aliases (this will be automatically configured for you soon)

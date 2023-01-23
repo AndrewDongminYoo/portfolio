@@ -1,0 +1,480 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Portfolio component should render correctly 1`] = `
+<body>
+    <div>
+        <div
+            class="lg:max-w-4xl bg-white my-0 mx-auto transition-all max-w-7xl"
+        >
+            <summary
+                class="xl:scrollbar-hide xl:w-120 text-base overflow-x-hidden inline-block text-base p-10 pb-4 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4 xs:overflow-x-hidden xl:pb-16 xl:top-0"
+            >
+                <div
+                    class="fixed z-50 flex justify-end print:hidden top-14 right-14"
+                >
+                    <button
+                        aria-expanded="false"
+                        aria-haspopup="menu"
+                        class="fixed"
+                        data-headlessui-state=""
+                        id="headlessui-menu-button-:r0:"
+                        type="button"
+                    >
+                        <img
+                            alt="Cat Floating in Space"
+                            class="relative rounded-full shadow-2xl shadow-slate-700 w-14 h-14"
+                            data-nimg="1"
+                            decoding="async"
+                            height="56"
+                            loading="lazy"
+                            src="/_next/image?url=%2Fimg.jpg&w=128&q=10"
+                            srcset="/_next/image?url=%2Fimg.jpg&w=64&q=10 1x, /_next/image?url=%2Fimg.jpg&w=128&q=10 2x"
+                            style="color: transparent;"
+                            width="56"
+                        />
+                        <img
+                            alt="My Lovely Cat"
+                            class="absolute right-0 z-10 w-14 h-14 animate-bounce motion-reduce:animate-none"
+                            data-nimg="1"
+                            decoding="async"
+                            height="56"
+                            loading="lazy"
+                            src="/_next/image?url=%2Fimg.jpg&w=128&q=75"
+                            srcset="/_next/image?url=%2Fimg.jpg&w=64&q=75 1x, /_next/image?url=%2Fimg.jpg&w=128&q=75 2x"
+                            style="color: transparent;"
+                            width="56"
+                        />
+                        <span
+                            class="animate-ping motion-reduce:animate-none bottom-0 left-11 absolute w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"
+                        />
+                    </button>
+                </div>
+                <h1
+                    class="mx-0 my-4 text-2xl leading-normal"
+                >
+                    <a
+                        href="/"
+                    >
+                        Andrew Dong-min, Yoo
+                    </a>
+                </h1>
+                <section
+                    class="p-0 mt-0 text-base border-t-0"
+                >
+                    <a
+                        href="/"
+                    >
+                        <img
+                            alt="Andrew Dong-min, Yoo"
+                            class="rounded-full print:hidden"
+                            data-nimg="1"
+                            decoding="async"
+                            height="156"
+                            loading="lazy"
+                            src="/_next/image?url=%2Fimg.jpg&w=384&q=75"
+                            srcset="/_next/image?url=%2Fimg.jpg&w=256&q=75 1x, /_next/image?url=%2Fimg.jpg&w=384&q=75 2x"
+                            style="color: transparent;"
+                            width="156"
+                        />
+                    </a>
+                    <section
+                        class="p-0 mt-0 text-base border-t-0 text-slate-800"
+                    >
+                        <h2
+                            class="flex flex-row flex-nowrap items-center justify-between -ml-px mb-4 break-keep leading-snug text-2xl min-h-16"
+                        >
+                            집요하게 더 나은 답을 찾아내는 개발자 유동민입니다.
+                        </h2>
+                        <ul
+                            class="p-0 my-0 list-none"
+                        >
+                            <li
+                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                            >
+                                <a
+                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    href="tel:01035661857"
+                                    rel="noopener"
+                                    target="_blank"
+                                >
+                                    <img
+                                        alt="phone:01035661857"
+                                        data-nimg="1"
+                                        decoding="async"
+                                        height="40"
+                                        loading="lazy"
+                                        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                                        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                                        style="color: transparent;"
+                                        width="40"
+                                    />
+                                </a>
+                            </li>
+                            <li
+                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                            >
+                                <a
+                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    href="mailto:ydm2790@gmail.com"
+                                    rel="noopener"
+                                    target="_blank"
+                                >
+                                    <img
+                                        alt="email:ydm2790@gmail.com"
+                                        data-nimg="1"
+                                        decoding="async"
+                                        height="40"
+                                        loading="lazy"
+                                        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                                        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                                        style="color: transparent;"
+                                        width="40"
+                                    />
+                                </a>
+                            </li>
+                            <li
+                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                            >
+                                <a
+                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    href="https://github.com/AndrewDongminYoo"
+                                    rel="noopener"
+                                    target="_blank"
+                                >
+                                    <img
+                                        alt="github:github.com/AndrewDongminYoo"
+                                        data-nimg="1"
+                                        decoding="async"
+                                        height="40"
+                                        loading="lazy"
+                                        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                                        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                                        style="color: transparent;"
+                                        width="40"
+                                    />
+                                </a>
+                            </li>
+                            <li
+                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                            >
+                                <a
+                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    href="https://www.youtube.com/watch?v=vOh90eJ7VdY"
+                                    rel="noopener"
+                                    target="_blank"
+                                >
+                                    <img
+                                        alt="youtube:www.youtube.com/watch?v=vOh90eJ7VdY"
+                                        data-nimg="1"
+                                        decoding="async"
+                                        height="40"
+                                        loading="lazy"
+                                        src="/_next/image?url=%2Fimg.jpg&w=96&q=75"
+                                        srcset="/_next/image?url=%2Fimg.jpg&w=48&q=75 1x, /_next/image?url=%2Fimg.jpg&w=96&q=75 2x"
+                                        style="color: transparent;"
+                                        width="40"
+                                    />
+                                </a>
+                            </li>
+                        </ul>
+                        <p
+                            class="mt-4 text-base leading-6"
+                        >
+                            좋은 개발자가 되기 위해 계속해서 성장하고자 하는 집요함을 가지고 있습니다. 일상적으로 만나는 모든 문제들에 더 효율적이고 효과적인 답을 찾기 위해 끊임없이 고민하고 사유합니다. 함께 성장하는 좋은 동료가 되기 위해 노력하겠습니다.
+                        </p>
+                    </section>
+                    <section
+                        class="pt-1 mt-2 border-t-0.1 border-t-black border-solid"
+                    >
+                        <div
+                            class="block p-0 mb-0.5 mx-0 mt-0 text-sm font-medium leading-normal"
+                        >
+                            <span>
+                                주요 기술
+                            </span>
+                            <span
+                                class="ml-1 text-xs leading-normal text-slate-600"
+                            >
+                                4개
+                            </span>
+                        </div>
+                        <ul
+                            class="p-0 mt-1 mb-4 list-none"
+                        >
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
+                                >
+                                    ReactJS
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
+                                >
+                                    Python
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
+                                >
+                                    Flutter
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
+                                >
+                                    TypeScript
+                                </div>
+                            </li>
+                        </ul>
+                        <div
+                            class="block p-0 mb-0.5 mx-0 mt-0 text-sm font-medium leading-normal"
+                        >
+                            <span>
+                                기술 태그
+                            </span>
+                        </div>
+                        <ul
+                            class="p-0 mt-1 mb-4 list-none"
+                        >
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Swagger / OpenAPI
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    TailwindCSS / styled_components
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    AWS CloudFront / ElasticBeanstalk
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Django / Flask
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Firebase
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    GitHub / Bitbucket
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    GraphQL / Prisma / Apollo
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Java / Spring
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Spring Data JPA
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    NoSQL(MongoDB / DynamoDB)
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    SQL(MySQL / PostgreSQL)
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    React Native / Expo
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    ReactJS / RedWoodJS
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Selenium / BeautifulSoup
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    TypeScript / JavaScript
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Webpack
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    WebSocket
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Chart.js
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    StorybookJS
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+            </summary>
+            <main
+                class="xl:scrollbar-hide xl:w-full-30 text-base overflow-x-hidden inline-block text-base p-10 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4 pt-0"
+            >
+                <section>
+                    <section
+                        aria-label="repositories"
+                        class="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
+                    />
+                    <section
+                        class="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
+                    >
+                        <div
+                            class="flex justify-between w-full"
+                        >
+                            <div
+                                class="flex items-center justify-start w-32 sm:w-full max-h-8"
+                            >
+                                <h3
+                                    class="flex items-center justify-start text-base font-medium sm:text-sm"
+                                >
+                                    퍼블릭 컨트리뷰션
+                                </h3>
+                            </div>
+                            <div
+                                class="flex items-center justify-end w-full-9"
+                            />
+                        </div>
+                        <div
+                            class="w-full"
+                        >
+                            <div
+                                class="calendar"
+                                title="github-calendar"
+                            />
+                        </div>
+                    </section>
+                </section>
+                <div
+                    class="leading-8 font-bolder"
+                >
+                    <a
+                        href="/"
+                    >
+                        🔙 홈으로가기
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script
+        data-nscript="afterInteractive"
+        src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"
+    />
+</body>
+`;
