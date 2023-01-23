@@ -10,11 +10,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Repository } from '@/types/repos';
+import type Repository from '@/types/repos';
 import { Transition } from '@headlessui/react';
-import { frameworks } from './lang_icons';
+import frameworks from './lang_icons';
 import names from 'classnames';
-import { username } from '@/constants/';
+import username from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
     return (

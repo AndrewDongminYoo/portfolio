@@ -58,14 +58,6 @@ const contacts = [
     },
 ];
 
-export {
-    contacts,
-    description,
-    ghProfile,
-    myName,
-    primaryTitle,
-    secondaryTitle,
-    stacks,
-    username,
-    url,
-};
+export { contacts, description, ghProfile, myName, primaryTitle, secondaryTitle, stacks, url };
+
+export default username;

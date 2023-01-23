@@ -1,5 +1,5 @@
 import type { Config } from 'jest';
-import { default as nextJest } from 'next/jest';
+import nextJest from 'next/dist/build/jest/jest';
 
 const createJestConfig = nextJest({
     // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
@@ -15,7 +15,7 @@ const customJestConfig: Config = {
             enableTsDiagnostics: true,
         },
     },
-    testRegex: '__tests__/.*/index\\.test\\.tsx?$',
+    testRegex: ['__tests__/.*/index\\.(test|spec)\\.tsx?$', '__tests__/.*\\.(test|spec)\\.tsx?$'],
     collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
     setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     snapshotFormat: {

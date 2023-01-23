@@ -1,9 +1,11 @@
-import { differenceInDays as diff, format, parseISO } from 'date-fns';
 import Period from '@/components/common/period';
 import { ReactElement } from 'react';
-import type { Resume } from '@/types/profile';
+import type Resume from '@/types/profile';
+import diff from 'date-fns/differenceInDays';
+import format from 'date-fns/format';
 import names from 'classnames';
-import { renderToString as toHtml } from 'react-dom/server';
+import parse from 'date-fns/parseISO';
+import { renderToString } from 'react-dom/server';
 
 export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
     const { monthsLabels, makeBlock } = getMonthLabels();
@@ -51,8 +53,8 @@ const getMonthLabels = () => {
     const pixel = 100 / diff(latest, oldest);
     const makeBlock = (action: Resume) => {
         const { type, id, name, startAt, endAt } = action;
-        const end = endAt ? parseISO(endAt) : latest;
-        const sPoint = Math.round(diff(parseISO(startAt), oldest) * pixel);
+        const end = endAt ? parse(endAt) : latest;
+        const sPoint = Math.round(diff(parse(startAt), oldest) * pixel);
         const ePoint = Math.round(diff(end, oldest) * pixel);
         if (sPoint <= 0 || ePoint <= 0) return null;
         const gridColumn = `${sPoint} / ${ePoint}`;
@@ -66,7 +68,7 @@ const getMonthLabels = () => {
                 data-html={true}
                 data-toggle='popover'
                 data-placement='top'
-                data-content={toHtml(popOverHtml)}
+                data-content={renderToString(popOverHtml)}
                 className={names(
                     'font-black leading-normal text-center whitespace-nowrap',
                     'rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',

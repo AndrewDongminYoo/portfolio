@@ -1,4 +1,6 @@
-export type Resume = Experience | Project | Education | Activity;
+export default Resume;
+
+type Resume = Experience | Project | Education | Activity;
 
 export type SectionType =
     | 'experiences'

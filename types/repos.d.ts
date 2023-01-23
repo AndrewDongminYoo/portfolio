@@ -1,7 +1,7 @@
 /**
  * A repository on GitHub.
  */
-export interface Repository {
+export default interface Repository {
     /**
     * Whether the repository is archived.
     */

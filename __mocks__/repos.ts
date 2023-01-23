@@ -1,10 +1,12 @@
 const username = 'AndrewDongminYoo';
-const mockName = `${username}/${username}.vercel`;
-
-export const mockRepository = {
+const repoName = `${username}.vercel`;
+const mockName = `${username}/${repoName}`;
+const usersApi = `https://api.github.com/users/${username}`;
+const reposApi = `https://api.github.com/repos/${mockName}`;
+const mockRepository = {
     id: 447431678,
     node_id: 'R_kgDOGqtD_g',
-    name: `${username}.vercel`,
+    name: repoName,
     full_name: mockName,
     private: false,
     owner: {
@@ -13,20 +15,20 @@ export const mockRepository = {
         node_id: 'MDQ6VXNlcjgyOTk5NzE1',
         avatar_url: 'https://avatars.githubusercontent.com/u/82999715?v=4',
         gravatar_id: '',
-        url: `https://api.github.com/users/${username}`,
+        url: `${usersApi}`,
         html_url: `https://github.com/${username}`,
-        followers_url: `https://api.github.com/users/${username}/followers`,
-        subscriptions_url: `https://api.github.com/users/${username}/subscriptions`,
-        organizations_url: `https://api.github.com/users/${username}/orgs`,
-        repos_url: `https://api.github.com/users/${username}/repos`,
-        received_events_url: `https://api.github.com/users/${username}/received_events`,
+        followers_url: `${usersApi}/followers`,
+        subscriptions_url: `${usersApi}/subscriptions`,
+        organizations_url: `${usersApi}/orgs`,
+        repos_url: `${usersApi}/repos`,
+        received_events_url: `${usersApi}/received_events`,
         type: 'User',
         site_admin: false,
     },
     html_url: `https://github.com/${mockName}`,
     description: '깃허브 메인 프로필(+이력서)입니다. NextJS',
     fork: false,
-    languages_url: `https://api.github.com/repos/${mockName}/languages`,
+    languages_url: `${reposApi}/languages`,
     created_at: '2022-01-13T02:03:50Z',
     updated_at: '2023-01-18T13:04:10Z',
     pushed_at: '2023-01-18T13:34:47Z',

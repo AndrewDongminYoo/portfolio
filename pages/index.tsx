@@ -1,4 +1,4 @@
-import type { Activity, Education, Experience, Project, Resume } from '@/types/profile';
+import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
 import type { GetStaticProps } from 'next';
 import GridTimeline from '@/components/timeline';
 import Head from 'next/head';

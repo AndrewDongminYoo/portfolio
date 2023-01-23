@@ -1,4 +1,4 @@
-const colorMap = {
+export const colorMap = {
     '1C Enterprise': '#814CCC',
     '2-Dimensional Array': '#38761D',
     '4D': '#004289',
@@ -601,6 +601,6 @@ const colorMap = {
     Zimpl: '#d67711',
 };
 
-export type Language = keyof typeof colorMap;
+type Language = keyof typeof colorMap;
 
-export default colorMap;
+export default Language;

@@ -6,7 +6,7 @@
         "vercel-build": "npm run prepare && next build",
         "start": "next start",
         "dev": "next dev",
-        "test": "jest --verbose --updateSnapshot --onlyChanged",
+        "test": "jest --verbose --updateSnapshot",
         "export": "next export",
         "info": "next info",
         "build": "next build",
@@ -16,7 +16,7 @@
         "postbuild": "next-sitemap",
         "watch-type": "tsc --watch",
         "check-type": "tsc --noEmit",
-        "check-unused": "ts-unused-exports tsconfig.json"
+        "check-unused": "ts-unused-exports tsconfig.json --excludePathsFromReport=pages"
     },
     "license": "MIT",
     "engines": {

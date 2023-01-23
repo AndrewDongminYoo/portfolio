@@ -3,7 +3,7 @@ import { getAllPostIds, getPostData } from '@/lib/posts';
 import Head from 'next/head';
 import Layout from '@/components/layout';
 import Post from '@/components/posts';
-import type { Resume } from '@/types/profile';
+import type Resume from '@/types/profile';
 
 export default function PostPage({ data }: { data: Resume }) {
     return (

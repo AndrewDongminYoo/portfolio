@@ -10,7 +10,7 @@ import typescript from '@/public/images/stacks/typescript-icon.svg';
 import webpack from '@/public/images/stacks/webpack.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const frameworks: Record<string, any> = {
+const frameworks: Record<string, any> = {
     '52market.front': webpack,
     '52market.shop': swagger,
     'AndrewDongminYoo.vercel': nextjs,
@@ -22,3 +22,5 @@ export const frameworks: Record<string, any> = {
     'TIL-of-BootCamp-Flask': selenium,
     'TIL-of-BootCamp-Spring': spring,
 };
+
+export default frameworks;

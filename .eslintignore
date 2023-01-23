@@ -1,5 +1,5 @@
-*.config.js
-*.setup.js
+./*.config.js
+./*.setup.js
 .build
 .github
 .next

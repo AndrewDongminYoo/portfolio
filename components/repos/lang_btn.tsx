@@ -1,4 +1,4 @@
-import colorMap, { Language } from './lang_colors';
+import Language, { colorMap } from './lang_colors';
 import Link from 'next/link';
 
 export default function LanguageButton({
@@ -15,16 +15,14 @@ export default function LanguageButton({
     const trendingOfLang = `https://github.com/topics/${language}`;
     const style = { backgroundColor };
     return (
-        <li className="inline-flex items-center mt-1 mr-3">
+        <li className='inline-flex items-center mt-1 mr-3'>
             <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
                 <span
-                    className="inline-block w-3 h-3 mr-1 rounded-full"
+                    className='inline-block w-3 h-3 mr-1 rounded-full'
                     style={style}
                     aria-hidden={true}
                 />
-                <span className="mr-1 font-medium text-slate-800">
-                    {language}
-                </span>
+                <span className='mr-1 font-medium text-slate-800'>{language}</span>
                 <span>{percent.toFixed(1) + '%'}</span>
             </Link>
         </li>

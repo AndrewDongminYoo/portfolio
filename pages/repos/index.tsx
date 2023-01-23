@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Layout from '@/components/layout';
 import ReactGitHubCalendar from '@/components/calendar';
 import Repo from '@/pages/repos/[repo]';
-import type { Repository } from '@/types/repos';
+import type Repository from '@/types/repos';
 import ResumeSection from '@/components/section';
 import { readRepositories } from '@/lib/repos';
 import { secondaryTitle } from '@/constants/';
