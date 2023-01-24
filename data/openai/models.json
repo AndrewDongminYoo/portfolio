@@ -1,0 +1,58 @@
+[
+    {
+        "id": "text-davinci-001",
+        "object": "model",
+        "created": 1649364042,
+        "owned_by": "openai",
+        "max_token": 2048
+    },
+    {
+        "id": "text-davinci-003",
+        "object": "model",
+        "created": 1669599635,
+        "owned_by": "openai-internal",
+        "max_token": 4000
+    },
+    {
+        "id": "code-cushman-001",
+        "object": "model",
+        "created": 1656081837,
+        "owned_by": "openai",
+        "max_token": 2048
+    },
+    {
+        "id": "code-davinci-002",
+        "object": "model",
+        "created": 1649880485,
+        "owned_by": "openai",
+        "max_token": 8000
+    },
+    {
+        "id": "text-ada-001",
+        "object": "model",
+        "created": 1649364042,
+        "owned_by": "openai",
+        "max_token": 2048
+    },
+    {
+        "id": "text-davinci-002",
+        "object": "model",
+        "created": 1649880484,
+        "owned_by": "openai",
+        "max_token": 4000
+    },
+    {
+        "id": "text-curie-001",
+        "object": "model",
+        "created": 1649364043,
+        "owned_by": "openai",
+        "max_token": 2048
+    },
+    {
+        "id": "text-babbage-001",
+        "object": "model",
+        "created": 1649364043,
+        "owned_by": "openai",
+        "max_token": 2048
+    }
+]
