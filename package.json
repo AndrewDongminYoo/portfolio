@@ -46,7 +46,7 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.2",
     "sharp": "^0.31.3",
-    "swr": "^2.1.0"
+    "swr": "^2.1.1"
   },
   "devDependencies": {
     "@headlessui/tailwindcss": "^0.1.2",
