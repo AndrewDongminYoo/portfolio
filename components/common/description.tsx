@@ -15,11 +15,9 @@ export default function Description({
                 </ul>
             ) : resume.description.split(/\n+/).length > 2 ? (
                 <ul style={style}>
-                    {resume.description
-                        .split(/\n+/)
-                        .map((info: string, i: number) => {
-                            return <li key={i}>{info}</li>;
-                        })}
+                    {resume.description.split(/\n+/).map((info: string, i: number) => {
+                        return <li key={i}>{info}</li>;
+                    })}
                 </ul>
             ) : (
                 <p>{resume.description}</p>

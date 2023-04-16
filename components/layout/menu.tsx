@@ -38,7 +38,8 @@ export default function MenuButton() {
                                     'animate-ping motion-reduce:animate-none',
                                     'bottom-0 left-11 absolute w-3.5 h-3.5',
                                     'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'
-                                )} />
+                                )}
+                            />
                         </Menu.Button>
                         {/* Use the `Transition` component. */}
                         <Transition

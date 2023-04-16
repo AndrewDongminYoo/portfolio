@@ -13,14 +13,10 @@ export default async function repos(req: NextApiRequest, res: NextApiResponse) {
     if (method === 'GET') {
         if (typeof query.full_name === 'string') {
             const [owner, repo] = query.full_name.split('/');
-            const repository = isDevelopment
-                ? await fetchRepository(owner, repo)
-                : readData(repo);
+            const repository = isDevelopment ? await fetchRepository(owner, repo) : readData(repo);
             res.status(200).json({ repository });
         } else {
-            const repositories = isDevelopment
-                ? await fetchRepositories()
-                : readRepositories();
+            const repositories = isDevelopment ? await fetchRepositories() : readRepositories();
             res.status(200).json({ repositories });
         }
     } else if (method === 'POST' && isDevelopment) {

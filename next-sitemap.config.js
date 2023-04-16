@@ -1,7 +1,7 @@
-import { IConfig } from 'next-sitemap';
-import { IRobotsTxt } from 'next-sitemap';
-
-const robotsTxtOptions: IRobotsTxt = {
+/**
+ * @type {import('next-sitemap').IRobotsTxt}
+ */
+const robotsTxtOptions = {
     includeNonIndexSitemaps: true,
     policies: [{
         userAgent: '*',
@@ -23,7 +23,10 @@ const robotsTxtOptions: IRobotsTxt = {
     }]
 };
 
-const sitemapConfig: IConfig = {
+/**
+ * @type {import('next-sitemap').IConfig}
+ */
+const sitemapConfig = {
     siteUrl: 'https://AndrewDongminYoo.vercel.app',
     sitemapSize: 5000,
     generateRobotsTxt: true,
