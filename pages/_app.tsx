@@ -4,7 +4,7 @@ import * as customPack from '@/components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import Head from 'next/head';
-import { Noto_Sans_KR } from '@next/font/google';
+import { Noto_Sans_KR } from 'next/font/google';
 
 config.autoAddCss = false;
 library.add(customPack);
