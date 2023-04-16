@@ -45,11 +45,11 @@
         "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/"
     },
     "tailwindCSS.validate": true,
-    "replacerules.rules": {
-        "class attribute": {
-            "find": "class=\"([\\w\\-_]+)\"",
-            "languages": ["typescriptreact", "javascriptreact"],
-            "replace": "className={'$1'}"
-        }
-    }
+    "conventionalCommits.scopes": [
+        "libs",
+        "styles",
+        "assets",
+        "pages",
+        "datas",
+    ]
 }
