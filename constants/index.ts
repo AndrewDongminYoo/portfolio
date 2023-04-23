@@ -14,13 +14,13 @@ const url = 'https://andrewdongminyoo.vercel.app/';
 const stacks = {
     primaryTags: ['React Native', 'Flutter', 'TypeScript', 'Python'],
     technicalTags: [
-        'RN / TurboModule (RN Module)',
-        'Hermes.compiler / Flipper.debugger',
+        'RN / TurboModule (NativeModuleSpec)',
+        'Hermes / Flipper',
         'Dart / Flutter',
         'TypeScript / JavaScript',
         'iOS (Swift, Objective-C++)',
         'Android (Kotlin, Java, Gradle)',
-        'SwaggerUI / Postman newman',
+        'SwaggerUI / Postman',
         'TailwindCSS / styled_components',
         'AWS CloudFront / AWS Lambda',
         'Django.py / Flask.py',
@@ -35,7 +35,7 @@ const stacks = {
         'Webpack.js / Rollup.js',
         'Stomp.js / Sock.js',
         'Chart.js / Three.js',
-        'Storybook.js', 
+        'Storybook.js',
         'Testing Library / React Test Renderer',
     ],
 };
