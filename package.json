@@ -39,7 +39,7 @@
         "gray-matter": "^4.0.3",
         "lodash.groupby": "^4.6.0",
         "next": "^13.4.4",
-        "openai": "^3.2.1",
+        "openai": "^3.3.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "sharp": "^0.32.1"
