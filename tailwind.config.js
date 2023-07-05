@@ -1,5 +1,6 @@
-/** @type {import('tailwindcss').Config} \*/
+/** @type {import('tailwindcss').Config} */
 module.exports = {
+    mode: 'jit',
     content: [
         './pages/**/*.{js,ts,jsx,tsx}',
         './components/**/*.{js,ts,jsx,tsx}',
@@ -86,5 +87,11 @@ module.exports = {
     plugins: [
         require("tailwind-scrollbar-hide"),
         require("@headlessui/tailwindcss"),
+        require('@tailwindcss/typography'),
     ],
+    variants: {
+        extend: {
+            opacity: ['disabled'],
+        },
+    },
 }

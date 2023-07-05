@@ -1,11 +1,12 @@
 import { Configuration, OpenAIApi } from 'openai';
+import { OPENAI_API_KEY, OPENAI_ORGANIZATION } from '@/env';
 import { encode } from 'gpt-3-encoder';
 import { isAxiosError } from 'axios';
 
 const MAX_TOKENS = 4000;
 const configuration = new Configuration({
-    organization: process.env.OPENAI_ORGANIZATION,
-    apiKey: process.env.OPENAI_API_KEY,
+    organization: OPENAI_ORGANIZATION,
+    apiKey: OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 

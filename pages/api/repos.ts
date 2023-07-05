@@ -6,9 +6,10 @@ import {
     readData,
     readRepositories,
 } from '@/lib/repos';
+import { NODE_ENV } from '@/env';
 
 export default async function repos(req: NextApiRequest, res: NextApiResponse) {
-    const isDevelopment = process.env.NODE_ENV !== 'production';
+    const isDevelopment = NODE_ENV !== 'production';
     const { query, method } = req;
     if (method === 'GET') {
         if (typeof query.full_name === 'string') {

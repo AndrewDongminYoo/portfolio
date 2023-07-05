@@ -3,8 +3,12 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import * as customPack from '@/components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
+import { loadEnvConfig, processEnv } from '@next/env';
 import Head from 'next/head';
 import { Noto_Sans_KR } from 'next/font/google';
+
+const loaded = loadEnvConfig('./', process.env.NODE_ENV !== 'production');
+processEnv(loaded.loadedEnvFiles);
 
 config.autoAddCss = false;
 library.add(customPack);

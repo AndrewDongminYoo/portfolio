@@ -1,11 +1,12 @@
 import { Endpoints } from '@octokit/types';
+import { GITHUB_TOKEN } from '@/env';
 import { Octokit } from '@octokit/core';
 import type Repository from '@/types/repos';
 import fs from 'fs';
 import parse from 'date-fns/parseISO';
 import path from 'path';
 
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+const octokit = new Octokit({ auth: GITHUB_TOKEN });
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 
 /** 깃허브에서 가져온 데이터 필터링 함수 */
