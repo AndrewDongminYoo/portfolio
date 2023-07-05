@@ -16,7 +16,7 @@ export default function LanguageStateBar({
                     <LanguageBarPart
                         language={language}
                         percent={(count / totalCount) * 100}
-                        key={id}
+                        key={`${id}-${language}-${count}`}
                     />
                 );
             })}

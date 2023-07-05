@@ -41,7 +41,7 @@ class Portfolio extends Component<PortfolioProps> {
                     ref={this.sectionRef}
                     className='w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'>
                     {repositoryData.map((repo, id) => {
-                        return <Repo repository={repo} key={id} />;
+                        return <Repo repository={repo} key={`${id}-${repo.node_id}`} />;
                     })}
                 </section>
                 <ResumeSection type='contributions'>

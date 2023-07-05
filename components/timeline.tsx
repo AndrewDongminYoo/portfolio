@@ -36,7 +36,7 @@ const getMonthLabels = () => {
         const month = format(now, 'yy.MM');
         const label = (
             <time
-                key={month}
+                key={now.toUTCString()}
                 dateTime={month}
                 className={names(
                     'pl-1 border-r border-solid border-r-slate-200',
@@ -61,7 +61,7 @@ const getMonthLabels = () => {
         const popOverHtml = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} />;
         return (
             <span
-                key={id}
+                key={`${id}-${type}`}
                 title={name}
                 data-original-title={name}
                 data-type={type}

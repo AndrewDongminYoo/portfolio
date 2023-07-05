@@ -41,7 +41,7 @@ class Repo extends Component<RepoProps> {
                             <LanguageButton
                                 language={lang}
                                 percent={(count / totalCount) * 100}
-                                key={id}
+                                key={`${id}-${lang}-${count}`}
                                 index={id}
                             />
                         );

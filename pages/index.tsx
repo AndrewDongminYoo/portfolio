@@ -25,30 +25,30 @@ export default function Home({ allPostsData }: { allPostsData: Resume[] }) {
                 />
                 <title>{primaryTitle}</title>
             </Head>
-            <ResumeSection key={0} type='timeline'>
+            <ResumeSection key={`${0}-timeline`} type='timeline'>
                 <GridTimeline timeline={allPostsData} />
             </ResumeSection>
-            <ResumeSection key={1} type='contributions'>
+            <ResumeSection key={`${1}-contributions`} type='contributions'>
                 <ReactGitHubCalendar />
             </ResumeSection>
-            <ResumeSection key={2} type='experiences'>
+            <ResumeSection key={`${2}-experiences`} type='experiences'>
                 {experience.map((data, key) => {
-                    return <Post data={data} key={key} />;
+                    return <Post data={data} key={`${key}-experience`} />;
                 })}
             </ResumeSection>
-            <ResumeSection key={3} type='projects'>
+            <ResumeSection key={`${3}-projects`} type='projects'>
                 {project.map((data, key) => {
-                    return <Post data={data} key={key} />;
+                    return <Post data={data} key={`${key}-project`} />;
                 })}
             </ResumeSection>
-            <ResumeSection key={4} type='activities'>
+            <ResumeSection key={`${4}-activities`} type='activities'>
                 {activity.map((data, key) => {
-                    return <Post data={data} key={key} />;
+                    return <Post data={data} key={`${key}-activity`} />;
                 })}
             </ResumeSection>
-            <ResumeSection key={5} type='educations'>
+            <ResumeSection key={`${5}-educations`} type='educations'>
                 {education.map((data, key) => {
-                    return <Post data={data} key={key} />;
+                    return <Post data={data} key={`${key}-education`} />;
                 })}
             </ResumeSection>
         </Layout>

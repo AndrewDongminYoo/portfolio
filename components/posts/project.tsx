@@ -23,7 +23,7 @@ export default function ProjectElement({ project }: { project: Project }) {
                 </Link>
                 <ul className='tag_list'>
                     {project.tags.map((tag, i) => (
-                        <li key={i}>{tag}</li>
+                        <li key={`${i}-${tag}`}>{tag}</li>
                     ))}
                 </ul>
                 <div className='markdown markdown_viewer'>

@@ -16,7 +16,7 @@ export default function ProfileBio() {
             </h2>
             <ul className='p-0 my-0 list-none'>
                 {contacts.map((contact, i) => {
-                    return <ContactBadge contact={contact} key={i} />;
+                    return <ContactBadge contact={contact} key={`${i}-${contact.type}`} />;
                 })}
             </ul>
             <p className='mt-4 text-base leading-6'>{description}</p>

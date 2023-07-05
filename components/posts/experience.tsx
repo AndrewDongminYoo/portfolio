@@ -22,7 +22,7 @@ export default function ExperienceElement({ experience }: { experience: Experien
                 <p className='resume_card_item_text'>{experience.role}</p>
                 <ul className='tag_list'>
                     {experience.tags.map((tag, i) => (
-                        <li key={i}>{tag}</li>
+                        <li key={`${i}-${tag}`}>{tag}</li>
                     ))}
                 </ul>
                 <div className='markdown markdown_viewer'>
@@ -31,7 +31,7 @@ export default function ExperienceElement({ experience }: { experience: Experien
                 <label className='contributions_label'>상세 업무 및 성과</label>
                 <ul className='list_contributions'>
                     {experience.projects.map((pro, i) => (
-                        <Contribution project={pro} key={i} />
+                        <Contribution project={pro} key={`${i}-${pro}`} />
                     ))}
                 </ul>
             </div>
