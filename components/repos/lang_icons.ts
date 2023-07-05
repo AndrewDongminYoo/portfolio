@@ -2,7 +2,11 @@ import aws from '@/public/images/stacks/aws-lambda.svg';
 import expo from '@/public/images/stacks/expo.svg';
 import flask from '@/public/images/stacks/flask.svg';
 import flutter from '@/public/images/stacks/flutter.svg';
+import markdown from '@/public/images/stacks/markdown.svg';
 import nextjs from '@/public/images/stacks/nextjs.svg';
+import openai from '@/public/images/stacks/openai.svg';
+import reactnative from '@/public/images/stacks/react-native.svg';
+import rn_firebase from '@/public/images/stacks/react-native-firebase.svg';
 import selenium from '@/public/images/stacks/selenium.svg';
 import spring from '@/public/images/stacks/spring.svg';
 import swagger from '@/public/images/stacks/swagger.svg';
@@ -18,9 +22,13 @@ const frameworks: Record<string, any> = {
     'flask-My-Small-Meal': flask,
     'flutter-proxy-voting-app': flutter,
     'my-first-react-native-chatting-app': expo,
+    'openai-chatgpt-my-conversations': openai,
+    'react-native-step-counter': reactnative,
     'Serverless-Framework-Crawlers': aws,
     'TIL-of-BootCamp-Flask': selenium,
     'TIL-of-BootCamp-Spring': spring,
+    walking_tracker: rn_firebase,
+    AndrewDongminYoo: markdown,
 };
 
 export default frameworks;

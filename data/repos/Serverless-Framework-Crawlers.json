@@ -38,14 +38,14 @@
     "downloads_url": "https://api.github.com/repos/AndrewDongminYoo/Serverless-Framework-Crawlers/downloads",
     "deployments_url": "https://api.github.com/repos/AndrewDongminYoo/Serverless-Framework-Crawlers/deployments",
     "created_at": "2022-11-03T10:17:43Z",
-    "updated_at": "2022-12-23T16:05:28Z",
-    "pushed_at": "2023-01-05T14:21:03Z",
+    "updated_at": "2023-04-30T17:49:43Z",
+    "pushed_at": "2023-06-26T01:47:25Z",
     "svn_url": "https://github.com/AndrewDongminYoo/Serverless-Framework-Crawlers",
     "homepage": "",
-    "size": 4555,
-    "stargazers_count": 0,
-    "watchers_count": 0,
-    "language": "TypeScript",
+    "size": 13130,
+    "stargazers_count": 1,
+    "watchers_count": 1,
+    "language": "HTML",
     "has_issues": true,
     "has_projects": true,
     "has_downloads": true,
@@ -79,7 +79,7 @@
     "visibility": "public",
     "forks": 1,
     "open_issues": 0,
-    "watchers": 0,
+    "watchers": 1,
     "default_branch": "main",
     "permissions": {
         "admin": true,
@@ -89,9 +89,11 @@
         "pull": true
     },
     "languages": {
-        "TypeScript": 120019,
+        "HTML": 20508590,
+        "TypeScript": 93956,
         "Jupyter Notebook": 38734,
-        "Python": 32370,
-        "JavaScript": 1250
+        "Python": 37008,
+        "CSS": 22405,
+        "JavaScript": 1134
     }
 }

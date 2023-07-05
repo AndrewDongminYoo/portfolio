@@ -38,13 +38,13 @@
     "downloads_url": "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/downloads",
     "deployments_url": "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/deployments",
     "created_at": "2022-01-13T02:03:50Z",
-    "updated_at": "2023-01-18T13:04:10Z",
-    "pushed_at": "2023-01-18T13:34:47Z",
+    "updated_at": "2023-04-16T17:23:03Z",
+    "pushed_at": "2023-07-05T11:51:34Z",
     "svn_url": "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel",
-    "homepage": "https://andrewdongminyoo.github.io",
-    "size": 35801,
-    "stargazers_count": 2,
-    "watchers_count": 2,
+    "homepage": "https://andrewdongminyoo.vercel.app",
+    "size": 42164,
+    "stargazers_count": 1,
+    "watchers_count": 1,
     "language": "TypeScript",
     "has_issues": true,
     "has_projects": true,
@@ -52,10 +52,10 @@
     "has_wiki": true,
     "has_pages": true,
     "has_discussions": false,
-    "forks_count": 0,
+    "forks_count": 1,
     "archived": false,
     "disabled": false,
-    "open_issues_count": 1,
+    "open_issues_count": 2,
     "allow_forking": true,
     "is_template": false,
     "web_commit_signoff_required": false,
@@ -67,9 +67,9 @@
         "tailwindcss"
     ],
     "visibility": "public",
-    "forks": 0,
-    "open_issues": 1,
-    "watchers": 2,
+    "forks": 1,
+    "open_issues": 2,
+    "watchers": 1,
     "default_branch": "main",
     "permissions": {
         "admin": true,
@@ -79,8 +79,8 @@
         "pull": true
     },
     "languages": {
-        "TypeScript": 79630,
-        "CSS": 11761,
-        "JavaScript": 6169
+        "TypeScript": 97600,
+        "CSS": 13856,
+        "JavaScript": 6170
     }
 }

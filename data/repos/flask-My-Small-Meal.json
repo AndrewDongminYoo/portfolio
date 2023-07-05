@@ -39,10 +39,10 @@
     "deployments_url": "https://api.github.com/repos/AndrewDongminYoo/flask-My-Small-Meal/deployments",
     "created_at": "2021-09-23T01:15:50Z",
     "updated_at": "2022-11-02T08:20:51Z",
-    "pushed_at": "2022-01-04T13:06:34Z",
+    "pushed_at": "2023-06-26T01:48:15Z",
     "svn_url": "https://github.com/AndrewDongminYoo/flask-My-Small-Meal",
     "homepage": "",
-    "size": 21872,
+    "size": 21762,
     "stargazers_count": 3,
     "watchers_count": 3,
     "language": "JavaScript",
@@ -91,6 +91,7 @@
         "JavaScript": 21778,
         "HTML": 18169,
         "Python": 18007,
-        "CSS": 11862
+        "CSS": 11862,
+        "Procfile": 92
     }
 }

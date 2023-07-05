@@ -9,7 +9,7 @@ website_url: 'https://cat-minzzi.tistory.com/87'
 icon: 'url(https://icon.horse/icon/www.ivekorea.com)'
 duration: 5
 tags:
-  - 'Django3.*'
+  - 'Django Framework'
   - 'Python3'
   - 'BeautifulSoup'
   - 'SwaggerUI'
