@@ -11,8 +11,7 @@ export default async function chats(req: NextApiRequest, res: NextApiResponse) {
     }
     const response = await fetchChatBot(input);
     if ('error' in response) {
-        const { message, type } = response?.error;
-        res.status(400).json({ message, type });
+        res.status(400).json({ ...response.error });
     } else {
         res.status(200).json(response);
     }

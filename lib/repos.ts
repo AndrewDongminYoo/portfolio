@@ -1,17 +1,17 @@
 import { Endpoints } from '@octokit/types';
-import { GITHUB_TOKEN } from '@/env';
 import { Octokit } from '@octokit/core';
 import type Repository from '@/types/repos';
 import fs from 'fs';
 import parse from 'date-fns/parseISO';
 import path from 'path';
 
+const { GITHUB_TOKEN } = process.env;
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 
 /** 깃허브에서 가져온 데이터 필터링 함수 */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const reclusiveFilter = (repo: { [x: string]: any }) => {
+export function reclusiveFilter(repo: { [x: string]: any }) {
     Object.entries(repo).forEach(([key, value]) => {
         switch (typeof value) {
             case 'string': {
@@ -45,10 +45,10 @@ const reclusiveFilter = (repo: { [x: string]: any }) => {
         }
     });
     return repo as Repository;
-};
+}
 
 /** 깃허브 API 통해 유저의 리포지토리 리스트 전체 가져오기 */
-const fetchRepositories = async () => {
+export async function fetchRepositories() {
     const EP_REPOS: keyof Endpoints = 'GET /user/repos';
     const repositories = await octokit
         .request(EP_REPOS, {
@@ -61,19 +61,19 @@ const fetchRepositories = async () => {
     return repositories
         .filter((R) => !R.fork && R.size > 4000 && R.topics?.length !== 0)
         .map((repo) => reclusiveFilter(repo));
-};
+}
 
 /** 깃허브 API 통해 리포지토리 데이터 가져오기 */
-const fetchRepository = async (owner: string, repo: string) => {
+export async function fetchRepository(owner: string, repo: string) {
     const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
     return await octokit
         .request(EP_REPO, { owner, repo })
         .then((value) => value.data)
         .then((repo) => reclusiveFilter(repo));
-};
+}
 
 /** 깃허브에서 가져온 리포지토리 데이터 로컬에 저장하기 */
-const downloadJSON = async () => {
+export async function downloadJSON() {
     const repositories = await fetchRepositories();
     const repositoryData = await Promise.all(
         repositories.map(async (repo) => {
@@ -89,9 +89,10 @@ const downloadJSON = async () => {
         });
     });
     return repositoryData.length;
-};
+}
+
 /** 로컬 리포지토리 데이터 ID 리스트 읽기 */
-function readReposIds() {
+export function readReposIds() {
     // Get file names under /data/repos
     const fileNames = fs.readdirSync(reposDirectory);
     return fileNames.map((fileName) => {
@@ -102,15 +103,15 @@ function readReposIds() {
 }
 
 /** 로컬 리포지토리 데이터 ID로 읽어오기 */
-const readData = (repo: string) => {
+export function readData(repo: string) {
     // Read JSON file as Repository
     const fullPath = path.join(reposDirectory, `${repo}.json`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     return JSON.parse(fileContents) as Repository;
-};
+}
 
 /** 로컬 리포지토리 리스트 데이터 읽어오기 */
-const readRepositories = () => {
+export function readRepositories() {
     const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
     // Sort repos by date
     return allReposData.sort((a, b) => {
@@ -118,13 +119,4 @@ const readRepositories = () => {
             return 1;
         } else return -1;
     });
-};
-
-export {
-    downloadJSON,
-    fetchRepositories,
-    fetchRepository,
-    readData,
-    readReposIds,
-    readRepositories,
-};
+}

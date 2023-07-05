@@ -6,7 +6,7 @@ import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
 
-export const getSortedPostsData = () => {
+export function getSortedPostsData() {
     const allPostsData = getAllIds().map((id) => getPostData(id));
     // Sort posts by date
     return allPostsData.sort((a, b) => {
@@ -14,9 +14,9 @@ export const getSortedPostsData = () => {
             return 1;
         } else return -1;
     });
-};
+}
 
-function getAllIds() {
+export function getAllIds() {
     // Get file names under /data/posts
     const fileNames = fs.readdirSync(postsDirectory);
     return fileNames.map((fileName) => {
@@ -25,16 +25,16 @@ function getAllIds() {
     });
 }
 
-export const getPostData = (post: string) => {
+export function getPostData(post: string) {
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, `${post}.md`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
     return categorizing(post, matterResult);
-};
+}
 
-const categorizing = (post: string, mattered: GrayMatterFile<string>): Resume => {
+export function categorizing(post: string, mattered: GrayMatterFile<string>): Resume {
     // Combine the data with the id
     const type = post.split('_').shift() as Resume['type'];
     switch (type) {
@@ -47,9 +47,10 @@ const categorizing = (post: string, mattered: GrayMatterFile<string>): Resume =>
         case 'project':
             return { ...(mattered.data as Project), id: post, type };
     }
-};
+}
 
-export const getAllPostIds = () =>
-    getAllIds().map((post) => {
+export function getAllPostIds() {
+    return getAllIds().map((post) => {
         return { params: { post } };
     });
+}
