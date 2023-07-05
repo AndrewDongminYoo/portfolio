@@ -94,7 +94,7 @@ export default function MenuButton() {
                                                 inverse={active}
                                             />
                                             <Link href='/repos' className='font-bold'>
-                                                포트폴리오
+                                                포트폴리오
                                             </Link>
                                         </button>
                                     )}

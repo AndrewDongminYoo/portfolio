@@ -9,7 +9,7 @@ import parse from 'date-fns/parseISO';
 const DateElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
     const date = parse(dateTime);
     if (isValid(date)) {
-        return <time dateTime={dateTime}>{$(date, fmt ?? 'yy-MM')}</time>;
+        return <time dateTime={dateTime}>{$(date, fmt ?? 'yy/MM')}</time>;
     } else {
         return <span>{dateTime}</span>;
     }
@@ -19,27 +19,29 @@ export default function Period({
     startAt,
     endAt,
     className,
+    datesOnly,
 }: {
     startAt: string;
     endAt: string;
     className?: string;
+    datesOnly?: boolean;
 }) {
     const start = parse(startAt);
     const end = isValid(parse(endAt)) ? parse(endAt) : new Date();
-    const diff = diffInDays(end, start);
-    const diff1 = diffInWeeks(end, start) + 1;
-    const diff2 = diffInMonths(end, start) + 1;
-    const diff3 = diffInYears(end, start) + 1;
+    const diffD = diffInDays(end, start);
+    const diffW = diffInWeeks(end, start) + 1;
+    const diffM = diffInMonths(end, start) + 1;
+    const diffY = diffInYears(end, start) + 1;
     let periodString = '';
-    if (diff > 2) periodString = `(${diff}일)`;
-    if (diff1 > 2) periodString = `(${diff1}주)`;
-    if (diff2 > 2) periodString = `(${diff2}개월)`;
-    if (diff2 > 20) periodString = `(${diff3}년)`;
+    if (diffD > 2) periodString = `(${diffD}일)`;
+    if (diffW > 2) periodString = `(${diffW}주)`;
+    if (diffM > 2) periodString = `(${diffM}개월)`;
+    if (diffM > 20) periodString = `(${diffY}년)`;
     return (
         <span className={className}>
             <DateElement dateTime={startAt} />
             {' ~ '}
-            <DateElement dateTime={endAt} /> {periodString}
+            <DateElement dateTime={endAt} /> {!datesOnly && periodString}
         </span>
     );
 }

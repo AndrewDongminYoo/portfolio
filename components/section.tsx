@@ -17,6 +17,7 @@ export default function ResumeSection({
     type: SectionType;
 }) {
     const subTitle = subTitles[type];
+    if (children === null || children === undefined) return <></>;
     return (
         <section
             className='w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'
