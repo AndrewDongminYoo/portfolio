@@ -19,6 +19,8 @@
 
 .markdown {
     max-width: none;
+    line-break: auto;
+    word-break: keep-all;
 }
 
 .markdown h1,.markdown h2 {

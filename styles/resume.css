@@ -125,14 +125,27 @@
     .part_title,
     .part_title a {
         @apply mr-2 text-base font-medium;
+        @apply hover:font-extrabold;
     }
 
     .part_period {
         @apply mt-2 mr-px text-sm leading-normal;
     }
 
+    .writer {
+        @apply inline-block;
+        font-family: Courier, monospace;
+    }
+
+    .writer-text {
+        @apply inline-block overflow-hidden tracking-tighter whitespace-nowrap ;
+        @apply animate-typing text-3xl font-bold;
+        @apply box-border border-r-4 border-r-orange-500 border-solid;
+    }
+
     .list_contribution_item .url__link {
-        @apply block;
+        @apply text-gray-500 block;
+        @apply hover:text-gray-950 hover:animate-pulse;
     }
 
     .list_contributions .list_contribution_item .part_description {

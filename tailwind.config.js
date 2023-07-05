@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     mode: 'jit',
-    content: [
-        './pages/**/*.{js,ts,jsx,tsx}',
-        './components/**/*.{js,ts,jsx,tsx}',
-    ],
+    content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     theme: {
         screens: {
             xs: { max: '575px' },
@@ -21,7 +18,7 @@ module.exports = {
                 0.1: '0.1px',
             },
             boxShadow: {
-                fab: "0 0.0625rem 0.1875rem rgb(20 20 94 / 12%), 0 0.1875rem 0.4375rem rgb(20 20 94 / 10%)"
+                fab: '0 0.0625rem 0.1875rem rgb(20 20 94 / 12%), 0 0.1875rem 0.4375rem rgb(20 20 94 / 10%)',
             },
             fontSize: {
                 xs: '0.75rem',
@@ -50,7 +47,7 @@ module.exports = {
             },
             maxWidth: ({ theme }) => ({
                 ...theme('spacing'),
-                'xxs': '14rem',
+                xxs: '14rem',
                 '4xl': '55rem',
                 '7xl': '82.5rem',
             }),
@@ -64,20 +61,33 @@ module.exports = {
                 0.4: '0.1rem',
                 12.5: '3.125rem',
                 16: '4rem',
-                19: '4.75rem', /* 76px */
-                20: '5rem', /* 80px */
-                40: '10rem', /* 160px */
+                19: '4.75rem' /* 76px */,
+                20: '5rem' /* 80px */,
+                40: '10rem' /* 160px */,
                 48: '12rem',
                 52.5: '13.125rem',
                 68: '17rem',
                 82.5: '20.625rem',
-                120: '30rem'
+                120: '30rem',
             },
             width: {
                 'full-9': 'calc(100% - 9rem)',
                 'full-11.5': 'calc(100% - 11.5rem)',
                 'full-30': 'calc(100% - 30rem)',
-                'full-35': 'calc(100% - 35rem)'
+                'full-35': 'calc(100% - 35rem)',
+            },
+            keyframes: {
+                typing: {
+                    from: { width: '0%' },
+                    to: { width: '100%' },
+                },
+                blink: {
+                    'from, to': { 'border-color': 'transparent' },
+                    '50%': { 'border-color': 'orange' },
+                },
+            },
+            animation: {
+                typing: 'typing 5s steps(30, end), blink .75s step-end infinite',
             },
         },
     },
@@ -85,8 +95,8 @@ module.exports = {
         preflight: true,
     },
     plugins: [
-        require("tailwind-scrollbar-hide"),
-        require("@headlessui/tailwindcss"),
+        require('tailwind-scrollbar-hide'),
+        require('@headlessui/tailwindcss'),
         require('@tailwindcss/typography'),
     ],
     variants: {
@@ -94,4 +104,4 @@ module.exports = {
             opacity: ['disabled'],
         },
     },
-}
+};
