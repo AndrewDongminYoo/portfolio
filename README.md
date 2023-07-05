@@ -18,7 +18,7 @@ After completing a backend development training course and looking for a job, I 
 - `@next/env`: Next.js의 기본 플러그인을 바인딩. 빌드 환경과 실행 환경의 환경 변수에 접근 가능.
 - `next-sitemap`: Next.js 빌드 시 sitemap.XML 생성.
 - `eslint-config-next`: Next.js의 기본 Eslint 구성. ESLint는 프로젝트에 따라 각종 조건과 규칙을 준수하기 위한 도구
-- `react`: 페이스북에서 개발한 방식(JSX)으로 사용자 인터페이스를 만들기 위한 자바스크립트 라이브러리.
+- `react`: 페이스북에서 개발한 방식 (JSX)으로 사용자 인터페이스를 만들기 위한 자바스크립트 라이브러리.
 - `react-dom`: 서버사이드 렌더링 기능을 함께 제공하고 재사용성을 보장.
 
 - `tailwindcss`: Utility-First CSS 프레임워크로 버그 수정 및 디자인 시스템 적용에 용이.

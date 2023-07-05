@@ -4938,6 +4938,18 @@ next-sitemap@^4.1.8:
     fast-glob "^3.2.12"
     minimist "^1.2.8"
 
+next-translate-plugin@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/next-translate-plugin/-/next-translate-plugin-2.4.4.tgz#473725f1735bae17003ce4f00fe08262f047e416"
+  integrity sha512-8olUhdy52IPwLlogrs0KP/FijMZ0Ijf+mWLZtOaFJ7vhCWLSKAE0eb9vYBI+N3T3jjyedC+ufo6g/d4Y5e1HBg==
+  dependencies:
+    typescript "4.5.2"
+
+next-translate@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/next-translate/-/next-translate-2.4.4.tgz#dc8233338883f5dbb6a160114884a6db582afaca"
+  integrity sha512-WuHT8gSgkIDMyxuvIjRFZMfXjbGz8xjpuEBerChVy+ORkfo9xoUagS2FXyrXORyQmE5ifsWmKVUgiyy9NN5Ygg==
+
 next@^13.4.8:
   version "13.4.8"
   resolved "https://registry.yarnpkg.com/next/-/next-13.4.8.tgz#72245bf4fdf328970147ee30de97142c39b1cb3f"
@@ -5875,19 +5887,7 @@ section-matter@^1.0.0:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
 
-semver@^6.0.0, semver@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
-  integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
-
-semver@^7.3.5, semver@^7.3.7, semver@^7.5.0:
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.0.tgz#ed8c5dc8efb6c629c88b23d41dc9bf40c1d96cd0"
-  integrity sha512-+XC0AD/R7Q2mPSRuy2Id0+CGTZ98+8f+KvwirxOKIEyid+XSx6HbC63p+O4IndTHuX5Z+JxQ0TghCkO5Cg/2HA==
-  dependencies:
-    lru-cache "^6.0.0"
-
-semver@^7.5.1, semver@^7.5.3:
+semver@^6.0.0, semver@^6.3.0, semver@^7.3.5, semver@^7.3.7, semver@^7.5.0, semver@^7.5.1, semver@^7.5.3:
   version "7.5.3"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.5.3.tgz#161ce8c2c6b4b3bdca6caadc9fa3317a4c4fe88e"
   integrity sha512-QBlUtyVk/5EeHbi7X0fw6liDZc7BBmEaSYn01fMU1OUYbf6GPsbTtd8WmnqbI20SeycoHSeiybkE/q1Q+qlThQ==
@@ -6512,6 +6512,11 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
+
+typescript@4.5.2:
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.2.tgz#8ac1fba9f52256fdb06fb89e4122fa6a346c2998"
+  integrity sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw==
 
 typescript@^5.1.6:
   version "5.1.6"
