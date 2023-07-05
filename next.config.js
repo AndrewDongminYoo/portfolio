@@ -1,8 +1,8 @@
 const isDevelopment = process.env.NODE_ENV === 'development'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    env: {
-        GITHUB_TOKEN: process.env.GITHUB_TOKEN ?? '',
+    eslint: {
+        dirs: ['components', 'constants', 'lib', 'pages']
     },
     optimizeFonts: true,
     productionBrowserSourceMaps: true,

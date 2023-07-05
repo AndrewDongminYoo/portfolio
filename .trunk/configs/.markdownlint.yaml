@@ -14,3 +14,9 @@ no-trailing-spaces:
   br_spaces: 2
   list_item_empty_lines: false
   strict: false
+ul-indent:
+  indent: 2
+  start_indented: false
+  start_indent: 2
+blanks-around-lists: false
+single-trailing-newline: false

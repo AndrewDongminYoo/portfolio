@@ -36,6 +36,9 @@
     "[css]": {
         "editor.formatOnSave": false
     },
+    "markdownlint.config": {
+        "default": false,
+    },
     "[markdown]": {
         "editor.tabSize": 2,
         "editor.insertSpaces": true,
@@ -51,5 +54,9 @@
         "assets",
         "pages",
         "datas",
-    ]
+        "devEnv"
+    ],
+    "files.associations": {
+        "data/posts/*.md": "yaml",
+    }
 }

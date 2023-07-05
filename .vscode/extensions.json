@@ -9,6 +9,7 @@
         "csstools.postcss",
         "esbenp.prettier-vscode",
         "bradlc.vscode-tailwindcss",
-        "seatonjiang.gitmoji-vscode"
+        "vivaxy.vscode-conventional-commits",
+        "ghmcadams.lintlens"
     ]
 }
