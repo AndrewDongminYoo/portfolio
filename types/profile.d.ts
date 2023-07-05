@@ -79,7 +79,6 @@ type Tag =
     | 'TypeScript'
     | 'Webpack'
     | 'flutter'
-    | 'AWS Elastic Beanstalk'
     | 'AWS ElasticBeanstalk'
     | 'Spring Data JPA'
     | 'WebSocket'

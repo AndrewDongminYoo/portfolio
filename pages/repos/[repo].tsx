@@ -17,8 +17,11 @@ class Repo extends Component<RepoProps> {
     render() {
         const { repository } = this.props;
         const { full_name, html_url, languages } = repository;
-        const languageIter = Object.entries(languages) as [Language, number][];
-        const totalCount = languageIter.reduce((pre, cur) => pre + cur[1], 0);
+        const includeStatic = Object.entries(languages);
+        const excludeStatic = includeStatic.filter(
+            ([lang]) => lang !== 'HTML' && lang !== 'CSS'
+        ) as [Language, number][];
+        const totalCount = excludeStatic.reduce((pre, cur) => pre + cur[1], 0);
 
         return (
             <article aria-label='repositories'>
@@ -31,9 +34,9 @@ class Repo extends Component<RepoProps> {
                     {full_name}
                 </Link>
                 <RepoCard repository={repository} />
-                <LanguageStateBar languages={languageIter} totalCount={totalCount} />
+                <LanguageStateBar languages={excludeStatic} totalCount={totalCount} />
                 <ul className='p-0 mt-0 list-none'>
-                    {languageIter.map(([lang, count], id) => {
+                    {excludeStatic.map(([lang, count], id) => {
                         return (
                             <LanguageButton
                                 language={lang}

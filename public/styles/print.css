@@ -11,6 +11,11 @@
     print-color-adjust: exact !important;
 }
 
+#contributions,
+#timeline {
+    display: none;
+}
+
 *,
 ::after,
 ::before {
