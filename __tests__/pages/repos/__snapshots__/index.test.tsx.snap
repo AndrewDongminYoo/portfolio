@@ -50,22 +50,23 @@ exports[`Portfolio component should render correctly 1`] = `
                     </button>
                 </div>
                 <h1
-                    class="mx-0 my-4 text-2xl leading-normal"
+                    class="mx-0 my-4 text-2xl leading-normal writer"
                 >
                     <a
-                        href="/"
+                        class="writer-text"
+                        href="https://github.com/AndrewDongminYoo/"
                     >
-                        Andrew Dong-min, Yoo
+                        Dongmin, Yu
                     </a>
                 </h1>
                 <section
                     class="p-0 mt-0 text-base border-t-0"
                 >
                     <a
-                        href="/"
+                        href="https://github.com/AndrewDongminYoo/"
                     >
                         <img
-                            alt="Andrew Dong-min, Yoo"
+                            alt="Dongmin, Yu"
                             class="rounded-full print:hidden"
                             data-nimg="1"
                             decoding="async"
@@ -195,7 +196,8 @@ exports[`Portfolio component should render correctly 1`] = `
                             <span
                                 class="ml-1 text-xs leading-normal text-slate-600"
                             >
-                                4개
+                                3
+                                개
                             </span>
                         </div>
                         <ul
@@ -207,16 +209,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
                                 >
-                                    ReactJS
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
-                                >
-                                    Python
+                                    React Native
                                 </div>
                             </li>
                             <li
@@ -234,7 +227,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800 text-xs font-normal text-ellipsis text-gray-50"
                                 >
-                                    TypeScript
+                                    TS Node
                                 </div>
                             </li>
                         </ul>
@@ -254,7 +247,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    Swagger / OpenAPI
+                                    React Native (NativeModule)
                                 </div>
                             </li>
                             <li
@@ -263,7 +256,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    TailwindCSS / styled_components
+                                    Hermes / Flipper
                                 </div>
                             </li>
                             <li
@@ -272,7 +265,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    AWS CloudFront / ElasticBeanstalk
+                                    Dart / Flutter
                                 </div>
                             </li>
                             <li
@@ -281,7 +274,52 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    Django / Flask
+                                    TypeScript
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    React.js / Next.js
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    GitHub
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    TailwindCSS
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Storybook (JS) / WidgetBook (Flutter)
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Figma / Protopie
                                 </div>
                             </li>
                             <li
@@ -299,7 +337,34 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    GitHub / Bitbucket
+                                    AWS CloudFront / AWS Lambda
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    iOS (Swift, ObjectiveC++)
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    Android (Kotlin, Gradle)
+                                </div>
+                            </li>
+                            <li
+                                class="inline-block"
+                            >
+                                <div
+                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
+                                >
+                                    OpenAPI / Postman
                                 </div>
                             </li>
                             <li
@@ -317,60 +382,6 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    Java / Spring
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    Spring Data JPA
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    NoSQL(MongoDB / DynamoDB)
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    SQL(MySQL / PostgreSQL)
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    React Native / Expo
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    ReactJS / RedWoodJS
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
                                     Selenium / BeautifulSoup
                                 </div>
                             </li>
@@ -380,43 +391,7 @@ exports[`Portfolio component should render correctly 1`] = `
                                 <div
                                     class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
                                 >
-                                    TypeScript / JavaScript
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    Webpack
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    WebSocket
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    Chart.js
-                                </div>
-                            </li>
-                            <li
-                                class="inline-block"
-                            >
-                                <div
-                                    class="duration-75 ease-in-out transition-all px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs text-xs font-normal text-slate-800 bg-slate-200 border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis"
-                                >
-                                    StorybookJS
+                                    Testing Library / React Test Renderer
                                 </div>
                             </li>
                         </ul>
@@ -433,6 +408,7 @@ exports[`Portfolio component should render correctly 1`] = `
                     />
                     <section
                         class="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
+                        id="contributions"
                     >
                         <div
                             class="flex justify-between w-full"
@@ -460,15 +436,6 @@ exports[`Portfolio component should render correctly 1`] = `
                         </div>
                     </section>
                 </section>
-                <div
-                    class="leading-8 font-bolder"
-                >
-                    <a
-                        href="/"
-                    >
-                        🔙 홈으로가기
-                    </a>
-                </div>
             </main>
         </div>
     </div>

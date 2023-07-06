@@ -26,7 +26,7 @@ const mockRepository = {
         site_admin: false,
     },
     html_url: `https://github.com/${mockName}`,
-    description: '깃허브 메인 프로필(+이력서)입니다. NextJS',
+    description: '깃허브 메인 프로필 (+이력서)입니다. NextJS',
     fork: false,
     languages_url: `${reposApi}/languages`,
     created_at: '2022-01-13T02:03:50Z',
