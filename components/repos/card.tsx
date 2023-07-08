@@ -1,4 +1,4 @@
-import { ComponentProps, useState } from 'react';
+import React, { ComponentProps, useState } from 'react';
 import {
     faCodeFork,
     faEye,
@@ -152,7 +152,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
     const { className, children, value, placeholder } = props;
     return (
         <>
-            <p
+            <button
                 placeholder={placeholder}
                 title="Click to Copy Repository's git address."
                 className={names(
@@ -165,7 +165,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
                     console.debug(value);
                 }}>
                 {children}
-            </p>
+            </button>
             <Transition
                 static
                 as='div'

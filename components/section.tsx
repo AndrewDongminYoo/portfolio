@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react';
+import React, { ComponentProps } from 'react';
 import type { SectionType } from '@/types/profile';
 
 const subTitles = {
@@ -10,6 +10,13 @@ const subTitles = {
     timeline: '타임라인',
 };
 
+/**
+ * @description 'ResumeSection' 함수는 제목과 내용이 포함된 이력서 섹션을 렌더링하는 React 컴포넌트.
+ * @param {ComponentProps} props - 컴포넌트에 전달되는 props
+ * @param {React.ReactNode} props.children - `ResumeSection` 구성 요소 내에서 렌더링될 콘텐츠.
+ * @param {SectionType} props.type - 섹션 유형.
+ * @returns {React.ReactElement} <section> 내부에 다양한 중첩 요소 및 구성 요소가 있는 요소.
+ */
 export default function ResumeSection({
     children,
     type,
