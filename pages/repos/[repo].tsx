@@ -1,4 +1,3 @@
-import { Component, ComponentProps } from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { readData, readReposIds } from '@/lib/repos';
 import type Language from '@/components/repos/lang_colors';
@@ -9,47 +8,45 @@ import RepoCard from '@/components/repos/card';
 import type Repository from '@/types/repos';
 import names from 'classnames';
 
-type RepoProps = ComponentProps<'article'> & {
+type RepoProps = {
     repository: Repository;
 };
 
-class Repo extends Component<RepoProps> {
-    render() {
-        const { repository } = this.props;
-        const { full_name, html_url, languages } = repository;
-        const includeStatic = Object.entries(languages);
-        const excludeStatic = includeStatic.filter(
-            ([lang]) => lang !== 'HTML' && lang !== 'CSS'
-        ) as [Language, number][];
-        const totalCount = excludeStatic.reduce((pre, cur) => pre + cur[1], 0);
+export default function Repo({ repository }: RepoProps) {
+    const { full_name, html_url, languages } = repository;
+    const includeStatic = Object.entries(languages);
+    const excludeStatic = includeStatic.filter(([lang]) => lang !== 'HTML' && lang !== 'CSS') as [
+        Language,
+        number
+    ][];
+    const totalCount = excludeStatic.reduce((pre, cur) => pre + cur[1], 0);
 
-        return (
-            <article aria-label='repositories'>
-                <Link
-                    href={html_url}
-                    className={names(
-                        'box-border leading-tight break-words',
-                        'text-sm font-medium text-slate-300'
-                    )}>
-                    {full_name}
-                </Link>
-                <RepoCard repository={repository} />
-                <LanguageStateBar languages={excludeStatic} totalCount={totalCount} />
-                <ul className='p-0 mt-0 list-none'>
-                    {excludeStatic.map(([lang, count], id) => {
-                        return (
-                            <LanguageButton
-                                language={lang}
-                                percent={(count / totalCount) * 100}
-                                key={`${id}-${lang}-${count}`}
-                                index={id}
-                            />
-                        );
-                    })}
-                </ul>
-            </article>
-        );
-    }
+    return (
+        <article aria-label='repositories'>
+            <Link
+                href={html_url}
+                className={names(
+                    'box-border leading-tight break-words',
+                    'text-sm font-medium text-slate-300'
+                )}>
+                {full_name}
+            </Link>
+            <RepoCard repository={repository} />
+            <LanguageStateBar languages={excludeStatic} totalCount={totalCount} />
+            <ul className='p-0 mt-0 list-none'>
+                {excludeStatic.map(([lang, count], id) => {
+                    return (
+                        <LanguageButton
+                            language={lang}
+                            percent={(count / totalCount) * 100}
+                            key={`${id}-${lang}-${count}`}
+                            index={id}
+                        />
+                    );
+                })}
+            </ul>
+        </article>
+    );
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
@@ -61,5 +58,3 @@ export const getStaticProps: GetStaticProps = ({ params }) => {
     const repository = readData(params?.repo as string);
     return { props: { repository } };
 };
-
-export default Repo;

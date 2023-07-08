@@ -6,9 +6,12 @@ import Link from 'next/link';
 import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
+import { ghProfile } from '@/constants';
 import names from 'classnames';
+import { useTranslations } from 'next-intl';
 
 export default function MenuButton() {
+    const t = useTranslations('MenuButton');
     return (
         <div className='fixed z-50 flex justify-end print:hidden top-14 right-14'>
             <Menu>
@@ -72,7 +75,7 @@ export default function MenuButton() {
                                                 inverse={active}
                                             />
                                             <Link href='#' onClick={() => window.print()}>
-                                                프린트하기
+                                                {t('print')}
                                             </Link>
                                         </button>
                                     )}
@@ -94,7 +97,7 @@ export default function MenuButton() {
                                                 inverse={active}
                                             />
                                             <Link href='/repos' className='font-bold'>
-                                                포트폴리오
+                                                {t('portfolio')}
                                             </Link>
                                         </button>
                                     )}
@@ -115,9 +118,7 @@ export default function MenuButton() {
                                                 aria-hidden='true'
                                                 inverse={active}
                                             />
-                                            <Link href='https://github.com/AndrewDongminYoo'>
-                                                깃헙프로필
-                                            </Link>
+                                            <Link href={ghProfile}>{t('githubProfile')}</Link>
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -129,3 +130,5 @@ export default function MenuButton() {
         </div>
     );
 }
+
+MenuButton.messages = ['MenuButton'];

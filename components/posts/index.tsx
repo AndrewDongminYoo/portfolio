@@ -4,7 +4,7 @@ import ExperienceElement from './experience';
 import ProjectElement from './project';
 import type Resume from '@/types/profile';
 
-export default function Post({ data }: { data: Resume }) {
+export default function PostContent({ data }: { data: Resume }) {
     switch (data.type) {
         case 'education':
             return <EducationElement education={data} />;

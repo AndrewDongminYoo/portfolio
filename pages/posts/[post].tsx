@@ -1,17 +1,13 @@
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllPostIds, getPostData } from '@/lib/posts';
-import Head from 'next/head';
 import Layout from '@/components/layout';
-import Post from '@/components/posts';
+import PostContent from '@/components/posts';
 import type Resume from '@/types/profile';
 
-export default function PostPage({ data }: { data: Resume }) {
+export default function PostDetailPage({ data }: { data: Resume }) {
     return (
-        <Layout>
-            <Head>
-                <title>{data.title}</title>
-            </Head>
-            <Post data={data} />
+        <Layout title={data.title}>
+            <PostContent data={data} />
         </Layout>
     );
 }

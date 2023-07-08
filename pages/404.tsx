@@ -2,7 +2,7 @@ import Layout from '@/components/layout';
 
 export default function ErrorPage() {
     return (
-        <Layout>
+        <Layout title='404 Error:: Not Found'>
             <video
                 className='object-cover w-full mt-4'
                 src='/videos/error.mp4'

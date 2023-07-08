@@ -1,0 +1,43 @@
+{
+    "About": {
+        "title": "About",
+        "lastUpdated": "This example was updated {lastUpdatedRelative} ({lastUpdated, date, short})."
+    },
+    "Index": {
+        "title": "Home",
+        "description": "<p>Only the minimum of <code>{locale}</code> messages are loaded to render this page.</p><p>These namespaces are available:</p>"
+    },
+    "MenuButton": {
+        "print": "프린트하기",
+        "portfolio": "포트폴리오",
+        "githubProfile": "깃헙프로필",
+        "index": "Home",
+        "about": "About",
+        "switchLocale": "Switch to {locale, select, de {German} en {English} other {Unknown}}"
+    },
+    "NotFound": {
+        "title": "Sorry, this page could not be found."
+    },
+    "Layout": {
+        "pageTitle": "넥스트 L10N 적용 예제",
+        "goToHomePage": "홈으로 가기"
+    },
+    "ErrorPage": {
+        "pageNotExists": "페이지가 존재하지 않아요!!",
+        "404NotFound": "404 Error: : Not Found",
+        "checkYourUrlAndRetry": "찾으시는 주소가 정확한지 확인해주세요!!",
+        "maybeItsRemovedOrWrongUri": "삭제되었거나 존재하지 않는 페이지입니다.",
+        "goBackToHomePage": "홈으로 다시 돌아갑니다."
+    },
+    "PostPage": {
+        "pageTtitle": "이력서 상세 페이지입니다. - 최대한 프로젝트를 쉽게 파악할 수 있도록 준비 중입니다."
+    },
+    "StrictTypes": {
+        "nested": {
+            "hello": "Hello",
+            "another": {
+                "level": "Level"
+            }
+        }
+    }
+}

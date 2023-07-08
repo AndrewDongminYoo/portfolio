@@ -4,6 +4,7 @@ import * as customPack from '@/components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import Head from 'next/head';
+import { NextIntlClientProvider } from 'next-intl';
 import { Noto_Sans_KR } from 'next/font/google';
 
 config.autoAddCss = false;
@@ -25,9 +26,11 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta name='theme-color' content='#0969da' />
                 <meta httpEquiv='x-ua-compatible' content='ie=edge' />
             </Head>
-            <main className={NS_KR.className}>
-                <Component {...pageProps} />
-            </main>
+            <NextIntlClientProvider messages={pageProps.messages}>
+                <main className={NS_KR.className}>
+                    <Component {...pageProps} />
+                </main>
+            </NextIntlClientProvider>
         </>
     );
 };
