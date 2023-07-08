@@ -28,7 +28,7 @@ export default function ExperienceElement({ experience }: { experience: Experien
                 <div className='markdown markdown_viewer'>
                     <Description resume={experience} />
                 </div>
-                <label className='contributions_label'>상세 업무 및 성과</label>
+                <span className='contributions_label'>상세 업무 및 성과</span>
                 <ul className='list_contributions'>
                     {experience.projects.map((pro, i) => (
                         <Contribution project={pro} key={`${i}-${pro}`} />

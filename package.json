@@ -33,8 +33,11 @@
         "@fortawesome/react-fontawesome": "latest",
         "@headlessui/react": "latest",
         "@octokit/core": "latest",
+        "@radix-ui/react-icons": "latest",
         "axios": "latest",
+        "class-variance-authority": "latest",
         "classnames": "latest",
+        "clsx": "latest",
         "date-fns": "latest",
         "fs": "latest",
         "gpt-3-encoder": "latest",
@@ -46,7 +49,9 @@
         "path": "latest",
         "querystring": "latest",
         "react": "latest",
-        "react-dom": "latest"
+        "react-dom": "latest",
+        "tailwind-merge": "latest",
+        "tailwindcss-animate": "latest"
     },
     "devDependencies": {
         "@headlessui/tailwindcss": "latest",

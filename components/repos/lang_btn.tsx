@@ -22,7 +22,7 @@ export default function LanguageButton({
                     style={style}
                     aria-hidden={true}
                 />
-                <span className='mr-1 font-medium text-slate-800'>{language}</span>
+                <span className='mr-1 font-medium text-foreground'>{language}</span>
                 <span>{percent.toFixed(1) + '%'}</span>
             </Link>
         </li>

@@ -6,7 +6,7 @@ import names from 'classnames';
 
 export default function ProfileBio() {
     return (
-        <section className='p-0 mt-0 text-base border-t-0 text-slate-800'>
+        <section className='p-0 mt-0 text-base border-t-0 text-foreground'>
             <h2
                 className={names(
                     'flex flex-row flex-nowrap items-center justify-between',

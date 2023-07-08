@@ -4,7 +4,7 @@
 }
 
 * {
-    box-sizing: border-box;
+    @apply border-border;
     /* Chrome, Safari 6 – 15.3, Edge */
     -webkit-print-color-adjust: exact !important;
     /* Firefox 97+, Safari 15.4+ */

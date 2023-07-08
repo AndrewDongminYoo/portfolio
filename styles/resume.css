@@ -74,7 +74,7 @@
     }
 
     .resume_card_item_text a {
-        @apply text-slate-800;
+        @apply text-foreground;
     }
 
     .resume_card_item {
@@ -97,7 +97,7 @@
 
     .tag_list li {
         @apply inline-block px-1 py-px mt-0 mb-1 ml-0 mr-1 text-xs font-normal leading-normal border-0 rounded;
-        @apply text-slate-800;
+        @apply text-foreground;
         @apply bg-slate-200;
     }
 

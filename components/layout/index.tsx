@@ -26,7 +26,7 @@ export default function Layout({ children, title }: LayoutProps) {
         <div
             className={names(
                 'lg:max-w-4xl',
-                'bg-white my-0 mx-auto',
+                'bg-background my-0 mx-auto',
                 'transition-all',
                 'max-w-7xl'
             )}>

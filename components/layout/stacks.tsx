@@ -39,7 +39,7 @@ export default function StackList() {
                                     'duration-75 ease-in-out transition-all',
                                     'px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs',
                                     'text-xs font-normal',
-                                    'text-slate-800 bg-slate-200',
+                                    'text-foreground bg-slate-200',
                                     'border-0 rounded whitespace-nowrap overflow-hidden text-ellipsis'
                                 )}>
                                 {stack}

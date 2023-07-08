@@ -35,7 +35,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             <div
                 className={names(
                     'flex flex-col justify-between',
-                    'py-8 px-12 leading-normal bg-white min-w-82.5 w-full',
+                    'py-8 px-12 leading-normal bg-background min-w-82.5 w-full',
                     'first-letter:rounded-b lg:rounded-b-none lg:rounded-r'
                 )}>
                 <CopyToClipboard
@@ -172,7 +172,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
                 show={isShowing}
                 className={names(
                     'px-1 my-0 ml-0 mr-1 py-0.5 w-fit',
-                    'text-xs text-slate-800 whitespace-nowrap',
+                    'text-xs text-foreground whitespace-nowrap',
                     'bg-slate-200 border-0 rounded'
                 )}
                 enter='transition-opacity duration-150'
