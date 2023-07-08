@@ -212,5 +212,5 @@ rules:
   react/jsx-no-target-blank: error
   react/no-unescaped-entities: error
   react/no-unknown-property: error
-  react/prop-types: error
+  react/prop-types: off
   react/react-in-jsx-scope: off
