@@ -1,8 +1,36 @@
 {
+    "[css]": {
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/",
+        "cSpell.advanced.feature.useReferenceProviderWithRename": true,
+        "cSpell.fixSpellingWithRenameProvider": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on"
+    },
+    "conventionalCommits.scopes": [
+        "libs",
+        "styles",
+        "assets",
+        "pages",
+        "datas",
+        "devEnv"
+    ],
+    "cSpell.files": [
+        "**/*",
+        "!data/repos/*.json",
+        "!data/posts/*.md",
+        "!components/repos/lang_colors.ts"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "CStyleComment"
+    ],
     "cSpell.words": [
         "authorable",
         "bloglovin",
-        "Codepen",
+        "codepen",
         "cssnano",
         "cushman",
         "davinci",
@@ -15,48 +43,23 @@
         "headlessui",
         "maxage",
         "nextjs",
-        "Noto",
+        "noto",
         "openai",
         "opengraph",
+        "roboto",
         "signoff",
         "tailwindcss",
         "unoptimized"
     ],
-    "cSpell.ignoreRegExpList": ["CStyleComment"],
-    "cSpell.files": [
-        "**/*",
-        "!data/repos/*.json",
-        "!data/posts/*.md",
-        "!components/repos/lang_colors.ts"
-    ],
+    "css.lint.unknownAtRules": "ignore",
     "explorer.incrementalNaming": "disabled",
+    "files.associations": {
+        "data/posts/*.md": "yaml"
+    },
     "git.ignoreLimitWarning": true,
     "javascript.suggestionActions.enabled": false,
-    "css.lint.unknownAtRules": "ignore",
-    "[css]": {
-        "editor.formatOnSave": false
-    },
     "markdownlint.config": {
-        "default": false,
+        "default": false
     },
-    "[markdown]": {
-        "editor.tabSize": 2,
-        "editor.insertSpaces": true,
-        "editor.wordWrap": "on",
-        "cSpell.fixSpellingWithRenameProvider": true,
-        "cSpell.advanced.feature.useReferenceProviderWithRename": true,
-        "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/"
-    },
-    "tailwindCSS.validate": true,
-    "conventionalCommits.scopes": [
-        "libs",
-        "styles",
-        "assets",
-        "pages",
-        "datas",
-        "devEnv"
-    ],
-    "files.associations": {
-        "data/posts/*.md": "yaml",
-    }
+    "tailwindCSS.validate": true
 }
