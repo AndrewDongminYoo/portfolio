@@ -34,7 +34,6 @@ module.exports = {
     /**
      * Next.js는 v10.0.0부터 국제화(i18n) 라우팅을 기본적으로 지원합니다. 로캘 목록, 기본 로캘 및 도메인별 로캘을 제공하면 Next.js가 자동으로 라우팅을 처리합니다.
      * 경로와 로캘 구문 분석을 간소화하여 react-intl, react-i18next, lingui, rosetta, next-intl, next-translate, next-multilingual, typesafe-i18n, tolgee 등과 같은 기존 i18n 라이브러리 솔루션을 보완.
-     *
      * @see https://nextjs.org/docs/pages/building-your-application/routing/internationalization#prefixing-the-default-locale
      */
     i18n: {
@@ -67,9 +66,11 @@ module.exports = {
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         unoptimized: false,
     },
-    /** 헤더를 사용하면 들어오는 요청 경로에 대한 사용자 정의 HTTP 헤더를 설정할 수 있습니다. */
-    async headers() {
-        return [
+    /**
+     * 헤더를 사용하면 들어오는 요청 경로에 대한 사용자 정의 HTTP 헤더를 설정할 수 있습니다.
+     * @returns {Promise<import('next/dist/lib/load-custom-routes').Header[]>} - 헤더 목록을 리턴
+     */
+    headers: async () => [
             {
                 source: '/:path*',
                 headers: [
@@ -91,6 +92,5 @@ module.exports = {
                     }
                 ]
             }
-        ]
-    },
+        ],
 }

@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 import type Resume from '@/types/profile';
 import diff from 'date-fns/differenceInDays';
 import format from 'date-fns/format';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 import parse from 'date-fns/parseISO';
 import { renderToString } from 'react-dom/server';
 

@@ -13,7 +13,7 @@ import Link from 'next/link';
 import type Repository from '@/types/repos';
 import { Transition } from '@headlessui/react';
 import frameworks from './lang_icons';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 import username from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {

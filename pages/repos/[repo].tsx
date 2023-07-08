@@ -6,7 +6,7 @@ import LanguageStateBar from '@/components/repos/langs_bar';
 import Link from 'next/link';
 import RepoCard from '@/components/repos/card';
 import type Repository from '@/types/repos';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 
 type RepoProps = {
     repository: Repository;

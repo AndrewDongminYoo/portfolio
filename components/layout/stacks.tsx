@@ -1,4 +1,4 @@
-import names from 'classnames';
+import { names } from '@/lib/utils';
 import { stacks } from '@/constants/';
 
 export default function StackList() {

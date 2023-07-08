@@ -7,7 +7,7 @@ import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
 import { ghProfile } from '@/constants';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 
 export default function MenuButton() {

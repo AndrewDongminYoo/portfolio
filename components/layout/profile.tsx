@@ -2,7 +2,7 @@
 import { contacts, description, primaryTitle } from '@/constants/';
 import Image from 'next/image';
 import Link from 'next/link';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 
 export default function ProfileBio() {
     return (

@@ -3,12 +3,14 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuButton from './menu';
+import { Menubar } from '../ui/menubar';
+import { NavigationMenu } from '../ui/navigation-menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
 import favicon from '@/public/favicon.ico';
 import laundry from '@/public/images/laundry.jpg';
-import names from 'classnames';
+import { names } from '@/lib/utils';
 import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
@@ -62,6 +64,8 @@ export default function Layout({ children, title }: LayoutProps) {
                     'xs:overflow-x-hidden',
                     'xl:pb-16 xl:top-0'
                 )}>
+                <NavigationMenu />
+                <Menubar />
                 <MenuButton />
                 <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
                     <Link href={isHome ? ghProfile : '/'} className='writer-text'>
