@@ -21,7 +21,7 @@
         "site_admin": false
     },
     "html_url": "https://github.com/AndrewDongminYoo/openai-chatgpt-my-conversations",
-    "description": "OpenAI가 제공하는 GPT(Generative Pre-trained Transformer) 기반의 챗봇인 ChatGPT와의 대화(보통 프로그래밍 관련)를 저장하고 문서화하는 저장소입니다. ChatGPT는 프로그래밍 및 기타 주제에 대한 다양한 질문에 답변할 수 있는 AI입니다.",
+    "description": "OpenAI가 제공하는 GPT(Generative Pre-trained Transformer) 기반의 챗봇인 ChatGPT와의 대화 (보통 프로그래밍 관련)를 저장하고 문서화하는 저장소입니다. ChatGPT는 프로그래밍 및 기타 주제에 대한 다양한 질문에 답변할 수 있는 AI입니다.",
     "fork": false,
     "url": "https://api.github.com/repos/AndrewDongminYoo/openai-chatgpt-my-conversations",
     "forks_url": "https://api.github.com/repos/AndrewDongminYoo/openai-chatgpt-my-conversations/forks",

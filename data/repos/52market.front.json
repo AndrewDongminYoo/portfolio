@@ -21,7 +21,7 @@
         "site_admin": false
     },
     "html_url": "https://github.com/JARYOGOOJO/52market.front",
-    "description": "무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들(1km 이내) 글만 보기. 업로드 시 다른 사용자에게 알람 기능. 댓글의 버튼을 통해 웹소켓 실시간 채팅 기능, 웹소켓 댓글 추가 및 삭제 시 즉시 반영",
+    "description": "무한스크롤 구현. SPA 페이지 구현. 내 주변 이웃들 (1km 이내) 글만 보기. 업로드 시 다른 사용자에게 알람 기능. 댓글의 버튼을 통해 웹소켓 실시간 채팅 기능, 웹소켓 댓글 추가 및 삭제 시 즉시 반영",
     "fork": false,
     "url": "https://api.github.com/repos/JARYOGOOJO/52market.front",
     "forks_url": "https://api.github.com/repos/JARYOGOOJO/52market.front/forks",
