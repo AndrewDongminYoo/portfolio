@@ -57,7 +57,7 @@ export default function MenuButton() {
                             {/* Mark this component as `static` */}
                             <Menu.Items
                                 static
-                                className='text-gray-900 rounded-md shadow-md bg-slate-50'>
+                                className='text-gray-900 shadow-md rounded-md bg-slate-50'>
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button

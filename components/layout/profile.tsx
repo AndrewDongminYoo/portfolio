@@ -9,8 +9,9 @@ export default function ProfileBio() {
         <section className='p-0 mt-0 text-base border-t-0 text-foreground'>
             <h2
                 className={names(
-                    'flex flex-row flex-nowrap items-center justify-between',
-                    '-ml-px mb-4 break-keep leading-snug text-2xl min-h-16'
+                    'flex flex-row items-center justify-between',
+                    'mb-4 -ml-px text-2xl leading-snug',
+                    'flex-nowrap break-keep min-h-16'
                 )}>
                 {primaryTitle}
             </h2>
@@ -30,13 +31,13 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
     return (
         <li
             className={names(
-                'flex flex-row flex-nowrap items-center justify-start leading-relaxed',
-                'font-normal text-sm tracking-normal'
+                'flex flex-row items-center justify-start',
+                'text-sm font-normal leading-relaxed tracking-normal flex-nowrap'
             )}>
             <Link
                 className={names(
-                    'inline pb-1 tracking-normal leading-relaxed',
-                    'truncate font-normal text-sm'
+                    'inline pb-1 text-sm font-normal',
+                    'leading-relaxed tracking-normal truncate'
                 )}
                 href={href}
                 target='_blank'

@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuButton from './menu';
-import { Menubar } from '../ui/menubar';
-import { NavigationMenu } from '../ui/navigation-menu';
+import { MenubarDemo } from './menubar';
+import { NavigationMenuDemo } from './navigation-menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
@@ -13,7 +13,6 @@ import laundry from '@/public/images/laundry.jpg';
 import { names } from '@/lib/utils';
 import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
-import { useTranslations } from 'next-intl';
 
 type LayoutProps = {
     children?: ReactNode;
@@ -21,7 +20,6 @@ type LayoutProps = {
 };
 
 export default function Layout({ children, title }: LayoutProps) {
-    const t = useTranslations('Layout');
     const { pathname } = useRouter();
     const isHome = pathname === '/';
     return (
@@ -51,7 +49,7 @@ export default function Layout({ children, title }: LayoutProps) {
                 />
                 <link rel='icon' href={favicon.src} />
                 <link rel='apple-touch-icon' href={favicon.src} />
-                <title>{[title, t('pageTitle')].join(' - ')}</title>
+                <title>{title}</title>
             </Head>
             <summary
                 className={names(
@@ -64,8 +62,8 @@ export default function Layout({ children, title }: LayoutProps) {
                     'xs:overflow-x-hidden',
                     'xl:pb-16 xl:top-0'
                 )}>
-                <NavigationMenu />
-                <Menubar />
+                <NavigationMenuDemo />
+                <MenubarDemo />
                 <MenuButton />
                 <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
                     <Link href={isHome ? ghProfile : '/'} className='writer-text'>
@@ -98,8 +96,8 @@ export default function Layout({ children, title }: LayoutProps) {
                 )}>
                 <article>{children}</article>
                 {!isHome && (
-                    <div className='leading-8 font-bolder'>
-                        <Link href='/'>🔙 {t('goToHomePage')}</Link>
+                    <div className='font-extrabold leading-8'>
+                        <Link href='/'>🔙 {'홈으로가기'}</Link>
                     </div>
                 )}
             </main>
