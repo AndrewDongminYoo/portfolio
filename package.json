@@ -37,6 +37,7 @@
         "@radix-ui/react-menu": "latest",
         "@radix-ui/react-menubar": "latest",
         "@radix-ui/react-navigation-menu": "latest",
+        "@radix-ui/react-slot": "latest",
         "@radix-ui/react-tooltip": "latest",
         "axios": "latest",
         "class-variance-authority": "latest",
