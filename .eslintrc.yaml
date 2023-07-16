@@ -122,8 +122,8 @@ rules:
     - never
   prefer-const: warn
   sort-imports:
-    - warn
-    - allowSeparatedGroups: true
+    - error
+    - allowSeparatedGroups: false
       ignoreCase: false
       ignoreDeclarationSort: false
       ignoreMemberSort: false

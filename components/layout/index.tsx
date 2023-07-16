@@ -3,8 +3,6 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import MenuButton from './menu';
-import { MenubarDemo } from './menubar';
-import { NavigationMenuDemo } from './navigation-menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
@@ -62,8 +60,6 @@ export default function Layout({ children, title }: LayoutProps) {
                     'xs:overflow-x-hidden',
                     'xl:pb-16 xl:top-0'
                 )}>
-                <NavigationMenuDemo />
-                <MenubarDemo />
                 <MenuButton />
                 <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
                     <Link href={isHome ? ghProfile : '/'} className='writer-text'>
