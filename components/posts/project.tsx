@@ -1,9 +1,9 @@
-import { faBloggerB, faDiscord, faSquareGithub } from '@/components/common/icons';
-import Description from '@/components/common/description';
+import { faBloggerB, faDiscord, faSquareGithub } from 'components/common/icons';
+import Description from 'components/common/description';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import Period from '@/components/common/period';
-import type { Project } from '@/types/profile';
+import Period from 'components/common/period';
+import type { Project } from 'types/profile';
 
 export default function ProjectElement({ project }: { project: Project }) {
     const websiteUrl = project.website_url ?? 'https://andrewdongminyoo.vercel.app/';

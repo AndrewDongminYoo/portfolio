@@ -1,6 +1,6 @@
 'use client';
 
-import Layout from '@/components/layout';
+import Layout from 'components/layout';
 
 /**
  * @description Error Page Component allows you to gracefully handle runtime errors in nested routes.

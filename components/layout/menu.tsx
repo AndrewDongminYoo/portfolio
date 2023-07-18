@@ -1,13 +1,13 @@
 import { Menu, Transition } from '@headlessui/react';
-import { faCodepen, faIdCard, faPrint } from '@/components/common/icons';
+import { faCodepen, faIdCard, faPrint } from 'components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
-import { ghProfile } from '@/constants';
-import { names } from '@/lib/utils';
+import { ghProfile } from '@/constants/';
+import { names } from 'lib/utils';
 import { useTranslations } from 'next-intl';
 
 export default function MenuButton() {
@@ -130,5 +130,3 @@ export default function MenuButton() {
         </div>
     );
 }
-
-MenuButton.messages = ['MenuButton'];

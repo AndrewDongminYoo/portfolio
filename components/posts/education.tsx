@@ -1,6 +1,6 @@
-import type { Education } from '@/types/profile';
+import type { Education } from 'types/profile';
 import Link from 'next/link';
-import Period from '@/components/common/period';
+import Period from 'components/common/period';
 
 export default function EducationElement({ education }: { education: Education }) {
     const startAt = education.startAt ?? '입학 예정';

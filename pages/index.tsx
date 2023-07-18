@@ -1,16 +1,16 @@
 import type { GetStaticPropsContext, PreviewData } from 'next';
-import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
-import GridTimeline from '@/components/timeline';
-import Layout from '@/components/layout';
+import Resume, { Activity, Education, Experience, Project } from 'types/profile';
+import GridTimeline from 'components/timeline';
+import Layout from 'components/layout';
 import { ParsedUrlQuery } from 'querystring';
-import Post from '@/components/posts';
-import ReactGitHubCalendar from '@/components/calendar';
-import ResumeSection from '@/components/section';
-import { getSortedPostsData } from '@/lib/posts';
+import Post from 'components/posts';
+import ReactGithubCalendar from 'components/calendar';
+import ResumeSection from 'components/section';
+import { getSortedPostsData } from 'lib/posts';
 import groupBy from 'lodash.groupby';
 import isAfter from 'date-fns/isAfter';
 import parse from 'date-fns/parseISO';
-import { primaryTitle } from '@/constants';
+import { primaryTitle } from '@/constants/';
 import { useRouter } from 'next/router';
 import { useTranslations } from 'next-intl';
 
@@ -33,7 +33,7 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
                 <GridTimeline timeline={allPostsData} />
             </ResumeSection>
             <ResumeSection key={`${1}-contributions`} type='contributions'>
-                <ReactGitHubCalendar />
+                <ReactGithubCalendar />
             </ResumeSection>
             <ResumeSection key={`${2}-experiences`} type='experiences'>
                 {experience &&

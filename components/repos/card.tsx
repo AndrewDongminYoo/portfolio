@@ -6,14 +6,14 @@ import {
     faLock,
     faLockOpen,
     faStar,
-} from '@/components/common/icons';
+} from 'components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import type Repository from '@/types/repos';
+import type Repository from 'types/repos';
 import { Transition } from '@headlessui/react';
 import frameworks from './lang_icons';
-import { names } from '@/lib/utils';
+import { names } from 'lib/utils';
 import username from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {

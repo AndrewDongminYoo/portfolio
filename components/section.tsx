@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react';
-import type { SectionType } from '@/types/profile';
+import type { SectionType } from 'types/profile';
 
 const subTitles = {
     educations: '학력/전공',

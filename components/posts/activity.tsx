@@ -1,7 +1,7 @@
-import type { Activity } from '@/types/profile';
-import Description from '@/components/common/description';
+import type { Activity } from 'types/profile';
+import Description from 'components/common/description';
 import Link from 'next/link';
-import Period from '@/components/common/period';
+import Period from 'components/common/period';
 
 export default function ActivityElement({ activity }: { activity: Activity }) {
     const startAt = activity.startAt ?? '개발 예정';

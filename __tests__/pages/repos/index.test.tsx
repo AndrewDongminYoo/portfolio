@@ -1,7 +1,7 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import Portfolio from '@/pages/repos/index';
-jest.mock('@/lib/repos');
-import { readRepositories } from '@/lib/repos';
+import Portfolio from 'pages/repos/index';
+jest.mock('lib/repos');
+import { readRepositories } from 'lib/repos';
 
 describe('Portfolio component', () => {
     afterEach(cleanup);

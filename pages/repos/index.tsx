@@ -1,11 +1,11 @@
 import React, { createRef, useLayoutEffect } from 'react';
 import { GetStaticProps } from 'next';
-import Layout from '@/components/layout';
-import ReactGitHubCalendar from '@/components/calendar';
-import Repo from '@/pages/repos/[repo]';
-import type Repository from '@/types/repos';
-import ResumeSection from '@/components/section';
-import { readRepositories } from '@/lib/repos';
+import Layout from 'components/layout';
+import ReactGithubCalendar from 'components/calendar';
+import Repo from 'pages/repos/[repo]';
+import type Repository from 'types/repos';
+import ResumeSection from 'components/section';
+import { readRepositories } from 'lib/repos';
 import { secondaryTitle } from '@/constants/';
 
 type PortfolioProps = {
@@ -34,7 +34,7 @@ export default function Portfolio({ repositoryData }: PortfolioProps) {
                 })}
             </section>
             <ResumeSection type='contributions'>
-                <ReactGitHubCalendar />
+                <ReactGithubCalendar />
             </ResumeSection>
         </Layout>
     );

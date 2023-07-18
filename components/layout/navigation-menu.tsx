@@ -8,11 +8,11 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
+} from 'components/ui/navigation-menu';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import React from 'react';
-import { names } from '@/lib/utils';
+import { names } from 'lib/utils';
 
 const components: { title: string; href: string; description: string }[] = [
     {

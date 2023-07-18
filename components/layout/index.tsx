@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 import StackList from './stacks';
 import favicon from '@/public/favicon.ico';
 import laundry from '@/public/images/laundry.jpg';
-import { names } from '@/lib/utils';
+import { names } from 'lib/utils';
 import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
 
@@ -100,5 +100,3 @@ export default function Layout({ children, title }: LayoutProps) {
         </div>
     );
 }
-
-Layout.messages = ['Layout', ...MenuButton.messages];

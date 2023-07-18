@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import fetchChatBot from '@/lib/openai';
+import fetchChatBot from 'lib/openai';
 
 export default async function chats(req: NextApiRequest, res: NextApiResponse) {
     const { body, method, query } = req;

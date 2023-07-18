@@ -1,6 +1,6 @@
-import '@/styles/globals.css';
+import 'styles/globals.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import * as customPack from '@/components/common/icons';
+import * as customPack from 'components/common/icons';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import Head from 'next/head';
@@ -28,7 +28,24 @@ const App = ({ Component, pageProps }: AppProps) => {
                 <meta name='theme-color' content='#0969da' />
                 <meta httpEquiv='x-ua-compatible' content='ie=edge' />
             </Head>
-            <NextIntlClientProvider messages={pageProps.messages}>
+            <NextIntlClientProvider
+                formats={{
+                    dateTime: {
+                        short: {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric',
+                        },
+                    },
+                }}
+                messages={pageProps.messages}
+                // Providing an explicit value for `now` ensures consistent formatting of
+                // relative values regardless of the server or client environment.
+                now={new Date(pageProps.now)}
+                // Also an explicit time zone is helpful to ensure dates render the
+                // same way on the client as on the server, which might be located
+                // in a different time zone.
+                timeZone='Asia/Seoul'>
                 <main className={NS_KR.className}>
                     <Component {...pageProps} />
                 </main>

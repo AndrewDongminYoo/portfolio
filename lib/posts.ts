@@ -1,4 +1,4 @@
-import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
+import Resume, { Activity, Education, Experience, Project } from 'types/profile';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
 import parse from 'date-fns/parseISO';
