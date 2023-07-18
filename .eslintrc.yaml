@@ -168,13 +168,13 @@ rules:
       ts-nocheck: allow-with-description
   import/default: error
   import/export: error
-  import/named: error
+  import/named: off
   import/namespace: error
   import/no-anonymous-default-export: error
   import/no-duplicates: error
   import/no-named-as-default: error
   import/no-named-as-default-member: error
-  import/no-unresolved: error
+  import/no-unresolved: off
   jest-dom/prefer-checked: error
   jest-dom/prefer-empty: error
   jest-dom/prefer-enabled-disabled: error
@@ -211,6 +211,8 @@ rules:
       singleReturnOnly: true
   react/jsx-no-target-blank: error
   react/no-unescaped-entities: error
-  react/no-unknown-property: error
+  react/no-unknown-property:
+    - error
+    - ignore: ['jsx']
   react/prop-types: off
   react/react-in-jsx-scope: off

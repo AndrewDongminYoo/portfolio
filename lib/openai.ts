@@ -1,6 +1,6 @@
 import { Configuration, OpenAIApi } from 'openai';
+import axios from 'axios';
 import { encode } from 'gpt-3-encoder';
-import { isAxiosError } from 'axios';
 
 const MAX_TOKENS = 4000;
 const { OPENAI_API_KEY, OPENAI_ORGANIZATION } = process.env;
@@ -47,7 +47,7 @@ export default async function fetchChatBot(query: string | string[] | undefined)
             return data;
         }
     } catch (e: unknown) {
-        if (isAxiosError(e)) {
+        if (axios.isAxiosError(e)) {
             return e.response?.data;
         }
         throw e;
