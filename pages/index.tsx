@@ -32,9 +32,7 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
             <ResumeSection key={`${0}-timeline`} type='timeline'>
                 <GridTimeline timeline={allPostsData} />
             </ResumeSection>
-            <ResumeSection key={`${1}-contributions`} type='contributions'>
-                <ReactGithubCalendar />
-            </ResumeSection>
+            <ReactGithubCalendar />
             <ResumeSection key={`${2}-experiences`} type='experiences'>
                 {experience &&
                     experience.map((data, key) => {

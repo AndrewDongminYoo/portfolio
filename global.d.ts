@@ -1,6 +1,4 @@
-interface Window {
-    GitHubCalendar: (selector: string, username: string, options: object) => void;
-}
+declare module 'github-calendar';
 
 declare namespace NodeJS {
     interface ProcessEnv {
