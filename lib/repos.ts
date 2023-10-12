@@ -66,7 +66,7 @@ export async function fetchRepositories() {
         })
         .then((value) => value.data);
     return repositories
-        .filter((R) => !R.fork && R.size > 4000 && R.topics?.length !== 0)
+        .filter((R) => !R.fork && R.size > 4000 && !R.archived)
         .map((repo) => reclusiveFilter(repo));
 }
 
