@@ -4,6 +4,4 @@
 // Used for __tests__/testing-library.js
 // Learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
-
-jest.mock('next/router', () => require('next-router-mock'));
-Element.prototype.scrollIntoView = jest.fn();
+import '@jest-mock/next/router';

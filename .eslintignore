@@ -6,3 +6,5 @@
 .vscode
 node_modules
 out
+!.storybook/main.ts
+!.storybook/preview.ts

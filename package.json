@@ -124,10 +124,5 @@
     "resolutions": {
         "@testing-library/dom": "^8.0.0 || ^9.0.0"
     },
-    "packageManager": "yarn@1.22.19",
-    "eslintConfig": {
-        "extends": [
-            "plugin:storybook/recommended"
-        ]
-    }
+    "packageManager": "yarn@1.22.19"
 }

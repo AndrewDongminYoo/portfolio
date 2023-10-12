@@ -26,6 +26,7 @@ extends:
   - plugin:react-hooks/recommended
   - plugin:react/recommended
   - plugin:@next/next/recommended
+  - plugin:storybook/recommended
   - next/core-web-vitals
   - next
   - prettier
@@ -213,6 +214,6 @@ rules:
   react/no-unescaped-entities: error
   react/no-unknown-property:
     - error
-    - ignore: ['jsx']
+    - ignore: [jsx]
   react/prop-types: off
   react/react-in-jsx-scope: off

@@ -1,55 +1,43 @@
-import { Configuration, OpenAIApi } from 'openai';
-import axios from 'axios';
+import OpenAI from 'openai';
 import { encode } from 'gpt-3-encoder';
 
 const MAX_TOKENS = 4000;
 const { OPENAI_API_KEY, OPENAI_ORGANIZATION } = process.env;
-const configuration = new Configuration({
+const configuration = {
     organization: OPENAI_ORGANIZATION,
     apiKey: OPENAI_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
+};
+const openai = new OpenAI(configuration);
 
-export default async function fetchChatBot(query: string | string[] | undefined) {
-    let prompt: number[] = [];
+export default async function fetchChatBot(query: string[]) {
+    const prompt: number[] = [];
     let tokens = 0;
-    if (typeof query === 'undefined') {
-        return 'Be sure to enter a prompt. If you do not type, the conversation with the chatbot will start all over again.';
-    } else if (typeof query === 'string') {
-        prompt = encode(query);
-        tokens = prompt.length;
-    } else {
-        // query is string[]
-        for (const q in query) {
-            prompt.push(...encode(q));
-        }
-        tokens = prompt.length;
+
+    // query is string[]
+    for (const q in query) {
+        prompt.push(...encode(q));
     }
+    tokens = prompt.length;
     const max_tokens = MAX_TOKENS - tokens;
     try {
-        const response = await openai.createCompletion({
+        const completion = await openai.chat.completions.create({
             model: 'text-davinci-003',
-            prompt,
+            messages: [],
             temperature: 0.6,
             max_tokens,
         });
-        const { data, headers, status } = response;
-        console.debug('🚀 - file: openai.ts:13 - prompt', prompt);
-        console.debug('🚀 - file: openai.ts:26 - limits', max_tokens);
-        console.debug('🚀 - file: openai.ts:34 - timeout', headers['openai-processing-ms']);
-        if (status === 200) {
-            const { created, choices, usage } = data;
-            console.debug('🚀 - file: openai.ts:39 - choices', choices);
-            console.debug('🚀 - file: openai.ts:39 - created', created);
-            console.debug('🚀 - file: openai.ts:39 - usage', usage);
-            return choices[0].text?.trim().split(/\n+/g);
-        } else {
-            return data;
-        }
+        const { choices, created, id, model, object, usage } = completion;
+        console.debug('🚀 - file: openai.ts:31 - id', id);
+        console.debug('🚀 - file: openai.ts:32 - model', model);
+        console.debug('🚀 - file: openai.ts:33 - object', object);
+        console.debug('🚀 - file: openai.ts:34 - prompt', prompt);
+        console.debug('🚀 - file: openai.ts:35 - limits', max_tokens);
+        console.debug('🚀 - file: openai.ts:36 - choices', choices);
+        console.debug('🚀 - file: openai.ts:37 - created', created);
+        console.debug('🚀 - file: openai.ts:38 - usage', usage);
+        return choices[0].message.content?.trim().split(/\n+/g);
     } catch (e: unknown) {
-        if (axios.isAxiosError(e)) {
-            return e.response?.data;
-        }
+        console.error(e);
         throw e;
     }
 }
