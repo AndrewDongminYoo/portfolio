@@ -9,7 +9,7 @@ const configuration = {
 };
 const openai = new OpenAI(configuration);
 
-export default async function fetchChatBot(query: string[]) {
+export default async function fetchChatBot(query: string[]): Promise<string[]> {
     const prompt: number[] = [];
     let tokens = 0;
 
@@ -35,9 +35,9 @@ export default async function fetchChatBot(query: string[]) {
         console.debug('🚀 - file: openai.ts:36 - choices', choices);
         console.debug('🚀 - file: openai.ts:37 - created', created);
         console.debug('🚀 - file: openai.ts:38 - usage', usage);
-        return choices[0].message.content?.trim().split(/\n+/g);
+        return choices[0].message.content!.trim().split(/\n+/g) ?? [];
     } catch (e: unknown) {
         console.error(e);
-        throw e;
+        return [];
     }
 }

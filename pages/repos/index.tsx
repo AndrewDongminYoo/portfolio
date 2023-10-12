@@ -4,7 +4,6 @@ import Layout from 'components/layout';
 import ReactGithubCalendar from 'components/calendar';
 import Repo from 'pages/repos/[repo]';
 import type Repository from 'types/repos';
-import ResumeSection from 'components/section';
 import { readRepositories } from 'lib/repos';
 import { secondaryTitle } from '@/constants/';
 
@@ -33,9 +32,7 @@ export default function Portfolio({ repositoryData }: PortfolioProps) {
                     return <Repo repository={repo} key={`${id}-${repo.node_id}`} />;
                 })}
             </section>
-            <ResumeSection type='contributions'>
-                <ReactGithubCalendar />
-            </ResumeSection>
+            <ReactGithubCalendar />
         </Layout>
     );
 }
