@@ -95,7 +95,7 @@ export async function downloadJSON() {
             const { languages_url } = repo;
             const languages = await octokit.request({ url: languages_url }).then((res) => res.data);
             return { ...repo, languages };
-        })
+        }),
     );
     repositoryData.forEach((json) => {
         const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);

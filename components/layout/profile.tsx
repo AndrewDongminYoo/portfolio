@@ -11,7 +11,7 @@ export default function ProfileBio() {
                 className={names(
                     'flex flex-row items-center justify-between',
                     'mb-4 -ml-px text-2xl leading-snug',
-                    'flex-nowrap break-keep min-h-16'
+                    'flex-nowrap break-keep min-h-16',
                 )}>
                 {primaryTitle}
             </h2>
@@ -32,12 +32,12 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
         <li
             className={names(
                 'flex flex-row items-center justify-start',
-                'text-sm font-normal leading-relaxed tracking-normal flex-nowrap'
+                'text-sm font-normal leading-relaxed tracking-normal flex-nowrap',
             )}>
             <Link
                 className={names(
                     'inline pb-1 text-sm font-normal',
-                    'leading-relaxed tracking-normal truncate'
+                    'leading-relaxed tracking-normal truncate',
                 )}
                 href={href}
                 target='_blank'

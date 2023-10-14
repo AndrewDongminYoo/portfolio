@@ -28,7 +28,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
                     width={256}
                     className={names(
                         'flex h-full rounded-t rounded-l opacity-25 max-w-40',
-                        'sm:overflow-x-hidden'
+                        'sm:overflow-x-hidden',
                     )}
                 />
             </Link>
@@ -36,7 +36,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
                 className={names(
                     'flex flex-col justify-between',
                     'py-8 px-12 leading-normal bg-background min-w-82.5 w-full',
-                    'first-letter:rounded-b lg:rounded-b-none lg:rounded-r'
+                    'first-letter:rounded-b lg:rounded-b-none lg:rounded-r',
                 )}>
                 <CopyToClipboard
                     value={`${repository.html_url}.git`}
@@ -157,7 +157,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
                 title="Click to Copy Repository's git address."
                 className={names(
                     'flex items-center mb-0 text-xs text-gray-600 cursor-pointer',
-                    className
+                    className,
                 )}
                 onClick={() => {
                     setIsShowing(true);
@@ -173,7 +173,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
                 className={names(
                     'px-1 my-0 ml-0 mr-1 py-0.5 w-fit',
                     'text-xs text-foreground whitespace-nowrap',
-                    'bg-slate-200 border-0 rounded'
+                    'bg-slate-200 border-0 rounded',
                 )}
                 enter='transition-opacity duration-150'
                 enterFrom='opacity-0'

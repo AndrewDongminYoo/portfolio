@@ -1520,7 +1520,7 @@
             {
                 "id": "snapperm-7oP3WFr9x7qf5xb3eZrVABAH",
                 "object": "model_permission",
-                "created": 1642018480, 
+                "created": 1642018480,
                 "allow_create_engine": false,
                 "allow_sampling": true,
                 "allow_logprobs": true,

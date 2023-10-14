@@ -11,7 +11,7 @@ const buttonVariants = cva(
         'focus-visible:ring-1',
         'focus-visible:ring-ring',
         'disabled:pointer-events-none',
-        'disabled:opacity-50'
+        'disabled:opacity-50',
     ),
     {
         variants: {
@@ -36,7 +36,7 @@ const buttonVariants = cva(
             variant: 'default',
             size: 'default',
         },
-    }
+    },
 );
 
 export interface ButtonProps
@@ -55,7 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 {...props}
             />
         );
-    }
+    },
 );
 Button.displayName = 'Button';
 

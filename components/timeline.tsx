@@ -14,7 +14,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
             <div
                 className={names(
                     'flex flex-col items-start justify-start flex-nowrap',
-                    'w-full px-0 py-6 mb-0 border-b-0 max-h-max'
+                    'w-full px-0 py-6 mb-0 border-b-0 max-h-max',
                 )}>
                 <div className='block w-full m-0 text-base break-all min-h-12.5'>
                     <div className='grid mb-0.5 text-base leading-snug grid-cols-11'>
@@ -40,7 +40,7 @@ const getMonthLabels = () => {
                 dateTime={month}
                 className={names(
                     'pl-1 border-r border-solid border-r-slate-200',
-                    'text-xs leading-normal text-slate-600'
+                    'text-xs leading-normal text-slate-600',
                 )}>
                 {month}
             </time>
@@ -73,7 +73,7 @@ const getMonthLabels = () => {
                     'font-black leading-normal text-center whitespace-nowrap',
                     'rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
                     ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
-                    tailwindColor[type]
+                    tailwindColor[type],
                 )}
                 style={{ gridColumn }}>
                 {name}

@@ -17,7 +17,7 @@ export default function Repo({ repository }: RepoProps) {
     const includeStatic = Object.entries(languages);
     const excludeStatic = includeStatic.filter(([lang]) => lang !== 'HTML' && lang !== 'CSS') as [
         Language,
-        number
+        number,
     ][];
     const totalCount = excludeStatic.reduce((pre, cur) => pre + cur[1], 0);
 
@@ -27,7 +27,7 @@ export default function Repo({ repository }: RepoProps) {
                 href={html_url}
                 className={names(
                     'box-border leading-tight break-words',
-                    'text-sm font-medium text-slate-300'
+                    'text-sm font-medium text-slate-300',
                 )}>
                 {full_name}
             </Link>

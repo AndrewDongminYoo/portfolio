@@ -20,7 +20,7 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
     const isHome = defaultLocale === locale;
 
     allPostsData = allPostsData.filter((resume) =>
-        isAfter(parse(resume.startAt), new Date(2022, 1, 1))
+        isAfter(parse(resume.startAt), new Date(2022, 1, 1)),
     );
     const groupedPosts = groupBy(allPostsData, (resume: Resume) => resume.type);
     const experience = groupedPosts.experience as Experience[];

@@ -65,7 +65,7 @@ export function NavigationMenuDemo() {
                                         className={names(
                                             'flex flex-col justify-end w-full h-full p-6',
                                             'no-underline outline-none select-none rounded-md',
-                                            'bg-gradient-to-b from-muted/50 to-muted focus:shadow-md'
+                                            'bg-gradient-to-b from-muted/50 to-muted focus:shadow-md',
                                         )}
                                         href='/'>
                                         <GitHubLogoIcon className='w-6 h-6' />
@@ -130,7 +130,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
                             'no-underline outline-none transition-colors',
                             'hover:bg-accent hover:text-accent-foreground',
                             'focus:bg-accent focus:text-accent-foreground',
-                            className
+                            className,
                         )}
                         {...props}>
                         <div className='text-sm font-medium leading-none'>{title}</div>
@@ -141,6 +141,6 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
                 </NavigationMenuLink>
             </li>
         );
-    }
+    },
 );
 ListItem.displayName = 'ListItem';

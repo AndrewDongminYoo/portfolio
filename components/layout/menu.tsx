@@ -33,14 +33,14 @@ export default function MenuButton() {
                                 height={56}
                                 className={names(
                                     'absolute right-0 z-10 w-14 h-14',
-                                    'animate-bounce motion-reduce:animate-none'
+                                    'animate-bounce motion-reduce:animate-none',
                                 )}
                             />
                             <span
                                 className={names(
                                     'animate-ping motion-reduce:animate-none',
                                     'bottom-0 left-11 absolute w-3.5 h-3.5',
-                                    'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full'
+                                    'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full',
                                 )}
                             />
                         </Menu.Button>
@@ -63,7 +63,7 @@ export default function MenuButton() {
                                         <button
                                             className={names(
                                                 'flex items-center w-full p-2 text-sm rounded-md',
-                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group'
+                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                                             )}>
                                             <FontAwesomeIcon
                                                 icon={faPrint}
@@ -85,7 +85,7 @@ export default function MenuButton() {
                                         <button
                                             className={names(
                                                 'flex items-center w-full p-2 text-sm rounded-md',
-                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group'
+                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                                             )}>
                                             <FontAwesomeIcon
                                                 icon={faCodepen}
@@ -107,7 +107,7 @@ export default function MenuButton() {
                                         <button
                                             className={names(
                                                 'flex items-center w-full p-2 text-sm rounded-md',
-                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group'
+                                                'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                                             )}>
                                             <FontAwesomeIcon
                                                 icon={faIdCard}

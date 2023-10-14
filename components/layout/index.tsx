@@ -26,7 +26,7 @@ export default function Layout({ children, title }: LayoutProps) {
                 'lg:max-w-4xl',
                 'bg-background my-0 mx-auto',
                 'transition-all',
-                'max-w-7xl'
+                'max-w-7xl',
             )}>
             <Head>
                 <meta
@@ -58,7 +58,7 @@ export default function Layout({ children, title }: LayoutProps) {
                     'lg:block',
                     'sm:p-4',
                     'xs:overflow-x-hidden',
-                    'xl:pb-16 xl:top-0'
+                    'xl:pb-16 xl:top-0',
                 )}>
                 <MenuButton />
                 <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
@@ -88,7 +88,7 @@ export default function Layout({ children, title }: LayoutProps) {
                     'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
                     'lg:block',
                     'sm:p-4',
-                    'pt-0'
+                    'pt-0',
                 )}>
                 <article>{children}</article>
                 {!isHome && (
