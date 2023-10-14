@@ -18,6 +18,20 @@
         "datas",
         "devEnv"
     ],
+    "cSpell.customDictionaries": {
+        "modulab": {
+            "addWords": true,
+            "name": "modulab",
+            "path": "${workspaceFolder}/.cspell/modulab.txt",
+            "scope": "workspace"
+        },
+        "openai": {
+            "addWords": true,
+            "name": "openai",
+            "path": "${workspaceFolder}/.cspell/openai.txt",
+            "scope": "workspace"
+        }
+    },
     "cSpell.files": [
         "**/*",
         "!data/repos/*.json",
@@ -34,7 +48,6 @@
         "codepen",
         "cssnano",
         "cushman",
-        "davinci",
         "defaultlocale",
         "fontawesome",
         "fortawesome",
@@ -45,7 +58,6 @@
         "maxage",
         "nextjs",
         "noto",
-        "openai",
         "opengraph",
         "roboto",
         "signoff",
@@ -55,10 +67,20 @@
     "css.lint.unknownAtRules": "ignore",
     "explorer.incrementalNaming": "disabled",
     "files.associations": {
-        "data/posts/*.md": "yaml"
+        "**/posts/*.md": "yaml"
     },
     "git.ignoreLimitWarning": true,
     "javascript.suggestionActions.enabled": false,
+    "json.schemaDownload.enable": true,
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "**/repos/*.json"
+            ],
+            "url": "./data/schemas/repos.json"
+        }
+    ],
+    "json.validate.enable": true,
     "markdownlint.config": {
         "default": false
     },
