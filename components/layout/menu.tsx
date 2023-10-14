@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
-import { ghProfile } from '@/constants/';
+import { github } from '@/constants/';
 import { names } from 'lib/utils';
 import { useTranslations } from 'next-intl';
 
@@ -118,7 +118,7 @@ export default function MenuButton() {
                                                 aria-hidden='true'
                                                 inverse={active}
                                             />
-                                            <Link href={ghProfile}>{t('githubProfile')}</Link>
+                                            <Link href={github}>{t('githubProfile')}</Link>
                                         </button>
                                     )}
                                 </Menu.Item>

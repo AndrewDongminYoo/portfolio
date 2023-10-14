@@ -1,4 +1,4 @@
-import React, { createRef, useLayoutEffect } from 'react';
+import React, { createRef, useEffect } from 'react';
 import { GetStaticProps } from 'next';
 import Layout from 'components/layout';
 import ReactGithubCalendar from 'components/calendar';
@@ -13,7 +13,7 @@ type PortfolioProps = {
 
 export default function Portfolio({ repositoryData }: PortfolioProps) {
     const sectionRef = createRef<HTMLElement>();
-    useLayoutEffect(() => {
+    useEffect(() => {
         if (sectionRef.current) {
             sectionRef.current.firstElementChild?.scrollIntoView({
                 behavior: 'smooth',

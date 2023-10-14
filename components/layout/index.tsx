@@ -1,4 +1,4 @@
-import { ghProfile, myName } from '@/constants/';
+import { github, myName } from '@/constants/';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -62,12 +62,12 @@ export default function Layout({ children, title }: LayoutProps) {
                 )}>
                 <MenuButton />
                 <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
-                    <Link href={isHome ? ghProfile : '/'} className='writer-text'>
+                    <Link href={isHome ? github : '/'} className='writer-text'>
                         {myName}
                     </Link>
                 </h1>
                 <section className='p-0 mt-0 text-base border-t-0'>
-                    <Link href={isHome ? ghProfile : '/'}>
+                    <Link href={isHome ? github : '/'}>
                         <Image
                             src={portrait}
                             alt={myName}

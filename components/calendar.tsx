@@ -1,7 +1,7 @@
 import GitHubCalendar from 'github-calendar';
 import ResumeSection from 'components/section';
 import Script from 'next/script';
-import username from '@/constants/';
+import { username } from '@/constants/';
 
 function onLoad() {
     if (typeof GitHubCalendar === 'function') {

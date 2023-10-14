@@ -1,14 +1,14 @@
 import { Head, Html, Main, NextScript } from 'next/document';
-import { description, primaryTitle, url } from '@/constants/';
+import { description, homepage, primaryTitle } from '@/constants/';
 
 export default function Document() {
     return (
         <Html lang='ko'>
             <Head>
                 <meta name='description' content={description} />
-                <meta name='og:url' property='og:url' content={url} />
+                <meta name='og:url' property='og:url' content={homepage} />
                 <meta name='twitter:card' content='summary' />
-                <meta name='twitter:url' property='og:url' content={url} />
+                <meta name='twitter:url' property='og:url' content={homepage} />
                 <meta
                     name='og:description'
                     property='og:description'
