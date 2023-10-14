@@ -16,39 +16,39 @@ const reposDirectory = path.join(process.cwd(), 'data/repos');
  * @returns {Repository} 필터링된 리포지토리 객체.
  */
 export function reclusiveFilter(repo: { [x: string]: any }) {
-    Object.entries(repo).forEach(([key, value]) => {
-        switch (typeof value) {
-            case 'string': {
-                if (value.endsWith('.git')) {
-                    delete repo[key];
-                } else if (value.includes('{')) {
-                    delete repo[key];
-                } else {
-                    repo[key] = value;
-                }
-                break;
-            }
-            case 'object': {
-                if (key === 'topics') {
-                    repo[key] = value;
-                } else if (value === null) {
-                    delete repo[key];
-                } else {
-                    repo[key] = reclusiveFilter(value);
-                }
-                break;
-            }
-            case 'undefined': {
-                delete repo[key];
-                break;
-            }
-            default: {
-                repo[key] = value;
-                break;
-            }
+  Object.entries(repo).forEach(([key, value]) => {
+    switch (typeof value) {
+      case 'string': {
+        if (value.endsWith('.git')) {
+          delete repo[key];
+        } else if (value.includes('{')) {
+          delete repo[key];
+        } else {
+          repo[key] = value;
         }
-    });
-    return repo as Repository;
+        break;
+      }
+      case 'object': {
+        if (key === 'topics') {
+          repo[key] = value;
+        } else if (value === null) {
+          delete repo[key];
+        } else {
+          repo[key] = reclusiveFilter(value);
+        }
+        break;
+      }
+      case 'undefined': {
+        delete repo[key];
+        break;
+      }
+      default: {
+        repo[key] = value;
+        break;
+      }
+    }
+  });
+  return repo as Repository;
 }
 
 /**
@@ -56,18 +56,18 @@ export function reclusiveFilter(repo: { [x: string]: any }) {
  * @returns {Promise<Repository[]>} 다음 기준을 충족하는 저장소 배열을 반환.
  */
 export async function fetchRepositories() {
-    const EP_REPOS: keyof Endpoints = 'GET /user/repos';
-    const repositories = await octokit
-        .request(EP_REPOS, {
-            type: 'public',
-            per_page: 100,
-            direction: 'desc',
-            sort: 'pushed',
-        })
-        .then((value) => value.data);
-    return repositories
-        .filter((R) => !R.fork && R.size > 4000 && !R.archived)
-        .map((repo) => reclusiveFilter(repo));
+  const EP_REPOS: keyof Endpoints = 'GET /user/repos';
+  const repositories = await octokit
+    .request(EP_REPOS, {
+      type: 'public',
+      per_page: 100,
+      direction: 'desc',
+      sort: 'pushed',
+    })
+    .then((value) => value.data);
+  return repositories
+    .filter((R) => !R.fork && R.size > 4000 && !R.archived)
+    .map((repo) => reclusiveFilter(repo));
 }
 
 /**
@@ -77,11 +77,11 @@ export async function fetchRepositories() {
  * @returns {Promise<Repository>} GitHub API를 사용하여 가져온 저장소의 데이터.
  */
 export async function fetchRepository(owner: string, repo: string) {
-    const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
-    return await octokit
-        .request(EP_REPO, { owner, repo })
-        .then((value) => value.data)
-        .then((repo) => reclusiveFilter(repo));
+  const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
+  return await octokit
+    .request(EP_REPO, { owner, repo })
+    .then((value) => value.data)
+    .then((repo) => reclusiveFilter(repo));
 }
 
 /**
@@ -89,21 +89,21 @@ export async function fetchRepository(owner: string, repo: string) {
  * @returns {Promise<number>} 저장한 `repositoryData` 배열의 길이.
  */
 export async function downloadJSON() {
-    const repositories = await fetchRepositories();
-    const repositoryData = await Promise.all(
-        repositories.map(async (repo) => {
-            const { languages_url } = repo;
-            const languages = await octokit.request({ url: languages_url }).then((res) => res.data);
-            return { ...repo, languages };
-        }),
-    );
-    repositoryData.forEach((json) => {
-        const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
-        fs.writeFile(targetJsonPath, JSON.stringify(json, null, 4), { flag: 'w' }, (err) => {
-            if (err) console.error(err);
-        });
+  const repositories = await fetchRepositories();
+  const repositoryData = await Promise.all(
+    repositories.map(async (repo) => {
+      const { languages_url } = repo;
+      const languages = await octokit.request({ url: languages_url }).then((res) => res.data);
+      return { ...repo, languages };
+    }),
+  );
+  repositoryData.forEach((json) => {
+    const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
+    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 4), { flag: 'w' }, (err) => {
+      if (err) console.error(err);
     });
-    return repositoryData.length;
+  });
+  return repositoryData.length;
 }
 
 /**
@@ -111,13 +111,13 @@ export async function downloadJSON() {
  * @returns {{ params: { repo: string; } }} `repo`(파일 이름에서 '.json' 확장자를 제거하여 얻은 저장소의 ID) 속성을 포함하는 `params` 속성을 가진 객체.
  */
 export function readReposIds() {
-    // Get file names under /data/repos
-    const fileNames = fs.readdirSync(reposDirectory);
-    return fileNames.map((fileName) => {
-        // Remove '.md' from file name to get id
-        const repo = fileName.replace(/\.json$/, '');
-        return { params: { repo } };
-    });
+  // Get file names under /data/repos
+  const fileNames = fs.readdirSync(reposDirectory);
+  return fileNames.map((fileName) => {
+    // Remove '.md' from file name to get id
+    const repo = fileName.replace(/\.json$/, '');
+    return { params: { repo } };
+  });
 }
 
 /**
@@ -126,10 +126,10 @@ export function readReposIds() {
  * @returns {Repository} 리포지토리 객체로서의 JSON 파일의 내용.
  */
 export function readData(repo: string) {
-    // Read JSON file as Repository
-    const fullPath = path.join(reposDirectory, `${repo}.json`);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    return JSON.parse(fileContents) as Repository;
+  // Read JSON file as Repository
+  const fullPath = path.join(reposDirectory, `${repo}.json`);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  return JSON.parse(fileContents) as Repository;
 }
 
 /**
@@ -137,11 +137,11 @@ export function readData(repo: string) {
  * @returns {Repository[]} `pushed_at` 날짜를 기준으로 내림차순으로 정렬된 저장소 데이터 개체의 배열.
  */
 export function readRepositories() {
-    const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
-    // Sort repos by date
-    return allReposData.sort((a, b) => {
-        if (parse(a.pushed_at) < parse(b.pushed_at)) {
-            return 1;
-        } else return -1;
-    });
+  const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
+  // Sort repos by date
+  return allReposData.sort((a, b) => {
+    if (parse(a.pushed_at) < parse(b.pushed_at)) {
+      return 1;
+    } else return -1;
+  });
 }

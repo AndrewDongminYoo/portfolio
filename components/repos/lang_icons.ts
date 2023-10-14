@@ -15,20 +15,20 @@ import webpack from '@/public/svg/stacks/webpack.svg';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const frameworks: Record<string, any> = {
-    '52market.front': webpack,
-    '52market.shop': swagger,
-    'AndrewDongminYoo.vercel': nextjs,
-    'do-it-react-native-clone': typescript,
-    'flask-My-Small-Meal': flask,
-    'flutter-proxy-voting-app': flutter,
-    'my-first-react-native-chatting-app': expo,
-    'openai-chatgpt-my-conversations': openai,
-    'react-native-step-counter': reactnative,
-    'Serverless-Framework-Crawlers': aws,
-    'TIL-of-BootCamp-Flask': selenium,
-    'TIL-of-BootCamp-Spring': spring,
-    walking_tracker: rn_firebase,
-    AndrewDongminYoo: markdown,
+  '52market.front': webpack,
+  '52market.shop': swagger,
+  'AndrewDongminYoo.vercel': nextjs,
+  'do-it-react-native-clone': typescript,
+  'flask-My-Small-Meal': flask,
+  'flutter-proxy-voting-app': flutter,
+  'my-first-react-native-chatting-app': expo,
+  'openai-chatgpt-my-conversations': openai,
+  'react-native-step-counter': reactnative,
+  'Serverless-Framework-Crawlers': aws,
+  'TIL-of-BootCamp-Flask': selenium,
+  'TIL-of-BootCamp-Spring': spring,
+  walking_tracker: rn_firebase,
+  AndrewDongminYoo: markdown,
 };
 
 export default frameworks;

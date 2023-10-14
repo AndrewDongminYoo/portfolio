@@ -6,8 +6,10 @@ insertPragma: false
 requirePragma: false
 overrides:
   - files:
-      - '**/*.ts*'
-      - '**/*.js*'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.js'
+      - '**/*.jsx'
     options:
       bracketSameLine: true
       bracketSpacing: true
@@ -15,3 +17,4 @@ overrides:
       jsxSingleQuote: true
       singleQuote: true
       semi: true
+      tabWidth: 2
