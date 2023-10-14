@@ -1,6 +1,6 @@
 /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 // const nextTranslate = require('next-translate-plugin');
-const isDevelopment = process.env.NODE_ENV === 'development'
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 module.exports = {
@@ -56,6 +56,10 @@ module.exports = {
             }, {
                 protocol: 'https',
                 hostname: "AndrewDongminYoo.vercel.app",
+            },
+            {
+                protocol: 'https',
+                hostname: "gravatar.com",
             }
         ],
         dangerouslyAllowSVG: true,
@@ -71,26 +75,26 @@ module.exports = {
      * @returns {Promise<import('next/dist/lib/load-custom-routes').Header[]>} - 헤더 목록을 리턴
      */
     headers: async () => [
-            {
-                source: '/:path*',
-                headers: [
-                    {
-                        key: 'Cache-Control',
-                        value: 'public, s-maxage=10, stale-while-revalidate=59', // 일치하는 매개 변수를 값에 사용할 수 있습니다.
-                    },
-                    {
-                        key: 'Referrer-Policy',
-                        value: 'strict-origin-when-cross-origin'
-                    },
-                    {
-                        key: 'sec-fetch-site',
-                        value: 'same-origin',
-                    },
-                    {
-                        key: 'Referer',
-                        value: 'https://AndrewDongminYoo.vercel.app'
-                    }
-                ]
-            }
-        ],
-}
+        {
+            source: '/:path*',
+            headers: [
+                {
+                    key: 'Cache-Control',
+                    value: 'public, s-maxage=10, stale-while-revalidate=59', // 일치하는 매개 변수를 값에 사용할 수 있습니다.
+                },
+                {
+                    key: 'Referrer-Policy',
+                    value: 'strict-origin-when-cross-origin'
+                },
+                {
+                    key: 'sec-fetch-site',
+                    value: 'same-origin',
+                },
+                {
+                    key: 'Referer',
+                    value: 'https://AndrewDongminYoo.vercel.app'
+                }
+            ]
+        }
+    ],
+};
