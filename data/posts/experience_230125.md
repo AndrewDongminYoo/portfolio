@@ -30,9 +30,9 @@ projects:
     notion_url: 'https://donminzzi.notion.site/RNStepCounter-33bb93924f254bdda5d9abccd59633f5'
     icon: 'url(https://icon.horse/icon/www.npmjs.com)'
     description:
-      - 'iOS의 CMPedometer 프로토콜과 안드로이드의 SensorManager를 각각 활용해 iOS 및 안드로이드에서 걸음 수를 동기화하여 다룰 수 있도록 제작한 크로스 플랫폼 네이티브 모듈입니다.'
-      - 'Android API level 19이하의 기기까지 호환이 가능한 원시 가속도계 센서 데이터를 AOSP (안드로이드 오픈소스) 레퍼런스의 신뢰성 지수 정확도 보정 알고리즘을 사용한 방법으로 걸음을 분석하는 기능을 제작했습니다.'
-      - '리액트 네이티브가 꾸준히 지적받은 성능 이슈를 보완하는 새로운 네이티브 모듈 아키텍쳐 중 하나인 Turbo Module을 제작하는 경험을 쌓을 수 있었습니다. Hermes와 Flipper 등의 성능 모니터링 도구를 함께 사용하며 응답성 및 메모리 관리 내용을 올바르게 관리할 수 있는 능력을 배양했습니다.'
+      - iOS의 CMPedometer 프로토콜과 안드로이드의 SensorManager를 각각 활용해 iOS 및 안드로이드에서 걸음 수를 동기화하여 다룰 수 있도록 제작한 크로스 플랫폼(쉐어드) 네이티브 모듈입니다.
+      - Android API level 19이하의 기기까지 호환이 가능한 원시 가속도계 센서 데이터를 AOSP (안드로이드 오픈소스) 레퍼런스의 신뢰성 지수 정확도 보정 알고리즘을 사용한 방법으로 걸음을 분석하는 모듈을 제작했습니다.
+      - 리액트 네이티브가 꾸준히 지적받은 성능 이슈를 보완하는 새로운 네이티브 모듈 아키텍쳐 중 하나인 Turbo Module을 제작하는 경험을 쌓을 수 있었습니다.  Hermes와 Flipper 등의 성능 모니터링 도구를 함께 사용하며 응답성 및 메모리를 올바르게 관리할 수 있는 능력을 배양했습니다.
   - title: '나인봇 세그웨이 BLE 모듈의 래핑 네이티브 모듈 개발 및 성능 개선 (터보모듈) 작업'
     startAt: '2023-03-10'
     endAt: '2023-04-25'
@@ -41,6 +41,6 @@ projects:
     notion_url: 'https://donminzzi.notion.site/RNSegwayBleManager-81db1f40e606477ab06e9b5c377129f5'
     icon: 'url(https://icon.horse/icon/www.npmjs.com)'
     description:
-      - 'NineBot 팀의 Segway Discovery SDK를 리액트 네이티브 모듈로 래핑해 바로 실제 앱에서 사용할 수 있는 터보모듈 라이브러리 개발'
-      - 'SDK의 플랫폼별 업데이트 빈도와 배포 방식이 (iOS - CocoaPods on public / AOS - static Java Archive file) 다르고, 메소드와 상태 정보의 속성 차이가 존재, 최대한 추상화해 사용성 높임'
-      - '후반부부터 Segway Module 개발 경험을 기반으로 Common BLE Protocol Module 커스터마이징 모듈 개발'
+      - NineBot 팀의 Segway Discovery SDK를 리액트 네이티브 모듈로 래핑해 바로 실제 앱에서 사용할 수 있는 터보모듈 라이브러리 개발
+      - SDK의 플랫폼별 업데이트 빈도와 인터페이스가 (iOS - CocoaPods on public / AOS - static Java Archive file) 다르고, 메소드와 상태 정보의 속성 차이가 존재, 최대한 추상화해 사용성 높임
+      - 후반부부터 Segway Module 개발 경험을 기반으로 Common BLE Protocol Module 커스터마이징 모듈 개발 돌입

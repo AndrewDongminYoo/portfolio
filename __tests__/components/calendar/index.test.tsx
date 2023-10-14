@@ -29,10 +29,10 @@ describe('ReactGithubCalendar', () => {
     });
 
     it('calls the GitHubCalendar function', () => {
-        window.GitHubCalendar = jest.fn();
+        const GitHubCalendar = jest.fn();
         const { baseElement } = render(<ReactGithubCalendar />);
         expect(baseElement).toMatchSnapshot();
-        expect(window.GitHubCalendar).toHaveBeenCalledWith('.calendar', username, {
+        expect(GitHubCalendar).toHaveBeenCalledWith('.calendar', username, {
             responsive: true,
             global_stats: true,
             tooltips: true,

@@ -1,0 +1,5608 @@
+{
+  "title": "Full Repository",
+  "description": "전체 리포지토리.",
+  "type": "object",
+  "properties": {
+    "allow_auto_merge": {
+      "examples": [
+        false
+      ],
+      "type": "boolean"
+    },
+    "allow_forking": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "allow_merge_commit": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "allow_rebase_merge": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "allow_squash_merge": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "allow_update_branch": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "anonymous_access_enabled": {
+      "default": true,
+      "description": "익명 Git 액세스가 허용되는지 여부.",
+      "type": "boolean"
+    },
+    "archive_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/{archive_format}{/ref}"
+      ],
+      "type": "string"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "assignees_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/assignees{/user}"
+      ],
+      "type": "string"
+    },
+    "blobs_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/blobs{/sha}"
+      ],
+      "type": "string"
+    },
+    "branches_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/branches{/branch}"
+      ],
+      "type": "string"
+    },
+    "clone_url": {
+      "examples": [
+        "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+      ],
+      "type": "string"
+    },
+    "code_of_conduct": {
+      "description": "행동 강령.",
+      "properties": {
+        "html_url": {
+          "examples": [
+            "https://github.com/github/docs/blob/main/CODE_OF_CONDUCT.md"
+          ],
+          "format": "uri",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "key": {
+          "examples": [
+            "citizen_code_of_conduct"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "examples": [
+            "Citizen Code of Conduct"
+          ],
+          "type": "string"
+        },
+        "url": {
+          "examples": [
+            "https://api.github.com/repos/github/docs/community/code_of_conduct"
+          ],
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url",
+        "key",
+        "name",
+        "html_url"
+      ],
+      "title": "Code Of Conduct Simple",
+      "type": "object"
+    },
+    "collaborators_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/collaborators{/collaborator}"
+      ],
+      "type": "string"
+    },
+    "comments_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/comments{/number}"
+      ],
+      "type": "string"
+    },
+    "commits_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/commits{/sha}"
+      ],
+      "type": "string"
+    },
+    "compare_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/compare/{base}...{head}"
+      ],
+      "type": "string"
+    },
+    "contents_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contents/{+path}"
+      ],
+      "type": "string"
+    },
+    "contributors_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contributors"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "created_at": {
+      "examples": [
+        "2011-01-26T19:01:12Z"
+      ],
+      "format": "date-time",
+      "type": "string"
+    },
+    "default_branch": {
+      "examples": [
+        "master"
+      ],
+      "type": "string"
+    },
+    "delete_branch_on_merge": {
+      "examples": [
+        false
+      ],
+      "type": "boolean"
+    },
+    "deployments_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/deployments"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "description": {
+      "examples": [
+        "This your first repo!"
+      ],
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "disabled": {
+      "description": "이 리포지토리가 비활성화되었는지 여부를 반환.",
+      "type": "boolean"
+    },
+    "downloads_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/downloads"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "events_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/events"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "fork": {
+      "type": "boolean"
+    },
+    "forks": {
+      "type": "integer"
+    },
+    "forks_count": {
+      "examples": [
+        9
+      ],
+      "type": "integer"
+    },
+    "forks_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/forks"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "full_name": {
+      "examples": [
+        "AndrewDongminYoo/AndrewDongminYoo.vercel"
+      ],
+      "type": "string"
+    },
+    "git_commits_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/commits{/sha}"
+      ],
+      "type": "string"
+    },
+    "git_refs_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/refs{/sha}"
+      ],
+      "type": "string"
+    },
+    "git_tags_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/tags{/sha}"
+      ],
+      "type": "string"
+    },
+    "git_url": {
+      "examples": [
+        "git:github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+      ],
+      "type": "string"
+    },
+    "has_discussions": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "has_downloads": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "has_issues": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "has_pages": {
+      "type": "boolean"
+    },
+    "has_projects": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "has_wiki": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "homepage": {
+      "examples": [
+        "https://github.com"
+      ],
+      "format": "uri",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hooks_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/hooks"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "html_url": {
+      "examples": [
+        "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "id": {
+      "examples": [
+        1296269
+      ],
+      "type": "integer"
+    },
+    "is_template": {
+      "examples": [
+        true
+      ],
+      "type": "boolean"
+    },
+    "issue_comment_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/comments{/number}"
+      ],
+      "type": "string"
+    },
+    "issue_events_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/events{/number}"
+      ],
+      "type": "string"
+    },
+    "issues_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues{/number}"
+      ],
+      "type": "string"
+    },
+    "keys_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/keys{/key_id}"
+      ],
+      "type": "string"
+    },
+    "labels_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/labels{/name}"
+      ],
+      "type": "string"
+    },
+    "language": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "languages_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/languages"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "license": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "description": "라이선스.",
+          "properties": {
+            "html_url": {
+              "format": "uri",
+              "type": "string"
+            },
+            "key": {
+              "examples": [
+                "mit"
+              ],
+              "type": "string"
+            },
+            "name": {
+              "examples": [
+                "MIT License"
+              ],
+              "type": "string"
+            },
+            "node_id": {
+              "examples": [
+                "MDc6TGljZW5zZW1pdA=="
+              ],
+              "type": "string"
+            },
+            "spdx_id": {
+              "examples": [
+                "MIT"
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "url": {
+              "examples": [
+                "https://api.github.com/licenses/mit"
+              ],
+              "format": "uri",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "key",
+            "name",
+            "url",
+            "spdx_id",
+            "node_id"
+          ],
+          "title": "License Simple",
+          "type": "object"
+        }
+      ]
+    },
+    "master_branch": {
+      "type": "string"
+    },
+    "merge_commit_message": {
+      "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀리퀘스트의 본문.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+      "enum": [
+        "PR_BODY",
+        "PR_TITLE",
+        "BLANK"
+      ],
+      "examples": [
+        "PR_BODY"
+      ],
+      "type": "string"
+    },
+    "merge_commit_title": {
+      "description": "병합 커밋 제목의 기본값.\n\n - `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n - `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+      "enum": [
+        "PR_TITLE",
+        "MERGE_MESSAGE"
+      ],
+      "examples": [
+        "PR_TITLE"
+      ],
+      "type": "string"
+    },
+    "merges_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/merges"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "milestones_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/milestones{/number}"
+      ],
+      "type": "string"
+    },
+    "mirror_url": {
+      "examples": [
+        "git:git.example.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+      ],
+      "format": "uri",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "examples": [
+        "AndrewDongminYoo.vercel"
+      ],
+      "type": "string"
+    },
+    "network_count": {
+      "examples": [
+        0
+      ],
+      "type": "integer"
+    },
+    "node_id": {
+      "examples": [
+        "MDEwOlJlcG9zaXRvcnkxMjk2MjY5"
+      ],
+      "type": "string"
+    },
+    "notifications_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/notifications{?since,all,participating}"
+      ],
+      "type": "string"
+    },
+    "open_issues": {
+      "type": "integer"
+    },
+    "open_issues_count": {
+      "examples": [
+        0
+      ],
+      "type": "integer"
+    },
+    "organization": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "description": "GitHub 사용자.",
+          "properties": {
+            "avatar_url": {
+              "examples": [
+                "https://avatars.githubusercontent.com/u/82999715?v=4"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+              ],
+              "type": "string"
+            },
+            "followers_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/followers"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "following_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+              ],
+              "type": "string"
+            },
+            "gists_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+              ],
+              "type": "string"
+            },
+            "gravatar_id": {
+              "examples": [
+                "donminzzi"
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "html_url": {
+              "examples": [
+                "https://github.com/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "id": {
+              "examples": [
+                1
+              ],
+              "type": "integer"
+            },
+            "login": {
+              "examples": [
+                "AndrewDongminYoo"
+              ],
+              "type": "string"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "node_id": {
+              "examples": [
+                "MDQ6VXNlcjE="
+              ],
+              "type": "string"
+            },
+            "organizations_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/orgs"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "received_events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/received_events"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "repos_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/repos"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            },
+            "starred_at": {
+              "examples": [
+                "\"2020-07-09T00:17:55Z\""
+              ],
+              "type": "string"
+            },
+            "starred_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+              ],
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "type": {
+              "examples": [
+                "User"
+              ],
+              "type": "string"
+            },
+            "url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "avatar_url",
+            "events_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "gravatar_id",
+            "html_url",
+            "id",
+            "node_id",
+            "login",
+            "organizations_url",
+            "received_events_url",
+            "repos_url",
+            "site_admin",
+            "starred_url",
+            "subscriptions_url",
+            "type",
+            "url"
+          ],
+          "title": "Simple User",
+          "type": "object"
+        }
+      ]
+    },
+    "owner": {
+      "description": "GitHub 사용자.",
+      "properties": {
+        "avatar_url": {
+          "examples": [
+            "https://avatars.githubusercontent.com/u/82999715?v=4"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "events_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+          ],
+          "type": "string"
+        },
+        "followers_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/followers"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "following_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+          ],
+          "type": "string"
+        },
+        "gists_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+          ],
+          "type": "string"
+        },
+        "gravatar_id": {
+          "examples": [
+            "donminzzi"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "html_url": {
+          "examples": [
+            "https://github.com/AndrewDongminYoo"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "id": {
+          "examples": [
+            1
+          ],
+          "type": "integer"
+        },
+        "login": {
+          "examples": [
+            "AndrewDongminYoo"
+          ],
+          "type": "string"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "node_id": {
+          "examples": [
+            "MDQ6VXNlcjE="
+          ],
+          "type": "string"
+        },
+        "organizations_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/orgs"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "received_events_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/received_events"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "repos_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/repos"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "site_admin": {
+          "type": "boolean"
+        },
+        "starred_at": {
+          "examples": [
+            "\"2020-07-09T00:17:55Z\""
+          ],
+          "type": "string"
+        },
+        "starred_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+          ],
+          "type": "string"
+        },
+        "subscriptions_url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "type": {
+          "examples": [
+            "User"
+          ],
+          "type": "string"
+        },
+        "url": {
+          "examples": [
+            "https://api.github.com/users/AndrewDongminYoo"
+          ],
+          "format": "uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "avatar_url",
+        "events_url",
+        "followers_url",
+        "following_url",
+        "gists_url",
+        "gravatar_id",
+        "html_url",
+        "id",
+        "node_id",
+        "login",
+        "organizations_url",
+        "received_events_url",
+        "repos_url",
+        "site_admin",
+        "starred_url",
+        "subscriptions_url",
+        "type",
+        "url"
+      ],
+      "title": "Simple User",
+      "type": "object"
+    },
+    "parent": {
+      "description": "GitHub의 리포지토리.",
+      "properties": {
+        "allow_auto_merge": {
+          "default": false,
+          "description": "풀 리퀘스트에 자동 병합을 사용할 수 있도록 허용할지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "allow_forking": {
+          "description": "이 리포지토리의 포크 허용 여부.",
+          "type": "boolean"
+        },
+        "allow_merge_commit": {
+          "default": true,
+          "description": "풀 리퀘스트에 대한 커밋 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_rebase_merge": {
+          "default": true,
+          "description": "풀리퀘스트에 리베이스 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_squash_merge": {
+          "default": true,
+          "description": "풀리퀘스트에 스쿼시 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_update_branch": {
+          "default": false,
+          "description": "베이스 브랜치 뒤에 있는 풀 리퀘스트 헤드 브랜치를 병합하기 전에 최신 상태로 유지할 필요가 없더라도 항상 업데이트할 수 있는지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "anonymous_access_enabled": {
+          "description": "이 리포지토리에 대해 익명 Git 액세스를 사용하도록 설정했는지 여부.",
+          "type": "boolean"
+        },
+        "archive_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/{archive_format}{/ref}"
+          ],
+          "type": "string"
+        },
+        "archived": {
+          "default": false,
+          "description": "리포지토리가 아카이브되는지 여부.",
+          "type": "boolean"
+        },
+        "assignees_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/assignees{/user}"
+          ],
+          "type": "string"
+        },
+        "blobs_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/blobs{/sha}"
+          ],
+          "type": "string"
+        },
+        "branches_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/branches{/branch}"
+          ],
+          "type": "string"
+        },
+        "clone_url": {
+          "examples": [
+            "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "collaborators_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/collaborators{/collaborator}"
+          ],
+          "type": "string"
+        },
+        "comments_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/comments{/number}"
+          ],
+          "type": "string"
+        },
+        "commits_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/commits{/sha}"
+          ],
+          "type": "string"
+        },
+        "compare_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/compare/{base}...{head}"
+          ],
+          "type": "string"
+        },
+        "contents_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contents/{+path}"
+          ],
+          "type": "string"
+        },
+        "contributors_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contributors"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "created_at": {
+          "examples": [
+            "2011-01-26T19:01:12Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "default_branch": {
+          "description": "리포지토리의 기본 브랜치.",
+          "examples": [
+            "master"
+          ],
+          "type": "string"
+        },
+        "delete_branch_on_merge": {
+          "default": false,
+          "description": "풀 리퀘스트 병합 시 헤드 브랜치를 삭제할지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "deployments_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/deployments"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "description": {
+          "examples": [
+            "This your first repo!"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "disabled": {
+          "description": "이 리포지토리가 비활성화되었는지 여부를 반환.",
+          "type": "boolean"
+        },
+        "downloads_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/downloads"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "events_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/events"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "fork": {
+          "type": "boolean"
+        },
+        "forks": {
+          "type": "integer"
+        },
+        "forks_count": {
+          "examples": [
+            9
+          ],
+          "type": "integer"
+        },
+        "forks_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/forks"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "full_name": {
+          "examples": [
+            "AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "type": "string"
+        },
+        "git_commits_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/commits{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_refs_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/refs{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_tags_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/tags{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_url": {
+          "examples": [
+            "git:github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "has_discussions": {
+          "default": false,
+          "description": "토론이 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_downloads": {
+          "default": true,
+          "deprecated": true,
+          "description": "다운로드가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_issues": {
+          "default": true,
+          "description": "이슈가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_pages": {
+          "type": "boolean"
+        },
+        "has_projects": {
+          "default": true,
+          "description": "프로젝트가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_wiki": {
+          "default": true,
+          "description": "위키가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "homepage": {
+          "examples": [
+            "https://github.com"
+          ],
+          "format": "uri",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hooks_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/hooks"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "html_url": {
+          "examples": [
+            "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "id": {
+          "description": "리포지토리의 고유 식별자.",
+          "examples": [
+            42
+          ],
+          "type": "integer"
+        },
+        "is_template": {
+          "default": false,
+          "description": "이 리포지토리가 새 리포지토리를 생성하는 데 사용할 수 있는 템플릿 역할을 하는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "issue_comment_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/comments{/number}"
+          ],
+          "type": "string"
+        },
+        "issue_events_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/events{/number}"
+          ],
+          "type": "string"
+        },
+        "issues_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues{/number}"
+          ],
+          "type": "string"
+        },
+        "keys_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/keys{/key_id}"
+          ],
+          "type": "string"
+        },
+        "labels_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/labels{/name}"
+          ],
+          "type": "string"
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "languages_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/languages"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "description": "라이선스.",
+              "properties": {
+                "html_url": {
+                  "format": "uri",
+                  "type": "string"
+                },
+                "key": {
+                  "examples": [
+                    "mit"
+                  ],
+                  "type": "string"
+                },
+                "name": {
+                  "examples": [
+                    "MIT License"
+                  ],
+                  "type": "string"
+                },
+                "node_id": {
+                  "examples": [
+                    "MDc6TGljZW5zZW1pdA=="
+                  ],
+                  "type": "string"
+                },
+                "spdx_id": {
+                  "examples": [
+                    "MIT"
+                  ],
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "url": {
+                  "examples": [
+                    "https://api.github.com/licenses/mit"
+                  ],
+                  "format": "uri",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "key",
+                "name",
+                "url",
+                "spdx_id",
+                "node_id"
+              ],
+              "title": "License Simple",
+              "type": "object"
+            }
+          ]
+        },
+        "master_branch": {
+          "type": "string"
+        },
+        "merge_commit_message": {
+          "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀리퀘스트의 본문.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+          "enum": [
+            "PR_BODY",
+            "PR_TITLE",
+            "BLANK"
+          ],
+          "type": "string"
+        },
+        "merge_commit_title": {
+          "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+          "enum": [
+            "PR_TITLE",
+            "MERGE_MESSAGE"
+          ],
+          "type": "string"
+        },
+        "merges_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/merges"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "milestones_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/milestones{/number}"
+          ],
+          "type": "string"
+        },
+        "mirror_url": {
+          "examples": [
+            "git:git.example.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "리포지토리 이름.",
+          "examples": [
+            "Team Environment"
+          ],
+          "type": "string"
+        },
+        "network_count": {
+          "type": "integer"
+        },
+        "node_id": {
+          "examples": [
+            "MDEwOlJlcG9zaXRvcnkxMjk2MjY5"
+          ],
+          "type": "string"
+        },
+        "notifications_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/notifications{?since,all,participating}"
+          ],
+          "type": "string"
+        },
+        "open_issues": {
+          "type": "integer"
+        },
+        "open_issues_count": {
+          "examples": [
+            0
+          ],
+          "type": "integer"
+        },
+        "organization": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "description": "GitHub 사용자.",
+              "properties": {
+                "avatar_url": {
+                  "examples": [
+                    "https://avatars.githubusercontent.com/u/82999715?v=4"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+                  ],
+                  "type": "string"
+                },
+                "followers_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/followers"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "following_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+                  ],
+                  "type": "string"
+                },
+                "gists_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+                  ],
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "examples": [
+                    "donminzzi"
+                  ],
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "html_url": {
+                  "examples": [
+                    "https://github.com/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "id": {
+                  "examples": [
+                    1
+                  ],
+                  "type": "integer"
+                },
+                "login": {
+                  "examples": [
+                    "AndrewDongminYoo"
+                  ],
+                  "type": "string"
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "node_id": {
+                  "examples": [
+                    "MDQ6VXNlcjE="
+                  ],
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/orgs"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/received_events"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "repos_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/repos"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_at": {
+                  "examples": [
+                    "\"2020-07-09T00:17:55Z\""
+                  ],
+                  "type": "string"
+                },
+                "starred_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+                  ],
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "type": {
+                  "examples": [
+                    "User"
+                  ],
+                  "type": "string"
+                },
+                "url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "avatar_url",
+                "events_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "gravatar_id",
+                "html_url",
+                "id",
+                "node_id",
+                "login",
+                "organizations_url",
+                "received_events_url",
+                "repos_url",
+                "site_admin",
+                "starred_url",
+                "subscriptions_url",
+                "type",
+                "url"
+              ],
+              "title": "Simple User",
+              "type": "object"
+            }
+          ]
+        },
+        "owner": {
+          "description": "GitHub 사용자.",
+          "properties": {
+            "avatar_url": {
+              "examples": [
+                "https://avatars.githubusercontent.com/u/82999715?v=4"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+              ],
+              "type": "string"
+            },
+            "followers_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/followers"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "following_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+              ],
+              "type": "string"
+            },
+            "gists_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+              ],
+              "type": "string"
+            },
+            "gravatar_id": {
+              "examples": [
+                "donminzzi"
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "html_url": {
+              "examples": [
+                "https://github.com/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "id": {
+              "examples": [
+                1
+              ],
+              "type": "integer"
+            },
+            "login": {
+              "examples": [
+                "AndrewDongminYoo"
+              ],
+              "type": "string"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "node_id": {
+              "examples": [
+                "MDQ6VXNlcjE="
+              ],
+              "type": "string"
+            },
+            "organizations_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/orgs"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "received_events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/received_events"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "repos_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/repos"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            },
+            "starred_at": {
+              "examples": [
+                "\"2020-07-09T00:17:55Z\""
+              ],
+              "type": "string"
+            },
+            "starred_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+              ],
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "type": {
+              "examples": [
+                "User"
+              ],
+              "type": "string"
+            },
+            "url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "avatar_url",
+            "events_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "gravatar_id",
+            "html_url",
+            "id",
+            "node_id",
+            "login",
+            "organizations_url",
+            "received_events_url",
+            "repos_url",
+            "site_admin",
+            "starred_url",
+            "subscriptions_url",
+            "type",
+            "url"
+          ],
+          "title": "Simple User",
+          "type": "object"
+        },
+        "permissions": {
+          "properties": {
+            "admin": {
+              "type": "boolean"
+            },
+            "maintain": {
+              "type": "boolean"
+            },
+            "pull": {
+              "type": "boolean"
+            },
+            "push": {
+              "type": "boolean"
+            },
+            "triage": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "admin",
+            "pull",
+            "push"
+          ],
+          "type": "object"
+        },
+        "private": {
+          "default": false,
+          "description": "리포지토리가 비공개인지 공개인지 여부.",
+          "type": "boolean"
+        },
+        "pulls_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/pulls{/number}"
+          ],
+          "type": "string"
+        },
+        "pushed_at": {
+          "examples": [
+            "2011-01-26T19:06:43Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "releases_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/releases{/id}"
+          ],
+          "type": "string"
+        },
+        "size": {
+          "description": "리포지토리의 크기. 크기는 시간별로 계산됩니다. 리포지토리가 처음 생성되면 크기는 0.",
+          "examples": [
+            108
+          ],
+          "type": "integer"
+        },
+        "squash_merge_commit_message": {
+          "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 풀 리퀘스트의 본문이 기본값.\n- `COMMIT_MESSAGES` - 브랜치의 커밋 메시지가 기본값.\n- `BLANK` - 빈 커밋 메시지가 기본값.",
+          "enum": [
+            "PR_BODY",
+            "COMMIT_MESSAGES",
+            "BLANK"
+          ],
+          "type": "string"
+        },
+        "squash_merge_commit_title": {
+          "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상 있는 경우).",
+          "enum": [
+            "PR_TITLE",
+            "COMMIT_OR_PR_TITLE"
+          ],
+          "type": "string"
+        },
+        "ssh_url": {
+          "examples": [
+            "git@github.com:AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "stargazers_count": {
+          "examples": [
+            80
+          ],
+          "type": "integer"
+        },
+        "stargazers_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/stargazers"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "starred_at": {
+          "examples": [
+            "\"2020-07-09T00:17:42Z\""
+          ],
+          "type": "string"
+        },
+        "statuses_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/statuses/{sha}"
+          ],
+          "type": "string"
+        },
+        "subscribers_count": {
+          "type": "integer"
+        },
+        "subscribers_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscribers"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "subscription_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscription"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "svn_url": {
+          "examples": [
+            "https://svn.github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "tags_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/tags"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "teams_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/teams"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "temp_clone_token": {
+          "type": "string"
+        },
+        "template_repository": {
+          "properties": {
+            "allow_auto_merge": {
+              "type": "boolean"
+            },
+            "allow_merge_commit": {
+              "type": "boolean"
+            },
+            "allow_rebase_merge": {
+              "type": "boolean"
+            },
+            "allow_squash_merge": {
+              "type": "boolean"
+            },
+            "allow_update_branch": {
+              "type": "boolean"
+            },
+            "archive_url": {
+              "type": "string"
+            },
+            "archived": {
+              "type": "boolean"
+            },
+            "assignees_url": {
+              "type": "string"
+            },
+            "blobs_url": {
+              "type": "string"
+            },
+            "branches_url": {
+              "type": "string"
+            },
+            "clone_url": {
+              "type": "string"
+            },
+            "collaborators_url": {
+              "type": "string"
+            },
+            "comments_url": {
+              "type": "string"
+            },
+            "commits_url": {
+              "type": "string"
+            },
+            "compare_url": {
+              "type": "string"
+            },
+            "contents_url": {
+              "type": "string"
+            },
+            "contributors_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "default_branch": {
+              "type": "string"
+            },
+            "delete_branch_on_merge": {
+              "type": "boolean"
+            },
+            "deployments_url": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "downloads_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "fork": {
+              "type": "boolean"
+            },
+            "forks_count": {
+              "type": "integer"
+            },
+            "forks_url": {
+              "type": "string"
+            },
+            "full_name": {
+              "type": "string"
+            },
+            "git_commits_url": {
+              "type": "string"
+            },
+            "git_refs_url": {
+              "type": "string"
+            },
+            "git_tags_url": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            },
+            "has_downloads": {
+              "type": "boolean"
+            },
+            "has_issues": {
+              "type": "boolean"
+            },
+            "has_pages": {
+              "type": "boolean"
+            },
+            "has_projects": {
+              "type": "boolean"
+            },
+            "has_wiki": {
+              "type": "boolean"
+            },
+            "homepage": {
+              "type": "string"
+            },
+            "hooks_url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "is_template": {
+              "type": "boolean"
+            },
+            "issue_comment_url": {
+              "type": "string"
+            },
+            "issue_events_url": {
+              "type": "string"
+            },
+            "issues_url": {
+              "type": "string"
+            },
+            "keys_url": {
+              "type": "string"
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "languages_url": {
+              "type": "string"
+            },
+            "merge_commit_message": {
+              "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `BLANK` - 기본값은 공백 커밋 메시지.",
+              "enum": [
+                "PR_BODY",
+                "PR_TITLE",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "merge_commit_title": {
+              "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+              "enum": [
+                "PR_TITLE",
+                "MERGE_MESSAGE"
+              ],
+              "type": "string"
+            },
+            "merges_url": {
+              "type": "string"
+            },
+            "milestones_url": {
+              "type": "string"
+            },
+            "mirror_url": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "network_count": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "notifications_url": {
+              "type": "string"
+            },
+            "open_issues_count": {
+              "type": "integer"
+            },
+            "owner": {
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "permissions": {
+              "properties": {
+                "admin": {
+                  "type": "boolean"
+                },
+                "maintain": {
+                  "type": "boolean"
+                },
+                "pull": {
+                  "type": "boolean"
+                },
+                "push": {
+                  "type": "boolean"
+                },
+                "triage": {
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "private": {
+              "type": "boolean"
+            },
+            "pulls_url": {
+              "type": "string"
+            },
+            "pushed_at": {
+              "type": "string"
+            },
+            "releases_url": {
+              "type": "string"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "squash_merge_commit_message": {
+              "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `COMMIT_MESSAGES` - 기본값은 브랜치의 커밋 메시지.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+              "enum": [
+                "PR_BODY",
+                "COMMIT_MESSAGES",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "squash_merge_commit_title": {
+              "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상의 커밋이 있는 경우).",
+              "enum": [
+                "PR_TITLE",
+                "COMMIT_OR_PR_TITLE"
+              ],
+              "type": "string"
+            },
+            "ssh_url": {
+              "type": "string"
+            },
+            "stargazers_count": {
+              "type": "integer"
+            },
+            "stargazers_url": {
+              "type": "string"
+            },
+            "statuses_url": {
+              "type": "string"
+            },
+            "subscribers_count": {
+              "type": "integer"
+            },
+            "subscribers_url": {
+              "type": "string"
+            },
+            "subscription_url": {
+              "type": "string"
+            },
+            "svn_url": {
+              "type": "string"
+            },
+            "tags_url": {
+              "type": "string"
+            },
+            "teams_url": {
+              "type": "string"
+            },
+            "temp_clone_token": {
+              "type": "string"
+            },
+            "topics": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "trees_url": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "use_squash_pr_title_as_default": {
+              "type": "boolean"
+            },
+            "visibility": {
+              "type": "string"
+            },
+            "watchers_count": {
+              "type": "integer"
+            }
+          },
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "topics": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trees_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/trees{/sha}"
+          ],
+          "type": "string"
+        },
+        "updated_at": {
+          "examples": [
+            "2011-01-26T19:14:43Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "examples": [
+            "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "use_squash_pr_title_as_default": {
+          "default": false,
+          "deprecated": true,
+          "description": "스쿼시 병합 커밋이 풀 리퀘스트 제목을 기본값으로 사용할 수 있는지 여부. **이 속성은 더 이상 사용되지 않는다. 대신 `squash_merge_commit_title`을 사용하세요.",
+          "type": "boolean"
+        },
+        "visibility": {
+          "default": "public",
+          "description": "리포지토리 가시성: 공개, 비공개 또는 내부.",
+          "type": "string"
+        },
+        "watchers": {
+          "type": "integer"
+        },
+        "watchers_count": {
+          "examples": [
+            80
+          ],
+          "type": "integer"
+        },
+        "web_commit_signoff_required": {
+          "default": false,
+          "description": "기여자가 웹 기반 커밋에 서명하도록 요구할지 여부.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "archive_url",
+        "assignees_url",
+        "blobs_url",
+        "branches_url",
+        "collaborators_url",
+        "comments_url",
+        "commits_url",
+        "compare_url",
+        "contents_url",
+        "contributors_url",
+        "deployments_url",
+        "description",
+        "downloads_url",
+        "events_url",
+        "fork",
+        "forks_url",
+        "full_name",
+        "git_commits_url",
+        "git_refs_url",
+        "git_tags_url",
+        "hooks_url",
+        "html_url",
+        "id",
+        "node_id",
+        "issue_comment_url",
+        "issue_events_url",
+        "issues_url",
+        "keys_url",
+        "labels_url",
+        "languages_url",
+        "merges_url",
+        "milestones_url",
+        "name",
+        "notifications_url",
+        "owner",
+        "private",
+        "pulls_url",
+        "releases_url",
+        "stargazers_url",
+        "statuses_url",
+        "subscribers_url",
+        "subscription_url",
+        "tags_url",
+        "teams_url",
+        "trees_url",
+        "url",
+        "clone_url",
+        "default_branch",
+        "forks",
+        "forks_count",
+        "git_url",
+        "has_downloads",
+        "has_issues",
+        "has_projects",
+        "has_wiki",
+        "has_pages",
+        "homepage",
+        "language",
+        "archived",
+        "disabled",
+        "mirror_url",
+        "open_issues",
+        "open_issues_count",
+        "license",
+        "pushed_at",
+        "size",
+        "ssh_url",
+        "stargazers_count",
+        "svn_url",
+        "watchers",
+        "watchers_count",
+        "created_at",
+        "updated_at"
+      ],
+      "title": "Repository",
+      "type": "object"
+    },
+    "permissions": {
+      "properties": {
+        "admin": {
+          "type": "boolean"
+        },
+        "maintain": {
+          "type": "boolean"
+        },
+        "pull": {
+          "type": "boolean"
+        },
+        "push": {
+          "type": "boolean"
+        },
+        "triage": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "admin",
+        "pull",
+        "push"
+      ],
+      "type": "object"
+    },
+    "private": {
+      "type": "boolean"
+    },
+    "pulls_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/pulls{/number}"
+      ],
+      "type": "string"
+    },
+    "pushed_at": {
+      "examples": [
+        "2011-01-26T19:06:43Z"
+      ],
+      "format": "date-time",
+      "type": "string"
+    },
+    "releases_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/releases{/id}"
+      ],
+      "type": "string"
+    },
+    "security_and_analysis": {
+      "properties": {
+        "advanced_security": {
+          "properties": {
+            "status": {
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "dependabot_security_updates": {
+          "description": "리포지토리에 대한 Dependabot 보안 업데이트를 사용 또는 사용하지 않도록 설정.",
+          "properties": {
+            "status": {
+              "description": "리포지토리에 대한 Dependabot 보안 업데이트의 활성화 상태.",
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "secret_scanning": {
+          "properties": {
+            "status": {
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "secret_scanning_push_protection": {
+          "properties": {
+            "status": {
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "size": {
+      "description": "리포지토리의 크기. 크기는 매시간 계산됩니다. 리포지토리가 처음 만들어지면 크기는 0.",
+      "examples": [
+        108
+      ],
+      "type": "integer"
+    },
+    "source": {
+      "description": "GitHub의 리포지토리.",
+      "properties": {
+        "allow_auto_merge": {
+          "default": false,
+          "description": "풀 리퀘스트에 자동 병합을 사용하도록 허용할지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "allow_forking": {
+          "description": "이 리포지토리의 포크를 허용할지 여부.",
+          "type": "boolean"
+        },
+        "allow_merge_commit": {
+          "default": true,
+          "description": "풀 리퀘스트에 대한 커밋 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_rebase_merge": {
+          "default": true,
+          "description": "풀리퀘스트에 리베이스 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_squash_merge": {
+          "default": true,
+          "description": "풀리퀘스트에 스쿼시 병합을 허용할지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "allow_update_branch": {
+          "default": false,
+          "description": "베이스 브랜치 뒤에 있는 풀 리퀘스트 헤드 브랜치를 병합하기 전에 최신 상태로 유지할 필요가 없더라도 항상 업데이트할 수 있는지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "anonymous_access_enabled": {
+          "description": "이 리포지토리에 대해 익명 Git 액세스를 사용하도록 설정했는지 여부.",
+          "type": "boolean"
+        },
+        "archive_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/{archive_format}{/ref}"
+          ],
+          "type": "string"
+        },
+        "archived": {
+          "default": false,
+          "description": "리포지토리가 아카이브되는지 여부.",
+          "type": "boolean"
+        },
+        "assignees_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/assignees{/user}"
+          ],
+          "type": "string"
+        },
+        "blobs_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/blobs{/sha}"
+          ],
+          "type": "string"
+        },
+        "branches_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/branches{/branch}"
+          ],
+          "type": "string"
+        },
+        "clone_url": {
+          "examples": [
+            "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "collaborators_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/collaborators{/collaborator}"
+          ],
+          "type": "string"
+        },
+        "comments_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/comments{/number}"
+          ],
+          "type": "string"
+        },
+        "commits_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/commits{/sha}"
+          ],
+          "type": "string"
+        },
+        "compare_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/compare/{base}...{head}"
+          ],
+          "type": "string"
+        },
+        "contents_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contents/{+path}"
+          ],
+          "type": "string"
+        },
+        "contributors_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contributors"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "created_at": {
+          "examples": [
+            "2011-01-26T19:01:12Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "default_branch": {
+          "description": "리포지토리의 기본 브랜치.",
+          "examples": [
+            "master"
+          ],
+          "type": "string"
+        },
+        "delete_branch_on_merge": {
+          "default": false,
+          "description": "풀 리퀘스트 병합 시 헤드 브랜치를 삭제할지 여부.",
+          "examples": [
+            false
+          ],
+          "type": "boolean"
+        },
+        "deployments_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/deployments"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "description": {
+          "examples": [
+            "This your first repo!"
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "disabled": {
+          "description": "이 리포지토리가 비활성화되었는지 여부를 반환.",
+          "type": "boolean"
+        },
+        "downloads_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/downloads"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "events_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/events"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "fork": {
+          "type": "boolean"
+        },
+        "forks": {
+          "type": "integer"
+        },
+        "forks_count": {
+          "examples": [
+            9
+          ],
+          "type": "integer"
+        },
+        "forks_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/forks"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "full_name": {
+          "examples": [
+            "AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "type": "string"
+        },
+        "git_commits_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/commits{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_refs_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/refs{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_tags_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/tags{/sha}"
+          ],
+          "type": "string"
+        },
+        "git_url": {
+          "examples": [
+            "git:github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "has_discussions": {
+          "default": false,
+          "description": "토론이 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_downloads": {
+          "default": true,
+          "deprecated": true,
+          "description": "다운로드가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_issues": {
+          "default": true,
+          "description": "이슈가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_pages": {
+          "type": "boolean"
+        },
+        "has_projects": {
+          "default": true,
+          "description": "프로젝트가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "has_wiki": {
+          "default": true,
+          "description": "위키가 활성화되었는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "homepage": {
+          "examples": [
+            "https://github.com"
+          ],
+          "format": "uri",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hooks_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/hooks"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "html_url": {
+          "examples": [
+            "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "id": {
+          "description": "리포지토리의 고유 식별자.",
+          "examples": [
+            42
+          ],
+          "type": "integer"
+        },
+        "is_template": {
+          "default": false,
+          "description": "이 리포지토리가 새 리포지토리를 생성하는 데 사용할 수 있는 템플릿으로 작동하는지 여부.",
+          "examples": [
+            true
+          ],
+          "type": "boolean"
+        },
+        "issue_comment_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/comments{/number}"
+          ],
+          "type": "string"
+        },
+        "issue_events_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/events{/number}"
+          ],
+          "type": "string"
+        },
+        "issues_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues{/number}"
+          ],
+          "type": "string"
+        },
+        "keys_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/keys{/key_id}"
+          ],
+          "type": "string"
+        },
+        "labels_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/labels{/name}"
+          ],
+          "type": "string"
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "languages_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/languages"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "license": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "description": "라이선스.",
+              "properties": {
+                "html_url": {
+                  "format": "uri",
+                  "type": "string"
+                },
+                "key": {
+                  "examples": [
+                    "mit"
+                  ],
+                  "type": "string"
+                },
+                "name": {
+                  "examples": [
+                    "MIT License"
+                  ],
+                  "type": "string"
+                },
+                "node_id": {
+                  "examples": [
+                    "MDc6TGljZW5zZW1pdA=="
+                  ],
+                  "type": "string"
+                },
+                "spdx_id": {
+                  "examples": [
+                    "MIT"
+                  ],
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "url": {
+                  "examples": [
+                    "https://api.github.com/licenses/mit"
+                  ],
+                  "format": "uri",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "key",
+                "name",
+                "url",
+                "spdx_id",
+                "node_id"
+              ],
+              "title": "License Simple",
+              "type": "object"
+            }
+          ]
+        },
+        "master_branch": {
+          "type": "string"
+        },
+        "merge_commit_message": {
+          "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀리퀘스트의 본문.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+          "enum": [
+            "PR_BODY",
+            "PR_TITLE",
+            "BLANK"
+          ],
+          "type": "string"
+        },
+        "merge_commit_title": {
+          "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+          "enum": [
+            "PR_TITLE",
+            "MERGE_MESSAGE"
+          ],
+          "type": "string"
+        },
+        "merges_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/merges"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "milestones_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/milestones{/number}"
+          ],
+          "type": "string"
+        },
+        "mirror_url": {
+          "examples": [
+            "git:git.example.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "리포지토리 이름.",
+          "examples": [
+            "Team Environment"
+          ],
+          "type": "string"
+        },
+        "network_count": {
+          "type": "integer"
+        },
+        "node_id": {
+          "examples": [
+            "MDEwOlJlcG9zaXRvcnkxMjk2MjY5"
+          ],
+          "type": "string"
+        },
+        "notifications_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/notifications{?since,all,participating}"
+          ],
+          "type": "string"
+        },
+        "open_issues": {
+          "type": "integer"
+        },
+        "open_issues_count": {
+          "examples": [
+            0
+          ],
+          "type": "integer"
+        },
+        "organization": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "description": "GitHub 사용자.",
+              "properties": {
+                "avatar_url": {
+                  "examples": [
+                    "https://avatars.githubusercontent.com/u/82999715?v=4"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+                  ],
+                  "type": "string"
+                },
+                "followers_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/followers"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "following_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+                  ],
+                  "type": "string"
+                },
+                "gists_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+                  ],
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "examples": [
+                    "donminzzi"
+                  ],
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "html_url": {
+                  "examples": [
+                    "https://github.com/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "id": {
+                  "examples": [
+                    1
+                  ],
+                  "type": "integer"
+                },
+                "login": {
+                  "examples": [
+                    "AndrewDongminYoo"
+                  ],
+                  "type": "string"
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "node_id": {
+                  "examples": [
+                    "MDQ6VXNlcjE="
+                  ],
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/orgs"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/received_events"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "repos_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/repos"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_at": {
+                  "examples": [
+                    "\"2020-07-09T00:17:55Z\""
+                  ],
+                  "type": "string"
+                },
+                "starred_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+                  ],
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "type": {
+                  "examples": [
+                    "User"
+                  ],
+                  "type": "string"
+                },
+                "url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "avatar_url",
+                "events_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "gravatar_id",
+                "html_url",
+                "id",
+                "node_id",
+                "login",
+                "organizations_url",
+                "received_events_url",
+                "repos_url",
+                "site_admin",
+                "starred_url",
+                "subscriptions_url",
+                "type",
+                "url"
+              ],
+              "title": "Simple User",
+              "type": "object"
+            }
+          ]
+        },
+        "owner": {
+          "description": "GitHub 사용자.",
+          "properties": {
+            "avatar_url": {
+              "examples": [
+                "https://avatars.githubusercontent.com/u/82999715?v=4"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "email": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+              ],
+              "type": "string"
+            },
+            "followers_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/followers"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "following_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+              ],
+              "type": "string"
+            },
+            "gists_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+              ],
+              "type": "string"
+            },
+            "gravatar_id": {
+              "examples": [
+                "donminzzi"
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "html_url": {
+              "examples": [
+                "https://github.com/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "id": {
+              "examples": [
+                1
+              ],
+              "type": "integer"
+            },
+            "login": {
+              "examples": [
+                "AndrewDongminYoo"
+              ],
+              "type": "string"
+            },
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "node_id": {
+              "examples": [
+                "MDQ6VXNlcjE="
+              ],
+              "type": "string"
+            },
+            "organizations_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/orgs"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "received_events_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/received_events"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "repos_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/repos"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "site_admin": {
+              "type": "boolean"
+            },
+            "starred_at": {
+              "examples": [
+                "\"2020-07-09T00:17:55Z\""
+              ],
+              "type": "string"
+            },
+            "starred_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+              ],
+              "type": "string"
+            },
+            "subscriptions_url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "type": {
+              "examples": [
+                "User"
+              ],
+              "type": "string"
+            },
+            "url": {
+              "examples": [
+                "https://api.github.com/users/AndrewDongminYoo"
+              ],
+              "format": "uri",
+              "type": "string"
+            }
+          },
+          "required": [
+            "avatar_url",
+            "events_url",
+            "followers_url",
+            "following_url",
+            "gists_url",
+            "gravatar_id",
+            "html_url",
+            "id",
+            "node_id",
+            "login",
+            "organizations_url",
+            "received_events_url",
+            "repos_url",
+            "site_admin",
+            "starred_url",
+            "subscriptions_url",
+            "type",
+            "url"
+          ],
+          "title": "Simple User",
+          "type": "object"
+        },
+        "permissions": {
+          "properties": {
+            "admin": {
+              "type": "boolean"
+            },
+            "maintain": {
+              "type": "boolean"
+            },
+            "pull": {
+              "type": "boolean"
+            },
+            "push": {
+              "type": "boolean"
+            },
+            "triage": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "admin",
+            "pull",
+            "push"
+          ],
+          "type": "object"
+        },
+        "private": {
+          "default": false,
+          "description": "리포지토리가 비공개인지 공개인지 여부.",
+          "type": "boolean"
+        },
+        "pulls_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/pulls{/number}"
+          ],
+          "type": "string"
+        },
+        "pushed_at": {
+          "examples": [
+            "2011-01-26T19:06:43Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "releases_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/releases{/id}"
+          ],
+          "type": "string"
+        },
+        "size": {
+          "description": "리포지토리의 크기. 크기는 시간별로 계산. 리포지토리가 처음 생성되면 크기는 0.",
+          "examples": [
+            108
+          ],
+          "type": "integer"
+        },
+        "squash_merge_commit_message": {
+          "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 풀 리퀘스트의 본문이 기본값.\n- `COMMIT_MESSAGES` - 브랜치의 커밋 메시지가 기본값.\n- `BLANK` - 빈 커밋 메시지가 기본값.",
+          "enum": [
+            "PR_BODY",
+            "COMMIT_MESSAGES",
+            "BLANK"
+          ],
+          "type": "string"
+        },
+        "squash_merge_commit_title": {
+          "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상 있는 경우).",
+          "enum": [
+            "PR_TITLE",
+            "COMMIT_OR_PR_TITLE"
+          ],
+          "type": "string"
+        },
+        "ssh_url": {
+          "examples": [
+            "git@github.com:AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+          ],
+          "type": "string"
+        },
+        "stargazers_count": {
+          "examples": [
+            80
+          ],
+          "type": "integer"
+        },
+        "stargazers_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/stargazers"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "starred_at": {
+          "examples": [
+            "\"2020-07-09T00:17:42Z\""
+          ],
+          "type": "string"
+        },
+        "statuses_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/statuses/{sha}"
+          ],
+          "type": "string"
+        },
+        "subscribers_count": {
+          "type": "integer"
+        },
+        "subscribers_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscribers"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "subscription_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscription"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "svn_url": {
+          "examples": [
+            "https://svn.github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "tags_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/tags"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "teams_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/teams"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "temp_clone_token": {
+          "type": "string"
+        },
+        "template_repository": {
+          "properties": {
+            "allow_auto_merge": {
+              "type": "boolean"
+            },
+            "allow_merge_commit": {
+              "type": "boolean"
+            },
+            "allow_rebase_merge": {
+              "type": "boolean"
+            },
+            "allow_squash_merge": {
+              "type": "boolean"
+            },
+            "allow_update_branch": {
+              "type": "boolean"
+            },
+            "archive_url": {
+              "type": "string"
+            },
+            "archived": {
+              "type": "boolean"
+            },
+            "assignees_url": {
+              "type": "string"
+            },
+            "blobs_url": {
+              "type": "string"
+            },
+            "branches_url": {
+              "type": "string"
+            },
+            "clone_url": {
+              "type": "string"
+            },
+            "collaborators_url": {
+              "type": "string"
+            },
+            "comments_url": {
+              "type": "string"
+            },
+            "commits_url": {
+              "type": "string"
+            },
+            "compare_url": {
+              "type": "string"
+            },
+            "contents_url": {
+              "type": "string"
+            },
+            "contributors_url": {
+              "type": "string"
+            },
+            "created_at": {
+              "type": "string"
+            },
+            "default_branch": {
+              "type": "string"
+            },
+            "delete_branch_on_merge": {
+              "type": "boolean"
+            },
+            "deployments_url": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "disabled": {
+              "type": "boolean"
+            },
+            "downloads_url": {
+              "type": "string"
+            },
+            "events_url": {
+              "type": "string"
+            },
+            "fork": {
+              "type": "boolean"
+            },
+            "forks_count": {
+              "type": "integer"
+            },
+            "forks_url": {
+              "type": "string"
+            },
+            "full_name": {
+              "type": "string"
+            },
+            "git_commits_url": {
+              "type": "string"
+            },
+            "git_refs_url": {
+              "type": "string"
+            },
+            "git_tags_url": {
+              "type": "string"
+            },
+            "git_url": {
+              "type": "string"
+            },
+            "has_downloads": {
+              "type": "boolean"
+            },
+            "has_issues": {
+              "type": "boolean"
+            },
+            "has_pages": {
+              "type": "boolean"
+            },
+            "has_projects": {
+              "type": "boolean"
+            },
+            "has_wiki": {
+              "type": "boolean"
+            },
+            "homepage": {
+              "type": "string"
+            },
+            "hooks_url": {
+              "type": "string"
+            },
+            "html_url": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "is_template": {
+              "type": "boolean"
+            },
+            "issue_comment_url": {
+              "type": "string"
+            },
+            "issue_events_url": {
+              "type": "string"
+            },
+            "issues_url": {
+              "type": "string"
+            },
+            "keys_url": {
+              "type": "string"
+            },
+            "labels_url": {
+              "type": "string"
+            },
+            "language": {
+              "type": "string"
+            },
+            "languages_url": {
+              "type": "string"
+            },
+            "merge_commit_message": {
+              "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `BLANK` - 기본값은 공백 커밋 메시지.",
+              "enum": [
+                "PR_BODY",
+                "PR_TITLE",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "merge_commit_title": {
+              "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+              "enum": [
+                "PR_TITLE",
+                "MERGE_MESSAGE"
+              ],
+              "type": "string"
+            },
+            "merges_url": {
+              "type": "string"
+            },
+            "milestones_url": {
+              "type": "string"
+            },
+            "mirror_url": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "network_count": {
+              "type": "integer"
+            },
+            "node_id": {
+              "type": "string"
+            },
+            "notifications_url": {
+              "type": "string"
+            },
+            "open_issues_count": {
+              "type": "integer"
+            },
+            "owner": {
+              "properties": {
+                "avatar_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "followers_url": {
+                  "type": "string"
+                },
+                "following_url": {
+                  "type": "string"
+                },
+                "gists_url": {
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "login": {
+                  "type": "string"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "type": "string"
+                },
+                "repos_url": {
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_url": {
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "permissions": {
+              "properties": {
+                "admin": {
+                  "type": "boolean"
+                },
+                "maintain": {
+                  "type": "boolean"
+                },
+                "pull": {
+                  "type": "boolean"
+                },
+                "push": {
+                  "type": "boolean"
+                },
+                "triage": {
+                  "type": "boolean"
+                }
+              },
+              "type": "object"
+            },
+            "private": {
+              "type": "boolean"
+            },
+            "pulls_url": {
+              "type": "string"
+            },
+            "pushed_at": {
+              "type": "string"
+            },
+            "releases_url": {
+              "type": "string"
+            },
+            "size": {
+              "type": "integer"
+            },
+            "squash_merge_commit_message": {
+              "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `COMMIT_MESSAGES` - 기본값은 브랜치의 커밋 메시지.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+              "enum": [
+                "PR_BODY",
+                "COMMIT_MESSAGES",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "squash_merge_commit_title": {
+              "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상의 커밋이 있는 경우).",
+              "enum": [
+                "PR_TITLE",
+                "COMMIT_OR_PR_TITLE"
+              ],
+              "type": "string"
+            },
+            "ssh_url": {
+              "type": "string"
+            },
+            "stargazers_count": {
+              "type": "integer"
+            },
+            "stargazers_url": {
+              "type": "string"
+            },
+            "statuses_url": {
+              "type": "string"
+            },
+            "subscribers_count": {
+              "type": "integer"
+            },
+            "subscribers_url": {
+              "type": "string"
+            },
+            "subscription_url": {
+              "type": "string"
+            },
+            "svn_url": {
+              "type": "string"
+            },
+            "tags_url": {
+              "type": "string"
+            },
+            "teams_url": {
+              "type": "string"
+            },
+            "temp_clone_token": {
+              "type": "string"
+            },
+            "topics": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "trees_url": {
+              "type": "string"
+            },
+            "updated_at": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "use_squash_pr_title_as_default": {
+              "type": "boolean"
+            },
+            "visibility": {
+              "type": "string"
+            },
+            "watchers_count": {
+              "type": "integer"
+            }
+          },
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "topics": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "trees_url": {
+          "examples": [
+            "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/trees{/sha}"
+          ],
+          "type": "string"
+        },
+        "updated_at": {
+          "examples": [
+            "2011-01-26T19:14:43Z"
+          ],
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "examples": [
+            "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel"
+          ],
+          "format": "uri",
+          "type": "string"
+        },
+        "use_squash_pr_title_as_default": {
+          "default": false,
+          "deprecated": true,
+          "description": "스쿼시 병합 커밋이 풀 리퀘스트 제목을 기본값으로 사용할 수 있는지 여부. **이 속성은 더 이상 사용되지 않음. 대신 `squash_merge_commit_title` 사용.",
+          "type": "boolean"
+        },
+        "visibility": {
+          "default": "public",
+          "description": "리포지토리 가시성: 공개, 비공개 또는 내부.",
+          "type": "string"
+        },
+        "watchers": {
+          "type": "integer"
+        },
+        "watchers_count": {
+          "examples": [
+            80
+          ],
+          "type": "integer"
+        },
+        "web_commit_signoff_required": {
+          "default": false,
+          "description": "기여자가 웹 기반 커밋에 서명하도록 요구할지 여부",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "archive_url",
+        "assignees_url",
+        "blobs_url",
+        "branches_url",
+        "collaborators_url",
+        "comments_url",
+        "commits_url",
+        "compare_url",
+        "contents_url",
+        "contributors_url",
+        "deployments_url",
+        "description",
+        "downloads_url",
+        "events_url",
+        "fork",
+        "forks_url",
+        "full_name",
+        "git_commits_url",
+        "git_refs_url",
+        "git_tags_url",
+        "hooks_url",
+        "html_url",
+        "id",
+        "node_id",
+        "issue_comment_url",
+        "issue_events_url",
+        "issues_url",
+        "keys_url",
+        "labels_url",
+        "languages_url",
+        "merges_url",
+        "milestones_url",
+        "name",
+        "notifications_url",
+        "owner",
+        "private",
+        "pulls_url",
+        "releases_url",
+        "stargazers_url",
+        "statuses_url",
+        "subscribers_url",
+        "subscription_url",
+        "tags_url",
+        "teams_url",
+        "trees_url",
+        "url",
+        "clone_url",
+        "default_branch",
+        "forks",
+        "forks_count",
+        "git_url",
+        "has_downloads",
+        "has_issues",
+        "has_projects",
+        "has_wiki",
+        "has_pages",
+        "homepage",
+        "language",
+        "archived",
+        "disabled",
+        "mirror_url",
+        "open_issues",
+        "open_issues_count",
+        "license",
+        "pushed_at",
+        "size",
+        "ssh_url",
+        "stargazers_count",
+        "svn_url",
+        "watchers",
+        "watchers_count",
+        "created_at",
+        "updated_at"
+      ],
+      "title": "Repository",
+      "type": "object"
+    },
+    "squash_merge_commit_message": {
+      "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 풀 리퀘스트 본문으로 기본값.\n- `COMMIT_MESSAGES` - 브랜치의 커밋 메시지로 기본값.\n- `BLANK` - 빈 커밋 메시지로 기본값.",
+      "enum": [
+        "PR_BODY",
+        "COMMIT_MESSAGES",
+        "BLANK"
+      ],
+      "examples": [
+        "PR_BODY"
+      ],
+      "type": "string"
+    },
+    "squash_merge_commit_title": {
+      "description": "스쿼시 병합 커밋 제목의 기본값 :\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상의 커밋이 있는 경우).",
+      "enum": [
+        "PR_TITLE",
+        "COMMIT_OR_PR_TITLE"
+      ],
+      "examples": [
+        "PR_TITLE"
+      ],
+      "type": "string"
+    },
+    "ssh_url": {
+      "examples": [
+        "git@github.com:AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+      ],
+      "type": "string"
+    },
+    "stargazers_count": {
+      "examples": [
+        80
+      ],
+      "type": "integer"
+    },
+    "stargazers_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/stargazers"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "statuses_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/statuses/{sha}"
+      ],
+      "type": "string"
+    },
+    "subscribers_count": {
+      "examples": [
+        42
+      ],
+      "type": "integer"
+    },
+    "subscribers_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscribers"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "subscription_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscription"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "svn_url": {
+      "examples": [
+        "https://svn.github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "tags_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/tags"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "teams_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/teams"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "temp_clone_token": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "template_repository": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "description": "GitHub의 리포지토리.",
+          "properties": {
+            "allow_auto_merge": {
+              "default": false,
+              "description": "풀 리퀘스트에 자동 병합을 사용할지 여부.",
+              "examples": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "allow_forking": {
+              "description": "이 리포지토리의 포크 허용 여부",
+              "type": "boolean"
+            },
+            "allow_merge_commit": {
+              "default": true,
+              "description": "풀 리퀘스트에 대한 커밋 병합을 허용할지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "allow_rebase_merge": {
+              "default": true,
+              "description": "풀리퀘스트에 리베이스 병합을 허용할지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "allow_squash_merge": {
+              "default": true,
+              "description": "풀리퀘스트에 스쿼시 병합을 허용할지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "allow_update_branch": {
+              "default": false,
+              "description": "베이스 브랜치 뒤에 있는 풀 리퀘스트 헤드 브랜치를 병합하기 전에 최신 상태로 유지할 필요가 없더라도 항상 업데이트할 수 있는지 여부.",
+              "examples": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "anonymous_access_enabled": {
+              "description": "이 리포지토리에 대해 익명 Git 액세스를 사용하도록 설정했는지 여부",
+              "type": "boolean"
+            },
+            "archive_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/{archive_format}{/ref}"
+              ],
+              "type": "string"
+            },
+            "archived": {
+              "default": false,
+              "description": "리포지토리가 아카이브되는지 여부.",
+              "type": "boolean"
+            },
+            "assignees_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/assignees{/user}"
+              ],
+              "type": "string"
+            },
+            "blobs_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/blobs{/sha}"
+              ],
+              "type": "string"
+            },
+            "branches_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/branches{/branch}"
+              ],
+              "type": "string"
+            },
+            "clone_url": {
+              "examples": [
+                "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+              ],
+              "type": "string"
+            },
+            "collaborators_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/collaborators{/collaborator}"
+              ],
+              "type": "string"
+            },
+            "comments_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/comments{/number}"
+              ],
+              "type": "string"
+            },
+            "commits_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/commits{/sha}"
+              ],
+              "type": "string"
+            },
+            "compare_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/compare/{base}...{head}"
+              ],
+              "type": "string"
+            },
+            "contents_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contents/{+path}"
+              ],
+              "type": "string"
+            },
+            "contributors_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/contributors"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "created_at": {
+              "examples": [
+                "2011-01-26T19:01:12Z"
+              ],
+              "format": "date-time",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "default_branch": {
+              "description": "리포지토리의 기본 브랜치.",
+              "examples": [
+                "master"
+              ],
+              "type": "string"
+            },
+            "delete_branch_on_merge": {
+              "default": false,
+              "description": "풀 리퀘스트 병합 시 헤드 브랜치를 삭제할지 여부",
+              "examples": [
+                false
+              ],
+              "type": "boolean"
+            },
+            "deployments_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/deployments"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "description": {
+              "examples": [
+                "This your first repo!"
+              ],
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "disabled": {
+              "description": "이 리포지토리가 비활성화되었는지 여부.",
+              "type": "boolean"
+            },
+            "downloads_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/downloads"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "events_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/events"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "fork": {
+              "type": "boolean"
+            },
+            "forks": {
+              "type": "integer"
+            },
+            "forks_count": {
+              "examples": [
+                9
+              ],
+              "type": "integer"
+            },
+            "forks_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/forks"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "full_name": {
+              "examples": [
+                "AndrewDongminYoo/AndrewDongminYoo.vercel"
+              ],
+              "type": "string"
+            },
+            "git_commits_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/commits{/sha}"
+              ],
+              "type": "string"
+            },
+            "git_refs_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/refs{/sha}"
+              ],
+              "type": "string"
+            },
+            "git_tags_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/tags{/sha}"
+              ],
+              "type": "string"
+            },
+            "git_url": {
+              "examples": [
+                "git:github.com/AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+              ],
+              "type": "string"
+            },
+            "has_discussions": {
+              "default": false,
+              "description": "토론이 활성화되었는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "has_downloads": {
+              "default": true,
+              "deprecated": true,
+              "description": "다운로드가 활성화되었는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "has_issues": {
+              "default": true,
+              "description": "이슈가 활성화되었는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "has_pages": {
+              "type": "boolean"
+            },
+            "has_projects": {
+              "default": true,
+              "description": "프로젝트가 활성화되었는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "has_wiki": {
+              "default": true,
+              "description": "위키가 활성화되었는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "homepage": {
+              "examples": [
+                "https://github.com"
+              ],
+              "format": "uri",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "hooks_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/hooks"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "html_url": {
+              "examples": [
+                "https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "id": {
+              "description": "리포지토리의 고유 식별자",
+              "examples": [
+                42
+              ],
+              "type": "integer"
+            },
+            "is_template": {
+              "default": false,
+              "description": "이 리포지토리가 새 리포지토리를 생성하는 데 사용할 수 있는 템플릿 역할을 하는지 여부.",
+              "examples": [
+                true
+              ],
+              "type": "boolean"
+            },
+            "issue_comment_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/comments{/number}"
+              ],
+              "type": "string"
+            },
+            "issue_events_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues/events{/number}"
+              ],
+              "type": "string"
+            },
+            "issues_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/issues{/number}"
+              ],
+              "type": "string"
+            },
+            "keys_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/keys{/key_id}"
+              ],
+              "type": "string"
+            },
+            "labels_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/labels{/name}"
+              ],
+              "type": "string"
+            },
+            "language": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "languages_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/languages"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "license": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "description": "라이선스",
+                  "properties": {
+                    "html_url": {
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "key": {
+                      "examples": [
+                        "mit"
+                      ],
+                      "type": "string"
+                    },
+                    "name": {
+                      "examples": [
+                        "MIT License"
+                      ],
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "examples": [
+                        "MDc6TGljZW5zZW1pdA=="
+                      ],
+                      "type": "string"
+                    },
+                    "spdx_id": {
+                      "examples": [
+                        "MIT"
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "examples": [
+                        "https://api.github.com/licenses/mit"
+                      ],
+                      "format": "uri",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "name",
+                    "url",
+                    "spdx_id",
+                    "node_id"
+                  ],
+                  "title": "License Simple",
+                  "type": "object"
+                }
+              ]
+            },
+            "master_branch": {
+              "type": "string"
+            },
+            "merge_commit_message": {
+              "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀리퀘스트의 본문.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+              "enum": [
+                "PR_BODY",
+                "PR_TITLE",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "merge_commit_title": {
+              "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+              "enum": [
+                "PR_TITLE",
+                "MERGE_MESSAGE"
+              ],
+              "type": "string"
+            },
+            "merges_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/merges"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "milestones_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/milestones{/number}"
+              ],
+              "type": "string"
+            },
+            "mirror_url": {
+              "examples": [
+                "git:git.example.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+              ],
+              "format": "uri",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "리포지토리 이름.",
+              "examples": [
+                "Team Environment"
+              ],
+              "type": "string"
+            },
+            "network_count": {
+              "type": "integer"
+            },
+            "node_id": {
+              "examples": [
+                "MDEwOlJlcG9zaXRvcnkxMjk2MjY5"
+              ],
+              "type": "string"
+            },
+            "notifications_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/notifications{?since,all,participating}"
+              ],
+              "type": "string"
+            },
+            "open_issues": {
+              "type": "integer"
+            },
+            "open_issues_count": {
+              "examples": [
+                0
+              ],
+              "type": "integer"
+            },
+            "organization": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "description": "GitHub 사용자.",
+                  "properties": {
+                    "avatar_url": {
+                      "examples": [
+                        "https://avatars.githubusercontent.com/u/82999715?v=4"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "events_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+                      ],
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/followers"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+                      ],
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+                      ],
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "examples": [
+                        "donminzzi"
+                      ],
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "html_url": {
+                      "examples": [
+                        "https://github.com/AndrewDongminYoo"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "id": {
+                      "examples": [
+                        1
+                      ],
+                      "type": "integer"
+                    },
+                    "login": {
+                      "examples": [
+                        "AndrewDongminYoo"
+                      ],
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "node_id": {
+                      "examples": [
+                        "MDQ6VXNlcjE="
+                      ],
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/orgs"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/received_events"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/repos"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    },
+                    "starred_at": {
+                      "examples": [
+                        "\"2020-07-09T00:17:55Z\""
+                      ],
+                      "type": "string"
+                    },
+                    "starred_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+                      ],
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "type": {
+                      "examples": [
+                        "User"
+                      ],
+                      "type": "string"
+                    },
+                    "url": {
+                      "examples": [
+                        "https://api.github.com/users/AndrewDongminYoo"
+                      ],
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "avatar_url",
+                    "events_url",
+                    "followers_url",
+                    "following_url",
+                    "gists_url",
+                    "gravatar_id",
+                    "html_url",
+                    "id",
+                    "node_id",
+                    "login",
+                    "organizations_url",
+                    "received_events_url",
+                    "repos_url",
+                    "site_admin",
+                    "starred_url",
+                    "subscriptions_url",
+                    "type",
+                    "url"
+                  ],
+                  "title": "Simple User",
+                  "type": "object"
+                }
+              ]
+            },
+            "owner": {
+              "description": "GitHub 사용자.",
+              "properties": {
+                "avatar_url": {
+                  "examples": [
+                    "https://avatars.githubusercontent.com/u/82999715?v=4"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "email": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/events{/privacy}"
+                  ],
+                  "type": "string"
+                },
+                "followers_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/followers"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "following_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/following{/other_user}"
+                  ],
+                  "type": "string"
+                },
+                "gists_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/gists{/gist_id}"
+                  ],
+                  "type": "string"
+                },
+                "gravatar_id": {
+                  "examples": [
+                    "donminzzi"
+                  ],
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "html_url": {
+                  "examples": [
+                    "https://github.com/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "id": {
+                  "examples": [
+                    1
+                  ],
+                  "type": "integer"
+                },
+                "login": {
+                  "examples": [
+                    "AndrewDongminYoo"
+                  ],
+                  "type": "string"
+                },
+                "name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "node_id": {
+                  "examples": [
+                    "MDQ6VXNlcjE="
+                  ],
+                  "type": "string"
+                },
+                "organizations_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/orgs"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "received_events_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/received_events"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "repos_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/repos"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "site_admin": {
+                  "type": "boolean"
+                },
+                "starred_at": {
+                  "examples": [
+                    "\"2020-07-09T00:17:55Z\""
+                  ],
+                  "type": "string"
+                },
+                "starred_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/starred{/owner}{/repo}"
+                  ],
+                  "type": "string"
+                },
+                "subscriptions_url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo/subscriptions"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                },
+                "type": {
+                  "examples": [
+                    "User"
+                  ],
+                  "type": "string"
+                },
+                "url": {
+                  "examples": [
+                    "https://api.github.com/users/AndrewDongminYoo"
+                  ],
+                  "format": "uri",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "avatar_url",
+                "events_url",
+                "followers_url",
+                "following_url",
+                "gists_url",
+                "gravatar_id",
+                "html_url",
+                "id",
+                "node_id",
+                "login",
+                "organizations_url",
+                "received_events_url",
+                "repos_url",
+                "site_admin",
+                "starred_url",
+                "subscriptions_url",
+                "type",
+                "url"
+              ],
+              "title": "Simple User",
+              "type": "object"
+            },
+            "permissions": {
+              "properties": {
+                "admin": {
+                  "type": "boolean"
+                },
+                "maintain": {
+                  "type": "boolean"
+                },
+                "pull": {
+                  "type": "boolean"
+                },
+                "push": {
+                  "type": "boolean"
+                },
+                "triage": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "admin",
+                "pull",
+                "push"
+              ],
+              "type": "object"
+            },
+            "private": {
+              "default": false,
+              "description": "리포지토리가 비공개인지 공개인지 여부.",
+              "type": "boolean"
+            },
+            "pulls_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/pulls{/number}"
+              ],
+              "type": "string"
+            },
+            "pushed_at": {
+              "examples": [
+                "2011-01-26T19:06:43Z"
+              ],
+              "format": "date-time",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "releases_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/releases{/id}"
+              ],
+              "type": "string"
+            },
+            "size": {
+              "description": "리포지토리의 크기. 크기는 시간별로 계산. 리포지토리가 처음 생성되면 크기는 0.",
+              "examples": [
+                108
+              ],
+              "type": "integer"
+            },
+            "squash_merge_commit_message": {
+              "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 풀 리퀘스트의 본문이 기본값.\n- `COMMIT_MESSAGES` - 브랜치의 커밋 메시지가 기본값.\n- `BLANK` - 빈 커밋 메시지가 기본값.",
+              "enum": [
+                "PR_BODY",
+                "COMMIT_MESSAGES",
+                "BLANK"
+              ],
+              "type": "string"
+            },
+            "squash_merge_commit_title": {
+              "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상 있는 경우).",
+              "enum": [
+                "PR_TITLE",
+                "COMMIT_OR_PR_TITLE"
+              ],
+              "type": "string"
+            },
+            "ssh_url": {
+              "examples": [
+                "git@github.com:AndrewDongminYoo/AndrewDongminYoo.vercel.git"
+              ],
+              "type": "string"
+            },
+            "stargazers_count": {
+              "examples": [
+                80
+              ],
+              "type": "integer"
+            },
+            "stargazers_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/stargazers"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "starred_at": {
+              "examples": [
+                "\"2020-07-09T00:17:42Z\""
+              ],
+              "type": "string"
+            },
+            "statuses_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/statuses/{sha}"
+              ],
+              "type": "string"
+            },
+            "subscribers_count": {
+              "type": "integer"
+            },
+            "subscribers_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscribers"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "subscription_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/subscription"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "svn_url": {
+              "examples": [
+                "https://svn.github.com/AndrewDongminYoo/AndrewDongminYoo.vercel"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "tags_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/tags"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "teams_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/teams"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "temp_clone_token": {
+              "type": "string"
+            },
+            "template_repository": {
+              "properties": {
+                "allow_auto_merge": {
+                  "type": "boolean"
+                },
+                "allow_merge_commit": {
+                  "type": "boolean"
+                },
+                "allow_rebase_merge": {
+                  "type": "boolean"
+                },
+                "allow_squash_merge": {
+                  "type": "boolean"
+                },
+                "allow_update_branch": {
+                  "type": "boolean"
+                },
+                "archive_url": {
+                  "type": "string"
+                },
+                "archived": {
+                  "type": "boolean"
+                },
+                "assignees_url": {
+                  "type": "string"
+                },
+                "blobs_url": {
+                  "type": "string"
+                },
+                "branches_url": {
+                  "type": "string"
+                },
+                "clone_url": {
+                  "type": "string"
+                },
+                "collaborators_url": {
+                  "type": "string"
+                },
+                "comments_url": {
+                  "type": "string"
+                },
+                "commits_url": {
+                  "type": "string"
+                },
+                "compare_url": {
+                  "type": "string"
+                },
+                "contents_url": {
+                  "type": "string"
+                },
+                "contributors_url": {
+                  "type": "string"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "default_branch": {
+                  "type": "string"
+                },
+                "delete_branch_on_merge": {
+                  "type": "boolean"
+                },
+                "deployments_url": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "disabled": {
+                  "type": "boolean"
+                },
+                "downloads_url": {
+                  "type": "string"
+                },
+                "events_url": {
+                  "type": "string"
+                },
+                "fork": {
+                  "type": "boolean"
+                },
+                "forks_count": {
+                  "type": "integer"
+                },
+                "forks_url": {
+                  "type": "string"
+                },
+                "full_name": {
+                  "type": "string"
+                },
+                "git_commits_url": {
+                  "type": "string"
+                },
+                "git_refs_url": {
+                  "type": "string"
+                },
+                "git_tags_url": {
+                  "type": "string"
+                },
+                "git_url": {
+                  "type": "string"
+                },
+                "has_downloads": {
+                  "type": "boolean"
+                },
+                "has_issues": {
+                  "type": "boolean"
+                },
+                "has_pages": {
+                  "type": "boolean"
+                },
+                "has_projects": {
+                  "type": "boolean"
+                },
+                "has_wiki": {
+                  "type": "boolean"
+                },
+                "homepage": {
+                  "type": "string"
+                },
+                "hooks_url": {
+                  "type": "string"
+                },
+                "html_url": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "is_template": {
+                  "type": "boolean"
+                },
+                "issue_comment_url": {
+                  "type": "string"
+                },
+                "issue_events_url": {
+                  "type": "string"
+                },
+                "issues_url": {
+                  "type": "string"
+                },
+                "keys_url": {
+                  "type": "string"
+                },
+                "labels_url": {
+                  "type": "string"
+                },
+                "language": {
+                  "type": "string"
+                },
+                "languages_url": {
+                  "type": "string"
+                },
+                "merge_commit_message": {
+                  "description": "병합 커밋 메시지의 기본값.\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `BLANK` - 기본값은 공백 커밋 메시지.",
+                  "enum": [
+                    "PR_BODY",
+                    "PR_TITLE",
+                    "BLANK"
+                  ],
+                  "type": "string"
+                },
+                "merge_commit_title": {
+                  "description": "병합 커밋 제목의 기본값.\n\n- `PR_TITLE` - 기본값은 풀리퀘스트의 제목.\n- `MERGE_MESSAGE` - 기본값은 병합 메시지의 클래식 제목(예: Merge pull request #123 from branch-name).",
+                  "enum": [
+                    "PR_TITLE",
+                    "MERGE_MESSAGE"
+                  ],
+                  "type": "string"
+                },
+                "merges_url": {
+                  "type": "string"
+                },
+                "milestones_url": {
+                  "type": "string"
+                },
+                "mirror_url": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "network_count": {
+                  "type": "integer"
+                },
+                "node_id": {
+                  "type": "string"
+                },
+                "notifications_url": {
+                  "type": "string"
+                },
+                "open_issues_count": {
+                  "type": "integer"
+                },
+                "owner": {
+                  "properties": {
+                    "avatar_url": {
+                      "type": "string"
+                    },
+                    "events_url": {
+                      "type": "string"
+                    },
+                    "followers_url": {
+                      "type": "string"
+                    },
+                    "following_url": {
+                      "type": "string"
+                    },
+                    "gists_url": {
+                      "type": "string"
+                    },
+                    "gravatar_id": {
+                      "type": "string"
+                    },
+                    "html_url": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "login": {
+                      "type": "string"
+                    },
+                    "node_id": {
+                      "type": "string"
+                    },
+                    "organizations_url": {
+                      "type": "string"
+                    },
+                    "received_events_url": {
+                      "type": "string"
+                    },
+                    "repos_url": {
+                      "type": "string"
+                    },
+                    "site_admin": {
+                      "type": "boolean"
+                    },
+                    "starred_url": {
+                      "type": "string"
+                    },
+                    "subscriptions_url": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "permissions": {
+                  "properties": {
+                    "admin": {
+                      "type": "boolean"
+                    },
+                    "maintain": {
+                      "type": "boolean"
+                    },
+                    "pull": {
+                      "type": "boolean"
+                    },
+                    "push": {
+                      "type": "boolean"
+                    },
+                    "triage": {
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                },
+                "private": {
+                  "type": "boolean"
+                },
+                "pulls_url": {
+                  "type": "string"
+                },
+                "pushed_at": {
+                  "type": "string"
+                },
+                "releases_url": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "integer"
+                },
+                "squash_merge_commit_message": {
+                  "description": "스쿼시 병합 커밋 메시지의 기본값:\n\n- `PR_BODY` - 기본값은 풀 리퀘스트의 본문.\n- `COMMIT_MESSAGES` - 기본값은 브랜치의 커밋 메시지.\n- `BLANK` - 기본값은 빈 커밋 메시지.",
+                  "enum": [
+                    "PR_BODY",
+                    "COMMIT_MESSAGES",
+                    "BLANK"
+                  ],
+                  "type": "string"
+                },
+                "squash_merge_commit_title": {
+                  "description": "스쿼시 병합 커밋 제목의 기본값:\n\n- `PR_TITLE` - 기본값은 풀 리퀘스트의 제목.\n- `COMMIT_OR_PR_TITLE` - 기본값은 커밋의 제목(커밋이 하나만 있는 경우) 또는 풀 리퀘스트의 제목(둘 이상의 커밋이 있는 경우).",
+                  "enum": [
+                    "PR_TITLE",
+                    "COMMIT_OR_PR_TITLE"
+                  ],
+                  "type": "string"
+                },
+                "ssh_url": {
+                  "type": "string"
+                },
+                "stargazers_count": {
+                  "type": "integer"
+                },
+                "stargazers_url": {
+                  "type": "string"
+                },
+                "statuses_url": {
+                  "type": "string"
+                },
+                "subscribers_count": {
+                  "type": "integer"
+                },
+                "subscribers_url": {
+                  "type": "string"
+                },
+                "subscription_url": {
+                  "type": "string"
+                },
+                "svn_url": {
+                  "type": "string"
+                },
+                "tags_url": {
+                  "type": "string"
+                },
+                "teams_url": {
+                  "type": "string"
+                },
+                "temp_clone_token": {
+                  "type": "string"
+                },
+                "topics": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "trees_url": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "use_squash_pr_title_as_default": {
+                  "type": "boolean"
+                },
+                "visibility": {
+                  "type": "string"
+                },
+                "watchers_count": {
+                  "type": "integer"
+                }
+              },
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "topics": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "trees_url": {
+              "examples": [
+                "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/trees{/sha}"
+              ],
+              "type": "string"
+            },
+            "updated_at": {
+              "examples": [
+                "2011-01-26T19:14:43Z"
+              ],
+              "format": "date-time",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "url": {
+              "examples": [
+                "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel"
+              ],
+              "format": "uri",
+              "type": "string"
+            },
+            "use_squash_pr_title_as_default": {
+              "default": false,
+              "deprecated": true,
+              "description": "스쿼시 병합 커밋이 풀 리퀘스트 제목을 기본값으로 사용할 수 있는지 여부. **이 속성은 더 이상 사용되지 않음. 대신 `squash_merge_commit_title` 사용.",
+              "type": "boolean"
+            },
+            "visibility": {
+              "default": "public",
+              "description": "리포지토리 가시성: 공개, 비공개 또는 내부.",
+              "type": "string"
+            },
+            "watchers": {
+              "type": "integer"
+            },
+            "watchers_count": {
+              "examples": [
+                80
+              ],
+              "type": "integer"
+            },
+            "web_commit_signoff_required": {
+              "default": false,
+              "description": "기여자가 웹 기반 커밋에 서명하도록 요구할지 여부",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "archive_url",
+            "assignees_url",
+            "blobs_url",
+            "branches_url",
+            "collaborators_url",
+            "comments_url",
+            "commits_url",
+            "compare_url",
+            "contents_url",
+            "contributors_url",
+            "deployments_url",
+            "description",
+            "downloads_url",
+            "events_url",
+            "fork",
+            "forks_url",
+            "full_name",
+            "git_commits_url",
+            "git_refs_url",
+            "git_tags_url",
+            "hooks_url",
+            "html_url",
+            "id",
+            "node_id",
+            "issue_comment_url",
+            "issue_events_url",
+            "issues_url",
+            "keys_url",
+            "labels_url",
+            "languages_url",
+            "merges_url",
+            "milestones_url",
+            "name",
+            "notifications_url",
+            "owner",
+            "private",
+            "pulls_url",
+            "releases_url",
+            "stargazers_url",
+            "statuses_url",
+            "subscribers_url",
+            "subscription_url",
+            "tags_url",
+            "teams_url",
+            "trees_url",
+            "url",
+            "clone_url",
+            "default_branch",
+            "forks",
+            "forks_count",
+            "git_url",
+            "has_downloads",
+            "has_issues",
+            "has_projects",
+            "has_wiki",
+            "has_pages",
+            "homepage",
+            "language",
+            "archived",
+            "disabled",
+            "mirror_url",
+            "open_issues",
+            "open_issues_count",
+            "license",
+            "pushed_at",
+            "size",
+            "ssh_url",
+            "stargazers_count",
+            "svn_url",
+            "watchers",
+            "watchers_count",
+            "created_at",
+            "updated_at"
+          ],
+          "title": "Repository",
+          "type": "object"
+        }
+      ]
+    },
+    "topics": {
+      "examples": [
+        "AndrewDongminYoo",
+        "atom",
+        "electron",
+        "API"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "trees_url": {
+      "examples": [
+        "http://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel/git/trees{/sha}"
+      ],
+      "type": "string"
+    },
+    "updated_at": {
+      "examples": [
+        "2011-01-26T19:14:43Z"
+      ],
+      "format": "date-time",
+      "type": "string"
+    },
+    "url": {
+      "examples": [
+        "https://api.github.com/repos/AndrewDongminYoo/AndrewDongminYoo.vercel"
+      ],
+      "format": "uri",
+      "type": "string"
+    },
+    "use_squash_pr_title_as_default": {
+      "examples": [
+        false
+      ],
+      "type": "boolean"
+    },
+    "visibility": {
+      "description": "리포지토리 가시성: 공개, 비공개 또는 내부.",
+      "examples": [
+        "public"
+      ],
+      "type": "string"
+    },
+    "watchers": {
+      "type": "integer"
+    },
+    "watchers_count": {
+      "examples": [
+        80
+      ],
+      "type": "integer"
+    },
+    "web_commit_signoff_required": {
+      "examples": [
+        false
+      ],
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "archive_url",
+    "assignees_url",
+    "blobs_url",
+    "branches_url",
+    "collaborators_url",
+    "comments_url",
+    "commits_url",
+    "compare_url",
+    "contents_url",
+    "contributors_url",
+    "deployments_url",
+    "description",
+    "downloads_url",
+    "events_url",
+    "fork",
+    "forks_url",
+    "full_name",
+    "git_commits_url",
+    "git_refs_url",
+    "git_tags_url",
+    "hooks_url",
+    "html_url",
+    "id",
+    "node_id",
+    "issue_comment_url",
+    "issue_events_url",
+    "issues_url",
+    "keys_url",
+    "labels_url",
+    "languages_url",
+    "merges_url",
+    "milestones_url",
+    "name",
+    "notifications_url",
+    "owner",
+    "private",
+    "pulls_url",
+    "releases_url",
+    "stargazers_url",
+    "statuses_url",
+    "subscribers_url",
+    "subscription_url",
+    "tags_url",
+    "teams_url",
+    "trees_url",
+    "url",
+    "clone_url",
+    "default_branch",
+    "forks",
+    "forks_count",
+    "git_url",
+    "has_issues",
+    "has_projects",
+    "has_wiki",
+    "has_pages",
+    "has_discussions",
+    "homepage",
+    "language",
+    "archived",
+    "disabled",
+    "mirror_url",
+    "open_issues",
+    "open_issues_count",
+    "license",
+    "pushed_at",
+    "size",
+    "ssh_url",
+    "stargazers_count",
+    "svn_url",
+    "watchers",
+    "watchers_count",
+    "created_at",
+    "updated_at",
+    "network_count",
+    "subscribers_count"
+  ]
+}
