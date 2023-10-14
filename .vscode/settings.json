@@ -10,6 +10,9 @@
         "editor.tabSize": 2,
         "editor.wordWrap": "on"
     },
+    "[typescriptreact,javascriptreact]": {
+        "editor.tabSize": 2
+    },
     "conventionalCommits.scopes": [
         "libs",
         "styles",
