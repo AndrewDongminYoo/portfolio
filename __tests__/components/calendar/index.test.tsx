@@ -1,4 +1,6 @@
-import { cleanup, render, screen } from '@testing-library/react';
+/// <reference types="@testing-library/jest-dom" />
+
+import { render, screen } from '@testing-library/react';
 import ReactGithubCalendar from 'components/calendar';
 import { ScriptProps } from 'next/script';
 import username from '@/constants/';
@@ -15,8 +17,6 @@ jest.mock('next/script', () => {
 });
 
 describe('ReactGithubCalendar', () => {
-    afterEach(cleanup);
-
     it('should defined', () => {
         expect(ReactGithubCalendar).toBeDefined();
     });

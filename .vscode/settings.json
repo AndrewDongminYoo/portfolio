@@ -65,6 +65,7 @@
         "unoptimized"
     ],
     "css.lint.unknownAtRules": "ignore",
+    "css.lint.vendorPrefix": "ignore",
     "explorer.incrementalNaming": "disabled",
     "files.associations": {
         "**/posts/*.md": "yaml"
