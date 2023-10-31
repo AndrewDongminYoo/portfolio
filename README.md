@@ -1,5 +1,12 @@
 # My Public Resume and Portfolio Website
 
+## Preview
+
+![메인페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/3bf7452a-90f9-4508-b5a3-6838ff37349c)
+
+![프로필페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/9d5147bf-6214-486c-8939-f5baa70d0d2e)
+
+
 ## YOO DONG MIN :: WHO I AM
 
 I am a former chef who decided to pursue a career in development during the COVID-19 pandemic. I started teaching myself web scraping using Python and later picked up React Native. I then completed a national support program for Java Spring development and became a backend developer. I also worked on Flutter applications before landing a job as a React Native developer. I really appreciate the productivity-focused and growth-oriented culture of the development industry, and I want to help beginners overcome their anxieties and uncertainties. I believe that there is a lot of room for growth in the mobile app industry, and I am excited to continue my journey as a developer.
