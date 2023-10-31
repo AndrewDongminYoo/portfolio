@@ -1,11 +1,15 @@
 # My Public Resume and Portfolio Website
 
-## Preview
+## Preview (Desktop)
 
 ![메인페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/3bf7452a-90f9-4508-b5a3-6838ff37349c)
 
 ![프로필페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/9d5147bf-6214-486c-8939-f5baa70d0d2e)
 
+## Preview (Mobile)
+
+![Galaxy S20 Ultra 1](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/68bb01de-5311-40a3-86ee-7e92604b7d58) | ![Galaxy S20 Ultra 2](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/4503d421-03fb-42b3-bc8a-7cb07452eac0)
+--- | --- |
 
 ## YOO DONG MIN :: WHO I AM
 
