@@ -18,24 +18,24 @@ import { username } from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   return (
-    <div className='flex flex-row px-6 overflow-hidden min-h-68'>
-      <Link href={repository.html_url}>
+    <div className='flex flex-row px-6  overflow-hidden sm:px-2 sm:w-80 min-h-68'>
+      <Link href={repository.html_url} className='sm:hidden'>
         <Image
           src={frameworks[repository.name]}
           alt='What Framework/Library used by this repository'
           priority={true}
           height={256}
-          width={256}
           className={names(
-            'flex h-full rounded-t rounded-l opacity-25 max-w-40',
-            'sm:overflow-x-hidden',
+            'flex h-full rounded-t rounded-l opacity-25',
+            'xl:max-w-24 lg:max-w-24 lg:min-w-20 md:max-w-10',
+            'sm:hidden -sm:mx-4',
           )}
         />
       </Link>
       <div
         className={names(
           'flex flex-col justify-between',
-          'py-8 px-12 leading-normal bg-background min-w-82.5 w-full',
+          'py-8 px-12 sm:px-0 leading-normal bg-background min-w-82.5 w-full',
           'first-letter:rounded-b lg:rounded-b-none lg:rounded-r',
         )}>
         <CopyToClipboard
@@ -66,8 +66,10 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         </CopyToClipboard>
         <div className='flex justify-between text-gray-900'>
           <Link href={repository.html_url} className='inline-block'>
-            <p className='mb-0 text-2xl'>{repository.owner.login}/</p>
-            <p className='text-3xl font-bold break-all'>{repository.name}</p>
+            <p className='mb-0 text-2xl sm:text-lg'>{repository.owner.login}/</p>
+            <p className='text-3xl sm:text-xl sm:tracking-tight font-bold break-all'>
+              {repository.name}
+            </p>
           </Link>
           <Image
             src={repository.owner.avatar_url}

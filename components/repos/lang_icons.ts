@@ -2,7 +2,6 @@ import aws from '@/public/svg/stacks/aws-lambda.svg';
 import expo from '@/public/svg/stacks/expo.svg';
 import flask from '@/public/svg/stacks/flask.svg';
 import flutter from '@/public/svg/stacks/flutter.svg';
-import markdown from '@/public/svg/stacks/markdown.svg';
 import nextjs from '@/public/svg/stacks/nextjs.svg';
 import openai from '@/public/svg/stacks/openai.svg';
 import reactnative from '@/public/svg/stacks/react-native.svg';
@@ -28,7 +27,7 @@ const frameworks: Record<string, any> = {
   'TIL-of-BootCamp-Flask': selenium,
   'TIL-of-BootCamp-Spring': spring,
   walking_tracker: rn_firebase,
-  AndrewDongminYoo: markdown,
+  wegooliFriendApp: flutter,
 };
 
 export default frameworks;

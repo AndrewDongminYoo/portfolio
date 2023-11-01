@@ -13,7 +13,6 @@ overrides:
     options:
       bracketSameLine: true
       bracketSpacing: true
-      editorconfig: false
       jsxSingleQuote: true
       singleQuote: true
       semi: true
