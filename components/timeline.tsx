@@ -18,7 +18,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
         )}>
         <div className='block w-full m-0 text-base break-all min-h-12.5'>
           <div className='grid mb-0.5 text-base leading-snug grid-cols-11'>{monthsLabels}</div>
-          <div className='grid grid-flow-col-dense pt-1 grid-cols-100'>
+          <div className='pt-1 grid grid-flow-col-dense grid-cols-100'>
             {timeline.map(makeBlock)}
           </div>
         </div>

@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 export default function Answer({ children }: { children: ReactNode }) {
   return (
     <div className='w-full border-b border-black/10 dark:border-gray-900/50 text-gray-800 dark:text-gray-100 group bg-gray-50 dark:bg-[#444654]'>
-      <div className='flex gap-4 p-4 m-auto text-base md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl md:py-6 lg:px-0'>
+      <div className='flex p-4 m-auto text-base gap-4 md:gap-6 md:max-w-2xl lg:max-w-2xl xl:max-w-3xl md:py-6 lg:px-0'>
         <div className='relative flex flex-col items-end w-8'>
           <div className='relative h-8 w-8 p-1 rounded-sm bg-[#10a37f] text-white flex items-center justify-center'>
             <svg
@@ -23,12 +23,12 @@ export default function Answer({ children }: { children: ReactNode }) {
         <div className='relative flex w-[calc(100%-50px)] md:flex-col lg:w-[calc(100%-115px)]'>
           <div className='flex flex-col flex-grow gap-3'>
             <div className='min-h-[20px] flex flex-col items-start gap-4 whitespace-pre-wrap'>
-              <div className='w-full prose break-words markdown dark:prose-invert light'>
+              <div className='w-full break-words prose markdown dark:prose-invert light'>
                 {children}
               </div>
             </div>
           </div>
-          <div className='flex self-end justify-center visible gap-4 mt-2 text-gray-400 lg:self-center lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2'></div>
+          <div className='flex self-end justify-center visible mt-2 text-gray-400 gap-4 lg:self-center lg:gap-1 lg:absolute lg:top-0 lg:translate-x-full lg:right-0 lg:mt-0 lg:pl-2'></div>
         </div>
       </div>
     </div>

@@ -4,10 +4,10 @@ exports[`Portfolio component should render correctly 1`] = `
 <body>
     <div>
         <div
-            class="lg:max-w-4xl bg-white my-0 mx-auto transition-all max-w-7xl"
+            class="mx-auto my-0 bg-white lg:max-w-4xl transition-all max-w-7xl"
         >
             <summary
-                class="xl:scrollbar-hide xl:w-120 text-base overflow-x-hidden inline-block text-base p-10 pb-4 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4 xs:overflow-x-hidden xl:pb-16 xl:top-0"
+                class="inline-block p-10 pb-4 overflow-x-hidden text-base xl:scrollbar-hide xl:w-120 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4 xs:overflow-x-hidden xl:pb-16 xl:top-0"
             >
                 <div
                     class="fixed z-50 flex justify-end print:hidden top-14 right-14"
@@ -82,7 +82,7 @@ exports[`Portfolio component should render correctly 1`] = `
                         class="p-0 mt-0 text-base border-t-0 text-slate-800"
                     >
                         <h2
-                            class="flex flex-row flex-nowrap items-center justify-between -ml-px mb-4 break-keep leading-snug text-2xl min-h-16"
+                            class="flex flex-row items-center justify-between mb-4 -ml-px text-2xl leading-snug flex-nowrap break-keep min-h-16"
                         >
                             집요하게 더 나은 답을 찾아내는 개발자 유동민입니다.
                         </h2>
@@ -90,10 +90,10 @@ exports[`Portfolio component should render correctly 1`] = `
                             class="p-0 my-0 list-none"
                         >
                             <li
-                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                                class="flex flex-row items-center justify-start text-sm font-normal leading-relaxed tracking-normal flex-nowrap"
                             >
                                 <a
-                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    class="inline pb-1 text-sm font-normal leading-relaxed tracking-normal truncate"
                                     href="tel:01035661857"
                                     rel="noopener"
                                     target="_blank"
@@ -112,10 +112,10 @@ exports[`Portfolio component should render correctly 1`] = `
                                 </a>
                             </li>
                             <li
-                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                                class="flex flex-row items-center justify-start text-sm font-normal leading-relaxed tracking-normal flex-nowrap"
                             >
                                 <a
-                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    class="inline pb-1 text-sm font-normal leading-relaxed tracking-normal truncate"
                                     href="mailto:ydm2790@gmail.com"
                                     rel="noopener"
                                     target="_blank"
@@ -134,10 +134,10 @@ exports[`Portfolio component should render correctly 1`] = `
                                 </a>
                             </li>
                             <li
-                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                                class="flex flex-row items-center justify-start text-sm font-normal leading-relaxed tracking-normal flex-nowrap"
                             >
                                 <a
-                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    class="inline pb-1 text-sm font-normal leading-relaxed tracking-normal truncate"
                                     href="https://github.com/AndrewDongminYoo"
                                     rel="noopener"
                                     target="_blank"
@@ -156,10 +156,10 @@ exports[`Portfolio component should render correctly 1`] = `
                                 </a>
                             </li>
                             <li
-                                class="flex flex-row flex-nowrap items-center justify-start leading-relaxed font-normal text-sm tracking-normal"
+                                class="flex flex-row items-center justify-start text-sm font-normal leading-relaxed tracking-normal flex-nowrap"
                             >
                                 <a
-                                    class="inline pb-1 tracking-normal leading-relaxed truncate font-normal text-sm"
+                                    class="inline pb-1 text-sm font-normal leading-relaxed tracking-normal truncate"
                                     href="https://www.youtube.com/watch?v=vOh90eJ7VdY"
                                     rel="noopener"
                                     target="_blank"
@@ -399,7 +399,7 @@ exports[`Portfolio component should render correctly 1`] = `
                 </section>
             </summary>
             <main
-                class="xl:scrollbar-hide xl:w-full-30 text-base overflow-x-hidden inline-block text-base p-10 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4 pt-0"
+                class="inline-block p-10 pt-0 overflow-x-hidden text-base xl:scrollbar-hide xl:w-full-30 xl:max-h-screen xl:min-h-screen xl:overflow-y-auto lg:block sm:p-4"
             >
                 <section>
                     <section

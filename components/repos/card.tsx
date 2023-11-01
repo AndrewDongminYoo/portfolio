@@ -18,7 +18,7 @@ import { username } from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   return (
-    <div className='flex flex-row px-6  overflow-hidden sm:px-2 sm:w-80 min-h-68'>
+    <div className='flex flex-row px-6 overflow-hidden  sm:px-2 sm:w-80 min-h-68'>
       <Link href={repository.html_url} className='sm:hidden'>
         <Image
           src={frameworks[repository.name]}
@@ -67,7 +67,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         <div className='flex justify-between text-gray-900'>
           <Link href={repository.html_url} className='inline-block'>
             <p className='mb-0 text-2xl sm:text-lg'>{repository.owner.login}/</p>
-            <p className='text-3xl sm:text-xl sm:tracking-tight font-bold break-all'>
+            <p className='text-3xl font-bold break-all sm:text-xl sm:tracking-tight'>
               {repository.name}
             </p>
           </Link>
@@ -82,7 +82,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         <p className='text-sm text-gray-500 xs:text-xs xl:text-xs break-keep'>
           {repository.description}
         </p>
-        <div className='grid w-full grid-cols-4 gap-x-2'>
+        <div className='w-full grid grid-cols-4 gap-x-2'>
           <Link
             href={`https://github.com/search?l=${repository.language}&q=user%3A${username}&type=Code`}
             className='text-xs'>

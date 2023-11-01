@@ -55,7 +55,7 @@ const Contribution = ({ project }: { project: Project }) => {
         <div className='datetime'>
           <FontAwesomeIcon
             icon={faCalendarCheck}
-            className='my-0 ml-0 mr-2 w-4'
+            className='w-4 my-0 ml-0 mr-2'
             aria-hidden='true'
             color='slateGray'
           />
@@ -64,7 +64,7 @@ const Contribution = ({ project }: { project: Project }) => {
         <div className='url__link'>
           <FontAwesomeIcon
             icon={faBloggerB}
-            className='my-0 ml-0 mr-2 w-4'
+            className='w-4 my-0 ml-0 mr-2'
             aria-hidden='true'
             color='slateGray'
           />
@@ -73,7 +73,7 @@ const Contribution = ({ project }: { project: Project }) => {
         <div className='url__link'>
           <FontAwesomeIcon
             icon={faSquareGithub}
-            className='my-0 ml-0 mr-2 w-4'
+            className='w-4 my-0 ml-0 mr-2'
             aria-hidden='true'
             color='slateGray'
           />
