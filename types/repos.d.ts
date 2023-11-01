@@ -65,6 +65,10 @@ export default interface Repository {
   keys_url:          string;
   labels_url:        string;
   language:          null | string;
+  /**
+   * 프로그래밍 언어
+   */
+  languages:         Record<string, number>;
   languages_url:     string;
   license:           null | LicenseSimple;
   master_branch?:    string;
