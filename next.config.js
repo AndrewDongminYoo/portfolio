@@ -31,18 +31,6 @@ module.exports = {
     outputFileTracing: true,
     /** 빌드 출력 디렉토리(기본값은 .next)는 이제 Next.js 캐시를 제외하고 기본적으로 지워집니다. */
     cleanDistDir: true,
-    /**
-     * Next.js는 v10.0.0부터 국제화(i18n) 라우팅을 기본적으로 지원합니다. 로캘 목록, 기본 로캘 및 도메인별 로캘을 제공하면 Next.js가 자동으로 라우팅을 처리합니다.
-     * 경로와 로캘 구문 분석을 간소화하여 react-intl, react-i18next, lingui, rosetta, next-intl, next-translate, next-multilingual, typesafe-i18n, tolgee 등과 같은 기존 i18n 라이브러리 솔루션을 보완.
-     * @see https://nextjs.org/docs/pages/building-your-application/routing/internationalization#prefixing-the-default-locale
-     */
-    i18n: {
-        localeDetection: false,
-        /** 애플리케이션에서 지원하려는 모든 로캘은 다음과 같습니다. */
-        locales: ['ko', 'en'],
-        /** 로캘이 아닌 접두사가 붙은 경로(예: `/hello`)를 방문할 때 사용할 기본 로캘입니다. */
-        defaultLocale: 'ko',
-    },
     images: {
         remotePatterns: [
             {

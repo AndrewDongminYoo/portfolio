@@ -1,8 +1,6 @@
-import type { GetStaticPropsContext, PreviewData } from 'next';
 import Resume, { Activity, Education, Experience, Project } from 'types/profile';
 import GridTimeline from 'components/timeline';
 import Layout from 'components/layout';
-import { ParsedUrlQuery } from 'querystring';
 import Post from 'components/posts';
 import ReactGithubCalendar from 'components/calendar';
 import ResumeSection from 'components/section';
@@ -12,10 +10,8 @@ import isAfter from 'date-fns/isAfter';
 import parse from 'date-fns/parseISO';
 import { primaryTitle } from '@/constants/';
 import { useRouter } from 'next/router';
-import { useTranslations } from 'next-intl';
 
 export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
-  const t = useTranslations('Index');
   const { defaultLocale, locale } = useRouter();
   const isHome = defaultLocale === locale;
 
@@ -28,7 +24,7 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
   const activity = groupedPosts.activity as Activity[];
   const education = groupedPosts.education as Education[];
   return (
-    <Layout title={isHome ? primaryTitle : t('title')}>
+    <Layout title={isHome ? primaryTitle : 'Home'}>
       <ResumeSection key={`${0}-timeline`} type='timeline'>
         <GridTimeline timeline={allPostsData} />
       </ResumeSection>
@@ -61,14 +57,11 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
   );
 }
 
-export async function getStaticProps(context: GetStaticPropsContext<ParsedUrlQuery, PreviewData>) {
+export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
-      /// 원하는 곳 어디에서나 메시지를 받을 수 있습니다.
-      /// 권장되는 패턴은 로캘별로 구분된 JSON 파일에 넣고 Next.js에서 받은 `로캘`에 따라 Next.js에서 받은 `로캘`을 기준으로 원하는 로캘을 읽는 것입니다.
-      messages: (await import(`../messages/${context.locale}.json`)).default,
     },
   };
 }

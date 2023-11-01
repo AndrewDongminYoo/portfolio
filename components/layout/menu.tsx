@@ -8,10 +8,8 @@ import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
 import { github } from '@/constants/';
 import { names } from 'lib/utils';
-import { useTranslations } from 'next-intl';
 
 export default function MenuButton() {
-  const t = useTranslations('MenuButton');
   return (
     <div className='fixed z-50 flex justify-end print:hidden top-14 right-14'>
       <Menu>
@@ -73,7 +71,7 @@ export default function MenuButton() {
                         inverse={active}
                       />
                       <Link href='#' onClick={() => window.print()}>
-                        {t('print')}
+                        {'프린트하기'}
                       </Link>
                     </button>
                   )}
@@ -95,7 +93,7 @@ export default function MenuButton() {
                         inverse={active}
                       />
                       <Link href='/repos' className='font-bold'>
-                        {t('portfolio')}
+                        {'포트폴리오'}
                       </Link>
                     </button>
                   )}
@@ -116,7 +114,7 @@ export default function MenuButton() {
                         aria-hidden='true'
                         inverse={active}
                       />
-                      <Link href={github}>{t('githubProfile')}</Link>
+                      <Link href={github}>{'깃헙프로필'}</Link>
                     </button>
                   )}
                 </Menu.Item>
