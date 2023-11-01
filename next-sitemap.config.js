@@ -2,7 +2,7 @@
  * @type {import('next-sitemap').IRobotsTxt}
  */
 const robotsTxtOptions = {
-    includeNonIndexSitemaps: true,
+    includeNonIndexSitemaps: false,
     policies: [{
         userAgent: '*',
         allow: [
@@ -28,8 +28,9 @@ const robotsTxtOptions = {
  */
 const sitemapConfig = {
     siteUrl: 'https://AndrewDongminYoo.vercel.app',
-    sitemapSize: 5000,
+    generateIndexSitemap: false,
     generateRobotsTxt: true,
+    output: 'standalone',
     robotsTxtOptions,
 };
 

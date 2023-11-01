@@ -10,6 +10,7 @@ overrides:
       - '**/*.tsx'
       - '**/*.js'
       - '**/*.jsx'
+      - '**/*.json'
     options:
       bracketSameLine: true
       bracketSpacing: true

@@ -17,4 +17,3 @@ Host: https://AndrewDongminYoo.vercel.app
 
 # Sitemaps
 Sitemap: https://AndrewDongminYoo.vercel.app/sitemap.xml
-Sitemap: https://AndrewDongminYoo.vercel.app/sitemap-0.xml
