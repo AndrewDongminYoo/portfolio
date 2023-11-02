@@ -9,6 +9,7 @@ import path from 'path';
 const { GITHUB_TOKEN } = process.env;
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 const reposDirectory = path.join(process.cwd(), 'data/repos');
+const starsDirectory = path.join(process.cwd(), 'data/stars');
 
 /**
  * @description 리포지토리 데이터에서 특정 속성을 재귀적으로 필터링.
@@ -70,6 +71,29 @@ export async function fetchRepositories() {
     .map((repo) => reclusiveFilter(repo));
 }
 
+export async function fetchStarredRepository() {
+  const EP_STARS: keyof Endpoints = 'GET /user/starred';
+  const stars = await octokit
+    .request(EP_STARS, {
+      sort: 'created',
+      direction: 'desc',
+      per_page: 100,
+      headers: {
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+    })
+    .then((stars) => stars.data);
+  const repositories = stars
+    .filter((R) => !R.fork && R.size > 4000 && !R.archived)
+    .map((repo) => reclusiveFilter(repo));
+  repositories.forEach((json) => {
+    const targetJsonPath = path.join(starsDirectory, `${json.name}.json`);
+    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 2), { flag: 'w' }, (err) => {
+      if (err) console.error(err);
+    });
+  });
+}
+
 /**
  * @description 깃허브 유저 및 repo 매개변수를 사용하여 리포지토리를 가져오고 가져온 데이터에 필터를 적용.
  * @param {string} owner - 저장소 소유자의 유저 이름 또는 조직 이름.
@@ -99,7 +123,7 @@ export async function downloadJSON() {
   );
   repositoryData.forEach((json) => {
     const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
-    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 4), { flag: 'w' }, (err) => {
+    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 2), { flag: 'w' }, (err) => {
       if (err) console.error(err);
     });
   });

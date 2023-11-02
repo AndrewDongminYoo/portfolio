@@ -16,18 +16,20 @@ import webpack from '@/public/svg/stacks/webpack.svg';
 const frameworks: Record<string, any> = {
   '52market.front': webpack,
   '52market.shop': swagger,
-  'AndrewDongminYoo.vercel': nextjs,
   'do-it-react-native-clone': typescript,
   'flask-My-Small-Meal': flask,
   'flutter-proxy-voting-app': flutter,
   'my-first-react-native-chatting-app': expo,
-  'openai-chatgpt-my-conversations': openai,
   'react-native-step-counter': reactnative,
   'Serverless-Framework-Crawlers': aws,
   'TIL-of-BootCamp-Flask': selenium,
   'TIL-of-BootCamp-Spring': spring,
+  cash_stepper: flutter,
+  chatgpt: openai,
+  portfolio: nextjs,
   walking_tracker: rn_firebase,
   wegooliFriendApp: flutter,
+  wegooli_friends: flutter,
 };
 
 export default frameworks;
