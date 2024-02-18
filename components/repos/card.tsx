@@ -40,7 +40,6 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         )}>
         <CopyToClipboard
           value={`${repository.html_url}.git`}
-          placeholder={repository.visibility}
           className='after:content-[attr(placeholder)] hover:after:content-[attr(title)]'>
           {repository.private ? (
             <FontAwesomeIcon
@@ -151,11 +150,10 @@ export default function RepoCard({ repository }: { repository: Repository }) {
 
 const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) => {
   const [isShowing, setIsShowing] = useState(false);
-  const { className, children, value, placeholder } = props;
+  const { className, children, value } = props;
   return (
     <>
       <button
-        placeholder={placeholder}
         title="Click to Copy Repository's git address."
         className={names('flex items-center mb-0 text-xs text-gray-600 cursor-pointer', className)}
         onClick={() => {
