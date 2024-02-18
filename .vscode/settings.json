@@ -1,92 +1,67 @@
 {
-    "[css]": {
-        "editor.formatOnSave": false
+  "[css]": {
+    "editor.formatOnSave": false
+  },
+  "[markdown]": {
+    "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/",
+    "cSpell.advanced.feature.useReferenceProviderWithRename": true,
+    "cSpell.fixSpellingWithRenameProvider": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on"
+  },
+  "[typescriptreact,javascriptreact]": {
+    "editor.tabSize": 2
+  },
+  "cSpell.customDictionaries": {
+    "modulab": {
+      "addWords": true,
+      "name": "modulab",
+      "path": "${workspaceFolder}/.cspell/modulab.txt",
+      "scope": "workspace"
     },
-    "[markdown]": {
-        "cSpell.advanced.feature.useReferenceProviderRemove": "/^#+\\s/",
-        "cSpell.advanced.feature.useReferenceProviderWithRename": true,
-        "cSpell.fixSpellingWithRenameProvider": true,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 2,
-        "editor.wordWrap": "on"
-    },
-    "[typescriptreact,javascriptreact]": {
-        "editor.tabSize": 2
-    },
-    "conventionalCommits.scopes": [
-        "libs",
-        "styles",
-        "assets",
-        "pages",
-        "datas",
-        "devEnv"
-    ],
-    "cSpell.customDictionaries": {
-        "modulab": {
-            "addWords": true,
-            "name": "modulab",
-            "path": "${workspaceFolder}/.cspell/modulab.txt",
-            "scope": "workspace"
-        },
-        "openai": {
-            "addWords": true,
-            "name": "openai",
-            "path": "${workspaceFolder}/.cspell/openai.txt",
-            "scope": "workspace"
-        }
-    },
-    "cSpell.files": [
-        "**/*",
-        "!data/repos/*.json",
-        "!data/posts/*.md",
-        "!components/repos/lang_colors.ts"
-    ],
-    "cSpell.ignoreRegExpList": [
-        "CStyleComment"
-    ],
-    "cSpell.words": [
-        "authorable",
-        "bloglovin",
-        "clsx",
-        "codepen",
-        "cssnano",
-        "cushman",
-        "defaultlocale",
-        "fontawesome",
-        "fortawesome",
-        "githubassets",
-        "googlecalendar",
-        "groupby",
-        "headlessui",
-        "maxage",
-        "nextjs",
-        "noto",
-        "opengraph",
-        "roboto",
-        "signoff",
-        "tailwindcss",
-        "unoptimized"
-    ],
-    "css.lint.unknownAtRules": "ignore",
-    "css.lint.vendorPrefix": "ignore",
-    "explorer.incrementalNaming": "disabled",
-    "files.associations": {
-        "**/posts/*.md": "yaml"
-    },
-    "git.ignoreLimitWarning": true,
-    "javascript.suggestionActions.enabled": false,
-    "json.schemaDownload.enable": true,
-    "json.schemas": [
-        {
-            "fileMatch": [
-                "**/repos/*.json"
-            ],
-            "url": "./data/schemas/repos.json"
-        }
-    ],
-    "json.validate.enable": true,
-    "markdownlint.config": {
-        "default": false
-    },
-    "tailwindCSS.validate": true
+    "openai": {
+      "addWords": true,
+      "name": "openai",
+      "path": "${workspaceFolder}/.cspell/openai.txt",
+      "scope": "workspace"
+    }
+  },
+  "cSpell.files": [
+    "**/*",
+    "!data/repos/*.json",
+    "!data/posts/*.md",
+    "!components/repos/lang_colors.ts"
+  ],
+  "cSpell.ignoreRegExpList": ["CStyleComment"],
+  "cSpell.words": [
+    "authorable",
+    "bloglovin",
+    "clsx",
+    "codepen",
+    "cssnano",
+    "cushman",
+    "defaultlocale",
+    "fontawesome",
+    "fortawesome",
+    "githubassets",
+    "googlecalendar",
+    "groupby",
+    "headlessui",
+    "maxage",
+    "nextjs",
+    "noto",
+    "opengraph",
+    "roboto",
+    "signoff",
+    "tailwindcss",
+    "unoptimized"
+  ],
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.vendorPrefix": "ignore",
+  "explorer.incrementalNaming": "disabled",
+  "files.associations": {
+    "**/posts/*.md": "yaml"
+  },
+  "tailwindCSS.validate": true
 }

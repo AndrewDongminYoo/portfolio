@@ -8,8 +8,8 @@
 
 ## Preview (Mobile)
 
-![Galaxy S20 Ultra 1](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/68bb01de-5311-40a3-86ee-7e92604b7d58) | ![Galaxy S20 Ultra 2](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/4503d421-03fb-42b3-bc8a-7cb07452eac0)
---- | --- |
+| ![Galaxy S20 Ultra 1](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/68bb01de-5311-40a3-86ee-7e92604b7d58) | ![Galaxy S20 Ultra 2](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/4503d421-03fb-42b3-bc8a-7cb07452eac0) |
+| --- | --- |
 
 ## YOO DONG MIN :: WHO I AM
 
@@ -105,6 +105,7 @@ cd resume
 ```
 
 환경 변수 설정
+
 ```shell
 cp .env.sample .env
 ```

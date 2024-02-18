@@ -22,34 +22,8 @@ lint:
     - prettier@3.2.5
     - markdownlint@0.39.0
   ignore:
-    - linters: [ALL]
-      paths:
-        # Next.JS Generated files
-        - .build/**
-        - out/**
-        - .next/**
-        # Configue files
-        - '*.config.js'
-        - .github/**
-        - .husky/**
-        - .vscode/**
-        # Resume Base data
-        - data/**/*.md
-        - data/**/*.json
     - linters:
-        - prettier
-        - eslint
-      paths:
-        # Style Sheet File
-        - '**/styles/*.css'
-        # Type Definition File
-        - types/*.d.ts
-        - '*.d.ts'
-    - linters:
-        - checkov
         - osv-scanner
-        - trivy
-        - trufflehog
       paths:
         - yarn.lock
   definitions:
