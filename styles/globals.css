@@ -1,186 +1,186 @@
-@import "./calendar.css";
-@import "./resume.css";
-@import "./markdown.css";
+@import './calendar.css';
+@import './resume.css';
+@import './markdown.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
-    .break-word {
-        word-break: break-word;
-    }
+  .break-word {
+    word-break: break-word;
+  }
 
-    .break-any {
-        line-break: anywhere;
-    }
+  .break-any {
+    line-break: anywhere;
+  }
 }
 
 @layer base {
-    :root {
-        --background: 0 0% 100%;
-        --foreground: 222.2 84% 4.9%;
-        --muted: 210 40% 96.1%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 222.2 84% 4.9%;
-        --card: 0 0% 100%;
-        --card-foreground: 222.2 84% 4.9%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --primary: 222.2 47.4% 11.2%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96.1%;
-        --secondary-foreground: 222.2 47.4% 11.2%;
-        --accent: 210 40% 96.1%;
-        --accent-foreground: 222.2 47.4% 11.2%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
-        --ring: 215 20.2% 65.1%;
-        --radius: 0.5rem;
-    }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --ring: 215 20.2% 65.1%;
+    --radius: 0.5rem;
+  }
 
-    .dark {
-        --background: 222.2 84% 4.9%;
-        --foreground: 210 40% 98%;
-        --muted: 217.2 32.6% 17.5%;
-        --muted-foreground: 215 20.2% 65.1%;
-        --popover: 222.2 84% 4.9%;
-        --popover-foreground: 210 40% 98%;
-        --card: 222.2 84% 4.9%;
-        --card-foreground: 210 40% 98%;
-        --border: 217.2 32.6% 17.5%;
-        --input: 217.2 32.6% 17.5%;
-        --primary: 210 40% 98%;
-        --primary-foreground: 222.2 47.4% 11.2%;
-        --secondary: 217.2 32.6% 17.5%;
-        --secondary-foreground: 210 40% 98%;
-        --accent: 217.2 32.6% 17.5%;
-        --accent-foreground: 210 40% 98%;
-        --destructive: 0 62.8% 30.6%;
-        --destructive-foreground: 0 85.7% 97.3%;
-        --ring: 217.2 32.6% 17.5%;
-    }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --ring: 217.2 32.6% 17.5%;
+  }
 }
 
 @layer base {
-    * {
-        @apply border-border;
-    }
+  * {
+    @apply border-border;
+  }
 
-    body {
-        @apply bg-background text-foreground;
-    }
+  body {
+    @apply bg-background text-foreground;
+  }
 
-    select {
-        @apply appearance-none;
-    }
+  select {
+    @apply appearance-none;
+  }
 
-    a {
-        @apply no-underline transition-all cursor-pointer hover:no-underline;
-        transition-delay: initial;
-        transition-duration: 0.08s;
-        transition-timing-function: ease-in-out;
-    }
+  a {
+    @apply no-underline transition-all cursor-pointer hover:no-underline;
+    transition-delay: initial;
+    transition-duration: 0.08s;
+    transition-timing-function: ease-in-out;
+  }
 
-    hr {
-        @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid border-slate-200;
-    }
+  hr {
+    @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid border-slate-200;
+  }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        @apply my-0;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply my-0;
+  }
 
-    h1,
-    h2,
-    h3 {
-        @apply font-bold;
-    }
+  h1,
+  h2,
+  h3 {
+    @apply font-bold;
+  }
 
-    h4 {
-        @apply leading-relaxed tracking-normal;
-    }
+  h4 {
+    @apply leading-relaxed tracking-normal;
+  }
 
-    h5,
-    h6 {
-        @apply font-normal;
-    }
+  h5,
+  h6 {
+    @apply font-normal;
+  }
 
-    h1 {
-        @apply leading-snug tracking-normal;
-    }
+  h1 {
+    @apply leading-snug tracking-normal;
+  }
 
-    h2 {
-        @apply leading-snug tracking-normal;
-    }
+  h2 {
+    @apply leading-snug tracking-normal;
+  }
 
-    h3 {
-        @apply leading-snug tracking-normal;
-    }
+  h3 {
+    @apply leading-snug tracking-normal;
+  }
 
-    li,
-    h5 {
-        @apply leading-relaxed tracking-normal;
-    }
+  li,
+  h5 {
+    @apply leading-relaxed tracking-normal;
+  }
 
-    h6 {
-        @apply leading-normal;
-    }
+  h6 {
+    @apply leading-normal;
+  }
 
-    p {
-        @apply mb-2 font-normal leading-relaxed tracking-normal;
-    }
+  p {
+    @apply mb-2 font-normal leading-relaxed tracking-normal;
+  }
 
-    small {
-        @apply leading-normal;
-    }
+  small {
+    @apply leading-normal;
+  }
 
-    code {
-        @apply px-1 py-px my-0 ml-0 mr-px bg-gray-100 border border-solid rounded border-slate-200 text-slate-700;
-    }
+  code {
+    @apply px-1 py-px my-0 ml-0 mr-px bg-gray-100 border border-solid rounded border-slate-200 text-slate-700;
+  }
 
-    pre {
-        @apply px-4 py-3 m-0 break-all bg-gray-100 border border-solid rounded break-word border-slate-200 text-foreground;
-    }
+  pre {
+    @apply px-4 py-3 m-0 break-all bg-gray-100 border border-solid rounded break-word border-slate-200 text-foreground;
+  }
 
-    pre code {
-        @apply p-0 m-0 bg-transparent rounded-none;
-    }
+  pre code {
+    @apply p-0 m-0 bg-transparent rounded-none;
+  }
 
-    blockquote {
-        @apply p-4 border-l-2 border-solid border-slate-200;
-    }
+  blockquote {
+    @apply p-4 border-l-2 border-solid border-slate-200;
+  }
 
-    blockquote small {
-        @apply italic font-normal leading-normal;
-    }
+  blockquote small {
+    @apply italic font-normal leading-normal;
+  }
 
-    blockquote small:before {
-        @apply pr-2;
-        content: "―";
-    }
+  blockquote small:before {
+    @apply pr-2;
+    content: '―';
+  }
 
-    video {
-        @apply object-cover w-full mt-4;
-    }
+  video {
+    @apply object-cover w-full mt-4;
+  }
 
-    img,
-    svg,
-    video,
-    canvas,
-    audio,
-    iframe,
-    embed,
-    object {
-        @apply inline align-middle;
-    }
+  img,
+  svg,
+  video,
+  canvas,
+  audio,
+  iframe,
+  embed,
+  object {
+    @apply inline align-middle;
+  }
 
-    ul {
-        @apply pl-10 my-4;
-    }
+  ul {
+    @apply pl-10 my-4;
+  }
 }

@@ -1,76 +1,76 @@
 @page {
-    size: A4 portrait;
-    margin: auto;
+  size: A4 portrait;
+  margin: auto;
 }
 
 * {
-    @apply border-border;
-    /* Chrome, Safari 6 – 15.3, Edge */
-    -webkit-print-color-adjust: exact !important;
-    /* Firefox 97+, Safari 15.4+ */
-    print-color-adjust: exact !important;
+  @apply border-border;
+  /* Chrome, Safari 6 – 15.3, Edge */
+  -webkit-print-color-adjust: exact !important;
+  /* Firefox 97+, Safari 15.4+ */
+  print-color-adjust: exact !important;
 }
 
 #contributions,
 #timeline {
-    display: none;
+  display: none;
 }
 
 *,
 ::after,
 ::before {
-    text-shadow: none !important;
-    box-shadow: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
 }
 
 body {
-    min-width: 992px !important;
+  min-width: 992px !important;
 }
 
 img {
-    page-break-inside: avoid;
+  page-break-inside: avoid;
 }
 
 h2,
 h3,
 p {
-    orphans: 3;
-    widows: 3;
+  orphans: 3;
+  widows: 3;
 }
 
 h2,
 h3 {
-    page-break-after: avoid;
+  page-break-after: avoid;
 }
 
 h2,
 h3,
 p {
-    orphans: 3;
-    widows: 3;
+  orphans: 3;
+  widows: 3;
 }
 
 .container {
-    min-width: 992px !important;
+  min-width: 992px !important;
 }
 
 .badge {
-    border: 1px solid #000;
+  border: 1px solid #000;
 }
 
 thead {
-    display: table-header-group;
+  display: table-header-group;
 }
 
 .table {
-    border-collapse: collapse !important;
+  border-collapse: collapse !important;
 }
 
 .table td,
 .table th {
-    background-color: #fff !important;
+  background-color: #fff !important;
 }
 
 tr {
-    page-break-inside: avoid;
+  page-break-inside: avoid;
 }
