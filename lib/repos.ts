@@ -132,7 +132,7 @@ export async function downloadJSON() {
 
 /**
  * @description 지정된 정적 디렉토리 아래의 파일 이름을 읽고 파일 확장자가 없는 파일 이름을 포함하는 객체 배열을 반환.
- * @returns {{ params: { repo: string; } }} `repo`(파일 이름에서 '.json' 확장자를 제거하여 얻은 저장소의 ID) 속성을 포함하는 `params` 속성을 가진 객체.
+ * @returns {{ params: { repo: string; } }[]} `repo`(파일 이름에서 '.json' 확장자를 제거하여 얻은 저장소의 ID) 속성을 포함하는 `params` 속성을 가진 객체.
  */
 export function readReposIds() {
   // Get file names under /data/repos

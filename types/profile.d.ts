@@ -3,87 +3,51 @@ export default Resume;
 type Resume = Experience | Project | Education | Activity;
 
 export type SectionType =
-    | 'experiences'
-    | 'projects'
-    | 'educations'
-    | 'activities'
-    | 'contributions'
-    | 'timeline';
+  | 'experiences'
+  | 'projects'
+  | 'educations'
+  | 'activities'
+  | 'contributions'
+  | 'timeline';
 
 type ResumeBase<type extends string> = {
-    id:                          string;
-    type:                        type;
-    index:                       number;
-    title:                       string;
-    name:                        string;
-    startAt:                     DateString;
-    endAt:                       DateString | null;
-    icon?:                       Emoji;
-    description:                 Description;
+  id: string;
+  type: type;
+  index: number;
+  title: string;
+  name: string;
+  startAt: string;
+  endAt: string | null;
+  icon?: string;
+  description: string | string[];
 };
 
 export type Experience = ResumeBase<'experience'> & {
-    name:                        string;
-    role:                        string;
-    website_url?:                URLLike;
-    duration:                    number;
-    tags:                        Tag[];
-    projects:                    Project[];
-    link?:                       URLLike;
+  name: string;
+  role: string;
+  website_url?: string;
+  duration: number;
+  tags: string[];
+  projects: Project[];
+  link?: string;
 };
 
 export type Project = ResumeBase<'project'> & {
-    repository?:                 URLLike;
-    website_url?:                URLLike;
-    name:                        string;
-    tags:                        Tag[];
-    analyzedLink:                URLLike;
-    teamDescription:             Description;
-    roleDescriptions:            Description;
+  repository?: string;
+  website_url?: string;
+  name: string;
+  tags: string[];
+  analyzedLink: string;
+  teamDescription: string | string[];
+  roleDescriptions: string | string[];
 };
 
 export type Education = ResumeBase<'education'> & {
-    name:                        string;
-    major:                       string;
-    degree:                      string;
+  name: string;
+  major: string;
+  degree: string;
 };
 
 export type Activity = ResumeBase<'activity'> & {
-    website_url:                 URLLike;
+  website_url: string;
 };
-
-type URLLike = string;
-type DateString = string;
-type Description = string | string[];
-type Emoji = string;
-type Tag =
-    | 'Swagger'
-    | 'styled-components'
-    | 'Prisma'
-    | 'AWS CloudFront'
-    | 'AWS RDS'
-    | 'AWS Lambda'
-    | 'Django'
-    | 'Firebase'
-    | 'Flask'
-    | 'GitHub'
-    | 'GraphQL'
-    | 'Java'
-    | 'MongoDB'
-    | 'MySQL'
-    | 'Python'
-    | 'React Native'
-    | 'ReactJS'
-    | 'Selenium'
-    | 'Spring Boot'
-    | 'TypeScript'
-    | 'Webpack'
-    | 'flutter'
-    | 'AWS ElasticBeanstalk'
-    | 'Spring Data JPA'
-    | 'WebSocket'
-    | 'Spring Security'
-    | 'Chart.js'
-    | 'Storybook'
-    | 'BeautifulSoup'
-    | 'Expo';
