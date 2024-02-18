@@ -1,6 +1,6 @@
-@import './calendar.css';
-@import './resume.css';
-@import './markdown.css';
+@import "./calendar.css";
+@import "./resume.css";
+@import "./markdown.css";
 
 @tailwind base;
 @tailwind components;

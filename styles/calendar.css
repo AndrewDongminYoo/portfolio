@@ -7,23 +7,23 @@
         --color-calendar-graph-day-bg: #ebedf0;
     }
 
-    rect.ContributionCalendar-day[data-level='0'] {
+    rect.ContributionCalendar-day[data-level="0"] {
         fill: var(--color-calendar-graph-day-bg);
     }
 
-    rect.ContributionCalendar-day[data-level='1'] {
+    rect.ContributionCalendar-day[data-level="1"] {
         fill: var(--color-calendar-graph-day-L1-bg);
     }
 
-    rect.ContributionCalendar-day[data-level='2'] {
+    rect.ContributionCalendar-day[data-level="2"] {
         fill: var(--color-calendar-graph-day-L2-bg);
     }
 
-    rect.ContributionCalendar-day[data-level='3'] {
+    rect.ContributionCalendar-day[data-level="3"] {
         fill: var(--color-calendar-graph-day-L3-bg);
     }
 
-    rect.ContributionCalendar-day[data-level='4'] {
+    rect.ContributionCalendar-day[data-level="4"] {
         fill: var(--color-calendar-graph-day-L4-bg);
     }
 
@@ -132,7 +132,7 @@
     }
 
     .monospace a {
-        color: #1D75AB;
+        color: #1d75ab;
         text-decoration: none;
     }
 
@@ -181,7 +181,7 @@
         font-size: 12px;
         color: #959da5;
         text-align: center;
-        background: rgba(0, 0, 0, .85);
+        background: rgba(0, 0, 0, 0.85);
         border-radius: 3px;
         display: none;
         pointer-events: none;
@@ -205,7 +205,7 @@
         margin: 0 0 0 -5px;
         content: " ";
         border: 5px solid transparent;
-        border-top-color: rgba(0, 0, 0, .85)
+        border-top-color: rgba(0, 0, 0, 0.85);
     }
 
     text.ContributionCalendar-label {

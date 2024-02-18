@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer components {
-
     .flex-column {
         @apply flex-col;
     }
@@ -138,7 +137,7 @@
     }
 
     .writer-text {
-        @apply inline-block overflow-hidden tracking-tighter whitespace-nowrap ;
+        @apply inline-block overflow-hidden tracking-tighter whitespace-nowrap;
         @apply animate-typing text-3xl font-bold;
         @apply box-border border-r-4 border-r-orange-500 border-solid;
     }
