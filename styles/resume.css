@@ -123,7 +123,7 @@
 
   .part_title,
   .part_title a {
-    @apply mr-2 text-base font-medium;
+    @apply mr-2 text-lg font-medium;
     @apply hover:font-extrabold;
   }
 

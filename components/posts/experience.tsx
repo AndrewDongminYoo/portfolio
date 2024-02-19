@@ -40,17 +40,17 @@ export default function ExperienceElement({ experience }: { experience: Experien
 }
 
 const Contribution = ({ project }: { project: Project }) => {
-  const websiteUrl = project.website_url ?? 'https://cat-minzzi.tistory.com/';
-  const repository = project.repository ?? 'https://github.com/andrewdongminyoo';
   const startAt = project.startAt ?? '개발 예정';
   const endAt = project.startAt ? project.endAt ?? '진행중' : '';
   return (
     <li className='list_contribution_item'>
-      <h4 className='part_title'>
-        <Link target='_blank' rel='noopener' href={websiteUrl}>
-          {project.title}
-        </Link>
-      </h4>
+      {project.website_url != null ? (
+        <h4 className='part_title'>
+          <Link target='_blank' rel='noopener' href={project.website_url}>
+            {project.title}
+          </Link>
+        </h4>
+      ) : null}
       <h4 className='part_period'>
         <div className='datetime'>
           <FontAwesomeIcon
@@ -61,24 +61,28 @@ const Contribution = ({ project }: { project: Project }) => {
           />
           <Period startAt={startAt} endAt={endAt} />
         </div>
-        <div className='url__link'>
-          <FontAwesomeIcon
-            icon={faBloggerB}
-            className='w-4 my-0 ml-0 mr-2'
-            aria-hidden='true'
-            color='slateGray'
-          />
-          {websiteUrl}
-        </div>
-        <div className='url__link'>
-          <FontAwesomeIcon
-            icon={faSquareGithub}
-            className='w-4 my-0 ml-0 mr-2'
-            aria-hidden='true'
-            color='slateGray'
-          />
-          {repository}
-        </div>
+        {project.website_url != null ? (
+          <div className='url__link'>
+            <FontAwesomeIcon
+              icon={faBloggerB}
+              className='w-4 my-0 ml-0 mr-2'
+              aria-hidden='true'
+              color='slateGray'
+            />
+            {project.website_url}
+          </div>
+        ) : null}
+        {project.repository != null ? (
+          <div className='url__link'>
+            <FontAwesomeIcon
+              icon={faSquareGithub}
+              className='w-4 my-0 ml-0 mr-2'
+              aria-hidden='true'
+              color='slateGray'
+            />
+            {project.repository}
+          </div>
+        ) : null}
       </h4>
       <div className='markdown markdown_viewer part_description'>
         <Description resume={project} />
