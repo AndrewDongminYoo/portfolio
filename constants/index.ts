@@ -44,7 +44,7 @@ export const contacts = [
   },
   {
     type: 'youtube',
-    link: 'https://www.youtube.com/watch?v=vOh90eJ7VdY',
+    link: 'https://www.youtube.com/channel/UC0f92oThUd9CdSipnoiYR8g',
     image: _youtube,
   },
 ];
