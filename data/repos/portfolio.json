@@ -17,11 +17,11 @@
   "description": "깃허브 메인 프로필(+이력서)입니다. NextJS",
   "fork": false,
   "created_at": "2022-01-13T02:03:50Z",
-  "updated_at": "2023-10-31T18:54:17Z",
-  "pushed_at": "2023-11-02T21:48:27Z",
+  "updated_at": "2024-05-05T06:39:12Z",
+  "pushed_at": "2024-05-05T06:39:08Z",
   "svn_url": "https://github.com/AndrewDongminYoo/portfolio",
   "homepage": "https://andrewdongminyoo.vercel.app",
-  "size": 45875,
+  "size": 46219,
   "stargazers_count": 1,
   "watchers_count": 1,
   "language": "TypeScript",
@@ -52,8 +52,8 @@
     "pull": true
   },
   "languages": {
-    "TypeScript": 189866,
-    "CSS": 15936,
-    "JavaScript": 10671
+    "TypeScript": 188572,
+    "CSS": 14405,
+    "JavaScript": 9063
   }
 }
