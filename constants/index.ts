@@ -1,6 +1,5 @@
 import _email from '@/public/svg/contacts/email.svg';
 import _github from '@/public/svg/contacts/github.svg';
-import _phone from '@/public/svg/contacts/phone.svg';
 import _youtube from '@/public/svg/contacts/youtube.svg';
 
 export const username = 'AndrewDongminYoo';
@@ -33,11 +32,6 @@ export const stacks = {
   ],
 };
 export const contacts = [
-  {
-    type: 'phone',
-    link: 'tel:01035661857',
-    image: _phone,
-  },
   {
     type: 'email',
     link: 'mailto:ydm2790@gmail.com',
