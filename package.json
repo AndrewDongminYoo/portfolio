@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "vercel-build": "npm run prepare && next build",
+    "vercel-build": "next build",
     "start": "next start",
     "dev": "next dev",
     "test": "jest --verbose --updateSnapshot",
@@ -12,7 +12,7 @@
     "info": "next info",
     "build": "next build",
     "format": "prettier --write **/*.ts* --write **/**/*.ts*",
-    "prepare": "npx next lint --fix-type problem",
+    "lint": "npx next lint --fix-type problem",
     "prestart": "next build",
     "postbuild": "next-sitemap",
     "watch-type": "tsc --watch",
@@ -21,11 +21,6 @@
     "build-storybook": "storybook build"
   },
   "license": "MIT",
-  "engines": {
-    "node": "^18.16.1",
-    "yarn": "^1.22.19",
-    "npm": "^9.5.1"
-  },
   "bin": "bin/next",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
