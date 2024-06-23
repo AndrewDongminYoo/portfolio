@@ -2,13 +2,13 @@
 import { contacts, description, primaryTitle } from '@/constants/';
 import Image from 'next/image';
 import Link from 'next/link';
-import { names } from 'lib/utils';
+import { cn } from 'lib/utils';
 
 export default function ProfileBio() {
   return (
     <section className='p-0 mt-0 text-base border-t-0 text-foreground'>
       <h2
-        className={names(
+        className={cn(
           'flex flex-row items-center justify-between',
           'mb-4 -ml-px text-2xl leading-snug',
           'flex-nowrap break-keep min-h-16',
@@ -30,12 +30,12 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
   const { href, hostname, pathname, search } = new URL(link);
   return (
     <li
-      className={names(
+      className={cn(
         'flex flex-row items-center justify-start',
         'text-sm font-normal leading-relaxed tracking-normal flex-nowrap',
       )}>
       <Link
-        className={names(
+        className={cn(
           'inline pb-1 text-sm font-normal',
           'leading-relaxed tracking-normal truncate',
         )}

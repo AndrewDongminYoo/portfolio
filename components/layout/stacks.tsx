@@ -1,4 +1,4 @@
-import { names } from 'lib/utils';
+import { cn } from 'lib/utils';
 import { stacks } from '@/constants/';
 
 export default function StackList() {
@@ -15,7 +15,7 @@ export default function StackList() {
           return (
             <li className='inline-block' key={`${i}-${stack}`}>
               <div
-                className={names(
+                className={cn(
                   'duration-75 ease-in-out transition-all',
                   'px-1 py-0.5 my-0 ml-0 mr-1',
                   'overflow-hidden whitespace-nowrap border-0 rounded max-w-xxs bg-slate-800',
@@ -35,7 +35,7 @@ export default function StackList() {
           return (
             <li className='inline-block' key={`${i}`}>
               <div
-                className={names(
+                className={cn(
                   'duration-75 ease-in-out transition-all',
                   'px-1 py-0.5 my-0 ml-0 mr-1 max-w-xxs',
                   'text-xs font-normal',

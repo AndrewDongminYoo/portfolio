@@ -6,9 +6,9 @@ import MenuButton from './menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
+import { cn } from 'lib/utils';
 import favicon from '@/public/favicon.ico';
 import laundry from '@/public/images/laundry.jpg';
-import { names } from 'lib/utils';
 import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
 
@@ -22,12 +22,7 @@ export default function Layout({ children, title }: LayoutProps) {
   const isHome = pathname === '/';
   return (
     <div
-      className={names(
-        'lg:max-w-4xl',
-        'bg-background my-0 mx-auto',
-        'transition-all',
-        'max-w-7xl',
-      )}>
+      className={cn('lg:max-w-4xl', 'bg-background my-0 mx-auto', 'transition-all', 'max-w-7xl')}>
       <Head>
         <meta
           name='og:image'
@@ -47,7 +42,7 @@ export default function Layout({ children, title }: LayoutProps) {
         <title>{title}</title>
       </Head>
       <summary
-        className={names(
+        className={cn(
           'xl:scrollbar-hide xl:w-120',
           'text-base overflow-x-hidden',
           'inline-block text-base p-10 pb-4',
@@ -78,7 +73,7 @@ export default function Layout({ children, title }: LayoutProps) {
         </section>
       </summary>
       <main
-        className={names(
+        className={cn(
           'xl:scrollbar-hide xl:w-full-30',
           'text-base overflow-x-hidden',
           'inline-block text-base p-10',

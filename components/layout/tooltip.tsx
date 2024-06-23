@@ -1,5 +1,6 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from 'components/ui/tooltip';
 import { Button } from 'components/ui/button';
+import { TooltipProvider } from '@radix-ui/react-tooltip';
 
 export function TooltipDemo() {
   return (

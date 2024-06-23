@@ -6,7 +6,7 @@ import LanguageStateBar from 'components/repos/langs_bar';
 import Link from 'next/link';
 import RepoCard from 'components/repos/card';
 import type Repository from 'types/repos';
-import { names } from 'lib/utils';
+import { cn } from 'lib/utils';
 
 type RepoProps = {
   repository: Repository;
@@ -25,7 +25,7 @@ export default function Repo({ repository }: RepoProps) {
     <article aria-label='repositories'>
       <Link
         href={html_url}
-        className={names(
+        className={cn(
           'box-border leading-tight break-words',
           'text-sm font-medium text-slate-300',
         )}>

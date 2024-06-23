@@ -1,9 +1,9 @@
 import Period from 'components/common/period';
 import { ReactElement } from 'react';
 import type Resume from 'types/profile';
+import { cn } from 'lib/utils';
 import { differenceInDays } from 'date-fns/differenceInDays';
 import { format } from 'date-fns/format';
-import { names } from 'lib/utils';
 import { parseISO } from 'date-fns/parseISO';
 import { renderToString } from 'react-dom/server';
 
@@ -12,7 +12,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
   return (
     <div className='flex flex-col items-end justify-start w-full'>
       <div
-        className={names(
+        className={cn(
           'flex flex-col items-start justify-start flex-nowrap',
           'w-full px-0 py-6 mb-0 border-b-0 max-h-max',
         )}>
@@ -36,7 +36,7 @@ const getMonthLabels = () => {
       <time
         key={now.toUTCString()}
         dateTime={month}
-        className={names(
+        className={cn(
           'pl-1 border-r border-solid border-r-slate-200',
           'text-xs leading-normal text-slate-600',
         )}>
@@ -67,7 +67,7 @@ const getMonthLabels = () => {
         data-toggle='popover'
         data-placement='top'
         data-content={renderToString(popOverHtml)}
-        className={names(
+        className={cn(
           'font-black leading-normal text-center whitespace-nowrap',
           'rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
           ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',

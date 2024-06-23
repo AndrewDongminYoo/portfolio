@@ -12,8 +12,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type Repository from 'types/repos';
 import { Transition } from '@headlessui/react';
+import { cn } from 'lib/utils';
 import frameworks from './lang_icons';
-import { names } from 'lib/utils';
 import { username } from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
@@ -25,7 +25,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           alt='What Framework/Library used by this repository'
           priority={true}
           height={256}
-          className={names(
+          className={cn(
             'flex h-full rounded-t rounded-l opacity-25',
             'xl:max-w-24 lg:max-w-24 lg:min-w-20 md:max-w-10',
             'sm:hidden -sm:mx-4',
@@ -33,7 +33,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         />
       </Link>
       <div
-        className={names(
+        className={cn(
           'flex flex-col justify-between',
           'py-8 px-12 sm:px-0 leading-normal bg-background min-w-82.5 w-full',
           'first-letter:rounded-b lg:rounded-b-none lg:rounded-r',
@@ -155,7 +155,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
     <>
       <button
         title="Click to Copy Repository's git address."
-        className={names('flex items-center mb-0 text-xs text-gray-600 cursor-pointer', className)}
+        className={cn('flex items-center mb-0 text-xs text-gray-600 cursor-pointer', className)}
         onClick={() => {
           setIsShowing(true);
           navigator.clipboard.writeText(value);
@@ -167,7 +167,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
         static
         as='div'
         show={isShowing}
-        className={names(
+        className={cn(
           'px-1 my-0 ml-0 mr-1 py-0.5 w-fit',
           'text-xs text-foreground whitespace-nowrap',
           'bg-slate-200 border-0 rounded',

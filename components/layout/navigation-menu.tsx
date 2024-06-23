@@ -12,7 +12,7 @@ import {
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import React from 'react';
-import { names } from 'lib/utils';
+import { cn } from 'lib/utils';
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -62,7 +62,7 @@ export function NavigationMenuDemo() {
               <li className='row-span-3'>
                 <NavigationMenuLink asChild>
                   <Link
-                    className={names(
+                    className={cn(
                       'flex flex-col justify-end w-full h-full p-6',
                       'no-underline outline-none select-none rounded-md',
                       'bg-gradient-to-b from-muted/50 to-muted focus:shadow-md',
@@ -119,7 +119,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
         <NavigationMenuLink asChild>
           <a
             ref={ref}
-            className={names(
+            className={cn(
               'block select-none space-y-1 rounded-md p-3 leading-none',
               'no-underline outline-none transition-colors',
               'hover:bg-accent hover:text-accent-foreground',

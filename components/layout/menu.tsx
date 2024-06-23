@@ -6,8 +6,8 @@ import Link from 'next/link';
 import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
+import { cn } from 'lib/utils';
 import { github } from '@/constants/';
-import { names } from 'lib/utils';
 
 export default function MenuButton() {
   return (
@@ -29,13 +29,13 @@ export default function MenuButton() {
                 alt='My Lovely Cat'
                 width={56}
                 height={56}
-                className={names(
+                className={cn(
                   'absolute right-0 z-10 w-14 h-14',
                   'animate-bounce motion-reduce:animate-none',
                 )}
               />
               <span
-                className={names(
+                className={cn(
                   'animate-ping motion-reduce:animate-none',
                   'bottom-0 left-11 absolute w-3.5 h-3.5',
                   'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full',
@@ -45,7 +45,6 @@ export default function MenuButton() {
             {/* Use the `Transition` component. */}
             <Transition
               show={open}
-              className='fixed right-20 top-20'
               enter='transition duration-100 ease-out'
               enterFrom='transform scale-95 opacity-0'
               enterTo='transform scale-100 opacity-100'
@@ -57,7 +56,7 @@ export default function MenuButton() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      className={names(
+                      className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
                         'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                       )}>
@@ -79,7 +78,7 @@ export default function MenuButton() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      className={names(
+                      className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
                         'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                       )}>
@@ -101,7 +100,7 @@ export default function MenuButton() {
                 <Menu.Item>
                   {({ active }) => (
                     <button
-                      className={names(
+                      className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
                         'text-gray-900 ui-active:bg-slate-500 ui-active:text-white group',
                       )}>
