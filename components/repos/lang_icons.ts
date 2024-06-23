@@ -1,12 +1,12 @@
 import aws from '@/public/svg/stacks/aws-lambda.svg';
-import expo from '@/public/svg/stacks/expo.svg';
-import flask from '@/public/svg/stacks/flask.svg';
+import dart from '@/public/svg/stacks/dart.svg';
 import flutter from '@/public/svg/stacks/flutter.svg';
+import markdown from '@/public/svg/stacks/markdown.svg';
+import mdx from '@/public/svg/stacks/mdx.svg';
 import nextjs from '@/public/svg/stacks/nextjs.svg';
 import openai from '@/public/svg/stacks/openai.svg';
 import reactnative from '@/public/svg/stacks/react-native.svg';
 import rn_firebase from '@/public/svg/stacks/react-native-firebase.svg';
-import selenium from '@/public/svg/stacks/selenium.svg';
 import spring from '@/public/svg/stacks/spring.svg';
 import swagger from '@/public/svg/stacks/swagger.svg';
 import typescript from '@/public/svg/stacks/typescript-icon.svg';
@@ -17,19 +17,17 @@ const frameworks: Record<string, any> = {
   '52market.front': webpack,
   '52market.shop': swagger,
   'do-it-react-native-clone': typescript,
-  'flask-My-Small-Meal': flask,
-  'flutter-proxy-voting-app': flutter,
-  'my-first-react-native-chatting-app': expo,
+  'docs-trunk-io-ko': markdown,
   'react-native-step-counter': reactnative,
-  'Serverless-Framework-Crawlers': aws,
-  'TIL-of-BootCamp-Flask': selenium,
+  'serverless-crawlers': aws,
   'TIL-of-BootCamp-Spring': spring,
+  'walking-tracker': rn_firebase,
+  AndrewDongminYoo: markdown,
   cash_stepper: flutter,
   chatgpt: openai,
   portfolio: nextjs,
-  walking_tracker: rn_firebase,
-  wegooliFriendApp: flutter,
-  wegooli_friends: flutter,
+  wegooli_friends: dart,
+  wiki: mdx,
 };
 
 export default frameworks;

@@ -17,10 +17,10 @@
   "description": "Serverless Framework를 활용해 AWS Lambda Crawler 만들기",
   "fork": false,
   "created_at": "2022-11-03T10:17:43Z",
-  "updated_at": "2024-03-01T08:18:49Z",
-  "pushed_at": "2024-04-11T14:43:52Z",
+  "updated_at": "2024-06-02T14:36:50Z",
+  "pushed_at": "2024-06-18T22:28:04Z",
   "svn_url": "https://github.com/AndrewDongminYoo/serverless-crawlers",
-  "size": 11568,
+  "size": 11664,
   "stargazers_count": 1,
   "watchers_count": 1,
   "language": "HTML",
@@ -33,7 +33,7 @@
   "forks_count": 1,
   "archived": false,
   "disabled": false,
-  "open_issues_count": 7,
+  "open_issues_count": 9,
   "allow_forking": true,
   "is_template": false,
   "web_commit_signoff_required": false,
@@ -56,7 +56,7 @@
   ],
   "visibility": "public",
   "forks": 1,
-  "open_issues": 7,
+  "open_issues": 9,
   "watchers": 1,
   "default_branch": "main",
   "permissions": {
@@ -68,10 +68,10 @@
   },
   "languages": {
     "HTML": 20508590,
-    "TypeScript": 93956,
-    "Jupyter Notebook": 38734,
-    "Python": 37008,
+    "TypeScript": 93942,
+    "Jupyter Notebook": 39205,
+    "Python": 37025,
     "CSS": 22405,
-    "JavaScript": 1134
+    "JavaScript": 1123
   }
 }

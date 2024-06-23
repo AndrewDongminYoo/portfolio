@@ -1,8 +1,8 @@
 {
   "id": 683122027,
   "node_id": "R_kgDOKLedaw",
-  "name": "wegooli_firends",
-  "full_name": "AndrewDongminYoo/wegooli_firends",
+  "name": "wegooli_friends",
+  "full_name": "AndrewDongminYoo/wegooli_friends",
   "private": false,
   "owner": {
     "login": "AndrewDongminYoo",
@@ -13,12 +13,12 @@
     "type": "User",
     "site_admin": false
   },
-  "html_url": "https://github.com/AndrewDongminYoo/wegooli_firends",
+  "html_url": "https://github.com/AndrewDongminYoo/wegooli_friends",
   "fork": false,
   "created_at": "2023-08-25T16:47:31Z",
   "updated_at": "2023-11-27T17:24:17Z",
   "pushed_at": "2023-11-27T17:11:42Z",
-  "svn_url": "https://github.com/AndrewDongminYoo/wegooli_firends",
+  "svn_url": "https://github.com/AndrewDongminYoo/wegooli_friends",
   "size": 115984,
   "stargazers_count": 0,
   "watchers_count": 0,

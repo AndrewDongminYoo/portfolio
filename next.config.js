@@ -57,7 +57,7 @@ module.exports = {
     disableStaticImages: false,
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-    unoptimized: false,
+    unoptimized: true,
   },
   /**
    * 헤더를 사용하면 들어오는 요청 경로에 대한 사용자 정의 HTTP 헤더를 설정할 수 있습니다.
