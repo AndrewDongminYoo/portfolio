@@ -2,14 +2,14 @@
 
 ## Preview (Desktop)
 
-![메인페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/3bf7452a-90f9-4508-b5a3-6838ff37349c)
+![이력서 페이지](assets/desktop-1.png)
 
-![프로필페이지](https://github.com/AndrewDongminYoo/AndrewDongminYoo.vercel/assets/82999715/9d5147bf-6214-486c-8939-f5baa70d0d2e)
+![깃허브 페이지](assets/desktop-2.png)
 
 ## Preview (Mobile)
 
-| ![Galaxy S20 Ultra 1](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/68bb01de-5311-40a3-86ee-7e92604b7d58) | ![Galaxy S20 Ultra 2](https://github.com/AndrewDongminYoo/my_portfolio.vercel/assets/82999715/4503d421-03fb-42b3-bc8a-7cb07452eac0) |
-| --- | --- |
+| ![iPhone 12 Pro](assets/mobile-1.png) | ![iPhone 12 Pro](assets/mobile-2.png) | ![iPhone 12 Pro](assets/mobile-3.png) |
+| --- | --- | --- |
 
 ## YOO DONG MIN :: WHO I AM
 
