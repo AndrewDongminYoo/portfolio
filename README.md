@@ -45,7 +45,6 @@ After completing a backend development training course and looking for a job, I 
 - `eslint-config-prettier`: 현재 프로젝트의 마지막 ESLint 구성에서 Prettier와 충돌하는 ESLint 규칙을 비활성화하기위한 구성.
 - `eslint-plugin-jest-dom`: Jest DOM를 사용하기 위한 ESLint 플러그인. Jest는 객체 모사와 Jest-dom은 브라우저의 함수를 모킹하기 위해 사용.
 - `eslint-plugin-prefer-arrow`: 함수를 선언할 때 권장되는 작성 규칙을 체크하도록 하는 ESLint 플러그인.
-- `eslint-plugin-jsdoc`: JSDoc을 사용하기위한 ESLint 플러그인
 - `eslint-plugin-react`: React 컴포넌트에 대해 정적 분석을 수행하는 ESLint 플러그인.
 - `eslint-plugin-testing-library`: 권장 규칙을 검사할 때 @testing-library/react-hooks 플러그인
 - `prettier`: 다양한 언어를 지원하는 코드 포맷터

@@ -21,7 +21,6 @@ extends:
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
   - plugin:jest-dom/recommended
-  - plugin:jsdoc/recommended
   - plugin:jsx-a11y/recommended
   - plugin:react-hooks/recommended
   - plugin:react/recommended
@@ -78,7 +77,6 @@ plugins:
   - react
   - jsx-a11y
   - prefer-arrow
-  - eslint-plugin-jsdoc
   - eslint-plugin-react
   - eslint-plugin-jest-dom
   - eslint-plugin-testing-library
@@ -187,12 +185,6 @@ rules:
   jest-dom/prefer-to-have-style: error
   jest-dom/prefer-to-have-text-content: error
   jest-dom/prefer-to-have-value: error
-  jsdoc/check-tag-names: error
-  jsdoc/no-undefined-types: error
-  jsdoc/require-jsdoc: off
-  jsdoc/require-param-type: error
-  jsdoc/require-property-type: error
-  jsdoc/require-returns-type: error
   jsx-a11y/alt-text:
     - error
     - elements:
