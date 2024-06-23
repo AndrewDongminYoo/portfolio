@@ -22,7 +22,7 @@ const frameworks: Record<string, any> = {
   'serverless-crawlers': aws,
   'TIL-of-BootCamp-Spring': spring,
   'walking-tracker': rn_firebase,
-  AndrewDongminYoo: markdown,
+  andrewdongminyoo: markdown,
   cash_stepper: flutter,
   chatgpt: openai,
   portfolio: nextjs,

@@ -23,14 +23,13 @@ projects:
     endAt: '2023-07-30'
     repository: 'https://github.com/AndrewDongminYoo/radiusApp'
     website_url: https://apps.apple.com/kr/app/위굴리-행복카/id1571834301
-    notion_url: null
     description:
       - 커뮤니티 중심 카셰어링, 위굴리 행복카 커뮤니티 앱의 버전 업그레이드 및 유지보수를 담당했습니다.
+      - 안드로이드 최소 SDK 버전 및 의존성 패키지 오류 해결 등
   - title: '위굴리 프렌즈 신규 앱 런칭'
     startAt: '2023-08-10'
     endAt: '2023-10-27'
     repository: 'https://github.com/AndrewDongminYoo/wegooli_friends'
-    website_url: null
-    notion_url: null
     description:
-      - 친구들과 함께 쓰는 팀 카셰어링 - 위굴리 프렌즈, 일정 내 MVP 런칭을 목표로 개발했습니다. 간단한 컴포넌트에 집중하고 개발했습니다.
+      - 친구들과 함께 쓰는 팀 카셰어링 - 위굴리 프렌즈, 일정 내 MVP 런칭을 목표로 개발했습니다.
+      - 적은 인원으로 효율적으로 개발하고자 피그마 플러그인과 개발자 모드를 활용해 빠르게 컴포넌트를 개발했습니다.
