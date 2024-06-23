@@ -42,7 +42,12 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
         href={href}
         target='_blank'
         rel='noopener'>
-        <Image alt={`${type}:${hostname}${pathname}${search}`} src={image} width='0' height='0' />
+        <Image
+          alt={`${type}:${hostname}${pathname}${search}`}
+          src={image}
+          width='245.25'
+          height='28'
+        />
       </Link>
     </li>
   );

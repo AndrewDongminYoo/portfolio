@@ -1,6 +1,6 @@
-import _email from '@/public/svg/contacts/email.svg';
-import _github from '@/public/svg/contacts/github.svg';
-import _youtube from '@/public/svg/contacts/youtube.svg';
+import _email from '@/public/images/contacts/email.png';
+import _github from '@/public/images/contacts/github.png';
+import _youtube from '@/public/images/contacts/youtube.png';
 
 export const username = 'AndrewDongminYoo';
 export const myName = 'Dongmin, Yu';
