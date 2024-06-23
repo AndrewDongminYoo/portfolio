@@ -6,8 +6,8 @@ import ReactGithubCalendar from 'components/calendar';
 import ResumeSection from 'components/section';
 import { getSortedPostsData } from 'lib/posts';
 import groupBy from 'lodash.groupby';
-import isAfter from 'date-fns/isAfter';
-import parse from 'date-fns/parseISO';
+import { isAfter } from 'date-fns/isAfter';
+import { parseISO } from 'date-fns/parseISO';
 import { primaryTitle } from '@/constants/';
 import { useRouter } from 'next/router';
 
@@ -16,7 +16,7 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
   const isHome = defaultLocale === locale;
 
   allPostsData = allPostsData.filter((resume) =>
-    isAfter(parse(resume.startAt), new Date(2022, 1, 1)),
+    isAfter(parseISO(resume.startAt), new Date(2022, 1, 1)),
   );
   const groupedPosts = groupBy(allPostsData, (resume: Resume) => resume.type);
   const experience = groupedPosts.experience as Experience[];

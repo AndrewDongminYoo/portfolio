@@ -1,7 +1,7 @@
 import Resume, { Activity, Education, Experience, Project } from 'types/profile';
 import matter, { GrayMatterFile } from 'gray-matter';
 import fs from 'fs';
-import parse from 'date-fns/parseISO';
+import { parseISO } from 'date-fns/parseISO';
 import path from 'path';
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
@@ -10,7 +10,7 @@ export function getSortedPostsData() {
   const allPostsData = getAllIds().map((id) => getPostData(id));
   // Sort posts by date
   return allPostsData.sort((a, b) => {
-    if (parse(a.startAt) < parse(b.startAt)) {
+    if (parseISO(a.startAt) < parseISO(b.startAt)) {
       return 1;
     } else return -1;
   });

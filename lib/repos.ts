@@ -3,7 +3,7 @@ import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
 import type Repository from 'types/repos';
 import fs from 'fs';
-import parse from 'date-fns/parseISO';
+import { parseISO } from 'date-fns/parseISO';
 import path from 'path';
 
 const { GITHUB_TOKEN } = process.env;
@@ -164,7 +164,7 @@ export function readRepositories() {
   const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
   // Sort repos by date
   return allReposData.sort((a, b) => {
-    if (parse(a.pushed_at) < parse(b.pushed_at)) {
+    if (parseISO(a.pushed_at) < parseISO(b.pushed_at)) {
       return 1;
     } else return -1;
   });

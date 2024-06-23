@@ -1,15 +1,15 @@
-import $ from 'date-fns/format';
-import diffInDays from 'date-fns/differenceInDays';
-import diffInMonths from 'date-fns/differenceInMonths';
-import diffInWeeks from 'date-fns/differenceInWeeks';
-import diffInYears from 'date-fns/differenceInYears';
-import isValid from 'date-fns/isValid';
-import parse from 'date-fns/parseISO';
+import { format } from 'date-fns/format';
+import { differenceInDays } from 'date-fns/differenceInDays';
+import { differenceInMonths } from 'date-fns/differenceInMonths';
+import { differenceInWeeks } from 'date-fns/differenceInWeeks';
+import { differenceInYears } from 'date-fns/differenceInYears';
+import { isValid } from 'date-fns/isValid';
+import { parseISO } from 'date-fns/parseISO';
 
 const DateElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
-  const date = parse(dateTime);
+  const date = parseISO(dateTime);
   if (isValid(date)) {
-    return <time dateTime={dateTime}>{$(date, fmt ?? 'yy/MM')}</time>;
+    return <time dateTime={dateTime}>{format(date, fmt ?? 'yy/MM')}</time>;
   } else {
     return <span>{dateTime}</span>;
   }
@@ -26,12 +26,12 @@ export default function Period({
   className?: string;
   datesOnly?: boolean;
 }) {
-  const start = parse(startAt);
-  const end = isValid(parse(endAt)) ? parse(endAt) : new Date();
-  const diffD = diffInDays(end, start);
-  const diffW = diffInWeeks(end, start) + 1;
-  const diffM = diffInMonths(end, start) + 1;
-  const diffY = diffInYears(end, start) + 1;
+  const start = parseISO(startAt);
+  const end = isValid(parseISO(endAt)) ? parseISO(endAt) : new Date();
+  const diffD = differenceInDays(end, start);
+  const diffW = differenceInWeeks(end, start) + 1;
+  const diffM = differenceInMonths(end, start) + 1;
+  const diffY = differenceInYears(end, start) + 1;
   let periodString = '';
   if (diffD > 2) periodString = `(${diffD}일)`;
   if (diffW > 2) periodString = `(${diffW}주)`;

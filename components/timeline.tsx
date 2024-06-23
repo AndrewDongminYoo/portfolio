@@ -1,10 +1,10 @@
 import Period from 'components/common/period';
 import { ReactElement } from 'react';
 import type Resume from 'types/profile';
-import diff from 'date-fns/differenceInDays';
-import format from 'date-fns/format';
+import { differenceInDays } from 'date-fns/differenceInDays';
+import { format } from 'date-fns/format';
 import { names } from 'lib/utils';
-import parse from 'date-fns/parseISO';
+import { parseISO } from 'date-fns/parseISO';
 import { renderToString } from 'react-dom/server';
 
 export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
@@ -48,12 +48,12 @@ const getMonthLabels = () => {
   }
   const latest = new Date();
   const oldest = now;
-  const pixel = 100 / diff(latest, oldest);
+  const pixel = 100 / differenceInDays(latest, oldest);
   const makeBlock = (action: Resume) => {
     const { type, id, name, startAt, endAt } = action;
-    const end = endAt ? parse(endAt) : latest;
-    const sPoint = Math.round(diff(parse(startAt), oldest) * pixel);
-    const ePoint = Math.round(diff(end, oldest) * pixel);
+    const end = endAt ? parseISO(endAt) : latest;
+    const sPoint = Math.round(differenceInDays(parseISO(startAt), oldest) * pixel);
+    const ePoint = Math.round(differenceInDays(end, oldest) * pixel);
     if (sPoint <= 0 || ePoint <= 0) return null;
     const gridColumn = `${sPoint} / ${ePoint}`;
     const popOverHtml = <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} />;
