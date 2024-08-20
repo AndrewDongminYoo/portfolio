@@ -24,8 +24,8 @@ projects:
     endAt: '2023-04-25'
     repository: 'https://github.com/AndrewDongminYoo/react-native-step-counter'
     website_url: 'https://andrewdongminyoo.github.io/react-native-step-counter'
-    notion_url: 'https://donminzzi.notion.site/RNStepCounter-6bb4dc74cbb2433eb4b5348a6e94e3c8?pvs=4'
     description:
       - iOS의 CMPedometer 프로토콜과 안드로이드의 SensorManager를 각각 활용해 iOS 및 안드로이드에서 걸음 수를 동기화하여 다룰 수 있도록 제작한 크로스 플랫폼(쉐어드) 네이티브 모듈입니다.
       - Android API level 19이하의 기기까지 호환이 가능한 원시 가속도계 센서 데이터를 AOSP (안드로이드 오픈소스) 레퍼런스의 신뢰성 지수 정확도 보정 알고리즘을 사용한 방법으로 걸음을 분석하는 모듈을 제작했습니다.
-      - 리액트 네이티브가 꾸준히 지적받은 성능 이슈를 보완하는 새로운 네이티브 모듈 아키텍쳐 중 하나인 Turbo Module을 제작하는 경험을 쌓을 수 있었습니다.  Hermes와 Flipper 등의 성능 모니터링 도구를 함께 사용하며 응답성 및 메모리를 올바르게 관리할 수 있는 능력을 배양했습니다.
+      - 리액트 네이티브가 꾸준히 지적받은 성능 이슈를 보완하는 새로운 네이티브 모듈 아키텍쳐 중 하나인 Turbo Module을 제작하는 경험을 쌓을 수 있었습니다.
+        Hermes와 Flipper 등의 성능 모니터링 도구를 함께 사용하며 응답성 및 메모리를 올바르게 관리할 수 있는 능력을 배양했습니다.
