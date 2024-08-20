@@ -9,7 +9,7 @@ website_url: 'https://cami.kr/'
 duration: 11
 tags:
   - 'Flutter'
-  - 'NestJs'
+  - 'NestJS'
   - 'TypeScript'
   - 'Dart'
   - 'Elixir'
