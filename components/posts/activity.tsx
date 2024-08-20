@@ -5,7 +5,7 @@ import Period from 'components/common/period';
 
 export default function ActivityElement({ activity }: { activity: Activity }) {
   const startAt = activity.startAt ?? '개발 예정';
-  const endAt = activity.startAt ? activity.endAt ?? '진행중' : '';
+  const endAt = activity.startAt ? (activity.endAt ?? '진행중') : '';
   return (
     <div className='resume_card_item'>
       <div className='resume_card_left'>

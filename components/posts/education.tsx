@@ -4,7 +4,7 @@ import Period from 'components/common/period';
 
 export default function EducationElement({ education }: { education: Education }) {
   const startAt = education.startAt ?? '입학 예정';
-  const endAt = education.startAt ? education.endAt ?? '졸업 예정' : '';
+  const endAt = education.startAt ? (education.endAt ?? '졸업 예정') : '';
   return (
     <div className='resume_card_item'>
       <div className='w-32 resume_card_left max-sm:w-full'>

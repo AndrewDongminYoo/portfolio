@@ -41,7 +41,7 @@ export default function ExperienceElement({ experience }: { experience: Experien
 
 const Contribution = ({ project }: { project: Project }) => {
   const startAt = project.startAt ?? '개발 예정';
-  const endAt = project.startAt ? project.endAt ?? '진행중' : '';
+  const endAt = project.startAt ? (project.endAt ?? '진행중') : '';
   return (
     <li className='list_contribution_item'>
       {project.website_url != null ? (

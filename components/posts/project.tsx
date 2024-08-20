@@ -9,7 +9,7 @@ export default function ProjectElement({ project }: { project: Project }) {
   const websiteUrl = project.website_url ?? 'https://andrewdongminyoo.vercel.app/';
   const repository = project.repository ?? 'https://github.com/andrewdongminyoo';
   const startAt = project.startAt ?? '진행 예정';
-  const endAt = project.startAt ? project.endAt ?? '진행중' : '';
+  const endAt = project.startAt ? (project.endAt ?? '진행중') : '';
   return (
     <div className='resume_card_item'>
       <div className='resume_card_left'>
