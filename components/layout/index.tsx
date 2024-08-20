@@ -2,7 +2,7 @@ import { github, myName } from '@/constants/';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import MenuButton from './menu';
+import MenuButtons from './menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
@@ -52,7 +52,7 @@ export default function Layout({ children, title }: LayoutProps) {
           'xs:overflow-x-hidden',
           'xl:pb-16 xl:top-0',
         )}>
-        <MenuButton />
+        <MenuButtons />
         <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
           <Link href={isHome ? github : '/'} className='writer-text'>
             {myName}

@@ -1,4 +1,4 @@
-import { Menu, Transition } from '@headlessui/react';
+import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { faCodepen, faIdCard, faPrint } from 'components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -9,13 +9,13 @@ import cat from '@/public/images/kkori_the_cutest.png';
 import { cn } from 'lib/utils';
 import { github } from '@/constants/';
 
-export default function MenuButton() {
+export default function MenuButtons() {
   return (
     <div className='fixed z-50 flex justify-end print:hidden top-14 right-14'>
       <Menu>
         {({ open }) => (
           <>
-            <Menu.Button className='fixed'>
+            <MenuButton className='fixed'>
               <Image
                 src={backgroundImage}
                 alt='Cat Floating in Space'
@@ -41,7 +41,7 @@ export default function MenuButton() {
                   'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full',
                 )}
               />
-            </Menu.Button>
+            </MenuButton>
             {/* Use the `Transition` component. */}
             <Transition
               show={open}
@@ -52,9 +52,9 @@ export default function MenuButton() {
               leaveFrom='transform scale-100 opacity-100'
               leaveTo='transform scale-95 opacity-0'>
               {/* Mark this component as `static` */}
-              <Menu.Items static className='text-gray-900 shadow-md rounded-md bg-slate-50'>
-                <Menu.Item>
-                  {({ active }) => (
+              <MenuItems static className='text-gray-900 rounded-md shadow-md bg-slate-50'>
+                <MenuItem>
+                  {({ focus }) => (
                     <button
                       className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
@@ -67,16 +67,16 @@ export default function MenuButton() {
                         width={20}
                         height={20}
                         aria-hidden='true'
-                        inverse={active}
+                        inverse={focus}
                       />
                       <Link href='#' onClick={() => window.print()}>
                         {'프린트하기'}
                       </Link>
                     </button>
                   )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
+                </MenuItem>
+                <MenuItem>
+                  {({ focus }) => (
                     <button
                       className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
@@ -89,16 +89,16 @@ export default function MenuButton() {
                         width={20}
                         height={20}
                         aria-hidden='true'
-                        inverse={active}
+                        inverse={focus}
                       />
                       <Link href='/repos' className='font-bold'>
                         {'포트폴리오'}
                       </Link>
                     </button>
                   )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
+                </MenuItem>
+                <MenuItem>
+                  {({ focus }) => (
                     <button
                       className={cn(
                         'flex items-center w-full p-2 text-sm rounded-md',
@@ -111,13 +111,13 @@ export default function MenuButton() {
                         width={20}
                         height={20}
                         aria-hidden='true'
-                        inverse={active}
+                        inverse={focus}
                       />
                       <Link href={github}>{'깃헙프로필'}</Link>
                     </button>
                   )}
-                </Menu.Item>
-              </Menu.Items>
+                </MenuItem>
+              </MenuItems>
             </Transition>
           </>
         )}
