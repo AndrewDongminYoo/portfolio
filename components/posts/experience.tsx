@@ -1,5 +1,5 @@
 import { Experience, Project } from 'types/profile';
-import { faBloggerB, faCalendarCheck, faSquareGithub } from 'components/common/icons';
+import { faCalendarCheck, faChrome, faSquareGithub } from 'components/common/icons';
 import Description from 'components/common/description';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -64,7 +64,7 @@ const Contribution = ({ project }: { project: Project }) => {
         {project.website_url != null ? (
           <div className='url__link'>
             <FontAwesomeIcon
-              icon={faBloggerB}
+              icon={faChrome}
               className='w-4 my-0 ml-0 mr-2'
               aria-hidden='true'
               color='slateGray'

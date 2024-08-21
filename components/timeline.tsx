@@ -85,5 +85,5 @@ const tailwindColor = {
   activity: 'bg-gray-400 text-zinc-800',
   project: 'bg-gray-500 text-zinc-100',
   education: 'bg-gray-400 text-zinc-700',
-  experience: 'bg-slate-700 text-slate-400',
+  experience: 'bg-[#1b263b] text-[#e0e1dd]',
 };

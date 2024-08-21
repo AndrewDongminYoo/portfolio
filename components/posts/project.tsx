@@ -1,4 +1,4 @@
-import { faBloggerB, faDiscord, faSquareGithub } from 'components/common/icons';
+import { faChrome, faDiscord, faSquareGithub } from 'components/common/icons';
 import Description from 'components/common/description';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -52,7 +52,7 @@ export default function ProjectElement({ project }: { project: Project }) {
           </li>
           <li className='list_contribution_item'>
             <FontAwesomeIcon
-              icon={faBloggerB}
+              icon={faChrome}
               className='w-4 my-0 ml-0 mr-2'
               aria-hidden='true'
               color='slateGray'

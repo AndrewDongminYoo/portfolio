@@ -6,7 +6,7 @@ const subTitles = {
   experiences: '업무 프로젝트',
   projects: '개인/팀 프로젝트',
   activities: '활동/교육',
-  contributions: '퍼블릭 컨트리뷰션',
+  contributions: '컨트리뷰션',
   timeline: '타임라인',
 };
 
