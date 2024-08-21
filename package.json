@@ -39,7 +39,6 @@
     "cva": "npm:class-variance-authority@0.7.0",
     "date-fns": "^3.6.0",
     "find-cache-dir": "^5.0.0",
-    "github-calendar": "^2.3.4",
     "gpt-3-encoder": "^1.1.4",
     "gray-matter": "^4.0.3",
     "lodash.groupby": "^4.6.0",
@@ -48,6 +47,7 @@
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",
+    "react-github-calendar": "^4.2.2",
     "react-hook-form": "^7.52.0",
     "sharp": "^0.33.4",
     "storybook": "8.1.10"

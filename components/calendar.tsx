@@ -1,29 +1,20 @@
-import GitHubCalendar from 'github-calendar';
+import GitHubCalendar from 'react-github-calendar';
 import ResumeSection from 'components/section';
-import Script from 'next/script';
 import { username } from '@/constants/';
-
-function onLoad() {
-  if (typeof GitHubCalendar === 'function') {
-    try {
-      GitHubCalendar('.calendar', username, {
-        responsive: true,
-        global_stats: true,
-        tooltips: true,
-        cache: 24 * 60 * 60 * 1000,
-      });
-    } catch (e) {
-      throw 'Cannot Load GitHubCalendar';
-    }
-  }
-}
 
 export default function ReactGithubCalendar() {
   return (
-    <Script id='github-calendar' title='github-calendar' onLoad={onLoad}>
-      <ResumeSection key={`${1}-contributions`} type='contributions'>
-        <div className='calendar' />
-      </ResumeSection>
-    </Script>
+    <ResumeSection key={`${1}-contributions`} type='contributions'>
+      <GitHubCalendar
+        username={username}
+        blockSize={9.4}
+        style={{ color: 'lightGray', paddingTop: 10 }}
+        fontSize={11}
+        hideColorLegend={true}
+        theme={{
+          light: ['#EBEDF0', '#B6E3FF', '#54AEFF', '#0969DA', '#0A3069'],
+        }}
+      />
+    </ResumeSection>
   );
 }
