@@ -1,5 +1,6 @@
 rules:
   quoted-strings:
+    quote-type: single
     required: only-when-needed
     extra-allowed: ['{|}']
   empty-values:
@@ -8,3 +9,5 @@ rules:
   key-duplicates: {}
   octal-values:
     forbid-implicit-octal: true
+ignore:
+  - data/posts/experience_*.yaml

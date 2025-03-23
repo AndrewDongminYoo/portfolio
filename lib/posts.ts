@@ -27,7 +27,7 @@ export function getAllIds() {
 
 export function getPostData(post: string) {
   // Read markdown file as string
-  const fullPath = path.join(postsDirectory, `${post}.md`);
+  const fullPath = path.join(postsDirectory, `${post}`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
