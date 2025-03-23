@@ -1,26 +1,26 @@
 version: 0.1
 cli:
-  version: 1.22.3
+  version: 1.22.11
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.2
+      ref: v1.6.7
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
-    - checkov@3.2.234
-    - osv-scanner@1.8.3
-    - trivy@0.54.1
-    - trufflehog@3.81.9
-    - yamllint@1.35.1
+    - checkov@3.2.390
+    - osv-scanner@2.0.0
+    - trivy@0.60.0
+    - trufflehog@3.88.18
+    - yamllint@1.36.2
     - svgo@3.3.2
-    - oxipng@9.1.2
-    - actionlint@1.7.1
+    - oxipng@9.1.4
+    - actionlint@1.7.7
     - git-diff-check
-    - gitleaks@8.18.4
+    - gitleaks@8.24.0
     - eslint@8.57.0
-    - prettier@3.3.3
-    - markdownlint@0.41.0
+    - prettier@3.5.3
+    - markdownlint@0.44.0
   ignore:
     - linters:
         - osv-scanner
@@ -37,7 +37,7 @@ runtimes:
   enabled:
     - python@3.10.8
     - go@1.21.0
-    - node@18.12.1
+    - node@18.20.5
 actions:
   enabled:
     - trunk-announce
