@@ -99,8 +99,5 @@
     "typescript": "^5.5.2",
     "webpack": "^5.92.1"
   },
-  "resolutions": {
-    "@testing-library/dom": "^8.0.0 || ^9.0.0"
-  },
   "packageManager": "yarn@1.22.19"
 }
