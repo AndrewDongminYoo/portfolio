@@ -80,7 +80,6 @@ plugins:
   - eslint-plugin-react
   - eslint-plugin-jest-dom
   - eslint-plugin-testing-library
-  - '@typescript-eslint'
 rules:
   complexity:
     - error
