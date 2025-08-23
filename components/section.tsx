@@ -2,6 +2,7 @@ import React, { ComponentProps } from 'react';
 import type { SectionType } from 'types/profile';
 
 const subTitles = {
+  summary: 'Professional Summary',
   educations: '학력/전공',
   experiences: '업무 프로젝트',
   projects: '개인/팀 프로젝트',

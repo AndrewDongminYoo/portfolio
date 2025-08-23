@@ -2,6 +2,7 @@ import Resume, { Activity, Education, Experience, Project } from 'types/profile'
 import GridTimeline from 'components/timeline';
 import Layout from 'components/layout';
 import Post from 'components/posts';
+import Summary from 'components/posts/summary';
 import ReactGithubCalendar from 'components/calendar';
 import ResumeSection from 'components/section';
 import { getSortedPostsData } from 'lib/posts';
@@ -25,6 +26,9 @@ export default function Index({ allPostsData }: { allPostsData: Resume[] }) {
   const education = groupedPosts.education as Education[];
   return (
     <Layout title={isHome ? primaryTitle : 'Home'}>
+      <ResumeSection key={`${0}-summary`} type='summary'>
+        <Summary />
+      </ResumeSection>
       <ResumeSection key={`${0}-timeline`} type='timeline'>
         <GridTimeline timeline={allPostsData} />
       </ResumeSection>
