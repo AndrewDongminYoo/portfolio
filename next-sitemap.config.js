@@ -29,7 +29,7 @@ const sitemapConfig = {
   siteUrl: 'https://AndrewDongminYoo.vercel.app',
   generateIndexSitemap: false,
   generateRobotsTxt: true,
-  output: 'standalone',
+  output: 'export',
   robotsTxtOptions,
 };
 
