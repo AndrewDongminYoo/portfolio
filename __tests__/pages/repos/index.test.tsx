@@ -17,7 +17,7 @@ describe('Portfolio component', () => {
     render(<Portfolio repositoryData={[]} />);
     const section = screen.getByRole('region', { name: /repositories/i });
     expect(section).toHaveClass(
-      'w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg',
+      'w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg',
     );
   });
 

@@ -7,12 +7,12 @@ const frameworks: Record<string, string> = {
   'serverless-crawlers': '/svg/stacks/aws-lambda.svg',
   'TIL-of-BootCamp-Spring': '/svg/stacks/spring.svg',
   'walking-tracker': '/svg/stacks/react-native-firebase.svg',
-  andrewdongminyoo: '/svg/stacks/markdown.svg',
-  cash_stepper: '/svg/stacks/flutter.svg',
-  chatgpt: '/svg/stacks/openai.svg',
-  portfolio: '/svg/stacks/nextjs.svg',
-  wegooli_friends: '/svg/stacks/dart.svg',
-  wiki: '/svg/stacks/mdx.svg',
+  'andrewdongminyoo': '/svg/stacks/markdown.svg',
+  'cash_stepper': '/svg/stacks/flutter.svg',
+  'chatgpt': '/svg/stacks/openai.svg',
+  'portfolio': '/svg/stacks/nextjs.svg',
+  'wegooli_friends': '/svg/stacks/dart.svg',
+  'wiki': '/svg/stacks/mdx.svg',
 };
 
 export default frameworks;

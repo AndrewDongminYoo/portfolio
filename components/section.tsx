@@ -27,7 +27,7 @@ export default function ResumeSection({
   if (children === null || children === undefined) return <></>;
   return (
     <section
-      className='w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'
+      className='w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'
       id={type}>
       <div className='flex justify-between w-full'>
         <div className='flex items-center justify-start w-32 sm:w-full max-h-8'>

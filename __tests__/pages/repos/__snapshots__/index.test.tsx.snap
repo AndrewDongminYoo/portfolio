@@ -404,10 +404,10 @@ exports[`Portfolio component should render correctly 1`] = `
                 <section>
                     <section
                         aria-label="repositories"
-                        class="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
+                        class="w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
                     />
                     <section
-                        class="w-full p-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
+                        class="w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg"
                         id="contributions"
                     >
                         <div
