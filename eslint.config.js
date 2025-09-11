@@ -46,8 +46,8 @@ module.exports = defineConfig([
     ),
 
     plugins: {
-      import: fixupPluginRules(_import),
-      react: fixupPluginRules(react),
+      'import': fixupPluginRules(_import),
+      'react': fixupPluginRules(react),
       'jsx-a11y': fixupPluginRules(jsxA11Y),
       'prefer-arrow': preferArrow,
       'jest-dom': fixupPluginRules(jestDom),
@@ -86,11 +86,11 @@ module.exports = defineConfig([
     },
 
     settings: {
-      next: {
+      'next': {
         rootDir: '.',
       },
 
-      react: {
+      'react': {
         version: 'detect',
       },
 
@@ -105,14 +105,14 @@ module.exports = defineConfig([
     },
 
     rules: {
-      complexity: [
+      'complexity': [
         'error',
         {
           max: 10,
         },
       ],
 
-      eqeqeq: ['error', 'allow-null'],
+      'eqeqeq': ['error', 'allow-null'],
 
       'id-denylist': [
         'error',
