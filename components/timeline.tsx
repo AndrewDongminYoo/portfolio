@@ -1,7 +1,7 @@
-import Period from 'components/common/period';
+import Period from '@/components/common/period';
 import { ReactElement } from 'react';
-import type Resume from 'types/profile';
-import { cn } from 'lib/utils';
+import type Resume from '@/types/profile';
+import { cn } from '@/lib/utils';
 import { differenceInDays } from 'date-fns/differenceInDays';
 import { format } from 'date-fns/format';
 import { parseISO } from 'date-fns/parseISO';

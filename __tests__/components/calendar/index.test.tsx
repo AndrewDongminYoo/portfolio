@@ -1,7 +1,7 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { render, screen } from '@testing-library/react';
-import ReactGithubCalendar from 'components/calendar';
+import ReactGithubCalendar from '@/components/calendar';
 import { ScriptProps } from 'next/script';
 import { username } from '@/constants/';
 const externalLib = 'https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js';

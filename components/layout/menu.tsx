@@ -1,12 +1,12 @@
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import { faCodepen, faIdCard, faPrint } from 'components/common/icons';
+import { faCodepen, faIdCard, faPrint } from '@/components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import backgroundImage from '@/public/images/bg_space.webp';
 import cat from '@/public/images/kkori_the_cutest.png';
-import { cn } from 'lib/utils';
+import { cn } from '@/lib/utils';
 import { github } from '@/constants/';
 
 export default function MenuButtons() {

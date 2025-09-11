@@ -1,4 +1,4 @@
-import { cn } from 'lib/utils';
+import { cn } from '@/lib/utils';
 import { stacks } from '@/constants/';
 
 export default function StackList() {

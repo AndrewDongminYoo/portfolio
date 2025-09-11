@@ -1,10 +1,10 @@
-import Resume, { Activity, Education, Experience, Project } from 'types/profile';
-import GridTimeline from 'components/timeline';
-import Layout from 'components/layout';
-import Post from 'components/posts';
-import ReactGithubCalendar from 'components/calendar';
-import ResumeSection from 'components/section';
-import { getSortedPostsData } from 'lib/posts';
+import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
+import GridTimeline from '@/components/timeline';
+import Layout from '@/components/layout';
+import Post from '@/components/posts';
+import ReactGithubCalendar from '@/components/calendar';
+import ResumeSection from '@/components/section';
+import { getSortedPostsData } from '@/lib/posts';
 import groupBy from 'lodash.groupby';
 import { isAfter } from 'date-fns/isAfter';
 import { parseISO } from 'date-fns/parseISO';

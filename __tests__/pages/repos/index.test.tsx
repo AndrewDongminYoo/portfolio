@@ -1,10 +1,10 @@
 /// <reference types="@testing-library/jest-dom" />
 
 import { render, screen } from '@testing-library/react';
-import Portfolio from 'pages/repos/index';
+import Portfolio from '@/pages/repos/index';
 
-jest.mock('lib/repos');
-import { readRepositories } from 'lib/repos';
+jest.mock('@/lib/repos');
+import { readRepositories } from '@/lib/repos';
 
 describe('Portfolio component', () => {
   it('should render correctly', () => {

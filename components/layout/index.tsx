@@ -6,7 +6,7 @@ import MenuButtons from './menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
-import { cn } from 'lib/utils';
+import { cn } from '@/lib/utils';
 import favicon from '@/public/favicon.ico';
 import laundry from '@/public/images/laundry.jpg';
 import portrait from '@/public/images/profile.jpg';

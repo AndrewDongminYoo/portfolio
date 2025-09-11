@@ -6,13 +6,13 @@ import {
   faLock,
   faLockOpen,
   faStar,
-} from 'components/common/icons';
+} from '@/components/common/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import type Repository from 'types/repos';
+import type Repository from '@/types/repos';
 import { Transition } from '@headlessui/react';
-import { cn } from 'lib/utils';
+import { cn } from '@/lib/utils';
 import frameworks from './lang_icons';
 import { username } from '@/constants/';
 

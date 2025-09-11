@@ -1,5 +1,5 @@
 // Existing imports
-import { fetchStarredRepository } from 'lib/repos';
+import { fetchStarredRepository } from '@/lib/repos';
 
 jest.mock('@octokit/core');
 
