@@ -49,8 +49,6 @@ After completing a backend development training course and looking for a job, I 
 - `eslint-plugin-testing-library`: 권장 규칙을 검사할 때 @testing-library/react-hooks 플러그인
 - `prettier`: 다양한 언어를 지원하는 코드 포맷터
 
-- `openai`: OpenAI GPT3.5 Turbo 등의 언어 모델과 연동
-- `gpt-3-encoder`: OpenAI GPT3 Encoder. OpenAI API의 입출력에 사용.
 - `@octokit`: GitHub Api(octokit)를 자동으로 생성함
 - `axios`: 내부 API 및 외부 API를 연결하기 위한 프로미스 기반 HTTP 클라이언트.
 
