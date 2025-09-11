@@ -1,8 +1,0 @@
-./*.config.js
-./*.setup.js
-.build
-.github
-.next
-.vscode
-node_modules
-out
