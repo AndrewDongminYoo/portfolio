@@ -35,7 +35,7 @@
     "cmdk": "^1.0.0",
     "cva": "npm:class-variance-authority@0.7.0",
     "date-fns": "^3.6.0",
-    "find-cache-dir": "^5.0.0",
+    "find-cache-directory": "^6.0.0",
     "gpt-3-encoder": "^1.1.4",
     "gray-matter": "^4.0.3",
     "lodash.groupby": "^4.6.0",
@@ -55,7 +55,6 @@
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
-    "@types/find-cache-dir": "^5.0.0",
     "@types/jest": "^29.5.7",
     "@types/lodash.groupby": "^4.6.8",
     "@types/mime-types": "^2.1.4",
@@ -88,6 +87,5 @@
     "ts-unused-exports": "^10.1.0",
     "typescript": "^5.5.2",
     "webpack": "^5.92.1"
-  },
-  "packageManager": "yarn@1.22.19"
+  }
 }
