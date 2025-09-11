@@ -19,12 +19,6 @@
       "name": "modulab",
       "path": "${workspaceFolder}/.cspell/modulab.txt",
       "scope": "workspace"
-    },
-    "openai": {
-      "addWords": true,
-      "name": "openai",
-      "path": "${workspaceFolder}/.cspell/openai.txt",
-      "scope": "workspace"
     }
   },
   "cSpell.files": [

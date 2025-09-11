@@ -7,9 +7,6 @@ import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
 import { cn } from '@/lib/utils';
-import favicon from '@/public/favicon.ico';
-import laundry from '@/public/images/laundry.jpg';
-import portrait from '@/public/images/profile.jpg';
 import { useRouter } from 'next/router';
 
 type LayoutProps = {
@@ -28,17 +25,17 @@ export default function Layout({ children, title }: LayoutProps) {
           name='og:image'
           property='og:image'
           itemProp='image primaryImageOfPage'
-          content={laundry.src}
+          content={'/images/laundry.jpg'}
         />
         <meta
           name='twitter:image'
           property='og:image'
           itemProp='image primaryImageOfPage'
-          content={laundry.src}
+          content={'/images/laundry.jpg'}
         />
         <meta name='keywords' content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인' />
-        <link rel='icon' href={favicon.src} />
-        <link rel='apple-touch-icon' href={favicon.src} />
+        <link rel='icon' href={'/favicon.ico'} />
+        <link rel='apple-touch-icon' href={'/favicon.ico'} />
         <title>{title}</title>
       </Head>
       <summary
@@ -61,7 +58,7 @@ export default function Layout({ children, title }: LayoutProps) {
         <section className='p-0 mt-0 text-base border-t-0'>
           <Link href={isHome ? github : '/'}>
             <Image
-              src={portrait}
+              src={'/images/profile.jpg'}
               alt={myName}
               width={156}
               height={156}

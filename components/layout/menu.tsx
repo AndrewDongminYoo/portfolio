@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import backgroundImage from '@/public/images/bg_space.webp';
-import cat from '@/public/images/kkori_the_cutest.png';
 import { cn } from '@/lib/utils';
 import { github } from '@/constants/';
 
@@ -17,7 +15,7 @@ export default function MenuButtons() {
           <>
             <MenuButton className='fixed'>
               <Image
-                src={backgroundImage}
+                src={'/images/bg_space.webp'}
                 alt='Cat Floating in Space'
                 width={56}
                 height={56}
@@ -25,7 +23,7 @@ export default function MenuButtons() {
                 className='relative rounded-full shadow-2xl shadow-slate-700 w-14 h-14'
               />
               <Image
-                src={cat}
+                src={'/images/kkori_the_cutest.png'}
                 alt='My Lovely Cat'
                 width={56}
                 height={56}

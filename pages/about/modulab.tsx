@@ -1,7 +1,5 @@
 import { blog, github, homepage, instagram, linkedIn } from '@/constants';
 import Image from 'next/image';
-import profile from '@/public/images/profile.jpg';
-import unsplash from '@//public/images/unsplash.jpeg';
 
 export default function Modulab() {
   return (
@@ -410,15 +408,20 @@ export default function Modulab() {
                               <div className='et_pb_code_inner'>
                                 <div className='realProfileWrap'>
                                   <div className='realProfileBg'>
-                                    <Image width='971' height='546' src={unsplash} alt='배경사진' />
+                                    <Image
+                                      width={971}
+                                      height={546}
+                                      src={'/images/unsplash.jpeg'}
+                                      alt='배경사진'
+                                    />
                                   </div>
                                   <div className='realProfile'>
                                     <div className='realProfile_wrap pad_bot_0 border_none'>
                                       <div className='realProfilePic'>
                                         <Image
-                                          width='200'
-                                          height='200'
-                                          src={profile}
+                                          width={200}
+                                          height={200}
+                                          src={'/images/profile.jpg'}
                                           alt='프로필사진'
                                         />
                                       </div>

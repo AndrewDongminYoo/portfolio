@@ -1,16 +1,6 @@
 import { blog, calendly, github, homepage, instagram, stackoverflow } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import _calendly from '@/public/svg/icons/calendly.svg';
-import _github from '@/public/svg/icons/github.svg';
-import _instagram from '@/public/svg/icons/instagram.svg';
-import _link from '@/public/svg/icons/link.svg';
-import _mail from '@/public/svg/icons/mail.svg';
-import _stack from '@/public/svg/icons/stackoverflow.svg';
-import laundry from '@/public/images/laundry.jpg';
-import profile from '@/public/images/profile.jpg';
-import verified from '@/public/svg/icons/verified.svg';
 
 export default function Gravatar() {
   return (
@@ -100,7 +90,11 @@ export default function Gravatar() {
             <div className='box'>
               <div id='content' className='profile'>
                 <div className='grofile' id='profile'>
-                  <Image className='profile-image' src={profile} alt='Profile image' />
+                  <Image
+                    className='profile-image'
+                    src={'/images/profile.jpg'}
+                    alt='Profile image'
+                  />
                   <div className='profile-card profile-description'>
                     <h2>Dongmin Yu</h2>
                     <div className='profile-details'>
@@ -187,17 +181,39 @@ export default function Gravatar() {
                   <div className='profile-card'>
                     <h3>Verified Accounts</h3>
                     <div>
-                      {<VerifiedLink icon={_instagram} title='Instagram' link={instagram} />}
-                      {<VerifiedLink icon={_github} title='GitHub' link={github} />}
-                      {<VerifiedLink icon={_stack} title='Stack Overflow' link={stackoverflow} />}
-                      {<VerifiedLink icon={_calendly} title='Calendly' link={calendly} />}
+                      {
+                        <VerifiedLink
+                          icon={'/svg/icons/instagram.svg'}
+                          title='Instagram'
+                          link={instagram}
+                        />
+                      }
+                      {<VerifiedLink icon={'/svg/icons/github.svg'} title='GitHub' link={github} />}
+                      {
+                        <VerifiedLink
+                          icon={'/svg/icons/stackoverflow.svg'}
+                          title='Stack Overflow'
+                          link={stackoverflow}
+                        />
+                      }
+                      {
+                        <VerifiedLink
+                          icon={'/svg/icons/calendly.svg'}
+                          title='Calendly'
+                          link={calendly}
+                        />
+                      }
                     </div>
                   </div>
                   <div className='profile-card'>
                     <h3>Links</h3>
                     <div>
                       <div className='link-item'>
-                        <Image className='link-item__icon' src={_link} alt='Career profile' />
+                        <Image
+                          className='link-item__icon'
+                          src={'/svg/icons/link.svg'}
+                          alt='Career profile'
+                        />
                         <div className='link-item__info'>
                           <div className='link-label'>
                             <span className='link-label__text'>Career profile </span>
@@ -213,7 +229,11 @@ export default function Gravatar() {
                         </div>
                       </div>
                       <div className='link-item'>
-                        <Image className='link-item__icon' src={_link} alt='Tech Blog' />
+                        <Image
+                          className='link-item__icon'
+                          src={'/svg/icons/link.svg'}
+                          alt='Tech Blog'
+                        />
                         <div className='link-item__info'>
                           <div className='link-label'>
                             <span className='link-label__text'>Tech Blog </span>
@@ -234,7 +254,11 @@ export default function Gravatar() {
                     <h3>Contact Me</h3>
                     <div>
                       <div className='link-item'>
-                        <Image className='link-item__icon' src={_mail} alt='Email' />
+                        <Image
+                          className='link-item__icon'
+                          src={'/svg/icons/mail.svg'}
+                          alt='Email'
+                        />
                         <div className='link-item__info'>
                           <div className='link-label'>
                             <span className='link-label__text'>Email</span>
@@ -278,7 +302,7 @@ export default function Gravatar() {
                           <path
                             d='M1.34676 1L13 13M1 13L12.6532 1'
                             stroke='black'
-                            strokeWidth='1.5'
+                            strokeWidth={1.5}
                           />
                         </svg>
                       </button>
@@ -309,7 +333,7 @@ export default function Gravatar() {
                           <path
                             d='M1.34676 1L13 13M1 13L12.6532 1'
                             stroke='black'
-                            strokeWidth='1.5'
+                            strokeWidth={1.5}
                           />
                         </svg>
                       </button>
@@ -320,8 +344,8 @@ export default function Gravatar() {
                         <div className='link-item link-item--qr'>
                           <Image
                             src='https://gravatar.com/donminzzi.qr'
-                            width='230'
-                            height='230'
+                            width={230}
+                            height={230}
                             alt='QR Code'
                           />
                           <a
@@ -383,7 +407,7 @@ export default function Gravatar() {
                   </div>
                   <div className='lightbox-modal__content'>
                     <div className='lightbox-modal__image'>
-                      <Image src={laundry} alt='Gallery image' />
+                      <Image src={'/images/laundry.jpg'} alt='Gallery image' />
                     </div>
                   </div>
                 </div>
@@ -406,7 +430,7 @@ function VerifiedLink({
   title,
   trusted = true,
 }: {
-  icon: StaticImport;
+  icon: string;
   link: string;
   trusted?: boolean;
   title: string;
@@ -422,7 +446,11 @@ function VerifiedLink({
               <a
                 className='verified-link'
                 href='https://support.gravatar.com/profiles/verified-accounts/'>
-                <Image className='verified-icon' alt='verified icon' src={verified} />
+                <Image
+                  className='verified-icon'
+                  alt='verified icon'
+                  src={'/svg/icons/verified.svg'}
+                />
               </a>
             ) : null}
           </div>

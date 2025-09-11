@@ -1,7 +1,3 @@
-import _email from '@/public/images/contacts/email.png';
-import _github from '@/public/images/contacts/github.png';
-import _youtube from '@/public/images/contacts/youtube.png';
-
 export const username = 'AndrewDongminYoo';
 export const myName = 'Dongmin, Yu';
 export const primaryTitle = '집요하게 더 나은 답을 찾아내는 개발자 유동민입니다.';
@@ -34,17 +30,17 @@ export const contacts = [
   {
     type: 'email',
     link: 'mailto:ydm2790@gmail.com',
-    image: _email,
+    image: '/images/contacts/email.png',
   },
   {
     type: 'github',
     link: 'https://github.com/AndrewDongminYoo',
-    image: _github,
+    image: '/images/contacts/github.png',
   },
   {
     type: 'youtube',
     link: 'https://www.youtube.com/channel/UC0f92oThUd9CdSipnoiYR8g',
-    image: _youtube,
+    image: '/images/contacts/youtube.png',
   },
 ];
 export const blog = 'https://cat-minzzi.tistory.com/';
