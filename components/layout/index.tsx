@@ -67,7 +67,7 @@ export default function Layout({ children, title }: LayoutProps) {
               alt={myName}
               width={156}
               height={156}
-              className='rounded-[50%] print:hidden'
+              className='rounded-full print:hidden'
             />
           </Link>
           <ProfileBio />
@@ -76,7 +76,7 @@ export default function Layout({ children, title }: LayoutProps) {
       </summary>
       <main
         className={cn(
-          'xl:scrollbar-hide xl:w-[100%-30rem]',
+          'xl:scrollbar-hide xl:w-[calc(100%-30rem)]',
           'text-base overflow-x-hidden',
           'inline-block text-base p-10',
           'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',

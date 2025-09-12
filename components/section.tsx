@@ -35,7 +35,7 @@ export default function ResumeSection({
             {subTitle}
           </h3>
         </div>
-        <div className='flex items-center justify-end w-[100%-9rem]'></div>
+        <div className='flex items-center justify-end w-[calc(100%-9rem)]'></div>
       </div>
       <div className='w-full'>{children}</div>
     </section>

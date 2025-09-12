@@ -17,11 +17,7 @@ export default function LanguageButton({
   return (
     <li className='inline-flex items-center mt-1 mr-3'>
       <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
-        <span
-          className='inline-block w-3 h-3 mr-1 rounded-[50%]'
-          style={style}
-          aria-hidden={true}
-        />
+        <span className='inline-block w-3 h-3 mr-1 rounded-full' style={style} aria-hidden={true} />
         <span className='mr-1 font-medium text-foreground'>{language}</span>
         <span>{percent.toFixed(1) + '%'}</span>
       </Link>

@@ -18,7 +18,16 @@ const NS_KR = Noto_Sans_KR({
   display: 'swap',
   subsets: ['latin'],
   adjustFontFallback: true,
-  weight: ['300', '400', '500', '700', '900'],
+  weight: 'variable',
+  fallback: [
+    'ui-sans-serif',
+    'system-ui',
+    'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji',
+  ],
   variable: '--noto-sans-kr',
 });
 
@@ -30,7 +39,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name='theme-color' content='#0969da' />
         <meta httpEquiv='x-ua-compatible' content='ie=edge' />
       </Head>
-      <main className={NS_KR.className}>
+      <main className={NS_KR.variable}>
         <Component {...pageProps} />
       </main>
     </>

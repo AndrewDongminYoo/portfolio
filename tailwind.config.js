@@ -27,18 +27,6 @@ module.exports = {
         ring: 'var(--ring)',
         secondary: 'var(--secondary)',
       },
-      fontFamily: {
-        sans: [
-          'Noto Sans KR',
-          'ui-sans-serif',
-          'system-ui',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"',
-        ],
-      },
       fontSize: {
         'xxs': '0.625rem',
         'xs': '0.75rem',
