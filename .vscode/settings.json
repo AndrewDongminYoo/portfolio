@@ -13,14 +13,6 @@
   "[typescriptreact,javascriptreact]": {
     "editor.tabSize": 2
   },
-  "cSpell.customDictionaries": {
-    "modulab": {
-      "addWords": true,
-      "name": "modulab",
-      "path": "${workspaceFolder}/.cspell/modulab.txt",
-      "scope": "workspace"
-    }
-  },
   "cSpell.files": [
     "**/*",
     "!data/repos/*.json",
