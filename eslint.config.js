@@ -3,12 +3,10 @@ const { fixupConfigRules, fixupPluginRules } = require('@eslint/compat');
 const { FlatCompat } = require('@eslint/eslintrc');
 const _import = require('eslint-plugin-import');
 const globals = require('globals');
-const jestDom = require('eslint-plugin-jest-dom');
 const js = require('@eslint/js');
 const jsxA11Y = require('eslint-plugin-jsx-a11y');
 const preferArrow = require('eslint-plugin-prefer-arrow');
 const react = require('eslint-plugin-react');
-const testingLibrary = require('eslint-plugin-testing-library');
 const tsParser = require('@typescript-eslint/parser');
 
 const compat = new FlatCompat({
@@ -36,7 +34,6 @@ module.exports = defineConfig([
         'plugin:import/typescript',
         'plugin:@typescript-eslint/eslint-recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:jest-dom/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:react-hooks/recommended',
         'plugin:react/recommended',
@@ -50,8 +47,6 @@ module.exports = defineConfig([
       'react': fixupPluginRules(react),
       'jsx-a11y': fixupPluginRules(jsxA11Y),
       'prefer-arrow': preferArrow,
-      'jest-dom': fixupPluginRules(jestDom),
-      'testing-library': testingLibrary,
     },
 
     languageOptions: {
@@ -209,17 +204,6 @@ module.exports = defineConfig([
       'import/no-named-as-default': 'error',
       'import/no-named-as-default-member': 'error',
       'import/no-unresolved': 'off',
-      'jest-dom/prefer-checked': 'error',
-      'jest-dom/prefer-empty': 'error',
-      'jest-dom/prefer-enabled-disabled': 'error',
-      'jest-dom/prefer-focus': 'error',
-      'jest-dom/prefer-in-document': 'error',
-      'jest-dom/prefer-required': 'error',
-      'jest-dom/prefer-to-have-attribute': 'error',
-      'jest-dom/prefer-to-have-class': 'error',
-      'jest-dom/prefer-to-have-style': 'error',
-      'jest-dom/prefer-to-have-text-content': 'error',
-      'jest-dom/prefer-to-have-value': 'error',
 
       'jsx-a11y/alt-text': [
         'error',
@@ -258,15 +242,6 @@ module.exports = defineConfig([
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
     },
-  },
-  {
-    files: [
-      '**/__tests__/**/*.[jt]s?(x)',
-      '**/__mocks__/**/*.[jt]s?(x)',
-      '**/?(*.)+(spec|test).[jt]s?(x)',
-    ],
-
-    extends: compat.extends('plugin:testing-library/react'),
   },
   {
     files: ['**/*.ts?(x)'],
