@@ -6,6 +6,7 @@ const globals = require('globals');
 const js = require('@eslint/js');
 const jsxA11Y = require('eslint-plugin-jsx-a11y');
 const preferArrow = require('eslint-plugin-prefer-arrow');
+const prettier = require('eslint-config-prettier');
 const react = require('eslint-plugin-react');
 const tsParser = require('@typescript-eslint/parser');
 
@@ -17,6 +18,7 @@ const compat = new FlatCompat({
 
 module.exports = defineConfig([
   globalIgnores([
+    './.prettierrc.js',
     './*.config.js',
     './*.setup.js',
     '**/.build',
@@ -26,6 +28,7 @@ module.exports = defineConfig([
     '**/node_modules',
     '**/out',
   ]),
+  prettier,
   {
     extends: fixupConfigRules(
       compat.extends(
@@ -62,7 +65,6 @@ module.exports = defineConfig([
 
       parserOptions: {
         project: 'tsconfig.json',
-        tsconfigRootDir: './',
         warnOnUnsupportedTypeScriptVersion: true,
         allowImportExportEverywhere: true,
 
@@ -182,7 +184,6 @@ module.exports = defineConfig([
       '@next/next/no-title-in-document-head': 'error',
       '@next/next/no-typos': 'error',
       '@next/next/no-unwanted-polyfillio': 'error',
-      '@typescript-eslint/type-annotation-spacing': 'error',
       '@typescript-eslint/no-var-requires': 'off',
 
       '@typescript-eslint/ban-ts-comment': [
