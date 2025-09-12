@@ -1,63 +1,36 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  mode: 'jit',
-  darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+  darkMode: 'class',
+  content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     screens: {
       xs: { max: '575px' },
-      sm: { max: '767px' },
-      md: { max: '991px' },
-      lg: { max: '1199px' },
+      sm: { min: '576px', max: '767px' },
+      md: { min: '768px', max: '991px' },
+      lg: { min: '992px', max: '1199px' },
       xl: { min: '1200px' },
     },
     extend: {
       borderRadius: {
-        full: '50%',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-      },
-      borderWidth: {
-        0.1: '0.1px',
       },
       boxShadow: {
         fab: '0 0.0625rem 0.1875rem rgb(20 20 94 / 12%), 0 0.1875rem 0.4375rem rgb(20 20 94 / 10%)',
       },
       colors: {
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        background: 'hsl(var(--background))',
-        border: 'hsl(var(--border))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        foreground: 'hsl(var(--foreground))',
-        input: 'hsl(var(--input))',
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        ring: 'hsl(var(--ring))',
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
+        background: 'var(--background)',
+        border: 'var(--border)',
+        card: 'var(--card)',
+        destructive: 'var(--destructive)',
+        foreground: 'var(--foreground)',
+        input: 'var(--input)',
+        muted: 'var(--muted)',
+        popover: 'var(--popover)',
+        primary: 'var(--primary)',
+        ring: 'var(--ring)',
+        secondary: 'var(--secondary)',
       },
       fontSize: {
         xs: '0.75rem',
@@ -86,7 +59,7 @@ module.exports = {
       },
       maxWidth: ({ theme }) => ({
         ...theme('spacing'),
-        xxs: '14rem',
+        'xxs': '14rem',
         '4xl': '55rem',
         '7xl': '82.5rem',
       }),
@@ -124,11 +97,11 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
-        typing: {
+        'typing': {
           from: { width: '0%' },
           to: { width: '100%' },
         },
-        blink: {
+        'blink': {
           'from, to': { 'border-color': 'transparent' },
           '50%': { 'border-color': 'orange' },
         },
@@ -136,7 +109,7 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        typing: 'typing 5s steps(30, end), blink .75s step-end infinite',
+        'typing': 'typing 5s steps(30, end), blink .75s step-end infinite',
       },
     },
     container: {
