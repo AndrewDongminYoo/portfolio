@@ -6,7 +6,6 @@ import MenuButtons from './menu';
 import ProfileBio from './profile';
 import { ReactNode } from 'react';
 import StackList from './stacks';
-import { cn } from '@/lib/utils';
 import { useRouter } from 'next/router';
 
 type LayoutProps = {
@@ -18,13 +17,7 @@ export default function Layout({ children, title }: LayoutProps) {
   const { pathname } = useRouter();
   const isHome = pathname === '/';
   return (
-    <div
-      className={cn(
-        'lg:max-w-[55rem]',
-        'bg-background my-0 mx-auto',
-        'transition-all',
-        'max-w-[82.5rem]',
-      )}>
+    <div className='mx-auto my-0 max-w-[55rem] bg-background transition-all lg:max-w-[82.5rem]'>
       <Head>
         <meta
           name='og:image'
@@ -43,24 +36,14 @@ export default function Layout({ children, title }: LayoutProps) {
         <link rel='apple-touch-icon' href={'/favicon.ico'} />
         <title>{title}</title>
       </Head>
-      <summary
-        className={cn(
-          'xl:scrollbar-hide xl:w-[30rem]',
-          'text-base overflow-x-hidden',
-          'inline-block text-base p-10 pb-4',
-          'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
-          'lg:block',
-          'sm:p-4',
-          'xs:overflow-x-hidden',
-          'xl:pb-16 xl:top-0',
-        )}>
+      <summary className='block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pb-4 md:pt-10 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16 xl:scrollbar-hide'>
         <MenuButtons />
-        <h1 className='mx-0 my-4 text-2xl leading-normal writer'>
+        <h1 className='writer mx-0 my-4 text-2xl leading-normal'>
           <Link href={isHome ? github : '/'} className='writer-text'>
             {myName}
           </Link>
         </h1>
-        <section className='p-0 mt-0 text-base border-t-0'>
+        <section className='mt-0 border-t-0 px-0 py-0 text-base'>
           <Link href={isHome ? github : '/'}>
             <Image
               src={'/images/profile.jpg'}
@@ -74,16 +57,7 @@ export default function Layout({ children, title }: LayoutProps) {
           <StackList />
         </section>
       </summary>
-      <main
-        className={cn(
-          'xl:scrollbar-hide xl:w-[calc(100%-30rem)]',
-          'text-base overflow-x-hidden',
-          'inline-block text-base p-10',
-          'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
-          'lg:block',
-          'sm:p-4',
-          'pt-0',
-        )}>
+      <main className='block overflow-x-hidden px-4 py-4 pt-0 text-base md:px-10 md:py-10 lg:inline-block xl:max-h-screen xl:min-h-screen xl:w-[calc(100%-30rem)] xl:overflow-y-auto xl:scrollbar-hide'>
         <article>{children}</article>
         {!isHome && (
           <div className='font-extrabold leading-8'>

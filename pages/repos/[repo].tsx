@@ -6,7 +6,6 @@ import LanguageStateBar from '@/components/repos/langs_bar';
 import Link from 'next/link';
 import RepoCard from '@/components/repos/card';
 import type Repository from '@/types/repos';
-import { cn } from '@/lib/utils';
 
 type RepoProps = {
   repository: Repository;
@@ -25,15 +24,12 @@ export default function Repo({ repository }: RepoProps) {
     <article aria-label='repositories'>
       <Link
         href={html_url}
-        className={cn(
-          'box-border leading-tight break-words',
-          'text-sm font-medium text-slate-300',
-        )}>
+        className='box-border break-words text-sm font-medium leading-tight text-slate-300'>
         {full_name}
       </Link>
       <RepoCard repository={repository} />
       <LanguageStateBar languages={excludeStatic} totalCount={totalCount} />
-      <ul className='p-0 mt-0 list-none'>
+      <ul className='mt-0 list-none px-0 py-0'>
         {excludeStatic.map(([lang, count], id) => {
           return (
             <LanguageButton

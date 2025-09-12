@@ -27,15 +27,15 @@ export default function ResumeSection({
   if (children === null || children === undefined) return <></>;
   return (
     <section
-      className='w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'
+      className='mx-0 my-6 w-full rounded-lg border border-solid border-gray-300 px-6 py-6'
       id={type}>
-      <div className='flex justify-between w-full'>
-        <div className='flex items-center justify-start w-32 sm:w-full max-h-[2rem]'>
-          <h3 className='flex items-center justify-start text-base font-medium sm:text-sm'>
+      <div className='flex w-full justify-between'>
+        <div className='flex max-h-[2rem] w-full items-center justify-start md:w-32'>
+          <h3 className='flex items-center justify-start text-sm font-medium md:text-base'>
             {subTitle}
           </h3>
         </div>
-        <div className='flex items-center justify-end w-[calc(100%-9rem)]'></div>
+        <div className='flex w-[calc(100%-9rem)] items-center justify-end'></div>
       </div>
       <div className='w-full'>{children}</div>
     </section>

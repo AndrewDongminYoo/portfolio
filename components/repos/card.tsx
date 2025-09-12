@@ -18,33 +18,24 @@ import { username } from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   return (
-    <div className='flex flex-row px-6 overflow-hidden  sm:px-2 sm:w-80 min-h-[17rem]'>
-      <Link href={repository.html_url} className='sm:hidden'>
+    <div className='flex min-h-[17rem] flex-row overflow-hidden px-2 max-md:w-80 md:px-6'>
+      <Link href={repository.html_url} className='hidden md:flex'>
         <Image
           src={frameworks[repository.name]}
           alt='What Framework/Library used by this repository'
           priority={true}
           height={256}
-          className={cn(
-            'flex h-full rounded-t rounded-l opacity-25',
-            'xl:max-w-24 lg:max-w-24 lg:min-w-20 md:max-w-10',
-            'sm:hidden -sm:mx-4',
-          )}
+          className='-mx-4 hidden h-full rounded-l rounded-t opacity-25 md:mx-0 md:flex md:max-w-10 lg:min-w-20 lg:max-w-24'
         />
       </Link>
-      <div
-        className={cn(
-          'flex flex-col justify-between',
-          'py-8 px-12 sm:px-0 leading-normal bg-background min-w-[20.625rem] w-full',
-          'first-letter:rounded-b lg:rounded-b-none lg:rounded-r',
-        )}>
+      <div className='flex w-full min-w-[20.625rem] flex-col justify-between bg-background px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-b-none lg:rounded-r'>
         <CopyToClipboard
           value={`${repository.html_url}.git`}
           className='after:content-[attr(placeholder)] hover:after:content-[attr(title)]'>
           {repository.private ? (
             <FontAwesomeIcon
               icon={faLock}
-              className='w-4 h-4 my-0 ml-0 mr-2'
+              className='my-0 ml-0 mr-2 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -54,7 +45,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           ) : (
             <FontAwesomeIcon
               icon={faLockOpen}
-              className='w-4 h-4 my-0 ml-0 mr-2'
+              className='my-0 ml-0 mr-2 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -66,29 +57,27 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         <div className='flex justify-between text-gray-900'>
           <Link href={repository.html_url} className='inline-block'>
             <p className='mb-0 text-2xl sm:text-lg'>{repository.owner.login}/</p>
-            <p className='text-3xl font-bold break-all sm:text-xl sm:tracking-tight'>
+            <p className='break-all text-xl font-bold tracking-tight md:text-3xl md:tracking-normal'>
               {repository.name}
             </p>
           </Link>
           <Image
             src={repository.owner.avatar_url}
-            className='m-4 rounded-xl w-14 h-14'
+            className='mx-4 my-4 h-14 w-14 rounded-xl'
             width={56}
             height={56}
             alt={repository.owner.login}
           />
         </div>
-        <p className='text-sm text-gray-500 xs:text-xs xl:text-xs break-keep'>
-          {repository.description}
-        </p>
-        <div className='w-full grid grid-cols-4 gap-x-2'>
+        <p className='break-keep text-sm text-gray-500 md:text-xs'>{repository.description}</p>
+        <div className='grid w-full grid-cols-4 gap-x-2'>
           <Link
             href={`https://github.com/search?l=${repository.language}&q=user%3A${username}&type=Code`}
             className='text-xs'>
-            <p className='mb-0 text-gray-400 text-xxs'>based language</p>
+            <p className='mb-0 text-xxs text-gray-400'>based language</p>
             <FontAwesomeIcon
               icon={faLaptopCode}
-              className='w-4 h-4 my-0 ml-0 mr-2'
+              className='my-0 ml-0 mr-2 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -98,11 +87,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             {repository.language}
           </Link>
           <Link href={`${repository.html_url}/stargazers`} className='text-xs'>
-            <p className='mb-0 text-gray-400 text-xxs'>stars</p>
+            <p className='mb-0 text-xxs text-gray-400'>stars</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faStar}
-                className='w-4 h-4 my-0 ml-0 mr-2'
+                className='my-0 ml-0 mr-2 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -113,11 +102,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             </p>
           </Link>
           <Link href={`${repository.html_url}/watchers`} className='text-xs'>
-            <p className='mb-0 text-gray-400 text-xxs'>watchers</p>
+            <p className='mb-0 text-xxs text-gray-400'>watchers</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faEye}
-                className='w-4 h-4 my-0 ml-0 mr-2'
+                className='my-0 ml-0 mr-2 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -128,11 +117,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             </p>
           </Link>
           <Link href={`${repository.html_url}/fork`} className='text-xs'>
-            <p className='mb-0 text-gray-400 text-xxs'>folks</p>
+            <p className='mb-0 text-xxs text-gray-400'>folks</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faCodeFork}
-                className='w-4 h-4 my-0 ml-0 mr-2'
+                className='my-0 ml-0 mr-2 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -155,7 +144,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
     <>
       <button
         title="Click to Copy Repository's git address."
-        className={cn('flex items-center mb-0 text-xs text-gray-600 cursor-pointer', className)}
+        className={cn('mb-0 flex cursor-pointer items-center text-xs text-gray-600', className)}
         onClick={() => {
           setIsShowing(true);
           navigator.clipboard.writeText(value);
@@ -167,11 +156,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
         static
         as='div'
         show={isShowing}
-        className={cn(
-          'px-1 my-0 ml-0 mr-1 py-0.5 w-fit',
-          'text-xs text-foreground whitespace-nowrap',
-          'bg-slate-200 border-0 rounded',
-        )}
+        className='my-0 ml-0 mr-1 w-fit whitespace-nowrap rounded border-0 bg-slate-200 px-1 py-0.5 text-xs text-foreground'
         enter='transition-opacity duration-150'
         enterFrom='opacity-0'
         enterTo='opacity-100'

@@ -10,7 +10,7 @@ export default function LanguageStateBar({
   return (
     <span
       data-view-component={true}
-      className='flex h-3 mt-1 overflow-hidden bg-transparent border-collapse'>
+      className='mt-1 flex h-3 border-collapse overflow-hidden bg-transparent'>
       {languages.map(([language, count], id) => {
         return (
           <LanguageBarPart
@@ -32,7 +32,7 @@ function LanguageBarPart({ language, percent }: { language: Language; percent: n
       itemProp='keywords'
       aria-label={`${language} ${percent.toFixed(3)}`}
       data-view-component={true}
-      className='flex h-3 overflow-hidden border-collapse ml-0.5 first:ml-0'
+      className='ml-0.5 flex h-3 border-collapse overflow-hidden first:ml-0'
       style={{
         backgroundColor,
         width,

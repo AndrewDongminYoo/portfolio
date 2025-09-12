@@ -1,19 +1,8 @@
 @import './calendar.css';
 @import './markdown.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer utilities {
-  .break-word {
-    word-break: break-word;
-  }
-
-  .break-any {
-    line-break: anywhere;
-  }
-}
 
 @layer base {
   :root {
@@ -77,14 +66,14 @@
   }
 
   a {
-    @apply no-underline transition-all cursor-pointer hover:no-underline;
+    @apply cursor-pointer no-underline transition-all hover:no-underline;
     transition-delay: initial;
     transition-duration: 0.08s;
     transition-timing-function: ease-in-out;
   }
 
   hr {
-    @apply my-4 border-t border-b-0 border-l-0 border-r-0 border-solid border-slate-200;
+    @apply my-4 border-b-0 border-l-0 border-r-0 border-t border-solid border-slate-200;
   }
 
   h1,
@@ -141,23 +130,23 @@
   }
 
   code {
-    @apply px-1 py-px my-0 ml-0 mr-px bg-gray-100 border border-solid rounded border-slate-200 text-slate-700;
+    @apply my-0 ml-0 mr-px rounded border border-solid border-slate-200 bg-gray-100 px-1 py-px text-slate-700;
   }
 
   pre {
-    @apply px-4 py-3 m-0 break-all bg-gray-100 border border-solid rounded break-word border-slate-200 text-foreground;
+    @apply mx-0 my-0 break-words break-all rounded border border-solid border-slate-200 bg-gray-100 px-4 py-3 text-foreground;
   }
 
   pre code {
-    @apply p-0 m-0 bg-transparent rounded-none;
+    @apply mx-0 my-0 rounded-none bg-transparent px-0 py-0;
   }
 
   blockquote {
-    @apply p-4 border-l-2 border-solid border-slate-200;
+    @apply border-l-2 border-solid border-slate-200 px-4 py-4;
   }
 
   blockquote small {
-    @apply italic font-normal leading-normal;
+    @apply font-normal italic leading-normal;
   }
 
   blockquote small:before {
@@ -166,7 +155,7 @@
   }
 
   video {
-    @apply object-cover w-full mt-4;
+    @apply mt-4 w-full object-cover;
   }
 
   img,
@@ -181,18 +170,17 @@
   }
 
   ul {
-    @apply pl-10 my-4;
+    @apply my-4 pl-10;
   }
 }
 
 @layer components {
   .resume_card {
-    @apply w-full p-6 mx-0 my-6 border border-solid rounded-xl;
-    @apply border-slate-200;
+    @apply mx-0 my-6 w-full rounded-xl border border-solid border-slate-200 px-6 py-6;
   }
 
   .resume_card_header {
-    @apply flex justify-between w-full;
+    @apply flex w-full justify-between;
   }
 
   .resume_card_header_title {
@@ -205,7 +193,7 @@
 
   .resume_card_header .resume_card_left {
     @apply flex items-center justify-start;
-    max-height: 2.125rem /* 34px */;
+    max-height: 2.125rem;
   }
 
   .resume_card_left {
@@ -213,13 +201,11 @@
   }
 
   .resume_card_item_period {
-    @apply flex justify-start leading-6 flex-nowrap;
-    @apply text-slate-600;
+    @apply flex flex-nowrap justify-start leading-6 text-slate-600;
   }
 
   .resume_card_item_period .period {
-    @apply ml-px;
-    @apply text-xs;
+    @apply ml-px text-xs;
   }
 
   .resume_card_header .resume_card_right {
@@ -236,7 +222,7 @@
   }
 
   .resume_card_item_label {
-    @apply flex items-center justify-start text-xl font-bold tracking-normal break-all;
+    @apply flex items-center justify-start break-all text-xl font-bold tracking-normal;
   }
 
   .resume_card_item_label + .resume_card_item_text {
@@ -252,8 +238,7 @@
   }
 
   .resume_card_item {
-    @apply flex flex-row items-start justify-between w-full px-0 py-6 border-b border-solid flex-nowrap;
-    @apply border-slate-200;
+    @apply flex w-full flex-row flex-nowrap items-start justify-between border-b border-solid border-slate-200 px-0 py-6;
   }
 
   .resume_card_item:first-child {
@@ -265,31 +250,24 @@
   }
 
   .tag_list {
-    @apply p-0 mx-0 my-2;
-    @apply list-none;
+    @apply mx-0 my-2 list-none px-0 py-0;
   }
 
   .tag_list li {
-    @apply inline-block px-1 py-px mt-0 mb-1 ml-0 mr-1 text-xs font-normal leading-normal border-0 rounded;
-    @apply text-foreground;
-    @apply bg-slate-200;
+    @apply mb-1 ml-0 mr-1 mt-0 inline-block rounded border-0 bg-slate-200 px-1 py-px text-xs font-normal leading-normal text-foreground;
   }
 
   .contributions_label {
-    @apply inline-block mb-2 -ml-16 text-sm leading-normal;
+    @apply -ml-16 mb-2 inline-block text-sm leading-normal;
   }
 
   .list_contributions {
-    @apply py-4 pl-2 pr-4 mx-px my-2 border-l-2 border-solid;
-    @apply bg-gray-50;
-    @apply border-slate-200;
-    @apply list-none;
+    @apply mx-px my-2 list-none border-l-2 border-solid border-slate-200 bg-gray-50 py-4 pl-2 pr-4;
   }
 
   .list_contribution_item {
-    @apply px-5 py-0 m-2 text-sm;
-    @apply leading-relaxed;
-    @apply break-words break-any;
+    @apply mx-2 my-2 break-words px-5 py-0 text-sm leading-relaxed;
+    line-break: anywhere;
   }
 
   .list_contribution_item a {
@@ -298,33 +276,27 @@
 
   .part_title,
   .part_title a {
-    @apply mr-2 text-lg font-medium;
-    @apply hover:font-extrabold;
+    @apply mr-2 text-lg font-medium hover:font-extrabold;
   }
 
   .part_period {
-    @apply mt-2 mr-px text-sm leading-normal;
+    @apply mr-px mt-2 text-sm leading-normal;
   }
 
   .writer {
-    @apply inline-block;
-    font-family: Courier, monospace;
+    @apply inline-block font-mono;
   }
 
   .writer-text {
-    @apply inline-block overflow-hidden tracking-tighter whitespace-nowrap;
-    @apply animate-typing text-3xl font-bold;
-    @apply box-border border-r-4 border-r-orange-500 border-solid;
+    @apply box-border inline-block animate-typing overflow-hidden whitespace-nowrap border-r-4 border-solid border-r-orange-500 text-3xl font-bold tracking-tighter;
   }
 
   .list_contribution_item .url__link {
-    @apply text-gray-500 block;
-    @apply hover:text-gray-950 hover:animate-pulse;
+    @apply block text-gray-500 hover:animate-pulse hover:text-gray-950;
   }
 
   .list_contributions .list_contribution_item .part_description {
-    @apply mx-0 mt-px mb-0 text-sm;
-    @apply leading-7;
+    @apply mx-0 mb-0 mt-px text-sm leading-7;
   }
 
   .markdown_viewer,
@@ -333,64 +305,70 @@
     @apply h-max;
   }
 
-  .resume_card_item_text {
-    @apply lg:mt-1;
+  @media (min-width: 992px) and (max-width: 1199px) {
+    .resume_card_item_text {
+      @apply mt-1;
+    }
+
+    .resume_card_item_text + .resume_card_item_text {
+      @apply my-0;
+    }
+
+    .resume_card_item_label {
+      @apply leading-6;
+    }
+
+    .resume_card_right {
+      width: calc(100% - 11.5rem);
+    }
   }
 
-  .resume_card_item_text + .resume_card_item_text {
-    @apply lg:my-0;
+  @media (min-width: 576px) and (max-width: 767px) {
+    .resume_card_item .list_contribution {
+      @apply mt-1;
+    }
   }
 
-  .resume_card_item_label {
-    @apply lg:leading-6;
-  }
+  @media (max-width: 575px) {
+    .resume_card {
+      @apply mb-4 px-4 py-4;
+    }
 
-  .resume_card_right {
-    @apply lg:w-[calc(100%-11.5rem)];
-  }
+    .resume_card_left {
+      @apply w-full;
+    }
 
-  .resume_card_item .list_contribution {
-    @apply sm:mt-1;
-  }
+    .resume_card_right {
+      @apply w-full;
+    }
 
-  .resume_card {
-    @apply xs:mb-4 xs:p-4;
-  }
+    .resume_card_right > ul:last-child,
+    .resume_card_right > div:last-child {
+      @apply ml-0;
+    }
 
-  .resume_card_left {
-    @apply xs:w-full;
-  }
+    .contributions_label {
+      @apply ml-0;
+    }
 
-  .resume_card_right {
-    @apply xs:w-full;
-  }
+    .resume_card_header_title {
+      @apply text-sm;
+    }
 
-  .resume_card_right > ul:last-child,
-  .resume_card_right > div:last-child {
-    @apply xs:ml-0;
-  }
+    .resume_card_item {
+      @apply flex-col justify-start px-0 py-4;
+    }
 
-  .contributions_label {
-    @apply xs:ml-0;
-  }
+    .resume_card_item_label {
+      @apply mx-0 my-1 leading-5;
+    }
 
-  .resume_card_header_title {
-    @apply xs:text-sm;
-  }
+    .resume_card_item_period {
+      @apply flex-row items-center;
+    }
 
-  .resume_card_item {
-    @apply xs:flex-col xs:justify-start xs:px-0 xs:py-4;
-  }
-
-  .resume_card_item_label {
-    @apply xs:leading-5 xs:mx-0 xs:my-1;
-  }
-
-  .resume_card_item_period {
-    @apply xs:flex-row xs:items-center;
-  }
-
-  .resume_card_item_period .period {
-    @apply xs:ml-1;
+    .resume_card_item_period .period {
+      @apply ml-1;
+    }
   }
 }

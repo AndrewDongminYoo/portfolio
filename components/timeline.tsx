@@ -10,15 +10,11 @@ import { renderToString } from 'react-dom/server';
 export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
   const { monthsLabels, makeBlock } = getMonthLabels();
   return (
-    <div className='flex flex-col items-end justify-start w-full'>
-      <div
-        className={cn(
-          'flex flex-col items-start justify-start flex-nowrap',
-          'w-full px-0 py-6 mb-0 border-b-0 max-h-max',
-        )}>
-        <div className='block w-full m-0 text-base break-all min-h-[50px]'>
-          <div className='grid mb-0.5 text-base leading-snug grid-cols-11'>{monthsLabels}</div>
-          <div className='pt-1 grid grid-flow-col-dense grid-cols-100'>
+    <div className='flex w-full flex-col items-end justify-start'>
+      <div className='mb-0 flex max-h-max w-full flex-col flex-nowrap items-start justify-start border-b-0 px-0 py-6'>
+        <div className='mx-0 my-0 block min-h-[50px] w-full break-all text-base'>
+          <div className='mb-0.5 grid grid-cols-11 text-base leading-snug'>{monthsLabels}</div>
+          <div className='grid grid-flow-col-dense grid-cols-100 pt-1'>
             {timeline.map(makeBlock)}
           </div>
         </div>
@@ -36,10 +32,7 @@ const getMonthLabels = () => {
       <time
         key={now.toUTCString()}
         dateTime={month}
-        className={cn(
-          'pl-1 border-r border-solid border-r-slate-200',
-          'text-xs leading-normal text-slate-600',
-        )}>
+        className='border-r border-solid border-r-slate-200 pl-1 text-xs leading-normal text-slate-600'>
         {month}
       </time>
     );
@@ -68,8 +61,7 @@ const getMonthLabels = () => {
         data-placement='top'
         data-content={renderToString(popOverHtml)}
         className={cn(
-          'font-black leading-normal text-center whitespace-nowrap',
-          'rounded-sm cursor-text py-1 px-2 ml-[1.6px] overflow-clip',
+          'ml-[1.6px] cursor-text overflow-clip whitespace-nowrap rounded-sm px-2 py-1 text-center font-black leading-normal',
           ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
           tailwindColor[type],
         )}

@@ -2,20 +2,14 @@
 import { contacts, description, primaryTitle } from '@/constants/';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 export default function ProfileBio() {
   return (
-    <section className='p-0 mt-0 text-base border-t-0 text-foreground'>
-      <h2
-        className={cn(
-          'flex flex-row items-center justify-between',
-          'mb-4 -ml-px text-2xl leading-snug',
-          'flex-nowrap break-keep min-h-16',
-        )}>
+    <section className='mt-0 border-t-0 px-0 py-0 text-base text-foreground'>
+      <h2 className='-ml-px mb-4 flex min-h-16 flex-row flex-nowrap items-center justify-between break-keep text-2xl leading-snug'>
         {primaryTitle}
       </h2>
-      <ul className='p-0 my-0 list-none'>
+      <ul className='my-0 list-none px-0 py-0'>
         {contacts.map((contact, i) => {
           return <ContactBadge contact={contact} key={`${i}-${contact.type}`} />;
         })}
@@ -29,16 +23,9 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
   const { type, link, image } = contact;
   const { href, hostname, pathname, search } = new URL(link);
   return (
-    <li
-      className={cn(
-        'flex flex-row items-center justify-start',
-        'text-sm font-normal leading-relaxed tracking-normal flex-nowrap',
-      )}>
+    <li className='flex flex-row flex-nowrap items-center justify-start text-sm font-normal leading-relaxed tracking-normal'>
       <Link
-        className={cn(
-          'inline pb-1 text-sm font-normal',
-          'leading-relaxed tracking-normal truncate',
-        )}
+        className='inline truncate pb-1 text-sm font-normal leading-relaxed tracking-normal'
         href={href}
         target='_blank'
         rel='noopener'>

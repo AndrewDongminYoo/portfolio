@@ -10,7 +10,7 @@ export default function ErrorPage() {
   return (
     <Layout title='404 Error:: Not Found'>
       <video
-        className='object-cover w-full mt-4'
+        className='mt-4 w-full object-cover'
         src='/videos/error.mp4'
         preload='metadata'
         playsInline={true}
@@ -22,7 +22,7 @@ export default function ErrorPage() {
       />
       <h2 className='text-xl tracking-normal text-orange-600'>404 Error:: Not Found</h2>
       <h1 className='text-3xl'>페이지가 존재하지 않아요!!</h1>
-      <p className='text-base tracking-normal leading-5'>
+      <p className='text-base leading-5 tracking-normal'>
         찾으시는 주소가 정확한지 확인해주세요!!
         <br />
         삭제되었거나 존재하지 않는 페이지입니다.
