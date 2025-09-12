@@ -18,7 +18,7 @@ import { username } from '@/constants/';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   return (
-    <div className='flex flex-row px-6 overflow-hidden  sm:px-2 sm:w-80 min-h-68'>
+    <div className='flex flex-row px-6 overflow-hidden  sm:px-2 sm:w-80 min-h-[17rem]'>
       <Link href={repository.html_url} className='sm:hidden'>
         <Image
           src={frameworks[repository.name]}
@@ -35,7 +35,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
       <div
         className={cn(
           'flex flex-col justify-between',
-          'py-8 px-12 sm:px-0 leading-normal bg-background min-w-82.5 w-full',
+          'py-8 px-12 sm:px-0 leading-normal bg-background min-w-[20.625rem] w-full',
           'first-letter:rounded-b lg:rounded-b-none lg:rounded-r',
         )}>
         <CopyToClipboard

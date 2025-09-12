@@ -16,7 +16,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
           'flex flex-col items-start justify-start flex-nowrap',
           'w-full px-0 py-6 mb-0 border-b-0 max-h-max',
         )}>
-        <div className='block w-full m-0 text-base break-all min-h-12.5'>
+        <div className='block w-full m-0 text-base break-all min-h-[50px]'>
           <div className='grid mb-0.5 text-base leading-snug grid-cols-11'>{monthsLabels}</div>
           <div className='pt-1 grid grid-flow-col-dense grid-cols-100'>
             {timeline.map(makeBlock)}
@@ -69,7 +69,7 @@ const getMonthLabels = () => {
         data-content={renderToString(popOverHtml)}
         className={cn(
           'font-black leading-normal text-center whitespace-nowrap',
-          'rounded-sm cursor-text py-1 px-2 ml-0.4 overflow-clip',
+          'rounded-sm cursor-text py-1 px-2 ml-[1.6px] overflow-clip',
           ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
           tailwindColor[type],
         )}

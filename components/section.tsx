@@ -30,12 +30,12 @@ export default function ResumeSection({
       className='w-full px-6 py-6 mx-0 my-6 border border-gray-300 border-solid rounded-lg'
       id={type}>
       <div className='flex justify-between w-full'>
-        <div className='flex items-center justify-start w-32 sm:w-full max-h-8'>
+        <div className='flex items-center justify-start w-32 sm:w-full max-h-[2rem]'>
           <h3 className='flex items-center justify-start text-base font-medium sm:text-sm'>
             {subTitle}
           </h3>
         </div>
-        <div className='flex items-center justify-end w-full-9'></div>
+        <div className='flex items-center justify-end w-[100%-9rem]'></div>
       </div>
       <div className='w-full'>{children}</div>
     </section>

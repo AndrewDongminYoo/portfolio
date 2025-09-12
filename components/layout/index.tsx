@@ -19,7 +19,12 @@ export default function Layout({ children, title }: LayoutProps) {
   const isHome = pathname === '/';
   return (
     <div
-      className={cn('lg:max-w-4xl', 'bg-background my-0 mx-auto', 'transition-all', 'max-w-7xl')}>
+      className={cn(
+        'lg:max-w-[55rem]',
+        'bg-background my-0 mx-auto',
+        'transition-all',
+        'max-w-[82.5rem]',
+      )}>
       <Head>
         <meta
           name='og:image'
@@ -40,7 +45,7 @@ export default function Layout({ children, title }: LayoutProps) {
       </Head>
       <summary
         className={cn(
-          'xl:scrollbar-hide xl:w-120',
+          'xl:scrollbar-hide xl:w-[30rem]',
           'text-base overflow-x-hidden',
           'inline-block text-base p-10 pb-4',
           'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',
@@ -62,7 +67,7 @@ export default function Layout({ children, title }: LayoutProps) {
               alt={myName}
               width={156}
               height={156}
-              className='rounded-full print:hidden'
+              className='rounded-[50%] print:hidden'
             />
           </Link>
           <ProfileBio />
@@ -71,7 +76,7 @@ export default function Layout({ children, title }: LayoutProps) {
       </summary>
       <main
         className={cn(
-          'xl:scrollbar-hide xl:w-full-30',
+          'xl:scrollbar-hide xl:w-[100%-30rem]',
           'text-base overflow-x-hidden',
           'inline-block text-base p-10',
           'xl:max-h-screen xl:min-h-screen xl:overflow-y-auto',

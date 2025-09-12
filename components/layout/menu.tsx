@@ -20,7 +20,7 @@ export default function MenuButtons() {
                 width={56}
                 height={56}
                 quality={10}
-                className='relative rounded-full shadow-2xl shadow-slate-700 w-14 h-14'
+                className='relative rounded-[50%] shadow-2xl shadow-slate-700 w-14 h-14'
               />
               <Image
                 src={'/images/kkori_the_cutest.png'}
@@ -36,7 +36,7 @@ export default function MenuButtons() {
                 className={cn(
                   'animate-ping motion-reduce:animate-none',
                   'bottom-0 left-11 absolute w-3.5 h-3.5',
-                  'bg-green-400 border-2 border-white dark:border-gray-800 rounded-full',
+                  'bg-green-400 border-2 border-white dark:border-gray-800 rounded-[50%]',
                 )}
               />
             </MenuButton>
@@ -50,7 +50,7 @@ export default function MenuButtons() {
               leaveFrom='transform scale-100 opacity-100'
               leaveTo='transform scale-95 opacity-0'>
               {/* Mark this component as `static` */}
-              <MenuItems static className='text-gray-900 rounded-md shadow-md bg-slate-50'>
+              <MenuItems static className='text-gray-900 rounded-2xl shadow-md bg-slate-50'>
                 <MenuItem>
                   {({ focus }) => (
                     <button
