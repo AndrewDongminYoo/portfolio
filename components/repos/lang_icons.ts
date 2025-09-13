@@ -1,18 +1,16 @@
 const frameworks: Record<string, string> = {
-  '52market.front': '/svg/stacks/webpack.svg',
-  '52market.shop': '/svg/stacks/swagger.svg',
-  'do-it-react-native-clone': '/svg/stacks/typescript-icon.svg',
-  'docs-trunk-io-ko': '/svg/stacks/markdown.svg',
-  'react-native-step-counter': '/svg/stacks/react-native.svg',
-  'serverless-crawlers': '/svg/stacks/aws-lambda.svg',
-  'TIL-of-BootCamp-Spring': '/svg/stacks/spring.svg',
-  'walking-tracker': '/svg/stacks/react-native-firebase.svg',
-  'andrewdongminyoo': '/svg/stacks/markdown.svg',
+  'AndrewDongminYoo': '/svg/stacks/markdown.svg',
   'cash_stepper': '/svg/stacks/flutter.svg',
-  'chatgpt': '/svg/stacks/openai.svg',
+  'copy-code-as-snippet': '/svg/stacks/typescript-icon.svg',
+  'custom_linters': '/svg/stacks/dart.svg',
+  'discord-wanted': '/svg/stacks/typescript-icon.svg',
+  'docs-trunk-io-ko': '/svg/stacks/trunk-io.svg',
+  'flutter_calculator_app': '/svg/stacks/flutter.svg',
+  'github-stats-transparent': '/svg/stacks/python.svg',
   'portfolio': '/svg/stacks/nextjs.svg',
-  'wegooli_friends': '/svg/stacks/dart.svg',
-  'wiki': '/svg/stacks/mdx.svg',
+  'portone_flutter': '/svg/stacks/flutter.svg',
+  'react-native-step-counter': '/svg/stacks/react-native.svg',
+  'walking-tracker': '/svg/stacks/react-native-firebase.svg',
 };
 
 export default frameworks;

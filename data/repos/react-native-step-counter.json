@@ -17,13 +17,13 @@
   "description": "[리액트 네이티브 라이브러리] 사용자의 걸음 수를 계산합니다. Android는 StepCounter (or Accelerometer) 센서 API를, iOS는 CoreMotion CMPedometer 를 사용하여 걸음 수를 측정합니다.",
   "fork": false,
   "created_at": "2023-01-31T09:59:32Z",
-  "updated_at": "2025-03-19T04:19:13Z",
-  "pushed_at": "2024-11-16T15:05:47Z",
+  "updated_at": "2025-06-09T00:46:12Z",
+  "pushed_at": "2025-06-07T05:45:48Z",
   "svn_url": "https://github.com/AndrewDongminYoo/react-native-step-counter",
   "homepage": "https://andrewdongminyoo.github.io/react-native-step-counter/",
-  "size": 8164,
-  "stargazers_count": 35,
-  "watchers_count": 35,
+  "size": 8710,
+  "stargazers_count": 39,
+  "watchers_count": 39,
   "language": "Kotlin",
   "has_issues": true,
   "has_projects": true,
@@ -31,10 +31,10 @@
   "has_wiki": true,
   "has_pages": true,
   "has_discussions": false,
-  "forks_count": 16,
+  "forks_count": 19,
   "archived": false,
   "disabled": false,
-  "open_issues_count": 4,
+  "open_issues_count": 8,
   "license": {
     "key": "mit",
     "name": "MIT License",
@@ -56,9 +56,9 @@
     "typescript"
   ],
   "visibility": "public",
-  "forks": 16,
-  "open_issues": 4,
-  "watchers": 35,
+  "forks": 19,
+  "open_issues": 8,
+  "watchers": 39,
   "default_branch": "main",
   "permissions": {
     "admin": true,
@@ -68,13 +68,12 @@
     "pull": true
   },
   "languages": {
-    "Kotlin": 39711,
-    "TypeScript": 26412,
-    "JavaScript": 11787,
-    "Objective-C++": 7732,
-    "Ruby": 4701,
-    "Objective-C": 4257,
-    "C": 103,
-    "Swift": 63
+    "Kotlin": 38249,
+    "TypeScript": 26574,
+    "JavaScript": 7371,
+    "Objective-C": 4800,
+    "Objective-C++": 4575,
+    "Ruby": 3888,
+    "Swift": 1345
   }
 }
