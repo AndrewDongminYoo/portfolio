@@ -1,8 +1,362 @@
-@import './calendar.css';
-@import './markdown.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './calendar.css' layer(base);
+@import './markdown.css' layer(base);
+@import 'tailwindcss';
+
+@plugin 'tailwindcss-animate';
+@plugin 'tailwind-scrollbar-hide';
+@plugin '@headlessui/tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+
+  --color-background: var(--background);
+  --color-border: var(--border);
+  --color-card: var(--card);
+  --color-destructive: var(--destructive);
+  --color-foreground: var(--foreground);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-popover: var(--popover);
+  --color-primary: var(--primary);
+  --color-ring: var(--ring);
+  --color-secondary: var(--secondary);
+
+  --text-xxs: 0.625rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+  --text-9xl: 8rem;
+
+  --grid-template-columns-10: repeat(10, minmax(0, 1fr));
+  --grid-template-columns-11: repeat(11, minmax(0, 1fr));
+  --grid-template-columns-12: repeat(12, minmax(0, 1fr));
+  --grid-template-columns-100: repeat(100, minmax(0, 1fr));
+
+  --height-auto: auto;
+  --height-full: 100%;
+  --height-screen: 100vh;
+  --height-min: min-content;
+  --height-max: max-content;
+  --height-fit: fit-content;
+
+  --tracking-normal: -0.009em;
+
+  --list-style-type-none: none;
+  --list-style-type-square: square;
+
+  --animate-typing: typing 5s steps(30, end), blink 0.75s step-end infinite;
+
+  @keyframes typing {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    from,
+    to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: orange;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility resume_card {
+  @apply mx-0 my-6 w-full rounded-xl border border-solid border-slate-200 px-6 py-6;
+
+  @media (max-width: 575px) {
+    @apply mb-4 px-4 py-4;
+  }
+}
+
+@utility resume_card_header {
+  @apply flex w-full justify-between;
+
+  & .resume_card_left {
+    @apply flex items-center justify-start;
+    max-height: 2.125rem;
+  }
+
+  & .resume_card_right {
+    @apply flex items-center justify-end;
+  }
+}
+
+@utility resume_card_header_title {
+  @apply flex items-center justify-start text-base leading-5 font-medium tracking-normal;
+
+  @media (max-width: 575px) {
+    @apply text-sm;
+  }
+}
+
+@utility resume_card_body {
+  @apply w-full;
+}
+
+@utility resume_card_left {
+  .resume_card_header & {
+    @apply flex items-center justify-start;
+    max-height: 2.125rem;
+  }
+  @apply w-32;
+
+  @media (max-width: 575px) {
+    @apply w-full;
+  }
+}
+
+@utility resume_card_item_period {
+  @apply flex flex-nowrap justify-start leading-6 text-slate-600;
+
+  & .period {
+    @apply ml-px text-xs;
+  }
+
+  @media (max-width: 575px) {
+    @apply flex-row items-center;
+
+    & .period {
+      @apply ml-1;
+    }
+  }
+}
+
+@utility period {
+  .resume_card_item_period & {
+    @apply ml-px text-xs;
+  }
+
+  @media (max-width: 575px) {
+    .resume_card_item_period & {
+      @apply ml-1;
+    }
+  }
+}
+
+@utility resume_card_right {
+  width: calc(100% - 9rem);
+
+  .resume_card_header & {
+    @apply flex items-center justify-end;
+  }
+
+  & > ul:last-child {
+    @apply -ml-16;
+  }
+
+  & > div:last-child {
+    @apply -ml-16;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    width: calc(100% - 11.5rem);
+  }
+
+  @media (max-width: 575px) {
+    @apply w-full;
+
+    & > ul:last-child {
+      @apply ml-0;
+    }
+
+    & > div:last-child {
+      @apply ml-0;
+    }
+  }
+}
+
+@utility resume_card_item_label {
+  @apply flex items-center justify-start text-xl font-bold tracking-normal break-all;
+
+  & + .resume_card_item_text {
+    @apply mt-2;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    @apply leading-6;
+  }
+
+  @media (max-width: 575px) {
+    @apply mx-0 my-1 leading-5;
+  }
+}
+
+@utility resume_card_item_text {
+  .resume_card_item_label + & {
+    @apply mt-2;
+  }
+
+  & + & {
+    @apply my-0;
+  }
+
+  & a {
+    @apply text-foreground;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    @apply mt-1;
+
+    & + & {
+      @apply my-0;
+    }
+  }
+}
+
+@utility resume_card_item {
+  @apply flex w-full flex-row flex-nowrap items-start justify-between border-b border-solid border-slate-200 px-0 py-6;
+
+  &:first-child {
+    @apply pt-3;
+  }
+
+  &:last-child {
+    @apply border-none;
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    & .list_contribution {
+      @apply mt-1;
+    }
+  }
+
+  @media (max-width: 575px) {
+    @apply flex-col justify-start px-0 py-4;
+  }
+}
+
+@utility tag_list {
+  @apply mx-0 my-2 list-none px-0 py-0;
+
+  & li {
+    @apply text-foreground mt-0 mr-1 mb-1 ml-0 inline-block rounded-sm border-0 bg-slate-200 px-1 py-px text-xs leading-normal font-normal;
+  }
+}
+
+@utility contributions_label {
+  @apply mb-2 -ml-16 inline-block text-sm leading-normal;
+
+  @media (max-width: 575px) {
+    @apply ml-0;
+  }
+}
+
+@utility list_contributions {
+  @apply mx-px my-2 list-none border-l-2 border-solid border-slate-200 bg-gray-50 py-4 pr-4 pl-2;
+
+  & .list_contribution_item .part_description {
+    @apply mx-0 mt-px mb-0 text-sm leading-7;
+  }
+}
+
+@utility list_contribution_item {
+  @apply mx-2 my-2 px-5 py-0 text-sm leading-relaxed break-words;
+  line-break: anywhere;
+
+  & a {
+    @apply overflow-hidden tracking-tighter;
+  }
+
+  & .url__link {
+    @apply block text-gray-500 hover:animate-pulse hover:text-gray-950;
+  }
+
+  .list_contributions & .part_description {
+    @apply mx-0 mt-px mb-0 text-sm leading-7;
+  }
+}
+
+@utility part_title {
+  @apply mr-2 text-lg font-medium hover:font-extrabold;
+
+  & a {
+    @apply mr-2 text-lg font-medium hover:font-extrabold;
+  }
+}
+
+@utility part_period {
+  @apply mt-2 mr-px text-sm leading-normal;
+}
+
+@utility writer {
+  @apply inline-block font-mono;
+}
+
+@utility writer-text {
+  @apply animate-typing box-border inline-block overflow-hidden border-r-4 border-solid border-r-orange-500 text-3xl font-bold tracking-tighter whitespace-nowrap;
+}
+
+@utility url__link {
+  .list_contribution_item & {
+    @apply block text-gray-500 hover:animate-pulse hover:text-gray-950;
+  }
+}
+
+@utility part_description {
+  .list_contributions .list_contribution_item & {
+    @apply mx-0 mt-px mb-0 text-sm leading-7;
+  }
+}
+
+@utility markdown_viewer {
+  @apply h-max;
+
+  & p {
+    @apply h-max;
+  }
+
+  & ul {
+    @apply h-max;
+  }
+}
+
+@utility list_contribution {
+  @media (min-width: 576px) and (max-width: 767px) {
+    .resume_card_item & {
+      @apply mt-1;
+    }
+  }
+}
 
 @layer base {
   :root {
@@ -73,7 +427,7 @@
   }
 
   hr {
-    @apply my-4 border-b-0 border-l-0 border-r-0 border-t border-solid border-slate-200;
+    @apply my-4 border-t border-r-0 border-b-0 border-l-0 border-solid border-slate-200;
   }
 
   h1,
@@ -122,7 +476,7 @@
   }
 
   p {
-    @apply mb-2 font-normal leading-relaxed tracking-normal;
+    @apply mb-2 leading-relaxed font-normal tracking-normal;
   }
 
   small {
@@ -130,11 +484,11 @@
   }
 
   code {
-    @apply my-0 ml-0 mr-px rounded border border-solid border-slate-200 bg-gray-100 px-1 py-px text-slate-700;
+    @apply my-0 mr-px ml-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-1 py-px text-slate-700;
   }
 
   pre {
-    @apply mx-0 my-0 break-words break-all rounded border border-solid border-slate-200 bg-gray-100 px-4 py-3 text-foreground;
+    @apply text-foreground mx-0 my-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-4 py-3 break-words break-all;
   }
 
   pre code {
@@ -146,7 +500,7 @@
   }
 
   blockquote small {
-    @apply font-normal italic leading-normal;
+    @apply leading-normal font-normal italic;
   }
 
   blockquote small:before {
@@ -171,204 +525,5 @@
 
   ul {
     @apply my-4 pl-10;
-  }
-}
-
-@layer components {
-  .resume_card {
-    @apply mx-0 my-6 w-full rounded-xl border border-solid border-slate-200 px-6 py-6;
-  }
-
-  .resume_card_header {
-    @apply flex w-full justify-between;
-  }
-
-  .resume_card_header_title {
-    @apply flex items-center justify-start text-base font-medium leading-5 tracking-normal;
-  }
-
-  .resume_card_body {
-    @apply w-full;
-  }
-
-  .resume_card_header .resume_card_left {
-    @apply flex items-center justify-start;
-    max-height: 2.125rem;
-  }
-
-  .resume_card_left {
-    @apply w-32;
-  }
-
-  .resume_card_item_period {
-    @apply flex flex-nowrap justify-start leading-6 text-slate-600;
-  }
-
-  .resume_card_item_period .period {
-    @apply ml-px text-xs;
-  }
-
-  .resume_card_header .resume_card_right {
-    @apply flex items-center justify-end;
-  }
-
-  .resume_card_right {
-    width: calc(100% - 9rem);
-  }
-
-  .resume_card_right > ul:last-child,
-  .resume_card_right > div:last-child {
-    @apply -ml-16;
-  }
-
-  .resume_card_item_label {
-    @apply flex items-center justify-start break-all text-xl font-bold tracking-normal;
-  }
-
-  .resume_card_item_label + .resume_card_item_text {
-    @apply mt-2;
-  }
-
-  .resume_card_item_text + .resume_card_item_text {
-    @apply my-0;
-  }
-
-  .resume_card_item_text a {
-    @apply text-foreground;
-  }
-
-  .resume_card_item {
-    @apply flex w-full flex-row flex-nowrap items-start justify-between border-b border-solid border-slate-200 px-0 py-6;
-  }
-
-  .resume_card_item:first-child {
-    @apply pt-3;
-  }
-
-  .resume_card_item:last-child {
-    @apply border-none;
-  }
-
-  .tag_list {
-    @apply mx-0 my-2 list-none px-0 py-0;
-  }
-
-  .tag_list li {
-    @apply mb-1 ml-0 mr-1 mt-0 inline-block rounded border-0 bg-slate-200 px-1 py-px text-xs font-normal leading-normal text-foreground;
-  }
-
-  .contributions_label {
-    @apply -ml-16 mb-2 inline-block text-sm leading-normal;
-  }
-
-  .list_contributions {
-    @apply mx-px my-2 list-none border-l-2 border-solid border-slate-200 bg-gray-50 py-4 pl-2 pr-4;
-  }
-
-  .list_contribution_item {
-    @apply mx-2 my-2 break-words px-5 py-0 text-sm leading-relaxed;
-    line-break: anywhere;
-  }
-
-  .list_contribution_item a {
-    @apply overflow-hidden tracking-tighter;
-  }
-
-  .part_title,
-  .part_title a {
-    @apply mr-2 text-lg font-medium hover:font-extrabold;
-  }
-
-  .part_period {
-    @apply mr-px mt-2 text-sm leading-normal;
-  }
-
-  .writer {
-    @apply inline-block font-mono;
-  }
-
-  .writer-text {
-    @apply box-border inline-block animate-typing overflow-hidden whitespace-nowrap border-r-4 border-solid border-r-orange-500 text-3xl font-bold tracking-tighter;
-  }
-
-  .list_contribution_item .url__link {
-    @apply block text-gray-500 hover:animate-pulse hover:text-gray-950;
-  }
-
-  .list_contributions .list_contribution_item .part_description {
-    @apply mx-0 mb-0 mt-px text-sm leading-7;
-  }
-
-  .markdown_viewer,
-  .markdown_viewer p,
-  .markdown_viewer ul {
-    @apply h-max;
-  }
-
-  @media (min-width: 992px) and (max-width: 1199px) {
-    .resume_card_item_text {
-      @apply mt-1;
-    }
-
-    .resume_card_item_text + .resume_card_item_text {
-      @apply my-0;
-    }
-
-    .resume_card_item_label {
-      @apply leading-6;
-    }
-
-    .resume_card_right {
-      width: calc(100% - 11.5rem);
-    }
-  }
-
-  @media (min-width: 576px) and (max-width: 767px) {
-    .resume_card_item .list_contribution {
-      @apply mt-1;
-    }
-  }
-
-  @media (max-width: 575px) {
-    .resume_card {
-      @apply mb-4 px-4 py-4;
-    }
-
-    .resume_card_left {
-      @apply w-full;
-    }
-
-    .resume_card_right {
-      @apply w-full;
-    }
-
-    .resume_card_right > ul:last-child,
-    .resume_card_right > div:last-child {
-      @apply ml-0;
-    }
-
-    .contributions_label {
-      @apply ml-0;
-    }
-
-    .resume_card_header_title {
-      @apply text-sm;
-    }
-
-    .resume_card_item {
-      @apply flex-col justify-start px-0 py-4;
-    }
-
-    .resume_card_item_label {
-      @apply mx-0 my-1 leading-5;
-    }
-
-    .resume_card_item_period {
-      @apply flex-row items-center;
-    }
-
-    .resume_card_item_period .period {
-      @apply ml-1;
-    }
   }
 }
