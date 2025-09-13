@@ -1,11 +1,12 @@
-import React, { createRef, useEffect } from 'react';
 import { GetStaticProps } from 'next';
-import Layout from '@/components/layout';
+import React, { createRef, useEffect } from 'react';
+
 import ReactGithubCalendar from '@/components/calendar';
+import Layout from '@/components/layout';
+import { secondaryTitle } from '@/constants/';
+import { readRepositories } from '@/lib/repos';
 import Repo from '@/pages/repos/[repo]';
 import type Repository from '@/types/repos';
-import { readRepositories } from '@/lib/repos';
-import { secondaryTitle } from '@/constants/';
 
 type PortfolioProps = {
   repositoryData: Repository[];

@@ -1,5 +1,6 @@
-import Language, { colorMap } from './lang_colors';
 import Link from 'next/link';
+
+import Language, { colorMap } from './lang_colors';
 
 export default function LanguageButton({
   language,

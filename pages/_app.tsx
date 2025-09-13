@@ -1,13 +1,14 @@
 import '@/styles/globals.css';
 import '@/styles/calendar.css';
 import '@/styles/markdown.css';
-
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import * as customPack from '@/components/common/icons';
-import type { AppProps, NextWebVitalsMetric } from 'next/app';
+
 import { config, library } from '@fortawesome/fontawesome-svg-core';
-import Head from 'next/head';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { Noto_Sans_KR } from 'next/font/google';
+import Head from 'next/head';
+
+import * as customPack from '@/components/common/icons';
 
 config.autoAddCss = false;
 library.add(customPack);

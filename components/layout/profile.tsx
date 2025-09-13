@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { contacts, description, primaryTitle } from '@/constants/';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { contacts, description, primaryTitle } from '@/constants/';
 
 export default function ProfileBio() {
   return (
@@ -19,8 +19,8 @@ export default function ProfileBio() {
   );
 }
 
-const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: any } }) => {
-  const { type, link, image } = contact;
+const ContactBadge = ({ contact }: { contact: { type: string; link: string; image: string } }) => {
+  const { type, link } = contact;
   const { href, hostname, pathname, search } = new URL(link);
   return (
     <li className='flex flex-row flex-nowrap items-center justify-start text-sm leading-relaxed font-normal tracking-normal'>
@@ -31,7 +31,7 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
         rel='noopener'>
         <Image
           alt={`${type}:${hostname}${pathname}${search}`}
-          src={image}
+          src={contact.image}
           width={245.25}
           height={28}
         />

@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import { getPostData, getSortedPostsData } from '@/lib/posts';
 
 export default function posts(req: NextApiRequest, res: NextApiResponse) {

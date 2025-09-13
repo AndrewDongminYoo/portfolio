@@ -1,12 +1,14 @@
-import { github, myName } from '@/constants/';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
+
+import { github, myName } from '@/constants/';
+
 import MenuButtons from './menu';
 import ProfileBio from './profile';
-import { ReactNode } from 'react';
 import StackList from './stacks';
-import { useRouter } from 'next/router';
 
 type LayoutProps = {
   children?: ReactNode;

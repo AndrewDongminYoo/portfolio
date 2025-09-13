@@ -1,9 +1,10 @@
-import { Experience, Project } from '@/types/profile';
-import { faCalendarCheck, faChrome, faSquareGithub } from '@/components/common/icons';
-import Description from '@/components/common/description';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+
+import Description from '@/components/common/description';
+import { faCalendarCheck, faChrome, faSquareGithub } from '@/components/common/icons';
 import Period from '@/components/common/period';
+import { Experience, Project } from '@/types/profile';
 
 export default function ExperienceElement({ experience }: { experience: Experience }) {
   const startAt = experience.startAt;

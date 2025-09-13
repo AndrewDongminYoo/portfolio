@@ -1,8 +1,9 @@
+import type Resume from '@/types/profile';
+
 import ActivityElement from './activity';
 import EducationElement from './education';
 import ExperienceElement from './experience';
 import ProjectElement from './project';
-import type Resume from '@/types/profile';
 
 export default function PostContent({ data }: { data: Resume }) {
   switch (data.type) {

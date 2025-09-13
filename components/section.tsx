@@ -1,4 +1,5 @@
 import React, { ComponentProps } from 'react';
+
 import type { SectionType } from '@/types/profile';
 
 const subTitles = {

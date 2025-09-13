@@ -1,4 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Transition } from '@headlessui/react';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { ComponentProps, useState } from 'react';
+
 import {
   faCodeFork,
   faEye,
@@ -7,14 +12,11 @@ import {
   faLockOpen,
   faStar,
 } from '@/components/common/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Image from 'next/image';
-import Link from 'next/link';
-import type Repository from '@/types/repos';
-import { Transition } from '@headlessui/react';
-import { cn } from '@/lib/utils';
-import frameworks from './lang_icons';
 import { username } from '@/constants/';
+import { cn } from '@/lib/utils';
+import type Repository from '@/types/repos';
+
+import frameworks from './lang_icons';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   return (

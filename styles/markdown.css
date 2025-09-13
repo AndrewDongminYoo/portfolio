@@ -72,7 +72,7 @@
 
 .markdown th {
   background-color: oklch(94.452% 0.00678 286.04 / 0.2);
-  @apply 1 border-t-1 border-b border-l-1 px-3 py-1;
+  @apply border-t-1 border-b-1 border-l-1 px-3 py-1;
 
   &:first-child {
     @apply rounded-tl-md;

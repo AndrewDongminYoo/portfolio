@@ -1,7 +1,8 @@
-import { faChrome, faDiscord, faSquareGithub } from '@/components/common/icons';
-import Description from '@/components/common/description';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+
+import Description from '@/components/common/description';
+import { faChrome, faDiscord, faSquareGithub } from '@/components/common/icons';
 import Period from '@/components/common/period';
 import type { Project } from '@/types/profile';
 

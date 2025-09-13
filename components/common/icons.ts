@@ -23,6 +23,7 @@ import {
   faSquareJs,
   faYarn,
 } from '@fortawesome/free-brands-svg-icons';
+import { faCalendarCheck, faIdCard, faStar } from '@fortawesome/free-regular-svg-icons';
 import {
   faBlog,
   faCodeFork,
@@ -33,7 +34,6 @@ import {
   faPrint,
   faTerminal,
 } from '@fortawesome/free-solid-svg-icons';
-import { faCalendarCheck, faIdCard, faStar } from '@fortawesome/free-regular-svg-icons';
 
 export {
   faAppStoreIos,

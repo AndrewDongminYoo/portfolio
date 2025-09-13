@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Endpoints } from '@octokit/types';
 import { Octokit } from '@octokit/core';
-import type Repository from '@/types/repos';
-import fs from 'fs';
+import { type Endpoints } from '@octokit/types';
 import { parseISO } from 'date-fns/parseISO';
+import fs from 'fs';
 import path from 'path';
+
+import type Repository from '@/types/repos';
 
 const { GITHUB_TOKEN } = process.env;
 const octokit = new Octokit({ auth: GITHUB_TOKEN });

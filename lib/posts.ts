@@ -1,8 +1,9 @@
-import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
-import matter, { GrayMatterFile } from 'gray-matter';
-import fs from 'fs';
 import { parseISO } from 'date-fns/parseISO';
+import fs from 'fs';
+import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
+
+import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
 
