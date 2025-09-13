@@ -1,5 +1,3 @@
-@import './calendar.css' layer(base);
-@import './markdown.css' layer(base);
 @import 'tailwindcss';
 
 @plugin 'tailwindcss-animate';
@@ -16,6 +14,8 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
 
+  --color-mirage: var(--mirage);
+  --color-quill-gray: var(--quill-gray);
   --color-background: var(--background);
   --color-border: var(--border);
   --color-card: var(--card);
@@ -255,7 +255,7 @@
   }
 
   @media (min-width: 576px) and (max-width: 767px) {
-    & .list_contribution {
+    & .list_contributions {
       @apply mt-1;
     }
   }
@@ -350,7 +350,7 @@
   }
 }
 
-@utility list_contribution {
+@utility list_contributions {
   @media (min-width: 576px) and (max-width: 767px) {
     .resume_card_item & {
       @apply mt-1;
@@ -360,6 +360,8 @@
 
 @layer base {
   :root {
+    --mirage: hsl(219, 37%, 17%);
+    --quill-gray: hsl(75, 6%, 87%);
     --background: hsl(0 0% 100%);
     --foreground: hsl(222.2 84% 4.9%);
     --muted: hsl(210 40% 96.1%);

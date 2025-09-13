@@ -1,4 +1,6 @@
 import '@/styles/globals.css';
+import '@/styles/calendar.css';
+import '@/styles/markdown.css';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import * as customPack from '@/components/common/icons';

@@ -1,69 +1,58 @@
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+@reference './globals.css';
+
 .markdown ol {
-  counter-reset: item;
-  list-style-type: decimal;
+  @apply list-decimal [counter-reset:item];
 }
 
 .markdown ul li {
-  display: block;
-  margin: 0;
-  position: relative;
-}
+  @apply relative mx-0 my-0 block;
 
-.markdown ul li:before {
-  content: '•';
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  margin-left: -1rem;
-  position: absolute;
+  &::before {
+    content: '•';
+    @apply absolute -ml-[1rem] text-sm leading-5;
+  }
 }
 
 .markdown {
-  max-width: none;
-  line-break: auto;
-  word-break: keep-all;
+  @apply max-w-none break-keep [line-break:auto];
 }
 
 .markdown h1,
 .markdown h2 {
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .markdown h2 {
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+  @apply mt-8 mb-4;
 }
 
 .markdown h3 {
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .markdown h3,
 .markdown h4 {
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  @apply mt-4 mb-2;
 }
 
 .markdown h4 {
-  font-weight: 400;
+  @apply font-normal;
 }
 
 .markdown h5 {
-  font-weight: 600;
+  @apply font-semibold;
 }
 
 .markdown blockquote {
   --tw-border-opacity: 1;
   border-color: rgba(142, 142, 160, var(--tw-border-opacity));
-  border-left-width: 2px;
-  line-height: 1rem;
-  padding-left: 1rem;
+  @apply border-l-2 pl-4 leading-none;
 }
 
 .markdown ol,
 .markdown ul {
-  display: flex;
-  flex-direction: column;
-  padding-left: 1rem;
+  @apply flex flex-col pl-4;
 }
 
 .markdown ol li,
@@ -74,53 +63,42 @@
 .markdown ul li > p,
 .markdown ul ol,
 .markdown ul ul {
-  margin: 0;
+  @apply mx-0 my-0;
 }
 
 .markdown table {
-  --tw-border-spacing-x: 0px;
-  --tw-border-spacing-y: 0px;
-  border-collapse: separate;
-  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
-  width: 100%;
+  @apply w-full border-separate border-spacing-[0px];
 }
 
 .markdown th {
-  background-color: rgba(236, 236, 241, 0.2);
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  border-top-width: 1px;
-  padding: 0.25rem 0.75rem;
-}
+  background-color: oklch(94.452% 0.00678 286.04 / 0.2);
+  @apply 1 border-t-1 border-b border-l-1 px-3 py-1;
 
-.markdown th:first-child {
-  border-top-left-radius: 0.375rem;
-}
+  &:first-child {
+    @apply rounded-tl-md;
+  }
 
-.markdown th:last-child {
-  border-right-width: 1px;
-  border-top-right-radius: 0.375rem;
+  &:last-child {
+    @apply rounded-tr-md border-r-1;
+  }
 }
 
 .markdown td {
-  border-bottom-width: 1px;
-  border-left-width: 1px;
-  padding: 0.25rem 0.75rem;
-}
+  @apply border-b-1 border-l-1 px-3 py-1;
 
-.markdown td:last-child {
-  border-right-width: 1px;
+  &:last-child {
+    @apply border-r-1;
+  }
 }
 
 .markdown tbody tr:last-child td:first-child {
-  border-bottom-left-radius: 0.375rem;
+  @apply rounded-bl-md;
 }
 
 .markdown tbody tr:last-child td:last-child {
-  border-bottom-right-radius: 0.375rem;
+  @apply rounded-br-md;
 }
 
 .markdown a {
-  text-decoration-line: underline;
-  text-underline-offset: 2px;
+  @apply underline underline-offset-2;
 }
