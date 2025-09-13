@@ -8,12 +8,8 @@ module.exports = {
     /** `next lint`와 `next build` 에서 이 디렉터리에서만 ESLint를 실행합니다. */
     dirs: ['components', 'constants', 'lib', 'pages'],
   },
-  /** 기본적으로 Next.js는 빌드 시점에 글꼴 CSS를 자동으로 인라인 처리합니다. */
-  optimizeFonts: true,
   /** 프로덕션 빌드 중에 브라우저 소스 맵 생성 활성화 */
   productionBrowserSourceMaps: true,
-  /** SWC 컴파일러를 사용하여 생성된 자바스크립트 최소화 */
-  swcMinify: true,
   /** Next.js 런타임은 엄격한 모드를 준수합니다. */
   reactStrictMode: true,
   /** 기본적으로 Next.js는 후행 슬래시가 있는 URL을 후행 슬래시가 없는 해당 URL로 리디렉션합니다. */
@@ -27,8 +23,6 @@ module.exports = {
    * `export`: 내보낸 빌드 출력, 정적 HTML/CSS/JS만 포함하는 .out 디렉터리. Node.js 서버 없이 자체 호스팅할 때 유용합니다.
    */
   output: 'standalone',
-  /** 빌드하는 동안 Next.js는 각 페이지와 해당 종속성을 자동으로 추적하여 애플리케이션의 프로덕션 버전을 배포하는 데 필요한 모든 파일을 확인합니다. */
-  outputFileTracing: true,
   /** 빌드 출력 디렉토리(기본값은 .next)는 이제 Next.js 캐시를 제외하고 기본적으로 지워집니다. */
   cleanDistDir: true,
   images: {
@@ -40,15 +34,7 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: '*.githubassets.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'AndrewDongminYoo.vercel.app',
-      },
-      {
-        protocol: 'https',
-        hostname: 'gravatar.com',
       },
     ],
     dangerouslyAllowSVG: true,
