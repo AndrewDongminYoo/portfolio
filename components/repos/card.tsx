@@ -25,17 +25,17 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           alt='What Framework/Library used by this repository'
           priority={true}
           height={256}
-          className='-mx-4 hidden h-full rounded-l rounded-t opacity-25 md:mx-0 md:flex md:max-w-10 lg:min-w-20 lg:max-w-24'
+          className='-mx-4 hidden h-full rounded-t rounded-l opacity-25 md:mx-0 md:flex md:max-w-10 lg:max-w-24 lg:min-w-20'
         />
       </Link>
-      <div className='flex w-full min-w-[20.625rem] flex-col justify-between bg-background px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-b-none lg:rounded-r'>
+      <div className='bg-background flex w-full min-w-[20.625rem] flex-col justify-between px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-r lg:rounded-b-none'>
         <CopyToClipboard
           value={`${repository.html_url}.git`}
           className='after:content-[attr(placeholder)] hover:after:content-[attr(title)]'>
           {repository.private ? (
             <FontAwesomeIcon
               icon={faLock}
-              className='my-0 ml-0 mr-2 h-4 w-4'
+              className='my-0 mr-2 ml-0 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -45,7 +45,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           ) : (
             <FontAwesomeIcon
               icon={faLockOpen}
-              className='my-0 ml-0 mr-2 h-4 w-4'
+              className='my-0 mr-2 ml-0 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -57,7 +57,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
         <div className='flex justify-between text-gray-900'>
           <Link href={repository.html_url} className='inline-block'>
             <p className='mb-0 text-2xl sm:text-lg'>{repository.owner.login}/</p>
-            <p className='break-all text-xl font-bold tracking-tight md:text-3xl md:tracking-normal'>
+            <p className='text-xl font-bold tracking-tight break-all md:text-3xl md:tracking-normal'>
               {repository.name}
             </p>
           </Link>
@@ -69,15 +69,15 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             alt={repository.owner.login}
           />
         </div>
-        <p className='break-keep text-sm text-gray-500 md:text-xs'>{repository.description}</p>
+        <p className='text-sm break-keep text-gray-500 md:text-xs'>{repository.description}</p>
         <div className='grid w-full grid-cols-4 gap-x-2'>
           <Link
             href={`https://github.com/search?l=${repository.language}&q=user%3A${username}&type=Code`}
             className='text-xs'>
-            <p className='mb-0 text-xxs text-gray-400'>based language</p>
+            <p className='text-xxs mb-0 text-gray-400'>based language</p>
             <FontAwesomeIcon
               icon={faLaptopCode}
-              className='my-0 ml-0 mr-2 h-4 w-4'
+              className='my-0 mr-2 ml-0 h-4 w-4'
               aria-hidden='true'
               size='2x'
               width={16}
@@ -87,11 +87,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             {repository.language}
           </Link>
           <Link href={`${repository.html_url}/stargazers`} className='text-xs'>
-            <p className='mb-0 text-xxs text-gray-400'>stars</p>
+            <p className='text-xxs mb-0 text-gray-400'>stars</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faStar}
-                className='my-0 ml-0 mr-2 h-4 w-4'
+                className='my-0 mr-2 ml-0 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -102,11 +102,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             </p>
           </Link>
           <Link href={`${repository.html_url}/watchers`} className='text-xs'>
-            <p className='mb-0 text-xxs text-gray-400'>watchers</p>
+            <p className='text-xxs mb-0 text-gray-400'>watchers</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faEye}
-                className='my-0 ml-0 mr-2 h-4 w-4'
+                className='my-0 mr-2 ml-0 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -117,11 +117,11 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             </p>
           </Link>
           <Link href={`${repository.html_url}/fork`} className='text-xs'>
-            <p className='mb-0 text-xxs text-gray-400'>folks</p>
+            <p className='text-xxs mb-0 text-gray-400'>folks</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faCodeFork}
-                className='my-0 ml-0 mr-2 h-4 w-4'
+                className='my-0 mr-2 ml-0 h-4 w-4'
                 aria-hidden='true'
                 size='2x'
                 width={16}
@@ -156,7 +156,7 @@ const CopyToClipboard = (props: ComponentProps<'button'> & { value: string }) =>
         static
         as='div'
         show={isShowing}
-        className='my-0 ml-0 mr-1 w-fit whitespace-nowrap rounded border-0 bg-slate-200 px-1 py-0.5 text-xs text-foreground'
+        className='text-foreground my-0 mr-1 ml-0 w-fit rounded border-0 bg-slate-200 px-1 py-0.5 text-xs whitespace-nowrap'
         enter='transition-opacity duration-150'
         enterFrom='opacity-0'
         enterTo='opacity-100'

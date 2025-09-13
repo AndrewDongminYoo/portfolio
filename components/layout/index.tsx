@@ -17,7 +17,7 @@ export default function Layout({ children, title }: LayoutProps) {
   const { pathname } = useRouter();
   const isHome = pathname === '/';
   return (
-    <div className='mx-auto my-0 max-w-[55rem] bg-background transition-all lg:max-w-[82.5rem]'>
+    <div className='bg-background mx-auto my-0 max-w-[55rem] transition-all lg:max-w-[82.5rem]'>
       <Head>
         <meta
           name='og:image'
@@ -36,7 +36,7 @@ export default function Layout({ children, title }: LayoutProps) {
         <link rel='apple-touch-icon' href={'/favicon.ico'} />
         <title>{title}</title>
       </Head>
-      <summary className='block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pb-4 md:pt-10 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16 xl:scrollbar-hide'>
+      <summary className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pt-10 md:pb-4 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16'>
         <MenuButtons />
         <h1 className='writer mx-0 my-4 text-2xl leading-normal'>
           <Link href={isHome ? github : '/'} className='writer-text'>
@@ -57,10 +57,10 @@ export default function Layout({ children, title }: LayoutProps) {
           <StackList />
         </section>
       </summary>
-      <main className='block overflow-x-hidden px-4 py-4 pt-0 text-base md:px-10 md:py-10 lg:inline-block xl:max-h-screen xl:min-h-screen xl:w-[calc(100%-30rem)] xl:overflow-y-auto xl:scrollbar-hide'>
+      <main className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 pt-0 text-base md:px-10 md:py-10 lg:inline-block xl:max-h-screen xl:min-h-screen xl:w-[calc(100%-30rem)] xl:overflow-y-auto'>
         <article>{children}</article>
         {!isHome && (
-          <div className='font-extrabold leading-8'>
+          <div className='leading-8 font-extrabold'>
             <Link href='/'>🔙 {'홈으로가기'}</Link>
           </div>
         )}

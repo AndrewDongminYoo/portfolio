@@ -5,8 +5,8 @@ import Link from 'next/link';
 
 export default function ProfileBio() {
   return (
-    <section className='mt-0 border-t-0 px-0 py-0 text-base text-foreground'>
-      <h2 className='-ml-px mb-4 flex min-h-16 flex-row flex-nowrap items-center justify-between break-keep text-2xl leading-snug'>
+    <section className='text-foreground mt-0 border-t-0 px-0 py-0 text-base'>
+      <h2 className='mb-4 -ml-px flex min-h-16 flex-row flex-nowrap items-center justify-between text-2xl leading-snug break-keep'>
         {primaryTitle}
       </h2>
       <ul className='my-0 list-none px-0 py-0'>
@@ -23,9 +23,9 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
   const { type, link, image } = contact;
   const { href, hostname, pathname, search } = new URL(link);
   return (
-    <li className='flex flex-row flex-nowrap items-center justify-start text-sm font-normal leading-relaxed tracking-normal'>
+    <li className='flex flex-row flex-nowrap items-center justify-start text-sm leading-relaxed font-normal tracking-normal'>
       <Link
-        className='inline truncate pb-1 text-sm font-normal leading-relaxed tracking-normal'
+        className='inline truncate pb-1 text-sm leading-relaxed font-normal tracking-normal'
         href={href}
         target='_blank'
         rel='noopener'>

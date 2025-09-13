@@ -11,23 +11,23 @@
     --color-silver-chalice: #aaa;
   }
 
-  rect[data-level='0'] {
+  .react-activity-calendar rect[data-level='0'] {
     fill: var(--color-calendar-graph-day-bg);
   }
 
-  rect[data-level='1'] {
+  .react-activity-calendar rect[data-level='1'] {
     fill: var(--color-calendar-graph-day-L1-bg);
   }
 
-  rect[data-level='2'] {
+  .react-activity-calendar rect[data-level='2'] {
     fill: var(--color-calendar-graph-day-L2-bg);
   }
 
-  rect[data-level='3'] {
+  .react-activity-calendar rect[data-level='3'] {
     fill: var(--color-calendar-graph-day-L3-bg);
   }
 
-  rect[data-level='4'] {
+  .react-activity-calendar rect[data-level='4'] {
     fill: var(--color-calendar-graph-day-L4-bg);
   }
 

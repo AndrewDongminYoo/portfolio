@@ -6,7 +6,6 @@ role: 'React Native 개발자'
 startAt: '2023-01-25'
 endAt: '2023-04-30'
 website_url: 'https://gcoo.io/kr'
-icon: 'url(https://icon.horse/icon/gcoo.io)'
 duration: 3
 tags:
   - 'React Native'

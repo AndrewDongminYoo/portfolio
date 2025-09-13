@@ -12,7 +12,7 @@ export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
   return (
     <div className='flex w-full flex-col items-end justify-start'>
       <div className='mb-0 flex max-h-max w-full flex-col flex-nowrap items-start justify-start border-b-0 px-0 py-6'>
-        <div className='mx-0 my-0 block min-h-[50px] w-full break-all text-base'>
+        <div className='mx-0 my-0 block min-h-[50px] w-full text-base break-all'>
           <div className='mb-0.5 grid grid-cols-11 text-base leading-snug'>{monthsLabels}</div>
           <div className='grid grid-flow-col-dense grid-cols-100 pt-1'>
             {timeline.map(makeBlock)}
@@ -61,7 +61,7 @@ const getMonthLabels = () => {
         data-placement='top'
         data-content={renderToString(popOverHtml)}
         className={cn(
-          'ml-[1.6px] cursor-text overflow-clip whitespace-nowrap rounded-sm px-2 py-1 text-center font-black leading-normal',
+          'ml-[1.6px] cursor-text overflow-clip rounded-sm px-2 py-1 text-center leading-normal font-black whitespace-nowrap',
           ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
           tailwindColor[type],
         )}
@@ -77,5 +77,5 @@ const tailwindColor = {
   activity: 'bg-gray-400 text-zinc-800',
   project: 'bg-gray-500 text-zinc-100',
   education: 'bg-gray-400 text-zinc-700',
-  experience: 'bg-[#1b263b] text-[#e0e1dd]',
+  experience: 'bg-mirage text-quill-gray',
 };

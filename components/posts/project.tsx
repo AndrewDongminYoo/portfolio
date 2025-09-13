@@ -33,7 +33,7 @@ export default function ProjectElement({ project }: { project: Project }) {
           <li className='list_contribution_item'>
             <FontAwesomeIcon
               icon={faDiscord}
-              className='my-0 ml-0 mr-2 w-4'
+              className='my-0 mr-2 ml-0 w-4'
               aria-hidden='true'
               color='slateGray'
             />
@@ -42,7 +42,7 @@ export default function ProjectElement({ project }: { project: Project }) {
           <li className='list_contribution_item'>
             <FontAwesomeIcon
               icon={faSquareGithub}
-              className='my-0 ml-0 mr-2 w-4'
+              className='my-0 mr-2 ml-0 w-4'
               aria-hidden='true'
               color='slateGray'
             />
@@ -53,7 +53,7 @@ export default function ProjectElement({ project }: { project: Project }) {
           <li className='list_contribution_item'>
             <FontAwesomeIcon
               icon={faChrome}
-              className='my-0 ml-0 mr-2 w-4'
+              className='my-0 mr-2 ml-0 w-4'
               aria-hidden='true'
               color='slateGray'
             />

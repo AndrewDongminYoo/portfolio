@@ -24,7 +24,7 @@ export default function Repo({ repository }: RepoProps) {
     <article aria-label='repositories'>
       <Link
         href={html_url}
-        className='box-border break-words text-sm font-medium leading-tight text-slate-300'>
+        className='box-border text-sm leading-tight font-medium break-words text-slate-300'>
         {full_name}
       </Link>
       <RepoCard repository={repository} />

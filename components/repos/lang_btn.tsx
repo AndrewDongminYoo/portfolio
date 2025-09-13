@@ -15,10 +15,10 @@ export default function LanguageButton({
   const trendingOfLang = `https://github.com/topics/${language}`;
   const style = { backgroundColor };
   return (
-    <li className='mr-3 mt-1 inline-flex items-center'>
+    <li className='mt-1 mr-3 inline-flex items-center'>
       <Link href={index === 0 ? myRepoLanguage : trendingOfLang}>
         <span className='mr-1 inline-block h-3 w-3 rounded-full' style={style} aria-hidden={true} />
-        <span className='mr-1 font-medium text-foreground'>{language}</span>
+        <span className='text-foreground mr-1 font-medium'>{language}</span>
         <span>{percent.toFixed(1) + '%'}</span>
       </Link>
     </li>

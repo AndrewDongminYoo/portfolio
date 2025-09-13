@@ -8,7 +8,7 @@ import { github } from '@/constants/';
 
 export default function MenuButtons() {
   return (
-    <div className='fixed right-14 top-14 z-50 flex justify-end print:hidden'>
+    <div className='fixed top-14 right-14 z-50 flex justify-end print:hidden'>
       <Menu>
         {({ open }) => (
           <>
@@ -43,7 +43,7 @@ export default function MenuButtons() {
               <MenuItems static className='rounded-2xl bg-slate-50 text-gray-900 shadow-md'>
                 <MenuItem>
                   {({ focus }) => (
-                    <button className='group flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900 ui-active:bg-slate-500 ui-active:text-white'>
+                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
                       <FontAwesomeIcon
                         icon={faPrint}
                         color='slateGray'
@@ -61,7 +61,7 @@ export default function MenuButtons() {
                 </MenuItem>
                 <MenuItem>
                   {({ focus }) => (
-                    <button className='group flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900 ui-active:bg-slate-500 ui-active:text-white'>
+                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
                       <FontAwesomeIcon
                         icon={faCodepen}
                         color='slateGray'
@@ -79,7 +79,7 @@ export default function MenuButtons() {
                 </MenuItem>
                 <MenuItem>
                   {({ focus }) => (
-                    <button className='group flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900 ui-active:bg-slate-500 ui-active:text-white'>
+                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
                       <FontAwesomeIcon
                         icon={faIdCard}
                         color='slateGray'
