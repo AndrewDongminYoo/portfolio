@@ -25,6 +25,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           alt='What Framework/Library used by this repository'
           priority={true}
           height={256}
+          width={256}
           className='-mx-4 hidden h-full rounded-t rounded-l opacity-25 md:mx-0 md:flex md:max-w-10 lg:max-w-24 lg:min-w-20'
         />
       </Link>

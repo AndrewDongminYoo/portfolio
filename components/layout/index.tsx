@@ -31,7 +31,10 @@ export default function Layout({ children, title }: LayoutProps) {
           itemProp='image primaryImageOfPage'
           content={'/images/laundry.jpg'}
         />
-        <meta name='keywords' content='서버/백엔드, 웹 풀스택, 크로스플랫폼개발, 개발자 구인' />
+        <meta
+          name='keywords'
+          content='크로스플랫폼 개발자, 앱 개발자, 플러터 개발자, Flutter 개발자'
+        />
         <link rel='icon' href={'/favicon.ico'} />
         <link rel='apple-touch-icon' href={'/favicon.ico'} />
         <title>{title}</title>

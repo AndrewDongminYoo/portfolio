@@ -18,7 +18,6 @@ export default function MenuButtons() {
                 alt='Cat Floating in Space'
                 width={56}
                 height={56}
-                quality={10}
                 className='relative h-14 w-14 rounded-full shadow-2xl shadow-slate-700'
               />
               <Image
