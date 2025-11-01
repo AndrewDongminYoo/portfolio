@@ -290,7 +290,7 @@
 }
 
 @utility list_contribution_item {
-  @apply mx-2 my-2 px-5 py-0 text-sm leading-relaxed break-words;
+  @apply mx-2 my-2 px-5 py-0 text-sm leading-relaxed wrap-break-word;
   line-break: anywhere;
 
   & a {
@@ -490,7 +490,7 @@
   }
 
   pre {
-    @apply text-foreground mx-0 my-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-4 py-3 break-words break-all;
+    @apply text-foreground mx-0 my-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-4 py-3 wrap-break-word break-all;
   }
 
   pre code {

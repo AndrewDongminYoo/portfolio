@@ -32,7 +32,7 @@
   }
 
   .react-activity-calendar {
-    @apply flex w-max max-w-full flex-col gap-[8px] pt-[10px] text-[11px] !text-(--color-silver-chalice);
+    @apply flex w-max max-w-full flex-col gap-[8px] pt-[10px] text-[11px] text-(--color-silver-chalice)!;
   }
 
   .react-activity-calendar__scroll-container {
@@ -40,7 +40,7 @@
   }
 
   .react-activity-calendar__calendar {
-    @apply block !overflow-x-hidden !overflow-y-visible;
+    @apply block overflow-x-hidden! overflow-y-visible!;
   }
 
   .react-activity-calendar__legend-month > text {
