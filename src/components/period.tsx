@@ -1,15 +1,13 @@
-import { differenceInDays } from 'date-fns/differenceInDays';
-import { differenceInMonths } from 'date-fns/differenceInMonths';
-import { differenceInWeeks } from 'date-fns/differenceInWeeks';
-import { differenceInYears } from 'date-fns/differenceInYears';
 import { format } from 'date-fns/format';
+import { formatISO } from 'date-fns/formatISO';
+import { intervalToDuration } from 'date-fns/intervalToDuration';
 import { isValid } from 'date-fns/isValid';
 import { parseISO } from 'date-fns/parseISO';
 
-const DateElement = ({ dateTime, fmt }: { dateTime: string; fmt?: string }) => {
+const DateElement = ({ dateTime, fmt = 'yy/MM' }: { dateTime: string; fmt?: string }) => {
   const date = parseISO(dateTime);
   if (isValid(date)) {
-    return <time dateTime={dateTime}>{format(date, fmt ?? 'yy/MM')}</time>;
+    return <time dateTime={dateTime}>{format(date, fmt)}</time>;
   } else {
     return <span>{dateTime}</span>;
   }
@@ -22,27 +20,26 @@ export default function Period({
   datesOnly,
 }: {
   startAt: string;
-  endAt: string;
+  endAt?: string;
   className?: string;
   datesOnly?: boolean;
 }) {
   const start = parseISO(startAt);
-  const end = isValid(parseISO(endAt)) ? parseISO(endAt) : new Date();
-  const diffD = differenceInDays(end, start);
-  const diffW = differenceInWeeks(end, start) + 1;
-  const diffM = differenceInMonths(end, start) + 1;
-  const diffY = differenceInYears(end, start) + 1;
-  let periodString = '';
-  if (diffD > 2) periodString = `(${diffD}일)`;
-  if (diffW > 2) periodString = `(${diffW}주)`;
-  if (diffM > 2) periodString = `(${diffM}개월)`;
-  if (diffM > 20) periodString = `(${diffY}년)`;
-  console.debug('periodString', periodString);
+  const now = new Date();
+  const end = endAt && isValid(parseISO(endAt)) ? parseISO(endAt) : now;
+  const dur = intervalToDuration({ start, end });
+  let period = '';
+  if (dur.days && dur.days > 0) period = `${dur.days}일`;
+  if (dur.weeks && dur.weeks > 0) period = `${dur.weeks}주` + period;
+  if (dur.months && dur.months > 0) period = `${dur.months}개월` + period;
+  if (dur.years && dur.years > 0) period = `${dur.years}년` + period;
+  console.debug('periodString', period);
   return (
     <span className={className}>
-      <DateElement dateTime={startAt} />
+      <DateElement dateTime={formatISO(start)} />
       {' ~ '}
-      <DateElement dateTime={endAt} /> {!datesOnly && periodString}
+      <DateElement dateTime={formatISO(end)} />
+      {!datesOnly && period && ` (${period})`}
     </span>
   );
 }
