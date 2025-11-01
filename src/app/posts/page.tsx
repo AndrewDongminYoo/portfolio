@@ -1,5 +1,3 @@
-import { isAfter } from 'date-fns/isAfter';
-import { parseISO } from 'date-fns/parseISO';
 import groupBy from 'lodash.groupby';
 import Link from 'next/link';
 
@@ -12,9 +10,7 @@ import Resume, { Activity, Education, Experience, Project } from '@/interface/pr
 import { getSortedPostsData } from '@/lib/posts';
 
 export default function Index() {
-  const allPostsData = getSortedPostsData().filter((resume) =>
-    isAfter(parseISO(resume.startAt), new Date(2022, 1, 1)),
-  );
+  const allPostsData = getSortedPostsData();
   const groupedPosts = groupBy(allPostsData, (resume: Resume) => resume.type);
   const experience = groupedPosts.experience as Experience[];
   const project = groupedPosts.project as Project[];
