@@ -4,6 +4,8 @@ import { format } from 'date-fns/format';
 import { parseISO } from 'date-fns/parseISO';
 import { ReactElement } from 'react';
 
+import Period from '@/components/period';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type Resume from '@/interface/profile';
 import { cn } from '@/lib/utils';
 const pixels = 240;
@@ -65,16 +67,21 @@ const getMonthLabels = () => {
     if (sPoint <= 0 || ePoint <= 0) return null;
     const gridColumn = `${sPoint} / ${ePoint}`;
     return (
-      <span
-        key={`${id}-${type}`}
-        className={cn(
-          'ml-[1.6px] cursor-text overflow-clip rounded-sm px-2 py-1 text-center leading-normal font-black whitespace-nowrap',
-          ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
-          tailwindColor[type],
-        )}
-        style={{ gridColumn, opacity: `${100 - index * 15}%` }}>
-        {name}
-      </span>
+      <Tooltip>
+        <TooltipTrigger
+          key={`${id}-${type}`}
+          className={cn(
+            'ml-[1.6px] cursor-text overflow-clip rounded-sm px-2 py-1 text-center leading-normal font-black whitespace-nowrap',
+            ['activity', 'project'].includes(type) ? 'text-xxs tracking-tight' : 'text-xs',
+            tailwindColor[type],
+          )}
+          style={{ gridColumn, opacity: `${100 - index * 15}%` }}>
+          {name}
+        </TooltipTrigger>
+        <TooltipContent>
+          <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} />
+        </TooltipContent>
+      </Tooltip>
     );
   };
   return { monthsLabels, makeBlock, column };

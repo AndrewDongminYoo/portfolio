@@ -27,6 +27,7 @@
     "@fortawesome/react-fontawesome": "^3.1.0",
     "@headlessui/react": "^2.2.9",
     "@octokit/core": "^7.0.6",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
     "lodash.groupby": "^4.6.0",
