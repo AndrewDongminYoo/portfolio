@@ -3,36 +3,55 @@
 
 @layer calendar {
   :root {
+    --color-calendar-graph-day-bg: #eff2f5;
     --color-calendar-graph-day-L1-bg: #b6e3ff;
     --color-calendar-graph-day-L2-bg: #54aeff;
     --color-calendar-graph-day-L3-bg: #0969da;
     --color-calendar-graph-day-L4-bg: #0a3069;
-    --color-calendar-graph-day-bg: #ebedf0;
-    --color-silver-chalice: #aaa;
+    --color-calendar-graph-border-color: #1f23280d;
+    --color-foreground-muted: #aaa;
+  }
+
+  .dark {
+    --color-calendar-graph-day-bg: #151b23;
+    --color-calendar-graph-day-L1-bg: #0c2d6b;
+    --color-calendar-graph-day-L2-bg: #1158c7;
+    --color-calendar-graph-day-L3-bg: #58a6ff;
+    --color-calendar-graph-day-L4-bg: #cae8ff;
+    --color-calendar-graph-border-color: #0104090d;
+    --color-foreground-muted: #9198a1;
   }
 
   .react-activity-calendar rect[data-level='0'] {
     fill: var(--color-calendar-graph-day-bg);
+    shape-rendering: geometricPrecision;
+    background-color: var(--color-calendar-graph-day-bg);
+    border-radius: 2px;
+    border: 0.5px solid var(--color-calendar-graph-border-color);
   }
 
   .react-activity-calendar rect[data-level='1'] {
     fill: var(--color-calendar-graph-day-L1-bg);
+    background-color: var(--color-calendar-graph-day-L1-bg);
   }
 
   .react-activity-calendar rect[data-level='2'] {
     fill: var(--color-calendar-graph-day-L2-bg);
+    background-color: var(--color-calendar-graph-day-L2-bg);
   }
 
   .react-activity-calendar rect[data-level='3'] {
     fill: var(--color-calendar-graph-day-L3-bg);
+    background-color: var(--color-calendar-graph-day-L3-bg);
   }
 
   .react-activity-calendar rect[data-level='4'] {
     fill: var(--color-calendar-graph-day-L4-bg);
+    background-color: var(--color-calendar-graph-day-L4-bg);
   }
 
   .react-activity-calendar {
-    @apply flex w-max max-w-full flex-col gap-[8px] pt-[10px] text-[11px] text-(--color-silver-chalice)!;
+    @apply flex w-full! max-w-full flex-col gap-[8px] pt-[10px] text-[11px] text-(--color-foreground-muted)!;
   }
 
   .react-activity-calendar__scroll-container {
@@ -40,10 +59,30 @@
   }
 
   .react-activity-calendar__calendar {
-    @apply block overflow-x-hidden! overflow-y-visible!;
+    @apply w-full! overflow-x-hidden! overflow-y-visible!;
   }
 
   .react-activity-calendar__legend-month > text {
-    @apply fill-(--color-silver-chalice) text-[10px];
+    @apply fill-(--color-foreground-muted) text-[10px];
+  }
+
+  .react-activity-calendar__legend-colors > svg:nth-of-type(1) > rect {
+    fill: var(--color-calendar-graph-day-bg);
+  }
+
+  .react-activity-calendar__legend-colors > svg:nth-of-type(2) > rect {
+    fill: var(--color-calendar-graph-day-L1-bg);
+  }
+
+  .react-activity-calendar__legend-colors > svg:nth-of-type(3) > rect {
+    fill: var(--color-calendar-graph-day-L2-bg);
+  }
+
+  .react-activity-calendar__legend-colors > svg:nth-of-type(4) > rect {
+    fill: var(--color-calendar-graph-day-L3-bg);
+  }
+
+  .react-activity-calendar__legend-colors > svg:nth-of-type(5) > rect {
+    fill: var(--color-calendar-graph-day-L4-bg);
   }
 }

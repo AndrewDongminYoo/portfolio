@@ -28,8 +28,8 @@ export default function ResumeSection({
   if (children === null || children === undefined) return <></>;
   return (
     <section
-      className='mx-0 my-6 w-full rounded-lg border border-solid border-gray-300 px-6 py-6'
-      id={type}>
+      id={type}
+      className='mx-0 my-6 w-full rounded-lg border border-solid border-gray-300 px-6 py-6'>
       <div className='flex w-full justify-between'>
         <div className='flex max-h-[2rem] w-full items-center justify-start md:w-32'>
           <h3 className='flex items-center justify-start text-sm font-medium md:text-base'>
