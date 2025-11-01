@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode } from 'react';
 
 import { github, myName } from '@/lib/constants';
 
@@ -8,11 +7,11 @@ import MenuButtons from './menu';
 import ProfileBio from './profile';
 import StackList from './stacks';
 
-type LayoutProps = {
-  children?: ReactNode;
-};
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <div className='bg-background mx-auto my-0 max-w-[55rem] transition-all lg:max-w-[82.5rem]'>
       <summary className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pt-10 md:pb-4 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16'>

@@ -1,18 +1,35 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
-import RepoCard from '@/features/repos/card';
 import LanguageButton from '@/features/repos/lang_btn';
 import type Language from '@/features/repos/lang_colors';
 import LanguageStateBar from '@/features/repos/langs_bar';
+import RepoCard from '@/features/repos/repo_card';
 import type Repository from '@/interface/repos';
-import { readData, readReposIds } from '@/lib/repos';
+import { readData } from '@/lib/repos';
 
-type RepoProps = {
+interface RepoPageProps {
+  params: Promise<{
+    repo: string;
+  }>;
+}
+
+export default async function RepoDetailPage(props: RepoPageProps) {
+  const { repo } = await props.params;
+  const repository = readData(repo);
+
+  if (!repository) {
+    return notFound();
+  }
+
+  return <RepoContent repository={repository} />;
+}
+
+interface RepoProps {
   repository: Repository;
-};
+}
 
-export default function Repo({ repository }: RepoProps) {
+export function RepoContent({ repository }: RepoProps) {
   const { full_name, html_url, languages } = repository;
   const includeStatic = Object.entries(languages);
   const excludeStatic = includeStatic.filter(([lang]) => lang !== 'HTML' && lang !== 'CSS') as [
@@ -45,13 +62,3 @@ export default function Repo({ repository }: RepoProps) {
     </article>
   );
 }
-
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = readReposIds();
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = ({ params }) => {
-  const repository = readData(params?.repo as string);
-  return { props: { repository } };
-};

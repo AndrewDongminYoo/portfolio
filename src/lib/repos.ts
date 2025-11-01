@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import fs from 'node:fs';
+
 import { Octokit } from '@octokit/core';
 import { type Endpoints } from '@octokit/types';
 import { parseISO } from 'date-fns/parseISO';
-import fs from 'fs';
 import path from 'path';
 
 import type Repository from '@/interface/repos';
@@ -17,7 +17,8 @@ const starsDirectory = path.join(process.cwd(), 'data/stars');
  * @param {{ [x: string]: any; }} repo - 키가 문자열이고 값이 모든 유형일 수 있는 키-값 쌍이 포함.
  * @returns {Repository} 필터링된 리포지토리 객체.
  */
-export function reclusiveFilter(repo: { [x: string]: any }) {
+/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+export function reclusiveFilter(repo: { [x: string]: any }): Repository {
   Object.entries(repo).forEach(([key, value]) => {
     switch (typeof value) {
       case 'string': {
@@ -57,7 +58,7 @@ export function reclusiveFilter(repo: { [x: string]: any }) {
  * @description 깃허브 API 통해 사용자 계정에서 리포지토리를 가져와 특정 기준에 따라 필터링하고 필터링된 리포지토리를 반환.
  * @returns {Promise<Repository[]>} 다음 기준을 충족하는 저장소 배열을 반환.
  */
-export async function fetchRepositories() {
+export async function fetchRepositories(): Promise<Repository[]> {
   const EP_REPOS: keyof Endpoints = 'GET /user/repos';
   const repositories = await octokit
     .request(EP_REPOS, {
@@ -101,7 +102,7 @@ export async function fetchStarredRepository() {
  * @param {string} repo - 저장소의 이름을 나타내는 문자열.
  * @returns {Promise<Repository>} GitHub API를 사용하여 가져온 저장소의 데이터.
  */
-export async function fetchRepository(owner: string, repo: string) {
+export async function fetchRepository(owner: string, repo: string): Promise<Repository> {
   const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
   return await octokit
     .request(EP_REPO, { owner, repo })
@@ -113,7 +114,7 @@ export async function fetchRepository(owner: string, repo: string) {
  * @description 리포지토리를 가져오고 해당 언어를 검색하며 리포지토리 데이터를 정적 폴더에 JSON 파일로 저장.
  * @returns {Promise<number>} 저장한 `repositoryData` 배열의 길이.
  */
-export async function downloadJSON() {
+export async function downloadJSON(): Promise<number> {
   const repositories = await fetchRepositories();
   const repositoryData = await Promise.all(
     repositories.map(async (repo) => {
@@ -135,7 +136,7 @@ export async function downloadJSON() {
  * @description 지정된 정적 디렉토리 아래의 파일 이름을 읽고 파일 확장자가 없는 파일 이름을 포함하는 객체 배열을 반환.
  * @returns {{ params: { repo: string; } }[]} `repo`(파일 이름에서 '.json' 확장자를 제거하여 얻은 저장소의 ID) 속성을 포함하는 `params` 속성을 가진 객체.
  */
-export function readReposIds() {
+function readReposIds(): { params: { repo: string } }[] {
   // Get file names under /data/repos
   const fileNames = fs.readdirSync(reposDirectory);
   return fileNames.map((fileName) => {
@@ -150,7 +151,7 @@ export function readReposIds() {
  * @param {string} repo - 저장소의 이름을 나타내는 ID.
  * @returns {Repository} 리포지토리 객체로서의 JSON 파일의 내용.
  */
-export function readData(repo: string) {
+export function readData(repo: string): Repository {
   // Read JSON file as Repository
   const fullPath = path.join(reposDirectory, `${repo}.json`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -161,7 +162,7 @@ export function readData(repo: string) {
  * @description 정적 폴더에 저장된 리포지토리 데이터를 읽고 날짜별로 정렬한 다음 정렬된 데이터를 반환.
  * @returns {Repository[]} `pushed_at` 날짜를 기준으로 내림차순으로 정렬된 저장소 데이터 개체의 배열.
  */
-export function readRepositories() {
+export function readRepositories(): Repository[] {
   const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
   // Sort repos by date
   return allReposData.sort((a, b) => {

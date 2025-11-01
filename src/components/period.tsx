@@ -33,7 +33,6 @@ export default function Period({
   if (dur.weeks && dur.weeks > 0) period = `${dur.weeks}주` + period;
   if (dur.months && dur.months > 0) period = `${dur.months}개월` + period;
   if (dur.years && dur.years > 0) period = `${dur.years}년` + period;
-  console.debug('periodString', period);
   return (
     <span className={className}>
       <DateElement dateTime={formatISO(start)} />

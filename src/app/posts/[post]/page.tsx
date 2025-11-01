@@ -1,12 +1,24 @@
-import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 import Layout from '@/components/layout';
 import PostContent from '@/features/posts';
-import type Resume from '@/interface/profile';
-import { getAllPostIds, getPostData } from '@/lib/posts';
+import { getPostData } from '@/lib/posts';
 
-export default function PostDetailPage({ data }: { data: Resume }) {
+interface PostProps {
+  params: Promise<{
+    post: string;
+  }>;
+}
+
+export default async function PostDetailPage(props: PostProps) {
+  const { post } = await props.params;
+  const data = getPostData(post);
+
+  if (!data) {
+    return notFound();
+  }
+
   return (
     <Layout>
       <PostContent data={data} />
@@ -16,13 +28,3 @@ export default function PostDetailPage({ data }: { data: Resume }) {
     </Layout>
   );
 }
-
-export const getStaticPaths: GetStaticPaths = () => {
-  const paths = getAllPostIds();
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = ({ params }) => {
-  const data = getPostData(params?.post as string);
-  return { props: { data } };
-};

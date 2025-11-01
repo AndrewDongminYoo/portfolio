@@ -11,6 +11,9 @@ module.exports = {
   compiler: {
     removeConsole: !isDevelopment,
   },
+  turbopack: {
+    root: __dirname,
+  },
   /**
    * `undefined`: 프로덕션 모드 next start 또는 Vercel과 같은 호스팅 제공업체에서 작동하는 기본 빌드 출력인 .next 디렉토리입니다.
    * `standalone`: 필요한 파일/종속성만 포함하는 독립 실행형 빌드 출력, .next/standalone 디렉토리. Docker 컨테이너에서 자체 호스팅할 때 유용합니다.
