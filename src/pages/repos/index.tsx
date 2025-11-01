@@ -5,7 +5,7 @@ import ReactGithubCalendar from '@/components/calendar';
 import Layout from '@/components/layout';
 import { secondaryTitle } from '@/constants/';
 import { readRepositories } from '@/src/lib/repos';
-import Repo from '@/pages/repos/[repo]';
+import Repo from '@/src/pages/repos/[repo]';
 import type Repository from '@/types/repos';
 
 type PortfolioProps = {

@@ -43,8 +43,3 @@ export const contacts = [
     image: '/images/contacts/youtube.png',
   },
 ];
-export const blog = 'https://cat-minzzi.tistory.com/';
-export const calendly = 'https://calendly.com/andrewyuu';
-export const instagram = 'https://www.instagram.com/minzzi._.andrew/';
-export const linkedIn = 'https://www.linkedin.com/in/dongmin-yu-0394a5223/';
-export const stackoverflow = 'https://stackoverflow.com/users/22737758/user22737758';
