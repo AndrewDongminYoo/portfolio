@@ -9,7 +9,7 @@ import Post from '@/components/posts';
 import ResumeSection from '@/components/section';
 import GridTimeline from '@/components/timeline';
 import { primaryTitle } from '@/constants/';
-import { getSortedPostsData } from '@/lib/posts';
+import { getSortedPostsData } from '@/src/lib/posts';
 import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
 
 export default function Index({ allPostsData }: { allPostsData: Resume[] }) {

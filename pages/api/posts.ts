@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { getPostData, getSortedPostsData } from '@/lib/posts';
+import { getPostData, getSortedPostsData } from '@/src/lib/posts';
 
 export default function posts(req: NextApiRequest, res: NextApiResponse) {
   const { query, method } = req;

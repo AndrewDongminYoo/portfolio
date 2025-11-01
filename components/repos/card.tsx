@@ -13,7 +13,7 @@ import {
   faStar,
 } from '@/components/common/icons';
 import { username } from '@/constants/';
-import { cn } from '@/lib/utils';
+import { cn } from '@/src/lib/utils';
 import type Repository from '@/types/repos';
 
 import frameworks from './lang_icons';

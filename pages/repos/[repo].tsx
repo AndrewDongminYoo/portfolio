@@ -5,7 +5,7 @@ import RepoCard from '@/components/repos/card';
 import LanguageButton from '@/components/repos/lang_btn';
 import type Language from '@/components/repos/lang_colors';
 import LanguageStateBar from '@/components/repos/langs_bar';
-import { readData, readReposIds } from '@/lib/repos';
+import { readData, readReposIds } from '@/src/lib/repos';
 import type Repository from '@/types/repos';
 
 type RepoProps = {

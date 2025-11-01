@@ -5,7 +5,7 @@ import { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 
 import Period from '@/components/common/period';
-import { cn } from '@/lib/utils';
+import { cn } from '@/src/lib/utils';
 import type Resume from '@/types/profile';
 
 export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
