@@ -30,7 +30,6 @@
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitAny": true,
     "isolatedModules": true,
-    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
