@@ -1,7 +1,7 @@
 import GitHubCalendar from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
-import { username } from '@/constants/';
+import { username } from '@/src/lib/constants';
 
 export default function ReactGithubCalendar() {
   return (

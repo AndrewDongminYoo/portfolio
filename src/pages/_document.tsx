@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { description, homepage, primaryTitle } from '@/constants/';
+import { description, homepage, primaryTitle } from '@/src/lib/constants';
 
 export default function Document() {
   return (

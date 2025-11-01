@@ -8,7 +8,7 @@ import Layout from '@/components/layout';
 import Post from '@/components/posts';
 import ResumeSection from '@/components/section';
 import GridTimeline from '@/components/timeline';
-import { primaryTitle } from '@/constants/';
+import { primaryTitle } from '@/src/lib/constants';
 import { getSortedPostsData } from '@/src/lib/posts';
 import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
 

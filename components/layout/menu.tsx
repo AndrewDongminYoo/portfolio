@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { faCodepen, faIdCard, faPrint } from '@/components/common/icons';
-import { github } from '@/constants/';
+import { github } from '@/src/lib/constants';
 
 export default function MenuButtons() {
   return (

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { contacts, description, primaryTitle } from '@/constants/';
+import { contacts, description, primaryTitle } from '@/src/lib/constants';
 
 export default function ProfileBio() {
   return (

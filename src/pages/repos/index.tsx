@@ -3,7 +3,7 @@ import React, { createRef, useEffect } from 'react';
 
 import ReactGithubCalendar from '@/components/calendar';
 import Layout from '@/components/layout';
-import { secondaryTitle } from '@/constants/';
+import { secondaryTitle } from '@/src/lib/constants';
 import { readRepositories } from '@/src/lib/repos';
 import Repo from '@/src/pages/repos/[repo]';
 import type Repository from '@/types/repos';

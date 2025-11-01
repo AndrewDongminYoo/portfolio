@@ -12,7 +12,7 @@ import {
   faLockOpen,
   faStar,
 } from '@/components/common/icons';
-import { username } from '@/constants/';
+import { username } from '@/src/lib/constants';
 import { cn } from '@/src/lib/utils';
 import type Repository from '@/types/repos';
 

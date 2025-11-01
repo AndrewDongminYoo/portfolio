@@ -1,4 +1,4 @@
-import { stacks } from '@/constants/';
+import { stacks } from '@/src/lib/constants';
 
 export default function StackList() {
   return (

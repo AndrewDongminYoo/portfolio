@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
-import { github, myName } from '@/constants/';
+import { github, myName } from '@/src/lib/constants';
 
 import MenuButtons from './menu';
 import ProfileBio from './profile';
