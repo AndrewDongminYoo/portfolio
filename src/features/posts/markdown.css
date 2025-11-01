@@ -1,0 +1,104 @@
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+@reference '../../globals.css';
+
+.markdown ol {
+  @apply list-decimal [counter-reset:item];
+}
+
+.markdown ul li {
+  @apply relative mx-0 my-0 block;
+
+  &::before {
+    content: '•';
+    @apply absolute -ml-[1rem] text-sm leading-5;
+  }
+}
+
+.markdown {
+  @apply max-w-none break-keep [line-break:auto];
+}
+
+.markdown h1,
+.markdown h2 {
+  @apply font-semibold;
+}
+
+.markdown h2 {
+  @apply mt-8 mb-4;
+}
+
+.markdown h3 {
+  @apply font-semibold;
+}
+
+.markdown h3,
+.markdown h4 {
+  @apply mt-4 mb-2;
+}
+
+.markdown h4 {
+  @apply font-normal;
+}
+
+.markdown h5 {
+  @apply font-semibold;
+}
+
+.markdown blockquote {
+  --tw-border-opacity: 1;
+  border-color: rgba(142, 142, 160, var(--tw-border-opacity));
+  @apply border-l-2 pl-4 leading-none;
+}
+
+.markdown ol,
+.markdown ul {
+  @apply flex flex-col pl-4;
+}
+
+.markdown ol li,
+.markdown ol li > p,
+.markdown ol ol,
+.markdown ol ul,
+.markdown ul li,
+.markdown ul li > p,
+.markdown ul ol,
+.markdown ul ul {
+  @apply mx-0 my-0;
+}
+
+.markdown table {
+  @apply w-full border-separate border-spacing-0;
+}
+
+.markdown th {
+  background-color: oklch(94.452% 0.00678 286.04 / 0.2);
+  @apply border-t border-b border-l px-3 py-1;
+
+  &:first-child {
+    @apply rounded-tl-md;
+  }
+
+  &:last-child {
+    @apply rounded-tr-md border-r;
+  }
+}
+
+.markdown td {
+  @apply border-b border-l px-3 py-1;
+
+  &:last-child {
+    @apply border-r;
+  }
+}
+
+.markdown tbody tr:last-child td:first-child {
+  @apply rounded-bl-md;
+}
+
+.markdown tbody tr:last-child td:last-child {
+  @apply rounded-br-md;
+}
+
+.markdown a {
+  @apply underline underline-offset-2;
+}

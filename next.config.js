@@ -2,10 +2,6 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 
 /** @type {import('next').NextConfig} */
 module.exports = {
-  eslint: {
-    /** `next lint`와 `next build` 에서 이 디렉터리에서만 ESLint를 실행합니다. */
-    dirs: ['components', 'constants', 'lib', 'pages'],
-  },
   /** 프로덕션 빌드 중에 브라우저 소스 맵 생성 활성화 */
   productionBrowserSourceMaps: true,
   /** Next.js 런타임은 엄격한 모드를 준수합니다. */

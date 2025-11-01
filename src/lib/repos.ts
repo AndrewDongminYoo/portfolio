@@ -5,7 +5,7 @@ import { parseISO } from 'date-fns/parseISO';
 import fs from 'fs';
 import path from 'path';
 
-import type Repository from '@/types/repos';
+import type Repository from '@/interface/repos';
 
 const { GITHUB_TOKEN } = process.env;
 const octokit = new Octokit({ auth: GITHUB_TOKEN });

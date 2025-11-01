@@ -1,0 +1,49 @@
+/*! tailwindcss v4.1.13 | MIT License | https://tailwindcss.com */
+@reference '../globals.css';
+
+@layer calendar {
+  :root {
+    --color-calendar-graph-day-L1-bg: #b6e3ff;
+    --color-calendar-graph-day-L2-bg: #54aeff;
+    --color-calendar-graph-day-L3-bg: #0969da;
+    --color-calendar-graph-day-L4-bg: #0a3069;
+    --color-calendar-graph-day-bg: #ebedf0;
+    --color-silver-chalice: #aaa;
+  }
+
+  .react-activity-calendar rect[data-level='0'] {
+    fill: var(--color-calendar-graph-day-bg);
+  }
+
+  .react-activity-calendar rect[data-level='1'] {
+    fill: var(--color-calendar-graph-day-L1-bg);
+  }
+
+  .react-activity-calendar rect[data-level='2'] {
+    fill: var(--color-calendar-graph-day-L2-bg);
+  }
+
+  .react-activity-calendar rect[data-level='3'] {
+    fill: var(--color-calendar-graph-day-L3-bg);
+  }
+
+  .react-activity-calendar rect[data-level='4'] {
+    fill: var(--color-calendar-graph-day-L4-bg);
+  }
+
+  .react-activity-calendar {
+    @apply flex w-max max-w-full flex-col gap-[8px] pt-[10px] text-[11px] text-(--color-silver-chalice)!;
+  }
+
+  .react-activity-calendar__scroll-container {
+    @apply max-w-full overflow-x-hidden overflow-y-auto pt-[2px];
+  }
+
+  .react-activity-calendar__calendar {
+    @apply block overflow-x-hidden! overflow-y-visible!;
+  }
+
+  .react-activity-calendar__legend-month > text {
+    @apply fill-(--color-silver-chalice) text-[10px];
+  }
+}

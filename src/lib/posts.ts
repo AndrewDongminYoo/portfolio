@@ -3,7 +3,7 @@ import fs from 'fs';
 import matter, { GrayMatterFile } from 'gray-matter';
 import path from 'path';
 
-import Resume, { Activity, Education, Experience, Project } from '@/types/profile';
+import Resume, { Activity, Education, Experience, Project } from '@/interface/profile';
 
 const postsDirectory = path.join(process.cwd(), 'data/posts');
 
