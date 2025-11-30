@@ -124,6 +124,25 @@ $ cd resume && yarn install && yarn dev
 
 기타 스크립트는 package.json에 모두 작성되어 있으므로 생략합니다.
 
+## Preview 이미지 자동화
+
+새로운 배포가 완료될 때마다 로컬/원격 URL을 기반으로 README용 Preview 이미지를 자동으로 캡처할 수 있습니다.
+
+1. `.env` 혹은 실행 시 인자로 `PREVIEW_BASE_URL`(예: `https://andrew.vercel.app`)을 지정합니다.
+2. 필요하면 `scripts/preview-targets.json`에서 캡처할 뷰포트/스크롤/타깃 경로를 수정합니다.
+3. `yarn preview:update` 명령으로 `assets/*.png` 파일을 재생성합니다. 특정 항목만 갱신하려면 `yarn preview:update -- --target mobile-1.png` 형태로 이름을 지정할 수 있습니다.
+
+스크립트는 Puppeteer를 사용하므로 최초 실행 시 브라우저 바이너리를 다운로드합니다. `assets/` 폴더에 생성된 결과를 커밋하면 README에 최신 화면이 반영됩니다.
+
+## 최신 이력서 PDF 다운로드
+
+`/api/resume` 엔드포인트에 접속하면 가장 최근에 업로드된 A4 사이즈 PDF를 즉시 다운로드할 수 있습니다.
+
+- 새 버전을 배포하려면 `public/resume/` 폴더에 PDF 파일을 추가(혹은 교체)하면 됩니다. 파일명과 개수는 자유롭지만, 수정 시간(mtime)이 가장 최근인 파일이 자동으로 선택됩니다.
+- Next.js Route Handler가 `Content-Disposition: attachment` 헤더를 내려주므로 브라우저나 `curl -L https://도메인/api/resume -o resume.pdf` 명령으로 쉽게 받을 수 있습니다.
+
+리포지토리에는 기본 플레이스홀더 PDF(`public/resume/Yoo-Dong-Min-Resume.pdf`)가 포함돼 있으므로 실제 최신 버전으로 교체해 주세요.
+
 ## Deploy your own
 
 Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/blog-starter)
