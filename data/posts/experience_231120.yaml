@@ -23,14 +23,14 @@ projects:
   - title: 'Flutter 모바일 애플리케이션 개발'
     startAt: '2024-04-08'
     endAt: null
-    website_url: 'https://cami.kr/download'
+    website_url: 'https://app.cami.kr'
     description:
       - Riverpod 기반 상태 관리와 Freezed 모델을 통해 앱 상태를 안정적으로 관리하고 GoRouter로 복잡한 라우팅 흐름을 처리했습니다.
       - Flutter 애니메이션 API를 활용해 자연스러운 화면 전환과 사용자 피드백을 설계했으며, 사용자 만족도 조사에서 UI/UX 관련 피드백 중 긍정 응답 비율 85% 이상을 달성했습니다.
   - title: 'Nest.js 애플리케이션 개발'
     startAt: '2024-01-02'
     endAt: '2024-04-02'
-    website_url: 'https://cami.kr/landing'
+    website_url: 'https://cami.kr'
     description:
       - 기존 엘릭서 피닉스 프레임워크 기반 시스템과 분리된 신규 서버를 NestJS로 구축해 모바일 앱 백엔드 API를 설계 및 구현했습니다.
       - PostgreSQL `pg_stat`를 사용하여 비효율적인 테이블 구조 및 쿼리 병목을 분석하고 개선함으로써 DB 응답 속도를 약 3배 향상시켰습니다.

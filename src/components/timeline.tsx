@@ -67,7 +67,7 @@ const getMonthLabels = () => {
     if (sPoint <= 0 || ePoint <= 0) return null;
     const gridColumn = `${sPoint} / ${ePoint}`;
     return (
-      <Tooltip>
+      <Tooltip key={`${id}-${type}-${index}`}>
         <TooltipTrigger
           key={`${id}-${type}`}
           className={cn(
