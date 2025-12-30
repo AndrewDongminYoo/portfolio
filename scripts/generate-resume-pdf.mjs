@@ -72,12 +72,12 @@ const timestampKstHour = (timeZone = 'Asia/Seoul') => {
 };
 
 const main = async () => {
-  const args = parseArgs();
-  const baseUrl = resolveBaseUrl(args.baseUrl);
-  const pagePath = args.pagePath ?? '/';
-  const timeZone = args.timeZone ?? process.env.TZ ?? 'Asia/Seoul';
+  const parsed = parseArgs();
+  const baseUrl = resolveBaseUrl(parsed.baseUrl);
+  const pagePath = parsed.pagePath ?? '/';
+  const timeZone = parsed.timeZone ?? process.env.TZ ?? 'Asia/Seoul';
 
-  const outDir = path.resolve(rootDir, args.outDir ?? 'public/resume');
+  const outDir = path.resolve(rootDir, parsed.outDir ?? 'public/resume');
   await ensureDir(outDir);
 
   const stamp = timestampKstHour(timeZone);
@@ -86,6 +86,7 @@ const main = async () => {
   const url = new URL(pagePath, baseUrl).toString();
 
   const isCI = process.env.CI === 'true' || process.env.CI === '1';
+  const args = [];
   if (isCI || process.env.PUPPETEER_NO_SANDBOX === '1') {
     args.push('--no-sandbox', '--disable-setuid-sandbox');
   }

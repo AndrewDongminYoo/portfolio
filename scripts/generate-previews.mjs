@@ -198,22 +198,23 @@ const captureTarget = async (browser, target, baseUrl) => {
 };
 
 const main = async () => {
-  const args = parseArgs();
-  const baseUrl = resolveBaseUrl(args.baseUrl);
+  const parsed = parseArgs();
+  const baseUrl = resolveBaseUrl(parsed.baseUrl);
   const configuredTargets = await loadTargets();
-  const filteredTargets = args.targetName
-    ? configuredTargets.filter((target) => target.name === args.targetName)
+  const filteredTargets = parsed.targetName
+    ? configuredTargets.filter((target) => target.name === parsed.targetName)
     : configuredTargets;
 
   if (!filteredTargets.length) {
     console.error(
-      `❌ No preview targets matched "${args.targetName}". Update scripts/preview-targets.json.`,
+      `❌ No preview targets matched "${parsed.targetName}". Update scripts/preview-targets.json.`,
     );
     process.exitCode = 1;
     return;
   }
 
   const isCI = process.env.CI === 'true' || process.env.CI === '1';
+  const args = [];
   if (isCI || process.env.PUPPETEER_NO_SANDBOX === '1') {
     args.push('--no-sandbox', '--disable-setuid-sandbox');
   }
