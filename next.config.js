@@ -19,7 +19,7 @@ module.exports = {
    * `standalone`: 필요한 파일/종속성만 포함하는 독립 실행형 빌드 출력, .next/standalone 디렉토리. Docker 컨테이너에서 자체 호스팅할 때 유용합니다.
    * `export`: 내보낸 빌드 출력, 정적 HTML/CSS/JS만 포함하는 .out 디렉터리. Node.js 서버 없이 자체 호스팅할 때 유용합니다.
    */
-  output: 'standalone',
+  output: undefined,
   /** 빌드 출력 디렉토리(기본값은 .next)는 이제 Next.js 캐시를 제외하고 기본적으로 지워집니다. */
   cleanDistDir: true,
   images: {

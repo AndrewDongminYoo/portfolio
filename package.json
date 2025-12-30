@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "vercel-build": "next build",
-    "start": "node .next/standalone/server.js",
+    "start": "next start",
     "dev": "next dev",
     "export": "next export",
     "info": "next info",
