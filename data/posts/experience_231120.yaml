@@ -4,7 +4,7 @@ title: '주식회사카미 크로스플랫폼 & 풀스택 개발자'
 name: 'CAMI Labs 개발자'
 role: '크로스플랫폼 & 풀스택 개발자'
 startAt: '2023-11-20'
-endAt: null
+endAt: '2026-01-20'
 website_url: 'https://cami.kr/'
 duration: 11
 tags:
@@ -12,8 +12,6 @@ tags:
   - 'NestJS'
   - 'TypeScript'
   - 'Dart'
-  - 'Elixir'
-  - 'PostgreSQL'
 description:
   - 주식회사 카미는 반려동물 성격유형검사를 필두로 한 다양한 반려동물 양육 관련 검사와 전문적인 컨텐츠를 제공합니다.
   - 반려동물 심리검사를 중심으로 한 카미 애플리케이션의 첫 모바일 애플리케이션의 신규 개발을 주도 및 진행했습니다.
@@ -22,7 +20,7 @@ description:
 projects:
   - title: 'Flutter 모바일 애플리케이션 개발'
     startAt: '2024-04-08'
-    endAt: null
+    endAt: '2026-01-20'
     website_url: 'https://app.cami.kr'
     description:
       - Riverpod 기반 상태 관리와 Freezed 모델을 통해 앱 상태를 안정적으로 관리하고 GoRouter로 복잡한 라우팅 흐름을 처리했습니다.
