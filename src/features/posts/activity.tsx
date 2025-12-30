@@ -19,9 +19,11 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
           {activity.title}
         </Link>
         <p className='resume_card_item_text'>
-          <Link href={activity.website_url ?? ''} target='_blank' rel='noopener'>
-            {activity.website_url}
-          </Link>
+          {activity.website_url ? (
+            <Link href={activity.website_url} target='_blank' rel='noopener'>
+              {activity.website_url}
+            </Link>
+          ) : null}
         </p>
         <div className='markdown markdown_viewer'>
           <Description resume={activity} />

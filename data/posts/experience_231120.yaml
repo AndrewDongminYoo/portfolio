@@ -24,15 +24,15 @@ description:
   - '컨텐츠/약관/딥링크 랜딩 페이지를 Next.js로 통합하고 Keystatic 기반 Git 에디터를 제공하여 정적 컨텐츠 운영 흐름을 단순화했습니다.'
 projects:
   - title: 'Flutter 모바일 애플리케이션 0→1 개발'
-    startAt: '2024-01-08'
+    startAt: '2024-04-08'
     endAt: '2026-01-20'
     website_url: 'https://app.cami.kr'
     description:
       - 'Riverpod 기반 상태 관리와 Freezed 모델을 통해 앱 상태를 안정적으로 관리하고 GoRouter로 복잡한 라우팅 흐름을 처리했습니다.'
       - 'Flutter 애니메이션 API를 활용해 화면 전환 및 사용자 피드백을 설계했으며, 사용자 만족도 조사에서 UI/UX 관련 긍정 응답 비율 85% 이상을 달성했습니다.'
   - title: '결제/정책 대응: Apple DevRel 협의 및 PortOne/PG 연동'
-    startAt: '2024-06-01'
-    endAt: '2026-01-20'
+    startAt: '2024-04-01'
+    endAt: '2025-01-20'
     website_url: 'https://pub.dev/packages/portone_flutter_v2'
     description:
       - 'App Store 결제 정책 이슈에 대해 Apple DevRel 비대면 미팅을 주도하여 서비스 특성(국내 한정, 오프라인 대면 중개)을 근거로 IAP 강제 도입의 타당성이 낮음을 설득했습니다.'
@@ -42,7 +42,7 @@ projects:
   - title: '인증 마이그레이션: 레거시 → Supabase → NestJS'
     startAt: '2024-01-01'
     endAt: '2025-01-20'
-    website_url: 'https://cami.kr/'
+    website_url: 'https://app.cami.kr/'
     description:
       - '레거시(카카오톡 + Elixir 서버 인증)에서 “이메일 ID + 전화번호 인증”이라는 특이 정책을 유지하면서도 신규 인증 체계로 안전하게 이전하는 플로우를 설계/구현했습니다.'
       - '서버 개발자 합류 전에는 Supabase Auth 기반으로 전환을 진행했고, 이후 NestJS 기반 Auth 모듈로 이관했습니다.'
@@ -50,12 +50,14 @@ projects:
   - title: '딥링크/설치 플로우: Universal App Links + URL 라우팅'
     startAt: '2024-01-08'
     endAt: '2026-01-20'
+    website_url: 'https://app.cami.kr/'
     description:
       - 'Flutter 초기 설계부터 URL 기반 라우팅(go_router)을 적용해 기본 Navigator의 한계를 회피하고 복잡한 진입 흐름을 안정적으로 처리했습니다.'
       - 'Firebase Dynamic Links 중단 이전부터 Universal App Links를 구현하여 iOS/Android 구분 없이 설치 페이지 및 특정 딥링크까지 연결되는 사용자 경험을 제공했습니다.'
   - title: 'Observability & Analytics: 크래시/로그/행동 분석 체계 구축'
-    startAt: '2024-01-15'
+    startAt: '2025-06-15'
     endAt: '2026-01-20'
+    website_url: 'https://app.cami.kr/'
     description:
       - 'Sentry + Firebase Crashlytics 기반 통합 로거를 설계/구현하여 모니터링 벤더를 유연하게 추가/제거할 수 있는 로깅 아키텍처를 마련했습니다.'
       - 'Firebase Analytics + Clarity + 자체 이벤트 로그 서버를 결합해 사용자 식별자 기준으로 GA/Athena/Clarity 레코딩을 연결하고 리텐션/퍼널 분석 기반을 구축했습니다.'

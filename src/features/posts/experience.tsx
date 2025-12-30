@@ -45,13 +45,15 @@ const Contribution = ({ project }: { project: Project }) => {
   const endAt = project.startAt ? (project.endAt ?? '진행중') : '';
   return (
     <li className='list_contribution_item'>
-      {project.website_url != null ? (
-        <h4 className='part_title'>
+      <h4 className='part_title'>
+        {project.website_url != null ? (
           <Link target='_blank' rel='noopener' href={project.website_url}>
             {project.title}
           </Link>
-        </h4>
-      ) : null}
+        ) : (
+          <>{project.title}</>
+        )}
+      </h4>
       <h4 className='part_period'>
         <div className='datetime'>
           <FontAwesomeIcon
