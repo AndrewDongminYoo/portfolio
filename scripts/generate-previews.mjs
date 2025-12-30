@@ -22,14 +22,14 @@ const defaultTargets = [
     path: '/',
     viewport: { width: 1440, height: 900 },
     scrollTo: 0,
-    waitAfter: 800,
+    waitAfter: 2400,
   },
   {
     name: 'desktop-2.png',
-    path: '/',
+    path: '/repos',
     viewport: { width: 1440, height: 900 },
     scrollTo: 1100,
-    waitAfter: 800,
+    waitAfter: 2400,
   },
   {
     name: 'mobile-1.png',
@@ -37,7 +37,7 @@ const defaultTargets = [
     viewport: { width: 430, height: 932 },
     deviceScaleFactor: 3,
     scrollTo: 0,
-    waitAfter: 600,
+    waitAfter: 2400,
   },
   {
     name: 'mobile-2.png',
@@ -49,11 +49,11 @@ const defaultTargets = [
   },
   {
     name: 'mobile-3.png',
-    path: '/',
+    path: '/repos',
     viewport: { width: 430, height: 932 },
     deviceScaleFactor: 3,
     scrollTo: 1200,
-    waitAfter: 600,
+    waitAfter: 800,
   },
 ];
 
