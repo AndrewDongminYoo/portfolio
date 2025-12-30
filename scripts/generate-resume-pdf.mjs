@@ -85,9 +85,17 @@ const main = async () => {
 
   const url = new URL(pagePath, baseUrl).toString();
 
+  const isCI = process.env.CI === 'true' || process.env.CI === '1';
+  if (isCI || process.env.PUPPETEER_NO_SANDBOX === '1') {
+    args.push('--no-sandbox', '--disable-setuid-sandbox');
+  }
+  // CI에서 종종 /dev/shm 이슈도 같이 터져서 같이 넣는 게 안전
+  args.push('--disable-dev-shm-usage');
+
   const browser = await puppeteer.launch({
     headless: 'new',
     defaultViewport: null,
+    args,
   });
 
   try {
