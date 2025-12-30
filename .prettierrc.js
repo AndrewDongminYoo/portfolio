@@ -4,7 +4,7 @@
  */
 module.exports = {
   printWidth: 100,
-  proseWrap: 'always',
+  proseWrap: 'preserve',
   useTabs: false,
   bracketSameLine: true,
   bracketSpacing: true,

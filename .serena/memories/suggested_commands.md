@@ -1,4 +1,5 @@
 ## Common commands
+
 - `yarn dev`: run Next.js dev server on :3000 using App Router
 - `yarn build`: production build (also used by `yarn vercel-build`)
 - `yarn start`: serve the production build (runs `next start`)

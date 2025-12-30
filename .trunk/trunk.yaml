@@ -26,13 +26,6 @@ lint:
         - osv-scanner
       paths:
         - yarn.lock
-  definitions:
-    - name: prettier
-      files:
-        - typescript
-        - javascript
-        - json
-        - css
 runtimes:
   enabled:
     - python@3.10.8

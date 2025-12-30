@@ -1,22 +1,3 @@
-# Autoformatter friendly markdownlint config (all formatting rules disabled)
-default: true
-blank_lines: false
-bullet: false
-html: false
-indentation: true
+# Prettier friendly markdownlint config (all formatting rules disabled)
+extends: markdownlint/style/prettier
 line_length: false
-spaces: false
-url: false
-whitespace: false
-first-line-heading: false
-heading-increment: false
-no-trailing-spaces:
-  br_spaces: 2
-  list_item_empty_lines: false
-  strict: false
-ul-indent:
-  indent: 2
-  start_indented: false
-  start_indent: 2
-blanks-around-lists: false
-single-trailing-newline: false
