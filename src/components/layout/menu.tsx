@@ -1,104 +1,53 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import Image from 'next/image';
 import Link from 'next/link';
 
-import { faCodepen, faIdCard, faPrint } from '@/components/icons';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 import { github } from '@/lib/constants';
+
+const menuItemClassName =
+  'w-full flex-row items-center justify-start gap-2 px-3 py-2 text-left text-sm font-medium text-foreground';
 
 export default function MenuButtons() {
   return (
     <div className='fixed top-14 right-14 z-50 flex justify-end print:hidden'>
-      <Menu>
-        {({ open }) => (
-          <>
-            <MenuButton className='fixed'>
-              <Image
-                src={'/images/bg_space.webp'}
-                alt='Cat Floating in Space'
-                width={56}
-                height={56}
-                className='relative h-14 w-14 rounded-full shadow-2xl shadow-slate-700'
-              />
-              <Image
-                src={'/images/kkori_the_cutest.png'}
-                alt='My Lovely Cat'
-                width={56}
-                height={56}
-                className='absolute right-0 z-10 h-14 w-14 animate-bounce motion-reduce:animate-none'
-              />
-              <span className='absolute bottom-0 left-11 h-3.5 w-3.5 animate-ping rounded-full border-2 border-white bg-green-400 motion-reduce:animate-none dark:border-gray-800' />
-            </MenuButton>
-            {/* Use the `Transition` component. */}
-            <Transition
-              show={open}
-              enter='transition duration-100 ease-out'
-              enterFrom='transform scale-95 opacity-0'
-              enterTo='transform scale-100 opacity-100'
-              leave='transition duration-75 ease-out'
-              leaveFrom='transform scale-100 opacity-100'
-              leaveTo='transform scale-95 opacity-0'>
-              {/* Mark this component as `static` */}
-              <MenuItems static className='rounded-2xl bg-slate-50 text-gray-900 shadow-md'>
-                <MenuItem>
-                  {({ focus }) => (
-                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
-                      <FontAwesomeIcon
-                        icon={faPrint}
-                        color='slateGray'
-                        className='mr-2 h-5 w-5'
-                        width={20}
-                        height={20}
-                        aria-hidden='true'
-                        inverse={focus}
-                      />
-                      <Link href='#' onClick={() => window.print()}>
-                        {'프린트하기'}
-                      </Link>
+      <NavigationMenu viewport={false} className='items-center'>
+        <NavigationMenuList className='justify-end'>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className='border-border/60 bg-background/80 text-foreground hover:bg-accent/60 h-8 rounded-full border px-3 text-xs font-semibold tracking-wide shadow-sm backdrop-blur transition'>
+              메뉴
+            </NavigationMenuTrigger>
+            <NavigationMenuContent className='min-w-[10rem] p-1'>
+              <ul className='flex flex-col'>
+                <li>
+                  <NavigationMenuLink asChild className={menuItemClassName}>
+                    <button type='button' onClick={() => window.print()}>
+                      프린트하기
                     </button>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ focus }) => (
-                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
-                      <FontAwesomeIcon
-                        icon={faCodepen}
-                        color='slateGray'
-                        className='mr-1 h-5 w-5'
-                        width={20}
-                        height={20}
-                        aria-hidden='true'
-                        inverse={focus}
-                      />
-                      <Link href='/repos' className='font-bold'>
-                        {'포트폴리오'}
-                      </Link>
-                    </button>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ focus }) => (
-                    <button className='group ui-active:bg-slate-500 ui-active:text-white flex w-full items-center rounded-md px-2 py-2 text-sm text-gray-900'>
-                      <FontAwesomeIcon
-                        icon={faIdCard}
-                        color='slateGray'
-                        className='mr-2 h-5 w-5'
-                        width={20}
-                        height={20}
-                        aria-hidden='true'
-                        inverse={focus}
-                      />
-                      <Link href={github}>{'깃헙프로필'}</Link>
-                    </button>
-                  )}
-                </MenuItem>
-              </MenuItems>
-            </Transition>
-          </>
-        )}
-      </Menu>
+                  </NavigationMenuLink>
+                </li>
+                <li>
+                  <NavigationMenuLink asChild className={menuItemClassName}>
+                    <Link href='/repos'>포트폴리오</Link>
+                  </NavigationMenuLink>
+                </li>
+                <li>
+                  <NavigationMenuLink asChild className={menuItemClassName}>
+                    <Link href={github}>깃헙프로필</Link>
+                  </NavigationMenuLink>
+                </li>
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
     </div>
   );
 }
