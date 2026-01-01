@@ -13,7 +13,7 @@ export default function ExperienceElement({ experience }: { experience: Experien
     <div className='resume_card_item'>
       <div className='resume_card_left'>
         <h4 className='resume_card_item_period'>
-          <Period startAt={startAt} endAt={endAt} className='period' />
+          <Period startAt={startAt} endAt={endAt} className='period' softWrap={true} />
         </h4>
       </div>
       <div className='resume_card_right'>

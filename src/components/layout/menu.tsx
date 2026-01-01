@@ -23,7 +23,7 @@ const externalTriggerClassName =
 
 export default function MenuButtons() {
   return (
-    <div className='fixed top-7 right-0 left-0 z-50 flex justify-end px-4 md:right-14 md:left-auto md:px-0 print:hidden'>
+    <div className='fixed top-20 right-0 left-0 z-50 flex justify-end px-4 md:top-7 md:right-14 md:left-auto md:px-0 print:hidden'>
       <NavigationMenu viewport={false} className='items-center'>
         <NavigationMenuList className='border-border/60 bg-background/80 flex-wrap justify-end gap-2 rounded-full border px-3 py-1 shadow-sm backdrop-blur md:flex-nowrap'>
           <NavigationMenuItem>

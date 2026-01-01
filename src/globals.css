@@ -149,7 +149,7 @@
   @apply flex flex-nowrap justify-start leading-6 text-slate-600;
 
   & .period {
-    @apply ml-px text-xs;
+    @apply ml-px text-xs leading-5;
   }
 
   @media (max-width: 575px) {
@@ -163,7 +163,7 @@
 
 @utility period {
   .resume_card_item_period & {
-    @apply ml-px text-xs;
+    @apply ml-px text-xs leading-5;
   }
 
   @media (max-width: 575px) {
