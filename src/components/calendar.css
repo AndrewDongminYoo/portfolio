@@ -84,9 +84,36 @@
   }
 
   .github-calendar-scroll {
-    @apply w-full overflow-x-auto overflow-y-hidden;
+    /* Use scroll instead of auto: Always reserve space for the scrollbar */
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    /* Prevent layout jumps (in supported browsers) */
+    scrollbar-gutter: stable;
+
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
+  }
+
+  /* Firefox */
+  .github-calendar-scroll {
+    scrollbar-width: thin; /* thumb 얇게 */
+    scrollbar-color: rgba(120, 120, 120, 0.55) transparent;
+  }
+
+  /* WebKit(Chrome/Safari/Edge) */
+  .github-calendar-scroll::-webkit-scrollbar {
+    height: 1px;
+  }
+  .github-calendar-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .github-calendar-scroll::-webkit-scrollbar-thumb {
+    background: rgba(120, 120, 120, 0.55);
+    border-radius: 999px;
+  }
+  .github-calendar-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 120, 0.75);
   }
 
   @media (max-width: 767px) {

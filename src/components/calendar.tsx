@@ -12,10 +12,30 @@ const MOBILE_QUERY = '(max-width: 767px)';
 
 export default function ReactGithubCalendar() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const didInitScrollRef = useRef(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
+
+    const scrollToLatest = () => {
+      // If the user scrolled manually, do not interfere (remove if desired)
+      if (didInitScrollRef.current) return;
+
+      // Use rAF twice to ensure scrollWidth calculation reflects DOM updates correctly
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const scrollTarget =
+            container.querySelector<HTMLDivElement>('.react-activity-calendar__scroll-container') ??
+            container;
+          const maxLeft = scrollTarget.scrollWidth - scrollTarget.clientWidth;
+          if (maxLeft > 0) {
+            scrollTarget.scrollLeft = maxLeft;
+            didInitScrollRef.current = true;
+          }
+        });
+      });
+    };
 
     const applyCalendarLayout = (isMobile: boolean) => {
       const calendar = container.querySelector<SVGSVGElement>('.react-activity-calendar__calendar');
@@ -33,16 +53,24 @@ export default function ReactGithubCalendar() {
     };
 
     const mediaQuery = window.matchMedia(MOBILE_QUERY);
-    const handleChange = () => applyCalendarLayout(mediaQuery.matches);
+    const handleChange = () => {
+      applyCalendarLayout(mediaQuery.matches);
+      scrollToLatest();
+    };
 
     handleChange();
 
-    const observer = new MutationObserver(handleChange);
-    observer.observe(container, { childList: true, subtree: true });
+    const mo = new MutationObserver(handleChange);
+    mo.observe(container, { childList: true, subtree: true });
+
+    const ro = new ResizeObserver(handleChange);
+    ro.observe(container);
+
     mediaQuery.addEventListener('change', handleChange);
 
     return () => {
-      observer.disconnect();
+      mo.disconnect();
+      ro.disconnect();
       mediaQuery.removeEventListener('change', handleChange);
     };
   }, []);
