@@ -22,12 +22,8 @@
   "license": "MIT",
   "bin": "bin/next",
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^7.1.0",
-    "@fortawesome/free-brands-svg-icons": "^7.1.0",
-    "@fortawesome/free-regular-svg-icons": "^7.1.0",
-    "@fortawesome/free-solid-svg-icons": "^7.1.0",
-    "@fortawesome/react-fontawesome": "^3.1.1",
     "@headlessui/react": "^2.2.9",
+    "@icons-pack/react-simple-icons": "^13.8.0",
     "@octokit/core": "^7.0.6",
     "@radix-ui/react-navigation-menu": "^1.2.14",
     "@radix-ui/react-select": "^2.2.6",

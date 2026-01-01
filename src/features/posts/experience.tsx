@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SiGithub, SiGooglechrome } from '@icons-pack/react-simple-icons';
+import { CalendarCheck } from 'lucide-react';
 import Link from 'next/link';
 
-import { faCalendarCheck, faChrome, faSquareGithub } from '@/components/icons';
 import Period from '@/components/period';
 import Description from '@/features/posts/description';
 import { Experience, Project } from '@/interface/profile';
@@ -56,19 +56,13 @@ const Contribution = ({ project }: { project: Project }) => {
       </h4>
       <h4 className='part_period'>
         <div className='datetime'>
-          <FontAwesomeIcon
-            icon={faCalendarCheck}
-            className='my-0 mr-2 ml-0 w-4'
-            aria-hidden='true'
-            color='slateGray'
-          />
+          <CalendarCheck className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='slateGray' />
           <Period startAt={startAt} endAt={endAt} />
         </div>
         {project.website_url != null ? (
           <div className='url__link'>
-            <FontAwesomeIcon
-              icon={faChrome}
-              className='my-0 mr-2 ml-0 w-4'
+            <SiGooglechrome
+              className='my-0 mr-2 ml-0 h-4 w-4'
               aria-hidden='true'
               color='slateGray'
             />
@@ -77,12 +71,7 @@ const Contribution = ({ project }: { project: Project }) => {
         ) : null}
         {project.repository != null ? (
           <div className='url__link'>
-            <FontAwesomeIcon
-              icon={faSquareGithub}
-              className='my-0 mr-2 ml-0 w-4'
-              aria-hidden='true'
-              color='slateGray'
-            />
+            <SiGithub className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='slateGray' />
             {project.repository}
           </div>
         ) : null}

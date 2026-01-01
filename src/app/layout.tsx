@@ -1,11 +1,9 @@
 import '../globals.css';
 
-import { config, library } from '@fortawesome/fontawesome-svg-core';
 import { ko } from 'date-fns/locale/ko';
 import { Metadata, Viewport } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 
-import * as customPack from '@/components/icons';
 import { description, homepage, keywords, myName, primaryTitle } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
@@ -60,9 +58,6 @@ export const metadata: Metadata = {
   },
 };
 
-config.autoAddCss = false;
-library.add(customPack);
-
 const NS_KR = Noto_Sans_KR({
   preload: true,
   style: 'normal',
@@ -92,8 +87,6 @@ export default function RootLayout({
       <head>
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel='stylesheet' href='/styles/print.css' media='print' />
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='@fortawesome/fontawesome-svg-core/styles.css' />
       </head>
       <body className='font-sans antialiased'>{children}</body>
     </html>

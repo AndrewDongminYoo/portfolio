@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SiGithub, SiGooglechrome } from '@icons-pack/react-simple-icons';
+import { Users } from 'lucide-react';
 import Link from 'next/link';
 
-import { faChrome, faDiscord, faSquareGithub } from '@/components/icons';
 import Period from '@/components/period';
 import Description from '@/features/posts/description';
 import type { Project } from '@/interface/profile';
@@ -32,29 +32,18 @@ export default function ProjectElement({ project }: { project: Project }) {
         </div>
         <ul className='list_contributions'>
           <li className='list_contribution_item'>
-            <FontAwesomeIcon
-              icon={faDiscord}
-              className='my-0 mr-2 ml-0 w-4'
-              aria-hidden='true'
-              color='slateGray'
-            />
+            <Users className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='slateGray' />
             {project.teamDescription}
           </li>
           <li className='list_contribution_item'>
-            <FontAwesomeIcon
-              icon={faSquareGithub}
-              className='my-0 mr-2 ml-0 w-4'
-              aria-hidden='true'
-              color='slateGray'
-            />
+            <SiGithub className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='slateGray' />
             <Link href={repository} target='_blank' rel='noopener'>
               {repository}
             </Link>
           </li>
           <li className='list_contribution_item'>
-            <FontAwesomeIcon
-              icon={faChrome}
-              className='my-0 mr-2 ml-0 w-4'
+            <SiGooglechrome
+              className='my-0 mr-2 ml-0 h-4 w-4'
               aria-hidden='true'
               color='slateGray'
             />

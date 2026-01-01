@@ -1,10 +1,9 @@
 'use client';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Code, Eye, GitFork, Lock, LockOpen, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { faCodeFork, faEye, faLaptopCode, faLock, faLockOpen, faStar } from '@/components/icons';
 import { CopyToClipboard } from '@/features/repos/copy_to_clipboard';
 import type Repository from '@/interface/repos';
 import { username } from '@/lib/constants';
@@ -29,25 +28,9 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           value={`${repository.html_url}.git`}
           className='after:content-[attr(placeholder)] hover:after:content-[attr(title)]'>
           {repository.private ? (
-            <FontAwesomeIcon
-              icon={faLock}
-              className='my-0 mr-2 ml-0 h-4 w-4'
-              aria-hidden='true'
-              size='2x'
-              width={16}
-              height={16}
-              color='gray'
-            />
+            <Lock className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
           ) : (
-            <FontAwesomeIcon
-              icon={faLockOpen}
-              className='my-0 mr-2 ml-0 h-4 w-4'
-              aria-hidden='true'
-              size='2x'
-              width={16}
-              height={16}
-              color='gray'
-            />
+            <LockOpen className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
           )}
         </CopyToClipboard>
         <div className='flex justify-between text-gray-900'>
@@ -71,59 +54,27 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             href={`https://github.com/search?l=${repository.language}&q=user%3A${username}&type=Code`}
             className='text-xs'>
             <p className='text-xxs mb-0 text-gray-400'>based language</p>
-            <FontAwesomeIcon
-              icon={faLaptopCode}
-              className='my-0 mr-2 ml-0 h-4 w-4'
-              aria-hidden='true'
-              size='2x'
-              width={16}
-              height={16}
-              color='gray'
-            />
+            <Code className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
             {repository.language}
           </Link>
           <Link href={`${repository.html_url}/stargazers`} className='text-xs'>
             <p className='text-xxs mb-0 text-gray-400'>stars</p>
             <p className='mb-0 text-xs text-gray-900'>
-              <FontAwesomeIcon
-                icon={faStar}
-                className='my-0 mr-2 ml-0 h-4 w-4'
-                aria-hidden='true'
-                size='2x'
-                width={16}
-                height={16}
-                color='gray'
-              />
+              <Star className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.stargazers_count}
             </p>
           </Link>
           <Link href={`${repository.html_url}/watchers`} className='text-xs'>
             <p className='text-xxs mb-0 text-gray-400'>watchers</p>
             <p className='mb-0 text-xs text-gray-900'>
-              <FontAwesomeIcon
-                icon={faEye}
-                className='my-0 mr-2 ml-0 h-4 w-4'
-                aria-hidden='true'
-                size='2x'
-                width={16}
-                height={16}
-                color='gray'
-              />
+              <Eye className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.watchers_count}
             </p>
           </Link>
           <Link href={`${repository.html_url}/fork`} className='text-xs'>
             <p className='text-xxs mb-0 text-gray-400'>forks</p>
             <p className='mb-0 text-xs text-gray-900'>
-              <FontAwesomeIcon
-                icon={faCodeFork}
-                className='my-0 mr-2 ml-0 h-4 w-4'
-                aria-hidden='true'
-                size='2x'
-                width={16}
-                height={16}
-                color='gray'
-              />
+              <GitFork className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.forks_count}
             </p>
           </Link>
