@@ -32,6 +32,9 @@ type ContributionRepo = {
   nameWithOwner: string;
   url: string;
   owner: ContributionOwner;
+  stars: number;
+  forks: number;
+  watchers: number;
   total: number;
   breakdown: {
     commits: number;
@@ -61,6 +64,7 @@ const formatDateLabel = (value: string) => {
 };
 
 const formatCount = (count: number) => `${count.toLocaleString()}회`;
+const formatMetric = (count: number) => count.toLocaleString();
 
 const buildBreakdown = (breakdown: ContributionRepo['breakdown']) => {
   const items = [
@@ -84,6 +88,17 @@ const buildTotalParts = (totals: ContributionTotals) => {
   return items
     .filter((item) => item.value > 0)
     .map((item) => `${item.label} ${formatCount(item.value)}`);
+};
+
+const buildRepoStats = (repo: ContributionRepo) => {
+  const items = [
+    { label: 'stars', value: repo.stars },
+    { label: 'watch', value: repo.watchers },
+    { label: 'forks', value: repo.forks },
+  ];
+  return items
+    .filter((item) => item.value > 0)
+    .map((item) => `${formatMetric(item.value)} ${item.label}`);
 };
 
 const displayRepoName = (repo: ContributionRepo) => {
@@ -252,23 +267,35 @@ export default function ReactGithubCalendar() {
           )}
           {summary.externalRepos && summary.externalRepos.length > 0 && (
             <div className='grid gap-2 md:grid-cols-2'>
-              {summary.externalRepos.map((repo) => (
-                <Link
-                  key={repo.nameWithOwner}
-                  href={repo.url}
-                  target='_blank'
-                  rel='noopener'
-                  className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
-                  <div className='flex items-center gap-2 text-sm font-medium'>
-                    <span className='truncate'>{repo.nameWithOwner}</span>
-                  </div>
-                  <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
-                    {buildBreakdown(repo.breakdown).map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </Link>
-              ))}
+              {summary.externalRepos.map((repo) => {
+                const breakdown = buildBreakdown(repo.breakdown);
+                return (
+                  <Link
+                    key={repo.nameWithOwner}
+                    href={repo.url}
+                    target='_blank'
+                    rel='noopener'
+                    className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
+                    <div className='flex items-center gap-2 text-sm font-medium'>
+                      <Image
+                        src={repo.owner.avatarUrl}
+                        alt={`${repo.owner.login} avatar`}
+                        width={16}
+                        height={16}
+                        className='rounded-full'
+                      />
+                      <span className='truncate'>{repo.nameWithOwner}</span>
+                    </div>
+                    {breakdown.length > 0 && (
+                      <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
+                        {breakdown.map((item) => (
+                          <span key={item}>{item}</span>
+                        ))}
+                      </div>
+                    )}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
@@ -302,26 +329,31 @@ export default function ReactGithubCalendar() {
               <p className='text-xxs text-muted-foreground'>표시할 프로젝트가 없습니다.</p>
             ) : (
               <div className='grid gap-2 md:grid-cols-2'>
-                {summary.repos.map((repo) => (
-                  <Link
-                    key={repo.nameWithOwner}
-                    href={repo.url}
-                    target='_blank'
-                    rel='noopener'
-                    className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
-                    <div className='flex items-center justify-between gap-2 text-sm font-medium'>
-                      <span className='truncate'>{displayRepoName(repo)}</span>
-                      <span className='text-xxs text-muted-foreground'>
-                        {formatCount(repo.total)}
-                      </span>
-                    </div>
-                    <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
-                      {buildBreakdown(repo.breakdown).map((item) => (
-                        <span key={item}>{item}</span>
-                      ))}
-                    </div>
-                  </Link>
-                ))}
+                {summary.repos.map((repo) => {
+                  const stats = buildRepoStats(repo);
+                  return (
+                    <Link
+                      key={repo.nameWithOwner}
+                      href={repo.url}
+                      target='_blank'
+                      rel='noopener'
+                      className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
+                      <div className='flex items-center justify-between gap-2 text-sm font-medium'>
+                        <span className='truncate'>{displayRepoName(repo)}</span>
+                        <span className='text-xxs text-muted-foreground'>
+                          {formatCount(repo.total)}
+                        </span>
+                      </div>
+                      {stats.length > 0 && (
+                        <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
+                          {stats.map((item) => (
+                            <span key={item}>{item}</span>
+                          ))}
+                        </div>
+                      )}
+                    </Link>
+                  );
+                })}
               </div>
             )}
           </>

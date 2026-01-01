@@ -15,6 +15,11 @@ type RepoEntry = {
       avatarUrl: string;
       url: string;
     };
+    stargazerCount: number;
+    forkCount: number;
+    watchers: {
+      totalCount: number;
+    };
   };
   contributions: {
     totalCount: number;
@@ -40,6 +45,9 @@ type RepoSummary = {
     avatarUrl: string;
     url: string;
   };
+  stars: number;
+  forks: number;
+  watchers: number;
   total: number;
   breakdown: {
     commits: number;
@@ -63,19 +71,47 @@ const query = `
         totalPullRequestContributions
         totalPullRequestReviewContributions
         commitContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url owner { login avatarUrl url } }
+          repository {
+            nameWithOwner
+            url
+            owner { login avatarUrl url }
+            stargazerCount
+            forkCount
+            watchers { totalCount }
+          }
           contributions { totalCount }
         }
         issueContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url owner { login avatarUrl url } }
+          repository {
+            nameWithOwner
+            url
+            owner { login avatarUrl url }
+            stargazerCount
+            forkCount
+            watchers { totalCount }
+          }
           contributions { totalCount }
         }
         pullRequestContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url owner { login avatarUrl url } }
+          repository {
+            nameWithOwner
+            url
+            owner { login avatarUrl url }
+            stargazerCount
+            forkCount
+            watchers { totalCount }
+          }
           contributions { totalCount }
         }
         pullRequestReviewContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url owner { login avatarUrl url } }
+          repository {
+            nameWithOwner
+            url
+            owner { login avatarUrl url }
+            stargazerCount
+            forkCount
+            watchers { totalCount }
+          }
           contributions { totalCount }
         }
       }
@@ -141,6 +177,9 @@ export async function GET() {
           nameWithOwner: name,
           url: item.repository.url,
           owner: item.repository.owner,
+          stars: item.repository.stargazerCount ?? 0,
+          forks: item.repository.forkCount ?? 0,
+          watchers: item.repository.watchers?.totalCount ?? 0,
           total: 0,
           breakdown: { commits: 0, issues: 0, pullRequests: 0, reviews: 0 },
         };
