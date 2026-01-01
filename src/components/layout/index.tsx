@@ -17,7 +17,7 @@ export default function Layout({
       <MenuButtons />
       <summary className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pt-10 md:pb-4 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16'>
         <h1 className='writer mx-0 my-4 text-2xl leading-normal'>
-          <Link href={github} className='writer-text'>
+          <Link href='/' className='writer-text'>
             {myName}
           </Link>
         </h1>

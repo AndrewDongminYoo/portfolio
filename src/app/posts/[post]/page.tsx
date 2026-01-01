@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Layout from '@/components/layout';
@@ -22,9 +21,6 @@ export default async function PostDetailPage(props: PostProps) {
   return (
     <Layout>
       <PostContent data={data} />
-      <Link href='/' className='leading-8 font-extrabold'>
-        🔙 {'홈으로가기'}
-      </Link>
     </Layout>
   );
 }

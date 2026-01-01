@@ -1,5 +1,4 @@
 import groupBy from 'lodash.groupby';
-import Link from 'next/link';
 
 import ReactGithubCalendar from '@/components/calendar';
 import Layout from '@/components/layout';
@@ -46,9 +45,6 @@ export default function Index() {
             return <Post data={data} key={`${key}-education`} />;
           })}
       </ResumeSection>
-      <Link href='/' className='leading-8 font-extrabold'>
-        🔙 {'홈으로가기'}
-      </Link>
     </Layout>
   );
 }

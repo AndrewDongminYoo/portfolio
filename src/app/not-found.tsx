@@ -1,7 +1,3 @@
-'use client';
-
-import Link from 'next/link';
-
 import Layout from '@/components/layout';
 
 /** @description Error Page Component allows you to gracefully handle runtime errors in nested routes. */
@@ -26,13 +22,7 @@ export default function NotFound() {
         <br />
         삭제되었거나 존재하지 않는 페이지입니다.
         <br />
-        홈으로 다시 돌아갑니다.
-        <br />
       </p>
-
-      <Link href='/' className='leading-8 font-extrabold'>
-        🔙 {'홈으로가기'}
-      </Link>
     </Layout>
   );
 }
