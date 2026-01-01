@@ -2,7 +2,6 @@
 
 import { SiGithub, SiGithubcopilot, SiMedium } from '@icons-pack/react-simple-icons';
 import { FolderGit2, GitFork, Linkedin, PrinterCheck } from 'lucide-react';
-import Link from 'next/link';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { jsx } from 'react/jsx-runtime';
 
@@ -23,20 +22,17 @@ const inlineItemClassName =
 const dropdownItemClassName =
   'w-full flex-row items-center justify-end gap-2 rounded-md px-1.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground';
 const externalTriggerClassName =
-  'inline-flex flex-row items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-transparent hover:text-foreground/80 data-[state=open]:bg-transparent [&>svg]:hidden';
+  'inline-flex flex-row items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-transparent hover:text-foreground/80 data-[state=open]:bg-transparent';
 
 export function MenuButtonIcon({
-  href,
   text,
   icon,
   hideText,
-  ...props
 }: {
-  href: string;
   text: string;
   icon: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
   hideText?: boolean;
-} & React.ComponentProps<'a'>) {
+}) {
   if (hideText) {
     const canHover = useCanHover();
     const { open, setOpen, handlers } = useLongPressTooltip(450, !canHover);
@@ -46,19 +42,17 @@ export function MenuButtonIcon({
         delayDuration={0}
         open={!canHover ? open : undefined}
         onOpenChange={!canHover ? setOpen : undefined}>
-        <TooltipTrigger asChild>
-          <Link href={href} {...props} {...handlers}>
-            {jsx(icon, { className: 'size-4' })}
-          </Link>
+        <TooltipTrigger asChild {...handlers}>
+          {jsx(icon, { className: 'size-4' })}
         </TooltipTrigger>
         <TooltipContent side='bottom'>{text}</TooltipContent>
       </Tooltip>
     );
   }
   return (
-    <Link href={href} {...props}>
+    <div className='bg-background focus:bg-accent focus:text-accent-foreground text-foreground hover:text-foreground/80 text-sm font-medium'>
       {text} {jsx(icon, { className: 'size-4' })}
-    </Link>
+    </div>
   );
 }
 
@@ -68,96 +62,83 @@ export default function MenuButtons() {
       <NavigationMenu viewport={false} className='items-center'>
         <NavigationMenuList className='border-border/60 bg-background/80 flex-wrap justify-end gap-2 rounded-full border px-3 py-1 shadow-sm backdrop-blur md:flex-nowrap'>
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon href='/api/resume' text='PDF' icon={PrinterCheck} download />
+            <NavigationMenuLink className={inlineItemClassName} href='/api/resume' download>
+              <MenuButtonIcon text='PDF' icon={PrinterCheck} />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon href='/repos' text='Repos' icon={FolderGit2} />
+            <NavigationMenuLink className={inlineItemClassName} href='/repos'>
+              <MenuButtonIcon text='Repos' icon={FolderGit2} />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon href={github} text='GitHub Profile' icon={SiGithub} hideText />
+            <NavigationMenuLink
+              className={inlineItemClassName}
+              href={github}
+              target='_blank'
+              rel='noreferrer noopener'>
+              <MenuButtonIcon text='Profile' icon={SiGithub} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon
-                href={medium}
-                text='Medium Profile'
-                icon={SiMedium}
-                hideText
-                target='_blank'
-                rel='noreferrer noopener'
-              />
+            <NavigationMenuLink
+              className={inlineItemClassName}
+              href={medium}
+              target='_blank'
+              rel='noreferrer noopener'>
+              <MenuButtonIcon text='Medium Profile' icon={SiMedium} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon
-                href={linkedin}
-                text='LinkedIn Profile'
-                icon={Linkedin}
-                hideText
-                target='_blank'
-                rel='noreferrer noopener'
-              />
+            <NavigationMenuLink
+              className={inlineItemClassName}
+              href={linkedin}
+              target='_blank'
+              rel='noreferrer noopener'>
+              <MenuButtonIcon text='LinkedIn Profile' icon={Linkedin} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
-            <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon
-                href={portfolio}
-                text='Source Code'
-                icon={GitFork}
-                hideText
-                target='_blank'
-                rel='noreferrer noopener'
-              />
+            <NavigationMenuLink
+              className={inlineItemClassName}
+              href={portfolio}
+              target='_blank'
+              rel='noreferrer noopener'>
+              <MenuButtonIcon text='See Code' icon={GitFork} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='hidden md:flex'>
             <NavigationMenuTrigger className={externalTriggerClassName}>
-              External
+              See More
             </NavigationMenuTrigger>
             <NavigationMenuContent className='min-w-[8rem] p-1 pr-1'>
-              <NavigationMenuLink className={dropdownItemClassName}>
-                <MenuButtonIcon
-                  href={github}
-                  text='Profile'
-                  icon={SiGithubcopilot}
-                  target='_blank'
-                  rel='noreferrer noopener'
-                />
+              <NavigationMenuLink
+                className={dropdownItemClassName}
+                href={github}
+                target='_blank'
+                rel='noreferrer noopener'>
+                <MenuButtonIcon text='Profile' icon={SiGithubcopilot} />
               </NavigationMenuLink>
-              <NavigationMenuLink className={dropdownItemClassName}>
-                <MenuButtonIcon
-                  href={portfolio}
-                  text='Source Code'
-                  icon={FolderGit2}
-                  target='_blank'
-                  rel='noreferrer noopener'
-                />
+              <NavigationMenuLink
+                className={dropdownItemClassName}
+                href={portfolio}
+                target='_blank'
+                rel='noreferrer noopener'>
+                <MenuButtonIcon text='See Code' icon={FolderGit2} />
               </NavigationMenuLink>
-              <NavigationMenuLink className={dropdownItemClassName}>
-                <MenuButtonIcon
-                  href={medium}
-                  text='Medium'
-                  icon={SiMedium}
-                  target='_blank'
-                  rel='noreferrer noopener'
-                />
+              <NavigationMenuLink
+                className={dropdownItemClassName}
+                href={medium}
+                target='_blank'
+                rel='noreferrer noopener'>
+                <MenuButtonIcon text='Medium' icon={SiMedium} />
               </NavigationMenuLink>
-              <NavigationMenuLink className={dropdownItemClassName}>
-                <MenuButtonIcon
-                  href={linkedin}
-                  text='LinkedIn'
-                  icon={Linkedin}
-                  target='_blank'
-                  rel='noreferrer noopener'
-                />
+              <NavigationMenuLink
+                className={dropdownItemClassName}
+                href={linkedin}
+                target='_blank'
+                rel='noreferrer noopener'>
+                <MenuButtonIcon text='LinkedIn' icon={Linkedin} />
               </NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
