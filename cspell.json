@@ -1,0 +1,23 @@
+{
+  "allowCompoundWords": true,
+  "dictionaries": ["workspace", "languages"],
+  "dictionaryDefinitions": [
+    {
+      "addWords": true,
+      "name": "workspace",
+      "path": ".cspell/workspace.txt",
+      "scope": "workspace"
+    },
+    {
+      "addWords": false,
+      "name": "languages",
+      "path": ".cspell/languages.txt",
+      "scope": "workspace"
+    }
+  ],
+  "ignorePaths": ["_contents/*.md", ".trunk", ".vscode"],
+  "ignoreWords": [],
+  "import": [],
+  "version": "0.2",
+  "words": []
+}

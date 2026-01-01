@@ -13,35 +13,6 @@
   "[typescriptreact,javascriptreact]": {
     "editor.tabSize": 2
   },
-  "cSpell.files": [
-    "**/*",
-    "!data/repos/*.json",
-    "!data/posts/*.md",
-    "!components/repos/lang_colors.ts"
-  ],
-  "cSpell.ignoreRegExpList": ["CStyleComment"],
-  "cSpell.words": [
-    "authorable",
-    "bloglovin",
-    "clsx",
-    "codepen",
-    "cushman",
-    "defaultlocale",
-    "fontawesome",
-    "fortawesome",
-    "githubassets",
-    "googlecalendar",
-    "groupby",
-    "headlessui",
-    "maxage",
-    "nextjs",
-    "noto",
-    "opengraph",
-    "roboto",
-    "signoff",
-    "tailwindcss",
-    "unoptimized"
-  ],
   "css.lint.unknownAtRules": "ignore",
   "css.lint.vendorPrefix": "ignore",
   "explorer.incrementalNaming": "disabled",
