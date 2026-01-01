@@ -111,7 +111,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
             </p>
           </Link>
           <Link href={`${repository.html_url}/fork`} className='text-xs'>
-            <p className='text-xxs mb-0 text-gray-400'>folks</p>
+            <p className='text-xxs mb-0 text-gray-400'>forks</p>
             <p className='mb-0 text-xs text-gray-900'>
               <FontAwesomeIcon
                 icon={faCodeFork}
