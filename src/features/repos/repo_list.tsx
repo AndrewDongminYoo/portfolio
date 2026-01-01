@@ -2,6 +2,13 @@
 
 import { useMemo, useState } from 'react';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import RepoContent from '@/features/repos/repo_content';
 import type Repository from '@/interface/repos';
 import {
@@ -40,20 +47,24 @@ export default function RepoList({ repositories }: RepoListProps) {
       aria-label='repositories'
       className='mx-0 my-6 w-full rounded-lg border border-solid border-gray-300 px-6 py-6'>
       <div className='mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end'>
-        <label htmlFor='repo-sort' className='text-xs font-semibold text-gray-500'>
+        <label id='repo-sort-label' className='text-xs font-semibold text-gray-500'>
           정렬
         </label>
-        <select
-          id='repo-sort'
-          value={sortMode}
-          onChange={(event) => setSortMode(event.target.value as RepoSortMode)}
-          className='bg-background text-foreground w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm sm:w-auto'>
-          {sortOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
+        <Select value={sortMode} onValueChange={(value) => setSortMode(value as RepoSortMode)}>
+          <SelectTrigger
+            id='repo-sort'
+            aria-labelledby='repo-sort-label'
+            className='w-full sm:w-auto'>
+            <SelectValue placeholder='정렬' />
+          </SelectTrigger>
+          <SelectContent align='end'>
+            {sortOptions.map((option) => (
+              <SelectItem key={option.value} value={option.value}>
+                {option.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       {sorted.map((repo, id) => {
         return <RepoContent repository={repo} key={`${id}-${repo.node_id}`} />;
