@@ -15,6 +15,11 @@ type RepoEntry = {
       avatarUrl: string;
       url: string;
     };
+    languages: {
+      nodes: Array<{
+        name: string;
+      }>;
+    };
     stargazerCount: number;
     forkCount: number;
     watchers: {
@@ -45,6 +50,7 @@ type RepoSummary = {
     avatarUrl: string;
     url: string;
   };
+  language?: string;
   stars: number;
   forks: number;
   watchers: number;
@@ -75,6 +81,9 @@ const query = `
             nameWithOwner
             url
             owner { login avatarUrl url }
+            languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+              nodes { name }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -86,6 +95,9 @@ const query = `
             nameWithOwner
             url
             owner { login avatarUrl url }
+            languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+              nodes { name }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -97,6 +109,9 @@ const query = `
             nameWithOwner
             url
             owner { login avatarUrl url }
+            languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+              nodes { name }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -108,6 +123,9 @@ const query = `
             nameWithOwner
             url
             owner { login avatarUrl url }
+            languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
+              nodes { name }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -177,6 +195,7 @@ export async function GET() {
           nameWithOwner: name,
           url: item.repository.url,
           owner: item.repository.owner,
+          language: item.repository.languages?.nodes?.[0]?.name,
           stars: item.repository.stargazerCount ?? 0,
           forks: item.repository.forkCount ?? 0,
           watchers: item.repository.watchers?.totalCount ?? 0,

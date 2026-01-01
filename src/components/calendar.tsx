@@ -5,10 +5,11 @@ import './calendar.css';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
+import { colorMap } from '@/features/repos/lang_colors';
 import { username } from '@/lib/constants';
 
 const MOBILE_QUERY = '(max-width: 767px)';
@@ -32,6 +33,7 @@ type ContributionRepo = {
   nameWithOwner: string;
   url: string;
   owner: ContributionOwner;
+  language?: string;
   stars: number;
   forks: number;
   watchers: number;
@@ -65,6 +67,31 @@ const formatDateLabel = (value: string) => {
 
 const formatCount = (count: number) => `${count.toLocaleString()}회`;
 const formatMetric = (count: number) => count.toLocaleString();
+
+const hexToRgba = (hex: string, alpha: number) => {
+  if (!hex.startsWith('#')) return undefined;
+  const normalized = hex.slice(1);
+  if (![3, 6].includes(normalized.length)) return undefined;
+  const chunk = normalized.length === 3;
+  const toChannel = (value: string) => parseInt(chunk ? value.repeat(2) : value, 16);
+  const r = toChannel(normalized.slice(0, chunk ? 1 : 2));
+  const g = toChannel(normalized.slice(chunk ? 1 : 2, chunk ? 2 : 4));
+  const b = toChannel(normalized.slice(chunk ? 2 : 4, chunk ? 3 : 6));
+  if ([r, g, b].some((value) => Number.isNaN(value))) return undefined;
+  return `rgba(${r}, ${g}, ${b}, ${Math.min(Math.max(alpha, 0), 1)})`;
+};
+
+const getRepoAccentStyle = (repo: ContributionRepo) => {
+  const language = repo.language;
+  if (!language) return undefined;
+  const color = colorMap[language] ?? '#00000000';
+  if (!color) return undefined;
+  const line = hexToRgba(color, 0.5);
+  if (!line) return undefined;
+  return {
+    boxShadow: `inset -3px 0 0 0 ${line}`,
+  } as CSSProperties;
+};
 
 const buildBreakdown = (breakdown: ContributionRepo['breakdown']) => {
   const items = [
@@ -240,7 +267,6 @@ export default function ReactGithubCalendar() {
         <div className='mt-4 flex flex-col gap-3'>
           <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
             <span>외부 컨트리뷰션</span>
-            <span className='text-xxs text-muted-foreground'>내 레포 제외</span>
           </div>
           {summary.externalOwners && summary.externalOwners.length > 0 ? (
             <div className='flex flex-wrap gap-2'>
@@ -275,6 +301,7 @@ export default function ReactGithubCalendar() {
                     href={repo.url}
                     target='_blank'
                     rel='noopener'
+                    style={getRepoAccentStyle(repo)}
                     className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
                     <div className='flex items-center gap-2 text-sm font-medium'>
                       <Image
@@ -337,6 +364,7 @@ export default function ReactGithubCalendar() {
                       href={repo.url}
                       target='_blank'
                       rel='noopener'
+                      style={getRepoAccentStyle(repo)}
                       className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
                       <div className='flex items-center justify-between gap-2 text-sm font-medium'>
                         <span className='truncate'>{displayRepoName(repo)}</span>

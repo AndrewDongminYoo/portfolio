@@ -546,8 +546,8 @@ export const colorMap = {
   'Zig': '#ec915c',
   'ZIL': '#dc75e5',
   'Zimpl': '#d67711',
-};
+} as Record<string, string>;
 
-type Language = keyof typeof colorMap;
+type Language = string & keyof typeof colorMap;
 
 export default Language;
