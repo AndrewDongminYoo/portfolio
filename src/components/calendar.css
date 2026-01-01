@@ -51,15 +51,12 @@
   }
 
   .react-activity-calendar {
-    @apply flex w-full! max-w-full flex-col gap-[8px] pt-[10px] text-[11px] text-(--color-foreground-muted)!;
-  }
-
-  .react-activity-calendar__scroll-container {
-    @apply max-w-full overflow-x-hidden overflow-y-auto pt-[2px];
-  }
-
-  .react-activity-calendar__calendar {
-    @apply w-full! overflow-x-hidden! overflow-y-visible!;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 10px;
+    font-size: 11px;
+    color: var(--color-foreground-muted) !important;
   }
 
   .react-activity-calendar__legend-month > text {
@@ -84,5 +81,18 @@
 
   .react-activity-calendar__legend-colors > svg:nth-of-type(5) > rect {
     fill: var(--color-calendar-graph-day-L4-bg);
+  }
+
+  .github-calendar-scroll {
+    @apply w-full overflow-x-auto overflow-y-hidden;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  @media (max-width: 767px) {
+    .github-calendar-scroll .react-activity-calendar__calendar {
+      width: auto !important;
+      max-width: none !important;
+    }
   }
 }
