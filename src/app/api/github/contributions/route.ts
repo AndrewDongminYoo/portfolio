@@ -10,6 +10,11 @@ type RepoEntry = {
   repository: {
     nameWithOwner: string;
     url: string;
+    owner: {
+      login: string;
+      avatarUrl: string;
+      url: string;
+    };
   };
   contributions: {
     totalCount: number;
@@ -30,6 +35,11 @@ type ContributionsCollection = {
 type RepoSummary = {
   nameWithOwner: string;
   url: string;
+  owner: {
+    login: string;
+    avatarUrl: string;
+    url: string;
+  };
   total: number;
   breakdown: {
     commits: number;
@@ -40,6 +50,9 @@ type RepoSummary = {
 };
 
 const MAX_REPOS = 60;
+const MAX_TOP_REPOS = 12;
+const MAX_EXTERNAL_REPOS = 12;
+const MAX_EXTERNAL_OWNERS = 8;
 
 const query = `
   query($login: String!, $from: DateTime!, $to: DateTime!, $maxRepos: Int!) {
@@ -50,19 +63,19 @@ const query = `
         totalPullRequestContributions
         totalPullRequestReviewContributions
         commitContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url }
+          repository { nameWithOwner url owner { login avatarUrl url } }
           contributions { totalCount }
         }
         issueContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url }
+          repository { nameWithOwner url owner { login avatarUrl url } }
           contributions { totalCount }
         }
         pullRequestContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url }
+          repository { nameWithOwner url owner { login avatarUrl url } }
           contributions { totalCount }
         }
         pullRequestReviewContributionsByRepository(maxRepositories: $maxRepos) {
-          repository { nameWithOwner url }
+          repository { nameWithOwner url owner { login avatarUrl url } }
           contributions { totalCount }
         }
       }
@@ -127,6 +140,7 @@ export async function GET() {
         const current = repoMap.get(name) ?? {
           nameWithOwner: name,
           url: item.repository.url,
+          owner: item.repository.owner,
           total: 0,
           breakdown: { commits: 0, issues: 0, pullRequests: 0, reviews: 0 },
         };
@@ -141,9 +155,31 @@ export async function GET() {
     merge(collection.pullRequestContributionsByRepository ?? [], 'pullRequests');
     merge(collection.pullRequestReviewContributionsByRepository ?? [], 'reviews');
 
-    const repos = Array.from(repoMap.values())
+    const allRepos = Array.from(repoMap.values()).sort((a, b) => b.total - a.total);
+    const repos = allRepos.slice(0, MAX_TOP_REPOS);
+    const selfLogin = username.toLowerCase();
+    const externalReposAll = allRepos.filter(
+      (repo) => repo.owner.login.toLowerCase() !== selfLogin,
+    );
+    const externalRepos = externalReposAll.slice(0, MAX_EXTERNAL_REPOS);
+    const ownerMap = new Map<
+      string,
+      { login: string; avatarUrl: string; url: string; total: number }
+    >();
+    externalReposAll.forEach((repo) => {
+      const login = repo.owner.login;
+      const current = ownerMap.get(login) ?? {
+        login,
+        avatarUrl: repo.owner.avatarUrl,
+        url: repo.owner.url,
+        total: 0,
+      };
+      current.total += repo.total;
+      ownerMap.set(login, current);
+    });
+    const externalOwners = Array.from(ownerMap.values())
       .sort((a, b) => b.total - a.total)
-      .slice(0, 12);
+      .slice(0, MAX_EXTERNAL_OWNERS);
 
     const totals = {
       commits: collection.totalCommitContributions ?? 0,
@@ -156,6 +192,8 @@ export async function GET() {
       range: { from: from.toISOString(), to: to.toISOString() },
       totals: { ...totals, total: Object.values(totals).reduce((sum, value) => sum + value, 0) },
       repos,
+      externalRepos,
+      externalOwners,
     });
   } catch (error) {
     console.error('[github/contributions] Failed to fetch:', error);

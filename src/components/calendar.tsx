@@ -1,8 +1,9 @@
 'use client';
 
-import './calendar.css';
 import 'react-activity-calendar/tooltips.css';
+import './calendar.css';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
@@ -20,9 +21,17 @@ type ContributionTotals = {
   total: number;
 };
 
+type ContributionOwner = {
+  login: string;
+  avatarUrl: string;
+  url: string;
+  total?: number;
+};
+
 type ContributionRepo = {
   nameWithOwner: string;
   url: string;
+  owner: ContributionOwner;
   total: number;
   breakdown: {
     commits: number;
@@ -39,6 +48,8 @@ type ContributionSummary = {
   };
   totals: ContributionTotals;
   repos: ContributionRepo[];
+  externalRepos?: ContributionRepo[];
+  externalOwners?: ContributionOwner[];
   error?: string;
 };
 
@@ -176,6 +187,62 @@ export default function ReactGithubCalendar() {
           }}
         />
       </div>
+      {!summaryLoading && !summaryError && summary && (
+        <div className='mt-4 flex flex-col gap-3'>
+          <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
+            <span>외부 컨트리뷰션</span>
+            <span className='text-xxs text-muted-foreground'>내 레포 제외</span>
+          </div>
+          {summary.externalOwners && summary.externalOwners.length > 0 ? (
+            <div className='flex flex-wrap gap-2'>
+              {summary.externalOwners.map((owner) => (
+                <Link
+                  key={owner.login}
+                  href={owner.url}
+                  target='_blank'
+                  rel='noopener'
+                  className='border-border/60 bg-background/80 hover:bg-accent/10 text-xxs flex items-center gap-2 rounded-full border px-2 py-1 font-medium transition-colors'>
+                  <Image
+                    src={owner.avatarUrl}
+                    alt={`${owner.login} avatar`}
+                    width={18}
+                    height={18}
+                    className='rounded-full'
+                  />
+                  <span>@{owner.login}</span>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className='text-xxs text-muted-foreground'>외부 컨트리뷰션이 없습니다.</p>
+          )}
+          {summary.externalRepos && summary.externalRepos.length > 0 && (
+            <div className='grid gap-2 md:grid-cols-2'>
+              {summary.externalRepos.map((repo) => (
+                <Link
+                  key={repo.nameWithOwner}
+                  href={repo.url}
+                  target='_blank'
+                  rel='noopener'
+                  className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
+                  <div className='flex items-center justify-between gap-2 text-sm font-medium'>
+                    <span className='truncate'>{repo.nameWithOwner}</span>
+                    <span className='text-xxs text-muted-foreground'>
+                      {formatCount(repo.total)}
+                    </span>
+                  </div>
+                  <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
+                    <span>커밋 {formatCount(repo.breakdown.commits)}</span>
+                    <span>PR {formatCount(repo.breakdown.pullRequests)}</span>
+                    <span>리뷰 {formatCount(repo.breakdown.reviews)}</span>
+                    <span>이슈 {formatCount(repo.breakdown.issues)}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       <div className='mt-4 flex flex-col gap-3'>
         <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
           <span>최근 1년 기여 프로젝트</span>
