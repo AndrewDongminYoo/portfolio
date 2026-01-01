@@ -30,6 +30,15 @@
     border: 0.5px solid var(--color-calendar-graph-border-color);
   }
 
+  .react-activity-calendar rect {
+    cursor: pointer;
+    transition: filter 120ms ease;
+  }
+
+  .react-activity-calendar rect:hover {
+    filter: brightness(0.95);
+  }
+
   .react-activity-calendar rect[data-level='1'] {
     fill: var(--color-calendar-graph-day-L1-bg);
     background-color: var(--color-calendar-graph-day-L1-bg);
