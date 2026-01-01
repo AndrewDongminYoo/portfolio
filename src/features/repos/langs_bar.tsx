@@ -1,3 +1,5 @@
+'use client';
+
 import Language, { colorMap } from './lang_colors';
 
 export default function LanguageStateBar({
