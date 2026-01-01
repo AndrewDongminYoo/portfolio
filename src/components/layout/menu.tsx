@@ -3,6 +3,8 @@
 import { SiGithub, SiGithubcopilot, SiMedium } from '@icons-pack/react-simple-icons';
 import { FolderGit2, GitFork, Linkedin, PrinterCheck } from 'lucide-react';
 import Link from 'next/link';
+import { ForwardRefExoticComponent, RefAttributes } from 'react';
+import { jsx } from 'react/jsx-runtime';
 
 import {
   NavigationMenu,
@@ -13,6 +15,7 @@ import {
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useCanHover, useLongPressTooltip } from '@/hooks/use-hover';
 import { github, linkedin, medium, portfolio } from '@/lib/constants';
 
 const inlineItemClassName =
@@ -22,7 +25,7 @@ const dropdownItemClassName =
 const externalTriggerClassName =
   'inline-flex flex-row items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-transparent hover:text-foreground/80 data-[state=open]:bg-transparent [&>svg]:hidden';
 
-function MenuButtonIcon({
+export function MenuButtonIcon({
   href,
   text,
   icon,
@@ -31,21 +34,30 @@ function MenuButtonIcon({
 }: {
   href: string;
   text: string;
-  icon: React.ReactElement;
+  icon: ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
   hideText?: boolean;
 } & React.ComponentProps<'a'>) {
-  return hideText ? (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Link href={href} {...props}>
-          {icon}
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent side='bottom'>{text}</TooltipContent>
-    </Tooltip>
-  ) : (
+  if (hideText) {
+    const canHover = useCanHover();
+    const { open, setOpen, handlers } = useLongPressTooltip(450, !canHover);
+
+    return (
+      <Tooltip
+        delayDuration={0}
+        open={!canHover ? open : undefined}
+        onOpenChange={!canHover ? setOpen : undefined}>
+        <TooltipTrigger asChild>
+          <Link href={href} {...props} {...handlers}>
+            {jsx(icon, { className: 'size-4' })}
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent side='bottom'>{text}</TooltipContent>
+      </Tooltip>
+    );
+  }
+  return (
     <Link href={href} {...props}>
-      {text} {icon}
+      {text} {jsx(icon, { className: 'size-4' })}
     </Link>
   );
 }
@@ -57,27 +69,17 @@ export default function MenuButtons() {
         <NavigationMenuList className='border-border/60 bg-background/80 flex-wrap justify-end gap-2 rounded-full border px-3 py-1 shadow-sm backdrop-blur md:flex-nowrap'>
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon
-                href='/api/resume'
-                text='PDF'
-                icon={<PrinterCheck className='size-4' />}
-                download
-              />
+              <MenuButtonIcon href='/api/resume' text='PDF' icon={PrinterCheck} download />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon href='/repos' text='Repos' icon={<FolderGit2 className='size-4' />} />
+              <MenuButtonIcon href='/repos' text='Repos' icon={FolderGit2} />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
             <NavigationMenuLink asChild className={inlineItemClassName}>
-              <MenuButtonIcon
-                href={github}
-                text='GitHub Profile'
-                icon={<SiGithub className='size-4' />}
-                hideText
-              />
+              <MenuButtonIcon href={github} text='GitHub Profile' icon={SiGithub} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
@@ -85,7 +87,7 @@ export default function MenuButtons() {
               <MenuButtonIcon
                 href={medium}
                 text='Medium Profile'
-                icon={<SiMedium className='size-4' />}
+                icon={SiMedium}
                 hideText
                 target='_blank'
                 rel='noreferrer noopener'
@@ -97,7 +99,7 @@ export default function MenuButtons() {
               <MenuButtonIcon
                 href={linkedin}
                 text='LinkedIn Profile'
-                icon={<Linkedin className='size-4' />}
+                icon={Linkedin}
                 hideText
                 target='_blank'
                 rel='noreferrer noopener'
@@ -109,7 +111,7 @@ export default function MenuButtons() {
               <MenuButtonIcon
                 href={portfolio}
                 text='Source Code'
-                icon={<GitFork className='size-4' />}
+                icon={GitFork}
                 hideText
                 target='_blank'
                 rel='noreferrer noopener'
@@ -125,7 +127,7 @@ export default function MenuButtons() {
                 <MenuButtonIcon
                   href={github}
                   text='Profile'
-                  icon={<SiGithubcopilot className='size-4' />}
+                  icon={SiGithubcopilot}
                   target='_blank'
                   rel='noreferrer noopener'
                 />
@@ -134,7 +136,7 @@ export default function MenuButtons() {
                 <MenuButtonIcon
                   href={portfolio}
                   text='Source Code'
-                  icon={<FolderGit2 className='size-4' />}
+                  icon={FolderGit2}
                   target='_blank'
                   rel='noreferrer noopener'
                 />
@@ -143,7 +145,7 @@ export default function MenuButtons() {
                 <MenuButtonIcon
                   href={medium}
                   text='Medium'
-                  icon={<SiMedium className='size-4' />}
+                  icon={SiMedium}
                   target='_blank'
                   rel='noreferrer noopener'
                 />
@@ -152,7 +154,7 @@ export default function MenuButtons() {
                 <MenuButtonIcon
                   href={linkedin}
                   text='LinkedIn'
-                  icon={<Linkedin className='size-4' />}
+                  icon={Linkedin}
                   target='_blank'
                   rel='noreferrer noopener'
                 />
