@@ -3,6 +3,7 @@ export const myName = 'Dongmin, Yu';
 export const primaryTitle = '집요하게 더 나은 답을 찾아내는 개발자 유동민입니다.';
 export const secondaryTitle = '[포트폴리오] 계속해서 업데이트 중입니다.';
 export const github = 'https://github.com/AndrewDongminYoo/';
+export const portfolio = 'https://github.com/AndrewDongminYoo/portfolio';
 export const medium = 'https://medium.com/@dongminyu';
 export const linkedin = 'https://www.linkedin.com/in/dongmin-yu-0394a5223/';
 export const description =
