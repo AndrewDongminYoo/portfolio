@@ -68,9 +68,10 @@ export async function fetchRepositories(): Promise<Repository[]> {
       sort: 'pushed',
     })
     .then((value) => value.data);
-  return repositories
+  const filtered = repositories
     .filter((R) => !R.fork && R.size > 4000 && !R.archived)
     .map((repo) => reclusiveFilter(repo));
+  return sortRepositoriesByScore(filtered);
 }
 
 export async function fetchStarredRepository() {
@@ -164,10 +165,57 @@ export function readData(repo: string): Repository {
  */
 export function readRepositories(): Repository[] {
   const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
-  // Sort repos by date
-  return allReposData.sort((a, b) => {
-    if (parseISO(a.pushed_at) < parseISO(b.pushed_at)) {
-      return 1;
-    } else return -1;
-  });
+  return sortRepositoriesByScore(allReposData);
 }
+
+function sortRepositoriesByScore(repositories: Repository[]): Repository[] {
+  const pinned: Repository[] = [];
+  const others: Repository[] = [];
+
+  repositories.forEach((repo) => {
+    if (getRepoScore(repo) > PINNED_SCORE_THRESHOLD) {
+      pinned.push(repo);
+    } else {
+      others.push(repo);
+    }
+  });
+
+  pinned.sort((a, b) => {
+    const scoreA = getRepoScore(a);
+    const scoreB = getRepoScore(b);
+    if (scoreA === scoreB) {
+      return comparePushedAtDesc(a, b);
+    }
+    return scoreB - scoreA;
+  });
+
+  others.sort(comparePushedAtDesc);
+  return [...pinned, ...others];
+}
+
+function getRepoScore(repo: Repository): number {
+  const stars = repo.stargazers_count ?? 0;
+  const watchers = repo.watchers_count ?? 0;
+  const forks = repo.forks_count ?? 0;
+  return (
+    stars * SCORE_WEIGHTS.stars + watchers * SCORE_WEIGHTS.watchers + forks * SCORE_WEIGHTS.forks
+  );
+}
+
+function comparePushedAtDesc(a: Repository, b: Repository): number {
+  if (parseISO(a.pushed_at) < parseISO(b.pushed_at)) {
+    return 1;
+  }
+  if (parseISO(a.pushed_at) > parseISO(b.pushed_at)) {
+    return -1;
+  }
+  return 0;
+}
+
+const SCORE_WEIGHTS = {
+  stars: 3,
+  forks: 2,
+  watchers: 1,
+} as const;
+
+const PINNED_SCORE_THRESHOLD = 5;
