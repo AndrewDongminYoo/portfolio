@@ -62,6 +62,40 @@ const formatDateLabel = (value: string) => {
 
 const formatCount = (count: number) => `${count.toLocaleString()}회`;
 
+const buildBreakdown = (breakdown: ContributionRepo['breakdown']) => {
+  const items = [
+    { label: '커밋', value: breakdown.commits },
+    { label: 'PR', value: breakdown.pullRequests },
+    { label: '리뷰', value: breakdown.reviews },
+    { label: '이슈', value: breakdown.issues },
+  ];
+  return items
+    .filter((item) => item.value > 0)
+    .map((item) => `${item.label} ${formatCount(item.value)}`);
+};
+
+const buildTotalParts = (totals: ContributionTotals) => {
+  const items = [
+    { label: '커밋', value: totals.commits },
+    { label: 'PR', value: totals.pullRequests },
+    { label: '리뷰', value: totals.reviews },
+    { label: '이슈', value: totals.issues },
+  ];
+  return items
+    .filter((item) => item.value > 0)
+    .map((item) => `${item.label} ${formatCount(item.value)}`);
+};
+
+const displayRepoName = (repo: ContributionRepo) => {
+  const ownerLogin = repo.owner.login.toLowerCase();
+  const selfLogin = username.toLowerCase();
+  if (ownerLogin === selfLogin) {
+    const [, name] = repo.nameWithOwner.split('/');
+    return name ?? repo.nameWithOwner;
+  }
+  return repo.nameWithOwner;
+};
+
 export default function ReactGithubCalendar() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const didInitScrollRef = useRef(false);
@@ -225,17 +259,13 @@ export default function ReactGithubCalendar() {
                   target='_blank'
                   rel='noopener'
                   className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
-                  <div className='flex items-center justify-between gap-2 text-sm font-medium'>
+                  <div className='flex items-center gap-2 text-sm font-medium'>
                     <span className='truncate'>{repo.nameWithOwner}</span>
-                    <span className='text-xxs text-muted-foreground'>
-                      {formatCount(repo.total)}
-                    </span>
                   </div>
                   <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
-                    <span>커밋 {formatCount(repo.breakdown.commits)}</span>
-                    <span>PR {formatCount(repo.breakdown.pullRequests)}</span>
-                    <span>리뷰 {formatCount(repo.breakdown.reviews)}</span>
-                    <span>이슈 {formatCount(repo.breakdown.issues)}</span>
+                    {buildBreakdown(repo.breakdown).map((item) => (
+                      <span key={item}>{item}</span>
+                    ))}
                   </div>
                 </Link>
               ))}
@@ -263,9 +293,10 @@ export default function ReactGithubCalendar() {
         {!summaryLoading && !summaryError && summary && (
           <>
             <div className='text-xxs text-muted-foreground'>
-              총 {formatCount(summary.totals.total)} · 커밋 {formatCount(summary.totals.commits)} ·
-              PR {formatCount(summary.totals.pullRequests)} · 리뷰{' '}
-              {formatCount(summary.totals.reviews)} · 이슈 {formatCount(summary.totals.issues)}
+              <span>총 {formatCount(summary.totals.total)}</span>
+              {buildTotalParts(summary.totals).map((part) => (
+                <span key={part}> · {part}</span>
+              ))}
             </div>
             {summary.repos.length === 0 ? (
               <p className='text-xxs text-muted-foreground'>표시할 프로젝트가 없습니다.</p>
@@ -279,16 +310,15 @@ export default function ReactGithubCalendar() {
                     rel='noopener'
                     className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
                     <div className='flex items-center justify-between gap-2 text-sm font-medium'>
-                      <span className='truncate'>{repo.nameWithOwner}</span>
+                      <span className='truncate'>{displayRepoName(repo)}</span>
                       <span className='text-xxs text-muted-foreground'>
                         {formatCount(repo.total)}
                       </span>
                     </div>
                     <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
-                      <span>커밋 {formatCount(repo.breakdown.commits)}</span>
-                      <span>PR {formatCount(repo.breakdown.pullRequests)}</span>
-                      <span>리뷰 {formatCount(repo.breakdown.reviews)}</span>
-                      <span>이슈 {formatCount(repo.breakdown.issues)}</span>
+                      {buildBreakdown(repo.breakdown).map((item) => (
+                        <span key={item}>{item}</span>
+                      ))}
                     </div>
                   </Link>
                 ))}
