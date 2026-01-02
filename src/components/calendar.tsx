@@ -10,6 +10,7 @@ import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
 import { langColors } from '@/features/repos/lang_colors';
+import languageIcons from '@/features/repos/lang_icons';
 import { username } from '@/lib/constants';
 
 const MOBILE_QUERY = '(max-width: 767px)';
@@ -90,6 +91,26 @@ const getRepoAccentStyle = (repo: ContributionRepo) => {
   if (!line) return undefined;
   return {
     boxShadow: `inset -3px 0 0 0 ${line}`,
+  } as CSSProperties;
+};
+
+const getRepoIconStyle = (repo: ContributionRepo) => {
+  const language = repo.language;
+  if (!language) return undefined;
+  const color = langColors[language] ?? '#00000000';
+  if (!color) return undefined;
+  const iconUrl = languageIcons[language];
+  if (!iconUrl) return undefined;
+  return {
+    backgroundColor: color,
+    WebkitMaskImage: `url(${iconUrl})`,
+    maskImage: `url(${iconUrl})`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
   } as CSSProperties;
 };
 
@@ -364,7 +385,6 @@ export default function ReactGithubCalendar() {
                       href={repo.url}
                       target='_blank'
                       rel='noopener'
-                      style={getRepoAccentStyle(repo)}
                       className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
                       <div className='flex items-center justify-between gap-2 text-sm font-medium'>
                         <span className='truncate'>{displayRepoName(repo)}</span>
@@ -372,13 +392,14 @@ export default function ReactGithubCalendar() {
                           {formatCount(repo.total)}
                         </span>
                       </div>
-                      {stats.length > 0 && (
-                        <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
+                      <div className='text-xxs text-muted-foreground mt-1 flex w-full items-center gap-2'>
+                        <div className='flex min-w-0 flex-wrap gap-2'>
                           {stats.map((item) => (
                             <span key={item}>{item}</span>
                           ))}
                         </div>
-                      )}
+                        <span className='ml-auto h-4 w-4 shrink-0' style={getRepoIconStyle(repo)} />
+                      </div>
                     </Link>
                   );
                 })}
