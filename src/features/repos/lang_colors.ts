@@ -4,7 +4,7 @@
  * distinguish between different programming languages.
  * @see https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml
  */
-export const colorMap = {
+export const langColors = {
   '1C Enterprise': '#814CCC',
   '4D': '#004289',
   'ABAP CDS': '#555e25',
@@ -484,6 +484,6 @@ export const colorMap = {
   'Zimpl': '#d67711',
 } as Record<string, string>;
 
-type Language = string & keyof typeof colorMap;
+type Language = string & keyof typeof langColors;
 
 export default Language;

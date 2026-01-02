@@ -9,7 +9,7 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
-import { colorMap } from '@/features/repos/lang_colors';
+import { langColors } from '@/features/repos/lang_colors';
 import { username } from '@/lib/constants';
 
 const MOBILE_QUERY = '(max-width: 767px)';
@@ -84,7 +84,7 @@ const hexToRgba = (hex: string, alpha: number) => {
 const getRepoAccentStyle = (repo: ContributionRepo) => {
   const language = repo.language;
   if (!language) return undefined;
-  const color = colorMap[language] ?? '#00000000';
+  const color = langColors[language] ?? '#00000000';
   if (!color) return undefined;
   const line = hexToRgba(color, 0.5);
   if (!line) return undefined;

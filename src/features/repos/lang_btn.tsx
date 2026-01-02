@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import Language, { colorMap } from './lang_colors';
+import Language, { langColors } from './lang_colors';
 
 export default function LanguageButton({
   language,
@@ -13,7 +13,7 @@ export default function LanguageButton({
   percent: number;
   index: number;
 }) {
-  const backgroundColor = colorMap[language] as string;
+  const backgroundColor = langColors[language] as string;
   const myRepoLanguage = `https://github.com/AndrewDongminYoo?tab=repositories&language=${language}`;
   const trendingOfLang = `https://github.com/topics/${language}`;
   const style = { backgroundColor };

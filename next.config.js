@@ -33,6 +33,11 @@ module.exports = {
         protocol: 'https',
         hostname: 'AndrewDongminYoo.vercel.app',
       },
+      {
+        protocol: 'https',
+        hostname: 'simpleicons.org',
+        pathname: '/icons/**',
+      },
     ],
     dangerouslyAllowSVG: true,
     formats: ['image/webp', 'image/avif'],

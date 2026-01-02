@@ -1,6 +1,6 @@
 'use client';
 
-import Language, { colorMap } from './lang_colors';
+import Language, { langColors } from './lang_colors';
 
 export default function LanguageStateBar({
   languages,
@@ -27,7 +27,7 @@ export default function LanguageStateBar({
 }
 
 function LanguageBarPart({ language, percent }: { language: Language; percent: number }) {
-  const backgroundColor = colorMap[language] as string;
+  const backgroundColor = langColors[language] as string;
   const width = percent.toFixed(1) + '%';
   return (
     <span

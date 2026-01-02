@@ -5,22 +5,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { CopyToClipboard } from '@/features/repos/copy_to_clipboard';
+import { langColors } from '@/features/repos/lang_colors';
 import type Repository from '@/interface/repos';
 import { username } from '@/lib/constants';
 
-import frameworks from './lang_icons';
+import languageIcons from './lang_icons';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
+  const iconUrl = languageIcons[repository.language];
+  const iconColor = langColors[repository.language] ?? '#999999';
   return (
     <div className='flex min-h-[17rem] flex-row overflow-hidden px-2 max-md:w-80 md:px-6'>
       <Link href={repository.html_url} className='hidden md:flex'>
-        <Image
-          src={frameworks[repository.name]}
-          alt='What Framework/Library used by this repository'
-          priority={true}
-          height={256}
-          width={256}
-          className='-mx-4 hidden h-full rounded-t rounded-l opacity-25 md:mx-0 md:flex md:max-w-10 lg:max-w-24 lg:min-w-20'
+        <span
+          aria-hidden='true'
+          className='-mx-4 hidden h-[256px] w-[256px] rounded-t rounded-l opacity-25 md:mx-0 md:flex md:max-w-10 lg:max-w-24 lg:min-w-20'
+          style={{
+            backgroundColor: iconColor,
+            WebkitMaskImage: `url(${iconUrl})`,
+            maskImage: `url(${iconUrl})`,
+            WebkitMaskRepeat: 'no-repeat',
+            maskRepeat: 'no-repeat',
+            WebkitMaskPosition: 'center',
+            maskPosition: 'center',
+            WebkitMaskSize: 'contain',
+            maskSize: 'contain',
+          }}
         />
       </Link>
       <div className='bg-background flex w-full min-w-[20.625rem] flex-col justify-between px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-r lg:rounded-b-none'>
