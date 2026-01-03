@@ -57,6 +57,10 @@
     "triage": true,
     "pull": true
   },
+  "framework": null,
+  "descriptive_slug": "javascript",
+  "framework_candidates": [],
+  "ecosystems": [],
   "languages": {
     "JavaScript": 280
   }

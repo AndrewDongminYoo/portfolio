@@ -69,6 +69,17 @@
     "triage": true,
     "pull": true
   },
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 190,
+      "reasons": ["+100 topic match", "+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn"],
   "languages": {
     "Kotlin": 38249,
     "TypeScript": 26574,

@@ -59,6 +59,10 @@
     "triage": true,
     "pull": true
   },
+  "framework": null,
+  "descriptive_slug": "typescript",
+  "framework_candidates": [],
+  "ecosystems": ["Yarn"],
   "languages": {
     "TypeScript": 28620,
     "JavaScript": 2385

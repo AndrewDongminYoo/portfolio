@@ -9,8 +9,10 @@
     "id": 82999715,
     "node_id": "MDQ6VXNlcjgyOTk5NzE1",
     "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4",
+    "gravatar_id": "",
     "html_url": "https://github.com/AndrewDongminYoo",
     "type": "User",
+    "user_view_type": "public",
     "site_admin": false
   },
   "html_url": "https://github.com/AndrewDongminYoo/custom_linters",
@@ -57,6 +59,17 @@
     "triage": true,
     "pull": true
   },
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 115,
+      "reasons": ["+100 topic match", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"],
   "languages": {
     "JavaScript": 737416,
     "HTML": 436506,

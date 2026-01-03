@@ -9,21 +9,23 @@
     "id": 82999715,
     "node_id": "MDQ6VXNlcjgyOTk5NzE1",
     "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4",
+    "gravatar_id": "",
     "html_url": "https://github.com/AndrewDongminYoo",
     "type": "User",
+    "user_view_type": "public",
     "site_admin": false
   },
   "html_url": "https://github.com/AndrewDongminYoo/portone_flutter",
   "description": "Flutter App에서 포트원 V2 결제서비스 연동을 위한 모듈입니다.",
   "fork": false,
   "created_at": "2025-04-08T10:48:43Z",
-  "updated_at": "2025-08-20T09:52:56Z",
-  "pushed_at": "2025-08-20T09:52:52Z",
+  "updated_at": "2025-12-11T11:59:16Z",
+  "pushed_at": "2025-10-26T14:33:09Z",
   "svn_url": "https://github.com/AndrewDongminYoo/portone_flutter",
   "homepage": "https://pub.dev/documentation/portone_flutter_v2",
-  "size": 1791,
-  "stargazers_count": 3,
-  "watchers_count": 3,
+  "size": 1926,
+  "stargazers_count": 4,
+  "watchers_count": 4,
   "language": "Dart",
   "has_issues": true,
   "has_projects": true,
@@ -31,7 +33,7 @@
   "has_wiki": true,
   "has_pages": false,
   "has_discussions": false,
-  "forks_count": 1,
+  "forks_count": 2,
   "archived": false,
   "disabled": false,
   "open_issues_count": 0,
@@ -46,9 +48,9 @@
   "web_commit_signoff_required": false,
   "topics": ["flutter", "flutter-plugin", "payment-gateway", "portone", "request-payment"],
   "visibility": "public",
-  "forks": 1,
+  "forks": 2,
   "open_issues": 0,
-  "watchers": 3,
+  "watchers": 4,
   "default_branch": "main",
   "permissions": {
     "admin": true,
@@ -57,13 +59,28 @@
     "triage": true,
     "pull": true
   },
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 205,
+      "reasons": [
+        "+100 topic match",
+        "+90 pubspec.yaml indicates Flutter",
+        "+15 ecosystem: pub present"
+      ]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"],
   "languages": {
-    "Dart": 171006,
+    "Dart": 171821,
     "Ruby": 2764,
     "Kotlin": 2518,
     "Swift": 1320,
     "Java": 1319,
-    "Shell": 710,
+    "Shell": 706,
     "JavaScript": 278,
     "Objective-C": 38
   }

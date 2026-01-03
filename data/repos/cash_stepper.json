@@ -52,6 +52,17 @@
     "triage": true,
     "pull": true
   },
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 105,
+      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"],
   "languages": {
     "Dart": 912195,
     "HTML": 4108,
