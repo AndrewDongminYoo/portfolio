@@ -1,5 +1,7 @@
+export type LanguageType = 'data' | 'markup' | 'programming' | 'prose';
+
 export interface LanguageMeta {
-  type: Type;
+  type: LanguageType;
   color?: string;
   extensions?: string[];
   tm_scope: string;
@@ -14,11 +16,4 @@ export interface LanguageMeta {
   wrap?: boolean;
   fs_name?: string;
   searchable?: boolean;
-}
-
-export enum Type {
-  Data = 'data',
-  Markup = 'markup',
-  Programming = 'programming',
-  Prose = 'prose',
 }

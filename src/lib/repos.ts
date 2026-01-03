@@ -9,15 +9,21 @@ import { BrandSlug, BrandTitle, Ecosystem } from '@/interface/stack';
 import { sortRepositoriesDefault } from '@/lib/repo-sort';
 
 const { GITHUB_TOKEN } = process.env;
-
-if (!GITHUB_TOKEN) {
-  throw new Error('GITHUB_TOKEN is required.');
-}
+if (!GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required.');
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 const starsDirectory = path.join(process.cwd(), 'data/stars');
+
+const DEFAULT_HEADERS = {
+  'Accept': 'application/vnd.github+json',
+  'X-GitHub-Api-Version': '2022-11-28',
+};
+
+// ----------------------------
+// Types
+// ----------------------------
 
 type Candidate = {
   slug: BrandSlug;
@@ -41,37 +47,53 @@ const DEFAULT_DETECT_OPTIONS: DetectOptions = {
   minScoreToDecide: 80,
 };
 
-// ---------- Topic heuristics ----------
+// ----------------------------
+// Framework definitions (internal, type-safe)
+// ----------------------------
+
+const FRAMEWORKS = {
+  flutter: 'Flutter',
+  nextdotjs: 'Next.js',
+  reactnative: 'React Native',
+} as const;
+
+type FrameworkKey = keyof typeof FRAMEWORKS; // 'flutter' | 'nextdotjs' | 'reactnative'
+type FrameworkTitle = (typeof FRAMEWORKS)[FrameworkKey];
+
+function frameworkKeyToBrandSlug(key: FrameworkKey): BrandSlug {
+  // 프레임워크 slug는 우리가 통제하는 리터럴이므로 “국소적” 캐스팅만 허용
+  return key as unknown as BrandSlug;
+}
+
+function frameworkTitleToBrandTitle(title: FrameworkTitle): BrandTitle {
+  return title as unknown as BrandTitle;
+}
+
+function brandTitleToFrameworkKey(title: BrandTitle): FrameworkKey | null {
+  const str = String(title);
+  for (const [k, v] of Object.entries(FRAMEWORKS) as Array<[FrameworkKey, FrameworkTitle]>) {
+    if (v === str) return k;
+  }
+  return null;
+}
+
+// ----------------------------
+// Topic heuristics
+// ----------------------------
 
 const FLUTTER_TOPICS = new Set(['flutter', 'flutter-plugin', 'flutter-package', 'flutter-app']);
 const REACT_NATIVE_TOPICS = new Set(['react-native', 'reactnative', 'expo']);
 const NEXT_TOPICS = new Set(['nextjs', 'next.js', 'next-js', 'next']);
 
-/**
- * 프레임워크 후보 (진짜 프레임워크만)
- * - language slug들은 descriptive_slug fallback에서만 사용
- */
-const FRAMEWORKS = {
-  flutter: 'Flutter',
-  nextdotjs: 'Next.js',
-  reactnative: 'React Native',
-} as const satisfies Record<string, string>;
-
-type FrameworkKey = keyof typeof FRAMEWORKS;
-
-// BrandSlug/BrandTitle이 리터럴 유니온이든 string이든 안전하게 취급
-const BRAND_BY_KEY = FRAMEWORKS as unknown as Record<BrandSlug, BrandTitle>;
-const SLUG_BY_BRAND: Record<BrandTitle, BrandSlug> = Object.fromEntries(
-  Object.entries(FRAMEWORKS).map(([k, v]) => [v, k]),
-) as unknown as Record<BrandTitle, BrandSlug>;
-
-// ---------- Small concurrency limiter (no deps) ----------
+// ----------------------------
+// Small concurrency limiter (no deps)
+// ----------------------------
 
 export function createLimiter(concurrency: number) {
   let active = 0;
   const queue: Array<() => void> = [];
 
-  const next = () => {
+  const tryRunNext = () => {
     if (active >= concurrency) return;
     const job = queue.shift();
     if (!job) return;
@@ -88,15 +110,17 @@ export function createLimiter(concurrency: number) {
           reject(e);
         } finally {
           active--;
-          next();
+          tryRunNext();
         }
       });
-      next();
+      tryRunNext();
     });
   };
 }
 
-// ---------- Detection utilities ----------
+// ----------------------------
+// Detection utilities
+// ----------------------------
 
 function normalizeTopics(topics?: string[]): Set<string> {
   return new Set((topics ?? []).map((t) => t.toLowerCase().trim()).filter(Boolean));
@@ -139,16 +163,10 @@ function detectFrameworksFromPackageJson(content: string): FrameworkKey[] {
     const keys = Object.keys(deps);
 
     const hits: FrameworkKey[] = [];
-
-    // React Native
     if (deps['react-native'] || deps.expo || keys.some((k) => k.startsWith('@react-native/'))) {
       hits.push('reactnative');
     }
-
-    // Next.js
-    if (deps.next) {
-      hits.push('nextdotjs');
-    }
+    if (deps.next) hits.push('nextdotjs');
 
     return hits;
   } catch {
@@ -156,12 +174,10 @@ function detectFrameworksFromPackageJson(content: string): FrameworkKey[] {
   }
 }
 
-// ---------- Language slug fallback ----------
+// ----------------------------
+// Language slug fallback
+// ----------------------------
 
-/**
- * GitHub language name -> BrandSlug 추정
- * (실제 BrandSlug(=simple-icons slug 등)과 다를 수 있으니, 프로젝트에서 쓰는 slug 규칙에 맞게 조정 가능)
- */
 const LANGUAGE_TO_SLUG: Record<string, BrandSlug> = {
   'TypeScript': 'typescript' as BrandSlug,
   'JavaScript': 'javascript' as BrandSlug,
@@ -188,11 +204,9 @@ function pickPrimaryLanguageName(
   repo: Repository,
   languageMap: Record<string, number>,
 ): string | null {
-  // 1) REST repo.language 우선
-  const primary = (repo.language ?? '').trim();
+  const primary = String(repo.language ?? '').trim();
   if (primary) return primary;
 
-  // 2) GraphQL languages sizes 최댓값
   let best: { name: string; size: number } | null = null;
   for (const [name, size] of Object.entries(languageMap ?? {})) {
     const s = typeof size === 'number' ? size : 0;
@@ -206,25 +220,19 @@ function inferDescriptiveSlug(
   repo: Repository,
   languageMap: Record<string, number>,
 ): BrandSlug | null {
-  // framework가 있으면 그 slug
   if (decidedFramework) {
-    const slug = SLUG_BY_BRAND[decidedFramework];
-    return slug ?? null;
+    const key = brandTitleToFrameworkKey(decidedFramework);
+    return key ? frameworkKeyToBrandSlug(key) : null;
   }
 
-  // 없으면 language slug
   const langName = pickPrimaryLanguageName(repo, languageMap);
   if (!langName) return null;
-
   return LANGUAGE_TO_SLUG[langName] ?? null;
 }
 
-// ---------- GraphQL signals (1 call / repo) ----------
-
-const DEFAULT_HEADERS = {
-  'Accept': 'application/vnd.github+json',
-  'X-GitHub-Api-Version': '2022-11-28',
-};
+// ----------------------------
+// GraphQL signals
+// ----------------------------
 
 type GraphQLRepoSignals = {
   repository: null | {
@@ -234,12 +242,15 @@ type GraphQLRepoSignals = {
     languages?: {
       edges?: Array<{ size?: number | null; node?: { name?: string | null } | null } | null> | null;
     } | null;
+
     pubspec?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
     packageJson?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
+
     root?: {
       __typename?: string;
       entries?: Array<{ name?: string | null; type?: string | null } | null> | null;
     } | null;
+
     workflows?: {
       __typename?: string;
       entries?: Array<{ name?: string | null; type?: string | null } | null> | null;
@@ -263,12 +274,22 @@ async function graphqlRequest<T>(query: string, variables: Record<string, unknow
     headers: DEFAULT_HEADERS,
   });
 
-  const data = res.data as unknown as { data?: T } | T;
-  return (typeof data === 'object' && data !== null && 'data' in data ? data.data : data) as T;
+  // @octokit/core returns { data: ... } for graphql, but be defensive
+  const payload = res.data as unknown as { data?: T } | T;
+  return (
+    typeof payload === 'object' && payload !== null && 'data' in payload ? payload.data : payload
+  ) as T;
 }
 
 const REPO_SIGNALS_QUERY = /* GraphQL */ `
-  query RepoSignals($owner: String!, $name: String!) {
+  query RepoSignals(
+    $owner: String!
+    $name: String!
+    $pubspecExpr: String!
+    $packageExpr: String!
+    $rootExpr: String!
+    $workflowsExpr: String!
+  ) {
     repository(owner: $owner, name: $name) {
       topics: repositoryTopics(first: 30) {
         nodes {
@@ -287,7 +308,7 @@ const REPO_SIGNALS_QUERY = /* GraphQL */ `
         }
       }
 
-      pubspec: object(expression: "HEAD:pubspec.yaml") {
+      pubspec: object(expression: $pubspecExpr) {
         __typename
         ... on Blob {
           isBinary
@@ -295,7 +316,7 @@ const REPO_SIGNALS_QUERY = /* GraphQL */ `
         }
       }
 
-      packageJson: object(expression: "HEAD:package.json") {
+      packageJson: object(expression: $packageExpr) {
         __typename
         ... on Blob {
           isBinary
@@ -303,7 +324,7 @@ const REPO_SIGNALS_QUERY = /* GraphQL */ `
         }
       }
 
-      root: object(expression: "HEAD:") {
+      root: object(expression: $rootExpr) {
         __typename
         ... on Tree {
           entries {
@@ -313,7 +334,7 @@ const REPO_SIGNALS_QUERY = /* GraphQL */ `
         }
       }
 
-      workflows: object(expression: "HEAD:.github/workflows") {
+      workflows: object(expression: $workflowsExpr) {
         __typename
         ... on Tree {
           entries {
@@ -341,7 +362,7 @@ function toLanguagesMap(
 }
 
 function toNameSet(
-  entries: Array<{ name?: string | null; type?: string | null } | null> | null | undefined,
+  entries: Array<{ name?: string | null } | null> | null | undefined,
 ): Set<string> {
   const out = new Set<string>();
   for (const e of entries ?? []) {
@@ -362,20 +383,31 @@ function toTopicsList(
   return out;
 }
 
-async function fetchRepoSignals(owner: string, repo: string): Promise<RepoSignals> {
-  const data = await graphqlRequest<GraphQLRepoSignals>(REPO_SIGNALS_QUERY, { owner, name: repo });
+function buildBranchExpr(repo: Repository): string {
+  // REST repo 응답에는 default_branch가 흔히 존재. 타입에 없을 수 있어 any 접근.
+  const b = String(repo.default_branch ?? '').trim();
+  return b || 'HEAD';
+}
+
+async function fetchRepoSignals(owner: string, repo: string, branch: string): Promise<RepoSignals> {
+  const variables = {
+    owner,
+    name: repo,
+    pubspecExpr: `${branch}:pubspec.yaml`,
+    packageExpr: `${branch}:package.json`,
+    rootExpr: `${branch}:`,
+    workflowsExpr: `${branch}:.github/workflows`,
+  };
+
+  const data = await graphqlRequest<GraphQLRepoSignals>(REPO_SIGNALS_QUERY, variables);
 
   if (!data.repository) {
-    return {
-      topics: [],
-      languages: {},
-      rootNames: new Set(),
-      workflowNames: new Set(),
-    };
+    return { topics: [], languages: {}, rootNames: new Set(), workflowNames: new Set() };
   }
 
   const topics = toTopicsList(data.repository.topics?.nodes);
   const languages = toLanguagesMap(data.repository.languages?.edges);
+
   const rootNames = toNameSet(
     data.repository.root?.__typename === 'Tree' ? data.repository.root.entries : null,
   );
@@ -396,7 +428,88 @@ async function fetchRepoSignals(owner: string, repo: string): Promise<RepoSignal
   return { topics, languages, rootNames, workflowNames, pubspecText, packageJsonText };
 }
 
-// ---------- Ecosystem inference (SBOM 대체) ----------
+// ----------------------------
+// Monorepo limited scan (optional, capped)
+// ----------------------------
+
+type GraphQLTreeQueryResult = {
+  repository: null | {
+    tree?: {
+      __typename?: string;
+      entries?: Array<{ name?: string | null; type?: string | null } | null> | null;
+    } | null;
+    pubspec?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
+    packageJson?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
+  };
+};
+
+const SUBDIR_SCAN_QUERY = /* GraphQL */ `
+  query SubdirScan(
+    $owner: String!
+    $name: String!
+    $treeExpr: String!
+    $pubspecExpr: String!
+    $packageExpr: String!
+  ) {
+    repository(owner: $owner, name: $name) {
+      tree: object(expression: $treeExpr) {
+        __typename
+        ... on Tree {
+          entries {
+            name
+            type
+          }
+        }
+      }
+
+      pubspec: object(expression: $pubspecExpr) {
+        __typename
+        ... on Blob {
+          isBinary
+          text
+        }
+      }
+
+      packageJson: object(expression: $packageExpr) {
+        __typename
+        ... on Blob {
+          isBinary
+          text
+        }
+      }
+    }
+  }
+`;
+
+async function scanOneSubdir(owner: string, repo: string, branch: string, dir: string) {
+  const data = await graphqlRequest<GraphQLTreeQueryResult>(SUBDIR_SCAN_QUERY, {
+    owner,
+    name: repo,
+    treeExpr: `${branch}:${dir}`,
+    pubspecExpr: `${branch}:${dir}/pubspec.yaml`,
+    packageExpr: `${branch}:${dir}/package.json`,
+  });
+
+  const entries = toNameSet(
+    data.repository?.tree?.__typename === 'Tree' ? data.repository.tree.entries : null,
+  );
+
+  const pubspecText =
+    data.repository?.pubspec?.__typename === 'Blob' && !data.repository.pubspec.isBinary
+      ? (data.repository.pubspec.text ?? undefined)
+      : undefined;
+
+  const packageJsonText =
+    data.repository?.packageJson?.__typename === 'Blob' && !data.repository.packageJson.isBinary
+      ? (data.repository.packageJson.text ?? undefined)
+      : undefined;
+
+  return { entries, pubspecText, packageJsonText };
+}
+
+// ----------------------------
+// Ecosystem inference (files-based)
+// ----------------------------
 
 function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ecosystem[] {
   const out = new Set<Ecosystem>();
@@ -404,37 +517,29 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
   const hasAnySuffix = (suffixes: string[]) =>
     Array.from(root).some((name) => suffixes.some((s) => name.endsWith(s)));
 
-  // GitHub Actions
   if (Array.from(workflows).some((n) => n.endsWith('.yml') || n.endsWith('.yaml'))) {
     out.add('GitHub Actions workflows');
   }
 
-  // Node ecosystems
+  // Node
   if (root.has('pnpm-lock.yaml')) out.add('pnpm');
   if (root.has('yarn.lock')) out.add('Yarn');
   if (root.has('package-lock.json')) out.add('npm');
-
-  // Dart/Flutter
+  // Dart
   if (root.has('pubspec.yaml') || root.has('pubspec.lock')) out.add('pub');
-
   // Python
   if (root.has('requirements.txt') || root.has('Pipfile') || root.has('Pipfile.lock'))
     out.add('pip');
   if (root.has('poetry.lock') || root.has('pyproject.toml')) out.add('Poetry');
-
   // Rust
   if (root.has('Cargo.lock') || root.has('Cargo.toml')) out.add('Cargo');
-
   // PHP
   if (root.has('composer.lock') || root.has('composer.json')) out.add('Composer');
-
   // Ruby
   if (root.has('Gemfile.lock') || root.has('Gemfile') || hasAnySuffix(['.gemspec']))
     out.add('RubyGems');
-
   // Go
   if (root.has('go.mod')) out.add('Go modules');
-
   // Java
   if (root.has('pom.xml')) out.add('Maven');
   if (
@@ -445,21 +550,16 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
   ) {
     out.add('Gradle');
   }
-
   // Bazel
   if (root.has('WORKSPACE') || root.has('WORKSPACE.bazel') || root.has('MODULE.bazel'))
     out.add('Bazel');
-
   // Terraform/OpenTofu
   if (root.has('.terraform.lock.hcl')) out.add('OpenTofu');
-
   // Julia
   if (root.has('Manifest.toml') || root.has('Project.toml')) out.add('Julia');
-
-  // Swift Package Manager
+  // Swift
   if (root.has('Package.resolved') || root.has('Package.swift')) out.add('Swift Package Manager');
-
-  // NuGet (루트에 있을 때만)
+  // NuGet
   if (
     hasAnySuffix(['.csproj', '.fsproj', '.vbproj', '.vcxproj', '.nuspec']) ||
     root.has('packages.config')
@@ -470,7 +570,9 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
   return Array.from(out);
 }
 
-// ---------- Framework detection (scored, explainable) ----------
+// ----------------------------
+// Framework detection (scored)
+// ----------------------------
 
 async function detectFrameworkRich(
   repo: Repository,
@@ -479,7 +581,6 @@ async function detectFrameworkRich(
 ): Promise<DetectResult> {
   const scoreMap = new Map<FrameworkKey, { score: number; reasons: string[] }>();
 
-  // Topics: REST topics + GraphQL topics (보강)
   const mergedTopics = normalizeTopics([...(repo.topics ?? []), ...(signals.topics ?? [])]);
 
   if ([...FLUTTER_TOPICS].some((t) => mergedTopics.has(t)))
@@ -489,7 +590,6 @@ async function detectFrameworkRich(
   if ([...NEXT_TOPICS].some((t) => mergedTopics.has(t)))
     addScore(scoreMap, 'nextdotjs', 100, 'topic match');
 
-  // File signals
   if (signals.pubspecText && isFlutterPubspec(signals.pubspecText)) {
     addScore(scoreMap, 'flutter', 90, 'pubspec.yaml indicates Flutter');
   }
@@ -502,19 +602,16 @@ async function detectFrameworkRich(
       addScore(scoreMap, 'nextdotjs', 90, 'package.json deps indicate Next.js');
   }
 
-  // Ecosystems (SBOM 대체) — Flutter만 보조로 약하게
   const ecosystems = inferEcosystemsFromFiles(signals.rootNames, signals.workflowNames);
   if (ecosystems.includes('pub')) addScore(scoreMap, 'flutter', 15, 'ecosystem: pub present');
 
-  // ✅ 요구사항 반영: JS/TS 존재만으로 Next/RN 점수 추가는 제거
-  // (언어 힌트는 descriptive_slug fallback 용도로만 사용)
-
   const framework_candidates: Candidate[] = Array.from(scoreMap.entries())
-    .map(([key, v]) => {
-      const slug = key as unknown as BrandSlug;
-      const name = BRAND_BY_KEY[slug];
-      return { slug, name, score: v.score, reasons: v.reasons };
-    })
+    .map(([key, v]) => ({
+      slug: frameworkKeyToBrandSlug(key),
+      name: frameworkTitleToBrandTitle(FRAMEWORKS[key]),
+      score: v.score,
+      reasons: v.reasons,
+    }))
     .sort((a, b) => b.score - a.score);
 
   const top = framework_candidates[0];
@@ -530,120 +627,138 @@ function detectFrameworkFromTopicsOnly(topics?: string[]): BrandTitle | null {
   if (!topics?.length) return null;
   const normalized = normalizeTopics(topics);
 
-  for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter' as BrandTitle;
-  for (const t of REACT_NATIVE_TOPICS) if (normalized.has(t)) return 'React Native' as BrandTitle;
-  for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js' as BrandTitle;
+  for (const t of FLUTTER_TOPICS)
+    if (normalized.has(t)) return frameworkTitleToBrandTitle('Flutter');
+  for (const t of REACT_NATIVE_TOPICS)
+    if (normalized.has(t)) return frameworkTitleToBrandTitle('React Native');
+  for (const t of NEXT_TOPICS) if (normalized.has(t)) return frameworkTitleToBrandTitle('Next.js');
 
   return null;
 }
 
-// ---------- Repo shaping / filtering ----------
+// ----------------------------
+// “Pick” based shaping (no destructive deletes)
+// ----------------------------
 
-/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export function reclusiveFilter(repo: { [x: string]: any }): Repository {
-  Object.entries(repo).forEach(([key, value]) => {
-    if (value === undefined || value === null) {
-      delete repo[key];
-      return;
-    }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pickRepository(raw: any): Repository {
+  // 필요한 필드만 명시적으로 저장 (데이터 손상/불명확한 delete 제거)
+  return {
+    node_id: String(raw.node_id ?? ''),
+    name: String(raw.name ?? ''),
+    full_name: String(raw.full_name ?? ''),
+    private: Boolean(raw.private),
+    owner: {
+      login: String(raw.owner?.login ?? ''),
+      avatar_url: String(raw.owner?.avatar_url ?? ''),
+    },
+    html_url: String(raw.html_url ?? ''),
+    description: String(raw.description ?? ''),
+    languages_url: String(raw.languages_url ?? ''),
+    pushed_at: String(raw.pushed_at ?? ''),
+    size: Number(raw.size ?? 0),
+    stargazers_count: Number(raw.stargazers_count ?? 0),
+    watchers_count: Number(raw.watchers_count ?? 0),
+    language: String(raw.language ?? ''),
+    forks_count: Number(raw.forks_count ?? 0),
+    languages: (raw.languages && typeof raw.languages === 'object' ? raw.languages : {}) as Record<
+      string,
+      number
+    >,
+    topics: Array.isArray(raw.topics) ? raw.topics : undefined,
 
-    if (Array.isArray(value)) {
-      repo[key] = value;
-      return;
-    }
-
-    switch (typeof value) {
-      case 'string': {
-        if (value.endsWith('.git')) delete repo[key];
-        else if (value.includes('{')) delete repo[key];
-        else repo[key] = value;
-        break;
-      }
-      case 'object': {
-        if (key === 'topics') {
-          repo[key] = value;
-          return;
-        }
-        repo[key] = reclusiveFilter(value);
-        break;
-      }
-      default: {
-        repo[key] = value;
-        break;
-      }
-    }
-  });
-
-  return repo as Repository;
+    // enrich fields (optional)
+    framework: raw.framework ?? undefined,
+    descriptive_slug: raw.descriptive_slug ?? undefined,
+    framework_candidates: raw.framework_candidates ?? undefined,
+    ecosystems: raw.ecosystems ?? undefined,
+  } as Repository;
 }
 
 /**
- * @description (오프라인) topics 기반으로만 framework/descriptive_slug 보강
+ * 오프라인: topics 기반으로만 framework/descriptive_slug 보강
  */
 function applyFrameworkFromTopics(repo: Repository): Repository {
-  // 이미 값이 있으면 건드리지 않음 (framework가 null인 경우도 “이미 처리됨”으로 간주)
+  // null도 “이미 처리됨”으로 간주해서 반복 enrichment 방지
   if (repo.framework !== undefined || repo.descriptive_slug !== undefined) return repo;
 
   const framework = detectFrameworkFromTopicsOnly(repo.topics);
   const descriptive_slug = inferDescriptiveSlug(framework, repo, repo.languages ?? {});
 
-  return {
-    ...repo,
-    framework, // null 가능
-    descriptive_slug, // null 가능
-  } as Repository;
+  return { ...repo, framework, descriptive_slug } as Repository;
 }
 
+// ----------------------------
+// Enrichment (GraphQL + optional monorepo scan)
+// ----------------------------
+
 export async function enrichRepository(repo: Repository): Promise<Repository> {
-  // framework가 null이어도 “이미 enriched”로 취급해서 추가 API 호출 방지
   if (repo.framework !== undefined || repo.descriptive_slug !== undefined) return repo;
 
   const owner = repo.owner?.login;
   if (!owner) return repo;
 
   try {
-    const signals = await fetchRepoSignals(owner, repo.name);
+    const branch = buildBranchExpr(repo);
+
+    // 1) base signals (1 call)
+    const signals = await fetchRepoSignals(owner, repo.name, branch);
+
+    // 2) optional monorepo scan (only if needed, capped)
+    const needsPubspec = !signals.pubspecText;
+    const needsPackageJson = !signals.packageJsonText;
+
+    if (needsPubspec || needsPackageJson) {
+      const dirs = ['apps', 'packages', 'examples', 'modules']
+        .filter((d) => signals.rootNames.has(d))
+        .slice(0, 2); // hard cap
+
+      for (const dir of dirs) {
+        // if already got everything, stop
+        if (!needsPubspec && !needsPackageJson) break;
+
+        const scan = await scanOneSubdir(owner, repo.name, branch, dir);
+
+        // merge discovered entries into rootNames “virtual root” for ecosystem inference
+        for (const name of scan.entries) {
+          // keep as `${dir}/${name}` to avoid collisions and keep meaning
+          signals.rootNames.add(`${dir}/${name}`);
+        }
+
+        if (!signals.pubspecText && scan.pubspecText) signals.pubspecText = scan.pubspecText;
+        if (!signals.packageJsonText && scan.packageJsonText)
+          signals.packageJsonText = scan.packageJsonText;
+      }
+    }
+
     const result = await detectFrameworkRich(repo, signals);
 
-    // sanitize api.github urls if present (shallow; keep behavior)
-    const copy = Object(repo);
-    Object.entries(copy).forEach(([key, value]) => {
-      if (typeof value === 'string' && value.includes('api.github')) delete copy[key];
-      if (typeof value === 'object' && value) {
-        const inner = Object(value);
-        Object.entries(inner).forEach(([k, v]) => {
-          if (typeof v === 'string' && v.includes('api.github')) delete inner[k];
-        });
-        copy[key] = inner;
-      }
-    });
+    // topics 보강: REST + GraphQL merge
+    const mergedTopics = Array.from(new Set([...(repo.topics ?? []), ...(signals.topics ?? [])]));
 
     return {
-      ...copy,
-      framework: result.framework, // ✅ null 저장
-      descriptive_slug: result.descriptive_slug, // ✅ framework 또는 language slug
+      ...repo,
+      topics: mergedTopics,
+      languages: signals.languages, // GraphQL sizes가 더 “진짜”임
+      framework: result.framework, // null 가능
+      descriptive_slug: result.descriptive_slug,
       framework_candidates: result.framework_candidates,
       ecosystems: result.ecosystems,
-      // GraphQL에서 뽑은 languages 저장
-      languages: signals.languages,
-      // topics도 GraphQL 쪽이 더 완전할 수 있어 합쳐 저장(원치 않으면 제거)
-      topics: Array.from(new Set([...(repo.topics ?? []), ...(signals.topics ?? [])])),
     } as Repository;
   } catch (error) {
-    console.error('Failed to detect framework for repository.', {
-      repo: repo.full_name,
-      error,
-    });
+    console.error('Failed to detect framework for repository.', { repo: repo.full_name, error });
     return repo;
   }
 }
 
-// ---------- GitHub fetch exports ----------
+// ----------------------------
+// GitHub fetch exports
+// ----------------------------
 
 type FetchRepoOptions = {
-  minSizeKb?: number; // 기본 4000 유지 가능
-  includeForks?: boolean; // 기본 false 유지
-  includeArchived?: boolean; // 기본 false 유지
+  minSizeKb?: number;
+  includeForks?: boolean;
+  includeArchived?: boolean;
 };
 
 export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Repository[]> {
@@ -663,19 +778,11 @@ export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Re
   const includeForks = opts.includeForks ?? false;
   const includeArchived = opts.includeArchived ?? false;
 
-  for (const r of repositories) {
-    const reasons = [];
-    if (r.fork && !includeForks) reasons.push('fork');
-    if (r.archived && !includeArchived) reasons.push('archived');
-    if (r.size <= minSizeKb) reasons.push(`size<=${minSizeKb}(${r.size})`);
-    if (reasons.length) console.debug(`[SKIP] ${r.full_name}: ${reasons.join(', ')}`);
-  }
-
   const filtered = repositories
     .filter((R) => includeForks || !R.fork)
     .filter((R) => R.size >= minSizeKb)
     .filter((R) => includeArchived || !R.archived)
-    .map((repo) => reclusiveFilter(repo));
+    .map((r) => pickRepository(r));
 
   return sortRepositoriesDefault(filtered);
 }
@@ -694,7 +801,7 @@ export async function fetchStarredRepository(): Promise<void> {
 
   const repositories = stars
     .filter((R) => !R.fork && R.size > 4000 && !R.archived)
-    .map((repo) => reclusiveFilter(repo));
+    .map((r) => pickRepository(r));
 
   repositories.forEach((json) => {
     const targetJsonPath = path.join(starsDirectory, `${json.name}.json`);
@@ -707,19 +814,18 @@ export async function fetchStarredRepository(): Promise<void> {
 export async function fetchRepository(owner: string, repo: string): Promise<Repository> {
   const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
 
-  const filtered = await octokit
+  const raw = await octokit
     .request(EP_REPO, { owner, repo, headers: DEFAULT_HEADERS })
-    .then((value) => value.data)
-    .then((r) => reclusiveFilter(r));
+    .then((value) => value.data);
 
-  return await enrichRepository(filtered);
+  const picked = pickRepository(raw);
+  return await enrichRepository(picked);
 }
 
 export async function downloadJSON(): Promise<number> {
   const repositories = await fetchRepositories({ minSizeKb: 0, includeForks: false });
 
   const limit = createLimiter(6);
-
   const repositoryData = await Promise.all(
     repositories.map((repo) => limit(() => enrichRepository(repo))),
   );
@@ -734,7 +840,9 @@ export async function downloadJSON(): Promise<number> {
   return repositoryData.length;
 }
 
-// ---------- Static JSON readers ----------
+// ----------------------------
+// Static JSON readers
+// ----------------------------
 
 function readReposIds(): { params: { repo: string } }[] {
   const fileNames = fs.readdirSync(reposDirectory);

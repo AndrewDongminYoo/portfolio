@@ -4,6 +4,7 @@ import { BrandSlug, BrandTitle, Ecosystem } from '@/interface/stack';
  * 깃허브 리포지토리.
  */
 export default interface Repository {
+  default_branch?: string;
   node_id: string;
   name: string;
   full_name: string;
