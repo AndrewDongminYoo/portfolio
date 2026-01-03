@@ -265,6 +265,18 @@ export default function ReactGithubCalendar() {
     };
   }, []);
 
+  const rankedRepos = summary
+    ? summary.repos
+        .map((repo) => ({
+          repo,
+          score: repo.stars + repo.watchers + repo.forks,
+        }))
+        .filter((item) => item.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 6)
+        .map((item) => item.repo)
+    : [];
+
   return (
     <ResumeSection key={`${1}-contributions`} type='contributions'>
       <div className='github-calendar-scroll' ref={containerRef}>
@@ -377,11 +389,11 @@ export default function ReactGithubCalendar() {
                 <span key={part}> · {part}</span>
               ))}
             </div>
-            {summary.repos.length === 0 ? (
+            {rankedRepos.length === 0 ? (
               <p className='text-xxs text-muted-foreground'>표시할 프로젝트가 없습니다.</p>
             ) : (
               <div className='grid gap-2 md:grid-cols-2'>
-                {summary.repos.map((repo) => {
+                {rankedRepos.map((repo) => {
                   const stats = buildRepoStats(repo);
                   return (
                     <Link
