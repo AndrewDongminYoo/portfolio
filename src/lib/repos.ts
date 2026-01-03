@@ -67,7 +67,7 @@ const SLUG_BY_BRAND: Record<BrandTitle, BrandSlug> = Object.fromEntries(
 
 // ---------- Small concurrency limiter (no deps) ----------
 
-function createLimiter(concurrency: number) {
+export function createLimiter(concurrency: number) {
   let active = 0;
   const queue: Array<() => void> = [];
 
@@ -594,7 +594,7 @@ function applyFrameworkFromTopics(repo: Repository): Repository {
   } as Repository;
 }
 
-async function enrichRepository(repo: Repository): Promise<Repository> {
+export async function enrichRepository(repo: Repository): Promise<Repository> {
   // framework가 null이어도 “이미 enriched”로 취급해서 추가 API 호출 방지
   if (repo.framework !== undefined || repo.descriptive_slug !== undefined) return repo;
 
@@ -640,7 +640,13 @@ async function enrichRepository(repo: Repository): Promise<Repository> {
 
 // ---------- GitHub fetch exports ----------
 
-export async function fetchRepositories(): Promise<Repository[]> {
+type FetchRepoOptions = {
+  minSizeKb?: number; // 기본 4000 유지 가능
+  includeForks?: boolean; // 기본 false 유지
+  includeArchived?: boolean; // 기본 false 유지
+};
+
+export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Repository[]> {
   const EP_REPOS: keyof Endpoints = 'GET /user/repos';
 
   const repositories = await octokit
@@ -653,8 +659,22 @@ export async function fetchRepositories(): Promise<Repository[]> {
     })
     .then((value) => value.data);
 
+  const minSizeKb = opts.minSizeKb ?? 4000;
+  const includeForks = opts.includeForks ?? false;
+  const includeArchived = opts.includeArchived ?? false;
+
+  for (const r of repositories) {
+    const reasons = [];
+    if (r.fork && !includeForks) reasons.push('fork');
+    if (r.archived && !includeArchived) reasons.push('archived');
+    if (r.size <= minSizeKb) reasons.push(`size<=${minSizeKb}(${r.size})`);
+    if (reasons.length) console.debug(`[SKIP] ${r.full_name}: ${reasons.join(', ')}`);
+  }
+
   const filtered = repositories
-    .filter((R) => !R.fork && R.size > 4000 && !R.archived)
+    .filter((R) => includeForks || !R.fork)
+    .filter((R) => R.size >= minSizeKb)
+    .filter((R) => includeArchived || !R.archived)
     .map((repo) => reclusiveFilter(repo));
 
   return sortRepositoriesDefault(filtered);
@@ -696,7 +716,7 @@ export async function fetchRepository(owner: string, repo: string): Promise<Repo
 }
 
 export async function downloadJSON(): Promise<number> {
-  const repositories = await fetchRepositories();
+  const repositories = await fetchRepositories({ minSizeKb: 0, includeForks: false });
 
   const limit = createLimiter(6);
 
