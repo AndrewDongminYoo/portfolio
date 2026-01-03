@@ -1,11 +1,15 @@
 // scripts/generate-specifications.mjs
 //
-// Slim + deterministic specifications.json generator.
+// Remote-driven slim specifications generator.
+// - Fetches linguist languages.yml (YAML) each run
+// - Fetches simple-icons.json (JSON) each run
+// - Outputs public/specifications.json (deterministic)
 //
-// Changes vs previous:
+// Output guarantees:
 // - icon is ALWAYS present: SpecIcon | null
-// - all hex colors normalized to "#rrggbb" (lowercase)
-// - SpecLanguage slim fields only: type, extensions, filenames, language_id, aliases, color
+// - colors normalized to "#rrggbb" (lowercase) when present
+// - SpecLanguage fields only:
+//   type, extensions, filenames, language_id, aliases, color
 //
 // Usage:
 //   node scripts/generate-specifications.mjs
@@ -15,12 +19,19 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const LANG_INPUT = 'public/languages.json';
-const ICON_INPUT = 'public/simple-icons.json';
+import { load as yamlLoad } from 'js-yaml';
+
 const OUT = 'public/specifications.json';
+
+// Remote sources
+const LINGUIST_YML_URL =
+  'https://raw.githubusercontent.com/github-linguist/linguist/refs/heads/main/lib/linguist/languages.yml';
+const SIMPLE_ICONS_JSON_URL =
+  'https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/master/data/simple-icons.json';
 
 const SIMPLE_ICON_BASE_URL = 'https://simpleicons.org/icons';
 
+// ---------------- CLI ----------------
 const argv = process.argv.slice(2);
 const hasFlag = (flag) => argv.includes(flag);
 const getArg = (name, fallback) => {
@@ -32,12 +43,13 @@ const getArg = (name, fallback) => {
 const ONLY_USED = hasFlag('--only-used');
 const REPOS_DIR = getArg('--repos-dir', 'data/repos');
 
-// Keep + # . for names like c++, c#, node.js
+// ---------------- utils ----------------
 const normalizeKey = (s) =>
   String(s ?? '')
     .toLowerCase()
     .replace(/&/g, 'and')
     .replace(/[’']/g, '')
+    // keep + # . for c++, c#, node.js
     .replace(/[^a-z0-9#+.]+/g, ' ')
     .trim();
 
@@ -47,8 +59,7 @@ const toIconUrl = (slug) => `${SIMPLE_ICON_BASE_URL}/${slug}.svg`;
 
 /**
  * Normalize any hex-ish input into "#rrggbb" (lowercase).
- * - Accepts "#RRGGBB" or "RRGGBB"
- * - Rejects anything not exactly 6 hex chars
+ * Accepts "#RRGGBB" or "RRGGBB". Rejects non-6-digit.
  */
 const toHexColor = (value) => {
   if (!value) return undefined;
@@ -61,15 +72,35 @@ const toHexColor = (value) => {
   return `#${v.toLowerCase()}`;
 };
 
+async function fetchText(url, { timeoutMs = 20000 } = {}) {
+  const controller = new AbortController();
+  const t = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const res = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        // GitHub raw occasionally behaves better with a UA
+        'User-Agent': '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"',
+        'Accept':
+          'text/html,application/xml,application/json;q=0.9,;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Fetch failed: ${res.status} ${res.statusText} (${url})`);
+    }
+    return await res.text();
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+// ---------------- icon matching ----------------
+//
 // normalize(language-name) -> simple-icons slug
 const OVERRIDE_SLUG = {
-  'c++': 'cplusplus',
-  'c#': 'csharp',
-  'f#': 'fsharp',
-  'wolfram language': 'wolframlanguage',
-  'common lisp': 'commonlisp',
-  'common workflow language': 'commonworkflowlanguage',
-
   // practical mappings (language name -> widely used icon brand)
   // This fixes your current "HTML" miss.
   'html': 'html5',
@@ -79,11 +110,11 @@ const OVERRIDE_SLUG = {
   'java': 'openjdk',
 
   // Objective-C and Objective-C++ uses plain C/C++ icons commonly.
-  'objective c': 'c',
-  'objective c++': 'cplusplus',
+  'objective c': 'C',
+  'objective c++': 'C++',
 };
 
-// --------- Only-used filter (optional) ---------
+// ---------------- only-used filter ----------------
 async function loadUsedSet() {
   if (!ONLY_USED) return null;
 
@@ -91,7 +122,7 @@ async function loadUsedSet() {
   try {
     files = await fs.readdir(REPOS_DIR);
   } catch {
-    // If repos dir is missing, treat as "no filter"
+    // If repos dir doesn't exist, fallback to no filter
     return null;
   }
 
@@ -148,32 +179,44 @@ function pickIconForLanguage({ name, langMeta, iconIndex }) {
     if (hit) return { entry: hit, via: 'override', value: override };
   }
 
-  // 2) direct by language name/title
+  // 2) direct name/title/slug/aka
   const direct = iconIndex.get(n);
-  if (direct) return { entry: direct, via: 'title', value: name };
+  if (direct) return { entry: direct, via: 'title', value: n };
 
   // 3) linguist aliases
   if (Array.isArray(langMeta?.aliases)) {
     for (const a of langMeta.aliases) {
-      const hit = iconIndex.get(normalizeKey(a));
+      const hit = iconIndex.get(a);
       if (hit) return { entry: hit, via: 'alias', value: a };
     }
   }
 
+  console.debug(`No icon match for language: ${name}`);
+  console.debug(`Metadata: ${JSON.stringify(langMeta)}`);
   return { entry: null, via: 'none', value: undefined };
 }
 
-// --------- Main ---------
+// ---------------- main ----------------
 async function run() {
-  const [langRaw, iconRaw] = await Promise.all([
-    fs.readFile(LANG_INPUT, 'utf8'),
-    fs.readFile(ICON_INPUT, 'utf8'),
+  const used = await loadUsedSet();
+
+  const [linguistYml, simpleIconsRaw] = await Promise.all([
+    fetchText(LINGUIST_YML_URL),
+    fetchText(SIMPLE_ICONS_JSON_URL),
   ]);
 
-  const languages = JSON.parse(langRaw);
-  const simpleIcons = JSON.parse(iconRaw);
+  /** @type {Record<string, any>} */
+  const languages = yamlLoad(linguistYml, { onWarning: (e) => console.error(e) });
+  /** @type {any[]} */
+  const simpleIcons = JSON.parse(simpleIconsRaw);
 
-  const used = await loadUsedSet();
+  if (!languages || typeof languages !== 'object') {
+    throw new Error('Failed to parse linguist YAML into an object.');
+  }
+  if (!Array.isArray(simpleIcons)) {
+    throw new Error('Failed to parse simple-icons JSON into an array.');
+  }
+
   const iconIndex = buildIconIndex(simpleIcons);
 
   const languageNames = Object.keys(languages).sort((a, b) => a.localeCompare(b));
@@ -202,23 +245,23 @@ async function run() {
     if (entry) matched += 1;
     else unmatched += 1;
 
-    const key = entry?.slug ?? toSlugKey(name);
-
+    const key = toSlugKey(name);
+    const slug = toSlugKey(entry.slug ?? entry.title);
     const icon = entry
       ? {
-          hex: iconHex,
-          slug: entry.slug,
+          hex: iconHex, // "#rrggbb" | undefined
+          slug: slug,
           ...(entry.source ? { source: entry.source } : {}),
-          url: toIconUrl(entry.slug),
+          url: toIconUrl(slug),
         }
-      : null;
+      : null; // ✅ always present as null when missing
 
     const spec = {
       key,
-      title: entry?.title ?? name,
+      title: name,
       kind: 'language',
-      color: finalColor,
-      icon, // ✅ always present, SpecIcon | null
+      color: finalColor, // "#rrggbb" | undefined
+      icon, // SpecIcon | null
       language: {
         ...(Array.isArray(meta.aliases) ? { aliases: meta.aliases } : {}),
         color: linguistColor,
@@ -247,6 +290,10 @@ async function run() {
       linguistCount: Object.keys(languages).length,
       matchedCount: matched,
       simpleIconsCount: simpleIcons.length,
+      sources: {
+        linguist: LINGUIST_YML_URL,
+        simpleIcons: SIMPLE_ICONS_JSON_URL,
+      },
       unmatchedCount: unmatched,
     },
     items,

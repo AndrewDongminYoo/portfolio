@@ -1,9 +1,13 @@
 {
   "meta": {
-    "generatedAt": "2026-01-03T08:36:12.220Z",
+    "generatedAt": "2026-01-03T10:08:55.063Z",
     "linguistCount": 793,
     "matchedCount": 16,
     "simpleIconsCount": 3364,
+    "sources": {
+      "linguist": "https://raw.githubusercontent.com/github-linguist/linguist/refs/heads/main/lib/linguist/languages.yml",
+      "simpleIcons": "https://raw.githubusercontent.com/simple-icons/simple-icons/refs/heads/master/data/simple-icons.json"
+    },
     "unmatchedCount": 0
   },
   "items": {
@@ -11,7 +15,7 @@
       "key": "c",
       "title": "C",
       "kind": "language",
-      "color": "#438eff",
+      "color": "#555555",
       "icon": {
         "hex": "#a8b9cc",
         "slug": "c",
@@ -19,15 +23,58 @@
         "url": "https://simpleicons.org/icons/c.svg"
       },
       "language": {
-        "aliases": ["obj-c", "objc", "objectivec"],
-        "color": "#438eff",
-        "extensions": [".m", ".h"],
-        "language_id": 257,
+        "color": "#555555",
+        "extensions": [".c", ".cats", ".h", ".h.in", ".idc"],
+        "language_id": 41,
         "type": "programming"
       },
       "match": {
         "value": "c",
-        "via": "override"
+        "via": "title"
+      }
+    },
+    "c++": {
+      "key": "c++",
+      "title": "C++",
+      "kind": "language",
+      "color": "#f34b7d",
+      "icon": {
+        "hex": "#00599c",
+        "slug": "c++",
+        "source": "https://github.com/isocpp/logos/tree/64ef037049f87ac74875dbe72695e59118b52186",
+        "url": "https://simpleicons.org/icons/c++.svg"
+      },
+      "language": {
+        "aliases": ["cpp"],
+        "color": "#f34b7d",
+        "extensions": [
+          ".cpp",
+          ".c++",
+          ".cc",
+          ".cp",
+          ".cppm",
+          ".cxx",
+          ".h",
+          ".h++",
+          ".hh",
+          ".hpp",
+          ".hxx",
+          ".inc",
+          ".inl",
+          ".ino",
+          ".ipp",
+          ".ixx",
+          ".re",
+          ".tcc",
+          ".tpp",
+          ".txx"
+        ],
+        "language_id": 43,
+        "type": "programming"
+      },
+      "match": {
+        "value": "c++",
+        "via": "title"
       }
     },
     "cmake": {
@@ -49,31 +96,8 @@
         "type": "programming"
       },
       "match": {
-        "value": "CMake",
+        "value": "cmake",
         "via": "title"
-      }
-    },
-    "cplusplus": {
-      "key": "cplusplus",
-      "title": "C++",
-      "kind": "language",
-      "color": "#6866fb",
-      "icon": {
-        "hex": "#00599c",
-        "slug": "cplusplus",
-        "source": "https://github.com/isocpp/logos/tree/64ef037049f87ac74875dbe72695e59118b52186",
-        "url": "https://simpleicons.org/icons/cplusplus.svg"
-      },
-      "language": {
-        "aliases": ["obj-c++", "objc++", "objectivec++"],
-        "color": "#6866fb",
-        "extensions": [".mm"],
-        "language_id": 258,
-        "type": "programming"
-      },
-      "match": {
-        "value": "cplusplus",
-        "via": "override"
       }
     },
     "css": {
@@ -94,7 +118,7 @@
         "type": "markup"
       },
       "match": {
-        "value": "CSS",
+        "value": "css",
         "via": "title"
       }
     },
@@ -116,13 +140,13 @@
         "type": "programming"
       },
       "match": {
-        "value": "Dart",
+        "value": "dart",
         "via": "title"
       }
     },
-    "html5": {
-      "key": "html5",
-      "title": "HTML5",
+    "html": {
+      "key": "html",
+      "title": "HTML",
       "kind": "language",
       "color": "#e34c26",
       "icon": {
@@ -140,6 +164,28 @@
       },
       "match": {
         "value": "html5",
+        "via": "override"
+      }
+    },
+    "java": {
+      "key": "java",
+      "title": "Java",
+      "kind": "language",
+      "color": "#b07219",
+      "icon": {
+        "hex": "#000000",
+        "slug": "openjdk",
+        "source": "https://hg.openjdk.java.net/duke/duke/file/ca00f100dafc/vector/Agent.svg",
+        "url": "https://simpleicons.org/icons/openjdk.svg"
+      },
+      "language": {
+        "color": "#b07219",
+        "extensions": [".java", ".jav", ".jsh"],
+        "language_id": 181,
+        "type": "programming"
+      },
+      "match": {
+        "value": "openjdk",
         "via": "override"
       }
     },
@@ -189,7 +235,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "JavaScript",
+        "value": "javascript",
         "via": "title"
       }
     },
@@ -211,29 +257,53 @@
         "type": "programming"
       },
       "match": {
-        "value": "Kotlin",
+        "value": "kotlin",
         "via": "title"
       }
     },
-    "openjdk": {
-      "key": "openjdk",
-      "title": "OpenJDK",
+    "objective-c": {
+      "key": "objective-c",
+      "title": "Objective-C",
       "kind": "language",
-      "color": "#b07219",
+      "color": "#438eff",
       "icon": {
-        "hex": "#000000",
-        "slug": "openjdk",
-        "source": "https://hg.openjdk.java.net/duke/duke/file/ca00f100dafc/vector/Agent.svg",
-        "url": "https://simpleicons.org/icons/openjdk.svg"
+        "hex": "#a8b9cc",
+        "slug": "c",
+        "source": "https://commons.wikimedia.org/wiki/File:The_C_Programming_Language_logo.svg",
+        "url": "https://simpleicons.org/icons/c.svg"
       },
       "language": {
-        "color": "#b07219",
-        "extensions": [".java", ".jav", ".jsh"],
-        "language_id": 181,
+        "aliases": ["obj-c", "objc", "objectivec"],
+        "color": "#438eff",
+        "extensions": [".m", ".h"],
+        "language_id": 257,
         "type": "programming"
       },
       "match": {
-        "value": "openjdk",
+        "value": "C",
+        "via": "override"
+      }
+    },
+    "objective-c++": {
+      "key": "objective-c++",
+      "title": "Objective-C++",
+      "kind": "language",
+      "color": "#6866fb",
+      "icon": {
+        "hex": "#00599c",
+        "slug": "c++",
+        "source": "https://github.com/isocpp/logos/tree/64ef037049f87ac74875dbe72695e59118b52186",
+        "url": "https://simpleicons.org/icons/c++.svg"
+      },
+      "language": {
+        "aliases": ["obj-c++", "objc++", "objectivec++"],
+        "color": "#6866fb",
+        "extensions": [".mm"],
+        "language_id": 258,
+        "type": "programming"
+      },
+      "match": {
+        "value": "C++",
         "via": "override"
       }
     },
@@ -275,7 +345,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "Python",
+        "value": "python",
         "via": "title"
       }
     },
@@ -346,7 +416,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "Ruby",
+        "value": "ruby",
         "via": "title"
       }
     },
@@ -426,7 +496,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "Shell",
+        "value": "shell",
         "via": "title"
       }
     },
@@ -448,7 +518,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "Swift",
+        "value": "swift",
         "via": "title"
       }
     },
@@ -471,7 +541,7 @@
         "type": "programming"
       },
       "match": {
-        "value": "TypeScript",
+        "value": "typescript",
         "via": "title"
       }
     }
