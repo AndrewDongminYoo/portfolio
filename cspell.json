@@ -15,7 +15,7 @@
       "scope": "workspace"
     }
   ],
-  "ignorePaths": ["_contents/*.md", ".trunk", ".vscode"],
+  "ignorePaths": ["data/posts/*.yaml", ".trunk", ".vscode"],
   "ignoreWords": [],
   "import": [],
   "version": "0.2",

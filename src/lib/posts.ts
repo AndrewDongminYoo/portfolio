@@ -21,14 +21,14 @@ export function getAllIds() {
   // Get file names under /data/posts
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames.map((fileName) => {
-    // Remove '.md' from file name to get id
-    return fileName.replace(/\.md$/, '');
+    // Remove '.yaml' from file name to get id
+    return fileName.replace(/\.yaml$/, '');
   });
 }
 
 export function getPostData(post: string) {
   // Read markdown file as string
-  const fullPath = path.join(postsDirectory, `${post}`);
+  const fullPath = path.join(postsDirectory, `${post}.yaml`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
