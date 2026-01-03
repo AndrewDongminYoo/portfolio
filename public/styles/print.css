@@ -74,3 +74,9 @@ thead {
 tr {
   page-break-inside: avoid;
 }
+
+/* 타이핑 애니메이션은 프린트에서 비활성화 */
+.writer-text {
+  animation: none !important;
+  border-right: 0 !important;
+}
