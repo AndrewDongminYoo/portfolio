@@ -1,20 +1,21 @@
-## Purpose
+# Project Overview
 
-Personal resume + portfolio site for Yoo Dong Min. Built as a printable, SEO-friendly Next.js site with dynamic sections showcasing projects and GitHub data.
+- Purpose: personal resume + portfolio site (printable resume page, SEO-optimized, dynamic elements). Initially static HTML/CSS/JS, now Next.js.
+- Stack: Next.js App Router (React 19), TypeScript, Tailwind CSS, ESLint, Prettier, next-sitemap. Uses Octokit for GitHub data and Puppeteer for preview capture.
+- Runtime: Node/Yarn. Deploys on Vercel; has a `vercel-build` script.
+- Key features: `/api/resume` route serves the most recently modified PDF from `public/resume/`; preview images can be regenerated into `assets/`.
+- Env: copy `.env.sample` to `.env` (e.g., `GITHUB_TOKEN`, `PREVIEW_BASE_URL`).
 
-## Tech stack
+## Structure
 
-- Next.js 16 with the App Router (code under `src/app`), React 19, TypeScript
-- Tailwind CSS 4 with Radix UI, Lucide, FontAwesome, Headless UI
-- Content/data sourced from local `data/` markdown/JSON, GitHub API via Octokit, and utility libs like date-fns, lodash.groupby, gray-matter
-- Uses next-sitemap and next export for static generation, sharp for image processing
-
-## Structure highlights
-
-- `src/app`: App router routes/layouts
-- `src/components`: Shared UI components (tooltip, cards, etc.)
-- `src/features`: Feature-focused sections
-- `src/lib`: Utilities (GitHub API, formatting helpers, etc.)
-- `data/`: Markdown/JSON resume data
-- `public/`, `assets/`: static files, preview images
-- Root configs: Tailwind/PostCSS, ESLint, TS, sitemap, Next config
+- `src/app/`: Next.js App Router pages/layouts/route handlers.
+- `src/components/`: shared UI components.
+- `src/features/`: domain/feature modules.
+- `src/hooks/`: shared hooks.
+- `src/lib/`: utilities/helpers.
+- `src/interface/`: types/interfaces.
+- `src/globals.css`: global styles and Tailwind layers.
+- `data/`: local content/metadata (posts, repos).
+- `public/`: static assets (images, fonts, resume PDFs).
+- `assets/`: README preview images.
+- `scripts/`: one-off utilities (preview capture, resume PDF generation).

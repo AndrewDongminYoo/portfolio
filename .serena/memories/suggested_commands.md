@@ -1,10 +1,31 @@
-## Common commands
+# Suggested Commands
 
-- `yarn dev`: run Next.js dev server on :3000 using App Router
-- `yarn build`: production build (also used by `yarn vercel-build`)
-- `yarn start`: serve the production build (runs `next start`)
-- `yarn export`: generate static export if needed for GitHub Pages
-- `yarn lint`: ESLint across the repo (Next.js config + simple-import-sort)
-- `yarn format`: Prettier (w/ Tailwind plugin) across TS/TSX files
-- `yarn check-type`: Run `tsc --noEmit` for strict type checking; use `yarn watch-type` for watch mode
-- `yarn postbuild`: Runs `next-sitemap` after build to update sitemap
+## Setup
+
+- `yarn install`
+- `cp .env.sample .env`
+
+## Dev / Build
+
+- `yarn dev`
+- `yarn build`
+- `yarn start`
+- `yarn vercel-build`
+- `yarn export`
+- `yarn info`
+
+## Quality
+
+- `yarn lint`
+- `yarn format`
+- `yarn check-type`
+- `yarn watch-type`
+
+## Assets / Utilities
+
+- `yarn update:png` (regenerate README preview images)
+- `yarn update:pdf` (generate resume PDF)
+
+## General macOS CLI
+
+- `ls`, `cd`, `pwd`, `cat`, `sed`, `rg`, `find`, `git status`, `git diff`
