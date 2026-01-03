@@ -5,7 +5,7 @@ import { type Endpoints } from '@octokit/types';
 import path from 'path';
 
 import type Repository from '@/interface/repos';
-import { Ecosystem, FrameworkBrand, FrameworkSlug } from '@/interface/stack';
+import { BrandSlug, BrandTitle, Ecosystem } from '@/interface/stack';
 import { sortRepositoriesDefault } from '@/lib/repo-sort';
 
 const { GITHUB_TOKEN } = process.env;
@@ -20,15 +20,15 @@ const reposDirectory = path.join(process.cwd(), 'data/repos');
 const starsDirectory = path.join(process.cwd(), 'data/stars');
 
 type Candidate = {
-  slug: FrameworkSlug;
-  name: FrameworkBrand;
+  slug: BrandSlug;
+  name: BrandTitle;
   score: number;
   reasons: string[];
 };
 
 type DetectResult = {
-  framework?: FrameworkBrand;
-  framework_slug?: FrameworkSlug;
+  framework?: BrandTitle;
+  framework_slug?: BrandSlug;
   framework_candidates: Candidate[];
   ecosystems: Ecosystem[];
 };
@@ -58,10 +58,10 @@ const FRAMEWORKS = {
 type FrameworkKey = keyof typeof FRAMEWORKS;
 
 // 안전하게 FrameworkSlug/Brand로 캐스팅(원본 타입이 string이면 그대로 OK, 리터럴이면 유효한 값만 들어옴)
-const BRAND_BY_KEY = FRAMEWORKS as unknown as Record<FrameworkSlug, FrameworkBrand>;
-const SLUG_BY_BRAND: Record<FrameworkBrand, FrameworkSlug> = Object.fromEntries(
+const BRAND_BY_KEY = FRAMEWORKS as unknown as Record<BrandSlug, BrandTitle>;
+const SLUG_BY_BRAND: Record<BrandTitle, BrandSlug> = Object.fromEntries(
   Object.entries(FRAMEWORKS).map(([k, v]) => [v, k]),
-) as unknown as Record<FrameworkBrand, FrameworkSlug>;
+) as unknown as Record<BrandTitle, BrandSlug>;
 
 // ---------- Small concurrency limiter (no deps) ----------
 
@@ -462,7 +462,7 @@ async function detectFrameworkRich(
 
   const framework_candidates: Candidate[] = Array.from(scoreMap.entries())
     .map(([key, v]) => {
-      const slug = key as unknown as FrameworkSlug;
+      const slug = key as unknown as BrandSlug;
       const name = BRAND_BY_KEY[slug];
       return {
         slug,
@@ -480,14 +480,13 @@ async function detectFrameworkRich(
   return { framework, framework_slug, framework_candidates, ecosystems };
 }
 
-function detectFrameworkFromTopicsOnly(topics?: string[]): FrameworkBrand | undefined {
+function detectFrameworkFromTopicsOnly(topics?: string[]): BrandTitle | undefined {
   if (!topics?.length) return undefined;
   const normalized = normalizeTopics(topics);
 
-  for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter' as FrameworkBrand;
-  for (const t of REACT_NATIVE_TOPICS)
-    if (normalized.has(t)) return 'React Native' as FrameworkBrand;
-  for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js' as FrameworkBrand;
+  for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter' as BrandTitle;
+  for (const t of REACT_NATIVE_TOPICS) if (normalized.has(t)) return 'React Native' as BrandTitle;
+  for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js' as BrandTitle;
 
   return undefined;
 }

@@ -1,4 +1,4 @@
-export interface BrandData {
+export interface BrandIconData {
   title: string;
   slug: string;
   hex: string;
@@ -91,5 +91,5 @@ export interface SupportedEcosystem {
   additionalFiles: string[];
 }
 
-export type FrameworkBrand = BrandData['title'] | Dup['title'];
-export type FrameworkSlug = BrandData['slug'];
+export type BrandTitle = BrandIconData['title'] | Dup['title'];
+export type BrandSlug = BrandIconData['slug'];
