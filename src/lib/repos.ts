@@ -27,8 +27,8 @@ type Candidate = {
 };
 
 type DetectResult = {
-  framework?: BrandTitle;
-  framework_slug?: BrandSlug;
+  framework: BrandTitle | null;
+  descriptive_slug: BrandSlug | null;
   framework_candidates: Candidate[];
   ecosystems: Ecosystem[];
 };
@@ -47,8 +47,10 @@ const FLUTTER_TOPICS = new Set(['flutter', 'flutter-plugin', 'flutter-package', 
 const REACT_NATIVE_TOPICS = new Set(['react-native', 'reactnative', 'expo']);
 const NEXT_TOPICS = new Set(['nextjs', 'next.js', 'next-js', 'next']);
 
-// (프레임워크 후보를 “진짜 프레임워크”로만 제한)
-// stack.ts의 FrameworkSlug/Brand가 리터럴 유니온이라면, 여기 키/값이 그 범위 안에 있어야 합니다.
+/**
+ * 프레임워크 후보 (진짜 프레임워크만)
+ * - language slug들은 descriptive_slug fallback에서만 사용
+ */
 const FRAMEWORKS = {
   flutter: 'Flutter',
   nextdotjs: 'Next.js',
@@ -57,7 +59,7 @@ const FRAMEWORKS = {
 
 type FrameworkKey = keyof typeof FRAMEWORKS;
 
-// 안전하게 FrameworkSlug/Brand로 캐스팅(원본 타입이 string이면 그대로 OK, 리터럴이면 유효한 값만 들어옴)
+// BrandSlug/BrandTitle이 리터럴 유니온이든 string이든 안전하게 취급
 const BRAND_BY_KEY = FRAMEWORKS as unknown as Record<BrandSlug, BrandTitle>;
 const SLUG_BY_BRAND: Record<BrandTitle, BrandSlug> = Object.fromEntries(
   Object.entries(FRAMEWORKS).map(([k, v]) => [v, k]),
@@ -154,6 +156,69 @@ function detectFrameworksFromPackageJson(content: string): FrameworkKey[] {
   }
 }
 
+// ---------- Language slug fallback ----------
+
+/**
+ * GitHub language name -> BrandSlug 추정
+ * (실제 BrandSlug(=simple-icons slug 등)과 다를 수 있으니, 프로젝트에서 쓰는 slug 규칙에 맞게 조정 가능)
+ */
+const LANGUAGE_TO_SLUG: Record<string, BrandSlug> = {
+  'TypeScript': 'typescript' as BrandSlug,
+  'JavaScript': 'javascript' as BrandSlug,
+  'Dart': 'dart' as BrandSlug,
+  'Python': 'python' as BrandSlug,
+  'Go': 'go' as BrandSlug,
+  'Java': 'java' as BrandSlug,
+  'Ruby': 'ruby' as BrandSlug,
+  'Rust': 'rust' as BrandSlug,
+  'PHP': 'php' as BrandSlug,
+  'Swift': 'swift' as BrandSlug,
+  'Kotlin': 'kotlin' as BrandSlug,
+  'C': 'c' as BrandSlug,
+  'C++': 'cplusplus' as BrandSlug,
+  'C#': 'csharp' as BrandSlug,
+  'Shell': 'gnu-bash' as BrandSlug,
+  'HTML': 'html5' as BrandSlug,
+  'CSS': 'css3' as BrandSlug,
+  'HCL': 'hcl' as BrandSlug,
+  'YAML': 'yaml' as BrandSlug,
+};
+
+function pickPrimaryLanguageName(
+  repo: Repository,
+  languageMap: Record<string, number>,
+): string | null {
+  // 1) REST repo.language 우선
+  const primary = (repo.language ?? '').trim();
+  if (primary) return primary;
+
+  // 2) GraphQL languages sizes 최댓값
+  let best: { name: string; size: number } | null = null;
+  for (const [name, size] of Object.entries(languageMap ?? {})) {
+    const s = typeof size === 'number' ? size : 0;
+    if (!best || s > best.size) best = { name, size: s };
+  }
+  return best?.name ?? null;
+}
+
+function inferDescriptiveSlug(
+  decidedFramework: BrandTitle | null,
+  repo: Repository,
+  languageMap: Record<string, number>,
+): BrandSlug | null {
+  // framework가 있으면 그 slug
+  if (decidedFramework) {
+    const slug = SLUG_BY_BRAND[decidedFramework];
+    return slug ?? null;
+  }
+
+  // 없으면 language slug
+  const langName = pickPrimaryLanguageName(repo, languageMap);
+  if (!langName) return null;
+
+  return LANGUAGE_TO_SLUG[langName] ?? null;
+}
+
 // ---------- GraphQL signals (1 call / repo) ----------
 
 const DEFAULT_HEADERS = {
@@ -198,7 +263,6 @@ async function graphqlRequest<T>(query: string, variables: Record<string, unknow
     headers: DEFAULT_HEADERS,
   });
 
-  // Octokit 환경별로 res.data 형태가 다를 수 있어 방어
   const data = res.data as unknown as { data?: T } | T;
   return (typeof data === 'object' && data !== null && 'data' in data ? data.data : data) as T;
 }
@@ -349,8 +413,6 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
   if (root.has('pnpm-lock.yaml')) out.add('pnpm');
   if (root.has('yarn.lock')) out.add('Yarn');
   if (root.has('package-lock.json')) out.add('npm');
-  // package.json만으로 npm이라 단정하긴 애매하지만 ecosystem 목록으로는 넣어도 괜찮으면 주석 해제
-  // if (root.has('package.json')) out.add('npm');
 
   // Dart/Flutter
   if (root.has('pubspec.yaml') || root.has('pubspec.lock')) out.add('pub');
@@ -390,8 +452,6 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
 
   // Terraform/OpenTofu
   if (root.has('.terraform.lock.hcl')) out.add('OpenTofu');
-  // .tf / .tofu는 “파일 확장”이라 root tree만으로는 보통 못 잡을 수 있음.
-  // 필요하면 root entries를 suffix 스캔하거나(레포 루트에 있는 경우), 2-depth tree까지 가는 방식 추가.
 
   // Julia
   if (root.has('Manifest.toml') || root.has('Project.toml')) out.add('Julia');
@@ -399,7 +459,7 @@ function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ec
   // Swift Package Manager
   if (root.has('Package.resolved') || root.has('Package.swift')) out.add('Swift Package Manager');
 
-  // NuGet (.csproj etc) - 루트에 있는 경우만 포착
+  // NuGet (루트에 있을 때만)
   if (
     hasAnySuffix(['.csproj', '.fsproj', '.vbproj', '.vcxproj', '.nuspec']) ||
     root.has('packages.config')
@@ -442,53 +502,39 @@ async function detectFrameworkRich(
       addScore(scoreMap, 'nextdotjs', 90, 'package.json deps indicate Next.js');
   }
 
-  // Ecosystems (SBOM 대체) — 프레임워크 결정 “보조” 정도로만 사용
+  // Ecosystems (SBOM 대체) — Flutter만 보조로 약하게
   const ecosystems = inferEcosystemsFromFiles(signals.rootNames, signals.workflowNames);
   if (ecosystems.includes('pub')) addScore(scoreMap, 'flutter', 15, 'ecosystem: pub present');
 
-  // Language hints (결정에는 쓰지 않음, tie-break 정도)
-  const languageMap = signals.languages ?? {};
-  const primaryLanguage = repo.language?.toLowerCase();
-
-  const hasDart = primaryLanguage === 'dart' || (languageMap.Dart ?? 0) > 0;
-  const hasJS = primaryLanguage === 'javascript' || (languageMap.JavaScript ?? 0) > 0;
-  const hasTS = primaryLanguage === 'typescript' || (languageMap.TypeScript ?? 0) > 0;
-
-  if (hasDart) addScore(scoreMap, 'flutter', 5, 'language hint: Dart present');
-  if (hasJS || hasTS) {
-    addScore(scoreMap, 'nextdotjs', 2, 'language hint: JS/TS present');
-    addScore(scoreMap, 'reactnative', 2, 'language hint: JS/TS present');
-  }
+  // ✅ 요구사항 반영: JS/TS 존재만으로 Next/RN 점수 추가는 제거
+  // (언어 힌트는 descriptive_slug fallback 용도로만 사용)
 
   const framework_candidates: Candidate[] = Array.from(scoreMap.entries())
     .map(([key, v]) => {
       const slug = key as unknown as BrandSlug;
       const name = BRAND_BY_KEY[slug];
-      return {
-        slug,
-        name,
-        score: v.score,
-        reasons: v.reasons,
-      };
+      return { slug, name, score: v.score, reasons: v.reasons };
     })
     .sort((a, b) => b.score - a.score);
 
   const top = framework_candidates[0];
-  const framework = top && top.score >= options.minScoreToDecide ? top.name : undefined;
-  const framework_slug = framework ? SLUG_BY_BRAND[framework] : undefined;
+  const framework: BrandTitle | null =
+    top && top.score >= options.minScoreToDecide ? top.name : null;
 
-  return { framework, framework_slug, framework_candidates, ecosystems };
+  const descriptive_slug = inferDescriptiveSlug(framework, repo, signals.languages);
+
+  return { framework, descriptive_slug, framework_candidates, ecosystems };
 }
 
-function detectFrameworkFromTopicsOnly(topics?: string[]): BrandTitle | undefined {
-  if (!topics?.length) return undefined;
+function detectFrameworkFromTopicsOnly(topics?: string[]): BrandTitle | null {
+  if (!topics?.length) return null;
   const normalized = normalizeTopics(topics);
 
   for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter' as BrandTitle;
   for (const t of REACT_NATIVE_TOPICS) if (normalized.has(t)) return 'React Native' as BrandTitle;
   for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js' as BrandTitle;
 
-  return undefined;
+  return null;
 }
 
 // ---------- Repo shaping / filtering ----------
@@ -532,19 +578,25 @@ export function reclusiveFilter(repo: { [x: string]: any }): Repository {
 }
 
 /**
- * @description topics 기반으로만 framework를 보강 (파일/네트워크 없이)
+ * @description (오프라인) topics 기반으로만 framework/descriptive_slug 보강
  */
 function applyFrameworkFromTopics(repo: Repository): Repository {
-  if (repo.framework) return repo;
+  // 이미 값이 있으면 건드리지 않음 (framework가 null인 경우도 “이미 처리됨”으로 간주)
+  if (repo.framework !== undefined || repo.descriptive_slug !== undefined) return repo;
 
   const framework = detectFrameworkFromTopicsOnly(repo.topics);
-  if (!framework) return repo;
+  const descriptive_slug = inferDescriptiveSlug(framework, repo, repo.languages ?? {});
 
-  return { ...repo, framework } as Repository;
+  return {
+    ...repo,
+    framework, // null 가능
+    descriptive_slug, // null 가능
+  } as Repository;
 }
 
 async function enrichRepository(repo: Repository): Promise<Repository> {
-  if (repo.framework) return repo;
+  // framework가 null이어도 “이미 enriched”로 취급해서 추가 API 호출 방지
+  if (repo.framework !== undefined || repo.descriptive_slug !== undefined) return repo;
 
   const owner = repo.owner?.login;
   if (!owner) return repo;
@@ -566,17 +618,17 @@ async function enrichRepository(repo: Repository): Promise<Repository> {
       }
     });
 
-    const enriched = {
+    return {
       ...copy,
-      framework: result.framework,
-      framework_slug: result.framework_slug,
+      framework: result.framework, // ✅ null 저장
+      descriptive_slug: result.descriptive_slug, // ✅ framework 또는 language slug
       framework_candidates: result.framework_candidates,
       ecosystems: result.ecosystems,
-      // GraphQL에서 뽑은 languages는 저장해두면 이후 작업에 유용함
+      // GraphQL에서 뽑은 languages 저장
       languages: signals.languages,
-    };
-
-    return (result.framework ? enriched : { ...enriched, framework: undefined }) as Repository;
+      // topics도 GraphQL 쪽이 더 완전할 수 있어 합쳐 저장(원치 않으면 제거)
+      topics: Array.from(new Set([...(repo.topics ?? []), ...(signals.topics ?? [])])),
+    } as Repository;
   } catch (error) {
     console.error('Failed to detect framework for repository.', {
       repo: repo.full_name,
@@ -643,13 +695,9 @@ export async function fetchRepository(owner: string, repo: string): Promise<Repo
   return await enrichRepository(filtered);
 }
 
-/**
- * @description 리포지토리를 가져오고 프레임워크/에코시스템을 추론해 정적 폴더에 JSON으로 저장.
- */
 export async function downloadJSON(): Promise<number> {
   const repositories = await fetchRepositories();
 
-  // 동시성 제한 (secondary rate limit 회피)
   const limit = createLimiter(6);
 
   const repositoryData = await Promise.all(
