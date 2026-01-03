@@ -1,7 +1,7 @@
 # Deep-Dive Documentation Workflow Configuration
-name: 'document-project-deep-dive'
-description: 'Exhaustive deep-dive documentation of specific project areas'
-author: 'BMad'
+name: document-project-deep-dive
+description: Exhaustive deep-dive documentation of specific project areas
+author: BMad
 
 # This is a sub-workflow called by document-project/workflow.yaml
 parent_workflow: '{project-root}/_bmad/bmm/workflows/document-project/workflow.yaml'
@@ -22,8 +22,8 @@ validation: '{project-root}/_bmad/bmm/workflows/document-project/checklist.md'
 deep_dive_template: '{project-root}/_bmad/bmm/workflows/document-project/templates/deep-dive-template.md'
 
 # Runtime inputs (passed from parent workflow)
-workflow_mode: 'deep_dive'
-scan_level: 'exhaustive' # Deep-dive always uses exhaustive scan
+workflow_mode: deep_dive
+scan_level: exhaustive # Deep-dive always uses exhaustive scan
 project_root_path: ''
 existing_index_path: '' # Path to existing index.md
 

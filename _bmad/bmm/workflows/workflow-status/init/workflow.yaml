@@ -1,7 +1,7 @@
 # Workflow Init - Initial Project Setup
 name: workflow-init
-description: 'Initialize a new BMM project by determining level, type, and creating workflow path'
-author: 'BMad'
+description: Initialize a new BMM project by determining level, type, and creating workflow path
+author: BMad
 
 # Critical variables from config
 config_source: '{project-root}/_bmad/bmm/config.yaml'

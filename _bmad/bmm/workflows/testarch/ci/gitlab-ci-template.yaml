@@ -12,12 +12,11 @@ variables:
   # Disable git depth for accurate change detection
   GIT_DEPTH: 0
   # Use npm ci for faster, deterministic installs
-  npm_config_cache: '$CI_PROJECT_DIR/.npm'
+  npm_config_cache: $CI_PROJECT_DIR/.npm
   # Playwright browser cache
-  PLAYWRIGHT_BROWSERS_PATH: '$CI_PROJECT_DIR/.cache/ms-playwright'
+  PLAYWRIGHT_BROWSERS_PATH: $CI_PROJECT_DIR/.cache/ms-playwright
   # Default Node version when .nvmrc is missing
   DEFAULT_NODE_VERSION: '24'
-
 # Caching configuration
 cache:
   key:
@@ -27,7 +26,6 @@ cache:
     - .npm/
     - .cache/ms-playwright/
     - node_modules/
-
 # Lint stage - Code quality checks
 lint:
   stage: lint
@@ -43,7 +41,6 @@ lint:
   script:
     - npm run lint
   timeout: 5 minutes
-
 # Test stage - Parallel execution with sharding
 .test-template: &test-template
   stage: test
@@ -86,7 +83,6 @@ test:shard-4:
   <<: *test-template
   script:
     - npm run test:e2e -- --shard=4/4
-
 # Burn-in stage - Flaky test detection
 burn-in:
   stage: burn-in
@@ -98,8 +94,8 @@ burn-in:
     - test:shard-4
   # Only run burn-in on merge requests to main/develop or on schedule
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "schedule"
   before_script:
     - |
       NODE_VERSION=$(cat .nvmrc 2>/dev/null || echo "$DEFAULT_NODE_VERSION")
@@ -126,7 +122,6 @@ burn-in:
       - playwright-report/
     expire_in: 30 days
   timeout: 60 minutes
-
 # Report stage - Aggregate results
 report:
   stage: report
@@ -139,7 +134,7 @@ report:
     - burn-in
   when: always
   script:
-    - |
+    - |-
       echo "## Test Execution Summary"
       echo ""
       echo "- Pipeline: $CI_PIPELINE_ID"

@@ -1,7 +1,7 @@
 # Test Architect workflow: ci
 name: testarch-ci
-description: 'Scaffold CI/CD quality pipeline with test execution, burn-in loops, and artifact collection'
-author: 'BMad'
+description: Scaffold CI/CD quality pipeline with test execution, burn-in loops, and artifact collection
+author: BMad
 
 # Critical variables from config
 config_source: '{project-root}/_bmad/bmm/config.yaml'
@@ -15,15 +15,12 @@ date: system-generated
 installed_path: '{project-root}/_bmad/bmm/workflows/testarch/ci'
 instructions: '{installed_path}/instructions.md'
 validation: '{installed_path}/checklist.md'
-
 # Variables and inputs
 variables:
-  ci_platform: 'auto' # auto, github-actions, gitlab-ci, circle-ci, jenkins - user can override
+  ci_platform: auto # auto, github-actions, gitlab-ci, circle-ci, jenkins - user can override
   test_dir: '{project-root}/tests' # Root test directory
-
 # Output configuration
 default_output_file: '{project-root}/.github/workflows/test.yml' # GitHub Actions default
-
 # Required tools
 required_tools:
   - read_file # Read .nvmrc, package.json, framework config

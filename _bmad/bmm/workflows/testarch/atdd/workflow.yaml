@@ -1,7 +1,7 @@
 # Test Architect workflow: atdd
 name: testarch-atdd
-description: 'Generate failing acceptance tests before implementation using TDD red-green-refactor cycle'
-author: 'BMad'
+description: Generate failing acceptance tests before implementation using TDD red-green-refactor cycle
+author: BMad
 
 # Critical variables from config
 config_source: '{project-root}/_bmad/bmm/config.yaml'
@@ -16,14 +16,11 @@ installed_path: '{project-root}/_bmad/bmm/workflows/testarch/atdd'
 instructions: '{installed_path}/instructions.md'
 validation: '{installed_path}/checklist.md'
 template: '{installed_path}/atdd-checklist-template.md'
-
 # Variables and inputs
 variables:
   test_dir: '{project-root}/tests' # Root test directory
-
 # Output configuration
 default_output_file: '{output_folder}/atdd-checklist-{story_id}.md'
-
 # Required tools
 required_tools:
   - read_file # Read story markdown, framework config

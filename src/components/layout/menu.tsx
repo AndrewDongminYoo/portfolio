@@ -1,7 +1,8 @@
 'use client';
 
 import { SiGithub, SiGithubcopilot, SiMedium } from '@icons-pack/react-simple-icons';
-import { FolderGit2, GitFork, Linkedin, PrinterCheck } from 'lucide-react';
+import { FolderGit2, GitFork, Home, Linkedin, PrinterCheck } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { jsx } from 'react/jsx-runtime';
 
@@ -57,6 +58,9 @@ export function MenuButtonIcon({
 }
 
 export default function MenuButtons() {
+  const pathname = usePathname();
+  const isReposPage = pathname === '/repos' || pathname.startsWith('/repos/');
+
   return (
     <div className='fixed top-0 right-0 left-0 z-50 flex justify-end px-4 pt-0 md:top-7 md:right-14 md:left-auto md:px-0 md:pt-0 print:hidden'>
       <NavigationMenu viewport={false} className='items-center'>
@@ -67,9 +71,15 @@ export default function MenuButtons() {
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink className={inlineItemClassName} href='/repos'>
-              <MenuButtonIcon text='Repos' icon={FolderGit2} />
-            </NavigationMenuLink>
+            {isReposPage ? (
+              <NavigationMenuLink className={inlineItemClassName} href='/'>
+                <MenuButtonIcon text='Home' icon={Home} />
+              </NavigationMenuLink>
+            ) : (
+              <NavigationMenuLink className={inlineItemClassName} href='/repos'>
+                <MenuButtonIcon text='Repos' icon={FolderGit2} />
+              </NavigationMenuLink>
+            )}
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
             <NavigationMenuLink
