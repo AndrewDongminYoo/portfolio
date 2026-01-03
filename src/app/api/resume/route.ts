@@ -3,6 +3,8 @@ import path from 'node:path';
 
 import { NextResponse } from 'next/server';
 
+import { myName } from '@/lib/constants';
+
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -33,7 +35,7 @@ async function getLatestResume(): Promise<ResumeFileMeta | null> {
       const fileStat = await stat(filepath);
       return {
         filepath,
-        filename,
+        filename: `크로스플랫폼 개발자 ${myName}.pdf`,
         mtimeMs: fileStat.mtimeMs,
       };
     }),
