@@ -1,3 +1,5 @@
+import { Ecosystem, FrameworkBrand, FrameworkSlug } from '@/interface/stack';
+
 /**
  * 깃허브 리포지토리.
  */
@@ -17,6 +19,11 @@ export default interface Repository {
   language: string;
   forks_count: number;
   languages: Record<string, number>;
+  topics?: string[];
+  framework?: FrameworkBrand | undefined;
+  framework_slug?: FrameworkSlug | undefined;
+  framework_candidates?: Candidate[];
+  ecosystems?: Ecosystem[];
 }
 
 /**
