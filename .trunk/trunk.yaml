@@ -26,6 +26,10 @@ lint:
         - osv-scanner
       paths:
         - yarn.lock
+    - linters:
+        - markdownlint
+      paths:
+        - .serena/memories/*.md
 runtimes:
   enabled:
     - python@3.10.8
