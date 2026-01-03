@@ -1,0 +1,479 @@
+{
+  "meta": {
+    "generatedAt": "2026-01-03T08:36:12.220Z",
+    "linguistCount": 793,
+    "matchedCount": 16,
+    "simpleIconsCount": 3364,
+    "unmatchedCount": 0
+  },
+  "items": {
+    "c": {
+      "key": "c",
+      "title": "C",
+      "kind": "language",
+      "color": "#438eff",
+      "icon": {
+        "hex": "#a8b9cc",
+        "slug": "c",
+        "source": "https://commons.wikimedia.org/wiki/File:The_C_Programming_Language_logo.svg",
+        "url": "https://simpleicons.org/icons/c.svg"
+      },
+      "language": {
+        "aliases": ["obj-c", "objc", "objectivec"],
+        "color": "#438eff",
+        "extensions": [".m", ".h"],
+        "language_id": 257,
+        "type": "programming"
+      },
+      "match": {
+        "value": "c",
+        "via": "override"
+      }
+    },
+    "cmake": {
+      "key": "cmake",
+      "title": "CMake",
+      "kind": "language",
+      "color": "#da3434",
+      "icon": {
+        "hex": "#064f8c",
+        "slug": "cmake",
+        "source": "https://www.kitware.com/platforms/",
+        "url": "https://simpleicons.org/icons/cmake.svg"
+      },
+      "language": {
+        "color": "#da3434",
+        "extensions": [".cmake", ".cmake.in"],
+        "filenames": ["CMakeLists.txt"],
+        "language_id": 47,
+        "type": "programming"
+      },
+      "match": {
+        "value": "CMake",
+        "via": "title"
+      }
+    },
+    "cplusplus": {
+      "key": "cplusplus",
+      "title": "C++",
+      "kind": "language",
+      "color": "#6866fb",
+      "icon": {
+        "hex": "#00599c",
+        "slug": "cplusplus",
+        "source": "https://github.com/isocpp/logos/tree/64ef037049f87ac74875dbe72695e59118b52186",
+        "url": "https://simpleicons.org/icons/cplusplus.svg"
+      },
+      "language": {
+        "aliases": ["obj-c++", "objc++", "objectivec++"],
+        "color": "#6866fb",
+        "extensions": [".mm"],
+        "language_id": 258,
+        "type": "programming"
+      },
+      "match": {
+        "value": "cplusplus",
+        "via": "override"
+      }
+    },
+    "css": {
+      "key": "css",
+      "title": "CSS",
+      "kind": "language",
+      "color": "#663399",
+      "icon": {
+        "hex": "#663399",
+        "slug": "css",
+        "source": "https://github.com/CSS-Next/logo.css/blob/bacc20878227204b283c68a6b935f8279e06b0cd/css.svg",
+        "url": "https://simpleicons.org/icons/css.svg"
+      },
+      "language": {
+        "color": "#663399",
+        "extensions": [".css"],
+        "language_id": 50,
+        "type": "markup"
+      },
+      "match": {
+        "value": "CSS",
+        "via": "title"
+      }
+    },
+    "dart": {
+      "key": "dart",
+      "title": "Dart",
+      "kind": "language",
+      "color": "#00b4ab",
+      "icon": {
+        "hex": "#0175c2",
+        "slug": "dart",
+        "source": "https://github.com/dart-lang/site-shared/tree/18458ff440afd3d06f04e5cb871c4c5eda29c9d5/src/_assets/image/dart/logo",
+        "url": "https://simpleicons.org/icons/dart.svg"
+      },
+      "language": {
+        "color": "#00b4ab",
+        "extensions": [".dart"],
+        "language_id": 87,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Dart",
+        "via": "title"
+      }
+    },
+    "html5": {
+      "key": "html5",
+      "title": "HTML5",
+      "kind": "language",
+      "color": "#e34c26",
+      "icon": {
+        "hex": "#e34f26",
+        "slug": "html5",
+        "source": "https://www.w3.org/html/logo/",
+        "url": "https://simpleicons.org/icons/html5.svg"
+      },
+      "language": {
+        "aliases": ["xhtml"],
+        "color": "#e34c26",
+        "extensions": [".html", ".hta", ".htm", ".html.hl", ".inc", ".xht", ".xhtml"],
+        "language_id": 146,
+        "type": "markup"
+      },
+      "match": {
+        "value": "html5",
+        "via": "override"
+      }
+    },
+    "javascript": {
+      "key": "javascript",
+      "title": "JavaScript",
+      "kind": "language",
+      "color": "#f1e05a",
+      "icon": {
+        "hex": "#f7df1e",
+        "slug": "javascript",
+        "source": "https://github.com/voodootikigod/logo.js/blob/1544bdeed6d618a6cfe4f0650d04ab8d9cfa76d9/js.svg",
+        "url": "https://simpleicons.org/icons/javascript.svg"
+      },
+      "language": {
+        "aliases": ["js", "node"],
+        "color": "#f1e05a",
+        "extensions": [
+          ".js",
+          "._js",
+          ".bones",
+          ".cjs",
+          ".es",
+          ".es6",
+          ".frag",
+          ".gs",
+          ".jake",
+          ".javascript",
+          ".jsb",
+          ".jscad",
+          ".jsfl",
+          ".jslib",
+          ".jsm",
+          ".jspre",
+          ".jss",
+          ".jsx",
+          ".mjs",
+          ".njs",
+          ".pac",
+          ".sjs",
+          ".ssjs",
+          ".xsjs",
+          ".xsjslib"
+        ],
+        "filenames": ["Jakefile"],
+        "language_id": 183,
+        "type": "programming"
+      },
+      "match": {
+        "value": "JavaScript",
+        "via": "title"
+      }
+    },
+    "kotlin": {
+      "key": "kotlin",
+      "title": "Kotlin",
+      "kind": "language",
+      "color": "#a97bff",
+      "icon": {
+        "hex": "#7f52ff",
+        "slug": "kotlin",
+        "source": "https://www.jetbrains.com/company/brand/logos/",
+        "url": "https://simpleicons.org/icons/kotlin.svg"
+      },
+      "language": {
+        "color": "#a97bff",
+        "extensions": [".kt", ".ktm", ".kts"],
+        "language_id": 189,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Kotlin",
+        "via": "title"
+      }
+    },
+    "openjdk": {
+      "key": "openjdk",
+      "title": "OpenJDK",
+      "kind": "language",
+      "color": "#b07219",
+      "icon": {
+        "hex": "#000000",
+        "slug": "openjdk",
+        "source": "https://hg.openjdk.java.net/duke/duke/file/ca00f100dafc/vector/Agent.svg",
+        "url": "https://simpleicons.org/icons/openjdk.svg"
+      },
+      "language": {
+        "color": "#b07219",
+        "extensions": [".java", ".jav", ".jsh"],
+        "language_id": 181,
+        "type": "programming"
+      },
+      "match": {
+        "value": "openjdk",
+        "via": "override"
+      }
+    },
+    "python": {
+      "key": "python",
+      "title": "Python",
+      "kind": "language",
+      "color": "#3572a5",
+      "icon": {
+        "hex": "#3776ab",
+        "slug": "python",
+        "source": "https://www.python.org/community/logos/",
+        "url": "https://simpleicons.org/icons/python.svg"
+      },
+      "language": {
+        "aliases": ["python3", "rusthon"],
+        "color": "#3572a5",
+        "extensions": [
+          ".py",
+          ".cgi",
+          ".fcgi",
+          ".gyp",
+          ".gypi",
+          ".lmi",
+          ".py3",
+          ".pyde",
+          ".pyi",
+          ".pyp",
+          ".pyt",
+          ".pyw",
+          ".rpy",
+          ".spec",
+          ".tac",
+          ".wsgi",
+          ".xpy"
+        ],
+        "filenames": [".gclient", "DEPS", "SConscript", "SConstruct", "wscript"],
+        "language_id": 303,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Python",
+        "via": "title"
+      }
+    },
+    "ruby": {
+      "key": "ruby",
+      "title": "Ruby",
+      "kind": "language",
+      "color": "#701516",
+      "icon": {
+        "hex": "#cc342d",
+        "slug": "ruby",
+        "source": "https://www.ruby-lang.org/en/about/logo/",
+        "url": "https://simpleicons.org/icons/ruby.svg"
+      },
+      "language": {
+        "aliases": ["jruby", "macruby", "rake", "rb", "rbx"],
+        "color": "#701516",
+        "extensions": [
+          ".rb",
+          ".builder",
+          ".eye",
+          ".fcgi",
+          ".gemspec",
+          ".god",
+          ".jbuilder",
+          ".mspec",
+          ".pluginspec",
+          ".podspec",
+          ".prawn",
+          ".rabl",
+          ".rake",
+          ".rbi",
+          ".rbuild",
+          ".rbw",
+          ".rbx",
+          ".ru",
+          ".ruby",
+          ".spec",
+          ".thor",
+          ".watchr"
+        ],
+        "filenames": [
+          ".irbrc",
+          ".pryrc",
+          ".simplecov",
+          "Appraisals",
+          "Berksfile",
+          "Brewfile",
+          "Buildfile",
+          "Capfile",
+          "Dangerfile",
+          "Deliverfile",
+          "Fastfile",
+          "Gemfile",
+          "Guardfile",
+          "Jarfile",
+          "Mavenfile",
+          "Podfile",
+          "Puppetfile",
+          "Rakefile",
+          "Snapfile",
+          "Steepfile",
+          "Thorfile",
+          "Vagrantfile",
+          "buildfile"
+        ],
+        "language_id": 326,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Ruby",
+        "via": "title"
+      }
+    },
+    "shell": {
+      "key": "shell",
+      "title": "Shell",
+      "kind": "language",
+      "color": "#89e051",
+      "icon": {
+        "hex": "#ffd500",
+        "slug": "shell",
+        "source": "https://en.wikipedia.org/wiki/File:Shell_logo.svg",
+        "url": "https://simpleicons.org/icons/shell.svg"
+      },
+      "language": {
+        "aliases": ["sh", "shell-script", "bash", "zsh", "envrc"],
+        "color": "#89e051",
+        "extensions": [
+          ".sh",
+          ".bash",
+          ".bats",
+          ".cgi",
+          ".command",
+          ".fcgi",
+          ".ksh",
+          ".sh.in",
+          ".tmux",
+          ".tool",
+          ".trigger",
+          ".zsh",
+          ".zsh-theme"
+        ],
+        "filenames": [
+          ".bash_aliases",
+          ".bash_functions",
+          ".bash_history",
+          ".bash_logout",
+          ".bash_profile",
+          ".bashrc",
+          ".cshrc",
+          ".envrc",
+          ".flaskenv",
+          ".kshrc",
+          ".login",
+          ".profile",
+          ".tmux.conf",
+          ".xinitrc",
+          ".xsession",
+          ".zlogin",
+          ".zlogout",
+          ".zprofile",
+          ".zshenv",
+          ".zshrc",
+          "9fs",
+          "PKGBUILD",
+          "bash_aliases",
+          "bash_logout",
+          "bash_profile",
+          "bashrc",
+          "cshrc",
+          "gradlew",
+          "kshrc",
+          "login",
+          "man",
+          "mvnw",
+          "profile",
+          "tmux.conf",
+          "xinitrc",
+          "xsession",
+          "zlogin",
+          "zlogout",
+          "zprofile",
+          "zshenv",
+          "zshrc"
+        ],
+        "language_id": 346,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Shell",
+        "via": "title"
+      }
+    },
+    "swift": {
+      "key": "swift",
+      "title": "Swift",
+      "kind": "language",
+      "color": "#f05138",
+      "icon": {
+        "hex": "#f05138",
+        "slug": "swift",
+        "source": "https://developer.apple.com/swift/resources/",
+        "url": "https://simpleicons.org/icons/swift.svg"
+      },
+      "language": {
+        "color": "#f05138",
+        "extensions": [".swift"],
+        "language_id": 362,
+        "type": "programming"
+      },
+      "match": {
+        "value": "Swift",
+        "via": "title"
+      }
+    },
+    "typescript": {
+      "key": "typescript",
+      "title": "TypeScript",
+      "kind": "language",
+      "color": "#3178c6",
+      "icon": {
+        "hex": "#3178c6",
+        "slug": "typescript",
+        "source": "https://www.typescriptlang.org/branding",
+        "url": "https://simpleicons.org/icons/typescript.svg"
+      },
+      "language": {
+        "aliases": ["ts"],
+        "color": "#3178c6",
+        "extensions": [".ts", ".cts", ".mts"],
+        "language_id": 378,
+        "type": "programming"
+      },
+      "match": {
+        "value": "TypeScript",
+        "via": "title"
+      }
+    }
+  }
+}
