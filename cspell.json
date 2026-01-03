@@ -1,6 +1,6 @@
 {
   "allowCompoundWords": true,
-  "dictionaries": ["workspace", "languages"],
+  "dictionaries": ["workspace", "language-names"],
   "dictionaryDefinitions": [
     {
       "addWords": true,
@@ -10,7 +10,7 @@
     },
     {
       "addWords": false,
-      "name": "languages",
+      "name": "language-names",
       "path": ".cspell/languages.txt",
       "scope": "workspace"
     }
