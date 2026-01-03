@@ -11,8 +11,6 @@ import { sortRepositoriesDefault } from '@/lib/repo-sort';
 const { GITHUB_TOKEN } = process.env;
 
 if (!GITHUB_TOKEN) {
-  // Fail fast in CI / local if token missing (rate limits will bite hard).
-  // If you truly want anonymous mode, remove this guard.
   throw new Error('GITHUB_TOKEN is required.');
 }
 
@@ -20,40 +18,6 @@ const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 const starsDirectory = path.join(process.cwd(), 'data/stars');
-
-type SBOM = {
-  SPDXID: string;
-  spdxVersion: string;
-  comment?: string;
-  creationInfo: {
-    created: string;
-    creators: string[];
-  };
-  name: string;
-  dataLicense: string;
-  documentNamespace: string;
-  packages: {
-    SPDXID?: string;
-    name?: string;
-    versionInfo?: string;
-    downloadLocation?: string;
-    filesAnalyzed?: boolean;
-    licenseConcluded?: string;
-    licenseDeclared?: string;
-    supplier?: string;
-    copyrightText?: string;
-    externalRefs?: {
-      referenceCategory: string;
-      referenceLocator: string;
-      referenceType: string;
-    }[];
-  }[];
-  relationships?: {
-    relationshipType?: string;
-    spdxElementId?: string;
-    relatedSpdxElement?: string;
-  }[];
-};
 
 type Candidate = {
   slug: FrameworkSlug;
@@ -69,27 +33,66 @@ type DetectResult = {
   ecosystems: Ecosystem[];
 };
 
+type DetectOptions = {
+  minScoreToDecide: number;
+};
+
+const DEFAULT_DETECT_OPTIONS: DetectOptions = {
+  minScoreToDecide: 80,
+};
+
 // ---------- Topic heuristics ----------
 
 const FLUTTER_TOPICS = new Set(['flutter', 'flutter-plugin', 'flutter-package', 'flutter-app']);
 const REACT_NATIVE_TOPICS = new Set(['react-native', 'reactnative', 'expo']);
 const NEXT_TOPICS = new Set(['nextjs', 'next.js', 'next-js', 'next']);
-const BRAND_BY_SLUG: Record<FrameworkSlug, FrameworkBrand> = {
+
+// (프레임워크 후보를 “진짜 프레임워크”로만 제한)
+// stack.ts의 FrameworkSlug/Brand가 리터럴 유니온이라면, 여기 키/값이 그 범위 안에 있어야 합니다.
+const FRAMEWORKS = {
   flutter: 'Flutter',
   nextdotjs: 'Next.js',
   reactnative: 'React Native',
-  typescript: 'TypeScript',
-  javascript: 'JavaScript',
-  dart: 'Dart',
-};
-const SLUG_BY_BRAND: Record<FrameworkBrand, FrameworkSlug> = {
-  'Flutter': 'flutter',
-  'Next.js': 'nextdotjs',
-  'React Native': 'reactnative',
-  'TypeScript': 'typescript',
-  'JavaScript': 'javascript',
-  'Dart': 'dart',
-};
+} as const satisfies Record<string, string>;
+
+type FrameworkKey = keyof typeof FRAMEWORKS;
+
+// 안전하게 FrameworkSlug/Brand로 캐스팅(원본 타입이 string이면 그대로 OK, 리터럴이면 유효한 값만 들어옴)
+const BRAND_BY_KEY = FRAMEWORKS as unknown as Record<FrameworkSlug, FrameworkBrand>;
+const SLUG_BY_BRAND: Record<FrameworkBrand, FrameworkSlug> = Object.fromEntries(
+  Object.entries(FRAMEWORKS).map(([k, v]) => [v, k]),
+) as unknown as Record<FrameworkBrand, FrameworkSlug>;
+
+// ---------- Small concurrency limiter (no deps) ----------
+
+function createLimiter(concurrency: number) {
+  let active = 0;
+  const queue: Array<() => void> = [];
+
+  const next = () => {
+    if (active >= concurrency) return;
+    const job = queue.shift();
+    if (!job) return;
+    active++;
+    job();
+  };
+
+  return async function limit<T>(task: () => Promise<T>): Promise<T> {
+    return await new Promise<T>((resolve, reject) => {
+      queue.push(async () => {
+        try {
+          resolve(await task());
+        } catch (e) {
+          reject(e);
+        } finally {
+          active--;
+          next();
+        }
+      });
+      next();
+    });
+  };
+}
 
 // ---------- Detection utilities ----------
 
@@ -98,21 +101,18 @@ function normalizeTopics(topics?: string[]): Set<string> {
 }
 
 function addScore(
-  map: Map<FrameworkSlug, { score: number; reasons: string[] }>,
-  slug: FrameworkSlug,
+  map: Map<FrameworkKey, { score: number; reasons: string[] }>,
+  key: FrameworkKey,
   delta: number,
   reason: string,
 ) {
-  const cur = map.get(slug) ?? { score: 0, reasons: [] };
+  const cur = map.get(key) ?? { score: 0, reasons: [] };
   cur.score += delta;
   cur.reasons.push(`${delta >= 0 ? '+' : ''}${delta} ${reason}`);
-  map.set(slug, cur);
+  map.set(key, cur);
 }
 
 function isFlutterPubspec(content: string): boolean {
-  // Strong signals:
-  // - top-level "flutter:" section
-  // - "sdk: flutter"
   return /(^|\n)\s*flutter\s*:\s*(\n|$)/m.test(content) || /\bsdk\s*:\s*flutter\b/i.test(content);
 }
 
@@ -131,12 +131,12 @@ function parsePackageJsonDeps(content: string): Record<string, string> {
   };
 }
 
-function detectFromPackageJson(content: string): FrameworkSlug[] {
+function detectFrameworksFromPackageJson(content: string): FrameworkKey[] {
   try {
     const deps = parsePackageJsonDeps(content);
     const keys = Object.keys(deps);
 
-    const hits: FrameworkSlug[] = [];
+    const hits: FrameworkKey[] = [];
 
     // React Native
     if (deps['react-native'] || deps.expo || keys.some((k) => k.startsWith('@react-native/'))) {
@@ -154,210 +154,323 @@ function detectFromPackageJson(content: string): FrameworkSlug[] {
   }
 }
 
-// ---------- GitHub fetch helpers ----------
+// ---------- GraphQL signals (1 call / repo) ----------
 
 const DEFAULT_HEADERS = {
   'Accept': 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
 };
 
-async function fetchRepoFile(
-  owner: string,
-  repo: string,
-  filePath: string,
-): Promise<string | null> {
-  try {
-    const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-      owner,
-      repo,
-      path: filePath,
-      headers: DEFAULT_HEADERS,
-    });
+type GraphQLRepoSignals = {
+  repository: null | {
+    topics?: {
+      nodes?: Array<{ topic?: { name?: string | null } | null } | null> | null;
+    } | null;
+    languages?: {
+      edges?: Array<{ size?: number | null; node?: { name?: string | null } | null } | null> | null;
+    } | null;
+    pubspec?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
+    packageJson?: { __typename?: string; text?: string | null; isBinary?: boolean | null } | null;
+    root?: {
+      __typename?: string;
+      entries?: Array<{ name?: string | null; type?: string | null } | null> | null;
+    } | null;
+    workflows?: {
+      __typename?: string;
+      entries?: Array<{ name?: string | null; type?: string | null } | null> | null;
+    } | null;
+  };
+};
 
-    const data = response.data as { content?: string; encoding?: string } | unknown[];
+type RepoSignals = {
+  topics: string[];
+  languages: Record<string, number>;
+  rootNames: Set<string>;
+  workflowNames: Set<string>;
+  pubspecText?: string;
+  packageJsonText?: string;
+};
 
-    // Directory listing (array) → not a file
-    if (Array.isArray(data) || typeof data !== 'object' || data === null) {
-      return null;
-    }
+async function graphqlRequest<T>(query: string, variables: Record<string, unknown>): Promise<T> {
+  const res = await octokit.request('POST /graphql', {
+    query,
+    variables,
+    headers: DEFAULT_HEADERS,
+  });
 
-    if (typeof data.content !== 'string') {
-      return null;
-    }
-
-    const encoding = typeof data.encoding === 'string' ? data.encoding : 'base64';
-
-    // GitHub returns base64 with line breaks sometimes.
-    const cleaned = data.content.replace(/\n/g, '');
-    return Buffer.from(cleaned, encoding as BufferEncoding).toString('utf8');
-  } catch (error) {
-    if (typeof error === 'object' && error !== null && 'status' in error) {
-      const status = (error as { status?: number }).status;
-      if (status === 404) return null;
-      // 403 can happen on rate limiting / permissions; we treat as “no data”
-      if (status === 403) return null;
-    }
-    throw error;
-  }
+  // Octokit 환경별로 res.data 형태가 다를 수 있어 방어
+  const data = res.data as unknown as { data?: T } | T;
+  return (typeof data === 'object' && data !== null && 'data' in data ? data.data : data) as T;
 }
 
-async function fetchSbom(owner: string, repo: string): Promise<SBOM | null> {
-  try {
-    const res = await octokit.request('GET /repos/{owner}/{repo}/dependency-graph/sbom', {
-      owner,
-      repo,
-      headers: DEFAULT_HEADERS,
-    });
-    return res.data.sbom; // SPDX JSON-ish
-  } catch (error) {
-    if (typeof error === 'object' && error !== null && 'status' in error) {
-      const status = (error as { status?: number }).status;
-      // 404: dependency graph not available (or disabled)
-      // 403: insufficient permissions or feature disabled
-      if (status === 404 || status === 403) return null;
+const REPO_SIGNALS_QUERY = /* GraphQL */ `
+  query RepoSignals($owner: String!, $name: String!) {
+    repository(owner: $owner, name: $name) {
+      topics: repositoryTopics(first: 30) {
+        nodes {
+          topic {
+            name
+          }
+        }
+      }
+
+      languages(first: 20, orderBy: { field: SIZE, direction: DESC }) {
+        edges {
+          size
+          node {
+            name
+          }
+        }
+      }
+
+      pubspec: object(expression: "HEAD:pubspec.yaml") {
+        __typename
+        ... on Blob {
+          isBinary
+          text
+        }
+      }
+
+      packageJson: object(expression: "HEAD:package.json") {
+        __typename
+        ... on Blob {
+          isBinary
+          text
+        }
+      }
+
+      root: object(expression: "HEAD:") {
+        __typename
+        ... on Tree {
+          entries {
+            name
+            type
+          }
+        }
+      }
+
+      workflows: object(expression: "HEAD:.github/workflows") {
+        __typename
+        ... on Tree {
+          entries {
+            name
+            type
+          }
+        }
+      }
     }
-    throw error;
   }
-}
+`;
 
-function parseEcosystemsFromSbom(sbom: SBOM): Set<Ecosystem> {
-  const out = new Set<Ecosystem>();
-  const packages = Array.isArray(sbom?.packages)
-    ? sbom.packages
-    : Array.isArray(sbom?.packages)
-      ? sbom.packages
-      : [];
-
-  for (const pkg of packages) {
-    const refs = Array.isArray(pkg?.externalRefs) ? pkg.externalRefs : [];
-    const purlRef = refs.find(
-      (r) => r?.referenceType === 'purl' && typeof r?.referenceLocator === 'string',
-    );
-    const purl = (purlRef?.referenceLocator as string | undefined) ?? '';
-    if (!purl) continue;
-
-    if (purl.startsWith('pkg:npm/')) out.add('npm');
-    else if (purl.startsWith('pkg:pub/')) out.add('pub');
-    else if (purl.startsWith('pkg:githubactions/')) out.add('GitHub Actions workflows');
+function toLanguagesMap(
+  edges:
+    | Array<{ size?: number | null; node?: { name?: string | null } | null } | null>
+    | null
+    | undefined,
+): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const e of edges ?? []) {
+    if (!e?.node?.name) continue;
+    out[e.node.name] = typeof e.size === 'number' ? e.size : 0;
   }
-
   return out;
 }
 
-function sbomHasNpmPackage(sbom: SBOM, name: string): boolean {
-  const packages = Array.isArray(sbom?.packages)
-    ? sbom.packages
-    : Array.isArray(sbom?.packages)
-      ? sbom.packages
-      : [];
+function toNameSet(
+  entries: Array<{ name?: string | null; type?: string | null } | null> | null | undefined,
+): Set<string> {
+  const out = new Set<string>();
+  for (const e of entries ?? []) {
+    const name = e?.name?.trim();
+    if (name) out.add(name);
+  }
+  return out;
+}
 
-  for (const pkg of packages) {
-    const refs = Array.isArray(pkg?.externalRefs) ? pkg.externalRefs : [];
-    const purlRef = refs.find(
-      (r) => r?.referenceType === 'purl' && typeof r?.referenceLocator === 'string',
-    );
-    const purl = (purlRef?.referenceLocator as string | undefined) ?? '';
-    // purl: pkg:npm/next@14.0.0
-    if (purl === `pkg:npm/${name}` || purl.startsWith(`pkg:npm/${name}@`)) return true;
+function toTopicsList(
+  nodes: Array<{ topic?: { name?: string | null } | null } | null> | null | undefined,
+): string[] {
+  const out: string[] = [];
+  for (const n of nodes ?? []) {
+    const name = n?.topic?.name?.trim();
+    if (name) out.push(name);
+  }
+  return out;
+}
+
+async function fetchRepoSignals(owner: string, repo: string): Promise<RepoSignals> {
+  const data = await graphqlRequest<GraphQLRepoSignals>(REPO_SIGNALS_QUERY, { owner, name: repo });
+
+  if (!data.repository) {
+    return {
+      topics: [],
+      languages: {},
+      rootNames: new Set(),
+      workflowNames: new Set(),
+    };
   }
 
-  return false;
+  const topics = toTopicsList(data.repository.topics?.nodes);
+  const languages = toLanguagesMap(data.repository.languages?.edges);
+  const rootNames = toNameSet(
+    data.repository.root?.__typename === 'Tree' ? data.repository.root.entries : null,
+  );
+  const workflowNames = toNameSet(
+    data.repository.workflows?.__typename === 'Tree' ? data.repository.workflows.entries : null,
+  );
+
+  const pubspecText =
+    data.repository.pubspec?.__typename === 'Blob' && !data.repository.pubspec.isBinary
+      ? (data.repository.pubspec.text ?? undefined)
+      : undefined;
+
+  const packageJsonText =
+    data.repository.packageJson?.__typename === 'Blob' && !data.repository.packageJson.isBinary
+      ? (data.repository.packageJson.text ?? undefined)
+      : undefined;
+
+  return { topics, languages, rootNames, workflowNames, pubspecText, packageJsonText };
+}
+
+// ---------- Ecosystem inference (SBOM 대체) ----------
+
+function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ecosystem[] {
+  const out = new Set<Ecosystem>();
+
+  const hasAnySuffix = (suffixes: string[]) =>
+    Array.from(root).some((name) => suffixes.some((s) => name.endsWith(s)));
+
+  // GitHub Actions
+  if (Array.from(workflows).some((n) => n.endsWith('.yml') || n.endsWith('.yaml'))) {
+    out.add('GitHub Actions workflows');
+  }
+
+  // Node ecosystems
+  if (root.has('pnpm-lock.yaml')) out.add('pnpm');
+  if (root.has('yarn.lock')) out.add('Yarn');
+  if (root.has('package-lock.json')) out.add('npm');
+  // package.json만으로 npm이라 단정하긴 애매하지만 ecosystem 목록으로는 넣어도 괜찮으면 주석 해제
+  // if (root.has('package.json')) out.add('npm');
+
+  // Dart/Flutter
+  if (root.has('pubspec.yaml') || root.has('pubspec.lock')) out.add('pub');
+
+  // Python
+  if (root.has('requirements.txt') || root.has('Pipfile') || root.has('Pipfile.lock'))
+    out.add('pip');
+  if (root.has('poetry.lock') || root.has('pyproject.toml')) out.add('Poetry');
+
+  // Rust
+  if (root.has('Cargo.lock') || root.has('Cargo.toml')) out.add('Cargo');
+
+  // PHP
+  if (root.has('composer.lock') || root.has('composer.json')) out.add('Composer');
+
+  // Ruby
+  if (root.has('Gemfile.lock') || root.has('Gemfile') || hasAnySuffix(['.gemspec']))
+    out.add('RubyGems');
+
+  // Go
+  if (root.has('go.mod')) out.add('Go modules');
+
+  // Java
+  if (root.has('pom.xml')) out.add('Maven');
+  if (
+    root.has('build.gradle') ||
+    root.has('build.gradle.kts') ||
+    root.has('settings.gradle') ||
+    root.has('settings.gradle.kts')
+  ) {
+    out.add('Gradle');
+  }
+
+  // Bazel
+  if (root.has('WORKSPACE') || root.has('WORKSPACE.bazel') || root.has('MODULE.bazel'))
+    out.add('Bazel');
+
+  // Terraform/OpenTofu
+  if (root.has('.terraform.lock.hcl')) out.add('OpenTofu');
+  // .tf / .tofu는 “파일 확장”이라 root tree만으로는 보통 못 잡을 수 있음.
+  // 필요하면 root entries를 suffix 스캔하거나(레포 루트에 있는 경우), 2-depth tree까지 가는 방식 추가.
+
+  // Julia
+  if (root.has('Manifest.toml') || root.has('Project.toml')) out.add('Julia');
+
+  // Swift Package Manager
+  if (root.has('Package.resolved') || root.has('Package.swift')) out.add('Swift Package Manager');
+
+  // NuGet (.csproj etc) - 루트에 있는 경우만 포착
+  if (
+    hasAnySuffix(['.csproj', '.fsproj', '.vbproj', '.vcxproj', '.nuspec']) ||
+    root.has('packages.config')
+  ) {
+    out.add('NuGet');
+  }
+
+  return Array.from(out);
 }
 
 // ---------- Framework detection (scored, explainable) ----------
 
-type DetectOptions = {
-  includeSbomEcosystems: boolean;
-  includeSbomSignals: boolean;
-  minScoreToDecide: number;
-};
-
-const DEFAULT_DETECT_OPTIONS: DetectOptions = {
-  includeSbomEcosystems: true,
-  includeSbomSignals: true,
-  minScoreToDecide: 80,
-};
-
 async function detectFrameworkRich(
   repo: Repository,
-  languages?: Record<string, number>,
+  signals: RepoSignals,
   options: DetectOptions = DEFAULT_DETECT_OPTIONS,
 ): Promise<DetectResult> {
-  const owner = repo.owner?.login;
-  if (!owner) {
-    return { framework_candidates: [], ecosystems: [] };
-  }
+  const scoreMap = new Map<FrameworkKey, { score: number; reasons: string[] }>();
 
-  const scoreMap = new Map<FrameworkSlug, { score: number; reasons: string[] }>();
+  // Topics: REST topics + GraphQL topics (보강)
+  const mergedTopics = normalizeTopics([...(repo.topics ?? []), ...(signals.topics ?? [])]);
 
-  // 1) Topics (strongest when present)
-  const topics = normalizeTopics(repo.topics);
-
-  if ([...FLUTTER_TOPICS].some((t) => topics.has(t)))
+  if ([...FLUTTER_TOPICS].some((t) => mergedTopics.has(t)))
     addScore(scoreMap, 'flutter', 100, 'topic match');
-  if ([...REACT_NATIVE_TOPICS].some((t) => topics.has(t)))
+  if ([...REACT_NATIVE_TOPICS].some((t) => mergedTopics.has(t)))
     addScore(scoreMap, 'reactnative', 100, 'topic match');
-  if ([...NEXT_TOPICS].some((t) => topics.has(t)))
+  if ([...NEXT_TOPICS].some((t) => mergedTopics.has(t)))
     addScore(scoreMap, 'nextdotjs', 100, 'topic match');
 
-  // 2) File signals (cheap, strong)
-  // Flutter
-  const pubspec = await fetchRepoFile(owner, repo.name, 'pubspec.yaml');
-  if (pubspec && isFlutterPubspec(pubspec)) {
+  // File signals
+  if (signals.pubspecText && isFlutterPubspec(signals.pubspecText)) {
     addScore(scoreMap, 'flutter', 90, 'pubspec.yaml indicates Flutter');
   }
 
-  // JS/TS frameworks
-  const packageJson = await fetchRepoFile(owner, repo.name, 'package.json');
-  if (packageJson) {
-    const hits = detectFromPackageJson(packageJson);
+  if (signals.packageJsonText) {
+    const hits = detectFrameworksFromPackageJson(signals.packageJsonText);
     if (hits.includes('reactnative'))
       addScore(scoreMap, 'reactnative', 90, 'package.json deps indicate RN');
     if (hits.includes('nextdotjs'))
       addScore(scoreMap, 'nextdotjs', 90, 'package.json deps indicate Next.js');
   }
 
-  // 3) Language hints (weak, only to help in ambiguous repos)
-  // NOTE: Do not use language to “decide” by itself.
+  // Ecosystems (SBOM 대체) — 프레임워크 결정 “보조” 정도로만 사용
+  const ecosystems = inferEcosystemsFromFiles(signals.rootNames, signals.workflowNames);
+  if (ecosystems.includes('pub')) addScore(scoreMap, 'flutter', 15, 'ecosystem: pub present');
+
+  // Language hints (결정에는 쓰지 않음, tie-break 정도)
+  const languageMap = signals.languages ?? {};
   const primaryLanguage = repo.language?.toLowerCase();
-  const languageMap = languages ?? (repo.languages as Record<string, number> | undefined) ?? {};
-  const hasDart =
-    primaryLanguage === 'dart' || (typeof languageMap.Dart === 'number' && languageMap.Dart > 0);
-  const hasJS = primaryLanguage === 'javascript' || typeof languageMap.JavaScript === 'number';
-  const hasTS = primaryLanguage === 'typescript' || typeof languageMap.TypeScript === 'number';
 
-  if (hasDart) addScore(scoreMap, 'dart', 5, 'language hint: Dart present');
-  if (hasJS) addScore(scoreMap, 'javascript', 1, 'language hint: JavaScript present');
-  if (hasTS) addScore(scoreMap, 'typescript', 1, 'language hint: TypeScript present');
+  const hasDart = primaryLanguage === 'dart' || (languageMap.Dart ?? 0) > 0;
+  const hasJS = primaryLanguage === 'javascript' || (languageMap.JavaScript ?? 0) > 0;
+  const hasTS = primaryLanguage === 'typescript' || (languageMap.TypeScript ?? 0) > 0;
 
-  // 4) SBOM (ecosystems + reinforcement)
-  let ecosystems: Ecosystem[] = [];
-  if (options.includeSbomEcosystems || options.includeSbomSignals) {
-    const sbom = await fetchSbom(owner, repo.name);
-    if (sbom) {
-      ecosystems = Array.from(parseEcosystemsFromSbom(sbom));
-
-      if (options.includeSbomSignals) {
-        if (sbomHasNpmPackage(sbom, 'next'))
-          addScore(scoreMap, 'nextdotjs', 60, 'SBOM has npm:next');
-        if (sbomHasNpmPackage(sbom, 'react-native') || sbomHasNpmPackage(sbom, 'expo')) {
-          addScore(scoreMap, 'reactnative', 60, 'SBOM has npm:react-native/expo');
-        }
-
-        // Flutter: SBOM might only show pub packages; keep it weak (real Flutter signal is pubspec)
-        if (ecosystems.includes('pub'))
-          addScore(scoreMap, 'dart', 10, 'SBOM includes pub ecosystem');
-      }
-    }
+  if (hasDart) addScore(scoreMap, 'flutter', 5, 'language hint: Dart present');
+  if (hasJS || hasTS) {
+    addScore(scoreMap, 'nextdotjs', 2, 'language hint: JS/TS present');
+    addScore(scoreMap, 'reactnative', 2, 'language hint: JS/TS present');
   }
 
   const framework_candidates: Candidate[] = Array.from(scoreMap.entries())
-    .map(([slug, v]) => ({
-      slug,
-      name: BRAND_BY_SLUG[slug],
-      score: v.score,
-      reasons: v.reasons,
-    }))
+    .map(([key, v]) => {
+      const slug = key as unknown as FrameworkSlug;
+      const name = BRAND_BY_KEY[slug];
+      return {
+        slug,
+        name,
+        score: v.score,
+        reasons: v.reasons,
+      };
+    })
     .sort((a, b) => b.score - a.score);
 
   const top = framework_candidates[0];
@@ -369,23 +482,18 @@ async function detectFrameworkRich(
 
 function detectFrameworkFromTopicsOnly(topics?: string[]): FrameworkBrand | undefined {
   if (!topics?.length) return undefined;
-
   const normalized = normalizeTopics(topics);
 
-  for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter';
-  for (const t of REACT_NATIVE_TOPICS) if (normalized.has(t)) return 'React Native';
-  for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js';
+  for (const t of FLUTTER_TOPICS) if (normalized.has(t)) return 'Flutter' as FrameworkBrand;
+  for (const t of REACT_NATIVE_TOPICS)
+    if (normalized.has(t)) return 'React Native' as FrameworkBrand;
+  for (const t of NEXT_TOPICS) if (normalized.has(t)) return 'Next.js' as FrameworkBrand;
 
   return undefined;
 }
 
 // ---------- Repo shaping / filtering ----------
 
-/**
- * @description 리포지토리 데이터에서 특정 속성을 재귀적으로 필터링.
- * @param repo - 키가 문자열이고 값이 모든 유형일 수 있는 키-값 쌍이 포함.
- * @returns 필터링된 리포지토리 객체.
- */
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 export function reclusiveFilter(repo: { [x: string]: any }): Repository {
   Object.entries(repo).forEach(([key, value]) => {
@@ -394,7 +502,6 @@ export function reclusiveFilter(repo: { [x: string]: any }): Repository {
       return;
     }
 
-    // Preserve arrays as-is (your previous version accidentally recursed into arrays)
     if (Array.isArray(value)) {
       repo[key] = value;
       return;
@@ -402,14 +509,12 @@ export function reclusiveFilter(repo: { [x: string]: any }): Repository {
 
     switch (typeof value) {
       case 'string': {
-        // remove noisy/unstable fields
         if (value.endsWith('.git')) delete repo[key];
         else if (value.includes('{')) delete repo[key];
         else repo[key] = value;
         break;
       }
       case 'object': {
-        // Keep topics as-is (already array, handled above, but safe)
         if (key === 'topics') {
           repo[key] = value;
           return;
@@ -429,10 +534,8 @@ export function reclusiveFilter(repo: { [x: string]: any }): Repository {
 
 /**
  * @description topics 기반으로만 framework를 보강 (파일/네트워크 없이)
- * - 정적 JSON을 읽을 때 쓰기 좋음
  */
 function applyFrameworkFromTopics(repo: Repository): Repository {
-  // If already set, do nothing.
   if (repo.framework) return repo;
 
   const framework = detectFrameworkFromTopicsOnly(repo.topics);
@@ -441,43 +544,39 @@ function applyFrameworkFromTopics(repo: Repository): Repository {
   return { ...repo, framework } as Repository;
 }
 
-async function enrichRepository(
-  repo: Repository,
-  languages?: Record<string, number>,
-): Promise<Repository> {
-  // If already enriched, skip
+async function enrichRepository(repo: Repository): Promise<Repository> {
   if (repo.framework) return repo;
 
-  try {
-    const result = await detectFrameworkRich(repo, languages);
+  const owner = repo.owner?.login;
+  if (!owner) return repo;
 
-    // Store explainable metadata too (even if framework is undefined).
+  try {
+    const signals = await fetchRepoSignals(owner, repo.name);
+    const result = await detectFrameworkRich(repo, signals);
+
+    // sanitize api.github urls if present (shallow; keep behavior)
     const copy = Object(repo);
     Object.entries(copy).forEach(([key, value]) => {
-      if (typeof value === 'string' && value.includes('api.github')) {
-        delete copy[key];
-      }
-      if (typeof value === 'object') {
+      if (typeof value === 'string' && value.includes('api.github')) delete copy[key];
+      if (typeof value === 'object' && value) {
         const inner = Object(value);
         Object.entries(inner).forEach(([k, v]) => {
-          if (typeof v === 'string' && v.includes('api.github')) {
-            delete inner[k];
-          }
-          return;
+          if (typeof v === 'string' && v.includes('api.github')) delete inner[k];
         });
         copy[key] = inner;
       }
-      return;
     });
+
     const enriched = {
       ...copy,
       framework: result.framework,
       framework_slug: result.framework_slug,
       framework_candidates: result.framework_candidates,
       ecosystems: result.ecosystems,
+      // GraphQL에서 뽑은 languages는 저장해두면 이후 작업에 유용함
+      languages: signals.languages,
     };
 
-    // Keep output type compatible with your existing Repository interface
     return (result.framework ? enriched : { ...enriched, framework: undefined }) as Repository;
   } catch (error) {
     console.error('Failed to detect framework for repository.', {
@@ -490,9 +589,6 @@ async function enrichRepository(
 
 // ---------- GitHub fetch exports ----------
 
-/**
- * @description 깃허브 API 통해 사용자 계정에서 리포지토리를 가져와 특정 기준에 따라 필터링하고 필터링된 리포지토리를 반환.
- */
 export async function fetchRepositories(): Promise<Repository[]> {
   const EP_REPOS: keyof Endpoints = 'GET /user/repos';
 
@@ -510,8 +606,6 @@ export async function fetchRepositories(): Promise<Repository[]> {
     .filter((R) => !R.fork && R.size > 4000 && !R.archived)
     .map((repo) => reclusiveFilter(repo));
 
-  // NOTE: Don't enrich here; downloadJSON already enriches with languages.
-  // Doing it twice just burns API calls.
   return sortRepositoriesDefault(filtered);
 }
 
@@ -539,9 +633,6 @@ export async function fetchStarredRepository(): Promise<void> {
   });
 }
 
-/**
- * @description 깃허브 유저 및 repo 매개변수를 사용하여 리포지토리를 가져오고 가져온 데이터에 필터를 적용.
- */
 export async function fetchRepository(owner: string, repo: string): Promise<Repository> {
   const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
 
@@ -550,34 +641,20 @@ export async function fetchRepository(owner: string, repo: string): Promise<Repo
     .then((value) => value.data)
     .then((r) => reclusiveFilter(r));
 
-  // languages_url fetch (optional but helps)
-  const languages = filtered.languages_url
-    ? await octokit
-        .request({ url: filtered.languages_url, headers: DEFAULT_HEADERS })
-        .then((res) => res.data)
-    : undefined;
-
-  return await enrichRepository({ ...filtered, languages }, languages);
+  return await enrichRepository(filtered);
 }
 
 /**
- * @description 리포지토리를 가져오고 해당 언어를 검색하며 리포지토리 데이터를 정적 폴더에 JSON 파일로 저장.
- * @returns 저장한 repositoryData 배열의 길이.
+ * @description 리포지토리를 가져오고 프레임워크/에코시스템을 추론해 정적 폴더에 JSON으로 저장.
  */
 export async function downloadJSON(): Promise<number> {
   const repositories = await fetchRepositories();
 
-  const repositoryData = await Promise.all(
-    repositories.map(async (repo) => {
-      const languages = repo.languages_url
-        ? await octokit
-            .request({ url: repo.languages_url, headers: DEFAULT_HEADERS })
-            .then((res) => res.data)
-        : undefined;
+  // 동시성 제한 (secondary rate limit 회피)
+  const limit = createLimiter(6);
 
-      // enrich once, with languages
-      return await enrichRepository({ ...repo, languages }, languages);
-    }),
+  const repositoryData = await Promise.all(
+    repositories.map((repo) => limit(() => enrichRepository(repo))),
   );
 
   repositoryData.forEach((json) => {
@@ -600,18 +677,12 @@ function readReposIds(): { params: { repo: string } }[] {
   });
 }
 
-/**
- * @description JSON 파일을 읽고 그 내용을 Repository 객체로 반환.
- */
 export function readData(repo: string): Repository {
   const fullPath = path.join(reposDirectory, `${repo}.json`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   return applyFrameworkFromTopics(JSON.parse(fileContents) as Repository);
 }
 
-/**
- * @description 정적 폴더에 저장된 리포지토리 데이터를 읽고 날짜별로 정렬한 다음 정렬된 데이터를 반환.
- */
 export function readRepositories(): Repository[] {
   const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
   return sortRepositoriesDefault(allReposData);
