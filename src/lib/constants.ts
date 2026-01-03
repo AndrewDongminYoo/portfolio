@@ -6,8 +6,12 @@ export const github = 'https://github.com/AndrewDongminYoo/';
 export const portfolio = 'https://github.com/AndrewDongminYoo/portfolio';
 export const medium = 'https://medium.com/@dongminyu';
 export const linkedin = 'https://www.linkedin.com/in/dongmin-yu-0394a5223/';
-export const description =
-  '더 똑똑한 기술을 만들기 위해 끊임없이 실험하고 개선하는 개발자입니다. Flutter와 React Native 기반의 크로스플랫폼 앱, IoT 디바이스 연동, 데이터 시각화 기능을 설계/구현해왔습니다. 빠르게 시도하고, 사용자 피드백을 반영해 개선하는 루틴이 저의 성장 방식입니다.';
+export const description = `3년차 크로스플랫폼 모바일 개발자로서 Flutter 기반 iOS/Android 앱을 기획–개발–배포–운영까지 책임져 왔습니다. 인증/딥링크/푸시/결제 같은 핵심 기능을 안정적으로 연결하고, 로그·지표를 기반으로 UX를 개선해 이탈 요인을 줄이는 일을 가장 중요하게 생각합니다.
+
+스타트업 환경에서 요구사항이 바뀌는 상황에서도 우선순위를 정해 빠르게 출시하고, 이후 데이터와 사용자 피드백으로 반복 개선하는 방식에 익숙합니다. 동시에 팀이 흔들리지 않도록 문서와 컨벤션, 자동화로 개발 흐름을 정리해 같은 품질을 지속적으로 낼 수 있는 구조를 만드는 데 강점이 있습니다.
+
+최근에는 생성형 AI를 “도구”가 아니라 업무를 분해하고 검증하는 프로세스에 통합해, 반복 작업은 병렬화하고 핵심 변경은 제약된 환경에서 단계별 검증으로 진행합니다. 속도와 품질을 동시에 지키면서, 결과를 팀에 공유해 전체 생산성을 올리는 개발자입니다.
+`;
 export const homepage = 'https://andrewdongminyoo.vercel.app/';
 export const keywords = ['크로스플랫폼 개발자', '앱 개발자', '플러터 개발자', 'Flutter 개발자'];
 export const stacks = {

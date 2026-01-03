@@ -14,7 +14,15 @@ export default function ProfileBio() {
           return <ContactBadge contact={contact} key={`${i}-${contact.type}`} />;
         })}
       </ul>
-      <p className='mt-4 text-base leading-6'>{description}</p>
+      {description.split('\n').length > 1 ? (
+        description.split('\n').map((paragraph, i) => (
+          <p className='mt-4 text-base leading-6' key={`description-${i}`}>
+            {paragraph}
+          </p>
+        ))
+      ) : (
+        <></>
+      )}
     </section>
   );
 }
