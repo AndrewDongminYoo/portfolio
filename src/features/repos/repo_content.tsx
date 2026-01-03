@@ -3,7 +3,6 @@
 import Link from 'next/link';
 
 import LanguageButton from '@/features/repos/lang_btn';
-import type Language from '@/features/repos/lang_colors';
 import LanguageStateBar from '@/features/repos/langs_bar';
 import RepoCard from '@/features/repos/repo_card';
 import type Repository from '@/interface/repos';
@@ -15,10 +14,7 @@ interface RepoProps {
 export default function RepoContent({ repository }: RepoProps) {
   const { full_name, html_url, languages } = repository;
   const includeStatic = Object.entries(languages);
-  const excludeStatic = includeStatic.filter(([lang]) => lang !== 'HTML' && lang !== 'CSS') as [
-    Language,
-    number,
-  ][];
+  const excludeStatic = includeStatic.filter(([lang]) => lang !== 'HTML' && lang !== 'CSS');
   const totalCount = excludeStatic.reduce((pre, cur) => pre + cur[1], 0);
 
   return (

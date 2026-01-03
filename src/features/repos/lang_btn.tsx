@@ -2,18 +2,18 @@
 
 import Link from 'next/link';
 
-import Language, { langColors } from './lang_colors';
+import { getSimpleIcon } from './simple_icons';
 
 export default function LanguageButton({
   language,
   percent,
   index,
 }: {
-  language: Language;
+  language: string;
   percent: number;
   index: number;
 }) {
-  const backgroundColor = langColors[language] as string;
+  const backgroundColor = getSimpleIcon(language)?.color ?? '#999999';
   const myRepoLanguage = `https://github.com/AndrewDongminYoo?tab=repositories&language=${language}`;
   const trendingOfLang = `https://github.com/topics/${language}`;
   const style = { backgroundColor };

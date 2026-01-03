@@ -5,32 +5,37 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { CopyToClipboard } from '@/features/repos/copy_to_clipboard';
-import { langColors } from '@/features/repos/lang_colors';
 import type Repository from '@/interface/repos';
 import { username } from '@/lib/constants';
 
-import languageIcons from './lang_icons';
+import { getSimpleIcon } from './simple_icons';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
-  const iconUrl = languageIcons[repository.language];
-  const iconColor = langColors[repository.language] ?? '#999999';
+  const icon = getSimpleIcon(repository.language);
+  const iconUrl = icon?.url;
+  const iconColor = icon?.color ?? '#999999';
+  const iconStyle = {
+    backgroundColor: iconColor,
+    ...(iconUrl
+      ? {
+          WebkitMaskImage: `url(${iconUrl})`,
+          maskImage: `url(${iconUrl})`,
+          WebkitMaskRepeat: 'no-repeat',
+          maskRepeat: 'no-repeat',
+          WebkitMaskPosition: 'center',
+          maskPosition: 'center',
+          WebkitMaskSize: 'contain',
+          maskSize: 'contain',
+        }
+      : {}),
+  };
   return (
     <div className='flex min-h-[17rem] flex-row overflow-hidden px-2 max-md:w-80 md:px-6'>
       <Link href={repository.html_url} className='hidden md:flex'>
         <span
           aria-hidden='true'
           className='-mx-4 hidden h-[256px] w-[256px] rounded-t rounded-l opacity-25 md:mx-0 md:flex md:max-w-10 lg:max-w-24 lg:min-w-20'
-          style={{
-            backgroundColor: iconColor,
-            WebkitMaskImage: `url(${iconUrl})`,
-            maskImage: `url(${iconUrl})`,
-            WebkitMaskRepeat: 'no-repeat',
-            maskRepeat: 'no-repeat',
-            WebkitMaskPosition: 'center',
-            maskPosition: 'center',
-            WebkitMaskSize: 'contain',
-            maskSize: 'contain',
-          }}
+          style={iconStyle}
         />
       </Link>
       <div className='bg-background flex w-full min-w-[20.625rem] flex-col justify-between px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-r lg:rounded-b-none'>

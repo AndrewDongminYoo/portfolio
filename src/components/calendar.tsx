@@ -9,8 +9,7 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
-import { langColors } from '@/features/repos/lang_colors';
-import languageIcons from '@/features/repos/lang_icons';
+import { getSimpleIcon } from '@/features/repos/simple_icons';
 import { username } from '@/lib/constants';
 
 const MOBILE_QUERY = '(max-width: 767px)';
@@ -85,7 +84,7 @@ const hexToRgba = (hex: string, alpha: number) => {
 const getRepoAccentStyle = (repo: ContributionRepo) => {
   const language = repo.language;
   if (!language) return undefined;
-  const color = langColors[language] ?? '#00000000';
+  const color = getSimpleIcon(language)?.color ?? '#00000000';
   if (!color) return undefined;
   const line = hexToRgba(color, 0.5);
   if (!line) return undefined;
@@ -97,9 +96,10 @@ const getRepoAccentStyle = (repo: ContributionRepo) => {
 const getRepoIconStyle = (repo: ContributionRepo) => {
   const language = repo.language;
   if (!language) return undefined;
-  const color = langColors[language] ?? '#00000000';
-  if (!color) return undefined;
-  const iconUrl = languageIcons[language];
+  const icon = getSimpleIcon(language);
+  if (!icon?.color || !icon?.url) return undefined;
+  const color = icon.color;
+  const iconUrl = icon.url;
   if (!iconUrl) return undefined;
   return {
     backgroundColor: color,

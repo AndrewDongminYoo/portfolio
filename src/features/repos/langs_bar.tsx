@@ -1,12 +1,12 @@
 'use client';
 
-import Language, { langColors } from './lang_colors';
+import { getSimpleIcon } from './simple_icons';
 
 export default function LanguageStateBar({
   languages,
   totalCount,
 }: {
-  languages: [Language, number][];
+  languages: [string, number][];
   totalCount: number;
 }) {
   return (
@@ -26,8 +26,8 @@ export default function LanguageStateBar({
   );
 }
 
-function LanguageBarPart({ language, percent }: { language: Language; percent: number }) {
-  const backgroundColor = langColors[language] as string;
+function LanguageBarPart({ language, percent }: { language: string; percent: number }) {
+  const backgroundColor = getSimpleIcon(language)?.color ?? '#999999';
   const width = percent.toFixed(1) + '%';
   return (
     <span
