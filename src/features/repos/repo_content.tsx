@@ -6,16 +6,8 @@ import { useMemo } from 'react';
 import LanguageButton from '@/features/repos/lang_btn';
 import LanguageStateBar from '@/features/repos/langs_bar';
 import RepoCard from '@/features/repos/repo_card';
-import { LanguageMeta, LanguageType } from '@/interface/language';
+import { isProgrammingLanguage } from '@/features/repos/specs';
 import type Repository from '@/interface/repos';
-
-import languagesData from '../../../public/languages.json';
-
-const languagesMeta = languagesData as Record<string, LanguageMeta>;
-
-function isProgrammingLanguage(language: string): boolean {
-  return languagesMeta[language]?.type === ('programming' satisfies LanguageType);
-}
 
 interface RepoProps {
   repository: Repository;
