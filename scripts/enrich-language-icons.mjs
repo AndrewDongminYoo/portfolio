@@ -17,11 +17,13 @@ const normalize = (s) =>
 
 // 수동 매핑이 필요한 것들
 const OVERRIDE_SLUG = {
-  'C++': 'cplusplus',
-  'Common Lisp': 'commonlisp',
-  'Common Workflow Language': 'commonworkflowlanguage',
-  'F#': 'fsharp',
-  'Wolfram Language': 'wolframlanguage',
+  'c++': 'cplusplus',
+  'c#': 'csharp',
+  'f#': 'fsharp',
+  'objective c': 'objectivec',
+  'wolfram language': 'wolframlanguage',
+  'common lisp': 'commonlisp',
+  'common workflow language': 'commonworkflowlanguage',
 };
 
 function buildIconIndex() {

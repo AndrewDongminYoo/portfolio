@@ -84,27 +84,31 @@ const hexToRgba = (hex: string, alpha: number) => {
 const getRepoAccentStyle = (repo: ContributionRepo) => {
   const language = repo.language;
   if (!language) return undefined;
-  const color = getSimpleIcon(language)?.color ?? '#00000000';
+
+  const icon = getSimpleIcon(language);
+  const color = icon?.color; // ✅ '#RRGGBB' only
   if (!color) return undefined;
+
   const line = hexToRgba(color, 0.5);
   if (!line) return undefined;
-  return {
-    boxShadow: `inset -3px 0 0 0 ${line}`,
-  } as CSSProperties;
+
+  return { boxShadow: `inset -3px 0 0 0 ${line}` } as CSSProperties;
 };
 
 const getRepoIconStyle = (repo: ContributionRepo) => {
   const language = repo.language;
   if (!language) return undefined;
+
   const icon = getSimpleIcon(language);
-  if (!icon?.color || !icon?.url) return undefined;
-  const color = icon.color;
-  const iconUrl = icon.url;
-  if (!iconUrl) return undefined;
+  if (!icon?.color) return undefined;
+
+  // 아이콘 URL 없으면 색상만이라도 보여주고 싶다면 여기서 fallback 가능
+  if (!icon.url) return { backgroundColor: icon.color } as CSSProperties;
+
   return {
-    backgroundColor: color,
-    WebkitMaskImage: `url(${iconUrl})`,
-    maskImage: `url(${iconUrl})`,
+    backgroundColor: icon.color,
+    WebkitMaskImage: `url(${icon.url})`,
+    maskImage: `url(${icon.url})`,
     WebkitMaskRepeat: 'no-repeat',
     maskRepeat: 'no-repeat',
     WebkitMaskPosition: 'center',
