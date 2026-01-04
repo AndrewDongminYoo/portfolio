@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/insights/refresh?token=$INSIGHTS_REFRESH_TOKEN",
+      "path": "/api/insights/refresh",
       "schedule": "0 0 * * *"
     }
   ]
