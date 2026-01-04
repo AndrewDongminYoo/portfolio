@@ -1,7 +1,7 @@
 ---
 project_name: 'portfolio'
 user_name: 'Dongminyu'
-date: '2026-01-04T11:35:41+09:00'
+date: '2026-01-04T11:45:07+09:00'
 sections_completed:
   [
     'technology_stack',
@@ -60,9 +60,9 @@ _This file contains critical rules and patterns that AI agents must follow when 
 ### Testing Rules
 
 - Use Vitest + React Testing Library for unit/component tests (jsdom).
-- Test files live under `src/**` as `*.test.ts`/`*.test.tsx`.
+- Tests live under `src/test/**` as `*.test.ts`/`*.test.tsx`.
 - `src/test/setup.ts` registers `@testing-library/jest-dom` matchers.
-- Run via `yarn test` (CI) or `yarn test:watch` (local).
+- Run via `yarn test` (CI), `yarn test:watch` (local), or `yarn test:coverage` for coverage.
 
 ### Code Quality & Style Rules
 
@@ -105,4 +105,4 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - Update when the technology stack or patterns change.
 - Review periodically and remove outdated rules.
 
-Last Updated: 2026-01-04T11:35:41+09:00
+Last Updated: 2026-01-04T11:45:07+09:00
