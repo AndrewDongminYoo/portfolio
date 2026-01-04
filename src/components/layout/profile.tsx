@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { contacts, description, primaryTitle } from '@/lib/constants';
+import { contacts, description, languages, primaryTitle } from '@/lib/constants';
 
 export default function ProfileBio() {
   return (
@@ -12,6 +12,16 @@ export default function ProfileBio() {
       <ul className='my-0 list-none px-0 py-0'>
         {contacts.map((contact, i) => {
           return <ContactBadge contact={contact} key={`${i}-${contact.type}`} />;
+        })}
+      </ul>
+      <div className='mt-4 text-sm leading-normal font-medium'>언어</div>
+      <ul className='mt-1 mb-4 list-none px-0 py-0 text-sm leading-relaxed text-slate-700'>
+        {languages.map((language, i) => {
+          return (
+            <li key={`${i}-${language.name}`}>
+              {language.name} · {language.level}
+            </li>
+          );
         })}
       </ul>
       {description.split('\n').length > 1 ? (
