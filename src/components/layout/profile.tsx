@@ -50,7 +50,7 @@ const ContactBadge = ({ contact }: { contact: { type: string; link: string; imag
         <Image
           alt={`${type}:${hostname}${pathname}${search}`}
           src={contact.image}
-          width={245.25}
+          width={245}
           height={28}
         />
       </Link>

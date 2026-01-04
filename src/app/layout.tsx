@@ -1,5 +1,6 @@
 import '../globals.css';
 
+import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ko } from 'date-fns/locale/ko';
 import { Metadata, Viewport } from 'next';
@@ -91,6 +92,7 @@ export default function RootLayout({
       </head>
       <body className='font-sans antialiased'>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
