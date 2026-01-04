@@ -26,7 +26,7 @@
 - [x] Confirm data sources and scope (GSC only, Vercel Analytics optional).
 - [x] Define the metrics, dimensions, and time windows to display.
 - [x] Decide auth strategy for GSC (service account).
-- [x] Decide storage (Vercel KV) and retention policy.
+- [x] Decide storage (Redis) and retention policy.
 - [x] Outline `/insights` access control method (secret token).
 
 ## Phase 2 - Data Ingestion (GSC)
