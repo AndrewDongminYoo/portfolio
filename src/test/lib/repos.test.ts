@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const readFileSync = vi.fn();
 const readdirSync = vi.fn();
 const writeFile = vi.fn();
+const octokitRequest = vi.fn();
 
 vi.mock('node:fs', () => ({
   default: {
@@ -15,9 +16,7 @@ vi.mock('node:fs', () => ({
 
 vi.mock('@octokit/core', () => ({
   Octokit: class MockOctokit {
-    request() {
-      return Promise.resolve({ data: {} });
-    }
+    request = octokitRequest;
   },
 }));
 
@@ -44,6 +43,7 @@ beforeEach(() => {
   readFileSync.mockReset();
   readdirSync.mockReset();
   writeFile.mockReset();
+  octokitRequest.mockReset();
   process.env.GITHUB_TOKEN = 'test-token';
 });
 
@@ -88,6 +88,61 @@ describe('repos helpers', () => {
     const result = readRepositories();
     expect(result[0].name).toBe('high');
     expect(result[1].name).toBe('low');
+  });
+
+  it('fills descriptive slug from language when topics are missing', async () => {
+    readFileSync.mockReturnValueOnce(
+      JSON.stringify({
+        ...baseRepo,
+        topics: undefined,
+        language: 'Dart',
+        languages: { Dart: 100 },
+      }),
+    );
+
+    const { readData } = await import('@/lib/repos');
+
+    const result = readData('repo');
+    expect(result.framework).toBeNull();
+    expect(result.descriptive_slug).toBe('dart');
+  });
+
+  it('fetches repositories with filters and sorting', async () => {
+    const makeRaw = (overrides: Record<string, unknown>) => ({
+      node_id: 'node',
+      name: 'repo',
+      full_name: 'owner/repo',
+      private: false,
+      owner: { login: 'owner', avatar_url: '' },
+      html_url: 'https://example.com',
+      description: 'desc',
+      languages_url: 'https://example.com/lang',
+      pushed_at: '2024-01-01T00:00:00Z',
+      size: 5000,
+      stargazers_count: 0,
+      watchers_count: 0,
+      language: 'Dart',
+      forks_count: 0,
+      topics: [],
+      fork: false,
+      archived: false,
+      ...overrides,
+    });
+
+    octokitRequest.mockResolvedValueOnce({
+      data: [
+        makeRaw({ name: 'small', size: 10 }),
+        makeRaw({ name: 'forked', fork: true, stargazers_count: 50 }),
+        makeRaw({ name: 'archived', archived: true, stargazers_count: 40 }),
+        makeRaw({ name: 'popular', stargazers_count: 12, watchers_count: 5, forks_count: 2 }),
+        makeRaw({ name: 'less', stargazers_count: 1, watchers_count: 0, forks_count: 0 }),
+      ],
+    });
+
+    const { fetchRepositories } = await import('@/lib/repos');
+
+    const result = await fetchRepositories({ minSizeKb: 100, includeForks: false });
+    expect(result.map((repo) => repo.name)).toEqual(['popular', 'less']);
   });
 
   it('limits concurrent tasks with createLimiter', async () => {
