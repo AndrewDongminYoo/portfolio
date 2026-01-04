@@ -84,4 +84,35 @@ describe('repo-sort', () => {
     expect(sorted[1].node_id).toBe('pinned-a');
     expect(sorted[2].node_id).toBe('other');
   });
+
+  it('keeps order when pushed_at is equal', () => {
+    const sameA = makeRepo({ node_id: 'same-a', pushed_at: '2024-02-01T00:00:00Z' });
+    const sameB = makeRepo({ node_id: 'same-b', pushed_at: '2024-02-01T00:00:00Z' });
+
+    const sorted = sortRepositoriesByPushedAt([sameA, sameB]);
+
+    expect(sorted).toHaveLength(2);
+  });
+
+  it('sorts pinned by score when scores differ', () => {
+    const higher = makeRepo({
+      node_id: 'higher',
+      stargazers_count: 4,
+      watchers_count: 2,
+      forks_count: 1, // score 15
+      pushed_at: '2024-01-01T00:00:00Z',
+    });
+    const lower = makeRepo({
+      node_id: 'lower',
+      stargazers_count: 3,
+      watchers_count: 1,
+      forks_count: 1, // score 12
+      pushed_at: '2024-01-05T00:00:00Z',
+    });
+
+    const sorted = sortRepositoriesDefault([lower, higher]);
+
+    expect(sorted[0].node_id).toBe('higher');
+    expect(sorted[1].node_id).toBe('lower');
+  });
 });

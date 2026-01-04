@@ -29,6 +29,18 @@ module.exports = [
       ...nextPlugin.configs['core-web-vitals'].rules,
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
     },
     languageOptions: {
       globals: {
