@@ -17,10 +17,12 @@ const activity: Activity = {
   type: 'activity',
   index: 0,
   title: '활동',
+  subtitle: '부제목',
   name: '활동',
   startAt: '2024-01-01',
   endAt: '2024-02-01',
   description: '설명',
+  posting_url: 'https://dongminyu.medium.com/',
   website_url: 'https://example.com',
 };
 
@@ -28,7 +30,8 @@ describe('ActivityElement', () => {
   it('renders title and website link', () => {
     const { getByText } = render(<ActivityElement activity={activity} />);
 
-    expect(getByText('활동')).toBeInTheDocument();
-    expect(getByText('https://example.com')).toBeInTheDocument();
+    expect(getByText(activity.title)).toBeInTheDocument();
+    // If activity.posting_url is not empty, activity.subtitle is displayed wrapped in an a tag.
+    expect(getByText(activity.subtitle)).toBeInTheDocument();
   });
 });

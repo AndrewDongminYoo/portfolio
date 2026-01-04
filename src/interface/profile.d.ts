@@ -49,5 +49,8 @@ export type Education = ResumeBase<'education'> & {
 };
 
 export type Activity = ResumeBase<'activity'> & {
+  subtitle: string;
+  youtube_url?: string;
+  posting_url?: string;
   website_url: string;
 };
