@@ -19,6 +19,7 @@ type ResumeBase<type extends string> = {
   startAt: string;
   endAt: string | null;
   icon?: string;
+  icon_url?: string;
   description: string | string[];
 };
 
@@ -49,5 +50,8 @@ export type Education = ResumeBase<'education'> & {
 };
 
 export type Activity = ResumeBase<'activity'> & {
+  subtitle: string;
+  youtube_url?: string;
+  posting_url?: string;
   website_url: string;
 };

@@ -1,5 +1,6 @@
 import { SiGithub, SiGooglechrome } from '@icons-pack/react-simple-icons';
 import { CalendarCheck } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Period from '@/components/period';
@@ -18,6 +19,15 @@ export default function ExperienceElement({ experience }: { experience: Experien
       </div>
       <div className='resume_card_right'>
         <Link className='resume_card_item_label' href={`/posts/${experience.id}`}>
+          {experience.icon_url ? (
+            <Image
+              src={experience.icon_url}
+              alt={`${experience.name} logo`}
+              width={36}
+              height={36}
+              className='mr-3 rounded-md'
+            />
+          ) : null}
           {experience.title}
         </Link>
         <p className='resume_card_item_text'>{experience.role}</p>

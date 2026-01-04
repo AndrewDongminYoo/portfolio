@@ -18,7 +18,7 @@ export default function Index() {
   return (
     <Layout>
       <ResumeSection key={`${0}-timeline`} type='timeline'>
-        <GridTimeline timeline={allPostsData} />
+        <GridTimeline timeline={experience} />
       </ResumeSection>
       <ReactGithubCalendar />
       <ResumeSection key={`${2}-experiences`} type='experiences'>

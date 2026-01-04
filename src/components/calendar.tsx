@@ -9,7 +9,7 @@ import { type CSSProperties, useEffect, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
-import { getSimpleIcon } from '@/features/repos/simple_icons';
+import { getSimpleIcon } from '@/features/repos/simple-icons';
 import { username } from '@/lib/constants';
 
 const MOBILE_QUERY = '(max-width: 767px)';

@@ -6,11 +6,11 @@ import { ReactElement } from 'react';
 
 import Period from '@/components/period';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import type Resume from '@/interface/profile';
+import { type Experience } from '@/interface/profile';
 import { cn } from '@/lib/utils';
 const pixels = 240;
 
-export default function GridTimeline({ timeline }: { timeline: Resume[] }) {
+export default function GridTimeline({ timeline }: { timeline: Experience[] }) {
   const { monthsLabels, makeBlock, column } = getMonthLabels();
   return (
     <div className='flex w-full flex-col items-end justify-start'>
@@ -59,7 +59,7 @@ const getMonthLabels = () => {
   const latest = new Date();
   const oldest = now;
   const pixel = pixels / differenceInDays(latest, oldest);
-  const makeBlock = (action: Resume, index: number) => {
+  const makeBlock = (action: Experience, index: number) => {
     const { type, id, name, startAt, endAt } = action;
     const end = endAt ? parseISO(endAt) : latest;
     const sPoint = Math.round(differenceInDays(parseISO(startAt), oldest) * pixel);

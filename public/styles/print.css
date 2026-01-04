@@ -16,6 +16,11 @@
   display: none;
 }
 
+#timeline + section,
+#contributions + section {
+  margin-top: 0 !important;
+}
+
 *,
 ::after,
 ::before {

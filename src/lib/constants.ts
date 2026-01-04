@@ -51,3 +51,10 @@ export const contacts = [
     image: '/images/contacts/youtube.png',
   },
 ];
+
+export const languages = [
+  {
+    name: 'English',
+    level: 'Business level',
+  },
+];

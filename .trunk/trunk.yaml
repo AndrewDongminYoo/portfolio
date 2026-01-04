@@ -30,6 +30,10 @@ lint:
         - markdownlint
       paths:
         - .serena/memories/*.md
+    - linters:
+        - gitleaks
+      paths:
+        - _bmad/_config/files-manifest.csv
 runtimes:
   enabled:
     - python@3.10.8

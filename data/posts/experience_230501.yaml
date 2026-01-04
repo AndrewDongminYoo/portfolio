@@ -6,6 +6,7 @@ role: '크로스플랫폼 모바일 앱 개발자'
 startAt: '2023-05-01'
 endAt: '2023-10-27'
 website_url: 'https://www.wegooli.com'
+icon_url: '/images/company/wegooli.png'
 tags:
   - 'Flutter'
   - 'React Native'
