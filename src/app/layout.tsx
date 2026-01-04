@@ -1,5 +1,6 @@
 import '../globals.css';
 
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ko } from 'date-fns/locale/ko';
 import { Metadata, Viewport } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
@@ -88,7 +89,10 @@ export default function RootLayout({
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel='stylesheet' href='/styles/print.css' media='print' />
       </head>
-      <body className='font-sans antialiased'>{children}</body>
+      <body className='font-sans antialiased'>
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
