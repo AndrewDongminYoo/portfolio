@@ -6,7 +6,8 @@ role: 'Cross-platform (Flutter) & Full-stack Developer'
 startAt: '2023-11-20'
 endAt: '2026-01-20'
 website_url: 'https://cami.kr/'
-icon_url: '/images/company/camilabs.png'
+icon: '/images/company/camilabs.png'
+appstore_preview: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bb/8b/cf/bb8bcfd5-0a59-1880-ae23-d689e65fa1b4/ios_2688_1.png/157x340bb.webp'
 duration: 26
 tags:
   - 'Flutter'

@@ -20,9 +20,9 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
         <Link
           className='resume_card_item_label'
           href={activity.website_url ?? `/posts/${activity.id}`}>
-          {activity.icon_url ? (
+          {activity.icon ? (
             <Image
-              src={activity.icon_url}
+              src={activity.icon}
               alt={`${activity.name} logo`}
               width={40}
               height={40}

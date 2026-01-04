@@ -6,7 +6,8 @@ role: 'React Native 개발자'
 startAt: '2023-01-25'
 endAt: '2023-04-30'
 website_url: 'https://gcoo.io/kr'
-icon_url: '/images/company/gbike.png'
+icon: '/images/company/gbike.png'
+appstore_preview: 'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/34/c3/cb/34c3cb5c-7503-1ce7-349e-f3be92b0989d/KR_1242X2688_2.jpg/157x340bb.webp'
 duration: 3
 tags:
   - 'React Native'

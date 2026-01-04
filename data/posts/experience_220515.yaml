@@ -6,7 +6,8 @@ role: '백엔드/모바일 개발자'
 startAt: '2022-05-15'
 endAt: '2022-11-15'
 website_url: 'https://bside.ai/'
-icon_url: '/images/company/bside.png'
+icon: '/images/company/bside.png'
+appstore_preview: 'https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/24/d2/ea/24d2ea17-8fe3-5c7c-0fa7-5c50d87cf5dd/d49792a3-5f59-40cb-95a6-5a1f14d065e8_1.png/157x340bb.webp'
 duration: 7
 tags:
   - 'Flutter'

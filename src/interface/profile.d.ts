@@ -19,7 +19,7 @@ type ResumeBase<type extends string> = {
   startAt: string;
   endAt: string | null;
   icon?: string;
-  icon_url?: string;
+  appstore_preview?: string;
   description: string | string[];
 };
 

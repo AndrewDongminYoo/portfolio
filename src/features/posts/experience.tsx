@@ -19,9 +19,9 @@ export default function ExperienceElement({ experience }: { experience: Experien
       </div>
       <div className='resume_card_right'>
         <Link className='resume_card_item_label' href={`/posts/${experience.id}`}>
-          {experience.icon_url ? (
+          {experience.icon ? (
             <Image
-              src={experience.icon_url}
+              src={experience.icon}
               alt={`${experience.name} logo`}
               width={36}
               height={36}
