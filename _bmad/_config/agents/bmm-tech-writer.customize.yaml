@@ -4,7 +4,7 @@
 # Override agent name
 agent:
   metadata:
-    name: ''
+    name: Dongminyu Portfolio Tech Writer
 
 # Replace entire persona (not merged)
 persona:
@@ -14,10 +14,21 @@ persona:
   principles: []
 
 # Add custom critical actions (appended after standard config loading)
-critical_actions: []
+critical_actions:
+  - Follow repository guidelines in AGENTS.md (structure, scripts, style).
+  - Prefer Yarn commands; avoid npm/pnpm unless explicitly requested.
+  - Preserve bilingual EN/KO content when editing existing copy.
 
 # Add persistent memories for the agent
-memories: []
+memories:
+  - 'Docs: documentation output language is English by default; preserve bilingual README sections.'
+  - 'Project: personal resume + portfolio site (Next.js App Router + TypeScript) with SEO focus and a printable resume page.'
+  - 'Structure: src/app (App Router), src/components/features/hooks/lib; src/globals.css for Tailwind; assets in public/, assets/, data/; utilities in scripts/.'
+  - 'Scripts: yarn dev/build/start/lint/format/check-type/update:png/update:pdf.'
+  - 'Style: 2-space indentation; Prettier single quotes, semicolons, width 100; ESLint in eslint.config.js.'
+  - 'Naming: kebab-case folders, PascalCase components.'
+  - 'Testing: no formal test framework; if tests are added, document and add a matching script.'
+  - 'Config: copy .env.sample to .env for local; keep secrets in environment variables.'
 # Example:
 # memories:
 #   - "User prefers detailed technical explanations"
