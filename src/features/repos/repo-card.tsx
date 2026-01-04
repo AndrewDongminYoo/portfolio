@@ -4,11 +4,11 @@ import { Code, Eye, GitFork, Lock, LockOpen, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { CopyToClipboard } from '@/features/repos/copy_to_clipboard';
+import { CopyToClipboard } from '@/features/repos/copy-to-clipboard';
 import type Repository from '@/interface/repos';
 import { username } from '@/lib/constants';
 
-import { getSimpleIcon } from './simple_icons';
+import { getSimpleIcon } from './simple-icons';
 
 export default function RepoCard({ repository }: { repository: Repository }) {
   const icon = getSimpleIcon(repository.language);

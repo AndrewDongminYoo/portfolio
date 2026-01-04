@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
-vi.mock('@/features/repos/repo_content', () => ({
+vi.mock('@/features/repos/repo-content', () => ({
   default: ({ repository }: { repository: { name: string } }) => (
     <div data-testid='repo-item'>{repository.name}</div>
   ),
@@ -15,7 +15,7 @@ vi.mock('@/components/ui/select', () => ({
   SelectValue: ({ children }: { children?: React.ReactNode }) => <div>{children}</div>,
 }));
 
-import RepoList from '@/features/repos/repo_list';
+import RepoList from '@/features/repos/repo-list';
 import type Repository from '@/interface/repos';
 
 const baseRepo: Repository = {

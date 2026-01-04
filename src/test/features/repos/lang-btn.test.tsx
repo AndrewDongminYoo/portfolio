@@ -12,11 +12,11 @@ vi.mock('next/link', () => ({
   ),
 }));
 
-vi.mock('@/features/repos/simple_icons', () => ({
+vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: (language: string) => getSimpleIcon(language),
 }));
 
-import LanguageButton from '@/features/repos/lang_btn';
+import LanguageButton from '@/features/repos/lang-btn';
 
 describe('LanguageButton', () => {
   it('links to my repositories for the top language', () => {

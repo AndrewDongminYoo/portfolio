@@ -1,6 +1,6 @@
 'use client';
 
-import { getSimpleIcon } from './simple_icons';
+import { getSimpleIcon } from './simple-icons';
 
 export default function LanguageStateBar({
   languages,

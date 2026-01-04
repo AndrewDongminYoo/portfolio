@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import { getSimpleIcon } from './simple_icons';
+import { getSimpleIcon } from './simple-icons';
 
 export default function LanguageButton({
   language,

@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 
-import RepoContent from '@/features/repos/repo_content';
+import RepoContent from '@/features/repos/repo-content';
 import { readData } from '@/lib/repos';
 
 interface RepoPageProps {

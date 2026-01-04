@@ -16,7 +16,7 @@ vi.mock('next/image', () => ({
   ),
 }));
 
-vi.mock('@/features/repos/copy_to_clipboard', () => ({
+vi.mock('@/features/repos/copy-to-clipboard', () => ({
   CopyToClipboard: ({ value, children }: { value: string; children: React.ReactNode }) => (
     <div data-testid='copy' data-value={value}>
       {children}
@@ -24,11 +24,11 @@ vi.mock('@/features/repos/copy_to_clipboard', () => ({
   ),
 }));
 
-vi.mock('@/features/repos/simple_icons', () => ({
+vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: () => ({ color: '#112233', url: 'https://example.com/icon.svg' }),
 }));
 
-import RepoCard from '@/features/repos/repo_card';
+import RepoCard from '@/features/repos/repo-card';
 import type Repository from '@/interface/repos';
 import { username } from '@/lib/constants';
 

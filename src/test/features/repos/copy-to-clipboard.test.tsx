@@ -6,7 +6,7 @@ vi.mock('@headlessui/react', () => ({
     show ? <div>{children}</div> : null,
 }));
 
-import { CopyToClipboard } from '@/features/repos/copy_to_clipboard';
+import { CopyToClipboard } from '@/features/repos/copy-to-clipboard';
 
 describe('CopyToClipboard', () => {
   it('writes to clipboard and shows copied message', async () => {

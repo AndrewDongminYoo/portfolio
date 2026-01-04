@@ -3,11 +3,11 @@ import { describe, expect, it, vi } from 'vitest';
 
 const getSimpleIcon = vi.fn();
 
-vi.mock('@/features/repos/simple_icons', () => ({
+vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: (language: string) => getSimpleIcon(language),
 }));
 
-import LanguageStateBar from '@/features/repos/langs_bar';
+import LanguageStateBar from '@/features/repos/langs-bar';
 
 describe('LanguageStateBar', () => {
   it('renders a bar part for each language with width and color', () => {

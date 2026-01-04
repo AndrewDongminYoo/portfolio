@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useMemo } from 'react';
 
-import LanguageButton from '@/features/repos/lang_btn';
-import LanguageStateBar from '@/features/repos/langs_bar';
-import RepoCard from '@/features/repos/repo_card';
+import LanguageButton from '@/features/repos/lang-btn';
+import LanguageStateBar from '@/features/repos/langs-bar';
+import RepoCard from '@/features/repos/repo-card';
 import { isProgrammingLanguage } from '@/features/repos/specs';
 import type Repository from '@/interface/repos';
 

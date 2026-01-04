@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import RepoContent from '@/features/repos/repo_content';
+import RepoContent from '@/features/repos/repo-content';
 import type Repository from '@/interface/repos';
 import {
   type RepoSortMode,

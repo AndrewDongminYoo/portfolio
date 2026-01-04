@@ -13,15 +13,15 @@ vi.mock('@/features/repos/specs', () => ({
   isProgrammingLanguage: (name: string) => name !== 'Markdown',
 }));
 
-vi.mock('@/features/repos/simple_icons', () => ({
+vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: () => ({ color: '#112233' }),
 }));
 
-vi.mock('@/features/repos/repo_card', () => ({
+vi.mock('@/features/repos/repo-card', () => ({
   default: () => <div data-testid='repo-card' />,
 }));
 
-import RepoContent from '@/features/repos/repo_content';
+import RepoContent from '@/features/repos/repo-content';
 import type Repository from '@/interface/repos';
 
 const baseRepo: Repository = {

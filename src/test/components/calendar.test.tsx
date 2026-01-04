@@ -157,7 +157,7 @@ vi.mock('react-github-calendar', () => ({
   },
 }));
 
-vi.mock('@/features/repos/simple_icons', () => ({
+vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: vi.fn(() => ({ color: '#112233', url: '' })),
 }));
 
