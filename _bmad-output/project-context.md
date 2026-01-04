@@ -1,7 +1,7 @@
 ---
 project_name: 'portfolio'
 user_name: 'Dongminyu'
-date: '2026-01-04T11:28:34+09:00'
+date: '2026-01-04T11:35:41+09:00'
 sections_completed:
   [
     'technology_stack',
@@ -14,7 +14,7 @@ sections_completed:
   ]
 existing_patterns_found: 7
 status: 'complete'
-rule_count: 40
+rule_count: 48
 optimized_for_llm: true
 ---
 
@@ -45,7 +45,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - noUnusedLocals / noUnusedParameters / noImplicitReturns / noFallthroughCasesInSwitch enabled: remove unused and avoid missing returns.
 - moduleResolution: "bundler" + module: "esnext": keep ESM import/export (avoid require in app code).
 - noEmit + isolatedModules: true: typecheck-only; ensure each file is a valid module.
-- Path alias "@/\*" maps to "src/\*" (prefer alias over deep relatives).
+- Path alias "@/_" maps to "src/_" (prefer alias over deep relatives).
 - allowJs: false: add new sources in TS/TSX only.
 
 ### Framework-Specific Rules
@@ -59,9 +59,10 @@ _This file contains critical rules and patterns that AI agents must follow when 
 
 ### Testing Rules
 
-- No test framework is configured yet; when adding tests, document the tool and wiring.
-- If a test framework is introduced, add corresponding scripts to `package.json` and capture the rule here.
-- Establish and follow consistent test file naming/location conventions when introducing tests.
+- Use Vitest + React Testing Library for unit/component tests (jsdom).
+- Test files live under `src/**` as `*.test.ts`/`*.test.tsx`.
+- `src/test/setup.ts` registers `@testing-library/jest-dom` matchers.
+- Run via `yarn test` (CI) or `yarn test:watch` (local).
 
 ### Code Quality & Style Rules
 
@@ -104,4 +105,4 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - Update when the technology stack or patterns change.
 - Review periodically and remove outdated rules.
 
-Last Updated: 2026-01-04T11:28:34+09:00
+Last Updated: 2026-01-04T11:35:41+09:00
