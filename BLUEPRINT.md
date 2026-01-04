@@ -23,30 +23,27 @@
 
 ## Phase 1 - Requirements & Data Model
 
-- [ ] Confirm data sources and scope (GSC only vs GSC + Vercel Analytics API).
-- [ ] Define the metrics, dimensions, and time windows to display.
-- [ ] Decide auth strategy for GSC (service account or OAuth).
-- [ ] Decide storage (Vercel KV/DB/Sheets/etc.) and retention policy.
-- [ ] Outline `/insights` access control method.
+- [x] Confirm data sources and scope (GSC only, Vercel Analytics optional).
+- [x] Define the metrics, dimensions, and time windows to display.
+- [x] Decide auth strategy for GSC (service account).
+- [x] Decide storage (Vercel KV) and retention policy.
+- [x] Outline `/insights` access control method (secret token).
 
 ## Phase 2 - Data Ingestion (GSC)
 
-- [ ] Implement a secure server-side fetch for GSC data.
-- [ ] Add a scheduled job (e.g., Vercel Cron) to refresh data.
-- [ ] Normalize and store data for dashboard consumption.
+- [x] Implement a secure server-side fetch for GSC data.
+- [ ] Add a scheduled job (e.g., Vercel Cron) to refresh data (daily).
+- [x] Normalize and store data for dashboard consumption.
 - [ ] Add basic health logging/alerts for data refresh failures.
 
 ## Phase 3 - Insights Dashboard UI
 
-- [ ] Create `/insights` route with minimal admin UI.
-- [ ] Build tables + a small trend chart for search traffic.
+- [x] Create `/insights` route with minimal admin UI.
+- [x] Build tables + a small trend chart for search traffic.
 - [ ] Add device/country filters and date range selection (basic).
-- [ ] Add access gate and UX polish for internal use.
-- [ ] Document the data refresh cadence and limitations.
+- [x] Add access gate and UX polish for internal use.
+- [x] Document the data refresh cadence and limitations.
 
 ## Open Questions
 
-- Preferred GSC auth method: Service Account or OAuth?
-- Preferred storage: Vercel KV, DB, Google Sheets, or other?
 - Need overall traffic trend beyond search (Vercel Analytics API/logs)?
-- Access control preference: basic auth, secret token, or IP allowlist?
