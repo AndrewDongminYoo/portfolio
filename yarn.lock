@@ -822,6 +822,13 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-16.1.1.tgz#96e9e335e2577481dab6fc7a2af48f3e4a28fbdb"
   integrity sha512-Ncwbw2WJ57Al5OX0k4chM68DKhEPlrXBaSXDCi2kPi5f4d8b3ejr3RRJGfKBLrn2YJL5ezNS7w2TZLHSti8CMw==
 
+"@next/third-parties@^16.1.1":
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-16.1.1.tgz#ca4c2691198bb479a14f802d3fdd175e7698da61"
+  integrity sha512-i3NWXWiNpXGaUi6vGDrK7rC5qLhuCmuhD1BeaOh4Ma8piUBeUhOjEa1UfpVndeC3JcqWXPaYzqO1Hd1U6hql/w==
+  dependencies:
+    third-party-capital "1.0.20"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -5441,6 +5448,11 @@ text-decoder@^1.1.0:
   integrity sha512-3/o9z3X0X0fTupwsYvR03pJ/DjWuqqrfwBgTQzdWDiQSm9KitAyz/9WqsT2JQW7KV2m+bC2ol/zqpW37NHxLaA==
   dependencies:
     b4a "^1.6.4"
+
+third-party-capital@1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/third-party-capital/-/third-party-capital-1.0.20.tgz#e218a929a35bf4d2245da9addb8ab978d2f41685"
+  integrity sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==
 
 tinybench@^2.9.0:
   version "2.9.0"

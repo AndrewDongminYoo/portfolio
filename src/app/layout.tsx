@@ -1,5 +1,6 @@
 import '../globals.css';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { ko } from 'date-fns/locale/ko';
@@ -94,6 +95,7 @@ export default function RootLayout({
       <body className='font-sans antialiased'>
         {children}
         <Analytics />
+        <GoogleAnalytics gaId='G-954YXFWZGG' />
         <SpeedInsights />
       </body>
     </html>
