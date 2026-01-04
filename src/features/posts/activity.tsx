@@ -1,4 +1,5 @@
 import { SiMedium } from '@icons-pack/react-simple-icons';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import Period from '@/components/period';
@@ -19,6 +20,15 @@ export default function ActivityElement({ activity }: { activity: Activity }) {
         <Link
           className='resume_card_item_label'
           href={activity.website_url ?? `/posts/${activity.id}`}>
+          {activity.icon_url ? (
+            <Image
+              src={activity.icon_url}
+              alt={`${activity.name} logo`}
+              width={40}
+              height={40}
+              className='mr-3 rounded-md'
+            />
+          ) : null}
           {activity.title}
         </Link>
         <p className='resume_card_item_text' style={{ fontSize: 14 }}>

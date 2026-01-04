@@ -19,6 +19,7 @@ type ResumeBase<type extends string> = {
   startAt: string;
   endAt: string | null;
   icon?: string;
+  icon_url?: string;
   description: string | string[];
 };
 
