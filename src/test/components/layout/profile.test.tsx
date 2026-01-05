@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -16,6 +16,12 @@ const mockConstants = vi.hoisted(() => ({
     },
   ],
   description: 'First line\nSecond line',
+  languages: [
+    {
+      name: 'English',
+      level: 'Business level',
+    },
+  ],
   primaryTitle: 'Primary Title',
 }));
 
@@ -37,6 +43,7 @@ vi.mock('next/image', () => ({
 vi.mock('@/lib/constants', () => ({
   contacts: mockConstants.contacts,
   description: mockConstants.description,
+  languages: mockConstants.languages,
   primaryTitle: mockConstants.primaryTitle,
 }));
 
@@ -47,7 +54,9 @@ describe('ProfileBio', () => {
     render(<ProfileBio />);
 
     expect(screen.getByText(mockConstants.primaryTitle)).toBeInTheDocument();
-    expect(screen.getAllByRole('listitem')).toHaveLength(mockConstants.contacts.length);
+    const [contactsList] = screen.getAllByRole('list');
+    const contactItems = within(contactsList).getAllByRole('listitem');
+    expect(contactItems).toHaveLength(mockConstants.contacts.length);
 
     const [firstLink] = screen.getAllByRole('link');
     expect(firstLink).toHaveAttribute('href', mockConstants.contacts[0].link);
