@@ -30,7 +30,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - React 19.2.3 + React DOM 19.2.3
 - TypeScript 5.9.3
 - Tailwind CSS 4.1.18 + @tailwindcss/postcss 4.1.18
-- ESLint 9.39.2 + eslint-config-next 16.1.1 + @next/eslint-plugin-next 16.1.1
+- ESLint 9.39.2 + @next/eslint-plugin-next 16.1.1
 - Prettier 3.7.4 + prettier-plugin-tailwindcss 0.7.2
 - UI: Radix UI (react-select 2.2.6, react-tooltip 1.2.8, react-navigation-menu 1.2.14), Headless UI 0.2.1
 - Utils: date-fns 4.1.0, clsx 2.1.1, tailwind-merge 3.4.0, lucide-react 0.562.0
