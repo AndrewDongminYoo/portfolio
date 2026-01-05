@@ -9,9 +9,9 @@ const reposDirectory = path.join(process.cwd(), 'data/repos');
 
 async function main() {
   const repositories = await fetchRepositories({
-    minSizeKb: 0,
+    minSizeKb: 3000,
     includeArchived: false,
-    includeForks: true,
+    includeForks: false,
   });
 
   const limit = createLimiter(6);

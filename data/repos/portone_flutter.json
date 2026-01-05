@@ -1,64 +1,32 @@
 {
-  "id": 962565875,
   "node_id": "R_kgDOOV-W8w",
   "name": "portone_flutter",
   "full_name": "AndrewDongminYoo/portone_flutter",
   "private": false,
   "owner": {
     "login": "AndrewDongminYoo",
-    "id": 82999715,
-    "node_id": "MDQ6VXNlcjgyOTk5NzE1",
-    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4",
-    "gravatar_id": "",
-    "html_url": "https://github.com/AndrewDongminYoo",
-    "type": "User",
-    "user_view_type": "public",
-    "site_admin": false
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
   },
   "html_url": "https://github.com/AndrewDongminYoo/portone_flutter",
   "description": "Flutter App에서 포트원 V2 결제서비스 연동을 위한 모듈입니다.",
-  "fork": false,
-  "created_at": "2025-04-08T10:48:43Z",
-  "updated_at": "2025-12-11T11:59:16Z",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/portone_flutter/languages",
   "pushed_at": "2025-10-26T14:33:09Z",
-  "svn_url": "https://github.com/AndrewDongminYoo/portone_flutter",
-  "homepage": "https://pub.dev/documentation/portone_flutter_v2",
   "size": 1926,
   "stargazers_count": 4,
   "watchers_count": 4,
   "language": "Dart",
-  "has_issues": true,
-  "has_projects": true,
-  "has_downloads": true,
-  "has_wiki": true,
-  "has_pages": false,
-  "has_discussions": false,
   "forks_count": 2,
-  "archived": false,
-  "disabled": false,
-  "open_issues_count": 0,
-  "license": {
-    "key": "bsd-3-clause",
-    "name": "BSD 3-Clause \"New\" or \"Revised\" License",
-    "spdx_id": "BSD-3-Clause",
-    "node_id": "MDc6TGljZW5zZTU="
+  "languages": {
+    "Dart": 171821,
+    "Ruby": 2764,
+    "Kotlin": 2518,
+    "Swift": 1320,
+    "Java": 1319,
+    "Shell": 706,
+    "JavaScript": 278,
+    "Objective-C": 38
   },
-  "allow_forking": true,
-  "is_template": false,
-  "web_commit_signoff_required": false,
   "topics": ["flutter", "flutter-plugin", "payment-gateway", "portone", "request-payment"],
-  "visibility": "public",
-  "forks": 2,
-  "open_issues": 0,
-  "watchers": 4,
-  "default_branch": "main",
-  "permissions": {
-    "admin": true,
-    "maintain": true,
-    "push": true,
-    "triage": true,
-    "pull": true
-  },
   "framework": "Flutter",
   "descriptive_slug": "flutter",
   "framework_candidates": [
@@ -73,15 +41,5 @@
       ]
     }
   ],
-  "ecosystems": ["GitHub Actions workflows", "pub"],
-  "languages": {
-    "Dart": 171821,
-    "Ruby": 2764,
-    "Kotlin": 2518,
-    "Swift": 1320,
-    "Java": 1319,
-    "Shell": 706,
-    "JavaScript": 278,
-    "Objective-C": 38
-  }
+  "ecosystems": ["GitHub Actions workflows", "pub"]
 }

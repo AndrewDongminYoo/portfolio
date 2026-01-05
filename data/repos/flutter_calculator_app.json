@@ -1,82 +1,21 @@
 {
-  "id": 910414078,
   "node_id": "R_kgDONkPQ_g",
   "name": "flutter_calculator_app",
   "full_name": "AndrewDongminYoo/flutter_calculator_app",
   "private": false,
   "owner": {
     "login": "AndrewDongminYoo",
-    "id": 82999715,
-    "node_id": "MDQ6VXNlcjgyOTk5NzE1",
-    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4",
-    "gravatar_id": "",
-    "html_url": "https://github.com/AndrewDongminYoo",
-    "type": "User",
-    "user_view_type": "public",
-    "site_admin": false
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
   },
   "html_url": "https://github.com/AndrewDongminYoo/flutter_calculator_app",
   "description": "This project demonstrates a layered architecture for calculating expressions with features like command-line interaction, Flutter UI, and localization.",
-  "fork": false,
-  "created_at": "2024-12-31T07:54:17Z",
-  "updated_at": "2025-12-08T05:14:08Z",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/flutter_calculator_app/languages",
   "pushed_at": "2026-01-02T04:16:21Z",
-  "svn_url": "https://github.com/AndrewDongminYoo/flutter_calculator_app",
-  "homepage": "",
   "size": 3502,
   "stargazers_count": 4,
   "watchers_count": 4,
   "language": "Dart",
-  "has_issues": true,
-  "has_projects": true,
-  "has_downloads": true,
-  "has_wiki": true,
-  "has_pages": false,
-  "has_discussions": false,
   "forks_count": 0,
-  "archived": false,
-  "disabled": false,
-  "open_issues_count": 5,
-  "license": {
-    "key": "mit",
-    "name": "MIT License",
-    "spdx_id": "MIT",
-    "node_id": "MDc6TGljZW5zZTEz"
-  },
-  "allow_forking": true,
-  "is_template": false,
-  "web_commit_signoff_required": false,
-  "topics": [
-    "all-platform-supported",
-    "calculator",
-    "cross-platform-app",
-    "cupertino-design",
-    "material-app",
-    "open-sourced"
-  ],
-  "visibility": "public",
-  "forks": 0,
-  "open_issues": 5,
-  "watchers": 4,
-  "default_branch": "main",
-  "permissions": {
-    "admin": true,
-    "maintain": true,
-    "push": true,
-    "triage": true,
-    "pull": true
-  },
-  "framework": "Flutter",
-  "descriptive_slug": "flutter",
-  "framework_candidates": [
-    {
-      "slug": "flutter",
-      "name": "Flutter",
-      "score": 105,
-      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
-    }
-  ],
-  "ecosystems": ["GitHub Actions workflows", "Yarn", "pub"],
   "languages": {
     "Dart": 100201,
     "C++": 16821,
@@ -88,5 +27,24 @@
     "C": 715,
     "Kotlin": 131,
     "Objective-C": 38
-  }
+  },
+  "topics": [
+    "all-platform-supported",
+    "calculator",
+    "cross-platform-app",
+    "cupertino-design",
+    "material-app",
+    "open-sourced"
+  ],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 105,
+      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn", "pub"]
 }
