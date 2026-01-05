@@ -44,4 +44,13 @@ describe('LanguageButton', () => {
 
     expect(screen.getByRole('link')).toHaveAttribute('href', 'https://github.com/topics/Go');
   });
+
+  it('falls back to default color when icon is missing', () => {
+    getSimpleIcon.mockReturnValue(undefined);
+
+    const { container } = render(<LanguageButton language='Rust' percent={3.21} index={0} />);
+
+    const swatch = container.querySelector('span[aria-hidden="true"]');
+    expect(swatch).toHaveStyle({ backgroundColor: '#999999' });
+  });
 });

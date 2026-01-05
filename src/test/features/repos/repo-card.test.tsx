@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import type { SVGProps } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('next/link', () => ({
@@ -16,6 +17,15 @@ vi.mock('next/image', () => ({
   ),
 }));
 
+vi.mock('lucide-react', () => ({
+  Code: (props: SVGProps<SVGSVGElement>) => <svg data-testid='code' {...props} />,
+  Eye: (props: SVGProps<SVGSVGElement>) => <svg data-testid='eye' {...props} />,
+  GitFork: (props: SVGProps<SVGSVGElement>) => <svg data-testid='fork' {...props} />,
+  Lock: (props: SVGProps<SVGSVGElement>) => <svg data-testid='lock' {...props} />,
+  LockOpen: (props: SVGProps<SVGSVGElement>) => <svg data-testid='lock-open' {...props} />,
+  Star: (props: SVGProps<SVGSVGElement>) => <svg data-testid='star' {...props} />,
+}));
+
 vi.mock('@/features/repos/copy-to-clipboard', () => ({
   CopyToClipboard: ({ value, children }: { value: string; children: React.ReactNode }) => (
     <div data-testid='copy' data-value={value}>
@@ -24,8 +34,12 @@ vi.mock('@/features/repos/copy-to-clipboard', () => ({
   ),
 }));
 
+const iconState = vi.hoisted(() => ({
+  icon: { color: '#112233', url: 'https://example.com/icon.svg' },
+}));
+
 vi.mock('@/features/repos/simple-icons', () => ({
-  getSimpleIcon: () => ({ color: '#112233', url: 'https://example.com/icon.svg' }),
+  getSimpleIcon: () => iconState.icon,
 }));
 
 import RepoCard from '@/features/repos/repo-card';
@@ -52,6 +66,7 @@ const repo: Repository = {
 
 describe('RepoCard', () => {
   it('renders repository metadata and links', () => {
+    iconState.icon = { color: '#112233', url: 'https://example.com/icon.svg' };
     const { getByText, getByTestId, getByRole } = render(<RepoCard repository={repo} />);
 
     expect(getByText('owner/')).toBeInTheDocument();
@@ -67,5 +82,20 @@ describe('RepoCard', () => {
     expect(getByText('12')).toBeInTheDocument();
     expect(getByText('5')).toBeInTheDocument();
     expect(getByText('2')).toBeInTheDocument();
+    expect(getByTestId('lock-open')).toBeInTheDocument();
+  });
+
+  it('renders lock icon and fallback icon style when repository is private', () => {
+    iconState.icon = { color: '#445566', url: '' };
+
+    const privateRepo: Repository = { ...repo, private: true };
+    const { container, getByTestId, queryByTestId } = render(<RepoCard repository={privateRepo} />);
+
+    expect(getByTestId('lock')).toBeInTheDocument();
+    expect(queryByTestId('lock-open')).toBeNull();
+
+    const swatch = container.querySelector('span[aria-hidden="true"]');
+    expect(swatch).toHaveStyle({ backgroundColor: '#445566' });
+    expect(swatch?.getAttribute('style')).not.toContain('mask-image');
   });
 });

@@ -59,4 +59,26 @@ describe('RepoContent', () => {
 
     expect(queryByText('Markdown')).not.toBeInTheDocument();
   });
+
+  it('hides language breakdown when total count is zero', () => {
+    const repo: Repository = { ...baseRepo, languages: { TypeScript: 0 } };
+
+    const { queryByText } = render(<RepoContent repository={repo} />);
+
+    expect(queryByText('TypeScript')).not.toBeInTheDocument();
+  });
+
+  it('ignores non-number counts when computing totals', () => {
+    const repo: Repository = {
+      ...baseRepo,
+      languages: { TypeScript: 80, Shell: '0' as unknown as number },
+    };
+
+    const { getByText } = render(<RepoContent repository={repo} />);
+
+    expect(getByText('TypeScript')).toBeInTheDocument();
+    expect(getByText('Shell')).toBeInTheDocument();
+    expect(getByText('100.0%')).toBeInTheDocument();
+    expect(getByText('0.0%')).toBeInTheDocument();
+  });
 });

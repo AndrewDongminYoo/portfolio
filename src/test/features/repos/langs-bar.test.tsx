@@ -35,4 +35,14 @@ describe('LanguageStateBar', () => {
     expect(parts[1]).toHaveStyle({ backgroundColor: '#222222', width: '40.0%' });
     expect(parts[1]).toHaveAttribute('aria-label', 'JavaScript 40.000');
   });
+
+  it('falls back to default color when icon is missing', () => {
+    getSimpleIcon.mockReturnValue(undefined);
+
+    const { container } = render(<LanguageStateBar languages={[['Rust', 50]]} totalCount={100} />);
+
+    const part = container.querySelector('span[itemprop="keywords"]');
+    expect(part).toHaveStyle({ backgroundColor: '#999999', width: '50.0%' });
+    expect(part).toHaveAttribute('aria-label', 'Rust 50.000');
+  });
 });
