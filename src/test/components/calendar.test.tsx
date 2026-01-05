@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -103,10 +103,13 @@ let fetchMock: ReturnType<typeof vi.fn>;
 const matchMediaState = { matches: false, listeners: new Set<() => void>() };
 
 /**
- * 리팩터링 버전에서:
- * - MutationObserver는 제거됨
- * - ResizeObserver + requestAnimationFrame 기반 스케줄링은 남아있음
+ * icon url allowlist 로직(https + host) 테스트를 위해 상태값 확장
  */
+const simpleIconState = {
+  useMask: false,
+  url: '', // when useMask=true, this url will be used
+};
+
 const installDomMocks = () => {
   vi.stubGlobal('matchMedia', (query: string) => ({
     get matches() {
@@ -129,6 +132,7 @@ const installDomMocks = () => {
 
   vi.stubGlobal('ResizeObserver', MockResizeObserver);
 
+  // 기본은 즉시 실행 (대부분 테스트가 단순해짐)
   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
     callback(0);
     return 1;
@@ -162,16 +166,10 @@ vi.mock('react-github-calendar', () => ({
   },
 }));
 
-/**
- * 리팩터링 버전에서 icon url은 allowlist(host) 검증을 통과해야 mask-image 적용됨.
- * - simpleicons.org / cdn.simpleicons.org 만 통과
- */
-const simpleIconState = { useMask: false };
-
 vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: vi.fn(() =>
     simpleIconState.useMask
-      ? { color: '#112233', url: 'https://simpleicons.org/icons/typescript.svg' }
+      ? { color: '#112233', url: simpleIconState.url }
       : { color: '#112233', url: '' },
   ),
 }));
@@ -181,9 +179,13 @@ describe('ReactGithubCalendar', () => {
     calendarProps = null;
     fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
+
     matchMediaState.matches = false;
     matchMediaState.listeners.clear();
+
     simpleIconState.useMask = false;
+    simpleIconState.url = '';
+
     installDomMocks();
   });
 
@@ -292,8 +294,6 @@ describe('ReactGithubCalendar', () => {
       await findByText('총 16회');
 
       const scrollContainer = getByTestId('github-calendar') as HTMLDivElement;
-
-      // requestAnimationFrame mock이 즉시 실행되므로 mount 직후 scrollLeft가 이동해야 함
       expect(scrollContainer.scrollLeft).toBeGreaterThan(0);
     } finally {
       if (originalScrollWidth) {
@@ -311,6 +311,8 @@ describe('ReactGithubCalendar', () => {
 
   it('renders masked repo icon when url is available and allowed', async () => {
     simpleIconState.useMask = true;
+    simpleIconState.url = 'https://simpleicons.org/icons/typescript.svg';
+
     fetchMock.mockResolvedValueOnce(createResponse(summary));
 
     const { findByText } = render(<ReactGithubCalendar />);
@@ -319,8 +321,127 @@ describe('ReactGithubCalendar', () => {
     const card = repoName.closest('a');
     const icon = card?.querySelector('span[style]');
 
-    // allowlist 통과 URL을 쓰므로 mask-image가 들어가야 함
     expect(icon?.getAttribute('style')).toContain('mask-image');
+  });
+
+  it('does NOT render masked repo icon when url host is not allowed (covers toSafeCssUrl host check)', async () => {
+    // ✅ host가 allowlist에 없으므로 mask-image 적용되면 안 됨 (146 커버 목적)
+    simpleIconState.useMask = true;
+    simpleIconState.url = 'https://example.com/icon.svg';
+
+    fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+    const { findByText } = render(<ReactGithubCalendar />);
+
+    const repoName = await findByText('portfolio');
+    const card = repoName.closest('a');
+    const icon = card?.querySelector('span[style]');
+
+    const style = icon?.getAttribute('style') ?? '';
+    expect(style).not.toContain('mask-image');
+    expect(style).toContain('background-color');
+  });
+
+  it('does NOT render masked repo icon when url is invalid (covers toSafeCssUrl catch)', async () => {
+    // ✅ new URL(raw) 가 throw 하도록 "유효하지 않은 URL" 주입
+    simpleIconState.useMask = true;
+    simpleIconState.url = 'not-a-valid-url';
+
+    fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+    const { findByText } = render(<ReactGithubCalendar />);
+
+    const repoName = await findByText('portfolio');
+    const card = repoName.closest('a');
+    const icon = card?.querySelector('span[style]');
+
+    const style = icon?.getAttribute('style') ?? '';
+    expect(style).not.toContain('mask-image');
+    expect(style).toContain('background-color');
+  });
+
+  it('stops auto-scroll if user scrolls before the scheduled rAF runs (covers onUserScroll lines)', async () => {
+    // ✅ rAF를 지연시켜 "사용자 스크롤이 먼저" 발생하는 상황을 만든다 (233-234 커버 목적)
+    let rafCb: FrameRequestCallback | null = null;
+
+    vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => {
+      rafCb = cb;
+      return 99;
+    });
+
+    const originalScrollWidth = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      'scrollWidth',
+    );
+    const originalClientWidth = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      'clientWidth',
+    );
+
+    Object.defineProperty(HTMLElement.prototype, 'scrollWidth', {
+      configurable: true,
+      get() {
+        return 200;
+      },
+    });
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+      configurable: true,
+      get() {
+        return 100;
+      },
+    });
+
+    try {
+      fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+      const { getByTestId, findByText } = render(<ReactGithubCalendar />);
+      await findByText('총 16회');
+
+      const scrollContainer = getByTestId('github-calendar') as HTMLDivElement;
+
+      // removeEventListener 호출도 같이 확인(실제로 중단 로직이 실행됐는지)
+      const removeSpy = vi.spyOn(scrollContainer, 'removeEventListener');
+
+      // 사용자가 먼저 스크롤했다고 가정
+      fireEvent.scroll(scrollContainer);
+
+      expect(removeSpy).toHaveBeenCalled(); // onUserScroll 내부 removeEventListener 라인 커버
+
+      // 이제 rAF 콜백을 실행해도 didInitRef가 true라 자동 스크롤이 발생하면 안 됨
+      expect(rafCb).not.toBeNull();
+      rafCb!.call(() => {}, 0);
+
+      expect(scrollContainer.scrollLeft).toBe(0);
+    } finally {
+      if (originalScrollWidth) {
+        Object.defineProperty(HTMLElement.prototype, 'scrollWidth', originalScrollWidth);
+      } else {
+        delete (HTMLElement.prototype as unknown as { scrollWidth?: number }).scrollWidth;
+      }
+      if (originalClientWidth) {
+        Object.defineProperty(HTMLElement.prototype, 'clientWidth', originalClientWidth);
+      } else {
+        delete (HTMLElement.prototype as unknown as { clientWidth?: number }).clientWidth;
+      }
+    }
+  });
+
+  it('cancels pending rAF on unmount (covers cleanup cancelAnimationFrame branch if pending)', () => {
+    // 안전망: 233-234가 cleanup 쪽이면 이것도 커버에 도움 됨
+    const cancelSpy = vi.fn();
+    vi.stubGlobal('cancelAnimationFrame', cancelSpy);
+
+    vi.stubGlobal('requestAnimationFrame', (_cb: FrameRequestCallback) => {
+      // 콜백을 실행하지 않고 핸들을 남긴다 -> unmount 시 cancelAnimationFrame 경로로 들어감
+      return 123;
+    });
+
+    fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+    const { unmount } = render(<ReactGithubCalendar />);
+    unmount();
+
+    expect(cancelSpy).toHaveBeenCalledWith(123);
   });
 
   it('renders error message when fetch fails', async () => {
