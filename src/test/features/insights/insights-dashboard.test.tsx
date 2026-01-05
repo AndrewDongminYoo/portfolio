@@ -112,4 +112,51 @@ describe('InsightsDashboard', () => {
 
     expect(await findByText('error message')).toBeInTheDocument();
   });
+
+  it('shows validation and clear messages for token actions', async () => {
+    fetchMock.mockResolvedValueOnce(createResponse({ ok: true, data: snapshot }));
+    const { getByRole, getByText, getByPlaceholderText, queryByDisplayValue } = render(
+      <InsightsDashboard />,
+    );
+
+    fireEvent.click(getByRole('button', { name: '토큰 저장' }));
+    expect(getByText('유효한 토큰을 입력해주세요.')).toBeInTheDocument();
+
+    fireEvent.change(getByPlaceholderText('INSIGHTS_ACCESS_TOKEN'), {
+      target: { value: 'to-clear' },
+    });
+    fireEvent.click(getByRole('button', { name: '토큰 저장' }));
+
+    await waitFor(() => {
+      expect(window.localStorage.getItem('insights-token')).toBe('to-clear');
+    });
+
+    fireEvent.click(getByRole('button', { name: '토큰 삭제' }));
+    expect(window.localStorage.getItem('insights-token')).toBeNull();
+    expect(getByText('토큰이 제거되었습니다.')).toBeInTheDocument();
+    expect(queryByDisplayValue('to-clear')).not.toBeInTheDocument();
+  });
+
+  it('handles refresh flow and reports failures', async () => {
+    window.localStorage.setItem('insights-token', 'saved-token');
+    fetchMock
+      .mockResolvedValueOnce(createResponse({ ok: true, data: snapshot }))
+      .mockRejectedValueOnce(new Error('network down'));
+
+    const { getByRole, findByText, getByDisplayValue } = render(<InsightsDashboard />);
+
+    await waitFor(() => {
+      expect(getByDisplayValue('saved-token')).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByRole('button', { name: 'Search Console 새로고침' }));
+
+    expect(await findByText('업데이트가 완료되었습니다.')).toBeInTheDocument();
+
+    fireEvent.click(getByRole('button', { name: '데이터 불러오기' }));
+
+    expect(
+      await findByText('데이터를 불러오는 중 오류가 발생했습니다. Error: network down'),
+    ).toBeInTheDocument();
+  });
 });

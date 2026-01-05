@@ -1,9 +1,26 @@
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
+import React, { useEffect } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
 vi.mock('@headlessui/react', () => ({
-  Transition: ({ show, children }: { show: boolean; children: React.ReactNode }) =>
-    show ? <div>{children}</div> : null,
+  Transition: ({
+    show,
+    children,
+    afterEnter,
+  }: {
+    show: boolean;
+    children: React.ReactNode;
+    afterEnter?: () => void;
+  }) => {
+    useEffect(() => {
+      if (show && afterEnter) {
+        const timer = setTimeout(afterEnter, 0);
+        return () => clearTimeout(timer);
+      }
+      return undefined;
+    }, [show, afterEnter]);
+    return show ? <div>{children}</div> : null;
+  },
 }));
 
 import { CopyToClipboard } from '@/features/repos/copy-to-clipboard';
@@ -16,7 +33,7 @@ describe('CopyToClipboard', () => {
       configurable: true,
     });
 
-    const { getByRole, getByText } = render(
+    const { getByRole, getByText, queryByText } = render(
       <CopyToClipboard value='https://example.com/repo.git'>Copy</CopyToClipboard>,
     );
 
@@ -24,5 +41,9 @@ describe('CopyToClipboard', () => {
 
     expect(writeText).toHaveBeenCalledWith('https://example.com/repo.git');
     expect(getByText('https://example.com/repo.git is Copied!!.')).toBeInTheDocument();
+
+    await waitFor(() => {
+      expect(queryByText('https://example.com/repo.git is Copied!!.')).not.toBeInTheDocument();
+    });
   });
 });

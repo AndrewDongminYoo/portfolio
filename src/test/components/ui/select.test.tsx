@@ -30,7 +30,10 @@ vi.mock('@radix-ui/react-select', () => {
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
+  SelectSeparator,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
@@ -51,5 +54,33 @@ describe('Select', () => {
     const trigger = container.querySelector('[data-slot="select-trigger"]');
     expect(trigger).toHaveAttribute('data-size', 'sm');
     expect(getByText('Option A')).toBeInTheDocument();
+  });
+
+  it('renders grouped content with labels, separators, and popper position classes', () => {
+    const { container, getByText } = render(
+      <Select value='a'>
+        <SelectTrigger>
+          <SelectValue placeholder='Select' />
+        </SelectTrigger>
+        <SelectContent position='popper'>
+          <SelectGroup>
+            <SelectLabel>Group A</SelectLabel>
+            <SelectItem value='a'>Option A</SelectItem>
+            <SelectSeparator />
+            <SelectItem value='b'>Option B</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>,
+    );
+
+    const content = container.querySelector('[data-slot="select-content"]');
+    expect(content).toBeInTheDocument();
+    expect(content?.className).toContain('translate-y-1');
+    expect(getByText('Group A')).toBeInTheDocument();
+    expect(getByText('Option B')).toBeInTheDocument();
+    expect(container.querySelector('[data-slot="select-separator"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-slot="select-scroll-up-button"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-slot="select-scroll-down-button"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-slot="select-item-indicator"]')).toBeInTheDocument();
   });
 });

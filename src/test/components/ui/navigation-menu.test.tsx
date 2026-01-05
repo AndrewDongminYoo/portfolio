@@ -23,6 +23,7 @@ vi.mock('@radix-ui/react-navigation-menu', () => {
 import {
   NavigationMenu,
   NavigationMenuContent,
+  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
@@ -48,5 +49,24 @@ describe('NavigationMenu', () => {
     expect(getByText('Item')).toBeInTheDocument();
     expect(container.querySelector('[data-slot="navigation-menu"]')).toBeInTheDocument();
     expect(container.querySelector('[data-slot="navigation-menu-viewport"]')).toBeNull();
+  });
+
+  it('renders viewport and indicator when enabled', () => {
+    const { container } = render(
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuLink href='#'>Item</NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+        <NavigationMenuIndicator />
+      </NavigationMenu>,
+    );
+
+    expect(container.querySelector('[data-slot="navigation-menu-viewport"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-slot="navigation-menu-indicator"]')).toBeInTheDocument();
   });
 });
