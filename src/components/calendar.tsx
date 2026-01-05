@@ -5,7 +5,7 @@ import './calendar.css';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { type CSSProperties, useEffect, useRef, useState } from 'react';
+import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
 
 import ResumeSection from '@/components/section';
@@ -47,10 +47,7 @@ type ContributionRepo = {
 };
 
 type ContributionSummary = {
-  range: {
-    from: string;
-    to: string;
-  };
+  range: { from: string; to: string };
   totals: ContributionTotals;
   repos: ContributionRepo[];
   externalRepos?: ContributionRepo[];
@@ -58,64 +55,34 @@ type ContributionSummary = {
   error?: string;
 };
 
+const numberFormat = new Intl.NumberFormat('ko-KR');
+
 const formatDateLabel = (value: string) => {
+  // "YYYY-MM-DDTHH:mm:ssZ" -> "YYYY.MM.DD"
   const [date] = value.split('T');
-  const [year, month, day] = date.split('-');
-  if (!year || !month || !day) return value;
-  return `${year}.${month}.${day}`;
+  const [y, m, d] = date.split('-');
+  if (!y || !m || !d) return value;
+  return `${y}.${m}.${d}`;
 };
 
-const formatCount = (count: number) => `${count.toLocaleString()}회`;
-const formatMetric = (count: number) => count.toLocaleString();
+const formatCount = (count: number) => `${numberFormat.format(count)}회`;
+const formatMetric = (count: number) => numberFormat.format(count);
 
 const hexToRgba = (hex: string, alpha: number) => {
   if (!hex.startsWith('#')) return undefined;
   const normalized = hex.slice(1);
   if (![3, 6].includes(normalized.length)) return undefined;
+
   const chunk = normalized.length === 3;
   const toChannel = (value: string) => parseInt(chunk ? value.repeat(2) : value, 16);
+
   const r = toChannel(normalized.slice(0, chunk ? 1 : 2));
   const g = toChannel(normalized.slice(chunk ? 1 : 2, chunk ? 2 : 4));
   const b = toChannel(normalized.slice(chunk ? 2 : 4, chunk ? 3 : 6));
-  if ([r, g, b].some((value) => Number.isNaN(value))) return undefined;
-  return `rgba(${r}, ${g}, ${b}, ${Math.min(Math.max(alpha, 0), 1)})`;
-};
+  const a = Math.min(Math.max(alpha, 0), 1);
 
-const getRepoAccentStyle = (repo: ContributionRepo) => {
-  const language = repo.language;
-  if (!language) return undefined;
-
-  const icon = getSimpleIcon(language);
-  const color = icon?.color; // ✅ '#RRGGBB' only
-  if (!color) return undefined;
-
-  const line = hexToRgba(color, 0.5);
-  if (!line) return undefined;
-
-  return { boxShadow: `inset -3px 0 0 0 ${line}` } as CSSProperties;
-};
-
-const getRepoIconStyle = (repo: ContributionRepo) => {
-  const language = repo.language;
-  if (!language) return undefined;
-
-  const icon = getSimpleIcon(language);
-  if (!icon?.color) return undefined;
-
-  // 아이콘 URL 없으면 색상만이라도 보여주고 싶다면 여기서 fallback 가능
-  if (!icon.url) return { backgroundColor: icon.color } as CSSProperties;
-
-  return {
-    backgroundColor: icon.color,
-    WebkitMaskImage: `url(${icon.url})`,
-    maskImage: `url(${icon.url})`,
-    WebkitMaskRepeat: 'no-repeat',
-    maskRepeat: 'no-repeat',
-    WebkitMaskPosition: 'center',
-    maskPosition: 'center',
-    WebkitMaskSize: 'contain',
-    maskSize: 'contain',
-  } as CSSProperties;
+  if ([r, g, b].some((v) => Number.isNaN(v))) return undefined;
+  return `rgba(${r}, ${g}, ${b}, ${a})`;
 };
 
 const buildBreakdown = (breakdown: ContributionRepo['breakdown']) => {
@@ -125,9 +92,8 @@ const buildBreakdown = (breakdown: ContributionRepo['breakdown']) => {
     { label: '리뷰', value: breakdown.reviews },
     { label: '이슈', value: breakdown.issues },
   ];
-  return items
-    .filter((item) => item.value > 0)
-    .map((item) => `${item.label} ${formatCount(item.value)}`);
+
+  return items.filter((x) => x.value > 0).map((x) => `${x.label} ${formatCount(x.value)}`);
 };
 
 const buildTotalParts = (totals: ContributionTotals) => {
@@ -137,25 +103,24 @@ const buildTotalParts = (totals: ContributionTotals) => {
     { label: '리뷰', value: totals.reviews },
     { label: '이슈', value: totals.issues },
   ];
-  return items
-    .filter((item) => item.value > 0)
-    .map((item) => `${item.label} ${formatCount(item.value)}`);
+
+  return items.filter((x) => x.value > 0).map((x) => `${x.label} ${formatCount(x.value)}`);
 };
 
 const buildRepoStats = (repo: ContributionRepo) => {
   const items = [
     { label: 'stars', value: repo.stars },
-    { label: 'watch', value: repo.watchers },
+    { label: 'watchers', value: repo.watchers },
     { label: 'forks', value: repo.forks },
   ];
-  return items
-    .filter((item) => item.value > 0)
-    .map((item) => `${formatMetric(item.value)} ${item.label}`);
+
+  return items.filter((x) => x.value > 0).map((x) => `${formatMetric(x.value)} ${x.label}`);
 };
 
 const displayRepoName = (repo: ContributionRepo) => {
   const ownerLogin = repo.owner.login.toLowerCase();
   const selfLogin = username.toLowerCase();
+
   if (ownerLogin === selfLogin) {
     const [, name] = repo.nameWithOwner.split('/');
     return name ?? repo.nameWithOwner;
@@ -163,101 +128,180 @@ const displayRepoName = (repo: ContributionRepo) => {
   return repo.nameWithOwner;
 };
 
-export default function ReactGithubCalendar() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const didInitScrollRef = useRef(false);
-  const [summary, setSummary] = useState<ContributionSummary | null>(null);
-  const [summaryError, setSummaryError] = useState<string | null>(null);
-  const [summaryLoading, setSummaryLoading] = useState(true);
+/**
+ * CSS mask-image에 넣을 URL을 최소한으로 방어.
+ * - https만 허용
+ * - 허용된 호스트만 허용 (원하는 호스트가 더 있으면 추가)
+ */
+const SAFE_ICON_HOSTS = new Set<string>(['simpleicons.org', 'cdn.simpleicons.org']);
+
+const toSafeCssUrl = (raw?: string) => {
+  if (!raw) return undefined;
+  try {
+    const u = new URL(raw);
+    if (u.protocol !== 'https:') return undefined;
+    if (!SAFE_ICON_HOSTS.has(u.host)) return undefined;
+    return u.toString();
+  } catch {
+    return undefined;
+  }
+};
+
+const getRepoAccentStyle = (repo: ContributionRepo): CSSProperties | undefined => {
+  if (!repo.language) return undefined;
+  const icon = getSimpleIcon(repo.language);
+  const color = icon?.color; // expected '#RRGGBB'
+  if (!color) return undefined;
+
+  const line = hexToRgba(color, 0.5);
+  if (!line) return undefined;
+
+  return { boxShadow: `inset -3px 0 0 0 ${line}` };
+};
+
+const getRepoIconStyle = (repo: ContributionRepo): CSSProperties | undefined => {
+  if (!repo.language) return undefined;
+
+  const icon = getSimpleIcon(repo.language);
+  if (!icon?.color) return undefined;
+
+  const safeUrl = toSafeCssUrl(icon.url);
+  if (!safeUrl) {
+    // URL이 없거나 안전하지 않으면: 색상만이라도 유지
+    return { backgroundColor: icon.color };
+  }
+
+  return {
+    backgroundColor: icon.color,
+    WebkitMaskImage: `url("${safeUrl}")`,
+    maskImage: `url("${safeUrl}")`,
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+    WebkitMaskPosition: 'center',
+    maskPosition: 'center',
+    WebkitMaskSize: 'contain',
+    maskSize: 'contain',
+  };
+};
+
+/**
+ * “최신 날짜 쪽으로 자동 스크롤”을 단발성으로 수행.
+ * - MutationObserver 제거 (유지보수/성능 리스크↓)
+ * - ResizeObserver + matchMedia change에만 반응
+ * - 프레임당 1회 rAF 스케줄링으로 과호출 방지
+ */
+function useAutoScrollToLatest(containerRef: React.RefObject<HTMLDivElement | null>) {
+  const didInitRef = useRef(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const scrollToLatest = () => {
-      // If the user scrolled manually, do not interfere (remove if desired)
-      if (didInitScrollRef.current) return;
+    const mediaQuery = window.matchMedia(MOBILE_QUERY);
 
-      // Use rAF twice to ensure scrollWidth calculation reflects DOM updates correctly
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const scrollTarget =
-            container.querySelector<HTMLDivElement>('.react-activity-calendar__scroll-container') ??
-            container;
-          const maxLeft = scrollTarget.scrollWidth - scrollTarget.clientWidth;
-          if (maxLeft > 0) {
-            scrollTarget.scrollLeft = maxLeft;
-            didInitScrollRef.current = true;
-          }
-        });
-      });
+    let rafId = 0;
+
+    const getScrollTarget = () => {
+      return (
+        container.querySelector<HTMLDivElement>('.react-activity-calendar__scroll-container') ??
+        container
+      );
     };
 
-    const applyCalendarLayout = (isMobile: boolean) => {
-      const calendar = container.querySelector<SVGSVGElement>('.react-activity-calendar__calendar');
-      if (!calendar) return;
+    const tryScrollToLatest = () => {
+      if (didInitRef.current) return;
 
-      if (isMobile) {
-        calendar.style.setProperty('width', 'auto', 'important');
-        calendar.style.setProperty('max-width', 'none', 'important');
-        calendar.style.setProperty('overflow', 'visible', 'important');
-      } else {
-        calendar.style.removeProperty('width');
-        calendar.style.removeProperty('max-width');
-        calendar.style.removeProperty('overflow');
+      const target = getScrollTarget();
+      const maxLeft = target.scrollWidth - target.clientWidth;
+      if (maxLeft > 0) {
+        target.scrollLeft = maxLeft;
+        didInitRef.current = true;
       }
     };
 
-    const mediaQuery = window.matchMedia(MOBILE_QUERY);
-    const handleChange = () => {
-      applyCalendarLayout(mediaQuery.matches);
-      scrollToLatest();
+    const schedule = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = 0;
+        tryScrollToLatest();
+      });
     };
 
-    handleChange();
+    // 사용자가 먼저 스크롤했으면 자동 스크롤 개입 중단
+    const target = getScrollTarget();
+    const onUserScroll = () => {
+      didInitRef.current = true;
+      target.removeEventListener('scroll', onUserScroll);
+    };
+    target.addEventListener('scroll', onUserScroll, { passive: true });
 
-    const mo = new MutationObserver(handleChange);
-    mo.observe(container, { childList: true, subtree: true });
+    // 초기 시도
+    schedule();
 
-    const ro = new ResizeObserver(handleChange);
+    const ro = new ResizeObserver(schedule);
     ro.observe(container);
 
-    mediaQuery.addEventListener('change', handleChange);
+    const onMediaChange = () => schedule();
+    mediaQuery.addEventListener('change', onMediaChange);
 
     return () => {
-      mo.disconnect();
+      if (rafId) cancelAnimationFrame(rafId);
       ro.disconnect();
-      mediaQuery.removeEventListener('change', handleChange);
+      mediaQuery.removeEventListener('change', onMediaChange);
+      target.removeEventListener('scroll', onUserScroll);
     };
-  }, []);
+  }, [containerRef]);
+}
+
+export default function ReactGithubCalendar() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useAutoScrollToLatest(containerRef);
+
+  const didFetchRef = useRef(false);
+
+  const [summary, setSummary] = useState<ContributionSummary | null>(null);
+  const [summaryError, setSummaryError] = useState<string | null>(null);
+  const [summaryLoading, setSummaryLoading] = useState(true);
 
   useEffect(() => {
+    // dev(Strict Mode)에서 이펙트 중복 호출 방지용 가드
+    if (didFetchRef.current) return;
+    didFetchRef.current = true;
+
     let isActive = true;
     const controller = new AbortController();
 
-    const fetchSummary = async () => {
+    const run = async () => {
+      setSummaryLoading(true);
+      setSummaryError(null);
+
       try {
-        setSummaryLoading(true);
         const response = await fetch('/api/github/contributions', {
           signal: controller.signal,
           cache: 'no-store',
         });
+
         const data = (await response.json()) as ContributionSummary;
+
         if (!isActive) return;
+
         if (!response.ok || data?.error) {
+          setSummary(null);
           setSummaryError(data?.error ?? 'GitHub 기여 데이터를 불러오지 못했습니다.');
           return;
         }
+
         setSummary(data);
       } catch {
         if (!isActive) return;
+        setSummary(null);
         setSummaryError('GitHub 기여 데이터를 불러오지 못했습니다.');
       } finally {
         if (isActive) setSummaryLoading(false);
       }
     };
 
-    fetchSummary();
+    run();
 
     return () => {
       isActive = false;
@@ -265,17 +309,19 @@ export default function ReactGithubCalendar() {
     };
   }, []);
 
-  const rankedRepos = summary
-    ? summary.repos
-        .map((repo) => ({
-          repo,
-          score: repo.stars + repo.watchers + repo.forks,
-        }))
-        .filter((item) => item.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 6)
-        .map((item) => item.repo)
-    : [];
+  const rankedRepos = useMemo(() => {
+    if (!summary) return [];
+
+    return summary.repos
+      .map((repo) => ({
+        repo,
+        score: repo.stars + repo.watchers + repo.forks,
+      }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 6)
+      .map((x) => x.repo);
+  }, [summary]);
 
   return (
     <ResumeSection key={`${1}-contributions`} type='contributions'>
@@ -300,11 +346,13 @@ export default function ReactGithubCalendar() {
           }}
         />
       </div>
+
       {!summaryLoading && !summaryError && summary && (
         <div className='mt-4 flex flex-col gap-3'>
           <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
             <span>외부 컨트리뷰션</span>
           </div>
+
           {summary.externalOwners && summary.externalOwners.length > 0 ? (
             <div className='flex flex-wrap gap-2'>
               {summary.externalOwners.map((owner) => (
@@ -328,17 +376,20 @@ export default function ReactGithubCalendar() {
           ) : (
             <p className='text-xxs text-muted-foreground'>외부 컨트리뷰션이 없습니다.</p>
           )}
+
           {summary.externalRepos && summary.externalRepos.length > 0 && (
             <div className='grid gap-2 md:grid-cols-2'>
               {summary.externalRepos.map((repo) => {
                 const breakdown = buildBreakdown(repo.breakdown);
+                const accentStyle = getRepoAccentStyle(repo);
+
                 return (
                   <Link
                     key={repo.nameWithOwner}
                     href={repo.url}
                     target='_blank'
                     rel='noopener'
-                    style={getRepoAccentStyle(repo)}
+                    style={accentStyle}
                     className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
                     <div className='flex items-center gap-2 text-sm font-medium'>
                       <Image
@@ -350,6 +401,7 @@ export default function ReactGithubCalendar() {
                       />
                       <span className='truncate'>{repo.nameWithOwner}</span>
                     </div>
+
                     {breakdown.length > 0 && (
                       <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
                         {breakdown.map((item) => (
@@ -364,6 +416,7 @@ export default function ReactGithubCalendar() {
           )}
         </div>
       )}
+
       <div className='mt-4 flex flex-col gap-3'>
         <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
           <span>최근 1년 기여 프로젝트</span>
@@ -373,14 +426,17 @@ export default function ReactGithubCalendar() {
             </span>
           )}
         </div>
+
         {summaryLoading && (
           <p className='text-xxs text-muted-foreground'>기여 데이터를 불러오는 중입니다.</p>
         )}
+
         {!summaryLoading && summaryError && (
           <p className='text-xxs text-muted-foreground'>
             프로젝트별 기여 요약을 표시할 수 없습니다. {summaryError}
           </p>
         )}
+
         {!summaryLoading && !summaryError && summary && (
           <>
             <div className='text-xxs text-muted-foreground'>
@@ -389,12 +445,15 @@ export default function ReactGithubCalendar() {
                 <span key={part}> · {part}</span>
               ))}
             </div>
+
             {rankedRepos.length === 0 ? (
               <p className='text-xxs text-muted-foreground'>표시할 프로젝트가 없습니다.</p>
             ) : (
               <div className='grid gap-2 md:grid-cols-2'>
                 {rankedRepos.map((repo) => {
                   const stats = buildRepoStats(repo);
+                  const iconStyle = getRepoIconStyle(repo);
+
                   return (
                     <Link
                       key={repo.nameWithOwner}
@@ -408,13 +467,19 @@ export default function ReactGithubCalendar() {
                           {formatCount(repo.total)}
                         </span>
                       </div>
+
                       <div className='text-xxs text-muted-foreground mt-1 flex w-full items-center gap-2'>
                         <div className='flex min-w-0 flex-wrap gap-2'>
                           {stats.map((item) => (
                             <span key={item}>{item}</span>
                           ))}
                         </div>
-                        <span className='ml-auto h-4 w-4 shrink-0' style={getRepoIconStyle(repo)} />
+
+                        <span
+                          className='ml-auto h-4 w-4 shrink-0'
+                          style={iconStyle}
+                          aria-hidden='true'
+                        />
                       </div>
                     </Link>
                   );

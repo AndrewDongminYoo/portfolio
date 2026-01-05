@@ -22,41 +22,36 @@
     --color-foreground-muted: #9198a1;
   }
 
-  .react-activity-calendar rect[data-level='0'] {
-    fill: var(--color-calendar-graph-day-bg);
-    shape-rendering: geometricPrecision;
-    background-color: var(--color-calendar-graph-day-bg);
-    border-radius: 2px;
-    border: 0.5px solid var(--color-calendar-graph-border-color);
-  }
-
+  /* border/border-radius 대신 stroke/rx/ry 사용 */
   .react-activity-calendar rect {
     cursor: pointer;
     transition: filter 120ms ease;
+    rx: 2px;
+    ry: 2px;
+    stroke: var(--color-calendar-graph-border-color);
+    stroke-width: 0.5px;
+    shape-rendering: geometricPrecision;
   }
 
   .react-activity-calendar rect:hover {
     filter: brightness(0.95);
   }
 
+  .react-activity-calendar rect[data-level='0'] {
+    fill: var(--color-calendar-graph-day-bg);
+  }
+
   .react-activity-calendar rect[data-level='1'] {
     fill: var(--color-calendar-graph-day-L1-bg);
-    background-color: var(--color-calendar-graph-day-L1-bg);
   }
-
   .react-activity-calendar rect[data-level='2'] {
     fill: var(--color-calendar-graph-day-L2-bg);
-    background-color: var(--color-calendar-graph-day-L2-bg);
   }
-
   .react-activity-calendar rect[data-level='3'] {
     fill: var(--color-calendar-graph-day-L3-bg);
-    background-color: var(--color-calendar-graph-day-L3-bg);
   }
-
   .react-activity-calendar rect[data-level='4'] {
     fill: var(--color-calendar-graph-day-L4-bg);
-    background-color: var(--color-calendar-graph-day-L4-bg);
   }
 
   .react-activity-calendar {
@@ -72,6 +67,7 @@
     @apply fill-(--color-foreground-muted) text-[10px];
   }
 
+  /* legend swatches */
   .react-activity-calendar__legend-colors > svg:nth-of-type(1) > rect {
     fill: var(--color-calendar-graph-day-bg);
   }
@@ -93,26 +89,22 @@
   }
 
   .github-calendar-scroll {
-    /* Use scroll instead of auto: Always reserve space for the scrollbar */
-    overflow-x: scroll;
+    overflow-x: scroll; /* always reserve scrollbar area (where supported) */
     overflow-y: hidden;
-
-    /* Prevent layout jumps (in supported browsers) */
     scrollbar-gutter: stable;
-
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
   }
 
   /* Firefox */
   .github-calendar-scroll {
-    scrollbar-width: thin; /* thumb 얇게 */
+    scrollbar-width: thin;
     scrollbar-color: rgba(120, 120, 120, 0.55) transparent;
   }
 
   /* WebKit(Chrome/Safari/Edge) */
   .github-calendar-scroll::-webkit-scrollbar {
-    height: 1px;
+    height: 6px;
   }
   .github-calendar-scroll::-webkit-scrollbar-track {
     background: transparent;

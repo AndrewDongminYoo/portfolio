@@ -1,4 +1,4 @@
-import { act, render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -101,8 +101,12 @@ const summary = {
 let calendarProps: GitHubCalendarProps | null = null;
 let fetchMock: ReturnType<typeof vi.fn>;
 const matchMediaState = { matches: false, listeners: new Set<() => void>() };
-const simpleIconState = { useMask: false };
 
+/**
+ * 리팩터링 버전에서:
+ * - MutationObserver는 제거됨
+ * - ResizeObserver + requestAnimationFrame 기반 스케줄링은 남아있음
+ */
 const installDomMocks = () => {
   vi.stubGlobal('matchMedia', (query: string) => ({
     get matches() {
@@ -123,18 +127,11 @@ const installDomMocks = () => {
     disconnect = vi.fn();
   }
 
-  class MockMutationObserver {
-    constructor(_callback: MutationCallback) {}
-    observe = vi.fn();
-    disconnect = vi.fn();
-    takeRecords = vi.fn(() => [] as MutationRecord[]);
-  }
-
   vi.stubGlobal('ResizeObserver', MockResizeObserver);
-  vi.stubGlobal('MutationObserver', MockMutationObserver);
+
   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => {
     callback(0);
-    return 0;
+    return 1;
   });
   vi.stubGlobal('cancelAnimationFrame', (_handle: number) => {});
 };
@@ -165,10 +162,16 @@ vi.mock('react-github-calendar', () => ({
   },
 }));
 
+/**
+ * 리팩터링 버전에서 icon url은 allowlist(host) 검증을 통과해야 mask-image 적용됨.
+ * - simpleicons.org / cdn.simpleicons.org 만 통과
+ */
+const simpleIconState = { useMask: false };
+
 vi.mock('@/features/repos/simple-icons', () => ({
   getSimpleIcon: vi.fn(() =>
     simpleIconState.useMask
-      ? { color: '#112233', url: 'https://example.com/icon.svg' }
+      ? { color: '#112233', url: 'https://simpleicons.org/icons/typescript.svg' }
       : { color: '#112233', url: '' },
   ),
 }));
@@ -259,7 +262,7 @@ describe('ReactGithubCalendar', () => {
     expect(queryByText('외부 컨트리뷰션')).not.toBeInTheDocument();
   });
 
-  it('applies calendar layout changes and scrolls to latest', async () => {
+  it('auto-scrolls to latest contributions on mount (when scroll is possible)', async () => {
     const originalScrollWidth = Object.getOwnPropertyDescriptor(
       HTMLElement.prototype,
       'scrollWidth',
@@ -286,29 +289,11 @@ describe('ReactGithubCalendar', () => {
       fetchMock.mockResolvedValueOnce(createResponse(summary));
 
       const { getByTestId, findByText } = render(<ReactGithubCalendar />);
-
       await findByText('총 16회');
 
-      const scrollContainer = getByTestId('github-calendar');
-      const calendarSvg = scrollContainer.querySelector(
-        '.react-activity-calendar__calendar',
-      ) as SVGSVGElement | null;
+      const scrollContainer = getByTestId('github-calendar') as HTMLDivElement;
 
-      expect(calendarSvg).not.toBeNull();
-
-      act(() => {
-        matchMediaState.matches = true;
-        matchMediaState.listeners.forEach((cb) => cb());
-      });
-
-      expect(calendarSvg?.style.width).toBe('auto');
-
-      act(() => {
-        matchMediaState.matches = false;
-        matchMediaState.listeners.forEach((cb) => cb());
-      });
-
-      expect(calendarSvg?.style.width).toBe('');
+      // requestAnimationFrame mock이 즉시 실행되므로 mount 직후 scrollLeft가 이동해야 함
       expect(scrollContainer.scrollLeft).toBeGreaterThan(0);
     } finally {
       if (originalScrollWidth) {
@@ -324,7 +309,7 @@ describe('ReactGithubCalendar', () => {
     }
   });
 
-  it('renders masked repo icon when url is available', async () => {
+  it('renders masked repo icon when url is available and allowed', async () => {
     simpleIconState.useMask = true;
     fetchMock.mockResolvedValueOnce(createResponse(summary));
 
@@ -334,6 +319,7 @@ describe('ReactGithubCalendar', () => {
     const card = repoName.closest('a');
     const icon = card?.querySelector('span[style]');
 
+    // allowlist 통과 URL을 쓰므로 mask-image가 들어가야 함
     expect(icon?.getAttribute('style')).toContain('mask-image');
   });
 
