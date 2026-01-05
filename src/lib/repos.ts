@@ -1,17 +1,13 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 import { Octokit } from '@octokit/core';
 import { type Endpoints } from '@octokit/types';
-import path from 'path';
 
 import type Repository from '@/interface/repos';
-import { BrandSlug, BrandTitle, Ecosystem } from '@/interface/stack';
+import type { Candidate } from '@/interface/repos';
+import { type BrandSlug, type BrandTitle, type Ecosystem } from '@/interface/stack';
 import { sortRepositoriesDefault } from '@/lib/repo-sort';
-
-const { GITHUB_TOKEN } = process.env;
-if (!GITHUB_TOKEN) throw new Error('GITHUB_TOKEN is required.');
-
-const octokit = new Octokit({ auth: GITHUB_TOKEN });
 
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 const starsDirectory = path.join(process.cwd(), 'data/stars');
@@ -19,18 +15,63 @@ const starsDirectory = path.join(process.cwd(), 'data/stars');
 const DEFAULT_HEADERS = {
   'Accept': 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
-};
+} as const;
 
 // ----------------------------
-// Types
+// Octokit (lazy init) - DO NOT throw at import-time
 // ----------------------------
 
-type Candidate = {
-  slug: BrandSlug;
-  name: BrandTitle;
-  score: number;
-  reasons: string[];
-};
+let _octokit: Octokit | null = null;
+
+function getOctokit(): Octokit {
+  if (_octokit) return _octokit;
+
+  const { GITHUB_TOKEN } = process.env;
+  if (!GITHUB_TOKEN) {
+    // import 시점이 아닌 "실제 호출 시점"에만 에러
+    throw new Error('GITHUB_TOKEN is required.');
+  }
+
+  _octokit = new Octokit({ auth: GITHUB_TOKEN });
+  return _octokit;
+}
+
+// ----------------------------
+// Small concurrency limiter (no deps)
+// ----------------------------
+
+export function createLimiter(concurrency: number) {
+  let active = 0;
+  const queue: Array<() => void> = [];
+
+  const tryRunNext = () => {
+    if (active >= concurrency) return;
+    const job = queue.shift();
+    if (!job) return;
+    active += 1;
+    job();
+  };
+
+  return async function limit<T>(task: () => Promise<T>): Promise<T> {
+    return await new Promise<T>((resolve, reject) => {
+      queue.push(async () => {
+        try {
+          resolve(await task());
+        } catch (e) {
+          reject(e);
+        } finally {
+          active -= 1;
+          tryRunNext();
+        }
+      });
+      tryRunNext();
+    });
+  };
+}
+
+// ----------------------------
+// Types (local)
+// ----------------------------
 
 type DetectResult = {
   framework: BrandTitle | null;
@@ -57,7 +98,7 @@ const FRAMEWORKS = {
   reactnative: 'React Native',
 } as const;
 
-type FrameworkKey = keyof typeof FRAMEWORKS; // 'flutter' | 'nextdotjs' | 'reactnative'
+type FrameworkKey = keyof typeof FRAMEWORKS;
 type FrameworkTitle = (typeof FRAMEWORKS)[FrameworkKey];
 
 function frameworkKeyToBrandSlug(key: FrameworkKey): BrandSlug {
@@ -84,39 +125,6 @@ function brandTitleToFrameworkKey(title: BrandTitle): FrameworkKey | null {
 const FLUTTER_TOPICS = new Set(['flutter', 'flutter-plugin', 'flutter-package', 'flutter-app']);
 const REACT_NATIVE_TOPICS = new Set(['react-native', 'reactnative', 'expo']);
 const NEXT_TOPICS = new Set(['nextjs', 'next.js', 'next-js', 'next']);
-
-// ----------------------------
-// Small concurrency limiter (no deps)
-// ----------------------------
-
-export function createLimiter(concurrency: number) {
-  let active = 0;
-  const queue: Array<() => void> = [];
-
-  const tryRunNext = () => {
-    if (active >= concurrency) return;
-    const job = queue.shift();
-    if (!job) return;
-    active++;
-    job();
-  };
-
-  return async function limit<T>(task: () => Promise<T>): Promise<T> {
-    return await new Promise<T>((resolve, reject) => {
-      queue.push(async () => {
-        try {
-          resolve(await task());
-        } catch (e) {
-          reject(e);
-        } finally {
-          active--;
-          tryRunNext();
-        }
-      });
-      tryRunNext();
-    });
-  };
-}
 
 // ----------------------------
 // Detection utilities
@@ -261,13 +269,14 @@ type GraphQLRepoSignals = {
 type RepoSignals = {
   topics: string[];
   languages: Record<string, number>;
-  rootNames: Set<string>;
+  rootNames: Set<string>; // root entry names + (optional) `${dir}/${name}` paths
   workflowNames: Set<string>;
   pubspecText?: string;
   packageJsonText?: string;
 };
 
 async function graphqlRequest<T>(query: string, variables: Record<string, unknown>): Promise<T> {
+  const octokit = getOctokit();
   const res = await octokit.request('POST /graphql', {
     query,
     variables,
@@ -384,7 +393,6 @@ function toTopicsList(
 }
 
 function buildBranchExpr(repo: Repository): string {
-  // REST repo 응답에는 default_branch가 흔히 존재. 타입에 없을 수 있어 any 접근.
   const b = String(repo.default_branch ?? '').trim();
   return b || 'HEAD';
 }
@@ -512,57 +520,75 @@ async function scanOneSubdir(owner: string, repo: string, branch: string, dir: s
 // ----------------------------
 
 function inferEcosystemsFromFiles(root: Set<string>, workflows: Set<string>): Ecosystem[] {
-  const out = new Set<Ecosystem>();
+  // root에는 "pnpm-lock.yaml" 같은 basename도 있고 "apps/pnpm-lock.yaml" 같은 경로도 있을 수 있음
+  const rootList = Array.from(root);
+  const basenames = new Set(
+    rootList.map((p) => path.posix.basename(p.replaceAll('\\', '/'))).filter(Boolean),
+  );
 
-  const hasAnySuffix = (suffixes: string[]) =>
-    Array.from(root).some((name) => suffixes.some((s) => name.endsWith(s)));
+  const hasPath = (name: string) => root.has(name) || basenames.has(name);
+  const hasPathSuffix = (suffixes: string[]) =>
+    rootList.some((p) => suffixes.some((s) => p.endsWith(s) || p.endsWith(`/${s}`)));
+
+  const out = new Set<Ecosystem>();
 
   if (Array.from(workflows).some((n) => n.endsWith('.yml') || n.endsWith('.yaml'))) {
     out.add('GitHub Actions workflows');
   }
 
   // Node
-  if (root.has('pnpm-lock.yaml')) out.add('pnpm');
-  if (root.has('yarn.lock')) out.add('Yarn');
-  if (root.has('package-lock.json')) out.add('npm');
+  if (hasPath('pnpm-lock.yaml')) out.add('pnpm');
+  if (hasPath('yarn.lock')) out.add('Yarn');
+  if (hasPath('package-lock.json')) out.add('npm');
+
   // Dart
-  if (root.has('pubspec.yaml') || root.has('pubspec.lock')) out.add('pub');
+  if (hasPath('pubspec.yaml') || hasPath('pubspec.lock')) out.add('pub');
+
   // Python
-  if (root.has('requirements.txt') || root.has('Pipfile') || root.has('Pipfile.lock'))
-    out.add('pip');
-  if (root.has('poetry.lock') || root.has('pyproject.toml')) out.add('Poetry');
+  if (hasPath('requirements.txt') || hasPath('Pipfile') || hasPath('Pipfile.lock')) out.add('pip');
+  if (hasPath('poetry.lock') || hasPath('pyproject.toml')) out.add('Poetry');
+
   // Rust
-  if (root.has('Cargo.lock') || root.has('Cargo.toml')) out.add('Cargo');
+  if (hasPath('Cargo.lock') || hasPath('Cargo.toml')) out.add('Cargo');
+
   // PHP
-  if (root.has('composer.lock') || root.has('composer.json')) out.add('Composer');
+  if (hasPath('composer.lock') || hasPath('composer.json')) out.add('Composer');
+
   // Ruby
-  if (root.has('Gemfile.lock') || root.has('Gemfile') || hasAnySuffix(['.gemspec']))
+  if (hasPath('Gemfile.lock') || hasPath('Gemfile') || hasPathSuffix(['.gemspec']))
     out.add('RubyGems');
+
   // Go
-  if (root.has('go.mod')) out.add('Go modules');
+  if (hasPath('go.mod')) out.add('Go modules');
+
   // Java
-  if (root.has('pom.xml')) out.add('Maven');
+  if (hasPath('pom.xml')) out.add('Maven');
   if (
-    root.has('build.gradle') ||
-    root.has('build.gradle.kts') ||
-    root.has('settings.gradle') ||
-    root.has('settings.gradle.kts')
+    hasPath('build.gradle') ||
+    hasPath('build.gradle.kts') ||
+    hasPath('settings.gradle') ||
+    hasPath('settings.gradle.kts')
   ) {
     out.add('Gradle');
   }
+
   // Bazel
-  if (root.has('WORKSPACE') || root.has('WORKSPACE.bazel') || root.has('MODULE.bazel'))
+  if (hasPath('WORKSPACE') || hasPath('WORKSPACE.bazel') || hasPath('MODULE.bazel'))
     out.add('Bazel');
+
   // Terraform/OpenTofu
-  if (root.has('.terraform.lock.hcl')) out.add('OpenTofu');
+  if (hasPath('.terraform.lock.hcl')) out.add('OpenTofu');
+
   // Julia
-  if (root.has('Manifest.toml') || root.has('Project.toml')) out.add('Julia');
+  if (hasPath('Manifest.toml') || hasPath('Project.toml')) out.add('Julia');
+
   // Swift
-  if (root.has('Package.resolved') || root.has('Package.swift')) out.add('Swift Package Manager');
+  if (hasPath('Package.resolved') || hasPath('Package.swift')) out.add('Swift Package Manager');
+
   // NuGet
   if (
-    hasAnySuffix(['.csproj', '.fsproj', '.vbproj', '.vcxproj', '.nuspec']) ||
-    root.has('packages.config')
+    hasPathSuffix(['.csproj', '.fsproj', '.vbproj', '.vcxproj', '.nuspec']) ||
+    hasPath('packages.config')
   ) {
     out.add('NuGet');
   }
@@ -642,8 +668,8 @@ function detectFrameworkFromTopicsOnly(topics?: string[]): BrandTitle | null {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function pickRepository(raw: any): Repository {
-  // 필요한 필드만 명시적으로 저장 (데이터 손상/불명확한 delete 제거)
-  return {
+  // 런타임 정규화 + 타입 체크는 "satisfies"로, 반환은 Repository로
+  const repo = {
     node_id: String(raw.node_id ?? ''),
     name: String(raw.name ?? ''),
     full_name: String(raw.full_name ?? ''),
@@ -661,18 +687,22 @@ function pickRepository(raw: any): Repository {
     watchers_count: Number(raw.watchers_count ?? 0),
     language: String(raw.language ?? ''),
     forks_count: Number(raw.forks_count ?? 0),
-    languages: (raw.languages && typeof raw.languages === 'object' ? raw.languages : {}) as Record<
-      string,
-      number
-    >,
-    topics: Array.isArray(raw.topics) ? raw.topics : undefined,
+
+    // topics/languages
+    languages:
+      raw.languages && typeof raw.languages === 'object'
+        ? (raw.languages as Record<string, number>)
+        : ({} as Record<string, number>),
+    topics: Array.isArray(raw.topics) ? (raw.topics as string[]) : undefined,
 
     // enrich fields (optional)
     framework: raw.framework ?? undefined,
     descriptive_slug: raw.descriptive_slug ?? undefined,
     framework_candidates: raw.framework_candidates ?? undefined,
     ecosystems: raw.ecosystems ?? undefined,
-  } as Repository;
+  } satisfies Repository;
+
+  return repo;
 }
 
 /**
@@ -685,7 +715,7 @@ function applyFrameworkFromTopics(repo: Repository): Repository {
   const framework = detectFrameworkFromTopicsOnly(repo.topics);
   const descriptive_slug = inferDescriptiveSlug(framework, repo, repo.languages ?? {});
 
-  return { ...repo, framework, descriptive_slug } as Repository;
+  return { ...repo, framework, descriptive_slug };
 }
 
 // ----------------------------
@@ -705,8 +735,8 @@ export async function enrichRepository(repo: Repository): Promise<Repository> {
     const signals = await fetchRepoSignals(owner, repo.name, branch);
 
     // 2) optional monorepo scan (only if needed, capped)
-    const needsPubspec = !signals.pubspecText;
-    const needsPackageJson = !signals.packageJsonText;
+    let needsPubspec = !signals.pubspecText;
+    let needsPackageJson = !signals.packageJsonText;
 
     if (needsPubspec || needsPackageJson) {
       const dirs = ['apps', 'packages', 'examples', 'modules']
@@ -714,20 +744,24 @@ export async function enrichRepository(repo: Repository): Promise<Repository> {
         .slice(0, 2); // hard cap
 
       for (const dir of dirs) {
-        // if already got everything, stop
         if (!needsPubspec && !needsPackageJson) break;
 
         const scan = await scanOneSubdir(owner, repo.name, branch, dir);
 
-        // merge discovered entries into rootNames “virtual root” for ecosystem inference
+        // merge discovered entries into rootNames “virtual root”
         for (const name of scan.entries) {
           // keep as `${dir}/${name}` to avoid collisions and keep meaning
           signals.rootNames.add(`${dir}/${name}`);
         }
 
-        if (!signals.pubspecText && scan.pubspecText) signals.pubspecText = scan.pubspecText;
-        if (!signals.packageJsonText && scan.packageJsonText)
+        if (!signals.pubspecText && scan.pubspecText) {
+          signals.pubspecText = scan.pubspecText;
+          needsPubspec = false;
+        }
+        if (!signals.packageJsonText && scan.packageJsonText) {
           signals.packageJsonText = scan.packageJsonText;
+          needsPackageJson = false;
+        }
       }
     }
 
@@ -744,7 +778,7 @@ export async function enrichRepository(repo: Repository): Promise<Repository> {
       descriptive_slug: result.descriptive_slug,
       framework_candidates: result.framework_candidates,
       ecosystems: result.ecosystems,
-    } as Repository;
+    };
   } catch (error) {
     console.error('Failed to detect framework for repository.', { repo: repo.full_name, error });
     return repo;
@@ -762,6 +796,7 @@ type FetchRepoOptions = {
 };
 
 export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Repository[]> {
+  const octokit = getOctokit();
   const EP_REPOS: keyof Endpoints = 'GET /user/repos';
 
   const repositories = await octokit
@@ -787,7 +822,43 @@ export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Re
   return sortRepositoriesDefault(filtered);
 }
 
+export async function fetchRepository(owner: string, repo: string): Promise<Repository> {
+  const octokit = getOctokit();
+  const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
+
+  const raw = await octokit
+    .request(EP_REPO, { owner, repo, headers: DEFAULT_HEADERS })
+    .then((value) => value.data);
+
+  const picked = pickRepository(raw);
+  return await enrichRepository(picked);
+}
+
+// ----------------------------
+// File system helpers (atomic writes + awaited)
+// ----------------------------
+
+async function ensureDir(dirPath: string): Promise<void> {
+  await fs.promises.mkdir(dirPath, { recursive: true });
+}
+
+async function writeJsonAtomic(filePath: string, data: unknown): Promise<void> {
+  const dir = path.dirname(filePath);
+  await ensureDir(dir);
+
+  const tmpPath = `${filePath}.tmp-${process.pid}-${Date.now()}`;
+  const payload = JSON.stringify(data, null, 2);
+
+  await fs.promises.writeFile(tmpPath, payload, 'utf8');
+  await fs.promises.rename(tmpPath, filePath);
+}
+
+// ----------------------------
+// Batch downloads
+// ----------------------------
+
 export async function fetchStarredRepository(): Promise<void> {
+  const octokit = getOctokit();
   const EP_STARS: keyof Endpoints = 'GET /user/starred';
 
   const stars = await octokit
@@ -803,26 +874,19 @@ export async function fetchStarredRepository(): Promise<void> {
     .filter((R) => !R.fork && R.size > 4000 && !R.archived)
     .map((r) => pickRepository(r));
 
-  repositories.forEach((json) => {
-    const targetJsonPath = path.join(starsDirectory, `${json.name}.json`);
-    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 2), { flag: 'w' }, (err) => {
-      if (err) console.error(err);
-    });
-  });
-}
+  await ensureDir(starsDirectory);
 
-export async function fetchRepository(owner: string, repo: string): Promise<Repository> {
-  const EP_REPO: keyof Endpoints = 'GET /repos/{owner}/{repo}';
-
-  const raw = await octokit
-    .request(EP_REPO, { owner, repo, headers: DEFAULT_HEADERS })
-    .then((value) => value.data);
-
-  const picked = pickRepository(raw);
-  return await enrichRepository(picked);
+  await Promise.all(
+    repositories.map(async (json) => {
+      const targetJsonPath = path.join(starsDirectory, `${json.name}.json`);
+      await writeJsonAtomic(targetJsonPath, json);
+    }),
+  );
 }
 
 export async function downloadJSON(): Promise<number> {
+  await ensureDir(reposDirectory);
+
   const repositories = await fetchRepositories({ minSizeKb: 0, includeForks: false });
 
   const limit = createLimiter(6);
@@ -830,12 +894,12 @@ export async function downloadJSON(): Promise<number> {
     repositories.map((repo) => limit(() => enrichRepository(repo))),
   );
 
-  repositoryData.forEach((json) => {
-    const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
-    fs.writeFile(targetJsonPath, JSON.stringify(json, null, 2), { flag: 'w' }, (err) => {
-      if (err) console.error(err);
-    });
-  });
+  await Promise.all(
+    repositoryData.map(async (json) => {
+      const targetJsonPath = path.join(reposDirectory, `${json.name}.json`);
+      await writeJsonAtomic(targetJsonPath, json);
+    }),
+  );
 
   return repositoryData.length;
 }
@@ -846,10 +910,12 @@ export async function downloadJSON(): Promise<number> {
 
 function readReposIds(): { params: { repo: string } }[] {
   const fileNames = fs.readdirSync(reposDirectory);
-  return fileNames.map((fileName) => {
-    const repo = fileName.replace(/\.json$/, '');
-    return { params: { repo } };
-  });
+  return fileNames
+    .filter((n) => n.endsWith('.json'))
+    .map((fileName) => {
+      const repo = fileName.replace(/\.json$/, '');
+      return { params: { repo } };
+    });
 }
 
 export function readData(repo: string): Repository {

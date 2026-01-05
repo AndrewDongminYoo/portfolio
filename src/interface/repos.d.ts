@@ -21,11 +21,18 @@ export default interface Repository {
   forks_count: number;
   languages: Record<string, number>;
   topics?: string[];
-  framework?: BrandTitle;
-  descriptive_slug?: BrandSlug;
+  framework?: BrandTitle | null;
+  descriptive_slug?: BrandSlug | null;
   framework_candidates?: Candidate[];
   ecosystems?: Ecosystem[];
 }
+
+export type Candidate = {
+  slug: BrandSlug;
+  name: BrandTitle;
+  score: number;
+  reasons: string[];
+};
 
 /**
  * GitHub 사용자.
