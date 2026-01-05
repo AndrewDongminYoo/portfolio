@@ -38,12 +38,13 @@ describe('EducationElement', () => {
     const educationWithoutDates: Education = {
       ...education,
       id: 'education_fallback',
-      startAt: undefined,
-      endAt: undefined,
+      startAt: '2024-01-01',
+      endAt: null,
     };
 
     const { getByText } = render(<EducationElement education={educationWithoutDates} />);
 
-    expect(getByText('입학 예정')).toBeInTheDocument();
+    expect(getByText('2024.01')).toBeInTheDocument();
+    expect(getByText('졸업 예정')).toBeInTheDocument();
   });
 });

@@ -41,12 +41,13 @@ describe('ProjectElement', () => {
     const projectWithoutDates: Project = {
       ...project,
       id: 'project_fallback',
-      startAt: undefined,
-      endAt: undefined,
+      startAt: '2024-03-01',
+      endAt: null,
     };
 
     const { getByText } = render(<ProjectElement project={projectWithoutDates} />);
 
-    expect(getByText('진행 예정')).toBeInTheDocument();
+    expect(getByText('2024.03')).toBeInTheDocument();
+    expect(getByText('진행중')).toBeInTheDocument();
   });
 });
