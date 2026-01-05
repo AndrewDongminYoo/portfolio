@@ -101,6 +101,25 @@ describe('posts', () => {
     expect(sorted[1].id).toBe('project_old');
   });
 
+  it('handles equal startAt values during sort', async () => {
+    readdirSync.mockReturnValue(['education_a.yaml', 'project_b.yaml']);
+    readFileSync.mockImplementation((filePath: string) => String(filePath));
+    matter.mockImplementation((content: string) => {
+      if (content.includes('education_a')) {
+        return { data: { ...educationData, startAt: '2024-01-01' } };
+      }
+      if (content.includes('project_b')) {
+        return { data: { ...projectData, startAt: '2024-01-01' } };
+      }
+      return { data: educationData };
+    });
+
+    const { getSortedPostsData } = await import('@/lib/posts');
+
+    const sorted = getSortedPostsData();
+    expect(sorted.map((item) => item.id)).toEqual(['project_b', 'education_a']);
+  });
+
   it('categorizes all supported types', async () => {
     const { categorizing } = await import('@/lib/posts');
 

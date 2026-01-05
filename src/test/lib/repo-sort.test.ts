@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import type Repository from '@/interface/repos';
 import {
+  __test__,
   getRepoScore,
   sortRepositoriesByPushedAt,
   sortRepositoriesByScoreOnly,
@@ -45,6 +46,13 @@ describe('repo-sort', () => {
 
     expect(sorted[0].node_id).toBe('new');
     expect(sorted[1].node_id).toBe('old');
+  });
+
+  it('returns positive when older repo is compared to newer', () => {
+    const older = makeRepo({ node_id: 'old', pushed_at: '2023-01-01T00:00:00Z' });
+    const newer = makeRepo({ node_id: 'new', pushed_at: '2024-01-01T00:00:00Z' });
+
+    expect(__test__.comparePushedAtDesc(older, newer)).toBe(1);
   });
 
   it('sorts by score only desc', () => {

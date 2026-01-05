@@ -1,5 +1,6 @@
-import type { SearchConsoleSnapshot } from '@/interface/insights';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
+import type { SearchConsoleSnapshot } from '@/interface/insights';
 
 const redisMocks = vi.hoisted(() => {
   const kv = {

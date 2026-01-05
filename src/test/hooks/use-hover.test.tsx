@@ -119,4 +119,41 @@ describe('useLongPressTooltip', () => {
 
     vi.useRealTimers();
   });
+
+  it('prevents click after long press', () => {
+    vi.useFakeTimers();
+
+    let handlers: ReturnType<typeof useLongPressTooltip>['handlers'] | null = null;
+
+    function Harness() {
+      const hook = useLongPressTooltip(100, true);
+      handlers = hook.handlers;
+      return (
+        <button data-testid='target' {...hook.handlers}>
+          button
+        </button>
+      );
+    }
+
+    const { getByTestId } = render(<Harness />);
+    const button = getByTestId('target');
+
+    fireEvent.pointerDown(button, { pointerType: 'touch' });
+    act(() => {
+      vi.advanceTimersByTime(100);
+    });
+
+    const preventDefault = vi.fn();
+    const stopPropagation = vi.fn();
+
+    handlers!.onClick({ preventDefault, stopPropagation } as unknown as React.MouseEvent<
+      Element,
+      MouseEvent
+    >);
+
+    expect(preventDefault).toHaveBeenCalled();
+    expect(stopPropagation).toHaveBeenCalled();
+
+    vi.useRealTimers();
+  });
 });

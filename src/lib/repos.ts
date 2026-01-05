@@ -862,3 +862,8 @@ export function readRepositories(): Repository[] {
   const allReposData = readReposIds().map(({ params: { repo } }) => readData(repo));
   return sortRepositoriesDefault(allReposData);
 }
+
+// Test-only exports (kept minimal to avoid leaking internals in production usage)
+export const __test__ = {
+  brandTitleToFrameworkKey,
+};

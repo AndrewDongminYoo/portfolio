@@ -122,6 +122,44 @@ describe('repos helpers', () => {
     expect(result.descriptive_slug).toBe('reactnative');
   });
 
+  it('detects framework from next.js topics', async () => {
+    readFileSync.mockReturnValueOnce(
+      JSON.stringify({
+        ...baseRepo,
+        topics: ['nextjs'],
+      }),
+    );
+
+    const { readData } = await import('@/lib/repos');
+
+    const result = readData('repo');
+    expect(result.framework).toBe('Next.js');
+    expect(result.descriptive_slug).toBe('nextdotjs');
+  });
+
+  it('returns null framework when topics are unrelated', async () => {
+    readFileSync.mockReturnValueOnce(
+      JSON.stringify({
+        ...baseRepo,
+        topics: ['unknown'],
+        language: 'Dart',
+        languages: { Dart: 100 },
+      }),
+    );
+
+    const { readData } = await import('@/lib/repos');
+
+    const result = readData('repo');
+    expect(result.framework).toBeNull();
+    expect(result.descriptive_slug).toBe('dart');
+  });
+
+  it('returns null for unknown framework title', async () => {
+    const { __test__ } = await import('@/lib/repos');
+
+    expect(__test__.brandTitleToFrameworkKey('Svelte' as never)).toBeNull();
+  });
+
   it('infers primary language when repo language is missing', async () => {
     readFileSync.mockReturnValueOnce(
       JSON.stringify({
@@ -242,6 +280,113 @@ describe('repos helpers', () => {
         }),
       }),
     );
+  });
+
+  it('handles invalid package.json content gracefully', async () => {
+    octokitRequest.mockResolvedValueOnce({
+      data: {
+        repository: {
+          topics: { nodes: [{ topic: { name: 'nextjs' } }] },
+          languages: { edges: [] },
+          pubspec: { __typename: 'Blob', isBinary: true, text: null },
+          packageJson: { __typename: 'Blob', isBinary: false, text: '{invalid' },
+          root: { __typename: 'Tree', entries: [] },
+          workflows: { __typename: 'Tree', entries: [] },
+        },
+      },
+    });
+
+    const { enrichRepository } = await import('@/lib/repos');
+
+    const result = await enrichRepository({
+      ...baseRepo,
+      topics: [],
+      default_branch: 'main',
+    });
+
+    expect(result.framework).toBe('Next.js');
+    expect(result.descriptive_slug).toBe('nextdotjs');
+  });
+
+  it('returns empty signals when repository is missing', async () => {
+    octokitRequest.mockResolvedValueOnce({
+      data: {
+        repository: null,
+      },
+    });
+
+    const { enrichRepository } = await import('@/lib/repos');
+
+    const result = await enrichRepository({
+      ...baseRepo,
+      topics: [],
+      default_branch: 'main',
+    });
+
+    expect(result.framework).toBeNull();
+    expect(result.descriptive_slug).toBe('dart');
+    expect(result.ecosystems).toEqual([]);
+  });
+
+  it('detects ecosystems for RubyGems, Gradle, Bazel, and NuGet', async () => {
+    octokitRequest.mockResolvedValueOnce({
+      data: {
+        repository: {
+          topics: { nodes: [] },
+          languages: { edges: [] },
+          pubspec: { __typename: 'Blob', isBinary: true, text: null },
+          packageJson: { __typename: 'Blob', isBinary: true, text: null },
+          root: {
+            __typename: 'Tree',
+            entries: [
+              { name: 'Gemfile', type: 'blob' },
+              { name: 'build.gradle', type: 'blob' },
+              { name: 'WORKSPACE', type: 'blob' },
+              { name: 'MyApp.csproj', type: 'blob' },
+            ],
+          },
+          workflows: { __typename: 'Tree', entries: [] },
+        },
+      },
+    });
+
+    const { enrichRepository } = await import('@/lib/repos');
+
+    const result = await enrichRepository({
+      ...baseRepo,
+      topics: [],
+      default_branch: 'main',
+    });
+
+    expect(result.ecosystems).toEqual(
+      expect.arrayContaining(['RubyGems', 'Gradle', 'Bazel', 'NuGet']),
+    );
+  });
+
+  it('captures react-native and next.js topics in framework candidates', async () => {
+    octokitRequest.mockResolvedValueOnce({
+      data: {
+        repository: {
+          topics: { nodes: [{ topic: { name: 'react-native' } }, { topic: { name: 'nextjs' } }] },
+          languages: { edges: [] },
+          pubspec: { __typename: 'Blob', isBinary: true, text: null },
+          packageJson: { __typename: 'Blob', isBinary: true, text: null },
+          root: { __typename: 'Tree', entries: [] },
+          workflows: { __typename: 'Tree', entries: [] },
+        },
+      },
+    });
+
+    const { enrichRepository } = await import('@/lib/repos');
+
+    const result = await enrichRepository({
+      ...baseRepo,
+      topics: [],
+      default_branch: 'main',
+    });
+
+    const candidateNames = (result.framework_candidates ?? []).map((candidate) => candidate.name);
+    expect(candidateNames).toEqual(expect.arrayContaining(['React Native', 'Next.js']));
   });
 
   it('scans subdirectories when manifest files are missing', async () => {
@@ -388,5 +533,16 @@ describe('repos helpers', () => {
     await Promise.all([limit(task), limit(task), limit(task)]);
 
     expect(maxActive).toBe(1);
+  });
+
+  it('rejects tasks in createLimiter when task throws', async () => {
+    const { createLimiter } = await import('@/lib/repos');
+    const limit = createLimiter(1);
+
+    await expect(
+      limit(async () => {
+        throw new Error('boom');
+      }),
+    ).rejects.toThrow('boom');
   });
 });

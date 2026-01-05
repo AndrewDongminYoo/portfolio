@@ -63,3 +63,8 @@ function comparePushedAtDesc(a: Repository, b: Repository): number {
   }
   return 0;
 }
+
+// Test-only exports
+export const __test__ = {
+  comparePushedAtDesc,
+};
