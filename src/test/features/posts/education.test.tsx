@@ -33,4 +33,17 @@ describe('EducationElement', () => {
     expect(getByText('컴퓨터공학 전공')).toBeInTheDocument();
     expect(getByText('• 학사')).toBeInTheDocument();
   });
+
+  it('renders fallback period when start date is missing', () => {
+    const educationWithoutDates: Education = {
+      ...education,
+      id: 'education_fallback',
+      startAt: undefined,
+      endAt: undefined,
+    };
+
+    const { getByText } = render(<EducationElement education={educationWithoutDates} />);
+
+    expect(getByText('입학 예정')).toBeInTheDocument();
+  });
 });

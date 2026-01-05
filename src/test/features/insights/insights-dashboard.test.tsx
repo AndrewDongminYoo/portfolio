@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react';
+import { fireEvent, render, waitFor, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import InsightsDashboard from '@/features/insights/insights-dashboard';
@@ -47,6 +47,41 @@ const snapshot = {
     rows: [
       { keys: ['2024-01-01'], clicks: 5, impressions: 50, ctr: 0.1, position: 1 },
       { keys: ['2024-01-02'], clicks: 10, impressions: 100, ctr: 0.1, position: 2 },
+    ],
+  },
+};
+
+const fallbackSnapshot = {
+  ...snapshot,
+  byQuery: {
+    dimension: ['query'],
+    rows: [
+      {
+        keys: ['fallback'],
+        clicks: 1,
+        impressions: 10,
+        ctr: 0.1,
+        position: Number.POSITIVE_INFINITY,
+      },
+    ],
+  },
+  byPage: {
+    dimension: ['page'],
+    rows: [
+      {
+        keys: ['not-a-url'],
+        clicks: 0,
+        impressions: 0,
+        ctr: 0,
+        position: Number.NaN,
+      },
+    ],
+  },
+  byDate: {
+    dimension: ['date'],
+    rows: [
+      { keys: ['2024-01-01'], clicks: 0, impressions: 0, ctr: 0, position: 0 },
+      { keys: ['2024-01-02'], clicks: 0, impressions: 0, ctr: 0, position: 0 },
     ],
   },
 };
@@ -158,5 +193,73 @@ describe('InsightsDashboard', () => {
     expect(
       await findByText('데이터를 불러오는 중 오류가 발생했습니다. Error: network down'),
     ).toBeInTheDocument();
+  });
+
+  it('blocks refresh when token is missing', () => {
+    const { getByRole, getByText } = render(<InsightsDashboard />);
+
+    fireEvent.click(getByRole('button', { name: 'Search Console 새로고침' }));
+
+    expect(getByText('토큰을 먼저 입력해주세요.')).toBeInTheDocument();
+  });
+
+  it('shows refresh error when API responds with error', async () => {
+    window.localStorage.setItem('insights-token', 'saved-token');
+    fetchMock.mockResolvedValueOnce(createResponse({ ok: false, error: 'refresh error' }));
+
+    const { getByRole, findByText, getByDisplayValue } = render(<InsightsDashboard />);
+
+    await waitFor(() => {
+      expect(getByDisplayValue('saved-token')).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByRole('button', { name: 'Search Console 새로고침' }));
+
+    expect(await findByText('refresh error')).toBeInTheDocument();
+  });
+
+  it('shows refresh failure when request throws', async () => {
+    window.localStorage.setItem('insights-token', 'saved-token');
+    fetchMock.mockRejectedValueOnce(new Error('refresh down'));
+
+    const { getByRole, findByText, getByDisplayValue } = render(<InsightsDashboard />);
+
+    await waitFor(() => {
+      expect(getByDisplayValue('saved-token')).toBeInTheDocument();
+    });
+
+    fireEvent.click(getByRole('button', { name: 'Search Console 새로고침' }));
+
+    expect(
+      await findByText('업데이트 요청에 실패했습니다. Error: refresh down'),
+    ).toBeInTheDocument();
+  });
+
+  it('renders fallback labels for invalid page and position data', async () => {
+    fetchMock.mockResolvedValueOnce(createResponse({ ok: true, data: fallbackSnapshot }));
+
+    const { getByPlaceholderText, getByRole, findByText } = render(<InsightsDashboard />);
+
+    fireEvent.change(getByPlaceholderText('INSIGHTS_ACCESS_TOKEN'), {
+      target: { value: 'fallback-token' },
+    });
+    fireEvent.click(getByRole('button', { name: '토큰 저장' }));
+
+    expect(await findByText('not-a-url')).toBeInTheDocument();
+
+    const queriesHeading = await findByText('Top Queries');
+    const queries = queriesHeading.closest('section');
+    expect(queries).not.toBeNull();
+    if (queries) {
+      expect(within(queries).getByText('-')).toBeInTheDocument();
+    }
+
+    const trendHeading = await findByText('검색 유입 추세 (최근 14일)');
+    const trendSection = trendHeading.closest('section');
+    expect(trendSection).not.toBeNull();
+    if (trendSection) {
+      const bar = trendSection.querySelector('div[style]');
+      expect(bar?.getAttribute('style')).toContain('width: 0%');
+    }
   });
 });

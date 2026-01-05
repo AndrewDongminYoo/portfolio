@@ -9,6 +9,13 @@ vi.mock('next/link', () => ({
   ),
 }));
 
+vi.mock('next/image', () => ({
+  default: ({ src, alt, ...rest }: { src: string; alt: string }) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={alt} {...rest} />
+  ),
+}));
+
 import ActivityElement from '@/features/posts/activity';
 import { Activity } from '@/interface/profile';
 
@@ -33,5 +40,29 @@ describe('ActivityElement', () => {
     expect(getByText(activity.title)).toBeInTheDocument();
     // If activity.posting_url is not empty, activity.subtitle is displayed wrapped in an a tag.
     expect(getByText(activity.subtitle)).toBeInTheDocument();
+  });
+
+  it('renders fallback end date and post link when optional fields are missing', () => {
+    const activityWithoutDates: Activity = {
+      ...activity,
+      id: 'activity_fallback',
+      startAt: '2024-03-01',
+      endAt: null,
+      posting_url: undefined,
+      website_url: 'https://example.com/fallback',
+      icon: '/icons/activity.png',
+    };
+
+    const { getByText, getByRole, queryByText, getByAltText } = render(
+      <ActivityElement activity={activityWithoutDates} />,
+    );
+
+    expect(getByText('진행중')).toBeInTheDocument();
+    expect(queryByText(activity.subtitle)).not.toBeInTheDocument();
+    expect(getByRole('link', { name: /활동/ })).toHaveAttribute(
+      'href',
+      activityWithoutDates.website_url,
+    );
+    expect(getByAltText(`${activity.name} logo`)).toBeInTheDocument();
   });
 });

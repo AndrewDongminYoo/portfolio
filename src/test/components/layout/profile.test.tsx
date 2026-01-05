@@ -1,6 +1,6 @@
 import { render, screen, within } from '@testing-library/react';
 import type { ReactNode } from 'react';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockConstants = vi.hoisted(() => ({
   contacts: [
@@ -42,7 +42,9 @@ vi.mock('next/image', () => ({
 
 vi.mock('@/lib/constants', () => ({
   contacts: mockConstants.contacts,
-  description: mockConstants.description,
+  get description() {
+    return mockConstants.description;
+  },
   languages: mockConstants.languages,
   primaryTitle: mockConstants.primaryTitle,
 }));
@@ -50,6 +52,10 @@ vi.mock('@/lib/constants', () => ({
 import ProfileBio from '@/components/layout/profile';
 
 describe('ProfileBio', () => {
+  beforeEach(() => {
+    mockConstants.description = 'First line\nSecond line';
+  });
+
   it('renders the primary title and contact badges', () => {
     render(<ProfileBio />);
 
@@ -70,5 +76,13 @@ describe('ProfileBio', () => {
 
     expect(screen.getByText('First line')).toBeInTheDocument();
     expect(screen.getByText('Second line')).toBeInTheDocument();
+  });
+
+  it('does not render description paragraphs when only one line', () => {
+    mockConstants.description = 'Single line';
+
+    render(<ProfileBio />);
+
+    expect(screen.queryByText('Single line')).not.toBeInTheDocument();
   });
 });

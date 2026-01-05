@@ -36,4 +36,17 @@ describe('ProjectElement', () => {
     expect(getByText('https://github.com/andrewdongminyoo')).toBeInTheDocument();
     expect(getByText('https://andrewdongminyoo.vercel.app/')).toBeInTheDocument();
   });
+
+  it('renders fallback period when start date is missing', () => {
+    const projectWithoutDates: Project = {
+      ...project,
+      id: 'project_fallback',
+      startAt: undefined,
+      endAt: undefined,
+    };
+
+    const { getByText } = render(<ProjectElement project={projectWithoutDates} />);
+
+    expect(getByText('진행 예정')).toBeInTheDocument();
+  });
 });

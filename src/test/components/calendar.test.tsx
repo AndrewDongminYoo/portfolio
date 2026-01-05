@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { act, render, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
@@ -100,14 +100,18 @@ const summary = {
 
 let calendarProps: GitHubCalendarProps | null = null;
 let fetchMock: ReturnType<typeof vi.fn>;
+const matchMediaState = { matches: false, listeners: new Set<() => void>() };
+const simpleIconState = { useMask: false };
 
 const installDomMocks = () => {
   vi.stubGlobal('matchMedia', (query: string) => ({
-    matches: false,
+    get matches() {
+      return matchMediaState.matches;
+    },
     media: query,
     onchange: null,
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
+    addEventListener: (_: string, cb: () => void) => matchMediaState.listeners.add(cb),
+    removeEventListener: (_: string, cb: () => void) => matchMediaState.listeners.delete(cb),
     addListener: vi.fn(),
     removeListener: vi.fn(),
     dispatchEvent: vi.fn(),
@@ -153,12 +157,20 @@ vi.mock('next/image', () => ({
 vi.mock('react-github-calendar', () => ({
   GitHubCalendar: (props: GitHubCalendarProps) => {
     calendarProps = props;
-    return <div data-testid='github-calendar' />;
+    return (
+      <div data-testid='github-calendar' className='react-activity-calendar__scroll-container'>
+        <svg className='react-activity-calendar__calendar' />
+      </div>
+    );
   },
 }));
 
 vi.mock('@/features/repos/simple-icons', () => ({
-  getSimpleIcon: vi.fn(() => ({ color: '#112233', url: '' })),
+  getSimpleIcon: vi.fn(() =>
+    simpleIconState.useMask
+      ? { color: '#112233', url: 'https://example.com/icon.svg' }
+      : { color: '#112233', url: '' },
+  ),
 }));
 
 describe('ReactGithubCalendar', () => {
@@ -166,6 +178,9 @@ describe('ReactGithubCalendar', () => {
     calendarProps = null;
     fetchMock = vi.fn();
     vi.stubGlobal('fetch', fetchMock);
+    matchMediaState.matches = false;
+    matchMediaState.listeners.clear();
+    simpleIconState.useMask = false;
     installDomMocks();
   });
 
@@ -242,5 +257,95 @@ describe('ReactGithubCalendar', () => {
       await findByText('프로젝트별 기여 요약을 표시할 수 없습니다. 토큰이 만료되었습니다.'),
     ).toBeInTheDocument();
     expect(queryByText('외부 컨트리뷰션')).not.toBeInTheDocument();
+  });
+
+  it('applies calendar layout changes and scrolls to latest', async () => {
+    const originalScrollWidth = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      'scrollWidth',
+    );
+    const originalClientWidth = Object.getOwnPropertyDescriptor(
+      HTMLElement.prototype,
+      'clientWidth',
+    );
+
+    Object.defineProperty(HTMLElement.prototype, 'scrollWidth', {
+      configurable: true,
+      get() {
+        return 200;
+      },
+    });
+    Object.defineProperty(HTMLElement.prototype, 'clientWidth', {
+      configurable: true,
+      get() {
+        return 100;
+      },
+    });
+
+    try {
+      fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+      const { getByTestId, findByText } = render(<ReactGithubCalendar />);
+
+      await findByText('총 16회');
+
+      const scrollContainer = getByTestId('github-calendar');
+      const calendarSvg = scrollContainer.querySelector(
+        '.react-activity-calendar__calendar',
+      ) as SVGSVGElement | null;
+
+      expect(calendarSvg).not.toBeNull();
+
+      act(() => {
+        matchMediaState.matches = true;
+        matchMediaState.listeners.forEach((cb) => cb());
+      });
+
+      expect(calendarSvg?.style.width).toBe('auto');
+
+      act(() => {
+        matchMediaState.matches = false;
+        matchMediaState.listeners.forEach((cb) => cb());
+      });
+
+      expect(calendarSvg?.style.width).toBe('');
+      expect(scrollContainer.scrollLeft).toBeGreaterThan(0);
+    } finally {
+      if (originalScrollWidth) {
+        Object.defineProperty(HTMLElement.prototype, 'scrollWidth', originalScrollWidth);
+      } else {
+        delete (HTMLElement.prototype as unknown as { scrollWidth?: number }).scrollWidth;
+      }
+      if (originalClientWidth) {
+        Object.defineProperty(HTMLElement.prototype, 'clientWidth', originalClientWidth);
+      } else {
+        delete (HTMLElement.prototype as unknown as { clientWidth?: number }).clientWidth;
+      }
+    }
+  });
+
+  it('renders masked repo icon when url is available', async () => {
+    simpleIconState.useMask = true;
+    fetchMock.mockResolvedValueOnce(createResponse(summary));
+
+    const { findByText } = render(<ReactGithubCalendar />);
+
+    const repoName = await findByText('portfolio');
+    const card = repoName.closest('a');
+    const icon = card?.querySelector('span[style]');
+
+    expect(icon?.getAttribute('style')).toContain('mask-image');
+  });
+
+  it('renders error message when fetch fails', async () => {
+    fetchMock.mockRejectedValueOnce(new Error('network'));
+
+    const { findByText } = render(<ReactGithubCalendar />);
+
+    expect(
+      await findByText(
+        '프로젝트별 기여 요약을 표시할 수 없습니다. GitHub 기여 데이터를 불러오지 못했습니다.',
+      ),
+    ).toBeInTheDocument();
   });
 });

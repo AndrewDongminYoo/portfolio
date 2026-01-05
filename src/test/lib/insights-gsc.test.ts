@@ -49,6 +49,26 @@ describe('fetchSearchConsoleSnapshot', () => {
     expect(result).toEqual({ ok: false, error: 'Missing GSC_SITE_URL' });
   });
 
+  it('returns an error when service account email is missing', async () => {
+    process.env.GSC_SITE_URL = 'https://example.com';
+    delete process.env.GSC_SERVICE_ACCOUNT_EMAIL;
+    process.env.GSC_PRIVATE_KEY = 'key';
+
+    const result = await fetchSearchConsoleSnapshot();
+
+    expect(result).toEqual({ ok: false, error: 'Missing GSC_SERVICE_ACCOUNT_EMAIL' });
+  });
+
+  it('returns an error when private key is missing', async () => {
+    process.env.GSC_SITE_URL = 'https://example.com';
+    process.env.GSC_SERVICE_ACCOUNT_EMAIL = 'service@example.com';
+    delete process.env.GSC_PRIVATE_KEY;
+
+    const result = await fetchSearchConsoleSnapshot();
+
+    expect(result).toEqual({ ok: false, error: 'Missing GSC_PRIVATE_KEY' });
+  });
+
   it('fetches datasets, normalizes rows, and sorts date rows', async () => {
     process.env.GSC_SITE_URL = 'https://example.com';
     process.env.GSC_SERVICE_ACCOUNT_EMAIL = 'service@example.com';
@@ -132,6 +152,43 @@ describe('fetchSearchConsoleSnapshot', () => {
     expect(googleMocks.query).toHaveBeenCalledTimes(5);
   });
 
+  it('uses defaults when environment values are invalid', async () => {
+    process.env.GSC_SITE_URL = 'https://example.com';
+    process.env.GSC_SERVICE_ACCOUNT_EMAIL = 'service@example.com';
+    process.env.GSC_PRIVATE_KEY = 'key';
+    process.env.INSIGHTS_ROW_LIMIT = 'not-a-number';
+    process.env.INSIGHTS_DATE_ROW_LIMIT = '0';
+    process.env.INSIGHTS_LOOKBACK_DAYS = '0';
+
+    googleMocks.query.mockResolvedValue({ data: { rows: [] } });
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date('2024-05-10T00:00:00Z'));
+
+    const result = await fetchSearchConsoleSnapshot();
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+
+    const calls = googleMocks.query.mock.calls.map((call) => call[0].requestBody);
+    const rowLimitByDimension = new Map(
+      calls.map((call: { dimensions: string[]; rowLimit: number }) => [
+        call.dimensions[0],
+        call.rowLimit,
+      ]),
+    );
+
+    expect(rowLimitByDimension.get('query')).toBe(250);
+    expect(rowLimitByDimension.get('date')).toBe(90);
+
+    const endDate = new Date('2024-05-09T00:00:00Z');
+    const startDate = new Date(endDate);
+    startDate.setDate(endDate.getDate() - 28 + 1);
+
+    expect(result.data.startDate).toBe(startDate.toISOString().slice(0, 10));
+    expect(result.data.endDate).toBe(endDate.toISOString().slice(0, 10));
+  });
+
   it('returns error message when API throws', async () => {
     process.env.GSC_SITE_URL = 'https://example.com';
     process.env.GSC_SERVICE_ACCOUNT_EMAIL = 'service@example.com';
@@ -144,5 +201,17 @@ describe('fetchSearchConsoleSnapshot', () => {
     const result = await fetchSearchConsoleSnapshot();
 
     expect(result).toEqual({ ok: false, error: 'boom' });
+  });
+
+  it('returns unknown error when rejection is not an Error', async () => {
+    process.env.GSC_SITE_URL = 'https://example.com';
+    process.env.GSC_SERVICE_ACCOUNT_EMAIL = 'service@example.com';
+    process.env.GSC_PRIVATE_KEY = 'key';
+
+    googleMocks.query.mockRejectedValueOnce('fail').mockResolvedValue({ data: { rows: [] } });
+
+    const result = await fetchSearchConsoleSnapshot();
+
+    expect(result).toEqual({ ok: false, error: 'Unknown error' });
   });
 });
