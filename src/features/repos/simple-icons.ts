@@ -1,6 +1,6 @@
 import { getSpec } from '@/features/repos/specs';
 
-export type SimpleIconInfo = {
+type SimpleIconInfo = {
   title: string;
   slug: string;
   /**

@@ -2,13 +2,13 @@ import { parseISO } from 'date-fns/parseISO';
 
 import type Repository from '@/interface/repos';
 
-export const SCORE_WEIGHTS = {
+const SCORE_WEIGHTS = {
   stars: 3,
   forks: 2,
   watchers: 1,
 } as const;
 
-export const PINNED_SCORE_THRESHOLD = 10;
+const PINNED_SCORE_THRESHOLD = 10;
 
 export type RepoSortMode = 'default' | 'latest' | 'popular';
 

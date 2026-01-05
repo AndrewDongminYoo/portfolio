@@ -49,9 +49,3 @@ export function categorizing(post: string, mattered: GrayMatterFile<string>): Re
       return { ...(mattered.data as Project), id: post, type };
   }
 }
-
-export function getAllPostIds() {
-  return getAllIds().map((post) => {
-    return { params: { post } };
-  });
-}

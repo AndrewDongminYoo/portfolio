@@ -4,11 +4,11 @@ import type { SearchConsoleSnapshot } from '@/interface/insights';
 
 const DEFAULT_INSIGHTS_KEY = 'insights:gsc:latest';
 
-export async function getClient() {
+async function getClient() {
   return await createClient({ url: process.env.REDIS_URL }).connect();
 }
 
-export function getInsightsKey() {
+function getInsightsKey() {
   return process.env.INSIGHTS_KV_KEY ?? DEFAULT_INSIGHTS_KEY;
 }
 

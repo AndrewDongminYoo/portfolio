@@ -25,7 +25,7 @@ const dropdownItemClassName =
 const externalTriggerClassName =
   'inline-flex flex-row items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-medium text-foreground transition-colors hover:bg-transparent hover:text-foreground/80 data-[state=open]:bg-transparent';
 
-export function MenuButtonIcon({
+function MenuButtonIcon({
   text,
   icon,
   hideText,
