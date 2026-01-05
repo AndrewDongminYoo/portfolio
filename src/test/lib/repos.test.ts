@@ -4,6 +4,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 const readFileSync = vi.fn();
 const readdirSync = vi.fn();
 const writeFile = vi.fn();
+const rename = vi.fn();
+const mkdir = vi.fn();
 const octokitRequest = vi.fn();
 
 vi.mock('node:fs', () => ({
@@ -11,6 +13,11 @@ vi.mock('node:fs', () => ({
     readFileSync,
     readdirSync,
     writeFile,
+    promises: {
+      mkdir,
+      writeFile,
+      rename,
+    },
   },
 }));
 
@@ -43,6 +50,8 @@ beforeEach(() => {
   readFileSync.mockReset();
   readdirSync.mockReset();
   writeFile.mockReset();
+  rename.mockReset();
+  mkdir.mockReset();
   octokitRequest.mockReset();
   process.env.GITHUB_TOKEN = 'test-token';
 });
@@ -52,7 +61,7 @@ describe('repos helpers', () => {
     const repo = { ...baseRepo, topics: ['flutter'] };
     readFileSync.mockReturnValueOnce(JSON.stringify(repo));
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBe('Flutter');
@@ -83,7 +92,7 @@ describe('repos helpers', () => {
       });
     });
 
-    const { readRepositories } = await import('@/lib/repos');
+    const { readRepositories } = await import('@/lib/repos/fs-store');
 
     const result = readRepositories();
     expect(result[0].name).toBe('high');
@@ -100,7 +109,7 @@ describe('repos helpers', () => {
       }),
     );
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBeNull();
@@ -115,7 +124,7 @@ describe('repos helpers', () => {
       }),
     );
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBe('React Native');
@@ -130,7 +139,7 @@ describe('repos helpers', () => {
       }),
     );
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBe('Next.js');
@@ -147,7 +156,7 @@ describe('repos helpers', () => {
       }),
     );
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBeNull();
@@ -155,7 +164,7 @@ describe('repos helpers', () => {
   });
 
   it('returns null for unknown framework title', async () => {
-    const { __test__ } = await import('@/lib/repos');
+    const { __test__ } = await import('@/lib/repos/detect');
 
     expect(__test__.brandTitleToFrameworkKey('Svelte' as never)).toBeNull();
   });
@@ -170,7 +179,7 @@ describe('repos helpers', () => {
       }),
     );
 
-    const { readData } = await import('@/lib/repos');
+    const { readData } = await import('@/lib/repos/fs-store');
 
     const result = readData('repo');
     expect(result.framework).toBeNull();
@@ -517,7 +526,7 @@ describe('repos helpers', () => {
   });
 
   it('limits concurrent tasks with createLimiter', async () => {
-    const { createLimiter } = await import('@/lib/repos');
+    const { createLimiter } = await import('@/lib/repos/limiter');
     const limit = createLimiter(1);
 
     let active = 0;
@@ -536,7 +545,7 @@ describe('repos helpers', () => {
   });
 
   it('rejects tasks in createLimiter when task throws', async () => {
-    const { createLimiter } = await import('@/lib/repos');
+    const { createLimiter } = await import('@/lib/repos/limiter');
     const limit = createLimiter(1);
 
     await expect(

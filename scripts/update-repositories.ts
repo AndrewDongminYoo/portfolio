@@ -2,7 +2,8 @@ import fs from 'node:fs';
 
 import path from 'path';
 
-import { createLimiter, enrichRepository, fetchRepositories } from '@/lib/repos';
+import { enrichRepository, fetchRepositories } from '@/lib/repos';
+import { createLimiter } from '@/lib/repos/limiter';
 
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 

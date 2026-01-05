@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import RepoContent from '@/features/repos/repo-content';
-import { readData } from '@/lib/repos';
+import { readData } from '@/lib/repos/fs-store';
 
 interface RepoPageProps {
   params: Promise<{

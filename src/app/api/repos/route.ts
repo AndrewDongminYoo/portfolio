@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import {
-  downloadJSON,
-  fetchRepositories,
-  fetchRepository,
-  readData,
-  readRepositories,
-} from '@/lib/repos';
+import { downloadJSON, fetchRepositories, fetchRepository } from '@/lib/repos';
+import { readData, readRepositories } from '@/lib/repos/fs-store';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
