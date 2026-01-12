@@ -19,7 +19,7 @@
     "format:hard": "yarn format && trunk fmt --all",
     "update:png": "node ./scripts/generate-previews.mjs",
     "update:pdf": "node scripts/generate-resume-pdf.mjs --path /",
-    "postupdate:png": "trunk check --filter=oxipng --fix --all",
+    "postupdate:png": "trunk fmt --filter=oxipng --ci-progress",
     "prestart": "next build",
     "watch-type": "tsc --watch",
     "check-type": "tsc --noEmit"
