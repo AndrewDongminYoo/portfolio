@@ -20,6 +20,7 @@ jobs:
       TZ: Asia/Seoul
       PREVIEW_BASE_URL: http://127.0.0.1:3000
       PUPPETEER_NO_SANDBOX: '1'
+      GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps:
       - name: Checkout
