@@ -1,9 +1,7 @@
 {
   "recommendations": [
-    "trunk.io",
     "dbaeumer.vscode-eslint",
     "streetsidesoftware.code-spell-checker",
-    "heybourn.headwind",
     "wix.vscode-import-cost",
     "quicktype.quicktype",
     "csstools.postcss",
