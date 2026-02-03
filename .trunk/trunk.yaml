@@ -8,13 +8,13 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
-    - checkov@3.2.497
-    - osv-scanner@2.3.1
-    - trivy@0.68.2
-    - trufflehog@3.92.4
+    - checkov@3.2.500
+    - osv-scanner@2.3.2
+    - trivy@0.69.0
+    - trufflehog@3.92.5
     - yamllint@1.38.0
     - svgo@4.0.0
-    - oxipng@10.0.0
+    - oxipng@10.1.0
     - actionlint@1.7.10
     - git-diff-check
     - gitleaks@8.30.0
@@ -30,10 +30,6 @@ lint:
         - markdownlint
       paths:
         - .serena/memories/*.md
-    - linters:
-        - gitleaks
-      paths:
-        - _bmad/_config/files-manifest.csv
 runtimes:
   enabled:
     - python@3.10.8
