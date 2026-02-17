@@ -1,5 +1,6 @@
 # Custom Dictionary Words
 954YXFWZGG
+apng
 atdd
 BiQvPYtlHwQtrRLpNlqqQxfqJv0548TjtrbmZHDizz4
 bmad
@@ -8,6 +9,8 @@ nohover
 nohup
 omnisharp
 oxipng
+rrggbb
+RRGGBB
 trunkio
 unstub
 ux1kntnn9n

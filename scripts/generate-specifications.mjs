@@ -118,31 +118,29 @@ const OVERRIDE_SLUG = {
 async function loadUsedSet() {
   if (!ONLY_USED) return null;
 
-  let files = [];
   try {
-    files = await fs.readdir(REPOS_DIR);
+    const files = await fs.readdir(REPOS_DIR);
+    const used = new Set();
+
+    for (const f of files) {
+      if (!f.endsWith('.json')) continue;
+      const raw = await fs.readFile(path.join(REPOS_DIR, f), 'utf8');
+      const repo = JSON.parse(raw);
+
+      const langs = repo?.languages ?? {};
+      Object.keys(langs).forEach((k) => used.add(k));
+
+      if (typeof repo?.language === 'string') used.add(repo.language);
+
+      if (typeof repo?.framework === 'string') used.add(repo.framework);
+      if (Array.isArray(repo?.topics)) repo.topics.forEach((t) => used.add(String(t)));
+    }
+
+    return used;
   } catch {
     // If repos dir doesn't exist, fallback to no filter
     return null;
   }
-
-  const used = new Set();
-
-  for (const f of files) {
-    if (!f.endsWith('.json')) continue;
-    const raw = await fs.readFile(path.join(REPOS_DIR, f), 'utf8');
-    const repo = JSON.parse(raw);
-
-    const langs = repo?.languages ?? {};
-    Object.keys(langs).forEach((k) => used.add(k));
-
-    if (typeof repo?.language === 'string') used.add(repo.language);
-
-    if (typeof repo?.framework === 'string') used.add(repo.framework);
-    if (Array.isArray(repo?.topics)) repo.topics.forEach((t) => used.add(String(t)));
-  }
-
-  return used;
 }
 
 // --------- Icon index ---------

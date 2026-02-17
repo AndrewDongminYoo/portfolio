@@ -1,6 +1,6 @@
 /**
  * @see https://prettier.io/docs/configuration
- * @type {import("prettier").Config}
+ * @type {import('prettier').Config & import('prettier-plugin-tailwindcss').PluginOptions}
  */
 module.exports = {
   printWidth: 100,
