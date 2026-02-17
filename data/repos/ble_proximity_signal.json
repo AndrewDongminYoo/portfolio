@@ -1,0 +1,39 @@
+{
+  "node_id": "R_kgDOQ0hT3g",
+  "name": "ble_proximity_signal",
+  "full_name": "AndrewDongminYoo/ble_proximity_signal",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/ble_proximity_signal",
+  "description": "\"좋아하면 울리는\"에서 영감을 받은 플러터 패키지입니다. 특정 토큰을 가진 사용자가 가까이 다가오면 블루투스 신호에 따라 신호가 커지는 플러그인입니다.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/ble_proximity_signal/languages",
+  "pushed_at": "2026-01-07T04:56:32Z",
+  "size": 1966,
+  "stargazers_count": 2,
+  "watchers_count": 2,
+  "language": "Dart",
+  "forks_count": 1,
+  "languages": {
+    "Dart": 96525,
+    "Kotlin": 22777,
+    "Swift": 21846,
+    "Ruby": 2181,
+    "JavaScript": 278,
+    "Objective-C": 38
+  },
+  "topics": ["ble", "bluetooth", "flutter-plugin", "proximity", "rssi", "signal"],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 115,
+      "reasons": ["+100 topic match", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}

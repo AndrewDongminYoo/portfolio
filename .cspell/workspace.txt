@@ -5,6 +5,7 @@ apng
 atdd
 bmad
 cmpedometer
+cplusplus
 cupertino
 groupby
 knip
@@ -14,6 +15,7 @@ nohup
 noto
 omnisharp
 oxipng
+pyproject
 rrggbb
 RRGGBB
 trunkio

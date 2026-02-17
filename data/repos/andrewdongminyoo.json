@@ -10,12 +10,12 @@
   "html_url": "https://github.com/AndrewDongminYoo/andrewdongminyoo",
   "description": "개인 프로필을 위한 README.md 리포지토리입니다. 연락처와 주관적인 장점들, 실시간/주간 코딩시간 기록과 깃허브 주요활동 통계를 첨부했습니다.",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/andrewdongminyoo/languages",
-  "pushed_at": "2026-01-05T00:16:32Z",
-  "size": 7234,
+  "pushed_at": "2026-01-08T03:28:46Z",
+  "size": 7247,
   "stargazers_count": 2,
   "watchers_count": 2,
   "language": "CSS",
-  "forks_count": 0,
+  "forks_count": 1,
   "languages": {
     "CSS": 12367,
     "JavaScript": 280
@@ -28,7 +28,6 @@
     "korean",
     "most-used-languages",
     "profile",
-    "profle",
     "readme",
     "readme-profile",
     "wakatime"
@@ -36,5 +35,5 @@
   "framework": null,
   "descriptive_slug": "css3",
   "framework_candidates": [],
-  "ecosystems": ["GitHub Actions workflows"]
+  "ecosystems": []
 }

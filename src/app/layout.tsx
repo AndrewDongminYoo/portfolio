@@ -19,6 +19,7 @@ export const viewport: Viewport = {
   themeColor: '#0969da',
 };
 
+// cspell:disable
 export const metadata: Metadata = {
   metadataBase: homepage,
   title: { default: primaryTitle, template: `%s | ${myName}` },

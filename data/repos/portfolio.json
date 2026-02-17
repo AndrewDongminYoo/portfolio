@@ -10,16 +10,16 @@
   "html_url": "https://github.com/AndrewDongminYoo/portfolio",
   "description": "깃허브 메인 프로필(+이력서)입니다. NextJS",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/portfolio/languages",
-  "pushed_at": "2026-01-04T16:15:04Z",
-  "size": 74097,
+  "pushed_at": "2026-02-15T15:06:33Z",
+  "size": 85831,
   "stargazers_count": 2,
   "watchers_count": 2,
   "language": "TypeScript",
   "forks_count": 1,
   "languages": {
-    "TypeScript": 227085,
+    "TypeScript": 274280,
     "JavaScript": 24887,
-    "CSS": 17249
+    "CSS": 16940
   },
   "topics": ["nextjs", "profile", "react", "resume", "tailwindcss"],
   "framework": "Next.js",

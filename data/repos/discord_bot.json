@@ -1,0 +1,27 @@
+{
+  "node_id": "R_kgDOMKYmqg",
+  "name": "discord_bot",
+  "full_name": "AndrewDongminYoo/discord_bot",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/discord_bot",
+  "description": "",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/discord_bot/languages",
+  "pushed_at": "2026-01-05T23:12:41Z",
+  "size": 77,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Python",
+  "forks_count": 0,
+  "languages": {
+    "Python": 3520
+  },
+  "topics": [],
+  "framework": null,
+  "descriptive_slug": "python",
+  "framework_candidates": [],
+  "ecosystems": ["Poetry"]
+}
