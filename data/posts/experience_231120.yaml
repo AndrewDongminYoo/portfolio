@@ -54,13 +54,6 @@ projects:
     description:
       - 'URL 기반 라우팅으로 복잡한 진입/복귀 흐름을 안정적으로 처리했습니다.'
       - 'Universal App Links로 설치/딥링크 경험을 iOS/Android 공통으로 정리했습니다.'
-  - title: '인증 마이그레이션: 레거시 → Supabase → NestJS'
-    startAt: '2024-01-01'
-    endAt: '2025-01-20'
-    website_url: 'https://app.cami.kr/'
-    description:
-      - '기존 정책(이메일 ID + 전화번호 인증)을 유지하면서 신규 인증 체계로 안전하게 이전했습니다.'
-      - 'Supabase Auth로 임시 전환 후 NestJS Auth 모듈로 이관하고, 계정 연결(연동) 플로우를 구현했습니다.'
   - title: 'Content Platform: Next.js + Keystatic 기반 컨텐츠/약관/랜딩 통합'
     startAt: '2024-09-01'
     endAt: '2026-01-20'

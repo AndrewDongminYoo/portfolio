@@ -39,12 +39,14 @@ export default function ExperienceElement({ experience }: { experience: Experien
         <div className='markdown markdown_viewer'>
           <Description resume={experience} />
         </div>
-        <span className='contributions_label'>상세 업무 및 성과</span>
-        <ul className='list_contributions'>
-          {experience.projects.map((pro, i) => (
-            <Contribution project={pro} key={`${i}-${pro}`} />
-          ))}
-        </ul>
+        {experience.projects && <span className='contributions_label'>상세 업무 및 성과</span>}
+        {experience.projects && (
+          <ul className='list_contributions'>
+            {experience.projects.map((pro, i) => (
+              <Contribution project={pro} key={`${i}-${pro}`} />
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
