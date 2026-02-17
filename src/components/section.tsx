@@ -9,6 +9,7 @@ const subTitles = {
   activities: '발표/커뮤니티',
   contributions: '컨트리뷰션',
   timeline: '타임라인',
+  deployments: '프로덕션 앱',
 };
 
 /**
@@ -25,7 +26,7 @@ export default function ResumeSection({
   type: SectionType;
 }) {
   const subTitle = subTitles[type];
-  if (children === null || children === undefined) return <></>;
+  if (!children) return <></>;
   return (
     <section
       id={type}

@@ -5,7 +5,7 @@ import { isSameDay } from 'date-fns/isSameDay';
 import { isValid } from 'date-fns/isValid';
 import { parseISO } from 'date-fns/parseISO';
 
-const DateElement = ({ dateTime, fmt = 'yyyy.MM.' }: { dateTime: string; fmt?: string }) => {
+export const DateElement = ({ dateTime, fmt = 'yyyy.MM.' }: { dateTime: string; fmt?: string }) => {
   const date = parseISO(dateTime);
   if (isValid(date)) {
     return <time dateTime={dateTime}>{format(date, fmt)}</time>;

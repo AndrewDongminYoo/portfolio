@@ -8,7 +8,8 @@ export type SectionType =
   | 'educations'
   | 'activities'
   | 'contributions'
-  | 'timeline';
+  | 'timeline'
+  | 'deployments';
 
 type ResumeBase<type extends string> = {
   id: string;

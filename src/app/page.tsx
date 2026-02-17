@@ -4,8 +4,10 @@ import ReactGithubCalendar from '@/components/calendar';
 import Layout from '@/components/layout';
 import ResumeSection from '@/components/section';
 import GridTimeline from '@/components/timeline';
+import AppList from '@/features/apps/app-list';
 import Post from '@/features/posts';
 import Resume, { Activity, Education, Experience, Project } from '@/interface/profile';
+import { getApps } from '@/lib/apps';
 import { getSortedPostsData } from '@/lib/posts';
 
 export default function Index() {
@@ -15,12 +17,16 @@ export default function Index() {
   const project = groupedPosts.project as Project[];
   const activity = groupedPosts.activity as Activity[];
   const education = groupedPosts.education as Education[];
+  const apps = getApps();
   return (
     <Layout>
       <ResumeSection key={`${0}-timeline`} type='timeline'>
         <GridTimeline timeline={experience} />
       </ResumeSection>
       <ReactGithubCalendar />
+      <ResumeSection key={`${1}-deployments`} type='deployments'>
+        <AppList apps={apps} />
+      </ResumeSection>
       <ResumeSection key={`${2}-experiences`} type='experiences'>
         {experience &&
           experience.map((data, key) => {
