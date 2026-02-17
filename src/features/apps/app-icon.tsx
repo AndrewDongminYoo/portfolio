@@ -17,7 +17,7 @@ export default function AppIcon({ icon, name, size = 80 }: AppIconProps) {
   if (icon) {
     return (
       <div
-        className='relative overflow-hidden rounded-2xl shadow-md'
+        className='relative overflow-hidden rounded-xl shadow-md'
         style={{ width: size, height: size }}>
         <Image src={icon} alt={name} fill className='object-cover' sizes={`${size}px`} priority />
       </div>

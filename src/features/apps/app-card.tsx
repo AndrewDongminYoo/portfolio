@@ -26,7 +26,7 @@ export default function AppCard({ app }: AppCardProps) {
     <div className='flex flex-col gap-4 rounded-lg border border-gray-300 bg-white p-6 transition-shadow hover:shadow-md'>
       {/* Header: Icon + Name */}
       <div className='flex items-start gap-4'>
-        <AppIcon icon={app.icon} name={name} size={64} />
+        <AppIcon icon={app.icon} name={name} size={48} />
         <div className='flex-1'>
           <h3 className='text-lg font-medium text-gray-900'>{name}</h3>
           {nameEn && <p className='text-sm/tight text-gray-500'>{nameEn}</p>}
