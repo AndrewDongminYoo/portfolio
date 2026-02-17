@@ -51,7 +51,7 @@ function MenuButtonIcon({
     );
   }
   return (
-    <div className='bg-background focus:bg-accent focus:text-accent-foreground text-foreground hover:text-foreground/80 text-sm font-medium'>
+    <div className='focus:bg-accent focus:text-accent-foreground bg-background text-sm font-medium text-foreground hover:text-foreground/80'>
       {text} {jsx(icon, { className: 'size-4' })}
     </div>
   );
@@ -64,7 +64,7 @@ export default function MenuButtons() {
   return (
     <div className='fixed top-0 right-0 left-0 z-50 flex justify-end px-4 pt-0 md:top-7 md:right-14 md:left-auto md:px-0 md:pt-0 print:hidden'>
       <NavigationMenu viewport={false} className='items-center'>
-        <NavigationMenuList className='border-border/60 bg-background/80 flex-wrap justify-end gap-2 rounded-full border px-3 py-1 shadow-sm backdrop-blur md:flex-nowrap'>
+        <NavigationMenuList className='flex-wrap justify-end gap-2 rounded-full border border-border/60 bg-background/80 px-3 py-1 shadow-sm backdrop-blur md:flex-nowrap'>
           <NavigationMenuItem>
             <NavigationMenuLink className={inlineItemClassName} href='/api/resume' download>
               <MenuButtonIcon text='PDF' icon={PrinterCheck} />

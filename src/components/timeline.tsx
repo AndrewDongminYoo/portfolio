@@ -43,7 +43,7 @@ const getMonthLabels = () => {
       <time
         key={now.toUTCString()}
         dateTime={datetime}
-        className='text-xxs border-r border-solid border-r-slate-200 pl-1 leading-normal text-slate-600'
+        className='border-r border-solid border-r-slate-200 pl-1 text-xxs leading-normal text-slate-600'
         style={{ fontWeight: now.getMonth() <= 1 ? '900' : undefined }}>
         {datetime}
       </time>

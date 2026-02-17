@@ -38,7 +38,7 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           style={iconStyle}
         />
       </Link>
-      <div className='bg-background flex w-full min-w-[20.625rem] flex-col justify-between px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-r lg:rounded-b-none'>
+      <div className='flex w-full min-w-[20.625rem] flex-col justify-between bg-background px-0 py-8 leading-normal first-letter:rounded-b md:px-12 lg:rounded-r lg:rounded-b-none'>
         <CopyToClipboard
           value={`${repository.html_url}.git`}
           className='after:content-[attr(placeholder)] hover:after:content-[attr(title)]'>
@@ -68,26 +68,26 @@ export default function RepoCard({ repository }: { repository: Repository }) {
           <Link
             href={`https://github.com/search?l=${repository.language}&q=user%3A${username}&type=Code`}
             className='text-xs'>
-            <p className='text-xxs mb-0 text-gray-400'>based language</p>
+            <p className='mb-0 text-xxs text-gray-400'>based language</p>
             <Code className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
             {repository.language}
           </Link>
           <Link href={`${repository.html_url}/stargazers`} className='text-xs'>
-            <p className='text-xxs mb-0 text-gray-400'>stars</p>
+            <p className='mb-0 text-xxs text-gray-400'>stars</p>
             <p className='mb-0 text-xs text-gray-900'>
               <Star className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.stargazers_count}
             </p>
           </Link>
           <Link href={`${repository.html_url}/watchers`} className='text-xs'>
-            <p className='text-xxs mb-0 text-gray-400'>watchers</p>
+            <p className='mb-0 text-xxs text-gray-400'>watchers</p>
             <p className='mb-0 text-xs text-gray-900'>
               <Eye className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.watchers_count}
             </p>
           </Link>
           <Link href={`${repository.html_url}/fork`} className='text-xs'>
-            <p className='text-xxs mb-0 text-gray-400'>forks</p>
+            <p className='mb-0 text-xxs text-gray-400'>forks</p>
             <p className='mb-0 text-xs text-gray-900'>
               <GitFork className='my-0 mr-2 ml-0 h-4 w-4' aria-hidden='true' color='gray' />
               {repository.forks_count}

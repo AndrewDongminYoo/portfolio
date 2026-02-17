@@ -86,7 +86,7 @@ const Contribution = ({ project }: { project: Project }) => {
           </div>
         ) : null}
       </h4>
-      <div className='markdown markdown_viewer part_description'>
+      <div className='markdown part_description markdown_viewer'>
         <Description resume={project} />
       </div>
     </li>

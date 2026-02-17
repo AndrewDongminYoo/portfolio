@@ -60,7 +60,7 @@ function TableSection({
           <h3 className='resume_card_header_title'>{title}</h3>
         </div>
       </header>
-      <div className='resume_card_body mt-4 overflow-x-auto'>
+      <div className='mt-4 resume_card_body overflow-x-auto'>
         {sliced.length === 0 ? (
           <p className='text-sm text-slate-500'>데이터가 없습니다.</p>
         ) : (
@@ -103,7 +103,7 @@ function TrendSection({ rows }: { rows: SearchConsoleRow[] }) {
           <h3 className='resume_card_header_title'>검색 유입 추세 (최근 14일)</h3>
         </div>
       </header>
-      <div className='resume_card_body mt-4 space-y-2'>
+      <div className='mt-4 resume_card_body space-y-2'>
         {filtered.length === 0 ? (
           <p className='text-sm text-slate-500'>데이터가 없습니다.</p>
         ) : (
@@ -264,7 +264,7 @@ export default function InsightsDashboard() {
             </button>
           </div>
         </header>
-        <div className='resume_card_body mt-4'>
+        <div className='mt-4 resume_card_body'>
           <div className='flex flex-col gap-3 md:flex-row md:items-center'>
             <input
               type='password'

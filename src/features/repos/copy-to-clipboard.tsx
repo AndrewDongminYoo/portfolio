@@ -27,7 +27,7 @@ export function CopyToClipboard(props: CopyToClipboardProps) {
         static
         as='div'
         show={isShowing}
-        className='text-foreground my-0 mr-1 ml-0 w-fit rounded border-0 bg-slate-200 px-1 py-0.5 text-xs whitespace-nowrap'
+        className='my-0 mr-1 ml-0 w-fit rounded border-0 bg-slate-200 px-1 py-0.5 text-xs whitespace-nowrap text-foreground'
         enter='transition-opacity duration-150'
         enterFrom='opacity-0'
         enterTo='opacity-100'

@@ -5,7 +5,7 @@ import { contacts, description, languages, primaryTitle } from '@/lib/constants'
 
 export default function ProfileBio() {
   return (
-    <section className='text-foreground mt-0 border-t-0 px-0 py-0 text-base'>
+    <section className='mt-0 border-t-0 px-0 py-0 text-base text-foreground'>
       <h2 className='mb-4 -ml-px flex min-h-16 flex-row flex-nowrap items-center justify-between text-2xl leading-snug break-keep'>
         {primaryTitle}
       </h2>

@@ -13,10 +13,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className='bg-background mx-auto my-0 max-w-[55rem] transition-all lg:max-w-[82.5rem]'>
+    <div className='mx-auto my-0 max-w-[55rem] bg-background transition-all lg:max-w-[82.5rem]'>
       <MenuButtons />
-      <summary className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pt-10 md:pb-4 lg:inline-block xl:top-0 xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16'>
-        <h1 className='writer mx-0 my-4 pt-8 text-2xl leading-normal sm:pt-0'>
+      <summary className='block overflow-x-hidden px-4 py-4 text-base md:px-10 md:pt-10 md:pb-4 lg:inline-block xl:top-0 xl:scrollbar-hide xl:max-h-screen xl:min-h-screen xl:w-[30rem] xl:overflow-y-auto xl:pb-16'>
+        <h1 className='mx-0 my-4 writer pt-8 text-2xl leading-normal sm:pt-0'>
           <Link href='/' className='writer-text'>
             {myName}
           </Link>
@@ -35,7 +35,7 @@ export default function Layout({
           <StackList />
         </section>
       </summary>
-      <main className='xl:scrollbar-hide block overflow-x-hidden px-4 py-4 pt-0 text-base md:px-10 md:py-10 lg:inline-block xl:max-h-screen xl:min-h-screen xl:w-[calc(100%-30rem)] xl:overflow-y-auto'>
+      <main className='block overflow-x-hidden px-4 py-4 pt-0 text-base md:px-10 md:py-10 lg:inline-block xl:scrollbar-hide xl:max-h-screen xl:min-h-screen xl:w-[calc(100%-30rem)] xl:overflow-y-auto'>
         <article>{children}</article>
       </main>
     </div>

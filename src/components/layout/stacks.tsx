@@ -27,7 +27,7 @@ export default function StackList() {
         {stacks.technicalTags.map((stack, i) => {
           return (
             <li className='inline-block' key={`${i}`}>
-              <div className='text-foreground my-0 mr-1 ml-0 max-w-[14rem] overflow-hidden rounded border-0 bg-slate-200 px-1 py-0.5 text-xs font-normal text-ellipsis whitespace-nowrap transition-all duration-75 ease-in-out'>
+              <div className='my-0 mr-1 ml-0 max-w-[14rem] overflow-hidden rounded border-0 bg-slate-200 px-1 py-0.5 text-xs font-normal text-ellipsis whitespace-nowrap text-foreground transition-all duration-75 ease-in-out'>
                 {stack}
               </div>
             </li>

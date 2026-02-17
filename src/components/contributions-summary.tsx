@@ -48,7 +48,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                   href={owner.url}
                   target='_blank'
                   rel='noopener'
-                  className='border-border/60 bg-background/80 hover:bg-accent/10 text-xxs flex items-center gap-2 rounded-full border px-2 py-1 font-medium transition-colors'>
+                  className='hover:bg-accent/10 flex items-center gap-2 rounded-full border border-border/60 bg-background/80 px-2 py-1 text-xxs font-medium transition-colors'>
                   <Image
                     src={owner.avatarUrl}
                     alt={`${owner.login} avatar`}
@@ -61,7 +61,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
               ))}
             </div>
           ) : (
-            <p className='text-xxs text-muted-foreground'>외부 컨트리뷰션이 없습니다.</p>
+            <p className='text-muted-foreground text-xxs'>외부 컨트리뷰션이 없습니다.</p>
           )}
 
           {summary.externalRepos && summary.externalRepos.length > 0 && (
@@ -77,7 +77,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                     target='_blank'
                     rel='noopener'
                     style={accentStyle}
-                    className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
+                    className='hover:bg-accent/10 rounded-md border border-border/60 bg-background/80 px-3 py-2 text-left shadow-sm transition-colors'>
                     <div className='flex items-center gap-2 text-sm font-medium'>
                       <Image
                         src={repo.owner.avatarUrl}
@@ -90,7 +90,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                     </div>
 
                     {breakdown.length > 0 && (
-                      <div className='text-xxs text-muted-foreground mt-1 flex flex-wrap gap-2'>
+                      <div className='text-muted-foreground mt-1 flex flex-wrap gap-2 text-xxs'>
                         {breakdown.map((item) => (
                           <span key={item}>{item}</span>
                         ))}
@@ -108,25 +108,25 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
         <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
           <span>최근 1년 기여 프로젝트</span>
           {summary?.range && (
-            <span className='text-xxs text-muted-foreground'>
+            <span className='text-muted-foreground text-xxs'>
               {formatDateLabel(summary.range.from)} ~ {formatDateLabel(summary.range.to)}
             </span>
           )}
         </div>
 
         {loading && (
-          <p className='text-xxs text-muted-foreground'>기여 데이터를 불러오는 중입니다.</p>
+          <p className='text-muted-foreground text-xxs'>기여 데이터를 불러오는 중입니다.</p>
         )}
 
         {!loading && error && (
-          <p className='text-xxs text-muted-foreground'>
+          <p className='text-muted-foreground text-xxs'>
             프로젝트별 기여 요약을 표시할 수 없습니다. {error}
           </p>
         )}
 
         {!loading && !error && summary && (
           <>
-            <div className='text-xxs text-muted-foreground'>
+            <div className='text-muted-foreground text-xxs'>
               <span>총 {formatCount(summary.totals.total)}</span>
               {buildTotalParts(summary.totals).map((part) => (
                 <span key={part}> · {part}</span>
@@ -134,7 +134,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
             </div>
 
             {rankedRepos.length === 0 ? (
-              <p className='text-xxs text-muted-foreground'>표시할 프로젝트가 없습니다.</p>
+              <p className='text-muted-foreground text-xxs'>표시할 프로젝트가 없습니다.</p>
             ) : (
               <div className='grid gap-2 md:grid-cols-2'>
                 {rankedRepos.map((repo) => {
@@ -147,15 +147,15 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                       href={repo.url}
                       target='_blank'
                       rel='noopener'
-                      className='border-border/60 bg-background/80 hover:bg-accent/10 rounded-md border px-3 py-2 text-left shadow-sm transition-colors'>
+                      className='hover:bg-accent/10 rounded-md border border-border/60 bg-background/80 px-3 py-2 text-left shadow-sm transition-colors'>
                       <div className='flex items-center justify-between gap-2 text-sm font-medium'>
                         <span className='truncate'>{displayRepoName(repo)}</span>
-                        <span className='text-xxs text-muted-foreground'>
+                        <span className='text-muted-foreground text-xxs'>
                           {formatCount(repo.total)}
                         </span>
                       </div>
 
-                      <div className='text-xxs text-muted-foreground mt-1 flex w-full items-center gap-2'>
+                      <div className='text-muted-foreground mt-1 flex w-full items-center gap-2 text-xxs'>
                         <div className='flex min-w-0 flex-wrap gap-2'>
                           {stats.map((item) => (
                             <span key={item}>{item}</span>

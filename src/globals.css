@@ -269,7 +269,7 @@
   @apply mx-0 my-2 list-none px-0 py-0;
 
   & li {
-    @apply text-foreground mt-0 mr-1 mb-1 ml-0 inline-block rounded-sm border-0 bg-slate-200 px-1 py-px text-xs leading-normal font-normal;
+    @apply mt-0 mr-1 mb-1 ml-0 inline-block rounded-sm border-0 bg-slate-200 px-1 py-px text-xs leading-normal font-normal text-foreground;
   }
 }
 
@@ -323,7 +323,7 @@
 }
 
 @utility writer-text {
-  @apply animate-typing box-border inline-block overflow-hidden border-r-4 border-solid border-r-orange-500 text-3xl font-bold tracking-tighter whitespace-nowrap;
+  @apply box-border inline-block animate-typing overflow-hidden border-r-4 border-solid border-r-orange-500 text-3xl font-bold tracking-tighter whitespace-nowrap;
 }
 
 @utility url__link {
@@ -490,7 +490,7 @@
   }
 
   pre {
-    @apply text-foreground mx-0 my-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-4 py-3 wrap-break-word break-all;
+    @apply mx-0 my-0 rounded-sm border border-solid border-slate-200 bg-gray-100 px-4 py-3 wrap-break-word break-all text-foreground;
   }
 
   pre code {
