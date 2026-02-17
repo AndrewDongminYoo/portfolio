@@ -4,12 +4,15 @@ aosp
 apng
 atdd
 bmad
+BSIDE
+CAMI
 cmpedometer
 cplusplus
 cupertino
 groupby
 knip
 markdownx
+mirae
 nohover
 nohup
 noto
@@ -18,7 +21,9 @@ oxipng
 pyproject
 rrggbb
 RRGGBB
+TIIMO
 trunkio
 unstub
 Vercel
 wakatime
+WCAG
