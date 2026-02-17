@@ -54,7 +54,7 @@ Tests are located in `src/test/` mirroring the structure of `src/`. Vitest is co
 
 ```bash
 yarn update:png        # Regenerate README preview images via Puppeteer
-yarn update:pdf        # Generate resume PDF from /resume page
+yarn update:pdf        # Generate resume PDF from / page
 yarn update:repos      # Fetch and update GitHub repository metadata
 ```
 
@@ -65,9 +65,11 @@ yarn update:repos      # Fetch and update GitHub repository metadata
 ```
 src/
 ├── app/              # Next.js App Router (pages, layouts, API routes)
+│   ├── api/posts/    # Posts listing endpoint
+│   ├── api/repos/    # Repositories listing endpoint
 │   ├── api/resume/   # Latest PDF download endpoint
-│   ├── github/       # GitHub repositories page
-│   └── resume/       # Printable resume page
+│   ├── posts/        # Blog post list/detail pages
+│   └── repos/        # Repository list/detail pages
 ├── components/       # Shared UI components
 ├── features/         # Domain-specific feature modules
 ├── hooks/            # Shared React hooks
@@ -87,7 +89,7 @@ scripts/              # Automation scripts
 
 **Module Organization**: Features are organized by domain in `src/features/` with related components, hooks, and utilities co-located. Shared functionality lives in `src/components/`, `src/hooks/`, and `src/lib/`.
 
-**Data Flow**: GitHub data is fetched server-side using Octokit and can be refreshed via `scripts/update-repositories.ts`. Local repository metadata is stored in `data/repos/` and consumed by the GitHub page.
+**Data Flow**: GitHub data is fetched server-side using Octokit and can be refreshed via `scripts/update-repositories.ts`. Local repository metadata is stored in `data/repos/` and consumed by the repos page.
 
 **Resume PDF API**: `/api/resume` route handler scans `public/resume/` and serves the file with the most recent modification time. Add new PDFs to `public/resume/` to update.
 

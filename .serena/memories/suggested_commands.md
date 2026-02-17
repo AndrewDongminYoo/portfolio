@@ -21,10 +21,17 @@
 - `yarn check-type`
 - `yarn watch-type`
 
+## Testing
+
+- `yarn test`
+- `yarn test:watch`
+- `yarn test:coverage`
+
 ## Assets / Utilities
 
 - `yarn update:png` (regenerate README preview images)
 - `yarn update:pdf` (generate resume PDF)
+- `yarn update:repos` (refresh repository metadata)
 
 ## General macOS CLI
 

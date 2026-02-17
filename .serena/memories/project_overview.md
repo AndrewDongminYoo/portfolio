@@ -1,7 +1,7 @@
 # Project Overview
 
 - Purpose: personal resume + portfolio site (printable resume page, SEO-optimized, dynamic elements). Initially static HTML/CSS/JS, now Next.js.
-- Stack: Next.js App Router (React 19), TypeScript, Tailwind CSS, ESLint, Prettier. Uses Octokit for GitHub data and Puppeteer for preview capture.
+- Stack: Next.js App Router (React 19), TypeScript, Tailwind CSS, ESLint, Prettier, Vitest. Uses Octokit for GitHub data and Puppeteer for preview capture.
 - Runtime: Node/Yarn. Deploys on Vercel; has a `vercel-build` script.
 - Key features: `/api/resume` route serves the most recently modified PDF from `public/resume/`; preview images can be regenerated into `assets/`.
 - Env: copy `.env.sample` to `.env` (e.g., `GITHUB_TOKEN`, `PREVIEW_BASE_URL`).

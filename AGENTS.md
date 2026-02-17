@@ -4,6 +4,8 @@
 
 - `src/app`: Next.js App Router pages, layouts, and route handlers.
 - `src/components`, `src/features`, `src/hooks`, `src/lib`: shared UI, feature modules, hooks, and utilities.
+- `src/interface`: shared TypeScript types/interfaces.
+- `src/test`: Vitest tests mirroring the structure of `src/`.
 - `src/globals.css`: global styles and Tailwind layers.
 - `public/`: static assets served at the site root.
 - `assets/` and `data/`: local content and metadata used by the UI.
@@ -17,7 +19,9 @@
 - `yarn lint`: lint the codebase with ESLint.
 - `yarn format`: format TypeScript/TSX with Prettier + Tailwind plugin.
 - `yarn check-type`: run TypeScript type checking (no emit).
-- `yarn update:png` / `yarn update:pdf`: regenerate preview images or resume PDF.
+- `yarn watch-type`: run TypeScript type checking in watch mode.
+- `yarn test` / `yarn test:watch` / `yarn test:coverage`: run Vitest tests.
+- `yarn update:png` / `yarn update:pdf` / `yarn update:repos`: regenerate preview images, resume PDF, or repo metadata.
 
 ## Coding Style & Naming Conventions
 
@@ -28,8 +32,9 @@
 
 ## Testing Guidelines
 
-- No formal test framework is currently wired up (no `*.test.*` or `__tests__`).
-- If you add tests, document the framework and add a matching npm script.
+- Vitest is configured with jsdom (`vitest.config.ts`).
+- Test files live under `src/test/**/*.test.{ts,tsx}`.
+- Coverage excludes `src/app/**` and test/setup files.
 
 ## Commit & Pull Request Guidelines
 
