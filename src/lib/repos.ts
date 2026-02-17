@@ -76,6 +76,7 @@ export async function enrichRepository(repo: Repository): Promise<Repository> {
 type FetchRepoOptions = {
   minSizeKb?: number;
   includeForks?: boolean;
+  includePrivate?: boolean;
   includeArchived?: boolean;
 };
 
@@ -85,7 +86,7 @@ export async function fetchRepositories(opts: FetchRepoOptions = {}): Promise<Re
 
   const repositories = await octokit
     .request(EP_REPOS, {
-      type: 'public',
+      type: opts.includePrivate ? 'all' : 'public',
       per_page: 100,
       direction: 'desc',
       sort: 'pushed',

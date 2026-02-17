@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 
+import { loadEnvConfig } from '@next/env';
 import path from 'path';
 
 import { enrichRepository, fetchRepositories } from '@/lib/repos';
@@ -7,11 +8,14 @@ import { createLimiter } from '@/lib/repos/limiter';
 
 const reposDirectory = path.join(process.cwd(), 'data/repos');
 
+loadEnvConfig(process.cwd());
+
 async function main() {
   const repositories = await fetchRepositories({
-    minSizeKb: 3000,
+    minSizeKb: 1000,
     includeArchived: false,
     includeForks: false,
+    includePrivate: true,
   });
 
   const limit = createLimiter(6);
