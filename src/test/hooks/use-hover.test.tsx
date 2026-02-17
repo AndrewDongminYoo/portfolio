@@ -146,6 +146,7 @@ describe('useLongPressTooltip', () => {
     const preventDefault = vi.fn();
     const stopPropagation = vi.fn();
 
+    expect(handlers).not.toBeNull();
     handlers!.onClick({ preventDefault, stopPropagation } as unknown as React.MouseEvent<
       Element,
       MouseEvent

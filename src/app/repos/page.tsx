@@ -4,10 +4,10 @@ import RepoList from '@/features/repos/repo-list';
 import { readRepositories } from '@/lib/repos/fs-store';
 
 export default async function Portfolio() {
-  const repositoryData = readRepositories();
+  const repositories = readRepositories().filter((r) => !r.private && !!r.description);
   return (
     <Layout>
-      <RepoList repositories={repositoryData} />
+      <RepoList repositories={repositories} />
       <ReactGithubCalendar />
     </Layout>
   );
