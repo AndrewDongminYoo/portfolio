@@ -9,7 +9,7 @@ import type { RepoSignals } from '@/lib/github/signals';
 // Types
 // ----------------------------
 
-export type DetectResult = {
+type DetectResult = {
   framework: BrandTitle | null;
   descriptive_slug: BrandSlug | null;
   framework_candidates: Candidate[];
