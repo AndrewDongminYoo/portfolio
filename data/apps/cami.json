@@ -1,0 +1,25 @@
+{
+  "id": "cami",
+  "name": "카미",
+  "nameEn": "CAMI",
+  "description": "수의사·행동전문가 검수 반려동물 성격 분석 및 AI 챗봇 기반 반려동물 케어",
+  "descriptionEn": "Pet personality analysis reviewed by experts, plus an AI chatbot",
+  "role": "developer",
+  "roleDescription": "Flutter 프로덕션 앱 개발",
+  "icon": "/apps/cami-icon.jpg",
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "https://apps.apple.com/app/id6479023185",
+      "packageId": "6479023185"
+    },
+    {
+      "type": "android",
+      "url": "https://play.google.com/store/apps/details?id=kr.cami.flutter",
+      "packageId": "kr.cami.flutter"
+    }
+  ],
+  "releaseDate": "2024-11-08",
+  "tags": ["Flutter", "Lifestyle", "Pet Care", "AI"],
+  "order": 3
+}

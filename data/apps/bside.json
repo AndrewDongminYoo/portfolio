@@ -1,0 +1,25 @@
+{
+  "id": "bside",
+  "name": "비사이드",
+  "nameEn": "Bside",
+  "description": "주주행동주의 캠페인을 준비·실행하는 플랫폼 서비스",
+  "descriptionEn": "A platform for preparing and executing activist campaigns",
+  "role": "developer",
+  "roleDescription": "Flutter 프로덕션 앱 개발",
+  "icon": "/apps/bside-icon.jpg",
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "https://apps.apple.com/app/id1609179795",
+      "packageId": "1609179795"
+    },
+    {
+      "type": "android",
+      "url": "https://play.google.com/store/apps/details?id=ai.bside.bside",
+      "packageId": "ai.bside.bside"
+    }
+  ],
+  "releaseDate": "2022-03-26",
+  "tags": ["Flutter", "Finance", "Campaign"],
+  "order": 2
+}

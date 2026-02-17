@@ -1,0 +1,25 @@
+{
+  "id": "tiimo",
+  "name": "Tiimo",
+  "nameEn": "Tiimo: Daily To Do AI Planner",
+  "description": "ADHD·신경다양성 친화적인 비주얼 루틴·투두·플래너",
+  "descriptionEn": "A neurodivergent-friendly visual daily planner with routines and focus tools (★4.57 · 14K+ reviews)",
+  "role": "translator",
+  "roleDescription": "한국어 로캘 번역 및 검수",
+  "icon": "/apps/tiimo-icon.jpg",
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "https://apps.apple.com/app/id1480220328",
+      "packageId": "1480220328"
+    },
+    {
+      "type": "android",
+      "url": "https://play.google.com/store/apps/details?id=com.tiimo.androidappreactnative",
+      "packageId": "com.tiimo.androidappreactnative"
+    }
+  ],
+  "releaseDate": "2019-10-28",
+  "tags": ["Productivity", "ADHD", "iPhone App of the Year 2025"],
+  "order": 4
+}

@@ -1,0 +1,25 @@
+{
+  "id": "warmwake",
+  "name": "온:음",
+  "nameEn": "WarmWake",
+  "description": "어젯밤 내가 녹음한 음성 메시지로 아침을 깨우는 알람 앱",
+  "descriptionEn": "An alarm app where yesterday’s you wakes today’s you with a voice message",
+  "role": "creator",
+  "roleDescription": "기획·개발 (End-to-end)",
+  "icon": "/apps/warmwake-icon.jpg",
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "https://apps.apple.com/app/id6758120543",
+      "packageId": "6758120543"
+    },
+    {
+      "type": "android",
+      "url": "https://play.google.com/store/apps/details?id=kr.mirae.app",
+      "packageId": "kr.mirae.app"
+    }
+  ],
+  "releaseDate": "2026-01-30",
+  "tags": ["Flutter", "Alarm", "Audio", "Voice Message"],
+  "order": 1
+}
