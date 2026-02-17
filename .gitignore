@@ -53,3 +53,6 @@ next-env.d.ts
 !.vscode/extensions.json
 !.vscode/*.code-snippets
 .env*.local
+
+### AI Coding
+.claude/settings.local.json

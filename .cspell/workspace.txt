@@ -20,4 +20,5 @@ rrggbb
 RRGGBB
 trunkio
 unstub
+Vercel
 wakatime
