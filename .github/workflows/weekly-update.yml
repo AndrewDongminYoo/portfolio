@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           cache: yarn
 
       - name: Install
@@ -46,7 +46,9 @@ jobs:
           npx wait-on http://127.0.0.1:3000
 
       - name: Generate screenshots
-        run: yarn update:png
+        run: |
+          yarn update:png
+          yarn postupdate:png
 
       - name: Generate resume PDF (A4)
         run: yarn update:pdf
