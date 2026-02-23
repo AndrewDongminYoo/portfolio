@@ -7,6 +7,20 @@
     "waitAfter": 2400
   },
   {
+    "name": "desktop-3.png",
+    "path": "/",
+    "viewport": { "width": 1440, "height": 900 },
+    "scrollPercent": 50,
+    "waitAfter": 1200
+  },
+  {
+    "name": "desktop-4.png",
+    "path": "/",
+    "viewport": { "width": 1440, "height": 900 },
+    "scrollPercent": 100,
+    "waitAfter": 1200
+  },
+  {
     "name": "desktop-2.png",
     "path": "/repos",
     "viewport": { "width": 1440, "height": 900 },
@@ -35,6 +49,14 @@
     "viewport": { "width": 430, "height": 932 },
     "deviceScaleFactor": 3,
     "scrollTo": 1200,
+    "waitAfter": 800
+  },
+  {
+    "name": "mobile-4.png",
+    "path": "/",
+    "viewport": { "width": 430, "height": 932 },
+    "deviceScaleFactor": 3,
+    "scrollPercent": 70,
     "waitAfter": 800
   }
 ]

@@ -4,12 +4,16 @@
 
 ![이력서 페이지](assets/desktop-1.png)
 
+![이력서 페이지 (스크롤 50%)](assets/desktop-3.png)
+
+![이력서 페이지 (스크롤 100%)](assets/desktop-4.png)
+
 ![깃허브 페이지](assets/desktop-2.png)
 
 ## Preview (Mobile)
 
-| ![iPhone 12 Pro](assets/mobile-1.png) | ![iPhone 12 Pro](assets/mobile-2.png) | ![iPhone 12 Pro](assets/mobile-3.png) |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| ![iPhone 12 Pro](assets/mobile-1.png) | ![iPhone 12 Pro](assets/mobile-2.png) | ![iPhone 12 Pro](assets/mobile-3.png) | ![iPhone 12 Pro](assets/mobile-4.png) |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
 
 ## YOO DONG MIN :: WHO I AM
 
