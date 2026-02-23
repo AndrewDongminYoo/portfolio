@@ -1,5 +1,8 @@
 #!/usr/bin/env node
+import { spawn } from 'node:child_process';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import http from 'node:http';
+import https from 'node:https';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
@@ -10,6 +13,55 @@ const delay = (ms = 0) =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
+
+const checkServerAlive = (url) =>
+  new Promise((resolve, reject) => {
+    const lib = url.startsWith('https:') ? https : http;
+    const req = lib.get(url, (res) => {
+      res.resume();
+      resolve();
+    });
+    req.on('error', reject);
+    req.setTimeout(3_000, () => {
+      req.destroy();
+      reject(new Error('Server check timed out'));
+    });
+  });
+
+const waitForServer = async (url, { timeout = 180_000, interval = 2_000 } = {}) => {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    try {
+      await checkServerAlive(url);
+      return;
+    } catch {
+      await delay(interval);
+    }
+  }
+  throw new Error(`Server at ${url} did not become ready within ${timeout / 1000}s`);
+};
+
+const ensureServerRunning = async (baseUrl) => {
+  const url = baseUrl.toString();
+  try {
+    await checkServerAlive(url);
+    console.log('✅  Server already running at', url);
+    return null;
+  } catch {
+    console.log('🚀  Server not detected – starting `yarn start` in background…');
+    const proc = spawn('yarn', ['start'], {
+      cwd: rootDir,
+      stdio: 'inherit',
+      shell: false,
+    });
+    proc.on('error', (err) => {
+      console.error('❌  Failed to spawn server process:', err.message);
+    });
+    await waitForServer(url);
+    console.log('✅  Server ready at', url);
+    return proc;
+  }
+};
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const rootDir = path.resolve(__dirname, '..');
@@ -222,6 +274,16 @@ const main = async () => {
     return;
   }
 
+  const serverProc = await ensureServerRunning(baseUrl);
+  const cleanup = () => {
+    if (serverProc && !serverProc.killed) {
+      serverProc.kill();
+    }
+  };
+  process.once('exit', cleanup);
+  process.once('SIGINT', cleanup);
+  process.once('SIGTERM', cleanup);
+
   const isCI = process.env.CI === 'true' || process.env.CI === '1';
   const args = [];
   if (isCI || process.env.PUPPETEER_NO_SANDBOX === '1') {
@@ -248,6 +310,10 @@ const main = async () => {
   }
 
   await browser.close();
+  cleanup();
+  process.off('exit', cleanup);
+  process.off('SIGINT', cleanup);
+  process.off('SIGTERM', cleanup);
 
   if (hasFailure) {
     process.exitCode = 1;
