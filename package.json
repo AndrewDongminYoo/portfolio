@@ -21,6 +21,7 @@
     "update:pdf": "node scripts/generate-resume-pdf.mjs --path /",
     "update:repos": "tsx scripts/update-repositories.ts",
     "postupdate:png": "trunk fmt --filter=oxipng --ci-progress",
+    "postupdate:repos": "trunk fmt --filter=prettier --ci-progress",
     "prestart": "next build",
     "watch-type": "tsc --watch",
     "check-type": "tsc --noEmit"

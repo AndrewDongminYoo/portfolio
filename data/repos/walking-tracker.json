@@ -10,19 +10,18 @@
   "html_url": "https://github.com/AndrewDongminYoo/walking-tracker",
   "description": "Sample application from @dongminyu/react-native-step-counter.",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/walking-tracker/languages",
-  "pushed_at": "2024-08-26T03:30:45Z",
-  "size": 5158,
+  "pushed_at": "2026-02-23T06:17:06Z",
+  "size": 5174,
   "stargazers_count": 5,
   "watchers_count": 5,
   "language": "TypeScript",
   "forks_count": 4,
   "languages": {
-    "TypeScript": 15459,
-    "Java": 7496,
-    "Ruby": 2595,
-    "Objective-C": 2303,
-    "JavaScript": 1440,
-    "Objective-C++": 754
+    "TypeScript": 26225,
+    "JavaScript": 3303,
+    "Kotlin": 1752,
+    "Ruby": 1435,
+    "Swift": 1238
   },
   "topics": [
     "pedometer",
