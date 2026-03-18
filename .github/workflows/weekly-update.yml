@@ -3,10 +3,14 @@ name: Weekly resume previews
 on:
   workflow_dispatch: # yamllint disable-line rule:empty-values
   schedule:
-    # 매주 월요일 00:00 KST = 일요일 15:00 UTC
+    # Every Monday at 12:00 a.m. KST = Sunday at 3:00 p.m. UTC
     - cron: 0 15 * * 0
+  push:
+    branches: [main]
+    paths: [.github/workflows]
 
 permissions:
+  checks: write
   contents: write
 
 concurrency:
@@ -45,8 +49,10 @@ jobs:
           nohup yarn start -- -p 3000 > .next-start.log 2>&1 &
           npx wait-on http://127.0.0.1:3000
 
-      - name: Trunk Code Quality
-        uses: trunk-io/trunk-action@v1
+      - name: Trunk Code Quality Setup
+        uses: trunk-io/trunk-action/install@v1
+        with:
+          tools: oxipng
 
       - name: Generate screenshots
         run: |
