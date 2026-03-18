@@ -9,6 +9,8 @@ import { fileURLToPath } from 'node:url';
 
 import puppeteer from 'puppeteer';
 
+import { applyScrollTarget } from './preview-scroll.mjs';
+
 const delay = (ms = 0) =>
   new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -196,24 +198,7 @@ const captureTarget = async (browser, target, baseUrl) => {
     timeout: target.timeout ?? 90_000,
   });
 
-  if (typeof target.scrollPercent === 'number') {
-    await page.evaluate((pct) => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      window.scrollTo(0, maxScroll * (pct / 100));
-    }, target.scrollPercent);
-
-    if (target.scrollWait ?? 0) {
-      await delay(target.scrollWait);
-    }
-  } else if (typeof target.scrollTo === 'number') {
-    await page.evaluate((scrollTop) => {
-      window.scrollTo(0, scrollTop);
-    }, target.scrollTo);
-
-    if (target.scrollWait ?? 0) {
-      await delay(target.scrollWait);
-    }
-  }
+  await applyScrollTarget(page, target, delay);
 
   if (target.waitForSelector) {
     await page.waitForSelector(target.waitForSelector, {

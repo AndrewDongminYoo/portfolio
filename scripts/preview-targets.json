@@ -2,35 +2,54 @@
   {
     "name": "desktop-1.png",
     "path": "/",
-    "viewport": { "width": 1440, "height": 900 },
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
     "scrollTo": 0,
-    "waitAfter": 2400
+    "waitAfter": 2400,
+    "scrollSelector": "main"
   },
   {
     "name": "desktop-3.png",
     "path": "/",
-    "viewport": { "width": 1440, "height": 900 },
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
     "scrollPercent": 50,
-    "waitAfter": 1200
+    "waitAfter": 1200,
+    "scrollSelector": "main"
   },
   {
     "name": "desktop-4.png",
     "path": "/",
-    "viewport": { "width": 1440, "height": 900 },
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
     "scrollPercent": 100,
-    "waitAfter": 1200
+    "waitAfter": 1200,
+    "scrollSelector": "main"
   },
   {
     "name": "desktop-2.png",
     "path": "/repos",
-    "viewport": { "width": 1440, "height": 900 },
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    },
     "scrollTo": 1100,
-    "waitAfter": 2400
+    "waitAfter": 2400,
+    "scrollSelector": "main"
   },
   {
     "name": "mobile-1.png",
     "path": "/",
-    "viewport": { "width": 430, "height": 932 },
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
     "deviceScaleFactor": 3,
     "scrollTo": 0,
     "waitAfter": 2400
@@ -38,7 +57,10 @@
   {
     "name": "mobile-2.png",
     "path": "/",
-    "viewport": { "width": 430, "height": 932 },
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
     "deviceScaleFactor": 3,
     "scrollTo": 600,
     "waitAfter": 600
@@ -46,7 +68,10 @@
   {
     "name": "mobile-3.png",
     "path": "/repos",
-    "viewport": { "width": 430, "height": 932 },
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
     "deviceScaleFactor": 3,
     "scrollTo": 1200,
     "waitAfter": 800
@@ -54,7 +79,10 @@
   {
     "name": "mobile-4.png",
     "path": "/",
-    "viewport": { "width": 430, "height": 932 },
+    "viewport": {
+      "width": 430,
+      "height": 932
+    },
     "deviceScaleFactor": 3,
     "scrollPercent": 70,
     "waitAfter": 800
