@@ -6,7 +6,7 @@
   "descriptionEn": "An alarm app where yesterday’s you wakes today’s you with a voice message",
   "role": "creator",
   "roleDescription": "기획·개발 (End-to-end)",
-  "icon": "/apps/warmwake-icon.jpg",
+  "icon": "/apps/warmwake-icon.png",
   "platforms": [
     {
       "type": "ios",
