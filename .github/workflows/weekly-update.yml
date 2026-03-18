@@ -7,7 +7,7 @@ on:
     - cron: 0 15 * * 0
   push:
     branches: [main]
-    paths: [.github/workflows]
+    paths: [.github/workflows/*.yml]
 
 permissions:
   checks: write
@@ -32,6 +32,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Trunk Code Quality Setup
+        uses: trunk-io/trunk-action/setup@v1
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -48,11 +51,6 @@ jobs:
         run: |
           nohup yarn start -- -p 3000 > .next-start.log 2>&1 &
           npx wait-on http://127.0.0.1:3000
-
-      - name: Trunk Code Quality Setup
-        uses: trunk-io/trunk-action/install@v1
-        with:
-          tools: oxipng
 
       - name: Generate screenshots
         run: |
