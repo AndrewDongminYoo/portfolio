@@ -166,8 +166,7 @@ const ensureDir = async (dir) => {
   await mkdir(dir, { recursive: true });
 };
 
-const captureTarget = async (browser, target, baseUrl) => {
-  const page = await browser.newPage();
+const configurePage = async (page, target) => {
   const viewport = target.viewport ?? { width: 1440, height: 900 };
   await page.setViewport({
     width: viewport.width,
@@ -188,18 +187,12 @@ const captureTarget = async (browser, target, baseUrl) => {
   if (Array.isArray(target.mediaFeatures) && target.mediaFeatures.length) {
     await page.emulateMediaFeatures(target.mediaFeatures);
   }
+};
 
-  const targetUrl = target.url
-    ? new URL(target.url, baseUrl)
-    : new URL(target.path ?? '/', baseUrl);
+const resolveTargetUrl = (target, baseUrl) =>
+  target.url ? new URL(target.url, baseUrl) : new URL(target.path ?? '/', baseUrl);
 
-  await page.goto(targetUrl.toString(), {
-    waitUntil: target.waitUntil ?? 'networkidle0',
-    timeout: target.timeout ?? 90_000,
-  });
-
-  await applyScrollTarget(page, target, delay);
-
+const waitAfterScroll = async (page, target) => {
   if (target.waitForSelector) {
     await page.waitForSelector(target.waitForSelector, {
       timeout: target.waitForSelectorTimeout ?? 30_000,
@@ -209,35 +202,56 @@ const captureTarget = async (browser, target, baseUrl) => {
   if (target.waitAfter) {
     await delay(target.waitAfter);
   }
+};
+
+const screenshotBySelector = async (page, selector, outputPath) => {
+  const rect = await page.$eval(selector, (element) => {
+    const { x, y, width, height } = element.getBoundingClientRect();
+    return { x, y, width, height };
+  });
+
+  if (!rect || !rect.width || !rect.height) {
+    throw new Error(`Selector "${selector}" did not return a measurable element.`);
+  }
+
+  await page.screenshot({
+    path: outputPath,
+    clip: {
+      x: rect.x,
+      y: rect.y,
+      width: rect.width,
+      height: rect.height,
+    },
+  });
+};
+
+const captureScreenshot = async (page, target, outputPath) => {
+  if (target.selector) {
+    await screenshotBySelector(page, target.selector, outputPath);
+    return;
+  }
+
+  await page.screenshot({
+    path: outputPath,
+    fullPage: target.fullPage ?? false,
+  });
+};
+
+const captureTarget = async (browser, target, baseUrl) => {
+  const page = await browser.newPage();
+  await configurePage(page, target);
+  const targetUrl = resolveTargetUrl(target, baseUrl);
+  await page.goto(targetUrl.toString(), {
+    waitUntil: target.waitUntil ?? 'networkidle0',
+    timeout: target.timeout ?? 90_000,
+  });
+
+  await applyScrollTarget(page, target, delay);
+  await waitAfterScroll(page, target);
 
   await ensureDir(assetsDir);
   const outputPath = path.join(assetsDir, target.name);
-
-  if (target.selector) {
-    const rect = await page.$eval(target.selector, (element) => {
-      const { x, y, width, height } = element.getBoundingClientRect();
-      return { x, y, width, height };
-    });
-
-    if (!rect || !rect.width || !rect.height) {
-      throw new Error(`Selector "${target.selector}" did not return a measurable element.`);
-    }
-
-    await page.screenshot({
-      path: outputPath,
-      clip: {
-        x: rect.x,
-        y: rect.y,
-        width: rect.width,
-        height: rect.height,
-      },
-    });
-  } else {
-    await page.screenshot({
-      path: outputPath,
-      fullPage: target.fullPage ?? false,
-    });
-  }
+  await captureScreenshot(page, target, outputPath);
 
   await page.close();
   console.log(`📸  Captured ${target.name}`);
