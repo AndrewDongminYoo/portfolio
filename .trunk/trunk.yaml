@@ -4,23 +4,23 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.7.4
+      ref: v1.7.6
       uri: https://github.com/trunk-io/plugins
 lint:
   enabled:
-    - checkov@3.2.505
+    - checkov@3.2.510
     - osv-scanner@2.3.3
-    - trivy@0.69.0
-    - trufflehog@3.93.3
+    - trivy@0.69.3
+    - trufflehog@3.93.8
     - yamllint@1.38.0
-    - svgo@4.0.0
+    - svgo@4.0.1
     - oxipng@10.1.0
-    - actionlint@1.7.10
+    - actionlint@1.7.11
     - git-diff-check
     - gitleaks@8.30.0
-    - eslint@9.39.4
+    - eslint@10.0.3
     - prettier@3.8.1
-    - markdownlint@0.47.0
+    - markdownlint@0.48.0
   ignore:
     - linters:
         - osv-scanner
