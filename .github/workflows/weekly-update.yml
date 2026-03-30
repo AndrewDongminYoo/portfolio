@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   build-and-capture:
+    if: ${{ !contains(fromJSON('["dependabot[bot]", "renovate[bot]", "snyk-bot", "allcontributors[bot]"]'), github.actor) }}
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Seoul
