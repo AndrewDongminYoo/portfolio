@@ -1,6 +1,7 @@
 'use client';
 
-import { Github, Mail } from 'lucide-react';
+import { SiGithub } from '@icons-pack/react-simple-icons';
+import { Mail } from 'lucide-react';
 import Image from 'next/image';
 
 import { myName } from '@/lib/constants';
@@ -52,7 +53,7 @@ export default function BusinessCard() {
                   target='_blank'
                   rel='noopener noreferrer'
                   className='group flex items-center gap-3 rounded border border-slate-800 bg-slate-900 p-2.5 transition-colors hover:bg-slate-800'>
-                  <Github className='h-4 w-4 shrink-0 text-white' />
+                  <SiGithub className='h-4 w-4 shrink-0 text-white' />
                   <span className='text-sm font-medium text-white group-hover:text-slate-100'>
                     @AndrewDongminYoo
                   </span>

@@ -1,7 +1,7 @@
 'use client';
 
-import { SiGithub, SiGithubcopilot, SiMedium } from '@icons-pack/react-simple-icons';
-import { FolderGit2, GitFork, Home, Linkedin, PrinterCheck } from 'lucide-react';
+import { SiBiolink, SiGithub, SiGithubcopilot, SiMedium } from '@icons-pack/react-simple-icons';
+import { FolderGit2, GitFork, Home, PrinterCheck } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { ForwardRefExoticComponent, RefAttributes } from 'react';
 import { jsx } from 'react/jsx-runtime';
@@ -105,7 +105,7 @@ export default function MenuButtons() {
               href={linkedin}
               target='_blank'
               rel='noreferrer noopener'>
-              <MenuButtonIcon text='LinkedIn Profile' icon={Linkedin} hideText />
+              <MenuButtonIcon text='LinkedIn Profile' icon={SiBiolink} hideText />
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className='md:hidden'>
@@ -148,7 +148,7 @@ export default function MenuButtons() {
                 href={linkedin}
                 target='_blank'
                 rel='noreferrer noopener'>
-                <MenuButtonIcon text='LinkedIn' icon={Linkedin} />
+                <MenuButtonIcon text='LinkedIn' icon={SiBiolink} />
               </NavigationMenuLink>
             </NavigationMenuContent>
           </NavigationMenuItem>
