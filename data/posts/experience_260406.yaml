@@ -1,0 +1,45 @@
+---
+index: 260406
+title: 'Team REmited — React Native 개발자'
+name: 'Team REmited'
+role: 'React Native Developer'
+startAt: '2026-04-06'
+endAt: null
+website_url: 'https://teamremited.com'
+tags:
+  - 'React Native'
+  - 'TypeScript'
+  - 'TurboModule'
+  - 'New Architecture'
+  - 'Kotlin'
+  - 'Swift'
+  - 'Objective-C'
+  - 'ML Kit'
+description:
+  - 'React Native(New Architecture, TurboModule/Fabric) 기반 앱에서 네이티브 모듈 설계·구현과 iOS/Android 플랫폼 통합을 담당하고 있습니다.'
+  - '소셜 로그인, 인앱 리뷰, 영수증 스캔/OCR, 리워드 광고 SDK 등 RN 브리지가 필요한 기능을 Swift/Objective-C(iOS)와 Kotlin(Android) 네이티브 코드로 구현했습니다.'
+  - '커뮤니티 라이브러리를 New Architecture 호환 TurboModule로 재구현하면서 기존 public API와의 호환성을 유지해 drop-in 교체가 가능하도록 설계했습니다.'
+projects:
+  - title: 'Naver OAuth TurboModule (react-native-naver-login)'
+    startAt: '2026-04-06'
+    repository: 'AndrewDongminYoo/react-native-naver-login'
+    description:
+      - 'New Architecture(TurboModule) 기반 Naver OAuth 2.0 로그인 모듈을 구현했습니다.'
+      - '`@react-native-seoul/naver-login`의 public API와 호환되도록 설계해 기존 프로젝트에서 drop-in 교체가 가능합니다.'
+  - title: 'In-App Review TurboModule (react-native-in-app-review)'
+    startAt: '2026-04-06'
+    repository: 'AndrewDongminYoo/react-native-in-app-review'
+    description:
+      - 'Google Play In-App Review API(Android)와 Apple StoreKit `requestReview`(iOS)를 단일 API로 래핑했습니다.'
+      - '앱을 벗어나지 않고 사용자 평점·리뷰를 요청할 수 있도록 TurboModule로 구현했습니다.'
+  - title: '영수증 스캐너 (react-native-receipt-scanner)'
+    startAt: '2026-04-06'
+    description:
+      - 'ML Kit(Android)와 VisionKit + Vision(iOS)을 통합해 영수증 문서 스캔 기능을 구현했습니다.'
+      - '인터랙티브 perspective-crop, JPEG 압축, EXIF 추출, 온디바이스 OCR을 단일 API로 제공합니다.'
+  - title: '리워드 광고 SDK 브리지 Buzzvil'
+    startAt: '2026-04-06'
+    repository: 'AndrewDongminYoo/react-native-buzzvil'
+    description:
+      - 'Buzzvil·AdPopcorn 리워드 광고 SDK를 React Native에서 사용할 수 있도록 네이티브 브리지를 구현했습니다.'
+      - 'Kotlin(Android)·iOS 네이티브 SDK 연동을 RN 인터페이스로 통합했습니다.'
