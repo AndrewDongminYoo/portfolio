@@ -1,0 +1,40 @@
+{
+  "node_id": "R_kgDOR3vtCw",
+  "name": "receipt-scraper",
+  "full_name": "AndrewDongminYoo/receipt-scraper",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/receipt-scraper",
+  "description": "receipt-scraper is a React Native CLI practice project for rebuilding hands-on React Native muscle memory before starting a new job.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/receipt-scraper/languages",
+  "pushed_at": "2026-05-10T23:14:03Z",
+  "size": 2647,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 186624,
+    "JavaScript": 8769,
+    "Kotlin": 2357,
+    "Ruby": 1290,
+    "Swift": 1237,
+    "Shell": 647,
+    "CSS": 59
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["Yarn", "RubyGems"]
+}

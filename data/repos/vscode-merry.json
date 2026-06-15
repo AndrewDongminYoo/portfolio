@@ -1,0 +1,29 @@
+{
+  "node_id": "R_kgDOR1gBlw",
+  "name": "vscode-merry",
+  "full_name": "AndrewDongminYoo/vscode-merry",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/vscode-merry",
+  "description": "Merry Scripts turns your Dart or Flutter script definitions into a browsable UI inside the Explorer, so you can discover, inspect, and run scripts without bouncing between YAML files and terminals.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/vscode-merry/languages",
+  "pushed_at": "2026-05-09T07:55:55Z",
+  "size": 2428,
+  "stargazers_count": 1,
+  "watchers_count": 1,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 76257,
+    "Dart": 5867,
+    "JavaScript": 3188
+  },
+  "topics": [],
+  "framework": null,
+  "descriptive_slug": "typescript",
+  "framework_candidates": [],
+  "ecosystems": ["GitHub Actions workflows", "pnpm"]
+}

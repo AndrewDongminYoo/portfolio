@@ -1,0 +1,37 @@
+{
+  "node_id": "R_kgDORZ-hJQ",
+  "name": "lucide_icons",
+  "full_name": "AndrewDongminYoo/lucide_icons",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/lucide_icons",
+  "description": "Archived package of Lucide Flutter",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/lucide_icons/languages",
+  "pushed_at": "2026-06-06T00:12:22Z",
+  "size": 3933,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Dart",
+  "forks_count": 0,
+  "languages": {
+    "Dart": 1739761,
+    "CSS": 99435,
+    "Shell": 1016,
+    "JavaScript": 278
+  },
+  "topics": [],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 105,
+      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}

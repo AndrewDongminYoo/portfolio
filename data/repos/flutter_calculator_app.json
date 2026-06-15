@@ -10,21 +10,21 @@
   "html_url": "https://github.com/AndrewDongminYoo/flutter_calculator_app",
   "description": "This project demonstrates a layered architecture for calculating expressions with features like command-line interaction, Flutter UI, and localization.",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/flutter_calculator_app/languages",
-  "pushed_at": "2026-03-09T04:57:25Z",
-  "size": 4070,
+  "pushed_at": "2026-06-08T04:53:06Z",
+  "size": 5235,
   "stargazers_count": 4,
   "watchers_count": 4,
   "language": "Dart",
   "forks_count": 0,
   "languages": {
-    "Dart": 106641,
+    "Dart": 112441,
     "C++": 24993,
     "CMake": 19751,
     "Ruby": 2986,
     "Swift": 2220,
-    "JavaScript": 1587,
     "C": 1488,
-    "HTML": 1360,
+    "HTML": 1348,
+    "JavaScript": 280,
     "Kotlin": 131,
     "Objective-C": 38
   },
@@ -46,5 +46,5 @@
       "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
     }
   ],
-  "ecosystems": ["GitHub Actions workflows", "Yarn", "pub"]
+  "ecosystems": ["GitHub Actions workflows", "pub"]
 }

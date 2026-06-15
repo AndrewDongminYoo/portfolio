@@ -1,0 +1,41 @@
+{
+  "node_id": "R_kgDOSz9TGg",
+  "name": "react-native-buzzvil",
+  "full_name": "AndrewDongminYoo/react-native-buzzvil",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/react-native-buzzvil",
+  "description": "",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/react-native-buzzvil/languages",
+  "pushed_at": "2026-06-15T10:48:43Z",
+  "size": 1645,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 54881,
+    "Objective-C++": 48572,
+    "Kotlin": 42697,
+    "Objective-C": 4495,
+    "JavaScript": 3189,
+    "Ruby": 2522,
+    "Swift": 1716,
+    "HTML": 444
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn"]
+}

@@ -1,0 +1,40 @@
+{
+  "node_id": "R_kgDOOgCBOQ",
+  "name": "dartdoc",
+  "full_name": "AndrewDongminYoo/dartdoc",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/dartdoc",
+  "description": "API documentation tool for Dart.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/dartdoc/languages",
+  "pushed_at": "2026-03-30T04:49:12Z",
+  "size": 21052,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Dart",
+  "forks_count": 0,
+  "languages": {
+    "Dart": 2668599,
+    "JavaScript": 371089,
+    "HTML": 53458,
+    "SCSS": 26804,
+    "Shell": 1236,
+    "CSS": 1148,
+    "Batchfile": 22
+  },
+  "topics": [],
+  "framework": null,
+  "descriptive_slug": "dart",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 15,
+      "reasons": ["+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}

@@ -1,0 +1,41 @@
+{
+  "node_id": "R_kgDOSWjU1w",
+  "name": "react-native-naver-login",
+  "full_name": "AndrewDongminYoo/react-native-naver-login",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/react-native-naver-login",
+  "description": "This is a Naver OAuth 2.0 login library based on the React Native New Architecture (TurboModule). It is designed to be compatible with the public API of @react-native-seoul/naver-login, allowing for a drop-in replacement in existing projects.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/react-native-naver-login/languages",
+  "pushed_at": "2026-05-23T15:07:34Z",
+  "size": 1960,
+  "stargazers_count": 1,
+  "watchers_count": 1,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 13701,
+    "Kotlin": 11153,
+    "Objective-C++": 9936,
+    "JavaScript": 3826,
+    "Ruby": 2127,
+    "Swift": 1240,
+    "HTML": 444,
+    "Objective-C": 105
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn"]
+}

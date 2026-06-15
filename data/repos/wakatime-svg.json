@@ -1,0 +1,34 @@
+{
+  "node_id": "R_kgDOQ1PPtA",
+  "name": "wakatime-svg",
+  "full_name": "AndrewDongminYoo/wakatime-svg",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/wakatime-svg",
+  "description": "Generate SVG cards from WakaTime stats for the last 7 days. GitHub Actions refreshes the SVGs daily and publishes the artifacts to the output branch.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/wakatime-svg/languages",
+  "pushed_at": "2026-06-15T01:13:21Z",
+  "size": 1837,
+  "stargazers_count": 4,
+  "watchers_count": 4,
+  "language": "Python",
+  "forks_count": 0,
+  "languages": {
+    "Python": 20222,
+    "JavaScript": 278
+  },
+  "topics": [
+    "github-actions",
+    "github-marketplace-action",
+    "wakatime",
+    "wakatime-api",
+    "wakatime-stats"
+  ],
+  "framework": null,
+  "descriptive_slug": "python",
+  "framework_candidates": [],
+  "ecosystems": ["GitHub Actions workflows", "Poetry"]
+}

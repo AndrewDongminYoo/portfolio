@@ -1,0 +1,31 @@
+{
+  "node_id": "R_kgDOStbA3g",
+  "name": "llm_wiki",
+  "full_name": "AndrewDongminYoo/llm_wiki",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/llm_wiki",
+  "description": "LLM Wiki는 사용자의 문서를 체계적이고 상호 연결된 지식 기반으로 자동 변환해 주는 크로스 플랫폼 데스크톱 애플리케이션입니다. 기존의 RAG(매번 처음부터 검색하고 답변하는 방식)와 달리, LLM이 사용자의 소스 자료를 바탕으로 지속적인 위키를 점진적으로 구축하고 관리합니다.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/llm_wiki/languages",
+  "pushed_at": "2026-06-04T22:37:13Z",
+  "size": 34619,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 2250735,
+    "Rust": 385410,
+    "JavaScript": 137461,
+    "CSS": 5160,
+    "HTML": 4547
+  },
+  "topics": [],
+  "framework": null,
+  "descriptive_slug": "typescript",
+  "framework_candidates": [],
+  "ecosystems": ["GitHub Actions workflows", "npm"]
+}

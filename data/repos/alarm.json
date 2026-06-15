@@ -1,0 +1,37 @@
+{
+  "node_id": "R_kgDORCbuhA",
+  "name": "alarm",
+  "full_name": "AndrewDongminYoo/alarm",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/alarm",
+  "description": "A Flutter plugin to easily manage alarms on iOS and Android",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/alarm/languages",
+  "pushed_at": "2026-03-30T04:37:23Z",
+  "size": 4234,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Kotlin",
+  "forks_count": 0,
+  "languages": {
+    "Kotlin": 79701,
+    "Swift": 73125,
+    "Dart": 72894,
+    "Ruby": 940
+  },
+  "topics": [],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 105,
+      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}

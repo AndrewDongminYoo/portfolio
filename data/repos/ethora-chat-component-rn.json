@@ -1,0 +1,38 @@
+{
+  "node_id": "R_kgDOSyfE8g",
+  "name": "ethora-chat-component-rn",
+  "full_name": "AndrewDongminYoo/ethora-chat-component-rn",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/ethora-chat-component-rn",
+  "description": "Quickly deploy a chat interface into your React Native mobile app.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/ethora-chat-component-rn/languages",
+  "pushed_at": "2026-06-07T23:34:15Z",
+  "size": 3846,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 3934262,
+    "JavaScript": 42826,
+    "Shell": 9148,
+    "CSS": 2620,
+    "Ruby": 349
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "npm", "RubyGems"]
+}

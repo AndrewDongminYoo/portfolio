@@ -10,15 +10,15 @@
   "html_url": "https://github.com/AndrewDongminYoo/discord-wanted",
   "description": "디스코드 봇 개발 방법 익히기 위한 원티드 크롤러",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/discord-wanted/languages",
-  "pushed_at": "2024-11-28T15:00:42Z",
-  "size": 788,
+  "pushed_at": "2026-05-07T05:29:34Z",
+  "size": 1150,
   "stargazers_count": 1,
   "watchers_count": 1,
   "language": "TypeScript",
   "forks_count": 2,
   "languages": {
-    "TypeScript": 243090,
-    "JavaScript": 6770
+    "TypeScript": 230336,
+    "JavaScript": 2021
   },
   "topics": ["discord", "discord-bot", "discord-interactions"],
   "framework": null,

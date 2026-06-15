@@ -10,17 +10,18 @@
   "html_url": "https://github.com/AndrewDongminYoo/mirae-landing",
   "description": "",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/mirae-landing/languages",
-  "pushed_at": "2026-03-19T12:37:19Z",
-  "size": 9693,
+  "pushed_at": "2026-05-24T06:20:05Z",
+  "size": 10077,
   "stargazers_count": 0,
   "watchers_count": 0,
   "language": "TypeScript",
   "forks_count": 0,
   "languages": {
-    "TypeScript": 106394,
+    "TypeScript": 121112,
+    "CSS": 11253,
+    "Python": 6807,
     "JavaScript": 4414,
-    "CSS": 3983,
-    "Shell": 3604
+    "Shell": 3436
   },
   "topics": ["alarm-app", "landing-page", "nextjs"],
   "framework": "Next.js",

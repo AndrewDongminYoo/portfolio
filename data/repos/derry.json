@@ -1,0 +1,42 @@
+{
+  "node_id": "R_kgDOR1RzXw",
+  "name": "derry",
+  "full_name": "AndrewDongminYoo/derry",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/derry",
+  "description": "Dart용 스크립트 관리자. Derry는 플러터 프로젝트에서 단축키 스크립트를 정의하는 데 도움을 주며, 길고 기억하기 힘든 스크립트를 플랫폼별로 반복해서 입력해야 하는 번거로움을 덜어줍니다.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/derry/languages",
+  "pushed_at": "2026-03-31T05:35:19Z",
+  "size": 5922,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Dart",
+  "forks_count": 0,
+  "languages": {
+    "Dart": 81647,
+    "Rust": 1686
+  },
+  "topics": [
+    "dart-script",
+    "derry",
+    "flutter",
+    "flutter-devtools",
+    "script-management",
+    "script-manager"
+  ],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 115,
+      "reasons": ["+100 topic match", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}
