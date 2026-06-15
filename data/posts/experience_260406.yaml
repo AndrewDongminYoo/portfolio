@@ -34,6 +34,7 @@ projects:
       - '앱을 벗어나지 않고 사용자 평점·리뷰를 요청할 수 있도록 TurboModule로 구현했습니다.'
   - title: '영수증 스캐너 (react-native-receipt-scanner)'
     startAt: '2026-04-06'
+    repository: 'AndrewDongminYoo/react-native-receipt-scanner'
     description:
       - 'ML Kit(Android)와 VisionKit + Vision(iOS)을 통합해 영수증 문서 스캔 기능을 구현했습니다.'
       - '인터랙티브 perspective-crop, JPEG 압축, EXIF 추출, 온디바이스 OCR을 단일 API로 제공합니다.'
