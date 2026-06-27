@@ -1,0 +1,21 @@
+---
+index: 260615
+title: 'figma-to-nativewind — Figma 디자인 → NativeWind 코드 생성 플러그인'
+name: 'figma-to-nativewind'
+startAt: '2026-06-15'
+endAt: null
+repository: 'https://github.com/AndrewDongminYoo/figma-to-nativewind'
+tags:
+  - 'Figma Plugin'
+  - 'TypeScript'
+  - 'NativeWind'
+  - 'React Native'
+  - 'Codegen'
+  - 'DX Tooling'
+description:
+  - 'Figma 디자인을 React Native + NativeWind 코드로 변환하는 Figma 플러그인입니다.'
+  - '디자인 레이어를 NativeWind(Tailwind for React Native) 클래스 기반 컴포넌트 코드로 생성해 디자인-투-코드 작업을 자동화합니다.'
+  - '현재 비공개로 개발 중이며 Figma Marketplace에는 아직 미등록입니다.'
+teamDescription: '개인 프로젝트 · 1인 개발'
+roleDescriptions: '기획·설계·구현 단독 수행'
+analyzedLink: 'https://github.com/AndrewDongminYoo/figma-to-nativewind'
