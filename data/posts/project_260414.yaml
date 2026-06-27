@@ -1,0 +1,22 @@
+---
+index: 260414
+title: 'rn-typed-assets — React Native 타입 세이프 에셋 레지스트리'
+name: 'rn-typed-assets'
+startAt: '2026-04-14'
+endAt: null
+website_url: 'https://www.npmjs.com/package/rn-typed-assets'
+repository: 'https://github.com/AndrewDongminYoo/rn-typed-assets'
+tags:
+  - 'React Native'
+  - 'TypeScript'
+  - 'CLI'
+  - 'Codegen'
+  - 'DX Tooling'
+  - 'npm'
+description:
+  - 'React Native 프로젝트의 이미지·SVG·Lottie 에셋을 타입 세이프 상수로 생성하는 코드젠 CLI입니다.'
+  - '사용되지 않는 에셋 파일을 감사(audit)하고, 오래된 import 경로를 자동으로 재작성합니다.'
+  - 'npm에 퍼블리싱한 개인 OSS 개발자 경험(DX) 도구입니다.'
+teamDescription: '개인 OSS · 1인 개발'
+roleDescriptions: '기획·설계·구현·npm 배포 전 과정 단독 수행'
+analyzedLink: 'https://github.com/AndrewDongminYoo/rn-typed-assets'

@@ -1,0 +1,21 @@
+---
+index: 260331
+title: 'Merry — Dart/Flutter 스크립트 매니저 & VS Code 확장'
+name: 'merry / vscode-merry'
+startAt: '2026-03-31'
+endAt: null
+website_url: 'https://marketplace.visualstudio.com/items?itemName=dongminyu.vscode-merry-scripts'
+repository: 'https://github.com/AndrewDongminYoo/vscode-merry'
+tags:
+  - 'Dart'
+  - 'Flutter'
+  - 'VS Code Extension'
+  - 'TypeScript'
+  - 'DX Tooling'
+description:
+  - 'Merry는 Dart·Flutter 프로젝트에서 길고 외우기 어려운 스크립트를 단축 이름으로 정의해 실행하는 스크립트 매니저입니다(pub.dev: https://pub.dev/packages/merry).'
+  - 'derry에서 출발했지만 다수의 기능을 추가했고, 기존 에코시스템에 편입하기 위해 VS Code 확장 vscode-merry를 함께 만들었습니다.'
+  - 'vscode-merry는 스크립트 정의를 VS Code Explorer 안의 탐색 가능한 UI로 보여줘, YAML 파일과 터미널을 오가지 않고도 발견·확인·실행할 수 있게 합니다(VS Code Marketplace 퍼블리시).'
+teamDescription: '개인 OSS · 1인 개발'
+roleDescriptions: 'Dart 패키지(merry)와 VS Code 확장(vscode-merry) 설계·구현·배포를 단독 수행'
+analyzedLink: 'https://github.com/AndrewDongminYoo/merry'

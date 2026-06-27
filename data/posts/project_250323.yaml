@@ -1,0 +1,19 @@
+---
+index: 250323
+title: 'Copy Code as Snippet — VS Code 확장'
+name: 'copy-code-as-snippet'
+startAt: '2025-03-23'
+endAt: null
+website_url: 'https://marketplace.visualstudio.com/items/?itemName=DongminYu.copy-code-as-snippet'
+repository: 'https://github.com/AndrewDongminYoo/copy-code-as-snippet'
+tags:
+  - 'VS Code Extension'
+  - 'TypeScript'
+  - 'DX Tooling'
+description:
+  - '선택한 코드나 파일 전체를 Markdown·HTML·일반 텍스트 코드 스니펫으로 복사하는 VS Code 확장입니다.'
+  - '언어 및 파일 경로 정보를 함께 포함해 문서·이슈·리뷰에 붙여넣기 좋게 만들어 줍니다.'
+  - 'VS Code Marketplace에 퍼블리싱한 개인 OSS 도구입니다.'
+teamDescription: '개인 OSS · 1인 개발'
+roleDescriptions: '기획·설계·구현·Marketplace 배포 전 과정 단독 수행'
+analyzedLink: 'https://github.com/AndrewDongminYoo/copy-code-as-snippet'

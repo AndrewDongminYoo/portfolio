@@ -1,0 +1,22 @@
+---
+index: 260423
+title: 'JARVIS — 음성 우선 macOS 어시스턴트'
+name: 'jarvis-assistant'
+startAt: '2026-04-23'
+endAt: null
+repository: 'https://github.com/AndrewDongminYoo/jarvis-assistant'
+tags:
+  - 'Python'
+  - 'FastAPI'
+  - 'WebSocket'
+  - 'Three.js'
+  - 'TypeScript'
+  - 'macOS'
+  - 'LLM'
+description:
+  - 'Chrome에서 음성으로 말하면 인식된 텍스트를 WebSocket으로 FastAPI 백엔드에 전달하고, 백엔드가 LLM 제공자로 라우팅해 텍스트와 음성으로 응답하는 음성 우선 macOS 어시스턴트입니다.'
+  - 'FastAPI 백엔드, SQLite/FTS 메모리, AppleScript 기반 캘린더·메일·노트 연동, Vite + Three.js 프론트엔드로 구성했습니다.'
+  - 'ElevenLabs TTS(실패 시 macOS say 폴백)와 Web Speech API를 사용하며, 루프백(127.0.0.1) 전용 로컬 서비스로 동작합니다.'
+teamDescription: '개인 프로젝트 · 1인 개발'
+roleDescriptions: '백엔드·프론트엔드·LLM 라우팅 전체 단독 구현'
+analyzedLink: 'https://github.com/AndrewDongminYoo/jarvis-assistant'

@@ -1,0 +1,21 @@
+---
+index: 260613
+title: 'rn-newarch-ready — React Native New Architecture 준비도 감사 도구'
+name: 'rn-newarch-ready'
+startAt: '2026-06-13'
+endAt: null
+website_url: 'https://www.npmjs.com/package/rn-newarch-ready'
+repository: 'https://github.com/AndrewDongminYoo/rn-newarch-ready'
+tags:
+  - 'React Native'
+  - 'CLI'
+  - 'New Architecture'
+  - 'DX Tooling'
+  - 'npm'
+description:
+  - 'React Native New Architecture 활성화를 가로막는 의존성과 네이티브 모듈을 진단해 보고하는 읽기 전용 감사 CLI입니다.'
+  - '어떤 패키지가 New Architecture 전환을 막는지 리포트해 마이그레이션 계획 수립을 돕습니다.'
+  - 'npm에 퍼블리싱한 개인 OSS 개발자 경험(DX) 도구입니다.'
+teamDescription: '개인 OSS · 1인 개발'
+roleDescriptions: '기획·설계·구현·npm 배포 전 과정 단독 수행'
+analyzedLink: 'https://github.com/AndrewDongminYoo/rn-newarch-ready'
