@@ -27,6 +27,6 @@ projects:
     website_url: 'https://andrewdongminyoo.github.io/react-native-step-counter'
     description:
       - iOS의 CMPedometer와 Android의 SensorManager를 결합하여 걸음 수 측정 데이터를 크로스 플랫폼에서 통합 처리할 수 있는 네이티브 모듈을 개발했습니다.
-      - Android API 19 이하 기기까지 지원 가능한 저수준 가속도계 데이터를 기반으로 AOSP 알고리즘을 응용해 걸음 분석 정확도를 95% 이상 달성했습니다.
-      - React Native Turbo Module 기반 구조로 제작해 JS-Native Bridge 병목을 최소화하고, 평균 응답 속도를 약 2.3배 개선했습니다.
-      - Hermes, Flipper 기반 성능 추적을 통해 메모리 사용량을 40% 이상 절감했습니다.
+      - Android API 19 이하 기기까지 지원하기 위해 저수준 가속도계 데이터를 기반으로 AOSP 걸음 검출 알고리즘을 응용해 측정 정확도를 높였습니다.
+      - React Native Turbo Module 기반 구조로 제작해 JS-Native Bridge 병목을 줄이고 응답 지연을 개선했습니다.
+      - Hermes, Flipper 기반 성능 추적으로 메모리 사용량과 런타임 동작을 모니터링하며 최적화했습니다.
