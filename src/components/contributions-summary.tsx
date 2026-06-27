@@ -6,6 +6,7 @@ import { useMemo } from 'react';
 
 import {
   buildBreakdown,
+  buildLanguageDistribution,
   buildRepoStats,
   buildTotalParts,
   type ContributionSummary,
@@ -14,6 +15,8 @@ import {
   formatDateLabel,
 } from '@/components/contributions/shared';
 import { getRepoAccentStyle, getRepoIconStyle } from '@/components/contributions/styles';
+import LanguageStateBar from '@/features/repos/langs-bar';
+import { getSimpleIcon } from '@/features/repos/simple-icons';
 
 type Props = {
   summary: ContributionSummary | null;
@@ -31,6 +34,11 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
       .slice(0, 6)
       .map((x) => x.repo);
   }, [summary]);
+
+  const languageDistribution = useMemo(
+    () => (summary ? buildLanguageDistribution(summary.repos) : null),
+    [summary],
+  );
 
   return (
     <>
@@ -132,6 +140,33 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                 <span key={part}> · {part}</span>
               ))}
             </div>
+
+            {languageDistribution && languageDistribution.stats.length > 0 && (
+              <div className='flex flex-col gap-2'>
+                <span className='text-xxs font-medium'>주력 언어 (기여 기준)</span>
+                <LanguageStateBar
+                  languages={languageDistribution.entries}
+                  totalCount={languageDistribution.total}
+                />
+                <ul className='m-0 flex list-none flex-wrap gap-x-3 gap-y-1 px-0 py-0'>
+                  {languageDistribution.stats.map((stat) => (
+                    <li
+                      key={stat.language}
+                      className='text-muted-foreground flex items-center gap-1 text-xxs'>
+                      <span
+                        className='inline-block h-2 w-2 rounded-full'
+                        style={{
+                          backgroundColor: getSimpleIcon(stat.language)?.color ?? '#999999',
+                        }}
+                        aria-hidden='true'
+                      />
+                      <span>{stat.language}</span>
+                      <span>{stat.percent.toFixed(0)}%</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {rankedRepos.length === 0 ? (
               <p className='text-muted-foreground text-xxs'>표시할 프로젝트가 없습니다.</p>

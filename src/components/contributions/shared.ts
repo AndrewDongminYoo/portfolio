@@ -1,3 +1,4 @@
+import { isProgrammingLanguage } from '@/features/repos/specs';
 import { username } from '@/lib/constants';
 
 export type ContributionTotals = {
@@ -90,4 +91,43 @@ export const displayRepoName = (repo: ContributionRepo) => {
     return name ?? repo.nameWithOwner;
   }
   return repo.nameWithOwner;
+};
+
+export type LanguageStat = { language: string; value: number; percent: number };
+
+export type LanguageDistribution = {
+  stats: LanguageStat[];
+  entries: [string, number][];
+  total: number;
+};
+
+/**
+ * Aggregate a contribution-weighted programming-language distribution from the
+ * given repositories. Each repo's primary language is weighted by its total
+ * contribution count, so the result reflects where the work actually went.
+ */
+export const buildLanguageDistribution = (
+  repos: ContributionRepo[],
+  limit = 6,
+): LanguageDistribution => {
+  const weights = new Map<string, number>();
+  for (const repo of repos) {
+    const language = repo.language;
+    if (!language || !isProgrammingLanguage(language)) continue;
+    weights.set(language, (weights.get(language) ?? 0) + Math.max(repo.total, 0));
+  }
+
+  const sorted = Array.from(weights.entries())
+    .filter(([, value]) => value > 0)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, limit);
+
+  const total = sorted.reduce((sum, [, value]) => sum + value, 0);
+  const stats = sorted.map(([language, value]) => ({
+    language,
+    value,
+    percent: total > 0 ? (value / total) * 100 : 0,
+  }));
+
+  return { stats, entries: sorted, total };
 };
