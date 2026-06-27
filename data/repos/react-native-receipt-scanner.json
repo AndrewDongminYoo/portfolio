@@ -1,0 +1,41 @@
+{
+  "node_id": "R_kgDOSRT9tw",
+  "name": "react-native-receipt-scanner",
+  "full_name": "AndrewDongminYoo/react-native-receipt-scanner",
+  "private": true,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/react-native-receipt-scanner",
+  "description": "Receipt document scanner for React Native. Wraps ML Kit (Android) and VisionKit + Vision (iOS) with a unified API for scanning, interactive perspective-crop, JPEG compression, EXIF extraction, and on-device OCR.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/react-native-receipt-scanner/languages",
+  "pushed_at": "2026-06-23T22:43:31Z",
+  "size": 1515,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Objective-C",
+  "forks_count": 1,
+  "languages": {
+    "Objective-C": 49023,
+    "Kotlin": 47135,
+    "TypeScript": 32599,
+    "Objective-C++": 6602,
+    "JavaScript": 3978,
+    "Ruby": 2217,
+    "Swift": 1244,
+    "HTML": 428
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn"]
+}
