@@ -22,6 +22,11 @@ module.exports = {
   output: undefined,
   /** 빌드 출력 디렉토리(기본값은 .next)는 이제 Next.js 캐시를 제외하고 기본적으로 지워집니다. */
   cleanDistDir: true,
+  /** OG 이미지 라우트가 번들 Noto Sans KR 폰트를 서버리스에서 읽을 수 있도록 포함합니다. */
+  outputFileTracingIncludes: {
+    '/posts/[post]': ['./public/fonts/**'],
+    '/repos/[repo]': ['./public/fonts/**'],
+  },
   images: {
     remotePatterns: [
       {
