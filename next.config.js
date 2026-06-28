@@ -24,8 +24,9 @@ module.exports = {
   cleanDistDir: true,
   /** OG 이미지 라우트가 번들 Noto Sans KR 폰트를 서버리스에서 읽을 수 있도록 포함합니다. */
   outputFileTracingIncludes: {
-    '/posts/[post]': ['./public/fonts/**'],
-    '/repos/[repo]': ['./public/fonts/**'],
+    '/opengraph-image': ['./public/fonts/**'],
+    '/posts/[post]/opengraph-image': ['./public/fonts/**'],
+    '/repos/[repo]/opengraph-image': ['./public/fonts/**'],
   },
   images: {
     remotePatterns: [

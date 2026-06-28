@@ -14,6 +14,9 @@ export const description = `요리사로 일하다 코로나19 시기에 독학�
 최근에는 생성형 AI를 단순 코드 작성 도구가 아니라 업무를 분해·검증하는 워크플로로 활용합니다. 독립적인 작업은 병렬로 진행하고, 핵심 변경은 자동화된 코드 리뷰와 단계별 검증을 거쳐 반영합니다. 이렇게 정리한 도구와 컨벤션을 팀에 공유해 전체 생산성을 끌어올리는 것을 지향합니다.
 `;
 export const homepage = 'https://andrewdongminyoo.vercel.app/';
+// 소셜 미리보기·검색 결과용 짧은 설명 (~120자). 본문 bio는 `description`을 사용합니다.
+export const shortDescription =
+  'React Native 네이티브 모듈(TurboModule·New Architecture)과 Flutter 크로스플랫폼 앱을 만들어 온 모바일 개발자입니다. 인증·결제·딥링크 같은 핵심 기능과 개발 자동화에 강점이 있습니다.';
 export const keywords = [
   'React Native 개발자',
   'TurboModule 개발자',

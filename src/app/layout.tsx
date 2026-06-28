@@ -8,7 +8,7 @@ import { Metadata, Viewport } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
 import Script from 'next/script';
 
-import { description, homepage, keywords, myName, primaryTitle } from '@/lib/constants';
+import { homepage, keywords, myName, primaryTitle, shortDescription } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 
 export const viewport: Viewport = {
@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: homepage,
   title: { default: primaryTitle, template: `%s | ${myName}` },
-  description: description,
+  description: shortDescription,
   applicationName: primaryTitle,
   keywords: keywords,
   referrer: 'strict-origin-when-cross-origin',
@@ -53,10 +53,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    type: 'website',
     url: homepage,
     siteName: primaryTitle,
-    description: description,
-    images: ['/images/laundry.jpg'],
+    title: primaryTitle,
+    description: shortDescription,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: primaryTitle,
+    description: shortDescription,
   },
   other: {
     'x-ua-compatible': 'ie=edge',
