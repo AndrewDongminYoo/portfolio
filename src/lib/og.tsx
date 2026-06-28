@@ -17,29 +17,32 @@ type LoadedFont = {
 
 const fontFile = (file: string) => join(process.cwd(), 'public/fonts', file);
 
-let fontCache: LoadedFont[] | null = null;
+let fontPromise: Promise<LoadedFont[]> | null = null;
 
 /**
  * Load the bundled Noto Sans KR subsets (Latin + Korean, weights 400/700) for
- * Satori. Cached across invocations within a single server instance.
+ * Satori. The promise is cached so concurrent cold requests share one read.
  */
-async function loadFonts(): Promise<LoadedFont[]> {
-  if (fontCache) return fontCache;
-
-  const [latin400, korean400, latin700, korean700] = await Promise.all([
-    readFile(fontFile('noto-sans-kr-latin-400-normal.woff')),
-    readFile(fontFile('noto-sans-kr-korean-400-normal.woff')),
-    readFile(fontFile('noto-sans-kr-latin-700-normal.woff')),
-    readFile(fontFile('noto-sans-kr-korean-700-normal.woff')),
-  ]);
-
-  fontCache = [
-    { name: 'Noto Sans KR', data: latin400, weight: 400, style: 'normal' },
-    { name: 'Noto Sans KR', data: korean400, weight: 400, style: 'normal' },
-    { name: 'Noto Sans KR', data: latin700, weight: 700, style: 'normal' },
-    { name: 'Noto Sans KR', data: korean700, weight: 700, style: 'normal' },
-  ];
-  return fontCache;
+function loadFonts(): Promise<LoadedFont[]> {
+  if (!fontPromise) {
+    fontPromise = Promise.all([
+      readFile(fontFile('noto-sans-kr-latin-400-normal.woff')),
+      readFile(fontFile('noto-sans-kr-korean-400-normal.woff')),
+      readFile(fontFile('noto-sans-kr-latin-700-normal.woff')),
+      readFile(fontFile('noto-sans-kr-korean-700-normal.woff')),
+    ])
+      .then(([latin400, korean400, latin700, korean700]): LoadedFont[] => [
+        { name: 'Noto Sans KR', data: latin400, weight: 400, style: 'normal' },
+        { name: 'Noto Sans KR', data: korean400, weight: 400, style: 'normal' },
+        { name: 'Noto Sans KR', data: latin700, weight: 700, style: 'normal' },
+        { name: 'Noto Sans KR', data: korean700, weight: 700, style: 'normal' },
+      ])
+      .catch((err) => {
+        fontPromise = null;
+        throw err;
+      });
+  }
+  return fontPromise;
 }
 
 const clamp = (value: string, max: number) =>

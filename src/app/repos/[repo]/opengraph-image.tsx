@@ -14,7 +14,7 @@ export default async function Image({ params }: { params: Promise<{ repo: string
     return await renderOgImage({
       eyebrow: repository.language ? repository.language.toUpperCase() : 'REPOSITORY',
       title: repository.name,
-      subtitle: repository.description ?? undefined,
+      subtitle: repository.description,
     });
   } catch {
     return await renderOgImage({ eyebrow: 'REPOSITORY', title: repo });

@@ -1,3 +1,4 @@
+import type Resume from '@/interface/profile';
 import { OG_CONTENT_TYPE, OG_SIZE, renderOgImage } from '@/lib/og';
 import { getPostData } from '@/lib/posts';
 
@@ -5,7 +6,7 @@ export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
 export const alt = 'Dongmin Yu — portfolio';
 
-const EYEBROW: Record<string, string> = {
+const EYEBROW: Record<Resume['type'], string> = {
   project: 'PROJECT',
   experience: 'EXPERIENCE',
   activity: 'ACTIVITY',
