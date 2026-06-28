@@ -148,11 +148,11 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                   languages={languageDistribution.entries}
                   totalCount={languageDistribution.total}
                 />
-                <ul className='m-0 flex list-none flex-wrap gap-x-3 gap-y-1 px-0 py-0'>
+                <ul className='m-0 flex list-none flex-wrap gap-x-5 gap-y-2 px-0 py-0'>
                   {languageDistribution.stats.map((stat) => (
                     <li
                       key={stat.language}
-                      className='text-muted-foreground flex items-center gap-1 text-xxs'>
+                      className='text-muted-foreground flex items-center gap-1.5 text-xxs'>
                       <span
                         className='inline-block h-2 w-2 rounded-full'
                         style={{
@@ -161,7 +161,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                         aria-hidden='true'
                       />
                       <span>{stat.language}</span>
-                      <span>{stat.percent.toFixed(0)}%</span>
+                      <span className='opacity-70'>{stat.percent.toFixed(0)}%</span>
                     </li>
                   ))}
                 </ul>
