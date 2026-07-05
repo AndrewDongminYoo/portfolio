@@ -20,6 +20,13 @@ type RepoEntry = {
         name: string;
       }>;
     };
+    repositoryTopics: {
+      nodes: Array<{
+        topic: {
+          name: string;
+        };
+      }>;
+    };
     stargazerCount: number;
     forkCount: number;
     watchers: {
@@ -54,6 +61,7 @@ type RepoSummary = {
   stars: number;
   forks: number;
   watchers: number;
+  topics: string[];
   total: number;
   breakdown: {
     commits: number;
@@ -84,6 +92,9 @@ const query = `
             languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
             }
+            repositoryTopics(first: 20) {
+              nodes { topic { name } }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -97,6 +108,9 @@ const query = `
             owner { login avatarUrl url }
             languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
+            }
+            repositoryTopics(first: 20) {
+              nodes { topic { name } }
             }
             stargazerCount
             forkCount
@@ -112,6 +126,9 @@ const query = `
             languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
             }
+            repositoryTopics(first: 20) {
+              nodes { topic { name } }
+            }
             stargazerCount
             forkCount
             watchers { totalCount }
@@ -125,6 +142,9 @@ const query = `
             owner { login avatarUrl url }
             languages(first: 1, orderBy: { field: SIZE, direction: DESC }) {
               nodes { name }
+            }
+            repositoryTopics(first: 20) {
+              nodes { topic { name } }
             }
             stargazerCount
             forkCount
@@ -199,6 +219,7 @@ export async function GET() {
           stars: item.repository.stargazerCount ?? 0,
           forks: item.repository.forkCount ?? 0,
           watchers: item.repository.watchers?.totalCount ?? 0,
+          topics: (item.repository.repositoryTopics?.nodes ?? []).map((node) => node.topic.name),
           total: 0,
           breakdown: { commits: 0, issues: 0, pullRequests: 0, reviews: 0 },
         };

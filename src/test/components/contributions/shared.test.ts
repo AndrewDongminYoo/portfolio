@@ -17,6 +17,7 @@ const makeRepo = (
   stars: 0,
   forks: 0,
   watchers: 0,
+  topics: [],
   total,
   breakdown: { commits: total, issues: 0, pullRequests: 0, reviews: 0 },
 });

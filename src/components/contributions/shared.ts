@@ -24,6 +24,7 @@ export type ContributionRepo = {
   stars: number;
   forks: number;
   watchers: number;
+  topics: string[];
   total: number;
   breakdown: {
     commits: number;
