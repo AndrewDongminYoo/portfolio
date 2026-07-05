@@ -262,6 +262,44 @@ describe('ReactGithubCalendar', () => {
     expect(getByText('기여 8회')).toBeInTheDocument();
   });
 
+  it('does not list an ecosystem repo already shown in external contributions', async () => {
+    // A repo present in both repos and externalRepos, classifiable as an
+    // ecosystem package. It must render only once — in the external block —
+    // never duplicated into the ecosystem list below.
+    const overlap = {
+      ...summary,
+      repos: [
+        makeRepo({
+          nameWithOwner: 'external/derry',
+          owner: { login: 'external' },
+          topics: ['flutter'],
+          total: 20,
+        }),
+      ],
+      externalRepos: [
+        makeRepo({
+          nameWithOwner: 'external/derry',
+          url: 'https://github.com/external/derry',
+          owner: {
+            login: 'external',
+            avatarUrl: 'https://example.com/external.png',
+            url: 'https://github.com/external',
+          },
+          topics: ['flutter'],
+          total: 20,
+        }),
+      ],
+    };
+
+    fetchMock.mockResolvedValueOnce(createResponse(overlap));
+
+    const { findByText, getAllByRole } = render(<ReactGithubCalendar />);
+
+    await findByText('총 16회');
+
+    expect(getAllByRole('link', { name: /external\/derry/ })).toHaveLength(1);
+  });
+
   it('renders error message when API returns error', async () => {
     fetchMock.mockResolvedValueOnce(createResponse({ error: '토큰이 만료되었습니다.' }, true));
 

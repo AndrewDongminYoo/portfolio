@@ -33,18 +33,19 @@ type Props = {
 };
 
 export default function ContributionsSummary({ summary, loading, error }: Props) {
-  // Repos classified into an ecosystem, drawn from both self and external
-  // contributions and deduplicated by name. This pool feeds both the ecosystem
-  // chips (whole pool) and the ranked list below (top slice by contribution).
+  // Repos classified into an ecosystem. Repos already surfaced in the "외부
+  // 컨트리뷰션" block are excluded so the two sections never list the same repo
+  // twice; what remains is effectively the maintained ecosystem packages. This
+  // pool feeds both the ecosystem chips (whole pool) and the ranked list below
+  // (top slice by contribution).
   const ecosystemPool = useMemo(() => {
     if (!summary) return [] as Array<ContributionRepo & { ecosystem: EcosystemKey }>;
-    const seen = new Set<string>();
+    const externalNames = new Set((summary.externalRepos ?? []).map((repo) => repo.nameWithOwner));
     const pool: Array<ContributionRepo & { ecosystem: EcosystemKey }> = [];
-    for (const repo of [...summary.repos, ...(summary.externalRepos ?? [])]) {
-      if (seen.has(repo.nameWithOwner)) continue;
+    for (const repo of summary.repos) {
+      if (externalNames.has(repo.nameWithOwner)) continue;
       const ecosystem = classifyEcosystem(repo);
       if (!ecosystem) continue;
-      seen.add(repo.nameWithOwner);
       pool.push({ ...repo, ecosystem });
     }
     return pool;
