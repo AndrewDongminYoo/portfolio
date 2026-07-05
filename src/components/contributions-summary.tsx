@@ -5,10 +5,17 @@ import Link from 'next/link';
 import { useMemo } from 'react';
 
 import {
+  buildEcosystemDistribution,
+  classifyEcosystem,
+  type EcosystemKey,
+  ECOSYSTEMS,
+} from '@/components/contributions/ecosystems';
+import {
   buildBreakdown,
   buildLanguageDistribution,
   buildRepoStats,
   buildTotalParts,
+  type ContributionRepo,
   type ContributionSummary,
   displayRepoName,
   formatCount,
@@ -17,6 +24,7 @@ import {
 import { getRepoAccentStyle, getRepoIconStyle } from '@/components/contributions/styles';
 import LanguageStateBar from '@/features/repos/langs-bar';
 import { getSimpleIcon } from '@/features/repos/simple-icons';
+import { username } from '@/lib/constants';
 
 type Props = {
   summary: ContributionSummary | null;
@@ -25,15 +33,29 @@ type Props = {
 };
 
 export default function ContributionsSummary({ summary, loading, error }: Props) {
-  const rankedRepos = useMemo(() => {
-    if (!summary) return [];
-    return summary.repos
-      .map((repo) => ({ repo, score: repo.stars + repo.watchers + repo.forks }))
-      .filter((x) => x.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 6)
-      .map((x) => x.repo);
+  // Repos classified into an ecosystem, drawn from both self and external
+  // contributions and deduplicated by name. This pool feeds both the ecosystem
+  // chips (whole pool) and the ranked list below (top slice by contribution).
+  const ecosystemPool = useMemo(() => {
+    if (!summary) return [] as Array<ContributionRepo & { ecosystem: EcosystemKey }>;
+    const seen = new Set<string>();
+    const pool: Array<ContributionRepo & { ecosystem: EcosystemKey }> = [];
+    for (const repo of [...summary.repos, ...(summary.externalRepos ?? [])]) {
+      if (seen.has(repo.nameWithOwner)) continue;
+      const ecosystem = classifyEcosystem(repo);
+      if (!ecosystem) continue;
+      seen.add(repo.nameWithOwner);
+      pool.push({ ...repo, ecosystem });
+    }
+    return pool;
   }, [summary]);
+
+  const ecosystemStats = useMemo(() => buildEcosystemDistribution(ecosystemPool), [ecosystemPool]);
+
+  const rankedRepos = useMemo(
+    () => [...ecosystemPool].sort((a, b) => b.total - a.total).slice(0, 8),
+    [ecosystemPool],
+  );
 
   const languageDistribution = useMemo(
     () => (summary ? buildLanguageDistribution(summary.repos) : null),
@@ -114,7 +136,7 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
 
       <div className='mt-4 flex flex-col gap-3'>
         <div className='flex flex-wrap items-center justify-between gap-2 text-sm font-medium'>
-          <span>최근 1년 기여 프로젝트</span>
+          <span>오픈소스 생태계 기여</span>
           {summary?.range && (
             <span className='text-muted-foreground text-xxs'>
               {formatDateLabel(summary.range.from)} ~ {formatDateLabel(summary.range.to)}
@@ -140,6 +162,24 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                 <span key={part}> · {part}</span>
               ))}
             </div>
+
+            {ecosystemStats.length > 0 && (
+              <div className='flex flex-wrap gap-2'>
+                {ecosystemStats.map((stat) => (
+                  <span
+                    key={stat.key}
+                    className='inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background/80 px-2 py-1 text-xxs font-medium'>
+                    <span
+                      className='inline-block h-2 w-2 rounded-full'
+                      style={{ backgroundColor: stat.color }}
+                      aria-hidden='true'
+                    />
+                    <span>{stat.label}</span>
+                    <span className='text-muted-foreground'>×{stat.count}</span>
+                  </span>
+                ))}
+              </div>
+            )}
 
             {languageDistribution && languageDistribution.stats.length > 0 && (
               <div className='flex flex-col gap-2'>
@@ -169,10 +209,14 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
             )}
 
             {rankedRepos.length === 0 ? (
-              <p className='text-muted-foreground text-xxs'>표시할 프로젝트가 없습니다.</p>
+              <p className='text-muted-foreground text-xxs'>
+                생태계 기여로 분류된 프로젝트가 없습니다.
+              </p>
             ) : (
               <div className='grid gap-2 md:grid-cols-2'>
                 {rankedRepos.map((repo) => {
+                  const eco = ECOSYSTEMS[repo.ecosystem];
+                  const isMaintainer = repo.owner.login.toLowerCase() === username.toLowerCase();
                   const stats = buildRepoStats(repo);
                   const iconStyle = getRepoIconStyle(repo);
 
@@ -185,21 +229,33 @@ export default function ContributionsSummary({ summary, loading, error }: Props)
                       className='hover:bg-accent/10 rounded-md border border-border/60 bg-background/80 px-3 py-2 text-left shadow-sm transition-colors'>
                       <div className='flex items-center justify-between gap-2 text-sm font-medium'>
                         <span className='truncate'>{displayRepoName(repo)}</span>
-                        <span className='text-muted-foreground text-xxs'>
-                          {formatCount(repo.total)}
+                        <span
+                          className='inline-flex shrink-0 items-center gap-1 rounded-full px-1.5 py-0.5 text-xxs font-medium'
+                          style={{ backgroundColor: `${eco.color}1f` }}>
+                          <span
+                            className='inline-block h-1.5 w-1.5 rounded-full'
+                            style={{ backgroundColor: eco.color }}
+                            aria-hidden='true'
+                          />
+                          {eco.label}
                         </span>
                       </div>
 
                       <div className='text-muted-foreground mt-1 flex w-full items-center gap-2 text-xxs'>
+                        <span className='rounded border border-border/60 px-1.5 py-0.5 font-medium'>
+                          {isMaintainer ? '메인테이너' : '기여'}
+                        </span>
                         <div className='flex min-w-0 flex-wrap gap-2'>
                           {stats.map((item) => (
                             <span key={item}>{item}</span>
                           ))}
+                          <span>기여 {formatCount(repo.total)}</span>
                         </div>
 
                         <span
                           className='ml-auto h-4 w-4 shrink-0'
                           style={iconStyle}
+                          data-testid='repo-lang-icon'
                           aria-hidden='true'
                         />
                       </div>

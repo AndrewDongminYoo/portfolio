@@ -36,6 +36,7 @@ const baseRepo = {
   stars: 1,
   forks: 1,
   watchers: 1,
+  topics: [] as string[],
   total: 3,
   breakdown: {
     commits: 2,
@@ -67,6 +68,7 @@ const summary = {
       stars: 4,
       watchers: 2,
       forks: 1,
+      topics: ['react-native'],
       total: 8,
       breakdown: { commits: 3, issues: 0, pullRequests: 1, reviews: 0 },
     }),
@@ -250,7 +252,14 @@ describe('ReactGithubCalendar', () => {
     expect(getByText('portfolio')).toBeInTheDocument();
     expect(queryByText(`${username}/portfolio`)).not.toBeInTheDocument();
 
+    // Only ecosystem-classified repos appear; unclassified ones are excluded.
+    expect(queryByText('owner/repo-2')).not.toBeInTheDocument();
     expect(queryByText('owner/repo-7')).not.toBeInTheDocument();
+
+    // Ecosystem chip and role badge for the classified maintainer package.
+    expect(getByText('×1')).toBeInTheDocument();
+    expect(getByText('메인테이너')).toBeInTheDocument();
+    expect(getByText('기여 8회')).toBeInTheDocument();
   });
 
   it('renders error message when API returns error', async () => {
@@ -319,7 +328,7 @@ describe('ReactGithubCalendar', () => {
 
     const repoName = await findByText('portfolio');
     const card = repoName.closest('a');
-    const icon = card?.querySelector('span[style]');
+    const icon = card?.querySelector('[data-testid="repo-lang-icon"]');
 
     expect(icon?.getAttribute('style')).toContain('mask-image');
   });
@@ -335,7 +344,7 @@ describe('ReactGithubCalendar', () => {
 
     const repoName = await findByText('portfolio');
     const card = repoName.closest('a');
-    const icon = card?.querySelector('span[style]');
+    const icon = card?.querySelector('[data-testid="repo-lang-icon"]');
 
     const style = icon?.getAttribute('style') ?? '';
     expect(style).not.toContain('mask-image');
@@ -353,7 +362,7 @@ describe('ReactGithubCalendar', () => {
 
     const repoName = await findByText('portfolio');
     const card = repoName.closest('a');
-    const icon = card?.querySelector('span[style]');
+    const icon = card?.querySelector('[data-testid="repo-lang-icon"]');
 
     const style = icon?.getAttribute('style') ?? '';
     expect(style).not.toContain('mask-image');
