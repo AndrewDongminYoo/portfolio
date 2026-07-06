@@ -7,6 +7,10 @@
 /.pnp
 .pnp.js
 
+# Yarn (Berry) — keep releases, ignore local caches
+.yarn/install-state.gz
+.yarn/cache
+
 # Testing
 /coverage
 
