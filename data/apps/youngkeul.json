@@ -1,0 +1,25 @@
+{
+  "id": "youngkeul",
+  "name": "영끌",
+  "nameEn": "Youngkeul",
+  "description": "영수증과 설문으로 포인트를 적립하고 기프티콘으로 교환하는 리워드 앱",
+  "descriptionEn": "A rewards app that turns receipts and surveys into points redeemable for gift vouchers",
+  "role": "developer",
+  "roleDescription": "React Native 프로덕션 앱 개발",
+  "icon": "/apps/youngkeul-icon.jpg",
+  "platforms": [
+    {
+      "type": "ios",
+      "url": "https://apps.apple.com/app/id6471549755",
+      "packageId": "6471549755"
+    },
+    {
+      "type": "android",
+      "url": "https://play.google.com/store/apps/details?id=com.FhTArrLMPEaw.natively",
+      "packageId": "com.FhTArrLMPEaw.natively"
+    }
+  ],
+  "releaseDate": "2026-04-29",
+  "tags": ["React Native", "Lifestyle", "Rewards", "Receipt"],
+  "order": 4
+}
