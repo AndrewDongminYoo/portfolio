@@ -43,5 +43,5 @@
 
 ## Configuration & Secrets
 
-- Copy `.env.sample` to `.env` for local configuration.
+- Copy `.env.sample` to `.env` and fill in `GITHUB_TOKEN` and `PREVIEW_BASE_URL`.
 - Do not commit secrets; keep API keys and tokens in environment variables.

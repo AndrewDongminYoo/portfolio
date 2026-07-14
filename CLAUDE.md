@@ -19,7 +19,7 @@ Personal resume and portfolio website built with Next.js App Router. The site fe
 
 ```bash
 yarn install
-cp .env.sample .env  # Configure GITHUB_TOKEN and PREVIEW_BASE_URL
+cp .env.sample .env  # Fill in GITHUB_TOKEN and PREVIEW_BASE_URL
 ```
 
 ### Development
@@ -68,6 +68,7 @@ src/
 │   ├── api/posts/    # Posts listing endpoint
 │   ├── api/repos/    # Repositories listing endpoint
 │   ├── api/resume/   # Latest PDF download endpoint
+│   ├── api/github/contributions/  # OSS contributions via GitHub GraphQL
 │   ├── posts/        # Blog post list/detail pages
 │   └── repos/        # Repository list/detail pages
 ├── components/       # Shared UI components
@@ -78,7 +79,10 @@ src/
 ├── test/             # Test files (mirrors src/ structure)
 └── globals.css       # Global styles + Tailwind layers
 
-data/                 # Static content (posts metadata, repo data)
+data/                 # Static content
+  ├── apps/           # Shipped app entries (JSON)
+  ├── posts/          # Resume/timeline entries — experience/project/activity (YAML)
+  └── repos/          # GitHub repository metadata (JSON)
 public/               # Static assets (images, fonts, resume PDFs)
   └── resume/         # Resume PDFs (API serves most recent by mtime)
 assets/               # README preview images
@@ -109,6 +113,11 @@ Required in `.env`:
 
 - `GITHUB_TOKEN`: GitHub PAT with repo read access (for private repos)
 - `PREVIEW_BASE_URL`: Base URL for preview capture (e.g., `http://localhost:3000` or production URL)
+
+Optional (Puppeteer generation scripts only):
+
+- `PUPPETEER_NO_SANDBOX`: set to `1` to launch Chromium with `--no-sandbox` (auto-enabled on CI)
+- `TZ`: timezone for the generated resume PDF (defaults to `Asia/Seoul`)
 
 ## Important Notes
 
