@@ -7,7 +7,7 @@ describe('getSimpleIcon', () => {
   });
 
   it('returns icon info when spec exists', async () => {
-    vi.unmock('@/features/repos/specs');
+    vi.doUnmock('@/features/repos/specs');
     const { getSimpleIcon } = await import('@/features/repos/simple-icons');
 
     const icon = getSimpleIcon('JavaScript');
@@ -20,7 +20,7 @@ describe('getSimpleIcon', () => {
   });
 
   it('returns null for unknown language', async () => {
-    vi.unmock('@/features/repos/specs');
+    vi.doUnmock('@/features/repos/specs');
     const { getSimpleIcon } = await import('@/features/repos/simple-icons');
 
     expect(getSimpleIcon('unknown-language')).toBeNull();
