@@ -1,0 +1,39 @@
+{
+  "node_id": "R_kgDOTY0jng",
+  "name": "vscode_codicons",
+  "full_name": "AndrewDongminYoo/vscode_codicons",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/vscode_codicons",
+  "description": "",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/vscode_codicons/languages",
+  "pushed_at": "2026-07-15T02:39:40Z",
+  "size": 1039,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "Dart",
+  "forks_count": 0,
+  "languages": {
+    "Dart": 1085982,
+    "CSS": 33699,
+    "Swift": 2036,
+    "Shell": 1909,
+    "Kotlin": 146,
+    "Objective-C": 38
+  },
+  "topics": [],
+  "framework": "Flutter",
+  "descriptive_slug": "flutter",
+  "framework_candidates": [
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "score": 105,
+      "reasons": ["+90 pubspec.yaml indicates Flutter", "+15 ecosystem: pub present"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pub"]
+}

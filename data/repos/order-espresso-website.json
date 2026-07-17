@@ -1,0 +1,36 @@
+{
+  "node_id": "R_kgDOTZ8GdA",
+  "name": "order-espresso-website",
+  "full_name": "AndrewDongminYoo/order-espresso-website",
+  "private": true,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/order-espresso-website",
+  "description": "",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/order-espresso-website/languages",
+  "pushed_at": "2026-07-17T06:36:46Z",
+  "size": 38382,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 43553,
+    "CSS": 3343,
+    "JavaScript": 867
+  },
+  "topics": [],
+  "framework": "Next.js",
+  "descriptive_slug": "nextdotjs",
+  "framework_candidates": [
+    {
+      "slug": "nextdotjs",
+      "name": "Next.js",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate Next.js"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "pnpm"]
+}

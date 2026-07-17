@@ -1,0 +1,41 @@
+{
+  "node_id": "R_kgDOSNpTEA",
+  "name": "react-native-daro-m",
+  "full_name": "AndrewDongminYoo/react-native-daro-m",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/react-native-daro-m",
+  "description": "A maintenance fork of `react-native-daro-m`, the DaroM advertising SDK bridge for Android and iOS.",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/react-native-daro-m/languages",
+  "pushed_at": "2026-07-05T09:20:55Z",
+  "size": 2921,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 52318,
+    "Kotlin": 51457,
+    "Swift": 48359,
+    "Ruby": 3213,
+    "JavaScript": 2785,
+    "Objective-C++": 2539,
+    "Objective-C": 1766,
+    "C": 103
+  },
+  "topics": [],
+  "framework": "React Native",
+  "descriptive_slug": "reactnative",
+  "framework_candidates": [
+    {
+      "slug": "reactnative",
+      "name": "React Native",
+      "score": 90,
+      "reasons": ["+90 package.json deps indicate RN"]
+    }
+  ],
+  "ecosystems": ["GitHub Actions workflows", "Yarn"]
+}

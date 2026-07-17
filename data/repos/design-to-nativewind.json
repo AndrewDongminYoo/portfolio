@@ -1,0 +1,35 @@
+{
+  "node_id": "R_kgDOS6448Q",
+  "name": "design-to-nativewind",
+  "full_name": "AndrewDongminYoo/design-to-nativewind",
+  "private": false,
+  "owner": {
+    "login": "AndrewDongminYoo",
+    "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
+  },
+  "html_url": "https://github.com/AndrewDongminYoo/design-to-nativewind",
+  "description": "Figma plugin: convert designs to React Native + NativeWind code",
+  "languages_url": "https://api.github.com/repos/AndrewDongminYoo/design-to-nativewind/languages",
+  "pushed_at": "2026-07-02T02:20:28Z",
+  "size": 1405,
+  "stargazers_count": 0,
+  "watchers_count": 0,
+  "language": "TypeScript",
+  "forks_count": 0,
+  "languages": {
+    "TypeScript": 72563,
+    "JavaScript": 1461
+  },
+  "topics": [
+    "codegen",
+    "design-codegen",
+    "figma-plugin",
+    "figma-to-code",
+    "nativewind",
+    "nativewind-reactnative"
+  ],
+  "framework": null,
+  "descriptive_slug": "typescript",
+  "framework_candidates": [],
+  "ecosystems": ["pnpm"]
+}
