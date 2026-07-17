@@ -10,15 +10,15 @@
   "html_url": "https://github.com/AndrewDongminYoo/merry",
   "description": "Dart용 스크립트 관리자. Merry는 플러터 프로젝트에서 단축키 스크립트를 정의하는 데 도움을 주며, 길고 기억하기 힘든 스크립트를 플랫폼별로 반복해서 입력해야 하는 번거로움을 덜어줍니다",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/merry/languages",
-  "pushed_at": "2026-04-24T21:17:51Z",
-  "size": 7896,
+  "pushed_at": "2026-07-16T12:45:28Z",
+  "size": 8039,
   "stargazers_count": 1,
   "watchers_count": 1,
   "language": "Dart",
   "forks_count": 0,
   "languages": {
-    "Dart": 79900,
-    "Rust": 2616
+    "Dart": 87933,
+    "Rust": 7767
   },
   "topics": [
     "dart-script",

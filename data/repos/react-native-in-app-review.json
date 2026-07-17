@@ -2,7 +2,7 @@
   "node_id": "R_kgDOSWjVHA",
   "name": "react-native-in-app-review",
   "full_name": "AndrewDongminYoo/react-native-in-app-review",
-  "private": false,
+  "private": true,
   "owner": {
     "login": "AndrewDongminYoo",
     "avatar_url": "https://avatars.githubusercontent.com/u/82999715?v=4"
@@ -10,15 +10,15 @@
   "html_url": "https://github.com/AndrewDongminYoo/react-native-in-app-review",
   "description": "A React Native TurboModule that wraps the Google Play In-App Review API (Android) and Apple StoreKit requestReview (iOS), allowing apps to prompt users for ratings and reviews without leaving the app.",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/react-native-in-app-review/languages",
-  "pushed_at": "2026-06-23T21:14:32Z",
-  "size": 1894,
+  "pushed_at": "2026-07-10T01:32:24Z",
+  "size": 2216,
   "stargazers_count": 0,
   "watchers_count": 0,
   "language": "Kotlin",
   "forks_count": 0,
   "languages": {
     "Kotlin": 5616,
-    "TypeScript": 4401,
+    "TypeScript": 4398,
     "JavaScript": 3826,
     "Objective-C++": 2685,
     "Ruby": 2121,

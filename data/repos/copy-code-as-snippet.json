@@ -10,8 +10,8 @@
   "html_url": "https://github.com/AndrewDongminYoo/copy-code-as-snippet",
   "description": "Visual Studio Code 확장 프로그램으로, 선택한 코드 또는 파일의 전체 내용을 Markdown, HTML 또는 일반 텍스트 코드 스니펫으로 복사할 수 있으며, 언어 및 파일 경로 정보도 함께 포함됩니다.",
   "languages_url": "https://api.github.com/repos/AndrewDongminYoo/copy-code-as-snippet/languages",
-  "pushed_at": "2026-02-09T11:43:28Z",
-  "size": 46985,
+  "pushed_at": "2026-07-17T12:23:49Z",
+  "size": 46992,
   "stargazers_count": 1,
   "watchers_count": 1,
   "language": "TypeScript",
@@ -24,5 +24,5 @@
   "framework": null,
   "descriptive_slug": "typescript",
   "framework_candidates": [],
-  "ecosystems": ["Yarn"]
+  "ecosystems": ["GitHub Actions workflows", "Yarn"]
 }
