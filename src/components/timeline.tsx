@@ -79,7 +79,11 @@ const getMonthLabels = () => {
           {name}
         </TooltipTrigger>
         <TooltipContent>
-          <Period startAt={startAt} endAt={format(end, 'yyyy-MM-dd')} />
+          <Period
+            startAt={startAt}
+            endAt={format(end, 'yyyy-MM-dd')}
+            monthsOnly={type === 'experience'}
+          />
         </TooltipContent>
       </Tooltip>
     );

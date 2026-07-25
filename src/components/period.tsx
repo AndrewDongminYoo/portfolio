@@ -43,14 +43,28 @@ const ensureValidRange = (start: DateInfo, end: DateInfo, fallbackEnd: Date) => 
   return { rangeStart, rangeEnd, displayStart, displayEnd };
 };
 
-const buildDurationLabel = (start: Date | null, end: Date | null) => {
+const buildDurationLabel = (start: Date | null, end: Date | null, monthsOnly?: boolean) => {
   if (!start || !end || !isValid(start) || !isValid(end)) return '';
   const dur = intervalToDuration({ start, end });
+  let years = dur.years ?? 0;
+  let months = dur.months ?? 0;
+  if (monthsOnly && (years > 0 || months > 0)) {
+    // 근무 기간은 남은 일수를 월로 올림해 년/월 단위로만 표시한다.
+    if ((dur.weeks ?? 0) > 0 || (dur.days ?? 0) > 0) months += 1;
+    if (months === 12) {
+      years += 1;
+      months = 0;
+    }
+    const parts = [];
+    if (months > 0) parts.push(`${months}개월`);
+    if (years > 0) parts.push(`${years}년`);
+    return parts.reverse().join(' ');
+  }
   const parts = [];
   if (dur.days && dur.days > 0) parts.push(`${dur.days}일`);
   if (dur.weeks && dur.weeks > 0) parts.push(`${dur.weeks}주`);
-  if (dur.months && dur.months > 0) parts.push(`${dur.months}개월`);
-  if (dur.years && dur.years > 0) parts.push(`${dur.years}년`);
+  if (months > 0) parts.push(`${months}개월`);
+  if (years > 0) parts.push(`${years}년`);
   return parts.reverse().join(' ');
 };
 
@@ -60,12 +74,14 @@ export default function Period({
   className,
   datesOnly,
   softWrap,
+  monthsOnly,
 }: {
   startAt: string;
   endAt?: string;
   className?: string;
   datesOnly?: boolean;
   softWrap?: boolean;
+  monthsOnly?: boolean;
 }) {
   const now = new Date();
 
@@ -81,7 +97,7 @@ export default function Period({
     rangeStart && rangeEnd && isValid(rangeStart) && isValid(rangeEnd)
       ? isSameDay(rangeStart, rangeEnd)
       : false;
-  const period = buildDurationLabel(rangeStart, rangeEnd);
+  const period = buildDurationLabel(rangeStart, rangeEnd, monthsOnly);
   return (
     <span className={className}>
       <DateElement dateTime={displayStart} fmt={isSame ? 'yyyy.MM.dd' : 'yyyy.MM'} />
