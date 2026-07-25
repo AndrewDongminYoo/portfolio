@@ -4,7 +4,7 @@ title: 'Team REmited — React Native 개발자'
 name: 'Team REmited'
 role: 'React Native Developer'
 startAt: '2026-04-06'
-endAt: null
+endAt: '2026-07-07'
 website_url: 'https://teamremited.com'
 tags:
   - 'React Native'
@@ -16,7 +16,7 @@ tags:
   - 'Objective-C'
   - 'ML Kit'
 description:
-  - 'React Native(New Architecture, TurboModule/Fabric) 기반 앱에서 네이티브 모듈 설계·구현과 iOS/Android 플랫폼 통합을 담당하고 있습니다.'
+  - 'React Native(New Architecture, TurboModule/Fabric) 기반 앱에서 네이티브 모듈 설계·구현과 iOS/Android 플랫폼 통합을 담당했습니다.'
   - '소셜 로그인, 인앱 리뷰, 영수증 스캔/OCR, 리워드 광고 SDK 등 RN 브리지가 필요한 기능을 Swift/Objective-C(iOS)와 Kotlin(Android) 네이티브 코드로 구현했습니다.'
   - '커뮤니티 라이브러리를 New Architecture 호환 TurboModule로 재구현하면서 기존 public API와의 호환성을 유지해 drop-in 교체가 가능하도록 설계했습니다.'
 projects:
